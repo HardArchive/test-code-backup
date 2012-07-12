@@ -1,0 +1,6 @@
+WinpCap开发包例子：
+1. devicelist.c 获得本机网络设备的列表 
+2. cappacket.c 抓取网络中的数据包 
+3. sendpacket.c 发送自己填充的一个数据包 
+4. statics.c 对网络中的数据进行统计 
+5. filter.c 按指定规则对捕获的数据包进行过滤

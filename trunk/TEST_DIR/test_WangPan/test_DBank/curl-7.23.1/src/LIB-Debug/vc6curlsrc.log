@@ -1,0 +1,127 @@
+﻿生成启动时间为 2012/1/12 8:22:34。
+     1>项目“C:\Users\p00206869\Desktop\yourprogram\curl-7.23.1\src\vc6curlsrc.vcxproj”在节点 4 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“.\LIB-Debug\curlsrc.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+       ResourceCompile:
+         所有输出均为最新。
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\Users\p00206869\Desktop\yourprogram\curl-7.23.1\src\.\LIB-Debug\curlsrc.exe) 与 Linker 的 OutputFile 属性值(C:\Users\p00206869\Desktop\yourprogram\curl-7.23.1\src\LIB-Debug\curl.exe)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(992,5): warning MSB8012: TargetName(curlsrc) 与 Linker 的 OutputFile 属性值(curl)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"LIB-Debug/curl.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\lib\LIB-Debug" ws2_32.lib wldap32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:".\LIB-Debug\curlsrc.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\p00206869\Desktop\yourprogram\curl-7.23.1\src\LIB-Debug\curlsrc.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\LIB-Debug\curlsrc.lib" /MACHINE:X86 ".\LIB-Debug\curl.res"
+         ".\LIB-Debug\hugehelp.obj"
+         ".\LIB-Debug\nonblock.obj"
+         ".\LIB-Debug\rawstr.obj"
+         ".\LIB-Debug\strtoofft.obj"
+         ".\LIB-Debug\tool_binmode.obj"
+         ".\LIB-Debug\tool_bname.obj"
+         ".\LIB-Debug\tool_cb_dbg.obj"
+         ".\LIB-Debug\tool_cb_hdr.obj"
+         ".\LIB-Debug\tool_cb_prg.obj"
+         ".\LIB-Debug\tool_cb_rea.obj"
+         ".\LIB-Debug\tool_cb_see.obj"
+         ".\LIB-Debug\tool_cb_skt.obj"
+         ".\LIB-Debug\tool_cb_wrt.obj"
+         ".\LIB-Debug\tool_cfgable.obj"
+         ".\LIB-Debug\tool_convert.obj"
+         ".\LIB-Debug\tool_dirhie.obj"
+         ".\LIB-Debug\tool_doswin.obj"
+         ".\LIB-Debug\tool_easysrc.obj"
+         ".\LIB-Debug\tool_formparse.obj"
+         ".\LIB-Debug\tool_getparam.obj"
+         ".\LIB-Debug\tool_getpass.obj"
+         ".\LIB-Debug\tool_help.obj"
+         ".\LIB-Debug\tool_helpers.obj"
+         ".\LIB-Debug\tool_homedir.obj"
+         ".\LIB-Debug\tool_libinfo.obj"
+         ".\LIB-Debug\tool_main.obj"
+         ".\LIB-Debug\tool_mfiles.obj"
+         ".\LIB-Debug\tool_msgs.obj"
+         ".\LIB-Debug\tool_operate.obj"
+         ".\LIB-Debug\tool_operhlp.obj"
+         ".\LIB-Debug\tool_panykey.obj"
+         ".\LIB-Debug\tool_paramhlp.obj"
+         ".\LIB-Debug\tool_parsecfg.obj"
+         ".\LIB-Debug\tool_setopt.obj"
+         ".\LIB-Debug\tool_sleep.obj"
+         ".\LIB-Debug\tool_urlglob.obj"
+         ".\LIB-Debug\tool_util.obj"
+         ".\LIB-Debug\tool_vms.obj"
+         ".\LIB-Debug\tool_writeenv.obj"
+         ".\LIB-Debug\tool_writeout.obj"
+         ".\LIB-Debug\tool_xattr.obj"
+     1>tool_writeout.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_formparse.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_msgs.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_mfprintf，该符号在函数 _operate 中被引用
+     1>tool_urlglob.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_cb_dbg.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_cb_prg.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_dirhie.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_easysrc.obj : error LNK2001: 无法解析的外部符号 _curl_mfprintf
+     1>tool_writeout.obj : error LNK2001: 无法解析的外部符号 _curl_strequal
+     1>tool_cb_dbg.obj : error LNK2019: 无法解析的外部符号 _curl_strequal，该符号在函数 _tool_debug_cb 中被引用
+     1>tool_getparam.obj : error LNK2001: 无法解析的外部符号 _curl_strequal
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_strequal
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_strequal
+     1>tool_paramhlp.obj : error LNK2019: 无法解析的外部符号 _curl_msnprintf，该符号在函数 _file2string 中被引用
+     1>tool_parsecfg.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_setopt.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_urlglob.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_cb_dbg.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_cb_prg.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_getparam.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_msnprintf
+     1>tool_setopt.obj : error LNK2001: 无法解析的外部符号 _curl_free
+     1>tool_cb_prg.obj : error LNK2019: 无法解析的外部符号 _curl_free，该符号在函数 _progressbarinit 中被引用
+     1>tool_getparam.obj : error LNK2001: 无法解析的外部符号 _curl_free
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_free
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_free
+     1>tool_cb_prg.obj : error LNK2019: 无法解析的外部符号 _curl_getenv，该符号在函数 _progressbarinit 中被引用
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_getenv
+     1>tool_cb_wrt.obj : error LNK2019: 无法解析的外部符号 _curl_easy_pause，该符号在函数 _tool_write_cb 中被引用
+     1>tool_cfgable.obj : error LNK2019: 无法解析的外部符号 _curl_formfree，该符号在函数 _free_config_fields 中被引用
+     1>tool_cfgable.obj : error LNK2019: 无法解析的外部符号 _curl_slist_free_all，该符号在函数 _free_config_fields 中被引用
+     1>tool_easysrc.obj : error LNK2001: 无法解析的外部符号 _curl_slist_free_all
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_slist_free_all
+     1>tool_setopt.obj : error LNK2001: 无法解析的外部符号 _curl_slist_free_all
+     1>tool_cfgable.obj : error LNK2019: 无法解析的外部符号 _curl_easy_cleanup，该符号在函数 _free_config_fields 中被引用
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_easy_cleanup
+     1>tool_dirhie.obj : error LNK2019: 无法解析的外部符号 _curl_msprintf，该符号在函数 _create_dir_hierarchy 中被引用
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_msprintf
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_msprintf
+     1>tool_formparse.obj : error LNK2019: 无法解析的外部符号 _curl_formadd，该符号在函数 _formparse 中被引用
+     1>tool_getparam.obj : error LNK2019: 无法解析的外部符号 _curl_getdate，该符号在函数 _getparameter 中被引用
+     1>tool_getparam.obj : error LNK2019: 无法解析的外部符号 _curl_mprintf，该符号在函数 _getparameter 中被引用
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_mprintf
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_mprintf
+     1>tool_urlglob.obj : error LNK2001: 无法解析的外部符号 _curl_mprintf
+     1>tool_getparam.obj : error LNK2019: 无法解析的外部符号 _curl_version，该符号在函数 _getparameter 中被引用
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_version
+     1>tool_getparam.obj : error LNK2019: 无法解析的外部符号 _curl_easy_escape，该符号在函数 _getparameter 中被引用
+     1>tool_operhlp.obj : error LNK2001: 无法解析的外部符号 _curl_easy_escape
+     1>tool_getparam.obj : error LNK2019: 无法解析的外部符号 _curl_strnequal，该符号在函数 _getparameter 中被引用
+     1>tool_operate.obj : error LNK2001: 无法解析的外部符号 _curl_strnequal
+     1>tool_libinfo.obj : error LNK2019: 无法解析的外部符号 _curl_version_info，该符号在函数 _get_libcurl_info 中被引用
+     1>tool_msgs.obj : error LNK2019: 无法解析的外部符号 _curl_mvsnprintf，该符号在函数 _warnf 中被引用
+     1>tool_msgs.obj : error LNK2019: 无法解析的外部符号 _curl_mvfprintf，该符号在函数 _helpf 中被引用
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_easy_strerror，该符号在函数 _operate 中被引用
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_easy_perform，该符号在函数 _operate 中被引用
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_maprintf，该符号在函数 _operate 中被引用
+     1>tool_setopt.obj : error LNK2001: 无法解析的外部符号 _curl_maprintf
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_easy_getinfo，该符号在函数 _operate 中被引用
+     1>tool_writeout.obj : error LNK2001: 无法解析的外部符号 _curl_easy_getinfo
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_slist_append，该符号在函数 _operate 中被引用
+     1>tool_paramhlp.obj : error LNK2001: 无法解析的外部符号 _curl_slist_append
+     1>tool_setopt.obj : error LNK2001: 无法解析的外部符号 _curl_slist_append
+     1>tool_operate.obj : error LNK2019: 无法解析的外部符号 _curl_easy_init，该符号在函数 _operate 中被引用
+     1>tool_operhlp.obj : error LNK2019: 无法解析的外部符号 _curl_global_init，该符号在函数 _main_init 中被引用
+     1>tool_operhlp.obj : error LNK2019: 无法解析的外部符号 _curl_global_cleanup，该符号在函数 _main_free 中被引用
+     1>tool_setopt.obj : error LNK2019: 无法解析的外部符号 _curl_easy_setopt，该符号在函数 _tool_setopt 中被引用
+     1>LIB-Debug/curl.exe : fatal error LNK1120: 28 个无法解析的外部命令
+     1>已完成生成项目“C:\Users\p00206869\Desktop\yourprogram\curl-7.23.1\src\vc6curlsrc.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.45
