@@ -1,0 +1,15 @@
+﻿<layer title="我的对话框"  width="580" height="450" appwin="1" resize="0">
+  <header class="dialoghead" width="full" height="32">
+    <icon src="101" pos="9,7"/>
+    <text id="306" class="dlgtitle" pos="30,9">%str2%</text>
+    <imgbtn id="2000" skin="closebtn" pos="-43,1"/>
+    <imgbtn id="2003" skin="minbtn" pos="-74,1"/>
+  </header>
+  <footer class="dialogfoot" width="full" height="3">
+  </footer>
+  <body class="dialogbody" width="full" height="full">
+    <dlg pos="3,0,-3,-0">
+
+    </dlg>
+  </body>
+</layer>

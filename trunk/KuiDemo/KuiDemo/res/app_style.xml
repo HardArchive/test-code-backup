@@ -1,0 +1,10 @@
+<style>
+  <class name="mainhead"       skin="mainbghead" font="0000" crtext="FFFFFF" crbg="FFFFFF"/>
+  <class name="mainbody"       skin="mainbgbody" font="0000" crtext="CCE8F4" crbg="FFFFFF" x-margin="1"/>
+  <class name="mainfoot"       skin="mainbgfoot" font="0000" crtext="B2DDF5" crbg="FFFFFF" x-margin="10" y-margin="1"/>
+  <class name="dlgtitle"     font="0104"       crtext="FFFFFF"/>
+  <class name="normalbtn"    skin="normalbtn"  crtext="000000" textmode="25" cursor="hand"/>
+  <class name="dialoghead"     skin="dialoghead" font="0000"/>
+  <class name="dialogbody"     skin="dialogbody" font="0000"/>
+  <class name="dialogfoot"     skin="dialogfoot" font="0000"/>
+</style>
