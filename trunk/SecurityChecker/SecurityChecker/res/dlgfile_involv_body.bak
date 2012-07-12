@@ -1,0 +1,41 @@
+<dlg pos="0,0,-0,-0">
+  <dlg pos="0,0,160,-0" crbg="E3EDF7" show="1">
+    <tabctrl id="4001" cursel="0" tabwidth="140" tabalign="left" tabheight="37" tabskin="tableft" splitterskin="tableftsplitter" tabspacing="10" tabpos="20" framepos="10" pos="10,0,-0,-0" text-x="-10" crbg1="EFF8FF">
+      <tab title="上网痕迹常规检查" width="full" height="full" class="settingpage" valign="middle">
+		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="上网痕迹精细检查" width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="上网痕迹磁盘检查" width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="移动存储设备检查" width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="网络应用程序检查" width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="硬件设备检查    " width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="外联检查        " width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="安全性检查      " width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+      <tab title="生成总体报表    " width="full" height="full" class="settingpage" valign="middle" />
+      		<dlgfile pos="160,0,-0,-0" src="111" />
+      </tab>
+    </tabctrl>
+  </dlg>
+  <dlg id="4002" pos="160,0,-0,-0" class="panelsysopt">
+    <tabctrl id="4004" cursel="1" tabwidth="105" tabskin="tab" tabspacing="4" tabpos="10" pos="0,0,-0,-0" frameskin="panelgray" framepos="-1">
+      <tab id="4100" title="一键优化" width="full" height="full" class1="tabpage" />
+      <tab id="4014" title="启动项" width="full" height="full" class1="tabpage" />
+      <tab id="4015" title="服务项" width="full" height="full" class1="tabpage" />
+      <tab id="4016" title="计划任务" width="full" height="full" class1="tabpage" />
+    </tabctrl>
+  </dlg>
+</dlg>

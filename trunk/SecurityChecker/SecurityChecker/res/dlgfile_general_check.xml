@@ -1,0 +1,74 @@
+<dlg pos="0,0,-0,-0">
+	<text pos="10,5">上网痕迹常规检查</text>
+	<text pos="10,30">时间范围：</text>
+	<realwnd id="1201" ctrlid="1201" pos="40,30,90,55" tip="开始时间控件"/>
+	<text pos="28,30">至</text>
+	<realwnd id="1202" ctrlid="1202" pos="110,30,160,55" tip="结束时间控件"/>	
+	<button id="1203" pos="-130,30,-180,55" tip="开始检查按钮提示" class="dlg_btn_my">开始检查</button>
+	<button id="1204" pos="-70,30,-120,55" tip="生成报表按钮提示" class="dlg_btn_my">生成报表</button>
+	<button id="1205" pos="-10,30,-60,55" tip="清除痕迹按钮提示" class="dlg_btn_my">清除痕迹</button>
+		
+	<realwnd id="1206" ctrlid="1206" pos="10,70,-10,100" tip="进度条控件"/>
+	<!-->
+    <dlgfile pos="160,0,-0,-0" src="1206" tip="进度条控件"/>
+	<dlgfile pos="-10,0,-0,-0" src="1207" tip="列表框控件"/>	
+    </-->
+	<realwnd id="1207" ctrlid="1207" pos="5,115,-5,-10" tip="进度条控件"/>	
+	
+</dlg>
+
+
+  <!--上网痕迹常规检查-->
+  <dlg id="2100" pos="160,0,-0,-0" class="panelsysopt">
+  <dlg pos="0,0,-0,-0"  class="panel" crbg="FBEEFD">
+	<text pos="10,5">上网痕迹常规检查</text>
+	<text pos="10,30">时间范围：</text>
+	<realwnd id="1201" ctrlid="1201" pos="40,30,90,55" tip="开始时间控件"/>
+	<text pos="100,30">至</text>
+	<realwnd id="1202" ctrlid="1202" pos="110,30,160,55" tip="结束时间控件"/>	
+	<button id="1203" pos="-130,30,-180,55" tip="开始检查按钮提示" class="dlg_btn_my">开始检查</button>
+	<button id="1204" pos="-70,30,-120,55" tip="生成报表按钮提示" class="dlg_btn_my">生成报表</button>
+	<button id="1205" pos="-10,30,-60,55" tip="清除痕迹按钮提示" class="dlg_btn_my">清除痕迹</button>
+		
+	<realwnd id="1206" ctrlid="1206" pos="10,70,-10,100" tip="进度条控件"/>
+	<!-->
+    <dlgfile pos="160,0,-0,-0" src="1206" tip="进度条控件"/>
+	<dlgfile pos="-10,0,-0,-0" src="1207" tip="列表框控件"/>	
+    </-->
+	<realwnd id="1207" ctrlid="1207" pos="5,115,-5,-10" tip="进度条控件"/>	
+	
+  </dlg>
+  <!--上网痕迹精细检查-->
+  <dlg id="2200" pos="160,0,-0,-0" class="panel" crbg="FBEEFD">
+	<dlg pos="0,0,-0,-0"  class="panel" crbg="FBEEFD">
+            <text pos="100,200">上网痕迹精细检查面版</text>
+    </dlg>
+  </dlg>
+  <!--上网痕迹磁盘检查-->
+  <dlg id="2300" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--移动存储设备检查-->
+  <dlg id="2400" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--网络应用程序检查-->
+  <dlg id="2500" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--硬件设备检查-->
+  <dlg id="2600" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--外联检查-->
+  <dlg id="2700" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--安全性检查-->
+  <dlg id="2800" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>
+  <!--生成总体报表-->
+  <dlg id="2900" pos="160,0,-0,-0" class="panelsysopt">
+
+  </dlg>

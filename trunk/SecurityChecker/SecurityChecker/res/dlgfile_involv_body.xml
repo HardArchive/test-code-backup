@@ -1,0 +1,16 @@
+<dlg pos="0,0,-0,-0">
+  <dlg pos="0,0,160,-0" crbg="E3EDF7" show="1">
+    <tabctrl id="2000" cursel="0" tabwidth="140" tabalign="left" tabheight="37" tabskin="tableft" splitterskin="tableftsplitter" tabspacing="10" tabpos="20" framepos="10" pos="10,0,-0,-0" text-x="-10" crbg1="EFF8FF">
+      <tab title="上网痕迹常规检查" width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="上网痕迹精细检查" width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="上网痕迹磁盘检查" width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="移动存储设备检查" width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="网络应用程序检查" width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="硬件设备检查    " width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="外联检查        " width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="安全性检查      " width="full" height="full" class="settingpage" valign="middle"/>
+      <tab title="生成总体报表    " width="full" height="full" class="settingpage" valign="middle"/>
+    </tabctrl>
+  </dlg>
+
+</dlg>
