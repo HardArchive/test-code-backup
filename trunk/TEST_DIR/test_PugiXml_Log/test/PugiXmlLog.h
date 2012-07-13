@@ -79,6 +79,7 @@ namespace QNA
 		{
 			std::string strFile = "D:\\WinPath\\desktop\\test.xml";
 			pugi::xml_document doc;
+			//只需加载一次
 			if (!doc.load_file(strFile.c_str()))
 			{
 				//return 0;
