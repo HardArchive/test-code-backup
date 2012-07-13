@@ -69,24 +69,26 @@ namespace QNA
 				//doc.load("<?xml-stylesheet href='Log.xsl' type='text/xsl'?>");
 				doc.save_file(tszFileName);
 				result = doc.load_file(tszFileName);
-
 			}
+			doc.reset();
 
 		}
 		~CPugiXmlLog(void){}
 
-		bool ReadXml(LPCTSTR lpszFileName)
+		bool ReadXml(LPCTSTR lpszFileName = NULL)
 		{
-			std::wstring strFile = "D:\\WinPath\\desktop\\test.xml";
+			std::string strFile = "D:\\WinPath\\desktop\\test.xml";
 			pugi::xml_document doc;
 			if (!doc.load_file(strFile.c_str()))
-			{return 0;}
+			{
+				//return 0;
+			}
 			pugi::xml_node form = doc.child("root").child("form");
 			std::string ip = form.attribute("ip").value();
 			std::string port = form.attribute("port").value();
 
-			char cBuf[2083];
-			sprintf(cBuf, _T("http://%s:%s/%s?"), ip.c_str(), port.c_s());
+			char cBuf[2083] = {0};
+			sprintf(cBuf, "http://%s:%s", ip.c_str(), port.c_str());
 			std::string strTemp(cBuf);
 			std::string m_strURLBase = strTemp;
 
@@ -101,6 +103,8 @@ namespace QNA
 					std::string strTemp(cBuf);
 					m_strURLBase += strTemp;
 				}
+
+
 			}
 
 			//读取xpath
@@ -112,6 +116,8 @@ namespace QNA
 			pugi::xml_node weight = doc.child("root").child("weight");
 			float m_fThred = atof(weight.child_value("threshold"));
 			float m_fStep = atof(weight.child_value("step"));
+
+			return true;
 		}
 
 		void Log(LPCTSTR lpszFilName, LPCTSTR s,...);  //Log是添加一条日志
