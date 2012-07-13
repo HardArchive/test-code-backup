@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 框架实例layer -->
+<!-- 默认采用流式排版还是对话框式排版，是在调用时由使用哪种窗口类决定的 -->
+<layer title="TIPTOP保密检查工具" width="921" height="682" appwin="1" resize="1">
+  <!-- layer标签  -->
+  <!-->
+	定义一个窗口
+	属性：
+	属性名： 说明
+	title    窗口标题文字，如果设置appwin=1，则显示在任务栏
+	height   窗口高度(px)
+	width    窗口宽度(px)
+	appwin   1 对应WS_EX_APPWINDOW
+	resize   1 对应WS_MAXIMIZEBOX |WS_MINIMIZEBOX
+	noborder 1对应 WS_POPUP | WS_SYSMENU以及 WS_EX_TOOLWINDOW |	WS_EX_TOPMOST
+	         0 对应WS_OVERLAPPED | WS_SYSMENU
+	</-->
+
+  <!-- header/footer/body标签  -->
+  <!-->
+	属性名： 说明
+	height   高度(px)，body 必须为 full，header 和footer 可定义
+	width    宽度(px)，必须为 full
+	</-->
+
+  <!-- 标题栏 -->
+  <header class="dlg_header" width="full" height="30">
+    <dlgfile pos="0,0,-0,-0" src="110" />
+  </header>
+  <!-- 底部对话框 -->
+  <footer class="dlg_footer" width="full" height="20">
+    <dlg pos="0,0,-0,-4" crbg="DCE3EB">
+    </dlg>
+  </footer>
+
+  <body class="dlg_body" width="full" height="full">
+    <!-- 主对话框  -->
+    <!-->
+	实现了对话框模式和流模式
+	//i. 对话框模式
+	//使用pos属性定位，嵌套采用 dlg 标签
+	//ii. 流模式
+	//类似html 的流式排版，在部分情况下会比较麻烦，除非需要，不建议使用
+	</-->
+    <!-->
+    <dlg pos="0,0,-0,-0" crbg="FFFFFF">
+    </-->
+    <!-->
+	控件
+	属性名： 说明：
+	class 	 指定一个Style Name
+	id       指定控件的Command ID，用于消息响应和显示控制，在同一个窗口内必须唯一
+	href     指定一个链接或者应用程序，用shell的open操作打开，且不会再通知click 消息
+	width    指定控件的宽度
+	         0：自适应文字宽度（默认）
+	         full：流模式或对话框模式但未指定宽度时会延伸到右边框，对话框模式不建议使用
+	height   指定控件的高度
+	         0：自适应文字高度（默认）
+	         full：流模式或对话框模式但未指定高度时会延伸到底边框，对话框模式不建议使用
+	pos      定义控件位置
+	         格式为”left,top,right,bottom”，四个数值用半角逗号分隔，正值为左（上）对齐，负值为右（下）对齐
+	         right 和bottom可省略，此时控件大小由width和 height属性控制
+	         不建议流模式下使用
+	float    控件浮动，用于居中、居右、居下
+	align    水平对齐方式 流模式下，如果float=1，此值生效
+		left：   居左（默认）
+		center： 水平居中
+		right：  居右
+	valign   垂直对齐方式
+	         流模式下，如果float=1，此值生效
+	         top：居上（默认）
+	         middle：垂直居中
+	         bottom：居下
+	         注：div 标签也包含此属性，用于定义 div 内每行控件的垂直对齐模式，
+			 如果float=1，div的该属性用于控制 div本身，如想控制内部控件垂直对齐模式，
+			 请再嵌套一个div 并设置 valign属性
+	show 默认是否显示
+	画线<hr style="solid" mce_style="solid" size=3 pos="140,0,140,600" crbg=888888 />
+	<link pos="20,50" tip="测试超链接" size=7 crtext="00F2E7" href="http://www.9cpp.com/" class="linktext">超链接</link>
+	</-->
+    <!-->
+		<dlg pos="0,0,150,-0" class="dlg_itemlist">
+			<text pos="20,10,130,35" font="0000" crtext="00F2E7">涉密检查</text>
+			<button id="115" pos="20,40,130,60" tip="自定义按钮提示" class="dlg_btn_my">%str21%</button>
+			<button id="115" pos="20,70,130,90" tip="自定义按钮提示" class="dlg_btn_my">%str22%</button>
+			<button id="115" pos="20,160,130,185" tip="自定义按钮提示" class="dlg_btn_my">%str23%</button>
+			<button id="115" pos="20,190,130,215" tip="自定义按钮提示" class="dlg_btn_my">%str24%</button>
+
+		</dlg>
+    </dlg>
+	</-->
+    <dlg pos="0,0,-0,-0" crbg="EEFCFD">
+      <tabctrl id="136" tabwidth="76" tabheight="76" tabskin="tabmain" iconskin="logomodule" tabspacing="5" tabpos="5" framepos="4" pos="3,3,-3,-3" icon-x="13" icon-y="4" text-x="0" text-y="25">
+        <tab title="涉密检查" width="full" height="full" class="tabpageblue">
+          <dlgfile pos="0,0,-0,-0" src="111" />
+        </tab>
+
+        <tab title="非涉密检查" width="full" height="full" class="tabpageblue">
+          <dlg pos="0,0,-0,-0"  class="panel" crbg="FBEEFD">
+            <text pos="100,200">非涉密检查</text>
+          </dlg>
+        </tab>
+
+        <tab title="系统设置" width="full" height="full" class="tabpageblue">
+          <dlg pos="0,0,-0,-0"  class="panel" crbg="FBEEFD">
+            <text pos="100,200">系统设置</text>
+          </dlg>
+        </tab>
+
+        <tab title="关于" width="full" height="full" class="tabpageblue">
+          <dlg pos="0,0,-0,-0" class="panel" >
+            <dlg pos="1,1,-1,-1" crbg="FBDDFD">
+              <text pos="100,200">关于</text>
+            </dlg>
+          </dlg>
+        </tab>
+
+      </tabctrl>
+    </dlg>
+  </body>
+</layer>

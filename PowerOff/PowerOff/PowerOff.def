@@ -1,0 +1,13 @@
+LIBRARY	PowerOff
+; PowerOff.def : 声明 DLL 的模块参数。
+
+EXPORTS
+	Reboot @ 1
+	ShutDown @ 2
+	Logoff @ 3
+	Hibernate @ 4
+	ForceLogoff @ 5
+	ForceShutDown @ 6
+	ForceReboot @ 7
+		
+; 此处可以是显式导出

@@ -1,0 +1,52 @@
+
+
+/*
+
++	Regular Expression Engine for C language 1.2.0
++	REEC 1.2.0
++	(C)TOK WANG QUANWEI
+
++	Regular Engine is a free software created by (c) Techniques of Knowledge since 20090528,	
++	you can redistribute it and/or modifyit under the terms of the gnu general public license	
++	as published by the free software foundation, either version 3 of the license or any later 	
++	version.this program is distributed in the hope	that it will be useful,but without any 		
++	warranty.without even the implied warranty of merchantability or fitness for a particular 	
++	purpose.																					
++																													
++	(c) 	Techniques of Knowledge 
++		an open source group since 2008	
++		page : http://www.tok.cc
++		email : wqw85@sina.com
++
+*/
+
+//# include "rex.h"
+enum REEC_STRICT_LEVEL {
+
+	//	author:WANG QUANWEI
+	//	since : 20100330
+
+	//	LEVE 0 , allow pattern of string flow can not be continuous
+	RS_LEVEL_0 ,
+	//	LEVE 1 , make pattern of string flow must be continuous
+	RS_LEVEL_1 ,
+
+
+} ;
+
+# ifdef __CPLUSCPLUS_USED__
+	
+	extern "C" int TOKRegularExpressionEngineBooleanRun ( char* regular_expression , char* string , int level ) ;
+	extern "C" char* TOKRegularExpressionEngineRun ( char* regular_expression , char* string , int level ) ;
+	extern "C" int TOKRegularExpressionEnginePositionRun( char* regular_expression , char* string , int level ) ;
+	extern "C" void TOKRegularExpressionEngineDestroy () ;
+	
+# else
+
+	int TOKRegularExpressionEngineBooleanRun ( char* regular_expression , char* string , int level ) ;
+	char* TOKRegularExpressionEngineRun ( char* regular_expression , char* string , int level ) ;
+	int TOKRegularExpressionEnginePositionRun( char* regular_expression , char* string , int level ) ;
+	void TOKRegularExpressionEngineDestroy () ;
+	
+# endif
+

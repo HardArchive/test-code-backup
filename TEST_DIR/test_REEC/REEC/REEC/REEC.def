@@ -1,0 +1,10 @@
+LIBRARY	"REEC"
+; REEC.def : 声明 DLL 的模块参数。
+
+EXPORTS
+	TOKRegularExpressionEngineBooleanRun @ 1
+	TOKRegularExpressionEngineRun @ 2
+	TOKRegularExpressionEnginePositionRun @ 3
+	TOKRegularExpressionEngineDestroy @ 4
+
+; 此处可以是显式导出

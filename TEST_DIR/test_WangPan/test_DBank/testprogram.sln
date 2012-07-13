@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testprogram", "test\test.vcproj", "{C89598DC-0A21-4393-A271-9E7F3D41DB96}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nsp_sdk", "nsp_sdk\nsp_sdk.vcproj", "{EF50B1CF-7CED-4D4A-BE82-D4B03BEC6AE1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv", "libiconv\libiconv.vcproj", "{0004756B-9393-463D-9656-D9BF7234D5BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Debug|Win32.Build.0 = Debug|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.ActiveCfg = Release|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.Build.0 = Release|Win32
+		{EF50B1CF-7CED-4D4A-BE82-D4B03BEC6AE1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF50B1CF-7CED-4D4A-BE82-D4B03BEC6AE1}.Debug|Win32.Build.0 = Debug|Win32
+		{EF50B1CF-7CED-4D4A-BE82-D4B03BEC6AE1}.Release|Win32.ActiveCfg = Release|Win32
+		{EF50B1CF-7CED-4D4A-BE82-D4B03BEC6AE1}.Release|Win32.Build.0 = Release|Win32
+		{0004756B-9393-463D-9656-D9BF7234D5BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0004756B-9393-463D-9656-D9BF7234D5BF}.Debug|Win32.Build.0 = Debug|Win32
+		{0004756B-9393-463D-9656-D9BF7234D5BF}.Release|Win32.ActiveCfg = Release|Win32
+		{0004756B-9393-463D-9656-D9BF7234D5BF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
