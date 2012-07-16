@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNS", "DNS\DNS\DNS.vcproj", "{E538CC4A-4343-4C2A-BEB2-B6511CB39859}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNS_Demo", "DNS_Demo\DNS_Demo\DNS_Demo.vcproj", "{F501B4E0-43DD-43C5-B2FD-8A97ED3C8A32}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dnsquery", "dnsquery_src\dnsquery.vcproj", "{195267F5-D7C3-47E8-8B88-6E3D6001EDDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E538CC4A-4343-4C2A-BEB2-B6511CB39859}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E538CC4A-4343-4C2A-BEB2-B6511CB39859}.Debug|Win32.Build.0 = Debug|Win32
+		{E538CC4A-4343-4C2A-BEB2-B6511CB39859}.Release|Win32.ActiveCfg = Release|Win32
+		{E538CC4A-4343-4C2A-BEB2-B6511CB39859}.Release|Win32.Build.0 = Release|Win32
+		{F501B4E0-43DD-43C5-B2FD-8A97ED3C8A32}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F501B4E0-43DD-43C5-B2FD-8A97ED3C8A32}.Debug|Win32.Build.0 = Debug|Win32
+		{F501B4E0-43DD-43C5-B2FD-8A97ED3C8A32}.Release|Win32.ActiveCfg = Release|Win32
+		{F501B4E0-43DD-43C5-B2FD-8A97ED3C8A32}.Release|Win32.Build.0 = Release|Win32
+		{195267F5-D7C3-47E8-8B88-6E3D6001EDDC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{195267F5-D7C3-47E8-8B88-6E3D6001EDDC}.Debug|Win32.Build.0 = Debug|Win32
+		{195267F5-D7C3-47E8-8B88-6E3D6001EDDC}.Release|Win32.ActiveCfg = Release|Win32
+		{195267F5-D7C3-47E8-8B88-6E3D6001EDDC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
