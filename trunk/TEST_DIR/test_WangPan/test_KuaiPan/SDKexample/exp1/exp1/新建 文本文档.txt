@@ -1,0 +1,10 @@
+int ret=0;		//ret为HTTP状态码
+string tmpToken;        //临时oauth_token 
+string tmpSecret;       //临时oauth_token_secret 
+string url;             //鉴权url  
+string consumerKey="yourConsumerKey";  
+string consumerSecret="yourConsumerSecret";
+
+//通过kpReqTmpToken函数传入即可获得临时Token的相关信息 
+ret=kpReqTmpToken(tmpToken,tmpSecret,url,consumerKey,consumerSecret);
+printf(" ret:%d\n token:%s\n secret:%s\n",ret,tmpToken.c_str(),tmpSecret.c_str());
