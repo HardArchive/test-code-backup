@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testWin7", "testWin7\testWin7\testWin7.vcproj", "{8B0617A0-5E92-4AC9-A4AF-B2240C560752}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogonImage", "LogonImage\LogonImage\LogonImage.vcproj", "{0C51F215-73B1-4CDB-9B6F-BCB9090FC49B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testWin7", "testWin7\testWin7.vcproj", "{8B0617A0-5E92-4AC9-A4AF-B2240C560752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		{8B0617A0-5E92-4AC9-A4AF-B2240C560752}.Debug|Win32.Build.0 = Debug|Win32
 		{8B0617A0-5E92-4AC9-A4AF-B2240C560752}.Release|Win32.ActiveCfg = Release|Win32
 		{8B0617A0-5E92-4AC9-A4AF-B2240C560752}.Release|Win32.Build.0 = Release|Win32
-		{0C51F215-73B1-4CDB-9B6F-BCB9090FC49B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0C51F215-73B1-4CDB-9B6F-BCB9090FC49B}.Debug|Win32.Build.0 = Debug|Win32
-		{0C51F215-73B1-4CDB-9B6F-BCB9090FC49B}.Release|Win32.ActiveCfg = Release|Win32
-		{0C51F215-73B1-4CDB-9B6F-BCB9090FC49B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
