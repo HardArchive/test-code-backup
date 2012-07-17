@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<string>
+  <s id="1">宋体</s>
+  <s id="100">名称</s>
+  <s id="101">路径</s>
+  <s id="102">日期</s>
+</string>
+
+	<!-->
+	定义应用程序中用到的字符串
+	在应用程序开始时通过BkString::Load方法加载指定资源ID的Style定义xml，
+	资源分类必须为“BKRES”
+	后加载的字符串表会覆盖先加载的表中相同ID的字符串，此特性可用于 OEM
+	订制
+	</--> 
