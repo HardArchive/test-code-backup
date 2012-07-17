@@ -1,0 +1,41 @@
+﻿<layer title="设置" width="800" height="624" appwin=1 resize=0>
+  <header class="msgboxhead" height="30">
+    <icon src="101" pos="5,9"/>
+    <text class="dlgtitle" pos="25,10">%str1% - 设置</text>
+    <imgbtn id="60001" class="linkimage" skin="closeonlybtn" pos="-50,1"/>
+  </header>
+  <footer class="msgboxfoot" width="full" height="45">
+    <dlg pos="10,8,-10,-8">
+      <button id="100" pos="0,0,100,-0" class="normalbtn">显示/隐藏首页</button>
+      <button id="1" pos="-180,0,-100,-0" class="normalbtn">确定</button>
+    </dlg>
+  </footer>
+  <body class="msgboxbody" width="full" height="full">
+        <tabctrl id=136 tabwidth=65 tabheight=63 tabskin="tabmain" iconskin="logomodule" splitterskin="tabmainsplitter" tabspacing=17 tabpos=1 framepos=7 pos="0,5,-0,-1" icon-x=16 icon-y=6 text-y=20>
+            <tab title="首页" hide=1>
+                <text pos="0,0,|0,-0" crbg=FF0000>首页内容</text>
+            </tab>
+            <tab title="Page2">
+                <text id=101 pos="10,10">Page2内容</text>
+                <realwnd pos="100,100,200,150" id=543/>
+                <button id="102" pos="100,0" class="normalbtn">弹出对话框</button>
+            </tab>
+            <tab title="Page3">
+                <text pos="10,10">Page3内容</text>
+            </tab>
+            <tab title="Page3">
+                <text pos="10,10">Page3内容</text>
+            </tab>
+            <tab title="Page3">
+                <text pos="10,10">Page3内容</text>
+            </tab>
+            <tab title="Page3">
+                <text pos="10,10">Page3内容</text>
+            </tab>
+            <tab title="Page4" hide=1>
+                <text pos="10,10">Page4内容</text>
+            </tab>
+        </tabctrl>
+  </body>
+</layer>
+
