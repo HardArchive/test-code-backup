@@ -1,0 +1,17 @@
+﻿<layer title="简单对话框" width="400" height="324" appwin=0 resize=0>
+  <header class="msgboxhead" height="30">
+    <icon src="101" pos="5,9"/>
+    <text class="dlgtitle" pos="25,10">%str1% - 简单对话框</text>
+    <imgbtn id="60001" class="linkimage" skin="closeonlybtn" pos="-50,1"/>
+  </header>
+  <footer class="msgboxfoot" width="full" height="45">
+    <dlg pos="10,8,-10,-8">
+      <button id="1" pos="-180,0,-100,-0" class="normalbtn">确定</button>
+      <button id="2" pos="-80,0,-0,-0" class="normalbtn">取消</button>
+    </dlg>
+  </footer>
+  <body class="msgboxbody" width="full" height="full">
+    <text pos="10,10">这是一个简单的文件</text>
+  </body>
+</layer>
+

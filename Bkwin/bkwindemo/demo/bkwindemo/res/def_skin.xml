@@ -1,0 +1,15 @@
+﻿<skins>
+<imgframe name=msgboxhead src=4 top=32 left=5 crbg=FDFDFD part=top/>
+<imgframe name=msgboxbody src=4 top=32 left=5 crbg=FDFDFD part=middle/>
+<imgframe name=msgboxfoot src=4 top=32 left=5 crbg=FDFDFD part=bottom/>
+<button name=normalbtn border=7D9EBC bg=FDFDFD bgup=FEFEFE bgdown=C6E2FD bguphover=FEFEFE bgdownhover=DBEDFE bguppush=C6E2FD bgdownpush=FEFEFE/>  
+<imglst name=tabmain src=5 mode=mask subwidth=65/>
+<png name=logomodule src=3 subwidth=33/>
+<imglst name=closebtn src=101 subwidth=36/>
+<imglst name=closeonlybtn src=102 subwidth=36/>
+<imglst name=maxbtn src=103 subwidth=27/>
+<imglst name=minbtn src=104 subwidth=29/>
+<imglst name=restorebtn src=105 subwidth=27/>
+</skins>
+
+
