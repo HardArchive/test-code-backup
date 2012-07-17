@@ -1,1 +1,0 @@
-CALL PhoneServer.exe -d

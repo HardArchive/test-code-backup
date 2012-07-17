@@ -1,1 +1,0 @@
-CALL FileDispatcher.exe -d

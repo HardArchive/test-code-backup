@@ -1,1 +1,0 @@
-CALL PhoneClient.exe -d
