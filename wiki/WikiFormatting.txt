@@ -1,0 +1,108 @@
+= Wiki格式 = [[ZhTracGuideToc]] Wiki标记是Trac的一个核心特征, 和其它所有
+部分紧密结合, 组成一个灵活强大的整体. Trac有一个内置的小巧强大的Wiki渲染
+引擎. 该Wiki引擎实现了来自其他Wiki的持续增长的命令子集, 尤其是
+[http://moinmoin.wikiwikiweb.de/ MoinMoin]. 该页演示了[WikiFormatting
+Wiki格式]的语法. == 字体样式 == Trac的Wiki支持下列字体样式: {{{ * '''粗
+体''', '''!''' 一样加粗''', 以及 '''! ''' * ''斜体'' * '''''粗斜体'''''
+* __下划线__ * {{{块引用}}} 或是 `行引用` * ~~中划线~~ * ^上标^ * ,,下
+标,, }}} 显示: * '''粗体''', '''!''' 一样加粗''', 以及 '''! ''' * ''斜体
+'' * '''''粗斜体''''' * __下划线__ * {{{块引用}}} 或是 `行引用` * ~~中划
+线~~ * ^上标^ * ,,下标,, 注意: * `{{{...}}}`和{{{`...`}}}命令不仅使用等
+宽字体, 而且会原封不动地显示其内容. 就是说, 这些文本将不会被Wiki处理. *
+{{{ ! }}}告诉Wiki解析器不要将下列字符当作Wiki格式, 因此注意在!后加入一个
+空格. == 标题 == 你可在一行的开头用1到5个等号("=")来创建标题, 等号后是一
+个空格, 然后是标题文字. 该行应该以一个空格结束, 后面是同样数量的等号
+("="). 标题可后面跟一个显式的id, 否则, 将隐含创建一个不容易记忆的id. 例
+子: {{{ = 标题 = == 副标 == === 有''关'' === === 详标号 ===
+#using-explicit-id-in-heading }}} 显示: = 标题 = == 副标 == === 有''关''
+=== === 详标号 === #using-explicit-id-in-heading [[BR]] == 段落 == 只要
+两块文字间有一行以上空行时, 就产生了一个新的段落. 要强制分行, 使用下列代
+码: {{{ Line 1[[BR]]Line 2 }}} 显示: Line 1[[BR]]Line 2 == 列表 == Wiki
+支持有序的/编号的列表和无序列表. 例子: {{{ * 条目 1 * 条目 1.1 * 条目 2
+1. 条目 1 a. 条目 1.a a. 条目 1.b i. 条目 1.b.i i. 条目 1.b.ii 1. 条目 2
+编号列表还可给予一个明显的编号: 3. 条目 3 }}} 显示: * 条目 1 * 条目 1.1
+* 条目 2 1. 条目 1 a. 条目 1.a a. 条目 1.b i. 条目 1.b.i i. 条目 1.b.ii
+1. 条目 2 编号列表还可给予一个明显的编号: 3. 条目 3 注意在列表符号前必须
+有一个以上空格, 否则该列表会被当作一个普通的段落. == 定义列表 == Wiki也
+支持定义列表. 例子: {{{ 羊驼:: 一种哺乳动物,有头发 蠎:: 一种爬行动物,没
+有头发 (你可辨认它们?) }}} 显示: 羊驼:: 一种哺乳动物,有头发 蠎:: 一种爬
+行动物,没有头发 (你可辨认它们?) 注意, 在定义的术语前你需要一个空格. ==
+预格式的文本 == 代码块包含了源代码片断, 注解和例子的预格式的文本. 用三个
+花括号来定义. 花括号要在单独的行上. 例子: {{{ {{{ def HelloWorld():
+print "Hello World" }}} }}} 显示: {{{ def HelloWorld(): print "Hello
+World" }}} == 块引用 == 要将一个段落标记为一个块引用, 将该段缩进两个空
+格. 例子: {{{ 此文本是种块级引用 }}} 显示: 此文本是种块级引用 == 讨论引
+用 == 要在一个正在进行的讨论贴中定义一个引用, 例如在传票的评论区域, 可以
+用类似邮件中的引用标记, 例如">", ">>", 等等. 例子: {{{ >> 某人的原话 >
+某人的回复 俺的回复 }}} 显示: >> 某人的原话 > 某人的回复 俺的回复 ''注
+意: 一些[ZhWikiFormatting Wiki格式]元素, 例如列表和预格式的文本, 在引用
+区域中消失了. 可以重新组织格式以创建清晰的引用.'' == 表格 == 如下方式创
+建简单的表格: {{{ ||Cell 1||Cell 2||Cell 3|| ||Cell 4||Cell 5||Cell 6||
+}}} 显示: ||Cell 1||Cell 2||Cell 3|| ||Cell 4||Cell 5||Cell 6|| 注意, 可
+以用[wiki:ZhWikiRestructuredText#BiggerReSTExample 新结构化文本]创建更复
+杂的表格. == 链接 == [ZhWikiPageNames Wiki页面名]和URL的超链接是自动创建
+的. 如果前面加入一个感叹号"!", 可禁用Wiki页面链接. 例子: {{{ TitleIndex,
+http://www.edgewall.com/, !NotAlink }}} 显示: TitleIndex,
+http://www.edgewall.com/, !NotAlink 通过在该链接后面增加空格和一个标题,
+可以给链接一个更具描述性的标题, 所有内容都被一对方括号包围. 如果省略描述
+性的标题, 而该链接又不是一个外部链接的话, 显式的前缀被删掉. 对于不符合
+[ZhWikiPageNames Wiki页面名]协定的Wiki页面尤其有用. 例子: {{{ *
+[http://www.edgewall.com/ Edgewall Software] * [wiki:TitleIndex Title
+Index] * [wiki:ISO9000] }}} 显示: * [http://www.edgewall.com/ Edgewall
+Software] * [wiki:TitleIndex Title Index] * [wiki:ISO9000] === Trac链接
+=== Wiki页面可以直接链接到Trac系统的其他部分. 页面可以引用传票, 报表, 变
+更集, 里程碑, 源文件和其他使用下列符号的Wiki页面: {{{ * 传票: #1 or
+ticket:1 * 报表: {1} or report:1 * 变更集: r1, [1] or changeset:1 * ...
+}}} 显示: * 传票: #1 or ticket:1 * 报表: {1} or report:1 * 变更集: r1,
+[1] or changeset:1 * ... 想知道更深入的信息, 请参考[ZhTracLinks Trac链
+接]. == 转义链接和Wiki页面名称 == 如果表达式前面加入一个感叹号"!", 你可
+以避免链接应用[ZhTracLinks Trac链接]. 例子: {{{ !NoHyperLink !#42 is not
+a link }}} 显示: !NoHyperLink !#42 is not a link == 图像 == 不再将以
+`.png`, `.gif`或`.jpg`结尾的URL自动解释为图像链接, 并转换为``标签. 现在
+你必须使用![[Image]]宏. 请看下面. 除了当前页, 还可以引用其他资源: *
+`[[Image(wiki:WikiFormatting:picture.gif)]]` (引用其他页面的附件) *
+`[[Image(ticket:1:picture.gif)]]` (引用传票的附件) *
+`[[Image(htdocs:picture.gif)]]` (引用项目的htdocs中的一个文件) *
+`[[Image(source:/trunk/trac/htdocs/trac_logo_mini.png)]]` (仓库中的一个
+文件) 示例显示: [[Image(htdocs:../common/trac_logo_mini.png)]] 关于
+`[[Image()]]`宏的更多信息参见 [[ZhWikiMacros Wiki宏]]. == Wiki宏 == Wiki
+宏是在一个页面中插入动态内容的''自定义函数''. 例子: {{{
+[[RecentChanges(Trac,3)]] }}} 显示: [[RecentChanges(Trac,3)]] 更多信息请
+见[ZhWikiMacros Wiki宏]和已安装的宏的列表. == 解析器 == Trac支持使用Wiki
+解析器的标记格式. 例如, 用[wiki:ZhWikiRestructuredText 新结构化文本]或
+[wiki:ZhWikiHtml HTML]解析器来写页面. 例子1: {{{ #!html
+
+{{{
+#!html
+<h1 style="text-align: right; color: blue">HTML Test</h1>
+}}}
+
+}}} 显示: {{{ #!html
+
+
+  HTML Test
+
+}}} 例子: {{{ #!html
+
+{{{
+#!python
+class Test:
+
+    def __init__(self):
+        print "Hello World"
+if __name__ == '__main__':
+   Test()
+}}}
+
+}}} 显示: {{{ #!python class Test: def __init__(self): print "Hello
+World" if __name__ == '__main__': Test() }}} Perl: {{{ #!perl my ($test)
+= 0; if ($test > 0) { print "hello"; } }}} 更多信息见[ZhWikiProcessors
+Wiki解析器]. == 评论 == 可以在纯文本中增加评论. 这些评论将不会被渲染, 而
+且不会在纯文本之外显示出来. {{{ {{{ #!comment Your comment here }}} }}}
+== 杂项 == 四个以上的破折号将生成一个水平线(
+------------------------------------------------------------------------
+) 例子: {{{ ---- }}} 显示: ---- ---- 原文版本: WikiFormatting[[BR]] 相关
+信息:[ZhTracLinks Trac链接处理], [ZhTracGuide Trac导览], [ZhWikiHtml
+html], [ZhWikiMacros Wiki宏], [ZhWikiProcessors Wiki解析器],
+[ZhTracSyntaxColoring 语法高亮]. [[BR]] See also: TracLinks, TracGuide,
+WikiHtml, WikiMacros, WikiProcessors, TracSyntaxColoring
