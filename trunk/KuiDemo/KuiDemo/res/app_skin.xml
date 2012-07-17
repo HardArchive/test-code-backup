@@ -1,8 +1,0 @@
-<skins>
-  <png        name="closebtn"   src="103"  subwidth="42"/>
-  <png        name="minbtn"     src="104"  subwidth="31"/>
-  <button     name="normalbtn"/>
-  <imghorzex  name="dialoghead" src="53"   left="3"/>
-  <imgframe   name="dialogbody" src="50"   left="3" top="3" crbg="FFFFFF"/>
-  <imgframe   name="dialogfoot" src="54"   left="3" top="3" part="bottom"/>
-</skins>
