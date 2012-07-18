@@ -61,7 +61,7 @@ namespace QNA
 			if(m_IniFilename.empty()) 
 				return 0; 
 
-			_stprintf_s(tszDefault, sizeof(nDefault), _T("%d"), nDefault);
+			_stprintf_s(tszDefault, MAX_PATH/2, _T("%d"), nDefault);
 
 			std::tstring s = GetString(lpszSection, lpszEntry, tszDefault);
 			return _ttol(s.c_str());
@@ -70,12 +70,12 @@ namespace QNA
 		//读取bool值 
 		bool GetBoolean(LPCTSTR lpszSection, LPCTSTR lpszEntry, bool bDefault=false)
 		{
-			TCHAR tszDefault[MAX_PATH*2] = {0};
+			TCHAR tszDefault[MAX_PATH/2] = {0};
 			assert(lpszSection);
 			assert(lpszEntry);
 			if(m_IniFilename.empty()) 
 				return 0; // error
-			_stprintf_s(tszDefault, sizeof(bDefault), _T("%d"), bDefault);
+			_stprintf_s(tszDefault, MAX_PATH/2, _T("%d"), bDefault);
 			return !GetString(lpszSection, lpszEntry, tszDefault).compare(_T("Y"));
 		}
 
@@ -99,10 +99,10 @@ namespace QNA
 		//在指定字段指定键写入整型值
 		bool WriteInt(LPCTSTR lpszSection, LPCTSTR lpszEntry, int nValue)
 		{
-			TCHAR tszValue[MAX_PATH*2] = {0};
+			TCHAR tszValue[MAX_PATH/2] = {0};
 			assert(lpszSection);
 			assert(lpszEntry);
-			_stprintf_s(tszValue, sizeof(nValue), _T("%d"), nValue);
+			_stprintf_s(tszValue, MAX_PATH/2, _T("%d"), nValue);
 			return WriteString(lpszSection, lpszEntry, tszValue);
 		}
 		//在指定字段指定键写入bool值
