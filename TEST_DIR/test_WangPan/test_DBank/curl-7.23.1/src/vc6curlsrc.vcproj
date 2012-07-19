@@ -319,7 +319,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\lib,..\include,."
+				AdditionalIncludeDirectories="..\lib;..\..\bin;..\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -346,7 +346,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcurld_imp.lib ws2_32.lib wldap32.lib"
+				AdditionalDependencies="..\..\bin\libcurl.lib ws2_32.lib wldap32.lib"
 				OutputFile="DLL-Debug/curl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
