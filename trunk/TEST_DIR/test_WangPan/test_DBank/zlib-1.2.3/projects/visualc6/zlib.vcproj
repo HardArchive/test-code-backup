@@ -442,7 +442,7 @@
 		</Configuration>
 		<Configuration
 			Name="DLL Debug|Win32"
-			OutputDirectory=".\Win32_DLL_Debug"
+			OutputDirectory="..\..\..\bin"
 			IntermediateDirectory=".\Win32_DLL_Debug"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
@@ -499,7 +499,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
-				OutputFile="Win32_DLL_Debug\zlib1d.dll"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				ModuleDefinitionFile="..\..\win32\zlib.def"
@@ -507,7 +507,7 @@
 				ProgramDatabaseFile=".\Win32_DLL_Debug/zlib1d.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\Win32_DLL_Debug/zlib1d.lib"
+				ImportLibrary="$(TargetDir)$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
