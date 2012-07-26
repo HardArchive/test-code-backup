@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
     //system level
     //...
     nspClient *nC2;
-    
+	//使用鉴权接口返回的sessionid与secret调用用户级接口，或者是appid与appkey调用系统级接口
     nC2 = NSPClient("53120", "00zY5fgDkZqo1X9cOpl2N7T5a8GMgQZw");
 	//nC2 = NSPClient("51345", "6ykOuxbeL68502d9FVRI766W1drADlwn");
     if(nC2!=NULL)
