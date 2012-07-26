@@ -23,19 +23,21 @@
 #include <string> 
 #include <Windows.h>
 #include "kpSDK.h"
+
 #pragma comment(lib,"kpSDK.lib")
 
 
 //=============！！！下面这里务必要填写你的consumer_key和consumer_secret 且和exp1中的保持一致！！！！=========
-string consumerKey="xcUL3I5GwqjJodlp";
-string consumerSecret="A4t4FYDC3cn4HvJ7";
+string consumerKey="xc0DLFwSbJM9Yrly";
+string consumerSecret="K0G0QTqeMxI9JLPm";
 //=============！！！上面这里务必要填写你的consumer_key和consumer_secret 且和exp1中的保持一致！！！！=========
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string oauthToken="0039635570062017b83c4d18"; //!!!!填写exp1中获得的正式oauth_token
-	string oauthSecret="3263dfcb6c534474a890b89236b8dda1"; //!!!!填写exp1中获得的正式oauth_token_secret
+	string oauthToken="5f30b9da36524978ab10483e34605808"; //!!!!填写exp1中获得的正式oauth_token
+	string oauthSecret="81c34c56b881472a9591aad771405cd2"; //!!!!填写exp1中获得的正式oauth_token_secret
+	//{"oauth_token_secret": "d0470d8fa03649889825c2aa9f5bb720", "oauth_token": "f71618a7d6334ea591aeb29afe928692", "oauth_callback_confirmed": true}
 
 	string	jsonStr;				//返回的json
 	int		ret=0;					//http状态码

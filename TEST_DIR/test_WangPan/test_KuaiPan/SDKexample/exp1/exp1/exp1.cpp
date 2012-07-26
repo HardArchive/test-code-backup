@@ -25,8 +25,8 @@
 //=============！！！下面这里务必要填写你的consumer_key和consumer_secret！！！！=========
 //string consumerKey="yourConsumerKey";
 //string consumerSecret="yourConsumerSecret";
-string consumerKey="xcUL3I5GwqjJodlp";
-string consumerSecret="A4t4FYDC3cn4HvJ7";
+string consumerKey="xc0DLFwSbJM9Yrly";
+string consumerSecret="K0G0QTqeMxI9JLPm";
 //=============！！！上面这里务必要填写你的consumer_key和consumer_secret！！！！=========
 
 
