@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>com.trolltech.qtsolutions.qtwinmigrate_2.8</namespace>
+    <virtualFolder>qdoc</virtualFolder>
+    <customFilter name="Qt Solutions: Qt/MFC Migration Framework">
+        <filterAttribute>qt</filterAttribute>
+        <filterAttribute>solutions</filterAttribute>
+        <filterAttribute>qtwinmigrate</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>qt</filterAttribute>
+        <filterAttribute>solutions</filterAttribute>
+        <filterAttribute>qtwinmigrate</filterAttribute>
+        <toc>
+            <section ref="index.html" title="Qt Solutions: Qt/MFC Migration Framework Documentation">
+                <section ref="winmigrate-walkthrough.html" title="MFC to Qt Migration - Walkthrough"></section>
+                <section ref="winmigrate-win32-in-qt-example.html" title="Qt Application using Win32 Windows"></section>
+                <section ref="winmigrate-qt-dll-example.html" title="Qt based Application Extension"></section>
+                <section ref="winmigrate-qt-in-win32-example.html" title="Qt widgets in Win32"></section>
+                <section ref="index.html" title="Qt/MFC Migration Framework"></section>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="MFC to Qt Migration - Walkthrough" id="MFC to Qt Migration - Walkthrough" ref="winmigrate-walkthrough.html"></keyword>
+            <keyword name="QMfcApp" id="QMfcApp" ref="qmfcapp.html"></keyword>
+            <keyword name="enterModalLoop" id="QMfcApp::enterModalLoop" ref="qmfcapp.html#enterModalLoop"></keyword>
+            <keyword name="exitModalLoop" id="QMfcApp::exitModalLoop" ref="qmfcapp.html#exitModalLoop"></keyword>
+            <keyword name="pluginInstance" id="QMfcApp::pluginInstance" ref="qmfcapp.html#pluginInstance"></keyword>
+            <keyword name="~QMfcApp" id="QMfcApp::~QMfcApp" ref="qmfcapp.html#dtor.QMfcApp"></keyword>
+            <keyword name="QWinHost" id="QWinHost" ref="qwinhost.html"></keyword>
+            <keyword name="createWindow" id="QWinHost::createWindow" ref="qwinhost.html#createWindow"></keyword>
+            <keyword name="setWindow" id="QWinHost::setWindow" ref="qwinhost.html#setWindow"></keyword>
+            <keyword name="window" id="QWinHost::window" ref="qwinhost.html#window"></keyword>
+            <keyword name="~QWinHost" id="QWinHost::~QWinHost" ref="qwinhost.html#dtor.QWinHost"></keyword>
+            <keyword name="QWinWidget" id="QWinWidget" ref="qwinwidget.html"></keyword>
+            <keyword name="center" id="QWinWidget::center" ref="qwinwidget.html#center"></keyword>
+            <keyword name="parentWindow" id="QWinWidget::parentWindow" ref="qwinwidget.html#parentWindow"></keyword>
+            <keyword name="show" id="QWinWidget::show" ref="qwinwidget.html#show"></keyword>
+            <keyword name="showCentered" id="QWinWidget::showCentered" ref="qwinwidget-obsolete.html#showCentered"></keyword>
+            <keyword name="~QWinWidget" id="QWinWidget::~QWinWidget" ref="qwinwidget.html#dtor.QWinWidget"></keyword>
+            <keyword name="Qt Application using Win32 Windows" id="Qt Application using Win32 Windows" ref="winmigrate-win32-in-qt-example.html"></keyword>
+            <keyword name="Qt based Application Extension" id="Qt based Application Extension" ref="winmigrate-qt-dll-example.html"></keyword>
+            <keyword name="Qt widgets in Win32" id="Qt widgets in Win32" ref="winmigrate-qt-in-win32-example.html"></keyword>
+            <keyword name="Qt/MFC Migration Framework" id="Qt/MFC Migration Framework" ref="index.html"></keyword>
+        </keywords>
+        <files>
+            <file>qmfcapp.html</file>
+            <file>winmigrate-win32-in-qt-example.html</file>
+            <file>index.html</file>
+            <file>winmigrate-walkthrough.html</file>
+            <file>qwinwidget.html</file>
+            <file>winmigrate-qt-in-win32-example.html</file>
+            <file>qwinhost.html</file>
+            <file>winmigrate-qt-dll-example.html</file>
+            <file>classic.css</file>
+            <file>images/qt-logo.png</file>
+        </files>
+    </filterSection>
+</QtHelpProject>
