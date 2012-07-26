@@ -1,0 +1,12 @@
+/*
+ * kpSDK是一个基于金山快盘和Qt的自由sdk库，您可以自由分发、修改其中的源代码或者重新发布它，
+ * 新的任何修改后的重新发布版必须同样在遵守LGPL3或更后续的版本协议下发布.
+ * 关于LGPL协议的细则请参考COPYING、COPYING.LESSER文件，
+ * 您可以在kpSDK\examples\qtdll的相关目录中获得LGPL协议的副本，
+ * 如果没有找到，请连接到 http://www.gnu.org/licenses/ 查看。
+*/
+
+//kuaipan cpp sdk for windows
+//Email: michael.20@qq.com
+//License: GNU Lesser General Public License (LGPL)
+//版权所有 (C) 2012 Michael Lee

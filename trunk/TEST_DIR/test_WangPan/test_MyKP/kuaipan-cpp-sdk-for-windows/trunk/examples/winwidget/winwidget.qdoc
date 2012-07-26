@@ -1,0 +1,98 @@
+/****************************************************************************
+**
+** This file is part of a Qt Solutions component.
+** 
+** Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+** 
+** Contact:  Qt Software Information (qt-info@nokia.com)
+** 
+** Commercial Usage  
+** Licensees holding valid Qt Commercial licenses may use this file in
+** accordance with the Qt Solutions Commercial License Agreement provided
+** with the Software or, alternatively, in accordance with the terms
+** contained in a written agreement between you and Nokia.
+** 
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+** 
+** In addition, as a special exception, Nokia gives you certain
+** additional rights. These rights are described in the Nokia Qt LGPL
+** Exception version 1.0, included in the file LGPL_EXCEPTION.txt in this
+** package.
+** 
+** GNU General Public License Usage 
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3.0 as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU General Public License version 3.0 requirements will be
+** met: http://www.gnu.org/copyleft/gpl.html.
+** 
+** Please note Third Party Software included with Qt Solutions may impose
+** additional restrictions and it is the user's responsibility to ensure
+** that they have met the licensing requirements of the GPL, LGPL, or Qt
+** Solutions Commercial license and the relevant license of the Third
+** Party Software they are using.
+** 
+** If you are unsure which license is appropriate for your use, please
+** contact the sales department at qt-sales@nokia.com.
+** 
+****************************************************************************/
+
+/*! \page winmigrate-qt-in-win32-example.html
+    \title Qt widgets in Win32
+
+    This examples shows how to use the QWinWidget class to use Qt widgets
+    inside a native Win32 user interface.
+
+    \quotefromfile winwidget/main.cpp
+    \skipto WndProc
+
+    The Window procedure for the native Win32 window implements a message 
+    handlers for left and right mouse button clicks.
+
+    \printto WM_RBUTTONUP
+    When the left button is clicked a modal message box is opened. The
+    QWinWidget class is used to provide a bridge between the Win32 window
+    and the QMessageBox, and ensures that the Win32 window is modally
+    blocked by the message box.
+
+    \printto WM_KEYDOWN
+    When the right button is clicked a modeless message box is opened.
+    The QWinWidget class is used again to provide proper placement and
+    stacking of the message box. Note that this time both the QWinWidget
+    and the QMessageBox are created on the heap using operator new. Since
+    the \c WDestructiveClose flag is passed to the QMessageBox constructor
+    it is however not necessary to delete either of those objects.
+
+    \printto return 0;
+    \printuntil }
+    When the Win32 window is closed the application is terminated. Unhandled
+    messages are processed by the default window procedure.
+
+    \printto int argc
+    The application's entry point function \c wWinMain registers a window
+    class and creates a window using the CreateWindow API. Note that the
+    UNICODE versions of all Win32 APIs are used.
+
+    \printuntil QApplication
+    Before the Qt based user interface can be created a QApplication object
+    must exist. The translation of the command line arguments is omitted
+    for brevity.
+
+    \printuntil win.move
+    The QWinWidget class is once again used as a bridge between the Win32
+    window and a Qt widget, QPushButton this time. 
+    Since the QWinWidget is a proper QWidget it can be layouted and 
+    positioned like any other QWidget.
+
+    \printuntil }
+    Finally the Win32 user interface is displayed, and control is passed to
+    the QApplication event loop. Since Windows doesn't show child windows
+    recoursively the Qt widget has to be shown explicitly.
+*/
