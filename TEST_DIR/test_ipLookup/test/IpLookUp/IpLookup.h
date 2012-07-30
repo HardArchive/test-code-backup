@@ -17,7 +17,7 @@ public:
 
 public:
 	//传入从配置文件获取的第三解析服务器网址和与其相关的正则表达式
-	void Init();
+	//void Init();
 	void SetUrlRegex(LPCTSTR pstrUrl, LPCTSTR pstrRegex); //设置第三方解析服务器网址和与其相关的正则表达
 	//传入IP 进行反向解析
 	bool StartIpLookup(LPCTSTR pstrIP);      //开始反查
