@@ -1,6 +1,6 @@
-#ifndef _COMM_PROTOCOL_H_
-#define _COMM_PROTOCOL_H_
-
+#ifndef _COMM_PROTOCOL_h_
+#define _COMM_PROTOCOL_h_
+//通讯协议
 //##################################################################################################################
 //分发协议头
 typedef struct HeadTag
@@ -37,6 +37,7 @@ typedef struct UpLoadHeadTag
 	//包身所点字节长度
 	DWORD dwBodyLen;
 }UpLoadHead;
+
 //域名上传
 typedef struct DomainInfoTag
 {
