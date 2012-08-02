@@ -29,7 +29,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//target="_blank"\>(.+?)\</a\>\</td\>
 	SetUrlRegexA("http://dns.aizhan.com/?q=", "target=\"_blank\"\>(.+?)\</a\>\</td\>");
-	StartIpLookupA("173.245.61.112");
+	StartIpLookupA("119.75.218.77");
 	vector<string> strVecDomain;
 
 	GetLookupDomainA(strVecDomain);
