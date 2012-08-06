@@ -7,7 +7,7 @@
 #include "DownLoad.h"
 using namespace QNA;
 
-int _tmain(int argc, _TCHAR* argv[])
+int _tmain1(int argc, _TCHAR* argv[])
 {
 	//http://dns.aizhan.com/?q=www.youboy.com
 	int iRet = 0;
