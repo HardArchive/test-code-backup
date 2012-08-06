@@ -264,6 +264,10 @@
 			Name="Common"
 			>
 			<File
+				RelativePath="..\Common\DebugTrace.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Common\DownLoad.h"
 				>
 			</File>

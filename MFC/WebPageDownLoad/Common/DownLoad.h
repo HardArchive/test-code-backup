@@ -13,14 +13,25 @@
 #pragma comment(lib, "Wininet.lib")   //从网站下载文件需包含的库
 #include <shlwapi.h>  
 #pragma comment(lib,"Shlwapi.lib") 
+#include "DebugTrace.h"
 
 namespace QNA
 {
 	class CDownLoad
 	{
 	public:
-		CDownLoad(void){}
-		~CDownLoad(void){}
+		CDownLoad(void)
+		{
+			//m_hNetOpen = NULL;         //WinInet初始化句柄
+			//m_hUrl = NULL;             //URL句柄
+		}
+		~CDownLoad(void)
+		{
+			//InternetCloseHandle(m_hUrl);
+			//InternetCloseHandle(m_hNetOpen);
+			//m_hNetOpen = NULL;         //WinInet初始化句柄
+			//m_hUrl = NULL;             //URL句柄
+		}
 
 	public:
 		/******************************************************************************* 
@@ -35,49 +46,80 @@ namespace QNA
 		********************************************************************************/ 
 		int DownLoadFile(TCHAR* pInUrl, TCHAR* pInSavePath)
 		{
+			DWORD dwFlags = 0;
 			DWORD dwReadLen = 0;               //本次读取的文件长度
 			DWORD dwWriteLen = 0;
-			BYTE szbuffer[512] = {0};
-			HANDLE hFile = NULL;               //本地文件句柄
 			HINTERNET hNetOpen = NULL;         //WinInet初始化句柄
 			HINTERNET hUrl = NULL;             //URL句柄
+			BYTE szbuffer[512] = {0};
+			HANDLE hFile = NULL;               //本地文件句柄
 
-			OutputDebugString(pInUrl);
-			OutputDebugString(pInSavePath);
+			TRACE(pInUrl);
+			TRACE(pInSavePath);
 			if (!pInUrl || !ChickDirExist(pInSavePath))
 			{
-				OutputDebugString(_T("CDownLoad::DownLoadFile input error!"));
+				TRACE(_T("CDownLoad::DownLoadFile input error!"));
 				return -1;
 			}
 
-
-			//初始化一个应用程序，以使用 WinINet 函数
-			hNetOpen = InternetOpen(_T("Testing"), INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
-			if (hNetOpen == NULL)
+			if (!InternetGetConnectedState(&dwFlags, 0))
 			{
-				OutputDebugString(_T("CDownLoad::DownLoadFile Internet open failed!"));
+				TRACE(_T("CDownLoad::DownLoadFile InternetGetConnectedState Error Code:%d!\r\n"), GetLastError());
 				return -2;
 			}
 
-			//OutputDebugStringW(_T("开始下载文件……网址; 保存路径\r\n"));
+			//初始化一个应用程序，以使用 WinINet 函数
+			hNetOpen = InternetOpen(_T("DownLoad"), INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 
-			//通过一个完整的HTTP、FTP 或Gopher网址打开一个资源
-			hUrl = InternetOpenUrl(hNetOpen, pInUrl, NULL, 0, INTERNET_FLAG_RELOAD, 0);
-			if (hUrl == NULL)
-			{	
-				InternetCloseHandle(hUrl);
-				InternetCloseHandle(hNetOpen);
-				OutputDebugString(_T("CDownLoad::DownLoadFile Internet open url failed!"));
+			if (NULL == hNetOpen)
+			{
+				TRACE(_T("CDownLoad::DownLoadFile 连接错误!!!"));
 				return -3;
 			}
+			//设置超时
+			DWORD dwTimeOut = 30;
+			if( !InternetSetOption(hNetOpen, INTERNET_OPTION_CONNECT_TIMEOUT, &dwTimeOut, sizeof(dwTimeOut)) )
+			{
+				printf("set timeout failed:%d\n", GetLastError());
+				InternetCloseHandle(hNetOpen);
+				return -4;
+			}
+
+			//通过一个完整的HTTP、FTP 或Gopher网址打开一个资源
+			hUrl = InternetOpenUrl(hNetOpen, pInUrl, NULL, 0, 
+				INTERNET_FLAG_DONT_CACHE | INTERNET_FLAG_PRAGMA_NOCACHE | INTERNET_FLAG_RELOAD, 0);
+			if (hUrl == NULL)
+			{	
+				TRACE(_T("CDownLoad::DownLoadFile 不能打开该URL!！!"));
+				return -5;
+			}
+
+			DWORD dwBytesToRead =0;   //文件长度
+			DWORD dwSizeOfRq = sizeof(dwBytesToRead);
+			DWORD dwIndex=0;
+
+			//查询Internet文件的长度信息
+			if( !( HttpQueryInfo(hUrl, HTTP_QUERY_CONTENT_LENGTH|HTTP_QUERY_FLAG_NUMBER,
+				(LPVOID)&dwBytesToRead, &dwSizeOfRq, &dwIndex) ) )
+			{
+				printf("HttpQueryInfo failed:%d\n",GetLastError());
+				dwBytesToRead = 0;
+				CloseHandle(hFile);
+				InternetCloseHandle(hUrl);
+				InternetCloseHandle(hNetOpen);
+				return -6;
+			}
+			TRACE(_T("CDownLoad::DownLoadFile 需下载的文件总长度为:%dKB!\r\n"), dwBytesToRead/1024);
+			
+
 			hFile = CreateFile(pInSavePath, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
 			if (hFile == INVALID_HANDLE_VALUE)
 			{
 				CloseHandle(hFile);
 				InternetCloseHandle(hUrl);
 				InternetCloseHandle(hNetOpen);
-				OutputDebugString(_T("CDownLoad::DownLoadFile Create File failed!"));
-				return -4;
+				TRACE(_T("CDownLoad::DownLoadFile Create File failed!"));
+				return -7;
 			}
 
 			while(true)
@@ -88,8 +130,8 @@ namespace QNA
 					CloseHandle(hFile);
 					InternetCloseHandle(hUrl);
 					InternetCloseHandle(hNetOpen);
-					OutputDebugString(_T("CDownLoad::DownLoadFile Internet Read File failed!"));
-					return -5;
+					TRACE(_T("CDownLoad::DownLoadFile Internet Read File failed!"));
+					return -8;
 				}
 
 				if(dwReadLen <= 0)
@@ -105,11 +147,11 @@ namespace QNA
 					InternetCloseHandle(hUrl);
 					InternetCloseHandle(hNetOpen);
 					CloseHandle(hFile);
-					OutputDebugString(_T("CDownLoad::DownLoadFile Write File failed!"));
-					return -6;
+					TRACE(_T("CDownLoad::DownLoadFile Write File failed!"));
+					return -9;
 				}
 			}
-			//OutputDebugStringW(_T("下载成功……\r\n"));
+			//TRACE(_T("下载成功……\r\n"));
 			//CloseHandle(hFile);
 			return true;
 		}
@@ -137,5 +179,26 @@ namespace QNA
 
 			return true;
 		}
+	//	DWORD QueryFileLen()
+	//	{
+	//		DWORD dwFileLen = 0;
+	//		//查询Internet文件的长度信息
+	//		if( !( HttpQueryInfo(hConnect, HTTP_QUERY_CONTENT_LENGTH|HTTP_QUERY_FLAG_NUMBER,
+	//			(LPVOID)&dwFileLen, &dwSizeOfRq, &dwIndex) ) )
+	//		{
+	//			printf("HttpQueryInfo failed:%d\n",GetLastError());
+	//			dwBytesToRead = 0;
+	//			fclose(fp);
+	//			InternetCloseHandle(hOpen);
+	//			return -1;
+	//		}
+	//		printf("Avaliable data:%u bytes\n",dwBytesToRead);
+
+
+	//		return dwFileLen;
+	//	}
+	//private:
+	//	HINTERNET m_hNetOpen;         //WinInet初始化句柄
+	//	HINTERNET m_hUrl;             //URL句柄
 	};
 }
