@@ -27,8 +27,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	char szPath[MAX_PATH] = {0};
 	GetCurrentPathA(szPath);
 
+	char szUrl[MAX_PATH] = {"http://dns.aizhan.com/?q="};
+	char szRegex[MAX_PATH] = {"target=\"_blank\"\>(.+?)\</a\>\</td\>"};
 	//target="_blank"\>(.+?)\</a\>\</td\>
-	SetUrlRegexA("http://dns.aizhan.com/?q=", "target=\"_blank\"\>(.+?)\</a\>\</td\>");
+	SetUrlRegexA(szUrl, szRegex);
 	StartIpLookupA("119.75.218.77");
 	vector<string> strVecDomain;
 

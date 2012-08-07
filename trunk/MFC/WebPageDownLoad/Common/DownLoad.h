@@ -76,14 +76,14 @@ namespace QNA
 				TRACE(_T("CDownLoad::DownLoadFile 连接错误!!!"));
 				return -3;
 			}
-			//设置超时
-			DWORD dwTimeOut = 30;
-			if( !InternetSetOption(hNetOpen, INTERNET_OPTION_CONNECT_TIMEOUT, &dwTimeOut, sizeof(dwTimeOut)) )
-			{
-				printf("set timeout failed:%d\n", GetLastError());
-				InternetCloseHandle(hNetOpen);
-				return -4;
-			}
+			////设置超时
+			//DWORD dwTimeOut = 30;
+			//if( !InternetSetOption(hNetOpen, INTERNET_OPTION_CONNECT_TIMEOUT, &dwTimeOut, sizeof(dwTimeOut)) )
+			//{
+			//	printf("set timeout failed:%d\n", GetLastError());
+			//	InternetCloseHandle(hNetOpen);
+			//	return -4;
+			//}
 
 			//通过一个完整的HTTP、FTP 或Gopher网址打开一个资源
 			hUrl = InternetOpenUrl(hNetOpen, pInUrl, NULL, 0, 
@@ -94,22 +94,22 @@ namespace QNA
 				return -5;
 			}
 
-			DWORD dwBytesToRead =0;   //文件长度
-			DWORD dwSizeOfRq = sizeof(dwBytesToRead);
-			DWORD dwIndex=0;
+			//DWORD dwBytesToRead =0;   //文件长度
+			//DWORD dwSizeOfRq = sizeof(dwBytesToRead);
+			//DWORD dwIndex=0;
 
-			//查询Internet文件的长度信息
-			if( !( HttpQueryInfo(hUrl, HTTP_QUERY_CONTENT_LENGTH|HTTP_QUERY_FLAG_NUMBER,
-				(LPVOID)&dwBytesToRead, &dwSizeOfRq, &dwIndex) ) )
-			{
-				printf("HttpQueryInfo failed:%d\n",GetLastError());
-				dwBytesToRead = 0;
-				CloseHandle(hFile);
-				InternetCloseHandle(hUrl);
-				InternetCloseHandle(hNetOpen);
-				return -6;
-			}
-			TRACE(_T("CDownLoad::DownLoadFile 需下载的文件总长度为:%dKB!\r\n"), dwBytesToRead/1024);
+			////查询Internet文件的长度信息
+			//if( !( HttpQueryInfo(hUrl, HTTP_QUERY_CONTENT_LENGTH|HTTP_QUERY_FLAG_NUMBER,
+			//	(LPVOID)&dwBytesToRead, &dwSizeOfRq, &dwIndex) ) )
+			//{
+			//	printf("HttpQueryInfo failed:%d\n",GetLastError());
+			//	dwBytesToRead = 0;
+			//	CloseHandle(hFile);
+			//	InternetCloseHandle(hUrl);
+			//	InternetCloseHandle(hNetOpen);
+			//	return -6;
+			//}
+			//TRACE(_T("CDownLoad::DownLoadFile 需下载的文件总长度为:%dKB!\r\n"), dwBytesToRead/1024);
 			
 
 			hFile = CreateFile(pInSavePath, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
