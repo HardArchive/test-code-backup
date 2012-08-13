@@ -21,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -192,6 +192,22 @@
 			</File>
 			<File
 				RelativePath=".\test.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\test2.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\test3.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\test4.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\test5.cpp"
 				>
 			</File>
 		</Filter>

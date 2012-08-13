@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-int _tmain(int argc, _TCHAR* argv[])
+int _tmain1(int argc, _TCHAR* argv[])
 {
 	//创建向量对象,以及初始化
 	vector<int> intvec0;        //创建一个int类型的空的vector对象
