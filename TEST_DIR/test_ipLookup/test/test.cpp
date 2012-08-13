@@ -27,14 +27,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	char szPath[MAX_PATH] = {0};
 	GetCurrentPathA(szPath);
 
-	char szUrl[MAX_PATH] = {"http://dns.aizhan.com/?q="};
-	char szRegex[MAX_PATH] = {"target=\"_blank\"\>(.+?)\</a\>\</td\>"};
+	char szUrl[MAX_PATH] = {"http://www.114best.com/ip/114.aspx?w="};
+	char szRegex[MAX_PATH] = {"\</span\>\<a target=\"_blank\"\>(.+?)\</a\>&nbsp;&nbsp"};
 	//target="_blank"\>(.+?)\</a\>\</td\>
 	SetUrlRegexA(szUrl, szRegex);
-	StartIpLookupA("119.75.218.77");
+	if (!StartIpLookupA("112.127.141.86"))
+	{
+		printf("开始反查出错\r\n");
+	}
 	vector<string> strVecDomain;
 
-	GetLookupDomainA(strVecDomain);
+	if (!GetLookupDomainA(strVecDomain))
+	{
+		printf("获取解析结果出错\r\n");
+	}
+
 
 	return 0;
 }

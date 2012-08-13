@@ -4,6 +4,7 @@
 using namespace std;
 #include <Windows.h>
 
+//IP反查导出函数
 //宽字符
 //获取当前库所在目录
 extern "C" __declspec(dllexport) bool GetCurrentPathW(PWCHAR pwstrPath);
@@ -23,3 +24,4 @@ extern "C" __declspec(dllexport) void SetUrlRegexA(PCHAR pstrUrl, PCHAR pstrRege
 extern "C" __declspec(dllexport) bool StartIpLookupA(PCHAR pstrIP);
 //获取反查域名
 extern "C" __declspec(dllexport) bool GetLookupDomainA(vector<string>& strVecDomain);
+
