@@ -12,7 +12,7 @@
 ********************************************************************************/ 
 #ifndef __DEBUGTRACE_HEADER_
 #define __DEBUGTRACE_HEADER_
-namespace TRACE_9CPP
+namespace QNA
 {
 #ifdef _DEBUG
 #include <stdio.h>
@@ -46,11 +46,8 @@ namespace TRACE_9CPP
 #endif 
 
 #else
-inline void _tracea(char *fmt,...){}
-inline void _tracew(WCHAR *fmt,...){}
-
-#define TRACEW 1 ? (void)0 : _tracew
-#define TRACEA 1 ? (void)0 : _tracea
+	inline void TRACEA(char *fmt,...){}	
+	inline void TRACEW(WCHAR *fmt,...){}
 
 #ifdef UNICODE
 #define TRACE  TRACEW
