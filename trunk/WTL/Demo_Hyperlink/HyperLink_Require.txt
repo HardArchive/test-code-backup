@@ -1,0 +1,8 @@
+设置选项
+1、字体
+2、字号
+3、斜体、粗体、下划线
+4、超连接样式：3D Button、Flat Button、Semi-Flat Button、Text Only
+5、对齐方式：Left、right、center
+6、连接颜色：Normal(常规)、Hover(鼠标在其上)、Visited(已经点击过的)
+7、默认字体：(对话框默认)、(系统默认)
