@@ -19,7 +19,7 @@ public:
 
 public:
 	QNA::CHyperLink m_HyperLink9CPP;
-	QNA::CHyperLink m_LinkIcon;
+	//QNA::CHyperLink m_LinkIcon;
 
 // Handler prototypes (uncomment arguments if needed):
 //	LRESULT MessageHandler(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)

@@ -19,8 +19,8 @@ namespace QNA
 	public:
 		CHyperLink():m_bMouseOn(FALSE), m_hWnd(NULL), m_hFont(NULL), m_pOldProc(NULL)
 		{
-			*m_szText = _T('\0');
-			*m_szUrl = _T('\0');
+			ZeroMemory(m_szText, MAX_TEXT_LEN);
+			ZeroMemory(m_szUrl, MAX_URL_LEN);	
 		}
 		virtual ~CHyperLink(){}
 		//ºÍ¿Ø¼þ°ó¶¨
@@ -74,9 +74,8 @@ namespace QNA
 			m_bMouseOn = FALSE;
 			m_pOldProc = NULL;
 
-			*m_szText = _T('\0');
-			*m_szUrl = _T('\0');
-
+			ZeroMemory(m_szText, MAX_TEXT_LEN);
+			ZeroMemory(m_szUrl, MAX_URL_LEN);	
 			return hWnd;
 		}
 		HWND GetHwnd()
@@ -164,7 +163,8 @@ namespace QNA
 					{
 						crText = RGB(255, 0, 0);
 					}
-					else{
+					else
+					{
 						crText = RGB(0, 0, 255);
 					}
 					LPCTSTR lpszText;
