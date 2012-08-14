@@ -46,11 +46,8 @@ namespace QNA
 #endif 
 
 #else
-inline void _tracea(char *fmt,...){}
-inline void _tracew(WCHAR *fmt,...){}
-
-#define TRACEW 1 ? (void)0 : _tracew
-#define TRACEA 1 ? (void)0 : _tracea
+	inline void TRACEA(char *fmt,...){}	
+	inline void TRACEW(WCHAR *fmt,...){}
 
 #ifdef UNICODE
 #define TRACE  TRACEW
