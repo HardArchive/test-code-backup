@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<!--STATUS OK-->
+<html>
+<head>
+<meta content="text/html; charset=gb2312" http-equiv="Content-Type"/>
+<meta content="IE=7" http-equiv="X-UA-Compatible"/>
+<link href="http://img.baidu.com/img/baike/wap/iphone4_logo.png" rel="apple-touch-icon"/>
+<meta content="6cxg7fjbSrYQta0LB_ceiPVV7KOb9Sis_o0e4QGYDec" name="google-site-verification"/><title>OPENFILENAME_百度百科</title>
+<script>var PDC={_version:"0.1",_render_start:new Date().getTime(),_analyzer:{loaded:false,url:"http://static.tieba.baidu.com/tb/pms/wpo.pda.js?v=0.1",callbacks:[]},_opt:{is_login:false,sample:0,product_id:0,page_id:0,common_resources:[],special_resources:[],ds_resources:null,display:false},_timing:{},init:function(d){for(var c in d){this._opt[c]=d[c]}},mark:function(b){this._timing[b]=new Date().getTime()},view_start:function(){this.mark("vt")},tti:function(){this.mark("tti")},page_ready:function(){this.mark("fvt")},metadata:function(){var d=this._opt;var c={env:{user:(d.is_login==true?1:0),product_id:d.product_id,page_id:d.page_id},common_resources:d.common_resources,special_resources:d.special_resources,render_start:this._render_start,timing:this._timing,ds_resources:d.ds_resources,display:d.display};return c}};(function(){if(document.attachEvent){window.attachEvent("onload",function(){PDC.mark("let");PDC._load_analyzer()})}else{window.addEventListener("load",function(){PDC.mark("lt")},false)}})();</script>
+<meta content="OPENFILENAME结构包含了GetOpenFileName和GetSaveFileName函数用来初始化打开或另存为对话框的信息。在用户关闭对话框后，系统返回关于用户的选择信息到这个结构中。..." name="Description"/><meta content="OPENFILENAME 百度百科 百科 baike OPENFILENAME_百度百科" name="Keywords"/><link href="http://baike.bdimg.com/static/common/css/view.css?@=jfuzhn&amp;t=20120315125647" rel="stylesheet" type="text/css"/><link href="http://baike.bdimg.com/static/lemma/css/view.css?@=yzhldk" rel="stylesheet" type="text/css"/><link href="http://baike.bdimg.com/static/usercenter/css/liteoutput/bk.uc_lemma.css?@=154w5v4" rel="stylesheet" type="text/css"/><script src="http://baike.bdimg.com/static/common/base.js"></script><script>F._fileMap({"/static/common/output/o_c3ea0809.js":["/static/common/ui/message/message.js","/static/common/ui/nslog/nslog.js","/static/common/ui/userlogin/userlogin.js","/static/common/ui/domready/nslog.js","/static/common/ui/domready/sug.js","/static/common/ui/domready/domready.js","/static/common/ui/domready/ipad.js","/static/common/ui/domready/fillusername.js","/static/common/ui/util/util.js","/static/common/ui/util/baidu.more.ns.js","/static/common/ui/util/console.log.js","/static/common/ui/util/baidu.proxy.js","/static/common/ui/delegate/delegate.js","/static/common/ui/event/event.js","/static/common/ui/dialog/dialog.js","/static/common/ui/fx/fx.js","/static/common/tangram/base/base.js","/static/common/tangram/fx/fx.js","/static/common/tangram/template/template.js","/static/common/tangram/ui/Dialog/Dialog.js"]});F._contextPath="/static/common/ui";;</script><script>F._fileMap({"/static/lemma/output/view/o_4c639bb2.js":["/static/lemma/ui/view/catalog/catalog.js","/static/lemma/ui/view/share/share.js","/static/lemma/ui/view/vote/vote.js","/static/lemma/ui/view/relateLemma/relateLemma.js","/static/lemma/ui/view/lemmapic/lemmapic.js","/static/lemma/ui/view/contributors/contributors.js","/static/lemma/ui/view/lemmaPV/lemmaPV.js","/static/lemma/ui/view/BKDynamic/BKDynamic.js","/static/lemma/ui/view/utils/ani.js","/static/lemma/ui/view/ipad/ipad.js","/static/lemma/ui/view/album/album.js","/static/lemma/ui/view/sublemma/sublemma.js","/static/lemma/ui/view/sublemma/sublemmaList.js","/static/lemma/ui/view/controller/controller.js","/static/lemma/ui/view/authority/authority.js","/static/lemma/ui/view/sidecatalog/sidecatalog.js","/static/lemma/ui/view/advertise/advertise.js","/static/lemma/ui/view/reference/reference.js","/static/lemma/ui/view/coeditors/coeditors.js","/static/lemma/ui/view/bottle/bottle.js","/static/lemma/ui/view/edit/detect.js","/static/lemma/ui/view/edit/edit.js","/static/lemma/ui/view/usercard/usercard.js","/static/lemma/ui/view/nslog/nslog.js","/static/lemma/ui/view/updown/updown.js","/static/lemma/ui/view/lazyLoad/lazyLoad.js","/static/lemma/ui/view/usercenter/usercenter.js","/static/lemma/ui/view/split/split.js"],"/static/lemma/output/view/o_b2ea5743.js":["/static/lemma/ui/view/commonModule/commonModule.js","/static/lemma/ui/view/musicModule/musicModule.js","/static/lemma/ui/view/extmp3/extmp3.js","/static/lemma/ui/view/extvideo/extvideo.js"],"/static/lemma/output/view/o_e04e5c8b.js":["/static/lemma/ui/view/seriesModule/seriesModule.js","/static/lemma/ui/view/videoModule/videoModule.js","/static/lemma/ui/view/indexModule/indexModule.js","/static/lemma/ui/view/picModule/picModule.js"],"/static/lemma/output/view/o_41a4a516.js":["/static/lemma/ui/view/worldcupModule/worldcupModule.js","/static/lemma/ui/view/worldcupTeamModule/worldcupTeamModule.js","/static/lemma/ui/view/ouguanModule/ouguanModule.js","/static/lemma/ui/view/nbaModule/nbaModule.js","/static/lemma/ui/view/nbaTeamModule/nbaTeamModule.js","/static/lemma/ui/view/ouguanTeamModule/ouguanTeamModule.js"],"/static/lemma/output/view/o_39f1c3b1.js":["/static/lemma/ui/view/collegeModule/collegeModule.js"],"/static/lemma/output/view/o_19ad9dad.js":["/static/lemma/ui/view/miss/miss.js","/static/lemma/ui/view/todayInHistory/todayInHistory.js"],"/static/lemma/output/view/o_2e738712.js":["/static/lemma/ui/view/feedSys/rangy-core.js","/static/lemma/ui/view/feedSys/rangy-cssclassapplier.js","/static/lemma/ui/view/feedSys/feedSys.js"],"/static/lemma/output/view/o_c1efab4b.js":["/static/lemma/ui/view/olympicModule/olympicModule.js"]});F._contextPath="/static/lemma/ui";;</script><script>/*<![CDATA[*/var padFlag=/iPad/.exec(navigator.userAgent)&&navigator.userAgent.match(/CPU OS ([\d])/)[1];if(padFlag){document.documentElement.className+=" ipad";var pad_viewport=document.createElement("meta");pad_viewport.name="viewport";pad_viewport.content="width=device-width, initial-scale=1.0";document.getElementsByTagName("head")[0].appendChild(pad_viewport);}/*]]>*/</script>
+</head>
+<script>PDC.mark("ht");(function(){var a=PDC.ready=function(){var g=false,f=[],c;if(document.addEventListener){c=function(){document.removeEventListener("DOMContentLoaded",c,false);d()}}else{if(document.attachEvent){c=function(){if(document.readyState==="complete"){document.detachEvent("onreadystatechange",c);d()}}}}function d(){if(!d.isReady){d.isReady=true;for(var k=0,h=f.length;k<h;k++){f[k]()}}}function b(){try{document.documentElement.doScroll("left")}catch(h){setTimeout(b,1);return}d()}function e(){if(g){return}g=true;if(document.addEventListener){document.addEventListener("DOMContentLoaded",c,false);window.addEventListener("load",d,false)}else{if(document.attachEvent){document.attachEvent("onreadystatechange",c);window.attachEvent("onload",d);var h=false;try{h=window.frameElement==null}catch(i){}if(document.documentElement.doScroll&&h){b()}}}}e();return function(h){d.isReady?h():f.push(h)}}();a.isReady=false})();PDC.ready(function(){PDC.mark("drt")});PDC.mark("vt");</script>
+
+<body id="view">
+<div id="userbar">
+</div>
+<div id="wrap">
+<div id="header">
+<div class="clearfix" id="search">
+<div id="logo">
+<a href="/"><img alt="到百科首页" border="0" class="nslog:1008" height="46" src="http://img.baidu.com/img/baike/logo-baike.png" width="137"/></a>
+</div>
+<div id="search-content">
+<p class="nv nslog-area" data-nslog-type="1009">
+<a href="http://news.baidu.com/ns?fr=bk&amp;cl=2&amp;rn=20&amp;tn=news&amp;word=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="word">新闻</a><a href="http://www.baidu.com/s?fr=bks0000&amp;cl=3&amp;wd=OPENFILENAME&amp;t=5" onmousedown="setHeadUrl(this)" wdfield="wd">网页</a><a href="http://tieba.baidu.com/f?fr=bk&amp;kw=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="kw">贴吧</a><a href="http://zhidao.baidu.com/q?fr=bk&amp;ct=17&amp;pn=0&amp;tn=ikaslist&amp;rn=10&amp;word=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="word">知道</a><a href="http://mp3.baidu.com/m?fr=bk&amp;tn=baidump3&amp;ct=134217728&amp;lm=-1&amp;word=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="word">MP3</a><a href="http://image.baidu.com/i?fr=bk&amp;tn=baiduimage&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="word">图片</a><a href="http://video.baidu.com/v?fr=bk&amp;ct=301989888&amp;rn=20&amp;pn=0&amp;db=0&amp;s=24&amp;word=OPENFILENAME" onmousedown="setHeadUrl(this)" wdfield="word">视频</a><strong>百科</strong><a href="http://wenku.baidu.com/search?fr=bk&amp;word=OPENFILENAME&amp;lm=0&amp;od=0" onmousedown="setHeadUrl(this)" wdfield="word">文库</a>
+</p>
+<form action="/search/word?" id="f1" method="get" name="f1" target="_self">
+<span class="s_ipt_wr"><span><input autocomplete="off" autocorrect="off" class="s_ipt" id="word" maxlength="100" name="word" tabindex="1" value="OPENFILENAME"/></span></span><span class="s_btn_wr" style="margin-right:6px"><span><input class="s_btn nslog:1010" onclick="this.form.pic.value=1" onmousedown="this.className=&#34;s_btn s_btn_h&#34;" onmouseout="this.className=&#34;s_btn&#34;" tabindex="2" type="submit" value="进入词条"/></span></span><span class="s_btn_wr"><span><input class="s_btn nslog:1011" onclick="this.form.pic.value=2" onmousedown="this.className=&#34;s_btn s_btn_h&#34;" onmouseout="this.className=&#34;s_btn&#34;" tabindex="3" type="submit" value="搜索词条"/></span></span>
+<input id="sw1" name="pic" type="hidden" value="1"/>
+<input name="sug" type="hidden" value="1"/>
+<input id="search-enc" name="enc" type="hidden" value="gbk"/>
+</form>
+</div>
+<div id="help">
+<a class="c-help nslog:1012" href="http://www.baidu.com/search/baike_help.html" target="_blank">帮助</a>
+</div>
+</div><div class="nslog-area" data-nslog-type="1000" id="path">
+
+<ul class="nav f14 clearfix">    
+            <li class="home"><a href="/" data-tj="home">首页</a></li>
+                <li><a href="/ziran/">自然</a></li>
+                 <li><a href="/wenhua/">文化</a></li>
+                 <li><a href="/dili/">地理</a></li>
+                 <li><a href="/lishi/">历史</a></li>
+                 <li><a href="/shenghuo/">生活</a></li>
+                 <li><a href="/shehui/">社会</a></li>
+                 <li><a href="/yishu/">艺术</a></li>
+                 <li><a href="/renwu/">人物</a></li>
+                 <li><a href="/jingji/">经济</a></li>
+                 <li><a href="/kexue/">科技</a></li>
+                 <li><a href="/tiyu/">体育</a></li>
+                 <li><a href="/tupian/" data-tj="tupian">图片</a></li>
+    			<li>		<a href="http://baike.baidu.com/museum/ " target="_blank" onclick="nslog(location.href,3020);" data-tj="szbwg">数字博物馆</a></li>
+				<li>		<a href="http://baike.baidu.com/cms/s/core/index.html" target="_blank" onclick="nslog(location.href,3021);">核心用户</a></li>
+		            <li class="last-u"><a href="/mall/" data-tj="bksc">百科商城</a></li>
+    </ul>
+<ul id="category_ipad" style="display:none;"></ul>
+
+<style type="text/css" compress>
+#path ul.nav li,ul.nav li{position:relative;}
+.nav{overflow:visible;position:relative;}
+div.nav-channel-hot{
+ background:url("http://img.baidu.com/img/baike/icons/hot.png") no-repeat scroll 0 0 transparent;
+_background:none;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://img.baidu.com/img/baike/icons/hot.png");
+ height:15px;
+ position:absolute;
+ width: 24px;
+ top: -7px;
+ right:7px
+}
+
+#path .nav li{padding-right:12px !important;}
+
+
+
+
+/*for ipad*/
+.ipad   #path .nav li{color: #fff;font-size: 18px;}
+.ipad #path .nav li{height: 40px;line-height: 40px;}
+.ipad  #path  .nav{height: 40px;line-height: 40px;margin: 0;text-align: center;background: #2158a6;font-size: 18px;}
+.ipad  #path  .nav > div{display: none !important;}
+.ipad  #path  .nav > li{width: 168px;border-right: 1px solid #1c4a8c;border-left: 1px solid #1b5bb5;}
+.ipad  #path  .nav li.cur,.ipad  #path  .nav li.cur-long{width: 172px;background: #184787;border-left-color: #184787;}
+.ipad  #path  .nav li.cur span,.ipad  #path  .nav li span,.ipad  #path  .nav li.cur-long span{background: none;width: auto;height: auto;padding: 0;margin: 0;border: 0;left:0;right:0;font-weight: bold;}
+.ipad  #path  .nav li a,.ipad  #path  .nav .last-u a{color: #fff;padding: 0 10px;width: auto;height: auto;border: 0;font-weight: normal !important;background: none !important;}
+.ipad  #path  .nav li a:hover,.ipad  #path  .nav .last-u a:hover{margin: 0;padding: 0;background: none;left:0;right:0;}
+.ipad  #path  .nav li ul{position: absolute;}
+.ipad  #path  .nav li span .arr{display: inline-block;vertical-align: middle;width: 9px;height: 5px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBJREFUeNpi3HP64X8GAoDJ2USOEZ8CkDwTjIFLAdgkdAGs/P///6NgkBvRxQACDAC9VSJC4OCHnwAAAABJRU5ErkJggg==) center center no-repeat;-webkit-transition:all 0.3s;}
+.ipad  #path  .nav .on span .arr{-webkit-transform:rotate(180deg);}
+
+.ipad #category_ipad{height: 0;overflow: hidden;text-align: center;background: #d8e0eb;font-size: 16px;-webkit-transition:all 0.2s;}
+.ipad #category_ipad:after{content:'\20';display:block;height:0;clear:both;visibility: hidden;}
+.ipad #category_ipad li{float: none;font-weight: normal;display: inline-block;margin: 7px 16px !important;height: 24px;line-height: 24px;border: 1px solid #d8e0eb;}
+.ipad #category_ipad li a{padding: 3px 12px;color: #333;display: inline;border: 0;}
+.ipad #category_ipad li a:hover{text-decoration: none;background: none;}
+.ipad #category_ipad .cur{background: #bec9d4;border-color: #a6b5c5;color: #333;}
+
+/*临时for 图片 商城*/
+.ipad .page-header{position: relative;width: 1024px;}
+.ipad #header{margin-top: 0;}
+
+/*ipad竖屏*/
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+.ipad #category_ipad li{margin: 7px 6px !important;}
+.ipad  #path  .nav > li,.ipad  #path  .nav li.cur,.ipad  #path  .nav li.cur-long{width: 126px;}
+
+.ipad #daily-content .history_img{display: none;}/*临时*/
+.ipad #path-more-act{display: none;}/*ipad竖屏词条页导航不出现更多*/
+}
+
+</style>
+
+<script type="text/javascript" >  
+
+	// baidu.page.loadJsFile('http://baike.baidu.com/cms/s/banner/tmpact.js?r='+Math.random());             
+
+// nslog(location.href, 5102);
+(function(){
+	function bknslog(type){
+		var n="baikelog_"+(new Date()).getTime();
+		var c=window[n]=new Image();
+		c.onload=c.onerror=function(){	window[n]=null; };
+		c.src='http://nsclick.baidu.com/v.gif?pid=103&type='+type +'&url='+encodeURIComponent(location.href) + '&referrer=' + encodeURIComponent(document.referrer) +'&t='+(new Date()).getTime();
+		c=null;	
+	}
+	if(typeof baidu == 'undefined'){
+		bknslog(5102);
+	}
+})();
+
+
+
+
+
+if (typeof (nslog) == 'undefined') {
+	function nslog(url,type) {
+		var n="baikelog_"+(new Date()).getTime();
+		var c=window[n]=new Image();
+		c.onload=c.onerror=function(){	window[n]=null; };
+		c.src='http://nsclick.baidu.com/v.gif?pid=103&type='+type +'&url='+encodeURIComponent(url) + '&referrer=' + encodeURIComponent(document.referrer) +'&t='+(new Date()).getTime();
+		c=null;	
+	}
+}
+
+
+//如果是ipad 并且 非强制传统版
+if (navigator.userAgent.indexOf('iPad')>=0 && !window.isForce2pc) {
+	document.documentElement.className+=' ipad';
+	var viewport = document.createElement('meta');
+	viewport.name='viewport';
+	viewport.content='width=device-width';
+	document.getElementsByTagName('head')[0].appendChild(viewport);
+	var nav=document.querySelectorAll('.nav li');
+	var cate = document.getElementById('category_ipad');
+	var li_cate=document.createElement('li');
+	cate.style.display='block';
+	li_cate.innerHTML='<span>分类频道 <b class="arr"></b></span>'
+	document.querySelector('.nav').insertBefore(li_cate,nav[1]);
+	for (var i=1; i<12; i++) {
+		cate.appendChild(nav[i]);
+		if (nav[i].className.indexOf('cur') >=0) {
+			li_cate.className+='on cur';
+			cate.style.height='40px';
+
+		}
+	}
+
+	li_cate.ontouchend=function () {
+		if (this.className.indexOf('on')>=0) {
+			this.className=this.className.replace(/on/gi,'')
+			cate.style.height='0px'
+		}else {//展开
+						nslog(location.href, 5825);
+			this.className+=' on';
+			cate.style.height='40px'
+		}
+		return false;
+	}
+	var li_navs = document.querySelectorAll('.nav li a');
+	for (var i=0; i<li_navs.length; i++) {
+		li_navs[i].addEventListener('click',function () {
+			var logId = this.getAttribute ('data-tj');
+			switch (logId) {
+				case 'home':
+					nslog(this.href,5824);
+					break;
+				case 'tupian':
+										nslog(this.href,5826);
+					break;
+				case 'szbwg':
+										nslog(this.href,5827);
+					break;
+				case 'bksc':
+										nslog(this.href,5828);
+					break;
+			}
+		},false);
+	}
+	
+
+}
+
+</script>
+
+</div>
+</div>
+<div id="page">
+<script type="text/javascript">if(typeof PDC!="undefined"){PDC.view_start();}</script><script type="text/javascript">var judgeInfo_data={"sublemmaIds":[2175167],"judgeInfo_multi":{"2175167":{"content":null,"abstract":null}},"sysDoubt_multi":{"2175167":null}},sublemmaIds=judgeInfo_data.sublemmaIds,judgeInfo_multi=judgeInfo_data.judgeInfo_multi,currJudgeInfo=judgeInfo_multi["2175167"];</script><div class="layout grid-m0s245 w1000" id="content-wrap">
+<div class="col-main article" id="content">
+<div class="main-wrap main-shadow" id="main-wrap">
+<div class="content-hd">
+<div class="content-hd-wrap"></div>
+</div>
+<div class="content-bd main-body">
+<div class="text" id="sec-content0">
+<div class="bk-editable-lemma-btns">
+<a class="tpldivide-lemma lemma-top-link" hidefocus="true" href="/tpldivideload?lemmaId=2175167" id="tmpdivide" style="display:none;margin-right:14px" target="_blank"></a>
+<a class="lemma-top-link" data-edit-id="2175167" hidefocus="true" href="/divideload?lemmaid=2175167" id="polyin"></a>
+<span class="editable-lemma " data-edit-id="2175167" id="lemma-edit"></span>
+<span style="height:100%"></span>
+</div>
+<h1 class="title" id="lemmaTitle-2175167">OPENFILENAME</h1>
+<script>/*<![CDATA[*/var hash=window.location.hash.match(/^#sub(\d+)/);baikeInfo.lemmaHashFound=false;baikeInfo.hash=hash&&hash[1];hash=null;if(baikeInfo.hash){var lemmaDescArray=[{"subLemmaId":2175167,"subLemmaDesc":"OPENFILENAME"}];for(var i=0;i<lemmaDescArray.length;i++){if(lemmaDescArray[i].subLemmaId==baikeInfo.hash){baikeInfo.lemmaHashFound=true;break;}}}/*]]>*/</script>
+<script type="text/javascript">baikeInfo.expFlag=false;baikeViewInfo={id:"2175167",versionId:"31150347",subLemmaId:"2175167",subVersionId:"30476302",editable:"true",title:"OPENFILENAME",expIndex:"0",subLen:"1",isMulit:false,subList:[{"subLemmaDesc":"OPENFILENAME","subLemmaId":2175167,"subVersionId":30476302}]};</script>
+<script type="text/javascript">(function(){window.rsInsertData=window.rsInsertData||[];rsdataList=[];if(rsdataList.top||rsdataList.foot){rsInsertData.push([2175167,rsdataList]);}})();</script>
+<div class="clear"></div>
+<div class="mod-top">
+<h4 class="card-title"><span class="throwbtl-link-span" data-edit-id="$$$$2175167"></span>百科名片</h4>
+<div class="card-summary nslog-area" data-nslog-type="72">
+<div class="card-summary-content">
+<p>
+OPENFILENAME结构包含了GetOpenFileName和GetSaveFileName函数用来初始化打开或另存为对话框的信息。在用户关闭对话框后，系统返回关于用户的选择信息到这个结构中。</p>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<div class="text_dir nslog-area log-set-param" data-nslog-type="1016" data-subindex="0" id="catalog-0" log-set-param="catalogshow">
+<p>目录</p>
+<dl class="holder" id="catalog-holder-0">
+<dd class="catalog-item">
+<a catalog="true" class="nslog:1274 " href="#1" name="STAT_ONCLICK_UNSUBMIT_CATALOG">结构体原型</a>
+</dd>
+<dd class="catalog-item">
+<a catalog="true" class="nslog:1274 " href="#2" name="STAT_ONCLICK_UNSUBMIT_CATALOG">成员</a>
+<ol class="hide"><li class="hold-catalog-li"><a catalog="true" href="#2_1">lStructSize</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_2">hwndOwner</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_3">hInstance</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_4">lpstrFilter</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_5">lpstrCustomFilter</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_6">nMaxCustFilter</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_7">nFilterIndex</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_8">lpstrFile</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_9">nMaxFile</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_10">lpstrFileTitle</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_11">nMaxFileTitle</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_12">lpstrInitialDir</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_13">lpstrTitle</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_14">Flag</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_15">nFileOffset</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_16">nFileExtension</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_17">lpstrDefExt</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_18">lCustData</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_19">lpfnHook</a></li>
+<li class="hold-catalog-li"><a catalog="true" href="#2_20">lpTemplateName</a></li>
+</ol></dd>
+<dd class="nslog:1018 catalog-holder catalog-holder0" show-type="show">展开</dd>
+</dl>
+<dl class="holder2" id="catalog-holder-2-0"></dl>
+</div>
+<div class="clear"></div>
+<div class="lemma-main-content" id="lemmaContent-0">
+<h2 class="headline-1 first bk-sidecatalog-title"><span class="text_edit editable-title" data-edit-id="2175167:2175167:1"></span><a name="1"></a><a name="sub2175167_1"></a><span class="headline-content">结构体原型</span></h2>　　typedef struct tagOFN { 
+<div class="spctrl"></div>　　DWORD lStructSize; 
+<div class="spctrl"></div>　　HWND hwndOwner; 
+<div class="spctrl"></div>　　HINSTANCE hInstance; 
+<div class="spctrl"></div>　　LPCTSTR lpstrFilter; 
+<div class="spctrl"></div>　　LPTSTR lpstrCustomFilter; 
+<div class="spctrl"></div>　　DWORD nMaxCustFilter; 
+<div class="spctrl"></div>　　DWORD nFilterIndex; 
+<div class="spctrl"></div>　　LPTSTR lpstrFile; 
+<div class="spctrl"></div>　　DWORD nMaxFile; 
+<div class="spctrl"></div>　　LPTSTR lpstrFileTitle; 
+<div class="spctrl"></div>　　DWORD nMaxFileTitle; 
+<div class="spctrl"></div>　　LPCTSTR lpstrInitialDir; 
+<div class="spctrl"></div>　　LPCTSTR lpstrTitle; 
+<div class="spctrl"></div>　　DWORD Flags; 
+<div class="spctrl"></div>　　WORD nFileOffset; 
+<div class="spctrl"></div>　　WORD nFileExtension; 
+<div class="spctrl"></div>　　LPCTSTR lpstrDefExt; 
+<div class="spctrl"></div>　　LPARAM lCustData; 
+<div class="spctrl"></div>　　LPOFNHOOKPROC lpfnHook; 
+<div class="spctrl"></div>　　LPCTSTR lpTemplateName; 
+<div class="spctrl"></div>　　#if (_WIN32_WINNT &gt;= 0x0500)
+<div class="spctrl"></div>　　void * pvReserved;
+<div class="spctrl"></div>　　DWORD dwReserved;
+<div class="spctrl"></div>　　DWORD FlagsEx;
+<div class="spctrl"></div>　　#endif // (_WIN32_WINNT &gt;= 0x0500)
+<div class="spctrl"></div>　　} OPENFILENAME, *LPOPENFILENAME;<div class="bpctrl"></div><h2 class="headline-1 bk-sidecatalog-title"><span class="text_edit editable-title" data-edit-id="2175167:2175167:2"></span><a name="2"></a><a name="sub2175167_2"></a><span class="headline-content">成员</span></h2><h3 class="headline-2 bk-sidecatalog-title"><a name="2_1"></a><a name="sub2175167_2_1"></a><span class="headline-content">lStructSize</span></h3>　　指定这个结构的大小，以字节为单位。 
+<div class="spctrl"></div>　　Windows 95/98和Windows NT 4.0：特意为Windows 95/98或Windows NT 4.0，及带有WINVER和_WIN32_WINNT &gt;= 0x0500编译时，为这个成员使用OPENFILENAME_SIZE_VERSION_400。
+<div class="spctrl"></div>　　Windows 2000及更高版本：这个参数使用sizeof (OPENFILENAME) 。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_2"></a><a name="sub2175167_2_2"></a><span class="headline-content">hwndOwner</span></h3>　　指向所有者<a target=_blank href=/view/119316.htm>对话框</a>窗口的句柄。这个成员可以是任意有效窗口句柄，或如果对话框没有所有者它可以为NULL。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_3"></a><a name="sub2175167_2_3"></a><span class="headline-content">hInstance</span></h3>　　如果在Flags成员中设置了OFN_ENABLETEMPLATEHANDLE标记，hInstance成员指向包含一个对话框模板的内存对象。如果OFN_ENABLETEMPLATE标记被设置，hInstance是一个指向通过lpTemplateName成员命名的对话框模板的模块。如果两者都没有被设置，这个成员被忽略。 
+<div class="spctrl"></div>　　如果OFN_EXPLORER标记被设置，系统使用Explorer风格的默认对话框的子窗口作为指定模板来建立一个对话框。如果OFN_EXPLORER标记没有被设置，系统使用模板建立一个旧风格的对话框。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_4"></a><a name="sub2175167_2_4"></a><span class="headline-content">lpstrFilter</span></h3>　　指向一对以空字符结束的过滤字符串的一个缓冲。缓冲中的最后一个字符串必须以两个NULL字符结束。 
+<div class="spctrl"></div>　　第一个字符串是过滤器描述的显示字符串（例如，“文本文件”），第二个字符指定过滤样式（例如，“*.TXT”）。要为一个显示字符串指定多个过滤样式，使用分号（“;”）分隔样式（例如，“*.TXT;*.DOC;*.BAK”）。一个样式字符串中可以包含有效的文件名字字符及星号（*）通配符。不能在样式字符串中包含空格。
+<div class="spctrl"></div>　　系统不能改变过滤器的次序。它按lpstrFilter指定的次序显示在文件类型组合框中。
+<div class="spctrl"></div>　　如果lpstrFilter是NULL，对话框不能显示任何过滤器。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_5"></a><a name="sub2175167_2_5"></a><span class="headline-content">lpstrCustomFilter</span></h3>　　指向一个静态缓冲，它包含了一对以空字符结束的过滤器字符串，这个字符串是为了保留用户选择的过滤样式。第一个字符串是描述定制过滤器的显示字符串，第二个字符串是被用户选择的过滤器样式。第一次你的应用程序建立对话框，你指定的第一个字符串可以是任何非空的字符串。当用户选择了一个文件时，对话框复制当前过滤样式到第二个字符串。保留过滤样式可以是在lpstrFilter缓冲中指定的样式之一，或是用户输入的过滤器样式。在下一次对话框被建立时系统使用这个字符串去初始化用户自定义的文件过滤器。如果nFilterIndex成员是0，对话框使用定制过滤器。 
+<div class="spctrl"></div>　　如果这个成员是NULL，对话框不能保留用户自定义过滤器样式。
+<div class="spctrl"></div>　　如果这个成员不是NULL，nMaxCustFilter成员的值必须指定以TCHARs为单位的lpstrCustomFilter缓冲的大小。对于ANSI版本，是字节的个数；对于Unicode版本，是字符的个数。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_6"></a><a name="sub2175167_2_6"></a><span class="headline-content">nMaxCustFilter</span></h3>　　指定特意为lpstrCustomFilter准备的以TCHARs为单位的缓冲大小。对于ANSI版本，是字节的个数；对于Unicode版本，是字符的个数。这缓冲应该最小在40个字符长。如果lpstrCustomFilter成员是NULL或是指向NULL的字符串，这个成员被忽略。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_7"></a><a name="sub2175167_2_7"></a><span class="headline-content">nFilterIndex</span></h3>　　指定在文件类型控件中当前选择的过滤器的索引。缓冲指向被lpstrFilter包含的一对定义了的过滤器的字符串。过滤器的第一对字符串的索引值为1，第二对为2，等等。0索引指出是通过lpstrCustomFilter指定的定制过滤器。你可以为对话框指定一个索引作为最初的过滤器描述及过滤器样式。当用户选择了一个文件时，nFilterIndex返回当前显示的过滤器的索引。 
+<div class="spctrl"></div>　　如果nFilterIndex是0及lpstrCustomFilter是NULL，系统使用在lpstrFilter缓冲中的第一个过滤器。如果所有的三个成员都是0或NULL，系统不使用任何过滤器，在对话框的列表文件中不显示任何文件。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_8"></a><a name="sub2175167_2_8"></a><span class="headline-content">lpstrFile</span></h3>　　指向包含初始化文件名编辑控件使用的文件名的缓冲。如果不需要初始值，这个缓冲的第一个字符必须是NULL。当GetOpenFileName或GetSaveFileName函数返回成功时，这个缓冲包含驱动器，路径，文件名，及所选择的文件的扩展名。 
+<div class="spctrl"></div>　　如果OFN_ALLOWMULTISELECT标记被设置并且用户选择了多个文件，缓冲包含了当前目录下被选择文件的文件名。对于Explorer风格对话框，目录和文件名字符串是被NULL分开的，在文件名之后有一个额外的NULL。对于旧风格对话框，字符串是被空格分开的并且函数为带有空格的文件名使用短文件名。你可以使用FindFirstFile函数在长短文件名之间转换。如果用户只选择了一个文件，lpstrFile字符串在路径和文件名之间没有分隔。
+<div class="spctrl"></div>　　如果缓冲太小，函数返回FALSE并且CommDlgExtendedError函数返回FNERR_BUFFERTOOSMALL.。既然这样，lpstrFile缓冲的首先两个字节包含必需的大小（字节或字符）。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_9"></a><a name="sub2175167_2_9"></a><span class="headline-content">nMaxFile</span></h3>　　指定lpstrFile缓冲的大小，以TCHARs为单位。对于ANSI版本，是字节的个数；对于Unicode版本，是字符的个数。这个缓冲必须足够存储路径和文件名字符串，包含结尾的null字符。如果缓冲太小，GetOpenFileName和GetSaveFileName函数返回假（FALSE）缓冲最小应该在256个字符长。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_10"></a><a name="sub2175167_2_10"></a><span class="headline-content">lpstrFileTitle</span></h3>　　指向接收选择的文件的文件名和扩展名的缓冲（不带路径信息）。这个成员可以是NULL。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_11"></a><a name="sub2175167_2_11"></a><span class="headline-content">nMaxFileTitle</span></h3>　　指定lpstrFileTitle缓冲的大小，以TCHARs为单位。对于ANSI版本，是字节的个数；对于Unicode版本，是字节的个数。如果lpstrFileTitle是NULL，这个成员被忽略。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_12"></a><a name="sub2175167_2_12"></a><span class="headline-content">lpstrInitialDir</span></h3>　　指向以空字符结束的字符串，可以在这个字符串中指定初始目录。Pointer to a null terminated string that can specify the initial directory. 在不同的平台上，为选择初始目录有不同的运算法则。
+<div class="spctrl"></div>　　Windows 7：
+<div class="spctrl"></div>　　如果lpstrInitialDir与应用程序第一次使用打开或另存为对话框的值相同，路径由用户选择作为初始目录。
+<div class="spctrl"></div>　　否则，如果lpstrFile包含路径，路径是初始目录。
+<div class="spctrl"></div>　　否则，如果lpstrInitialDir不是NULL，它指定初始目录。
+<div class="spctrl"></div>　　如果lpstrInitialDir为NULL，并且当前目录包含有一些指定过滤器类型的文件，初始目录是当前目录。
+<div class="spctrl"></div>　　否则，初始目录是当前用户的个人目录（即我的文档）。
+<div class="spctrl"></div>　　否则，初始目录是桌面文件夹。 
+<div class="spctrl"></div>　　Windows 2000：
+<div class="spctrl"></div>　　如果lpstrFile包含了一个路径，这个路径就是初始目录。 
+<div class="spctrl"></div>　　否则，lpstrInitialDir指定的为初始目录。 
+<div class="spctrl"></div>　　如果lpstrInitialDir为NULL，并且当前目录下包含有一些指定过滤器类型的文件，初始目录就是当前目录。 
+<div class="spctrl"></div>　　否则，如果应用程序在过去使用过打开哐另存为对话框，使用最近选择的路径作为初始目录。然而，如果一个应用程序长时间没有运行过，它保存的选择的路径将被丢弃。 
+<div class="spctrl"></div>　　否则，初始目录是当前用户的私人文件目录（即我的文档）。 
+<div class="spctrl"></div>　　否则，初始目录是桌面文件夹。 
+<div class="spctrl"></div>　　Windows 98：
+<div class="spctrl"></div>　　lpstrInitialDir指定初始目录。 
+<div class="spctrl"></div>　　如果lpstrInitialDir是NULL并且lpstrFile包含了一个路径，那么这个路径就是初始目录。 
+<div class="spctrl"></div>　　否则，如果当前目录包含了一些指定的过滤类型的文件，那么初始化目录是当前目录。 
+<div class="spctrl"></div>　　否则，初始目录是当前用户的私人文件目录（即我的文档）。 
+<div class="spctrl"></div>　　Windows和Windows NT/ 2000的早期版本：
+<div class="spctrl"></div>　　lpstrInitialDir指定初始目录。 
+<div class="spctrl"></div>　　如果lpstrInitialDir是NULL并且lpstrFile包含了一个路径，那么这个路径就是初始目录。 
+<div class="spctrl"></div>　　否则，初始目录是当前目录。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_13"></a><a name="sub2175167_2_13"></a><span class="headline-content">lpstrTitle</span></h3>　　指向在对话框的标题栏中放置的字符串。如果这个成员是NULL，系统使用默认标题（另存为或打开）<h3 class="headline-2 bk-sidecatalog-title"><a name="2_14"></a><a name="sub2175167_2_14"></a><span class="headline-content">Flag</span></h3>　　位标记的设置，你可以使用来初始化对话框。当对话框返回时，它设置的这些标记指出用户的输入。这个成员可以是下列标记的组合。 标记 含意 
+<div class="spctrl"></div>　　<b>OFN_ALLOWMULTISELECT</b> 指定文件名列表框允许多选。如果同时你设置了OFN_EXPLORER标记，对话框使用Explorer风格用户界面；否则它使用旧风格用户界面。 
+<div class="spctrl"></div>　　如果用户选择了一个以上的文件，lpstrFile缓冲返回当前目录下所有被选择的文件的文件名。nFileOffset成员是到第一个文件名的偏移量（字节或字符），并且nFileExtension成员不被使用。对于Explorer风格对话框，目录和文件名是被NULL分隔的，在最后的文件名后带有额外的NULL。这个格式使Explorer风格的对话框能返回包含空格的长文件名。对于旧风格对话框，目录和文件字符串是被空格分隔的，函数为带有空格的文件名使用短文件名。你可以使用FindFirstFile函数在短文件名和长文件名之间转换。
+<div class="spctrl"></div>　　如果你为一个旧风格对话框指定了一个定制的模板，文件名列表框的定义必须包含LBS_EXTENDEDSEL值。
+<div class="spctrl"></div>　　<b>OFN_CREATEPROMPT</b> 如果用户指定了一个不存在的文件，这个标记使用对话框能提示用户是否新建这个文件。如果用户选择了新建这个文件，对话框关闭并且函数返回指定的名字；否则，对话框继续停留。如果你使用带有<b>OFN_ALLOWMULTISELECT</b>标记的这个标记，对话框允许用户去指定一个不存在的文件。 
+<div class="spctrl"></div>　　<b>OFN_DONTADDTORECENT</b> Windows 2000：防止系统为选择的文件增加快捷链接到最近使用文档中。要找回目录的位置，调用还有CSIDL_RECENT标记的SHGetSpecialFolderLocation函数。 
+<div class="spctrl"></div>　　<b>OFN_ENABLEHOOK</b> 激活在lpfnHook成员中指定的钩子函数。 
+<div class="spctrl"></div>　　<b>OFN_ENABLEINCLUDENOTIFY</b> Windows 2000：当用户打开一个文件夹时，引起对话框发送CDN_INCLUDEITEM通知消息到你的OFNHookProc程序。对话框为在最近打开的文件夹中的每一个项目发送一个通知。这些消息使你能够控制那些在对话框中显示的文件夹项目的列表。 
+<div class="spctrl"></div>　　<b>OFN_ENABLESIZING</b> Windows 2000，Windows 98：使Explorer风格的对话框可以使用鼠标或键盘调整大小。缺省时，Explorer风格的打开和另存为对话框允许被调整大小，不顾这个标记是否被设置。这标记仅在你提供了一个钩子程序或定制模板时是必需的。旧风格的对话框不允许调整大小。 
+<div class="spctrl"></div>　　<b>OFN_ENABLETEMPLATE</b> 指出lpTemplateName成员是指向对话框模板资源的名字，这个模板资源在能被hInstance成员识别的模块中。 
+<div class="spctrl"></div>　　如果OFN_EXPLORER标记被设置，系统使用指定的模板去建立一个对话框，是默认Explorer风格对话框的子窗口。如果OFN_EXPLORER标记没有被设置，系统使用旧风格的对话框替代默认的对话框。
+<div class="spctrl"></div>　　<b>OFN_ENABLETEMPLATEHANDLE</b> 指出hInstance成员能识别的包含预载对话框模板的数据块。如果这个标记被指定的，系统忽略lpTemplateName。 
+<div class="spctrl"></div>　　如果OFN_EXPLORER标记被设置，系统使用指定的模板去建立一个对话框，是默认Explorer风格对话框的子窗口。如果OFN_EXPLORER标记没有被设置，系统使用模板去建立一个旧风格对话框替代默认对话框。
+<div class="spctrl"></div>　　<b>OFN_EXPLORER</b> 指出任何打开或另存为对话框使用新的Explorer风格的用户化模块。关于更多的信息，参见Explorer-Style Hook Procedures和Explorer-Style Custom Templates。 
+<div class="spctrl"></div>　　缺省下，打开和另存为对话框使用Explorer风格用户界面，不顾这个标记是否设置。这个标记仅在你提供了一个钩子程序或定制模板或设置了OFN_ALLOWMULTISELECT标记时是必需的。
+<div class="spctrl"></div>　　如果你想使用旧风格的界面，省略OFN_EXPLORER 标记，并且提供一个代替的旧风格模板或钩子程序。如果你想用旧风格但不需要一个定制模板或钩子程序，简单的提供一个钩子程序，让它返回FALSE。
+<div class="spctrl"></div>　　<b>OFN_EXTENSIONDIFFERENT</b> 指定用户输入的一个文件的扩展名与lpstrDefExt指定的扩展名不同。如果lpstrDefExt是NULL，函数不使用这个标记。 
+<div class="spctrl"></div>　　<b>OFN_FILEMUSTEXIST</b> 指定用户仅可以在文件名登录字段中输入已存在的文件的名字。如果这个标记被指定的并且用户输入了一个无效的名字，对话框程序显示一个等待消息框。如果这个标记被指定，OFN_PATHMUSTEXIST标记也被使用。 
+<div class="spctrl"></div>　　<b>OFN_FORCESHOWHIDDEN</b> Windows 2000：强制显示系统和隐藏属性的文件，从而压倒用户设置的显示或不显示隐藏文件。否则，带有系统和隐藏标记的文件不被显示。 
+<div class="spctrl"></div>　　<b>OFN_HIDEREADONLY</b> 隐藏只读复选框。 
+<div class="spctrl"></div>　　<b>OFN_LONGNAMES</b> 对于旧风格对话框，这个标记引起对话框使用长文件名。如果这个标记没有被指定，或如果<b>OFN_ALLOWMULTISELECT</b>标记也被设置，旧风格对话框为带有空格的文件名使用短文件名（8.3格式）。 
+<div class="spctrl"></div>　　Explorer风格对话框忽略这个标记，通常显示长文件名。
+<div class="spctrl"></div>　　<b>OFN_NOCHANGEDIR</b> 如果当搜索文件时用户改变了目录的时候，恢复当前目录到它的初始值。 
+<div class="spctrl"></div>　　<b>OFN_NODEREFERENCELINKS</b> 引导对话框为选择的快捷方式（.LNK）文件返回路径和文件名。如果这个值没有被指定，对话框返回这个快捷方式所引用文件的路径和文件名。 
+<div class="spctrl"></div>　　<b>OFN_NOLONGNAMES</b> 对于旧风格对话框，这个标识引起对话框去使用短文件名（8.3格式）。 
+<div class="spctrl"></div>　　Explorer风格对话框忽略这个标记，通常显示长文件名。
+<div class="spctrl"></div>　　<b>OFN_NONETWORKBUTTON</b> 隐藏和显示风格按钮。 
+<div class="spctrl"></div>　　<b>OFN_NOREADONLYRETURN</b> 指定返回的文件不带有只读复选框，不是在写保护的目录中。 
+<div class="spctrl"></div>　　<b>OFN_NOTESTFILECREATE</b> 指定文件不是在对话框关闭前建立的。如果应用程序保存文件到一个建立的非映象风格共享上，这个标记应该被指定的。当一个应用程序指定了这标记，库不能检查写保护，磁盘满，打开驱动器门或网络保护。应用程序使用这个标记必须小心执行文件操作，因为一旦文件被关闭，它不能重新打开。 
+<div class="spctrl"></div>　　OFN_NOVALIDATE 指定公共对话框允许在返回的文件名中有无效的字符。典型的，正在调用的程序使用一个钩子程序通过FILEOKSTRING消息检查文件名。如果在编辑控件中的文本框是空的或只包含了空格，那么文件和目录列表框是被更新的。如果编辑控件中的文本框包含了别的东西，那么nFileOffset和nFileExtension的设置值是通过分析文本产生的。没有默认的扩展名被添加到文本，也没有文本被复制到lpstrFileTitle指定的缓冲。 
+<div class="spctrl"></div>　　如果通过nFileOffset指定的值比0小，文件是无效的。否则，文件名是有效的。如果OFN_NOVALIDATE没有被指定，nFileExtension和nFileOffset可以被使用。
+<div class="spctrl"></div>　　<b>OFN_OVERWRITEPROMPT</b> 如果选择的文件已经存在，使用另存为对话框产生一个消息框。用户必须确认是否覆盖这个文件。 
+<div class="spctrl"></div>　　<b>OFN_PATHMUSTEXIST</b> 指定用户仅能输入的路径和文件名。如果这个标记被使用并且用户在文件名输入字段中键入了一个用效的路径和文件名，对话框函数显示一个等待消息。 
+<div class="spctrl"></div>　　<b>OFN_READONLY</b> 当对话框建立时，显示被选择的只读复选框。这个标记指出当对话框被关闭时只读复选框的状态。 
+<div class="spctrl"></div>　　<b>OFN_SHAREAWARE</b> 指出如果调用OpenFile函数因为网络共享冲突而失败，这个错误被忽略并且对话框返回选择的文件名。 
+<div class="spctrl"></div>　　如果这个标记没有被设置，当用户选择的文件名发生网络共享冲突时，对话框发送通知到你的钩子程序。如果你设置了OFN_EXPLORER标记，对话框发送CDN_SHAREVIOLATION消息到钩子程序。如果你没有设置OFN_EXPLORER，对话框发送SHAREVISTRING注册的消息到钩子程序。
+<div class="spctrl"></div>　　<b>OFN_SHOWHELP</b> 使对话框显示帮助按钮。hwndOwner成员必须指定一个窗口，这个窗口作为接收对话框发送的HELPMSGSTRING注册的消息，当用户单击帮助按钮时对话框发送这个消息。 
+<div class="spctrl"></div>　　当用户单击帮助按钮时，一个Explorer风格的对话框发送CDN_HELP通知消息到你的钩子程序。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_15"></a><a name="sub2175167_2_15"></a><span class="headline-content">nFileOffset</span></h3>　　指定从路径开始到通过lpstrFile指定的文件名字符串基于0的偏移，以TCHARs为单位。对于ANSI版本，是字节的个数；对于Unicode版本，是字符的个数。例如，如果lpstrFile指向下列的字符串，“c:\dir1\dir2\file.ext”，这个成员包含指出“file.ext”字符串偏移的位置值13。 
+<div class="spctrl"></div>　　如果用户选择了多于一个的文件，nFileOffset是到第一个文件名的偏移。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_16"></a><a name="sub2175167_2_16"></a><span class="headline-content">nFileExtension</span></h3>　　指定从路径开始到通过lpstrFile指定的文件名字符串中扩展名基于0的偏移，以TCHARs为单位。对于ANSI版本，是字节的个数；对于Unicode版本，是字节的个数。例如，如果lpstrFile指向下列的字符串，“c:\dir1\dir2\file.ext”，这个成员包含的值是18。如果用户没有输入一个扩展名并且lpstrDefExt是NULL，这个成员指定的偏移是结束字符NULL。如果用户在文件名中输入一个“.”作为最后的字符，这个成员是0。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_17"></a><a name="sub2175167_2_17"></a><span class="headline-content">lpstrDefExt</span></h3>　　指向包含默认扩展名的缓冲。如果用户忘记输入扩展名，GetOpenFileName和GetSaveFileName附加这个扩展名到文件名中。这个字符串可以是任一长度，但但只有头三个字符被附加。字符串不应该包含一个句点（.）。如果这个成员是NULL并且用户忘记了输入一个扩展名，那么将没有扩展名被附加。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_18"></a><a name="sub2175167_2_18"></a><span class="headline-content">lCustData</span></h3>　　指定应用程序定义的数据，这数据是能被lpfnHook成员识别的系统传到的钩子程序。当系统发送WM_INITDIALOG消息到程序，消息的lParam参数指向当对话框建立时指定的OPENFILENAME结构。钩子程序可以使用这个指针获得lCustData的值。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_19"></a><a name="sub2175167_2_19"></a><span class="headline-content">lpfnHook</span></h3>　　指向一个钩子程序。除非Flags成员中包含OFN_ENABLEHOOK标记，要么这个成员将被忽略。 
+<div class="spctrl"></div>　　如果在Flags成员中OFN_EXPLORER标记没有被设置，lpfnHook指向一个OFNHookProcOldStyle钩子程序，这个程序有意的从对话框接收消息。钩子程序返回FALSE传递一个消息到默认的对话框程序或返回TRUE丢弃消息。
+<div class="spctrl"></div>　　如果OFN_EXPLORER被设置，lpfnHook指向一个OFNHookProc钩子程序。这个钩子程序接收从对话框发出的通知消息。这个钩子程序也接收你通过一个子对话框模板定义的附加控件的消息。钩子程序不有意接收默认对话框的标准控件的消息。<h3 class="headline-2 bk-sidecatalog-title"><a name="2_20"></a><a name="sub2175167_2_20"></a><span class="headline-content">lpTemplateName</span></h3>　　指向一个以空字符结束的字符串，字符串是对话框模板资源的名字，资源保存在能被hInstance成员识别的模块中。对于有限的对话框资源，这可以是通过MAKEINTRESOURCE返回的值。除非在Flags成员中设置了OFN_ENABLETEMPLATE标记，要么这个成员被忽略。 
+<div class="spctrl"></div>　　如果OFN_EXPLORER标记被设置，系统使用指定的模板去建立一个对话框，是默认Explorer风格对话框的子窗口。如果OFN_EXPLORER标记没有被设置，系统使用模板去建立一个旧风格的对话框来替代默认对话框。
+<div class="spctrl"></div>　　<b>pvReserved</b>
+<div class="spctrl"></div>　　保留。 
+<div class="spctrl"></div>　　<b>dwReserved</b>
+<div class="spctrl"></div>　　保留。 
+<div class="spctrl"></div>　　<b>FlagsEx</b>
+<div class="spctrl"></div>　　Windows 2000：设置位标记，你可以使用来初始化对话框。这个成员可以是下列标记的组合。 标记 含意 
+<div class="spctrl"></div>　　<b>OFN_EX_NOPLACESBAR</b> 如果这个标记被设置，则位置栏被不显示。如果这个标记没有设置，则Explorer风格的对话框包含一般使用文件图标的位置栏，例如像收藏夹和桌面。
+<div class="spctrl"></div>　　切记:#include &lt;Commdlg.h&gt;<div class="bpctrl" style="clear:both"></div><div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="reinforce" id="lemmaExtend">
+<script type="text/javascript"></script><dl class="nslog-area log-set-param" data-nslog-type="1" id="viewExtRead" log-set-param="ext_reader">
+<dt>扩展阅读：</dt>
+<dd class="reference">
+<ul>
+<li class="layout">
+<span class="ref-index"><span class="r-index">1</span><span class="slide s-right"></span></span>
+<p class="ref-bd line-1"><a target=_blank href=http://dev.csdn.net/htmls/13/13461.html target=_blank>http://dev.csdn.net/htmls/13/13461.html</a></p>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="nslog-area log-set-param" data-nslog-type="19" id="viewExtCati" log-set-param="module_tag">
+<dt>开放分类：</dt>
+<dd>
+<a href='/taglist?tag=%B1%E0%B3%CC&tagfromview' target='_blank'>编程</a>，<a href='/taglist?tag=%BC%C6%CB%E3%BB%FA&tagfromview' target='_blank'>计算机</a>，<a href='/taglist?tag=API&tagfromview' target='_blank'>API</a></dd>
+</dl>
+<div class="clear"></div>
+<div class="clear"></div>
+</div>
+<script>baikeViewInfo.cataList=[ {ele:"1", title:"结构体原型",level:2,display:true},{ele:"2", title:"成员",level:2,display:true},{ele:"2_1",title:"lStructSize",level:3,display:true},{ele:"2_2",title:"hwndOwner",level:3,display:true},{ele:"2_3",title:"hInstance",level:3,display:true},{ele:"2_4",title:"lpstrFilter",level:3,display:true},{ele:"2_5",title:"lpstrCustomFilter",level:3,display:true},{ele:"2_6",title:"nMaxCustFilter",level:3,display:true},{ele:"2_7",title:"nFilterIndex",level:3,display:true},{ele:"2_8",title:"lpstrFile",level:3,display:true},{ele:"2_9",title:"nMaxFile",level:3,display:true},{ele:"2_10",title:"lpstrFileTitle",level:3,display:true},{ele:"2_11",title:"nMaxFileTitle",level:3,display:true},{ele:"2_12",title:"lpstrInitialDir",level:3,display:true},{ele:"2_13",title:"lpstrTitle",level:3,display:true},{ele:"2_14",title:"Flag",level:3,display:true},{ele:"2_15",title:"nFileOffset",level:3,display:true},{ele:"2_16",title:"nFileExtension",level:3,display:true},{ele:"2_17",title:"lpstrDefExt",level:3,display:true},{ele:"2_18",title:"lCustData",level:3,display:true},{ele:"2_19",title:"lpfnHook",level:3,display:true},{ele:"2_20",title:"lpTemplateName",level:3,display:true}];if(typeof PDC!="undefined"){PDC.tti();}</script>
+</div>
+<div class="clear"></div>
+</div>
+<div class="content-ft">
+<div class="reinforce lazyload" lazy-init="e.init()" lazy-path="/static/lemma/ui/view/relateLemma/relateLemma.js">
+<dl class="nslog-area" data-nslog-type="18" id="relatedLemmaDown">
+<dt>
+“OPENFILENAME”相关词条：
+</dt>
+<dd class="relative">
+<div class="clear"></div>
+<div>
+<a class="relatedhelp" href="http://www.baidu.com/search/baike_help.html#如何完善相关词条" target="_blank" title="什么是相关词条">什么是相关词条</a>
+<a class="myedit nslog:1005" href="#" onclick="userlogin.check(editRelated,false,&#34;editrelated&#34;);return false">我来完善</a>
+</div>
+<div class="clear"></div>
+</dd>
+</dl>
+</div>
+<div class="clear"></div>
+<div class="end lazyload" lazy-init="e.init()" lazy-path="/static/lemma/ui/view/vote/vote.js">
+<p class="declare">百度百科中的词条正文与判断内容均由用户提供，不代表百度百科立场。如果您需要解决具体问题（如法律、医学等领域），建议您咨询相关领域专业人士。</p>
+<div class="text_vote1" id="vote_btn"><b id="vote_num"></b><span id="vote_txt">本词条对我有帮助</span></div>
+</div><div class="layout share lazyload" lazy-init="e.init()" lazy-path="/static/lemma/ui/view/share/share.js">
+<div class="share-item-title">
+<a class="cang nslog:99" href="http://cang.baidu.com/do/add" onclick="window.open(&#34;http://cang.baidu.com/do/add?it=&#34;+encodeURIComponent(document.title)+&#34;&amp;iu=&#34;+encodeURIComponent(location.href)+&#34;&amp;tn=%E7%99%BE%E7%A7%91%E8%AF%8D%E6%9D%A1%2C&amp;fr=bk#nw=1&#34;,&#34;_s&#34;,&#34;scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable= yes&#34;);return false" target="_blank" title="添加到搜藏">添加到搜藏</a>
+</div>
+<div class="share-item clearfix" id="bdsharebox">
+<span class="share-tip">分享到:</span>
+<div class="bdshare_t bds_tools get-codes-bdshare" data="{'url':'http://baike.baidu.com/view/2175167.htm','text':'【OPENFILENAME_百度百科】结构包含了GetOpenFileName和GetSaveFileName函数用来初始化打开或另存为对话框的信息。在用户关闭对话框后，系统返回关于用户的选择信息到这个结构中。......','pic':'','wbuid':1647247597}" id="bdshare">
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_douban"></a>
+<a class="bds_tsohu"></a>
+<a class="bds_t163"></a>
+<a class="bds_renren"></a>
+<span class="bds_more">更多</span>
+</div>
+<script data="type=tools&amp;uid=71" id="bdshare_js" type="text/javascript"></script>
+<script id="bdshell_js" type="text/javascript"></script>
+</div>
+</div>
+<dl class="lemma-ext-bottom nslog-area" data-nslog-type="16">
+<dt>合作编辑者</dt>
+<dd>
+<div class="onelineonly">
+<span id="co-editors">
+<span>
+<a title='查看此用户资料' class='usercard' userName='灰太狼木有小JJ'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=%BB%D2%CC%AB%C0%C7%C4%BE%D3%D0%D0%A1JJ#3'>灰太狼木有小JJ</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='632007401'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=632007401#3'>632007401</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='790563372'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=790563372#3'>790563372</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='menghuanzhiye'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=menghuanzhiye#3'>menghuanzhiye</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='zhangmingsu'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=zhangmingsu#3'>zhangmingsu</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='vc516'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=vc516#3'>vc516</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='7820779'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=7820779#3'>7820779</a></span>
+<span>
+，<a title='查看此用户资料' class='usercard' userName='344847199'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=344847199#3'>344847199</a></span>
+</span>
+</div>
+<a class="f12 ref_more" href="/update/id=2175167?from=au" id="more-coeditor" style="display:none" target="_blank">更多</a>
+<div class="clear"></div>
+<div class="try f12">如果您认为本词条还需进一步完善，百科欢迎您也来参与<a class="try-edit nslog:1806" href="#" id="try-edit">编辑词条</a>在开始编辑前，您还可以先学习<a href="http://www.baidu.com/search/baike_help.html#编辑原则" target="_blank">如何编辑词条</a></div>
+</dd>
+</dl>
+<p class="bk-feedback">
+如想投诉，请到<a class="nslog:1006" href="http://tousu.baidu.com/baike" target="_blank">百度百科投诉中心</a>；如想提出意见、建议，请到<a class="nslog:1007" href="http://tieba.baidu.com/f?kw=%b0%d9%b6%c8%b0%d9%bf%c6" target="_blank">百度百科吧</a>。
+</p>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<div class="col-sub" id="side">
+<div class="userinfo-side">
+<div id="userInfoDiv">
+</div>
+</div>
+<div class="box2" id="lemma-overview">
+<dl class="box2-inner info">
+<dt class="sidetitle">词条统计</dt>
+<dd>浏览次数：约 <span id="viewPV"></span>次</dd>
+<dd>编辑次数：9次 <a class="nslog:1021" href="/update/id=2175167" target="_blank">历史版本</a></dd>
+<dd>最近更新：<span id="lastModifyTime">2012-05-24</span></dd>
+<dd>创建者：<span class="nslog:1022"><a title='查看此用户资料' class='usercard' userName='344847199'  target='_blank' href='http://passport.baidu.com/?business&aid=7&default_tab=2&un=344847199#3'>344847199</a></span></dd>
+</dl>
+</div>
+<style>.authority-morelink{float:right;text-decoration:underline}</style>
+<div class="box2" id="bkDynamic" style="display:none">
+<dl class="box2-inner">
+<dt class="sidetitle" id="profileTitle"></dt>
+<dd class="task nslog-area" data-nslog-type="1023" id="task" style="display:none"></dd>
+<dd class="notice nslog-area" data-nslog-type="1024" id="notice"></dd>
+</dl>
+</div>
+<div class="box2" id="mabox" style="display:none">
+<div class="box2-inner" id="box2-inner">
+</div>
+<script type="text/javascript">F.use("/view/advertise/advertise.js",function(_){_.init("OPENFILENAME");});</script>
+</div>
+<div class="clear">
+</div>
+</div>
+</div><img src="http://c.baidu.com/c.gif?t=7&amp;q=OPENFILENAME&amp;p=0" style="display:none"/><input id="titleVal" type="hidden" value="OPENFILENAME"/>
+</div>
+<div class="nslog-area" data-nslog-type="1001" id="footer">
+&#169; 2012 Baidu <a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>
+|
+<a href="http://www.baidu.com/search/baike_help.html#百科协议" target="_blank">百科协议</a>
+|
+<a href="http://baike.baidu.com/hezuo/" target="_blank">百度百科合作平台</a>
+</div>
+</div>
+<div id="sidecatalog" style="position:absolute;display:none">
+<div class="sidebar" id="sidebar"></div>
+<a class="gotop" href="#" id="gotop" title="返回顶部"></a>
+</div>
+<div id="side-catalog-content" style="display:none;position:absolute"></div>
+<script type="text/javascript">/*<![CDATA[*/if((baikeViewInfo.expIndex!=0)&&!(window.location.hash)){window.location.hash="#sub2175167";}F.use("common:nslog",function(){nslog.set("page","view");nslog.set("lemmaid","2175167");nslog.set("ispolysemy","0");});F.use(["tangram:base","common:util","common:event"],function(_){var B=0,A=setInterval(function(){B++;if(window.baidu&&window.baidu.ui){clearInterval(A);_.page.loadJsFile("http://baike.bdimg.com/static/usercenter/js/liteoutput/bk.uc_lemma.js?@=a9jtrg");}else{if(B>100){clearInterval(A);}}},100);_.page.loadJsFile("http://img.baidu.com/hunter/baike.js?st="+parseInt(new Date()/86400000));});if(typeof PDC!="undefined"){PDC.init({is_login:false,sample:0.01,product_id:103,page_id:1});}/*]]>*/</script><script type="text/javascript">/*<![CDATA[*/(function(){function _(B){var A="baikelog_"+(new Date()).getTime(),_=window[A]=new Image();_.onload=_.onerror=function(){window[A]=null;};_.src="http://nsclick.baidu.com/v.gif?pid=103&type="+B+"&url="+encodeURIComponent(location.href)+"&t="+(new Date()).getTime();_=null;}if(typeof baidu=="undefined"){_(3601);}})();/*]]>*/</script><script>/*<![CDATA[*/F.use("common:domready");F.use("/static/lemma/ui/view/controller/controller.js",function(){F.use("common:userlogin",function(){bk.userbar.check();});baidu.dom.ready(function(){if(rsInsertData&&rsInsertData.length>0){F.use("tangram:fx",function(){baidu.page.loadCssFile("/guanxi/static/css/lemma_insert.css");baidu.sio.callByBrowser("/guanxi/static/js/lemma_insert.js",null,{charset:"utf-8"});});}});});/*]]>*/</script>
+</body>
+</html>
+<script>PDC._load_js=function(b,c){var a=document.createElement("script");a.setAttribute("type","text/javascript");a.setAttribute("src",b);a.onload=a.onreadystatechange=function(){if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){a.onload=a.onreadystatechange=null;if(typeof c==="function"){c(b,true)}}};a.onerror=function(d){if(typeof c==="function"){c(b,false)}};document.getElementsByTagName("head")[0].appendChild(a)};PDC._load_analyzer=function(){if(PDC._is_sample()==false){return}PDC._analyzer.loaded=true;PDC._load_js(PDC._analyzer.url,function(){var c=PDC._analyzer.callbacks;for(var b=0,a=c.length;b<a;b++){c[b]()}})};PDC.send=function(){if(PDC._analyzer.loaded==true){WPO_PDA.send()}else{PDC._analyzer.callbacks.push(function(){WPO_PDA.send()})}};PDC._is_sample=function(){var d=false,c=this._opt.sample,b=0;c=c>0.9?0.9:c;c=c<0.0001?0.0001:c;var a=document.cookie.match(/BAIDUID=(\w*):/);if(a){b=parseInt(a[1].slice(-4),16);b=isNaN(b)?0:b}if(c<=0.5){d=(b%(parseInt(1/c))==1)}else{d=(b%(parseInt(1/(1-c)))!=1)}return d};(function(){if(document.attachEvent){window.attachEvent("onload",function(){PDC.mark("lt")},false)}else{window.addEventListener("load",function(){PDC.mark("let");PDC._load_analyzer()})}})();</script>
