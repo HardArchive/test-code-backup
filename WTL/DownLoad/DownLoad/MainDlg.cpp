@@ -47,6 +47,13 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 
 	UIAddChildWindowContainer(m_hWnd);
 
+	//int cxScreen,cyScreen;
+	//cxScreen = GetSystemMetrics(SM_CXSCREEN);
+	//cyScreen = GetSystemMetrics(SM_CYSCREEN);
+	//SetWindowPos(::GetForegroundWindow(), 0, 0, cxScreen, cyScreen, SWP_SHOWWINDOW);
+	//SetWindowPos(::GetForegroundWindow(),0,0,0,0,SWP_SHOWWINDOW);
+	::SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE|SWP_SHOWWINDOW);
+
 	return TRUE;
 }
 
