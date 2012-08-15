@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MessageboxEx.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
