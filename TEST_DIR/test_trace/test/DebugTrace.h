@@ -23,8 +23,8 @@ namespace QNA
 	{
 		char out[1024];
 		va_list body;
-		va_start(body,fmt);
-		vsprintf_s(out,fmt,body);
+		va_start(body, fmt);
+		vsprintf_s(out, fmt, body);
 		va_end(body);
 		OutputDebugStringA(out);
 	}
@@ -33,8 +33,8 @@ namespace QNA
 	{
 		WCHAR out[1024];
 		va_list body;
-		va_start(body,fmt);
-		vswprintf_s(out,fmt,body);
+		va_start(body, fmt);
+		vswprintf_s(out, fmt, body);
 		va_end(body);
 		OutputDebugStringW(out);
 	}

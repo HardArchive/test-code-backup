@@ -4,7 +4,8 @@
 #include "stdafx.h"
 #include <Windows.h>
 #include "DebugTrace.h"
-using namespace TRACE_9CPP;
+#include "MessageboxEx.h"
+using namespace QNA;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -14,6 +15,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	TRACEA("TRACEA运行,程序结束！！！！！-9CPP");
 	TRACEW(L"TRACEW运行,程序结束！！！！！-9CPP");
+	MessageBoxEx(NULL, MB_OK, L"标题", L"内容%s", L"\r\n添加内容");
+	MessageBoxEx(NULL, MB_YESNO, L"标题", L"内容%s", L"\r\n添加内容???");
 	return 0;
 }
 
