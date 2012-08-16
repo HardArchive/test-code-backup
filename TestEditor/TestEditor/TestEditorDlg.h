@@ -22,6 +22,10 @@ public:
 	//CScintillaWnd m_ScintillaWnd;  
 	HWND m_hScintillaWnd;
 
+public:
+	void SetCppStyle();
+	void SetExample();
+	void SetFold();
 
 // й╣ож
 protected:

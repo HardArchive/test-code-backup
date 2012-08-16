@@ -103,6 +103,8 @@ BOOL CTestEditorDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 
+	SetCppStyle();
+	SetExample();
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -177,6 +179,8 @@ int CTestEditorDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//	CRect(0, 0, lpCreateStruct->cx,lpCreateStruct->cy),   
 	//	this, 10000); 
 	//CWnd::CreateEx(dwExStyle, L"Scintilla", L"", dwStyle, rect, pParentWnd, nID);   
+	
+	//SciLexer.dll加载后会自动以"Scintilla"作为类名注册一个窗体类，我们只要直接用这个类名建立窗体就可以了
 	m_hScintillaWnd = ::CreateWindow(
 		_T("Scintilla"), 
 		NULL,
@@ -239,3 +243,98 @@ void CTestEditorDlg::UpdateLineNumberWidth(void)
 		SendEditor(SCI_SETMARGINWIDTHN, 0, iLineMarginWidthFit);     
 	}   
 } 
+
+//让Scintilla支持语法高亮
+void CTestEditorDlg::SetCppStyle()
+{
+	const char* szKeywords1 =
+		"asm auto break case catch class const "
+        "const_cast continue default delete do double "
+        "dynamic_cast else enum explicit extern false "
+        "for friend goto if inline mutable "
+        "namespace new operator private protected public "
+        "register reinterpret_cast return signed "
+        "sizeof static static_cast struct switch template "
+        "this throw true try typedef typeid typename "
+        "union unsigned using virtual volatile while";
+    const char* szKeywords2 = "bool char float int long short void wchar_t";
+    // 设置全局风格
+    SendEditor(SCI_STYLESETFONT, STYLE_DEFAULT, (sptr_t)"Courier New");
+    SendEditor(SCI_STYLESETSIZE, STYLE_DEFAULT, 10);
+    SendEditor(SCI_STYLECLEARALL);
+    //C++语法解析
+    SendEditor(SCI_SETLEXER, SCLEX_CPP);
+    SendEditor(SCI_SETKEYWORDS, 0, (sptr_t)szKeywords1);//设置关键字
+    SendEditor(SCI_SETKEYWORDS, 1, (sptr_t)szKeywords2);//设置关键字
+    // 下面设置各种语法元素风格
+    SendEditor(SCI_STYLESETFORE, SCE_C_WORD, 0x00FF0000);   //关键字
+    SendEditor(SCI_STYLESETFORE, SCE_C_WORD2, 0x00800080);   //关键字
+    SendEditor(SCI_STYLESETBOLD, SCE_C_WORD2, TRUE);   //关键字
+    SendEditor(SCI_STYLESETFORE, SCE_C_STRING, 0x001515A3); //字符串
+    SendEditor(SCI_STYLESETFORE, SCE_C_CHARACTER, 0x001515A3); //字符
+    SendEditor(SCI_STYLESETFORE, SCE_C_PREPROCESSOR, 0x00808080);//预编译开关
+    SendEditor(SCI_STYLESETFORE, SCE_C_COMMENT, 0x00008000);//块注释
+    SendEditor(SCI_STYLESETFORE, SCE_C_COMMENTLINE, 0x00008000);//行注释
+    SendEditor(SCI_STYLESETFORE, SCE_C_COMMENTDOC, 0x00008000);//文档注释（/**开头）
+   
+    SendEditor(SCI_SETCARETLINEVISIBLE, TRUE);
+    SendEditor(SCI_SETCARETLINEBACK, 0xb0ffff); 
+	SendEditor(SCI_SETPROPERTY,(sptr_t)"fold",(sptr_t)"1");  //代码折叠
+}
+
+// 标记和页边演示 
+void CTestEditorDlg::SetExample()
+{
+	// 先写10行文本上去
+	for(int i=0; i<10; i++)
+		SendEditor(SCI_APPENDTEXT, 12, (sptr_t)"hello world\r\n ");
+	// 0号页边，宽度为9，显示0号标记(0..0001B)
+	SendEditor(SCI_SETMARGINTYPEN,0,SC_MARGIN_SYMBOL);
+	SendEditor(SCI_SETMARGINWIDTHN,0, 9);
+	SendEditor(SCI_SETMARGINMASKN,0, 0x01);
+	// 1号页边，宽度为9，显示1,2号标记(0..0110B)
+	SendEditor(SCI_SETMARGINTYPEN,1, SC_MARGIN_SYMBOL);
+	SendEditor(SCI_SETMARGINWIDTHN,1, 9);
+	SendEditor(SCI_SETMARGINMASKN,1, 0x06);
+	// 2号页边，宽度为20，显示行号
+	SendEditor(SCI_SETMARGINTYPEN,2, SC_MARGIN_NUMBER);
+	SendEditor(SCI_SETMARGINWIDTHN,2, 20);
+
+	for(int i=0; i<10; i++)
+	{
+		// 前10行分别加入0~2号标记
+		SendEditor(SCI_MARKERADD, i, i%3);
+	}
+
+	// 设置标记的前景色
+	SendEditor(SCI_MARKERSETFORE,0,0x0000ff);//0-红色
+	SendEditor(SCI_MARKERSETFORE,1,0x00ff00);//1-绿色
+	SendEditor(SCI_MARKERSETFORE,2,0xff0000);//2-蓝色 
+}
+
+////代码折叠
+//void CTestEditorDlg::SetFold()
+//{
+//	SendEditor(SCI_SETPROPERTY,(sptr_t)"fold",(sptr_t)"1");
+//
+//	SendEditor(SCI_SETMARGINTYPEN, MARGIN_FOLD_INDEX, SC_MARGIN_SYMBOL);//页边类型
+//	SendEditor(SCI_SETMARGINMASKN, MARGIN_FOLD_INDEX, SC_MASK_FOLDERS); //页边掩码
+//	SendEditor(SCI_SETMARGINWIDTHN, MARGIN_FOLD_INDEX, 11); //页边宽度
+//	SendEditor(SCI_SETMARGINSENSITIVEN, MARGIN_FOLD_INDEX, TRUE); //响应鼠标消息
+//
+//	// 折叠标签样式
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDER, SC_MARK_CIRCLEPLUS); 
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDEROPEN, SC_MARK_CIRCLEMINUS); 
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDEREND,  SC_MARK_CIRCLEPLUSCONNECTED);
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDEROPENMID, SC_MARK_CIRCLEMINUSCONNECTED);
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDERMIDTAIL, SC_MARK_TCORNERCURVE);
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDERSUB, SC_MARK_VLINE); 
+//	SendEditor(SCI_MARKERDEFINE, SC_MARKNUM_FOLDERTAIL, SC_MARK_LCORNERCURVE);
+//
+//	// 折叠标签颜色
+//	SendEditor(SCI_MARKERSETBACK, SC_MARKNUM_FOLDERSUB, 0xa0a0a0);
+//	SendEditor(SCI_MARKERSETBACK, SC_MARKNUM_FOLDERMIDTAIL, 0xa0a0a0);
+//	SendEditor(SCI_MARKERSETBACK, SC_MARKNUM_FOLDERTAIL, 0xa0a0a0);
+//
+//	SendEditor(SCI_SETFOLDFLAGS, 16|4, 0); //如果折叠就在折叠行的上下各画一条横线 
+//}
