@@ -1,0 +1,390 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Danish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DAN)
+#ifdef _WIN32
+LANGUAGE LANG_DANISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_TOOLBAR1            BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_TOOLBAR1 TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_BUTTON32772
+    BUTTON      ID_BUTTON32773
+    BUTTON      ID_BUTTON32774
+    BUTTON      ID_BUTTON32775
+    BUTTON      ID_BUTTON32777
+    BUTTON      ID_BUTTON32778
+    BUTTON      ID_BUTTON32779
+    BUTTON      ID_BUTTON32781
+    BUTTON      ID_BUTTON32784
+END
+
+#endif    // Danish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""atlres.h""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BACKGROUND          BITMAP  DISCARDABLE     "res\\background.bmp"
+IDB_LOGO                BITMAP  DISCARDABLE     "res\\logo.bmp"
+IDB_BUTTON1             BITMAP  DISCARDABLE     "res\\btn1.bmp"
+IDB_NEW                 BITMAP  DISCARDABLE     "res\\New.bmp"
+IDB_SAVEAS              BITMAP  DISCARDABLE     "res\\SaveAs.bmp"
+IDB_SAVE                BITMAP  DISCARDABLE     "res\\Save.bmp"
+IDB_WORDUP              BITMAP  DISCARDABLE     "res\\WordUp.bmp"
+IDB_ROLLOVER            BITMAP  DISCARDABLE     "res\\RollOver.bmp"
+IDB_OPEN                BITMAP  DISCARDABLE     "res\\Open.bmp"
+IDB_BUTTON3             BITMAP  DISCARDABLE     "res\\btn3.bmp"
+IDB_BUTTON2             BITMAP  DISCARDABLE     "res\\btn2.bmp"
+IDB_HELP                BITMAP  DISCARDABLE     "res\\Help.bmp"
+IDB_UP                  BITMAP  DISCARDABLE     "res\\Up.bmp"
+IDB_EDIT                BITMAP  DISCARDABLE     "res\\Edit.bmp"
+IDB_HOUSE               BITMAP  DISCARDABLE     "res\\House.bmp"
+IDB_DOWN                BITMAP  DISCARDABLE     "res\\Down.bmp"
+IDB_WHITE               BITMAP  DISCARDABLE     "res\\white.bmp"
+IDB_GREY                BITMAP  DISCARDABLE     "res\\grey.bmp"
+IDB_EXAMPLE             BITMAP  DISCARDABLE     "res\\Example.bmp"
+IDB_SMALLDOWN           BITMAP  DISCARDABLE     "res\\SmallDown.bmp"
+IDB_SMALLPLUS           BITMAP  DISCARDABLE     "res\\SmallPlus.bmp"
+IDB_BUTTON4             BITMAP  DISCARDABLE     "res\\btn4.bmp"
+IDB_LUMGREY             BITMAP  DISCARDABLE     "res\\lumgrey.bmp"
+IDB_EXPORT              BITMAP  DISCARDABLE     "res\\Export.bmp"
+IDB_EYE                 BITMAP  DISCARDABLE     "res\\Eye.bmp"
+IDB_PURPLE              BITMAP  DISCARDABLE     "res\\purple.bmp"
+IDB_SAMPLE4             BITMAP  DISCARDABLE     "res\\sample4.bmp"
+IDB_SAMPLE2             BITMAP  DISCARDABLE     "res\\sample2.bmp"
+IDB_SAMPLE3             BITMAP  DISCARDABLE     "res\\sample3.bmp"
+IDB_SAMPLE1             BITMAP  DISCARDABLE     "res\\sample1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\SkinnedUI.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAINDLG DIALOGEX 0, 0, 485, 303
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Skinned UI sample"
+FONT 8, "Arial"
+BEGIN
+    LTEXT           "Static",IDC_COLOR6,156,228,40,66
+    LTEXT           "Static",IDC_COLOR2,215,234,54,41
+    LTEXT           "Static",IDC_COLOR3,278,234,54,41
+    LTEXT           "Static",IDC_COLOR4,341,234,54,41
+    LTEXT           "Static",IDC_COLOR5,404,234,54,41
+    LTEXT           "Static",IDC_COLOR1,249,179,43,34
+    RTEXT           "Edit",IDC_TEXT5,373,126,21,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    RTEXT           "Export",IDC_TEXT6,435,126,25,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    LTEXT           "Style",IDC_TEXT8,154,157,25,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    LTEXT           "Preview",IDC_TEXT9,241,157,33,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    CTEXT           "67x26",IDC_TEXT3,165,125,32,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    RTEXT           "Become inspired",IDC_TEXT2,21,55,105,12,SS_CENTERIMAGE | 
+                    NOT WS_GROUP
+    CTEXT           "The ButtonFly UI sample",IDC_TEXT1,230,34,220,12,
+                    SS_CENTERIMAGE | NOT WS_GROUP
+    PUSHBUTTON      "",IDC_SMALLDOWN,128,54,16,13
+    CONTROL         221,IDC_STATIC,"Static",SS_BITMAP,289,82,47,18,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Static",IDC_FRAME5,156,63,327,61,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,14,75,128,44
+    LTEXT           "Static",IDC_FRAME4,6,70,144,54,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_EYE,395,125,16,13
+    PUSHBUTTON      "",IDC_EXPORT,461,125,16,13
+    LTEXT           "Static",IDC_FRAME10,342,123,141,18,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME13,237,171,244,51,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_EDIT,51,158,19,18
+    PUSHBUTTON      "",IDC_HOUSE,71,158,18,18
+    PUSHBUTTON      "",IDC_UP,89,158,19,18
+    PUSHBUTTON      "",IDC_DOWN,107,158,21,18
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | WS_TABSTOP,11,177,121,117
+    SCROLLBAR       IDC_SCROLLBAR1,201,287,276,9
+    CONTROL         "Solid color",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,156,180,71,8
+    CONTROL         "Texture",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,156,194,71,11
+    PUSHBUTTON      "New",IDC_NEW,10,2,23,25
+    PUSHBUTTON      "Open",IDC_OPEN,51,2,28,25
+    PUSHBUTTON      "Save",IDC_SAVE,95,2,23,25,WS_DISABLED
+    PUSHBUTTON      "Save As",IDC_SAVEAS,138,2,29,25
+    PUSHBUTTON      "Roll over",IDC_ROLLOVER,184,2,30,25
+    PUSHBUTTON      "",IDC_WORDUP,255,2,20,18
+    LTEXT           "Static",IDC_FRAME1,6,31,214,19,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME2,221,31,237,19,0,WS_EX_TRANSPARENT | 
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_HELPFILE,457,30,22,20
+    LTEXT           "Static",IDC_FRAME3,6,52,144,18,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME6,6,123,144,18,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME7,107,125,37,14,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME9,155,123,92,18,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME8,205,125,37,14,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_SMALLPLUS,285,126,16,13
+    COMBOBOX        IDC_COMBO1,303,126,35,51,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
+    LTEXT           "Static",IDC_FRAME15,5,154,134,146,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME11,149,154,333,17,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME12,149,171,86,51,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    LTEXT           "Static",IDC_FRAME14,149,222,334,78,NOT WS_GROUP,
+                    WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    RTEXT           "Preview",IDC_TEXT4,254,126,32,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    RTEXT           "Elements",IDC_TEXT7,11,161,38,10,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "test1 Module\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "TEST1\0"
+            VALUE "LegalCopyright", "Copyright 2001\0"
+            VALUE "OriginalFilename", "SkinnedUI.exe\0"
+            VALUE "ProductName", "SkinnedUI Module\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "OLESelfRegister", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        BOTTOMMARGIN, 300
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "SkinnedUI"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+    ATL_IDS_SCTASKLIST      "Activate Task List"
+    ATL_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_MRU_FILE        "Open this document"
+    IDS_NEW                 "New"
+    IDS_SAVE                "Save"
+    IDS_SAVEAS              "Save As"
+    IDS_EXIT                "Exit"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
