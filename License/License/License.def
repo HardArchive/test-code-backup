@@ -1,8 +1,0 @@
-LIBRARY	"License"
-; License.def : 声明 DLL 的模块导出函数
-
-EXPORTS
-	; 此处可以是显式导出
-	GetMachineCode @ 1
-	GetSerial @ 2
-	CheckSerial @ 3
