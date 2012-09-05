@@ -33,6 +33,7 @@ public:
 		COMMAND_HANDLER(ID_BUTTON_SELECT, BN_CLICKED, OnBnClickedButtonSelect)
 		COMMAND_HANDLER(IDC_BUTTON_DOWNLOAD, BN_CLICKED, OnBnClickedButtonDownload)
 		COMMAND_HANDLER(IDC_BUTTON_ABOUT, BN_CLICKED, OnBnClickedButtonAbout)
+		COMMAND_HANDLER(IDC_CHECK_ONTOP, BN_CLICKED, OnBnClickedCheckOntop)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -50,4 +51,5 @@ public:
 	LRESULT OnBnClickedButtonSelect(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedButtonDownload(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedButtonAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedCheckOntop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };

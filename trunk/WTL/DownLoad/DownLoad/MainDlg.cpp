@@ -185,3 +185,14 @@ LRESULT CMainDlg::OnBnClickedButtonAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWN
 	dlg.DoModal();
 	return 0;
 }
+
+//窗口置顶函数
+LRESULT CMainDlg::OnBnClickedCheckOntop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: 在此添加控件通知处理程序代码
+	::SetWindowPos(m_hWnd, ::IsDlgButtonChecked(m_hWnd, IDC_CHECK_ONTOP) 
+		? HWND_TOPMOST : HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+	//::SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE|SWP_SHOWWINDOW);
+
+	return 0;
+}
