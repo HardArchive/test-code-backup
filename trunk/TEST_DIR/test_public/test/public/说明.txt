@@ -1,0 +1,18 @@
+public：公用类文件夹
+
+Utility  (名)
+     公用程序, 实用, 实用品
+Util     
+     实用程序
+unit名词:
+	单元 (unit)
+	单位 (unit)
+	部 (unit, section, part, department, ministry, division)
+	机组 (unit, set, aircrew, flight crew, block, suite)
+	部件 (part, component, unit, assembly)
+	部队 (force, unit, army, troop, armed forces)
+	个体 (individual, unit, unity, matter)
+	学分 (credit, unit, academic credit)
+	
+	
+文件说明
