@@ -1,0 +1,38 @@
+// Simple8.idl : Simple8 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Simple8.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(D432BA0B-920F-4C92-BE2D-A4B569F7F21B),
+	dual,
+	nonextensible,
+	helpstring("IDispSimple 接口"),
+	pointer_default(unique)
+]
+interface IDispSimple : IDispatch{
+	[id(1), helpstring("方法Add")] HRESULT Add([in] VARIANT v1, [in] VARIANT v2, [out,retval] VARIANT* pVal);
+	[id(2), helpstring("方法Upper")] HRESULT Upper([in] BSTR str, [out,retval] BSTR* pVal);
+};
+[
+	uuid(79612B70-279D-49A1-9F9C-1C27D673E898),
+	version(1.0),
+	helpstring("Simple8 1.0 类型库")
+]
+library Simple8Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(FB529B3B-A07B-40E2-A750-A90CA00326F5),
+		helpstring("DispSimple Class")
+	]
+	coclass DispSimple
+	{
+		[default] interface IDispSimple;
+	};
+};

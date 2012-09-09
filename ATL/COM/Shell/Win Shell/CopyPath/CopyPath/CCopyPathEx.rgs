@@ -1,0 +1,32 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {80C05D09-26A9-4195-9DBF-F1D4B74B2E3B} = s 'CCopyPathEx Class'
+		{
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+   NoRemove *
+   {
+      NoRemove Shellex
+      {
+         NoRemove ContextMenuHandlers
+         {
+            CCopyPathEx = s '{80C05D09-26A9-4195-9DBF-F1D4B74B2E3B}'
+         }
+      }
+   }
+   NoRemove Folder
+   {
+      NoRemove Shellex
+      {
+         NoRemove ContextMenuHandlers
+         {
+            CCopyPathEx = s '{80C05D09-26A9-4195-9DBF-F1D4B74B2E3B}'
+         }
+      }
+   }
+}

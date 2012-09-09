@@ -1,0 +1,38 @@
+// DLLReg.idl : IDL source for DLLReg.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DLLReg.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(8AB81E71-CB2F-11D3-8D3B-AC2F34F1FA3C),
+		dual,
+		helpstring("IDLLRegShlExt Interface"),
+		pointer_default(unique)
+	]
+	interface IDLLRegShlExt : IDispatch
+	{
+	};
+
+[
+	uuid(8AB81E65-CB2F-11D3-8D3B-AC2F34F1FA3C),
+	version(1.0),
+	helpstring("DLLReg 1.0 Type Library")
+]
+library DLLREGLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(8AB81E72-CB2F-11D3-8D3B-AC2F34F1FA3C),
+		helpstring("DLLRegShlExt Class")
+	]
+	coclass DLLRegShlExt
+	{
+		[default] interface IDLLRegShlExt;
+	};
+};

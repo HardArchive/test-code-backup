@@ -1,0 +1,27 @@
+HKCR
+{
+	Simple18.Property.1 = s 'Property Class'
+	{
+		CLSID = s '{AF3B9257-E99F-4DBB-B519-F05565177E1F}'
+	}
+	Simple18.Property = s 'Property Class'
+	{
+		CLSID = s '{AF3B9257-E99F-4DBB-B519-F05565177E1F}'
+		CurVer = s 'Simple18.Property.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AF3B9257-E99F-4DBB-B519-F05565177E1F} = s 'Property Class'
+		{
+			ProgID = s 'Simple18.Property.1'
+			VersionIndependentProgID = s 'Simple18.Property'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{40070664-EDD2-4037-8A95-9462FEC9BFF8}'
+		}
+	}
+}

@@ -1,0 +1,28 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {AC146E80-3679-4BCA-9BE4-E36512573E6C} = s 'MP3 ID3v1 Tag Viewer Class'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{E91A976E-1B6A-4BBB-8A2B-99B73CA6937D}'
+		}
+	}
+    NoRemove Folder
+    {
+        NoRemove Shellex
+        {
+            NoRemove ColumnHandlers
+            {
+                ForceRemove {AC146E80-3679-4BCA-9BE4-E36512573E6C} = s 'MP3 ID3v1 viewer column ext'
+            }
+        }
+    }
+    NoRemove .mp3
+    {
+        val InfoTip = s 'prop:Type;Author;Title;Comment;{AC146E80-3679-4BCA-9BE4-E36512573E6C},0;{AC146E80-3679-4BCA-9BE4-E36512573E6C},1;{AC146E80-3679-4BCA-9BE4-E36512573E6C},2;Size'
+    }
+}

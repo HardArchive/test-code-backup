@@ -1,0 +1,170 @@
+package id2vj6veofozrjgeofp1qtf;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node18:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node22:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node24:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node31:oiref><oihard>
+@__modelType reference 
+*/
+class reference32 {
+}/**
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node33:oiref><oihard>
+@__modelType reference 
+*/
+class reference34 {
+}}/**
+
+@__tags
+@shapeType ActivityDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node24.link:oiref>=118,291,118,321,222,321,222,105:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node22.link:oiref>=88,224,88,261:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node18.link:oiref>=89,161,89,191:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node22:oiref>=28,191,123,33,0:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node18.link28:oiref>=154,141,219,141,219,105:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node:oiref>=80,90,12,12,1:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node33.link:oiref>=218,51,218,90:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node31.link:oiref>=86,60,86,90:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref>=210,90,15,15,1:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node33:oiref>=170,20,127,31,0:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node18:oiref>=28,131,126,30,0:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node24.link30:oiref>=148,271,213,271,213,105:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node24:oiref>=28,261,120,30,0:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node.link:oiref>=86,102,86,131:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node31:oiref>=20,20,102,40,1:oigroup>
+<oigroup:<oiref:design#Class#id2vj6veofozrjgeofp1qtf.node22.link29:oiref>=151,201,216,201,216,105:oigroup>
+*/
+class __positions {
+}/**
+@shapeType StartState
+@__modelType node
+@name StartState1 
+*/
+class node {
+/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node18:oiref><oihard> 
+*/
+class link {
+}}/**
+@shapeType Activity
+@__modelType node
+@name MDI主窗口 
+*/
+class node18 {
+/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node22:oiref><oihard> 
+*/
+class link {
+}/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard> 
+*/
+class link28 {
+}}/**
+@shapeType EndState
+@__modelType node
+@name EndState1 
+*/
+class node20 {
+}/**
+@shapeType Activity
+@__modelType node
+@name MDI子窗口 
+*/
+class node22 {
+/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node24:oiref><oihard> 
+*/
+class link {
+}/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard> 
+*/
+class link29 {
+}}/**
+@shapeType Activity
+@__modelType node
+@name 数据视图 
+*/
+class node24 {
+/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard> 
+*/
+class link {
+}/**
+@shapeType TransitionLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard> 
+*/
+class link30 {
+}}/**
+@shapeType Note
+@__modelType node
+@name Note1
+@text 开始命令处理 
+*/
+class node31 {
+/**
+@shapeType NoteLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node:oiref><oihard> 
+*/
+class link {
+}}/**
+@shapeType Note
+@__modelType node
+@name Note2
+@text 结束命令处理 
+*/
+class node33 {
+/**
+@shapeType NoteLink
+@__modelType link
+@__ref <oiref:design#Class#id2vj6veofozrjgeofp1qtf.node20:oiref><oihard> 
+*/
+class link {
+}}

@@ -1,0 +1,9 @@
+
+LIBRARY      "Simple4PS"
+
+EXPORTS
+	DllGetClassObject       PRIVATE
+	DllCanUnloadNow         PRIVATE
+	GetProxyDllInfo         PRIVATE
+	DllRegisterServer		PRIVATE
+	DllUnregisterServer		PRIVATE

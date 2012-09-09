@@ -1,0 +1,38 @@
+// SendToClone.idl : IDL source for SendToClone.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SendToClone.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(B7F3240D-0E29-11D4-8D3B-80CD3621FB09),
+		dual,
+		helpstring("ISendToShlExt Interface"),
+		pointer_default(unique)
+	]
+	interface ISendToShlExt : IDispatch
+	{
+	};
+
+[
+	uuid(B7F32400-0E29-11D4-8D3B-80CD3621FB09),
+	version(1.0),
+	helpstring("SendToClone 1.0 Type Library")
+]
+library SENDTOCLONELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(B7F3240E-0E29-11D4-8D3B-80CD3621FB09),
+		helpstring("SendToShlExt Class")
+	]
+	coclass SendToShlExt
+	{
+		[default] interface ISendToShlExt;
+	};
+};

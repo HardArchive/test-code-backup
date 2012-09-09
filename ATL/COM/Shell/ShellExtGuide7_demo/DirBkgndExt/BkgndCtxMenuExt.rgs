@@ -1,0 +1,26 @@
+HKCR
+{
+    NoRemove CLSID
+    {
+        ForceRemove {9E5E1445-6CEA-4761-8E45-AA19F654571E} = s 'BkgndCtxMenuExt Class'
+        {
+            InprocServer32 = s '%MODULE%'
+            {
+                val ThreadingModel = s 'Apartment'
+            }
+        }
+    }
+    NoRemove Directory
+    {
+        NoRemove Background
+        {
+            NoRemove ShellEx
+            {
+                NoRemove ContextMenuHandlers
+                {
+                    ForceRemove SimpleBkgndExtension = s '{9E5E1445-6CEA-4761-8E45-AA19F654571E}'
+                }
+            }
+        }
+    }
+}

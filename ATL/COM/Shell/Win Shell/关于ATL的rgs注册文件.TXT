@@ -1,0 +1,55 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'CopyPath'
+		'CopyPath.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}
+
+
+
+HKCR
+{
+	TestMenu3.CCopyPathEx.1 = s 'CCopyPathEx Class'
+	{
+		CLSID = s '{7CCC83BC-42DD-440D-8F85-B94964844F78}'
+	}
+	TestMenu3.CCopyPathEx = s 'CCopyPathEx Class'
+	{
+		CLSID = s '{7CCC83BC-42DD-440D-8F85-B94964844F78}'
+		CurVer = s 'TestMenu3.CCopyPathEx.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7CCC83BC-42DD-440D-8F85-B94964844F78} = s 'CCopyPathEx Class'
+		{
+			ProgID = s 'TestMenu3.CCopyPathEx.1'
+			VersionIndependentProgID = s 'TestMenu3.CCopyPathEx'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{4B41B46D-D4A1-492A-962C-A0E7B6FCB0F5}'
+		}
+	}
+}
+
+
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {7CCC83BC-42DD-440D-8F85-B94964844F78} = s 'CCopyPathEx Class'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

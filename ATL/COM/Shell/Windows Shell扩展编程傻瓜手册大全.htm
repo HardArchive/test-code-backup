@@ -1,0 +1,805 @@
+<html xmlns="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:w="urn:schemas-microsoft-com:office:word">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <meta name="ProgId" content="Word.Document">
+    <meta name="Generator" content="Microsoft Word 10">
+    <meta name="Originator" content="Microsoft Word 10">
+    <link rel="File-List" href="./Windows Shell扩展编程傻瓜手册大全.files/filelist.xml">
+    <link rel="Edit-Time-Data" href="./Windows Shell扩展编程傻瓜手册大全.files/editdata.mso">
+    <link rel="OLE-Object-Data" href="./Windows Shell扩展编程傻瓜手册大全.files/oledata.mso">
+    <title>Windows Shell扩展编程傻瓜手册大全</title>
+    <!--[if !mso]>
+      <STYLE>V\:*{behavior:url(#default#VML);}O\:*{behavior:url(#default#VML);}W\:*{behavior:url(#default#VML);}.shape{behavior:url(#default#VML);}</STYLE>
+    <![endif]-->
+    <!--[if gte mso 9]>
+      <xml>
+        <o:DocumentProperties>
+          <o:Author>微软用户</o:Author>
+          <o:TotalTime>1</o:TotalTime>
+          <o:Created>2011-06-24T13:50:33Z</o:Created>
+          <o:LastSaved>2011-06-24T13:50:33Z</o:LastSaved>
+          <o:Company>微软中国</o:Company>
+          <o:Revision>1</o:Revision>
+        </o:DocumentProperties>
+      </xml>
+    <![endif]-->
+    <!--[if gte mso 9]>
+      <xml>
+        <w:WordDocument>
+          <w:View>Print</w:View>
+          <w:Zoom>100</w:Zoom>
+          <w:DisplayBackgroundShape></w:DisplayBackgroundShape>
+          <w:PunctuationKerning></w:PunctuationKerning>
+          <w:DoNotOptimizeForBrowser></w:DoNotOptimizeForBrowser>
+          <w:DrawingGridVerticalSpacing>8.15 磅</w:DrawingGridVerticalSpacing>
+          <w:DrawingGridHorizontalSpacing>0.05 磅</w:DrawingGridHorizontalSpacing>
+          <w:DisplayVerticalDrawingGridEvery>1</w:DisplayVerticalDrawingGridEvery>
+          <w:DisplayHorizontalDrawingGridEvery>1</w:DisplayHorizontalDrawingGridEvery>
+          <w:Compatibility>
+            <w:ULTrailSpace></w:ULTrailSpace>
+            <w:AdjustLineHeightInTable></w:AdjustLineHeightInTable>
+            <w:BalanceSingleByteDoubleByteWidth></w:BalanceSingleByteDoubleByteWidth>
+            <w:DoNotExpandShiftReturn></w:DoNotExpandShiftReturn>
+            <w:BreakWrappedTables></w:BreakWrappedTables>
+          </w:Compatibility>
+        </w:WordDocument>
+      </xml>
+    <![endif]-->
+    <STYLE>
+      <!--
+        p.MsoNormal, li.MsoNormal, div.MsoNormal{
+mso-style-parent:"";
+margin-top:0.0pt;
+margin-bottom:0.0pt;
+margin-left:0.0pt;
+text-indent:0.0pt;
+mso-pagination:none;
+font-size:12.0pt;
+mso-bidi-font-size:14.0pt;
+font-family:宋体;
+mso-fareast-font-family:宋体;
+mso-font-kerning:1.0pt;
+font-weight:normal;
+mso-bidi-font-weight:normal;}
+        
+        h1{
+mso-style-next:"正文";
+margin-top:17.0pt;
+margin-bottom:16.5pt;
+margin-left:0.0pt;
+text-indent:0.0pt;
+line-height:241%;
+mso-pagination:lines-together;
+page-break-after:avoid;
+mso-outline-level:1;
+font-size:22.0pt;
+mso-bidi-font-size:14.0pt;
+font-family:宋体;
+mso-fareast-font-family:宋体;
+mso-font-kerning:22.0pt;
+mso-bidi-font-weight:normal;}
+        
+        h2{
+mso-style-next:"正文";
+margin-top:13.0pt;
+margin-bottom:13.0pt;
+margin-left:0.0pt;
+text-indent:0.0pt;
+line-height:173%;
+mso-pagination:lines-together;
+page-break-after:avoid;
+mso-outline-level:2;
+font-size:16.0pt;
+mso-bidi-font-size:14.0pt;
+font-family:Arial;
+mso-fareast-font-family:永中黑体;
+mso-font-kerning:1.0pt;
+mso-bidi-font-weight:normal;}
+        
+        h3{
+mso-style-next:"正文";
+margin-top:13.0pt;
+margin-bottom:13.0pt;
+margin-left:0.0pt;
+text-indent:0.0pt;
+line-height:173%;
+mso-pagination:lines-together;
+page-break-after:avoid;
+mso-outline-level:3;
+font-size:16.0pt;
+mso-bidi-font-size:14.0pt;
+font-family:宋体;
+mso-fareast-font-family:宋体;
+mso-font-kerning:1.0pt;
+mso-bidi-font-weight:normal;}
+        
+        a:link, span.MsoHyperlink{
+mso-style-parent:"";
+color:#3E79C9;
+text-decoration:none;
+text-underline:none;
+text-line-through:none;}
+        
+        @list l0{
+mso-list-id:-524284342;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l0:level1{
+mso-level-number-format:bullet;
+mso-level-style-link:"列表项目符号";
+mso-level-text:"\6c";
+mso-level-tab-stop:18.0pt;
+mso-level-number-position:left;
+margin-left:18.0pt;
+text-indent:-18.0pt;
+font-family:Wingdings;}
+        
+        @list l1{
+mso-list-id:1877929001;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l1:level1{
+mso-level-style-link:"列表编号";
+mso-level-text:"%1.";
+mso-level-tab-stop:18.0pt;
+mso-level-number-position:left;
+margin-left:18.0pt;
+text-indent:-18.0pt;}
+        
+        @list l2{
+mso-list-id:-29405909;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l2:level1{
+mso-level-number-format:bullet;
+mso-level-style-link:"列表项目符号 2";
+mso-level-text:"\6c";
+mso-level-tab-stop:39.0pt;
+mso-level-number-position:left;
+margin-left:39.0pt;
+text-indent:-18.0pt;
+font-family:Wingdings;}
+        
+        @list l3{
+mso-list-id:-1711581477;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l3:level1{
+mso-level-number-format:bullet;
+mso-level-style-link:"列表项目符号 3";
+mso-level-text:"\6c";
+mso-level-tab-stop:60.0pt;
+mso-level-number-position:left;
+margin-left:60.0pt;
+text-indent:-18.0pt;
+font-family:Wingdings;}
+        
+        @list l4{
+mso-list-id:-430914974;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l4:level1{
+mso-level-number-format:bullet;
+mso-level-style-link:"列表项目符号 4";
+mso-level-text:"\6c";
+mso-level-tab-stop:81.0pt;
+mso-level-number-position:left;
+margin-left:81.0pt;
+text-indent:-18.0pt;
+font-family:Wingdings;}
+        
+        @list l5{
+mso-list-id:-1071850278;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l5:level1{
+mso-level-number-format:bullet;
+mso-level-style-link:"列表项目符号 5";
+mso-level-text:"\6c";
+mso-level-tab-stop:102.0pt;
+mso-level-number-position:left;
+margin-left:102.0pt;
+text-indent:-18.0pt;
+font-family:Wingdings;}
+        
+        @list l6{
+mso-list-id:-1172280443;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l6:level1{
+mso-level-style-link:"列表编号 2";
+mso-level-text:"%1.";
+mso-level-tab-stop:39.0pt;
+mso-level-number-position:left;
+margin-left:39.0pt;
+text-indent:-18.0pt;}
+        
+        @list l7{
+mso-list-id:1032612571;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l7:level1{
+mso-level-style-link:"列表编号 3";
+mso-level-text:"%1.";
+mso-level-tab-stop:60.0pt;
+mso-level-number-position:left;
+margin-left:60.0pt;
+text-indent:-18.0pt;}
+        
+        @list l8{
+mso-list-id:-1187599014;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l8:level1{
+mso-level-style-link:"列表编号 4";
+mso-level-text:"%1.";
+mso-level-tab-stop:81.0pt;
+mso-level-number-position:left;
+margin-left:81.0pt;
+text-indent:-18.0pt;}
+        
+        @list l9{
+mso-list-id:-1449361848;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l9:level1{
+mso-level-style-link:"列表编号 5";
+mso-level-text:"%1.";
+mso-level-tab-stop:102.0pt;
+mso-level-number-position:left;
+margin-left:102.0pt;
+text-indent:-18.0pt;}
+        
+        @list l10{
+mso-list-id:10;
+mso-list-type:hybrid;
+mso-list-template-ids:0;
+}
+        
+        @list l10:level1{
+mso-level-number-format:bullet;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level2{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level3{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level4{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level5{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level6{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level7{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level8{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @list l10:level9{
+mso-level-number-format:bullet;
+mso-level-reset-level:level1;
+mso-level-text:"\b7";
+mso-level-tab-stop:36.0pt;
+mso-level-number-position:left;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+mso-ansi-font-size:10.0pt;
+font-family:Symbol;}
+        
+        @page{
+mso-page-border-surround-header:no;
+mso-page-border-surround-footer:no;}
+        
+        @page Section1{
+size:595.35pt 841.95pt;
+mso-page-orientation:luprightness;
+margin:72.0pt 90.0pt 72.0pt 90.0pt;
+mso-header-margin:42.55pt;
+mso-footer-margin:49.6pt;
+mso-gutter-margin:0.0pt;
+mso-paper-source:42.55pt;
+mso-vertical-page-align:72.0pt 90.0pt 72.0pt 90.0pt;
+padding:24.0pt 24.0pt 24.0pt 24.0pt;}
+        
+        div.Section1{
+page:Section1;
+}
+        
+        @font-face{
+font-family:Wingdings;
+panose-1:5 0 0 0 0 0 0 0 0 0;
+mso-font-charset:2;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:0 0 0 0 -2147483648 0;}
+        
+        @font-face{
+font-family:Symbol;
+panose-1:5 5 1 2 1 7 6 2 5 7;
+mso-font-charset:2;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:0 0 0 0 -2147483648 0;}
+        
+        @font-face{
+font-family:12pxarial;
+panose-1:0 0 0 0 0 0 0 0 0 0;
+mso-font-charset:0;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:0 0 0 0 0 0;}
+        
+        @font-face{
+font-family:宋体;
+panose-1:2 1 6 0 3 1 1 1 1 1;
+mso-font-charset:134;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:3 135135232 0 0 262145 0;}
+        
+        @font-face{
+font-family:永中黑体;
+panose-1:2 1 6 0 3 1 1 1 1 1;
+mso-font-charset:134;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:2051 135135232 0 0 262144 0;}
+        
+        @font-face{
+font-family:Arial;
+panose-1:2 11 6 4 2 2 2 2 2 4;
+mso-font-charset:0;
+mso-generic-font-family:auto;
+mso-font-pitch:variable;
+mso-font-signature:31367 -2147483648 8 0 1073742335 -65536;}
+        
+      -->
+    </STYLE>
+  </head>
+  <body style='tab-interval:21.0pt;
+text-justify-trim:punctuation'>
+    <DIV class="Section1">
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://blog.163.com/yesaidu@126/blog/static/51819307200861853827582/"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>Windows Shell扩展编程傻瓜手册大全：上下文菜单扩展 - yesaidu的日志 - 网易博客</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.baidu.com/s?wd=%BD%E2%B3%FD%D5%BC%D3%C3&pn=30&usm=1"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>百度搜索_解除占用</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.baidu.com/s?bs=%BD%E2%B3%FD%CE%C4%BC%FE%D5%BC%D3%C3&f=8&wd=%BD%E2%B3%FD%CE%C4%BC%FE%D5%BC%D3%C3+C%2B%2B"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>百度搜索_解除文件占用 C++</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.rsky.com.cn/Article/cplus/201008/12015.html"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>C/C++中对被占用文件操作三法 -C-技术中心-启天网</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.cppblog.com/free2000fly/archive/2009/07/14/89988.html"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>操作被占用的文件-unlocker机理分析 - free2000fly 的自留地 - C++博客</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.cctry.com/thread-16039-1-3.html"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>vc编写的纯 c + sdk 远程控制程序（高效抓屏）_希望下载使用的朋友能提意见！！ - Hack 编程 - VC驿站 - Powered by CcTry.CoM</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://niaobuniao.is-programmer.com/posts/2907.html"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>&lt;&lt;theForger&acute;s Win32 API Programming Tutorial&gt;&gt; 6章~菜单和图标 - 鸟不鸟</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://blog.csdn.net/jia_xiaoxin/archive/2008/09/19/2953986.aspx"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>VC下轻松实现扩展shell(一) - jia_xiaoxin的专栏 - CSDN博客</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.codeproject.com/KB/shell/shellextguide1.aspx"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>The Complete Idiot&acute;s Guide to Writing Shell Extensions - Part I - CodeProject</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.codeproject.com/"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>CodeProject - Your Development Resource</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://blog.csdn.net/yaozijian110/archive/2010/06/15/5671914.aspx"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>Shell扩展编程入门 - 岁月无痕 - CSDN博客</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://u.115.com/file/dnsqg640"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>由浅入深学习感染PE文件的操作.rar115网盘&brvbar;网盘&brvbar;115网络U盘-我的网盘&brvbar;免费网络硬盘</SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'> <o:p></o:p></SPAN></p>
+<p class="MsoNormal" style='mso-list:l10 level1 lfo1;
+mso-margin-top-alt:auto;
+margin-right:0.0pt;
+mso-margin-bottom-alt:auto;
+margin-left:36.0pt;
+text-indent:-18.0pt;
+line-height:18.74pt'><![if !supportLists]><SPAN style='font-size:10.0pt;
+font-family:Symbol;
+mso-ascii-font-family:Symbol;
+mso-fareast-font-family:宋体;
+color:#3E79C9;
+mso-hide:none;
+font-weight:normal;
+mso-bidi-font-weight:normal;
+font-style:normal;
+mso-bidi-font-style:normal;
+text-underline:windowtext none;
+text-decoration:none;
+background:transparent'>&middot;<SPAN style='font:7.0pt Times New Roman'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN><![endif]><a href="http://www.codeproject.com/KB/shell/overlayicon.aspx"><SPAN style='font-size:12.0pt;
+font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+text-underline:none;
+text-decoration: none'>How to overlay an icon over existing shell objects in 3 easy steps </SPAN></a><SPAN style='font-family:12pxarial;
+mso-ascii-font-family:12pxarial;
+mso-fareast-font-family:宋体;
+color:#3E79C9'><o:p></o:p></SPAN></p>
+<p class="MsoNormal"><SPAN style='font-family:宋体;
+mso-ascii-font-family:宋体;
+mso-fareast-font-family:宋体'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></p></DIV>
+  </body>
+</html>

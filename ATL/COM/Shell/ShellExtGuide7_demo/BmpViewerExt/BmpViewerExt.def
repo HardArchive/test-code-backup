@@ -1,0 +1,9 @@
+; BmpViewerExt.def : Declares the module parameters.
+
+LIBRARY      "BmpViewerExt.DLL"
+
+EXPORTS
+    DllCanUnloadNow     PRIVATE
+    DllGetClassObject   PRIVATE
+    DllRegisterServer   PRIVATE
+    DllUnregisterServer PRIVATE

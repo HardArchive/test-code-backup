@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLLReg", "DLLReg.vcproj", "{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release MinDependency = Release MinDependency
+		Release MinSize = Release MinSize
+		Unicode Debug = Unicode Debug
+		Unicode Release MinDependency = Unicode Release MinDependency
+		Unicode Release MinSize = Unicode Release MinSize
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Debug.ActiveCfg = Debug|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Debug.Build.0 = Debug|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Release MinDependency.ActiveCfg = Release MinDependency|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Release MinDependency.Build.0 = Release MinDependency|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Release MinSize.ActiveCfg = Release MinSize|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Release MinSize.Build.0 = Release MinSize|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Debug.ActiveCfg = Unicode Debug|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Debug.Build.0 = Unicode Debug|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Release MinDependency.ActiveCfg = Unicode Release MinDependency|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Release MinDependency.Build.0 = Unicode Release MinDependency|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Release MinSize.ActiveCfg = Unicode Release MinSize|Win32
+		{C4B00EC0-EEFC-46BB-999A-1BAB3CFF76D0}.Unicode Release MinSize.Build.0 = Unicode Release MinSize|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
