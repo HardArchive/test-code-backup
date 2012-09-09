@@ -1,0 +1,38 @@
+// COMRegister.idl : IDL source for COMRegister.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (COMRegister.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(1FEAEBFA-3C7A-4BB6-B0D2-F1B81B8F27ED),
+		dual,
+		helpstring("IShellMenu Interface"),
+		pointer_default(unique)
+	]
+	interface IShellMenu : IDispatch
+	{
+	};
+
+[
+	uuid(2318E5A3-24B8-438D-BDE2-B02B90B97275),
+	version(1.0),
+	helpstring("COMRegister 1.0 Type Library")
+]
+library COMREGISTERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(71D88C20-41CF-4CDF-A81F-D8609836347D),
+		helpstring("ShellMenu Class")
+	]
+	coclass ShellMenu
+	{
+		[default] interface IShellMenu;
+	};
+};

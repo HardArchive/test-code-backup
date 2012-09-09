@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GncShellExt", "GncShellExt.vcproj", "{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release MinDependency = Release MinDependency
+		Release MinSize = Release MinSize
+		Unicode Debug = Unicode Debug
+		Unicode Release MinDependency = Unicode Release MinDependency
+		Unicode Release MinSize = Unicode Release MinSize
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Debug.ActiveCfg = Debug|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Debug.Build.0 = Debug|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Release MinDependency.ActiveCfg = Release MinDependency|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Release MinDependency.Build.0 = Release MinDependency|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Release MinSize.ActiveCfg = Release MinSize|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Release MinSize.Build.0 = Release MinSize|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Debug.ActiveCfg = Unicode Debug|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Debug.Build.0 = Unicode Debug|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Release MinDependency.ActiveCfg = Unicode Release MinDependency|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Release MinDependency.Build.0 = Unicode Release MinDependency|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Release MinSize.ActiveCfg = Unicode Release MinSize|Win32
+		{AB3211F6-B1B4-49DA-B6BF-548566DB7C87}.Unicode Release MinSize.Build.0 = Unicode Release MinSize|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

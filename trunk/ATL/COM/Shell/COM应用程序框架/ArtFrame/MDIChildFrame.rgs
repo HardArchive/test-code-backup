@@ -1,0 +1,27 @@
+HKCR
+{
+	ArtFrame.MDIChildFrame.1 = s 'MDIChildFrame Class'
+	{
+		CLSID = s '{47B924E4-4E16-4DB9-AE43-3F0144BE0DD2}'
+	}
+	ArtFrame.MDIChildFrame = s 'MDIChildFrame Class'
+	{
+		CLSID = s '{47B924E4-4E16-4DB9-AE43-3F0144BE0DD2}'
+		CurVer = s 'ArtFrame.MDIChildFrame.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {47B924E4-4E16-4DB9-AE43-3F0144BE0DD2} = s 'MDIChildFrame Class'
+		{
+			ProgID = s 'ArtFrame.MDIChildFrame.1'
+			VersionIndependentProgID = s 'ArtFrame.MDIChildFrame'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{28462839-FA53-4A4C-A776-676CD60D4238}'
+		}
+	}
+}

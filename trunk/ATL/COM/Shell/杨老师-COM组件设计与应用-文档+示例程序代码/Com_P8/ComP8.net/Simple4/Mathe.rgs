@@ -1,0 +1,26 @@
+HKCR
+{
+	Simple4.Mathe.1 = s 'Mathe Class'
+	{
+		CLSID = s '{0D8C856B-00CF-4F84-BCC3-B855562D8772}'
+	}
+	Simple4.Mathe = s 'Mathe Class'
+	{
+		CLSID = s '{0D8C856B-00CF-4F84-BCC3-B855562D8772}'
+		CurVer = s 'Simple4.Mathe.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0D8C856B-00CF-4F84-BCC3-B855562D8772} = s 'Mathe Class'
+		{
+			ProgID = s 'Simple4.Mathe.1'
+			VersionIndependentProgID = s 'Simple4.Mathe'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{97A1EA92-D241-4189-8BBB-38D95E79EA8E}'
+		}
+	}
+}

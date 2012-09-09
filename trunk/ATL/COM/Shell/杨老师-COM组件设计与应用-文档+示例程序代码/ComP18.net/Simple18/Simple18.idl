@@ -1,0 +1,40 @@
+// Simple18.idl : Simple18 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Simple18.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(F2BD292C-500D-475B-9C9B-8D4785D3E8F0),
+	dual,
+	nonextensible,
+	helpstring("IProperty 接口"),
+	pointer_default(unique)
+]
+interface IProperty : IDispatch{
+	[propget, id(1), helpstring("属性 str")] HRESULT str([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("属性 str")] HRESULT str([in] BSTR newVal);
+	[propget, id(2), helpstring("属性 integer")] HRESULT integer([out, retval] LONG* pVal);
+	[propput, id(2), helpstring("属性 integer")] HRESULT integer([in] LONG newVal);
+};
+[
+	uuid(40070664-EDD2-4037-8A95-9462FEC9BFF8),
+	version(1.0),
+	helpstring("Simple18 1.0 类型库")
+]
+library Simple18Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(AF3B9257-E99F-4DBB-B519-F05565177E1F),
+		helpstring("Property Class")
+	]
+	coclass Property
+	{
+		[default] interface IProperty;
+	};
+};

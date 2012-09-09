@@ -1,0 +1,90 @@
+package id12i0reodloeqceodls3gk;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node14:oiref><oihard>
+@__modelType reference 
+*/
+class reference15 {
+}/**
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node16:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node20:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}}/**
+
+@__tags
+@shapeType UseCaseDiagram 
+*/
+class __tags {
+}/**
+@__options option.links = Direct 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node14:oiref>=240,50,139,61,0:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node16:oiref>=250,190,128,48,0:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node.link19:oiref>=82,213,250,213:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node20:oiref>=250,300,130,69,0:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node.link22:oiref>=56,237,315,300:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node:oiref>=30,160,52,77,1:oigroup>
+<oigroup:<oiref:design#Class#id12i0reodloeqceodls3gk.node.link:oiref>=56,160,309,111:oigroup>
+*/
+class __positions {
+}/**
+@shapeType Actor
+@__modelType node
+@name 主程序 
+*/
+class node {
+/**
+@shapeType CommunicatesLink
+@__modelType link
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node14:oiref><oihard> 
+*/
+class link {
+}/**
+@shapeType CommunicatesLink
+@__modelType link
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node16:oiref><oihard> 
+*/
+class link19 {
+}/**
+@shapeType CommunicatesLink
+@__modelType link
+@__ref <oiref:design#Class#id12i0reodloeqceodls3gk.node20:oiref><oihard> 
+*/
+class link22 {
+}}/**
+@shapeType UseCase
+@__modelType node
+@name 建立MDI主窗口 
+*/
+class node14 {
+}/**
+@shapeType UseCase
+@__modelType node
+@name 添加MDI子窗口 
+*/
+class node16 {
+}/**
+@shapeType UseCase
+@__modelType node
+@name 关闭MDI主窗口 
+*/
+class node20 {
+}

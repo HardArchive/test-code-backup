@@ -1,0 +1,9 @@
+; Simple18.def : 定义模块参数。
+
+LIBRARY      "Simple18.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

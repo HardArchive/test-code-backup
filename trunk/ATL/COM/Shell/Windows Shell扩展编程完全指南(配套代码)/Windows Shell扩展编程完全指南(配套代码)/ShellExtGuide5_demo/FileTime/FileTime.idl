@@ -1,0 +1,38 @@
+// FileTime.idl : IDL source for FileTime.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FileTime.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(3FCEF00F-09A4-11D4-8D3B-D12F9D3D8B02),
+		dual,
+		helpstring("IFileTimeShlExt Interface"),
+		pointer_default(unique)
+	]
+	interface IFileTimeShlExt : IDispatch
+	{
+	};
+
+[
+	uuid(3FCEF003-09A4-11D4-8D3B-D12F9D3D8B02),
+	version(1.0),
+	helpstring("FileTime 1.0 Type Library")
+]
+library FILETIMELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(3FCEF010-09A4-11D4-8D3B-D12F9D3D8B02),
+		helpstring("FileTimeShlExt Class")
+	]
+	coclass FileTimeShlExt
+	{
+		[default] interface IFileTimeShlExt;
+	};
+};

@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://blog.163.com/yesaidu@126/blog/static/51819307200861853827582/
+[DOC#3614]
+BASEURL=http://blog.163.com/yesaidu@126/blog/static/51819307200861853827582/
+ORIGURL=http://blog.163.com/crossdomain.html
+[InternetShortcut]
+URL=http://blog.163.com/yesaidu@126/blog/static/51819307200861853827582/
+IDList=
+IconFile=http://blog.163.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

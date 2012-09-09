@@ -1,0 +1,34 @@
+HKCR
+{
+	TxtFileIcons.TxtIconShlExt.1 = s 'TxtIconShlExt Class'
+	{
+		CLSID = s '{DF4F5AE4-E795-4C12-BC26-7726C27F71AE}'
+	}
+	TxtFileIcons.TxtIconShlExt = s 'TxtIconShlExt Class'
+	{
+		CLSID = s '{DF4F5AE4-E795-4C12-BC26-7726C27F71AE}'
+		CurVer = s 'TxtFileIcons.TxtIconShlExt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DF4F5AE4-E795-4C12-BC26-7726C27F71AE} = s 'TxtIconShlExt Class'
+		{
+			ProgID = s 'TxtFileIcons.TxtIconShlExt.1'
+			VersionIndependentProgID = s 'TxtFileIcons.TxtIconShlExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{B8C2FE66-EDB8-4765-8A47-6BBDC9B28891}'
+		}
+	}
+    NoRemove txtfile
+    {
+        NoRemove DefaultIcon = s '%%1'
+        NoRemove ShellEx
+        {
+            ForceRemove IconHandler = s '{DF4F5AE4-E795-4C12-BC26-7726C27F71AE}'
+        }
+    }
+}

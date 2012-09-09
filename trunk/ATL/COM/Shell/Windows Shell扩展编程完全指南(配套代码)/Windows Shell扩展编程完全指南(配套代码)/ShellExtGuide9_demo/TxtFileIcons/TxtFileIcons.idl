@@ -1,0 +1,38 @@
+// TxtFileIcons.idl : IDL source for TxtFileIcons.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TxtFileIcons.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(854AC32B-953A-4494-A9B4-B26781F5F4D3),
+		dual,
+		helpstring("ITxtIconShlExt Interface"),
+		pointer_default(unique)
+	]
+	interface ITxtIconShlExt : IDispatch
+	{
+	};
+
+[
+	uuid(B8C2FE66-EDB8-4765-8A47-6BBDC9B28891),
+	version(1.0),
+	helpstring("TxtFileIcons 1.0 Type Library")
+]
+library TXTFILEICONSLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(DF4F5AE4-E795-4C12-BC26-7726C27F71AE),
+		helpstring("TxtIconShlExt Class")
+	]
+	coclass TxtIconShlExt
+	{
+		[default] interface ITxtIconShlExt;
+	};
+};

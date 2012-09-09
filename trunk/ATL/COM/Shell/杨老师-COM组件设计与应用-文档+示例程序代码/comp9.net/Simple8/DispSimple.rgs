@@ -1,0 +1,27 @@
+HKCR
+{
+	Simple8.DispSimple.1 = s 'DispSimple Class'
+	{
+		CLSID = s '{FB529B3B-A07B-40E2-A750-A90CA00326F5}'
+	}
+	Simple8.DispSimple = s 'DispSimple Class'
+	{
+		CLSID = s '{FB529B3B-A07B-40E2-A750-A90CA00326F5}'
+		CurVer = s 'Simple8.DispSimple.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FB529B3B-A07B-40E2-A750-A90CA00326F5} = s 'DispSimple Class'
+		{
+			ProgID = s 'Simple8.DispSimple.1'
+			VersionIndependentProgID = s 'Simple8.DispSimple'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{79612B70-279D-49A1-9F9C-1C27D673E898}'
+		}
+	}
+}

@@ -1,0 +1,33 @@
+HKCR
+{
+    SendToClone.SendToShlExt.1 = s 'SendToShlExt Class'
+    {
+        CLSID = s '{B7F3240E-0E29-11D4-8D3B-80CD3621FB09}'
+    }
+    SendToClone.SendToShlExt = s 'SendToShlExt Class'
+    {
+        CLSID = s '{B7F3240E-0E29-11D4-8D3B-80CD3621FB09}'
+        CurVer = s 'SendToClone.SendToShlExt.1'
+    }
+    NoRemove CLSID
+    {
+        ForceRemove {B7F3240E-0E29-11D4-8D3B-80CD3621FB09} = s 'Send To Any Folder Clone'
+        {
+            ProgID = s 'SendToClone.SendToShlExt.1'
+            VersionIndependentProgID = s 'SendToClone.SendToShlExt'
+            ForceRemove 'Programmable'
+            InprocServer32 = s '%MODULE%'
+            {
+                val ThreadingModel = s 'Apartment'
+            }
+            'TypeLib' = s '{B7F32400-0E29-11D4-8D3B-80CD3621FB09}'
+            val NeverShowExt = s ''
+            DefaultIcon = s '%MODULE%,0'
+            shellex
+            {
+                DropHandler = s '{B7F3240E-0E29-11D4-8D3B-80CD3621FB09}'
+            }
+        }
+    }
+    .SendToClone = s 'CLSID\{B7F3240E-0E29-11D4-8D3B-80CD3621FB09}'
+}

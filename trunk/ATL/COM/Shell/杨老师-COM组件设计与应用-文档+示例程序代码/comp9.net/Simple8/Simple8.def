@@ -1,0 +1,9 @@
+; Simple8.def : 定义模块参数。
+
+LIBRARY      "Simple8.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

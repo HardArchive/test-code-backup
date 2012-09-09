@@ -1,0 +1,9 @@
+; Simple4.def : 定义模块参数。
+
+LIBRARY      "Simple4.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

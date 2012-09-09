@@ -1,0 +1,38 @@
+// ChkOpenFile.idl : IDL source for ChkOpenFile.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ChkOpenFile.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(47F5FA97-212E-4507-909E-08C1F0106C02),
+	
+		helpstring("IInterFaceCls Interface"),
+		pointer_default(unique)
+	]
+	interface IInterFaceCls : IUnknown
+	{
+	};
+
+[
+	uuid(2193037D-EC25-4BAD-8281-639107A4A70C),
+	version(1.0),
+	helpstring("ChkOpenFile 1.0 Type Library")
+]
+library CHKOPENFILELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(B3490870-0081-45C4-AE05-C4B7E788BC29),
+		helpstring("InterFaceCls Class")
+	]
+	coclass InterFaceCls
+	{
+		[default] interface IInterFaceCls;
+	};
+};

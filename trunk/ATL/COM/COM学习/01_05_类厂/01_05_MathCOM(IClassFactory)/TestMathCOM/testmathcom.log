@@ -1,0 +1,174 @@
+//本日志文件由 "Tabbar Add-in(1.15.2139) For Visual C++ 6.0" 创建
+//项目文件:E:\com\COM\MathCOM\TestMathCOM\TestMathCOM.dsp
+//如果文件增长的很大请删除除本节之外的其他信息
+
+[MAIN]
+nBuildNumber = 24
+
+[Build00000001]
+sStartTime = 2003-10-29 22:15:56
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-29 22:16:01
+
+[Build00000002]
+sStartTime = 2003-10-29 22:19:16
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 1
+sEndTime = 2003-10-29 22:19:17
+
+[Build00000003]
+sStartTime = 2003-10-29 22:20:00
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 1
+sEndTime = 2003-10-29 22:20:01
+
+[Build00000004]
+sStartTime = 2003-10-29 22:21:38
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-29 22:21:39
+
+[Build00000005]
+sStartTime = 2003-10-30 04:37:05
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 1
+sEndTime = 2003-10-30 04:38:11
+
+[Build00000006]
+sStartTime = 2003-10-30 04:47:35
+sCompileUser = Administrator
+nErrors = 2
+nWarns = 0
+sEndTime = 2003-10-30 04:47:53
+
+[Build00000007]
+sStartTime = 2003-10-30 04:51:19
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:51:25
+
+[Build00000008]
+sStartTime = 2003-10-30 04:52:30
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:52:32
+
+[Build00000009]
+sStartTime = 2003-10-30 04:52:44
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:52:45
+
+[Build00000010]
+sStartTime = 2003-10-30 04:52:55
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:52:56
+
+[Build00000011]
+sStartTime = 2003-10-30 04:53:07
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:53:09
+
+[Build00000012]
+sStartTime = 2003-10-30 04:53:42
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:53:43
+
+[Build00000013]
+sStartTime = 2003-10-30 04:57:26
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 04:57:28
+
+[Build00000014]
+sStartTime = 2003-10-30 05:10:11
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 05:10:18
+
+[Build00000015]
+sStartTime = 2003-10-30 10:22:08
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:22:13
+
+[Build00000016]
+sStartTime = 2003-10-30 10:23:48
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:23:51
+
+[Build00000017]
+sStartTime = 2003-10-30 10:26:12
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:26:14
+
+[Build00000018]
+sStartTime = 2003-10-30 10:27:11
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:27:13
+
+[Build00000019]
+sStartTime = 2003-10-30 10:58:40
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:58:49
+
+[Build00000020]
+sStartTime = 2003-10-30 10:59:37
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 10:59:39
+
+[Build00000021]
+sStartTime = 2003-10-30 11:22:49
+sCompileUser = Administrator
+nErrors = 1
+nWarns = 0
+sEndTime = 2003-10-30 11:22:55
+
+[Build00000022]
+sStartTime = 2003-10-30 11:23:21
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 11:23:25
+
+[Build00000023]
+sStartTime = 2003-10-30 11:24:14
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 11:24:15
+
+[Build00000024]
+sStartTime = 2003-10-30 11:24:46
+sCompileUser = Administrator
+nErrors = 0
+nWarns = 0
+sEndTime = 2003-10-30 11:25:07

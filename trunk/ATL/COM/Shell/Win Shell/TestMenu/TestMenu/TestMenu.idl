@@ -1,0 +1,36 @@
+// TestMenu.idl : TestMenu 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TestMenu.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(C30B0342-972C-4E2B-BF19-85308EB01EBE),
+	dual,
+	nonextensible,
+	helpstring("ICCopyPathEx 接口"),
+	pointer_default(unique)
+]
+interface ICCopyPathEx : IDispatch{
+};
+[
+	uuid(EEE8932E-A3EC-459E-825B-A26C6FC87165),
+	version(1.0),
+	helpstring("TestMenu 1.0 类型库")
+]
+library TestMenuLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(28B1C0F9-3F70-4341-A3EE-B0FD2FFA3DAF),
+		helpstring("CCopyPathEx Class")
+	]
+	coclass CCopyPathEx
+	{
+		[default] interface ICCopyPathEx;
+	};
+};

@@ -1,0 +1,38 @@
+// ContextShellExt.idl : IDL source for ContextShellExt.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ContextShellExt.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(2BC3180D-3E77-465A-AFDD-0311D75A3374),
+		dual,
+		helpstring("IMenuShellExt Interface"),
+		pointer_default(unique)
+	]
+	interface IMenuShellExt : IDispatch
+	{
+	};
+
+[
+	uuid(0D50E9BE-4A18-42EF-AAD5-576F4BCDA5AC),
+	version(1.0),
+	helpstring("ContextShellExt 1.0 Type Library")
+]
+library CONTEXTSHELLEXTLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A7275E1B-E709-4484-AFA7-659369738F07),
+		helpstring("MenuShellExt Class")
+	]
+	coclass MenuShellExt
+	{
+		[default] interface IMenuShellExt;
+	};
+};
