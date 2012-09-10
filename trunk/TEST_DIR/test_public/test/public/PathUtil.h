@@ -14,6 +14,7 @@
 
 namespace QNA
 {
+	//删除文件夹
 	//检查当前目录需要的文件夹是否存在,如果不存在返回false，存在返回true
 	bool ChickDirExist(TCHAR* ptszInPath)
 	{
@@ -23,6 +24,7 @@ namespace QNA
 		//检验路径是否存在	如果不存在则创建
 		if (GetFileAttributes(ptszInPath) != FILE_ATTRIBUTE_DIRECTORY)
 			return false;
+		
 
 		return true;
 	}
