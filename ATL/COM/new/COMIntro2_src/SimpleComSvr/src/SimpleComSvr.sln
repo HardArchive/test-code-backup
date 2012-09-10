@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MsgBoxSvr", "MsgBoxSvr\MsgBoxSvr.vcproj", "{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestClient", "TestClient\TestClient.vcproj", "{2B3F238A-F956-44DE-BBDA-DE5F3BF775E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A} = {A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}.Debug|Win32.Build.0 = Debug|Win32
+		{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}.Release|Win32.ActiveCfg = Release|Win32
+		{A8CBCB55-DEA9-443C-A4B4-6C28AE760E7A}.Release|Win32.Build.0 = Release|Win32
+		{2B3F238A-F956-44DE-BBDA-DE5F3BF775E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B3F238A-F956-44DE-BBDA-DE5F3BF775E5}.Debug|Win32.Build.0 = Debug|Win32
+		{2B3F238A-F956-44DE-BBDA-DE5F3BF775E5}.Release|Win32.ActiveCfg = Release|Win32
+		{2B3F238A-F956-44DE-BBDA-DE5F3BF775E5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
