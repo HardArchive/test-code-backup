@@ -49,10 +49,10 @@ namespace QNA
 		bool SetIniFilename(LPCTSTR IniFilename)
 		{
 			assert(IniFilename);
+			m_IniFilename = IniFilename;
 			if(m_IniFilename.empty()) 
 				return false;
 
-			m_IniFilename = IniFilename;
 			return true;
 		}
 
@@ -144,6 +144,20 @@ namespace QNA
 			if(m_IniFilename.empty())
 				return false;
 			return ::WritePrivateProfileString(lpszSection, NULL, NULL, m_IniFilename.c_str());
+		}
+
+		//获取当前程序所在目录
+		bool GetExePath(LPTSTR pstrPath)
+		{
+			LPTSTR ptTem = NULL;
+			TCHAR tszTemp[MAX_PATH] = {0};
+			//获取当前目录  //这里是获取当前进程文件的完整路径 
+			if (!GetModuleFileName(NULL, tszTemp, MAX_PATH) && pstrPath)
+				return false; 
+
+			ptTem = _tcsrchr(tszTemp, '\\');
+			memcpy(pstrPath, tszTemp, (_tcslen(tszTemp)-_tcslen(ptTem))*sizeof(TCHAR));
+			return true;
 		}
 
 		//变量
