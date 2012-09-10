@@ -7,48 +7,48 @@
 //#include "public/TraceUtil.h"
 
 //#include "public/RegUtil.h"
-//#include "public/IniUtil.h"
-#include "public/PathUtil.h"
+#include "public/IniUtil.h"
+//#include "public/PathUtil.h"
 #include <iostream>
 
 using namespace std;
 
 //int TraceUtil();
-//int IniUtil()
-//{
-//	QNA::CIniUtil clsIniUtil;
-//
-//
-//	return 1;
-//}
-
-int PathUtil()
+int IniUtil()
 {
-	TCHAR tszPath[MAX_PATH] = {0};
-	if (!QNA::GetExePath(tszPath))
-	{
-		return -1;
-	}
+	QNA::CIniUtil clsIniUtil;
 
-	_tcscat_s(tszPath, _T("\\123"));
-	
-	if (!QNA::CreateMultipleDirectory(tszPath))
-	{
-		return -2;
-	}
 
-	_tcscpy_s(tszPath, _T("D:\\123"));
-
-	if (!QNA::CreateMultipleDirectory(tszPath))
-	{
-		return -2;
-	}
 	return 1;
 }
 
+//int PathUtil()
+//{
+//	TCHAR tszPath[MAX_PATH] = {0};
+//	if (!QNA::GetExePath(tszPath))
+//	{
+//		return -1;
+//	}
+//
+//	_tcscat_s(tszPath, _T("\\123"));
+//	
+//	if (!QNA::CreateMultipleDirectory(tszPath))
+//	{
+//		return -2;
+//	}
+//
+//	_tcscpy_s(tszPath, _T("D:\\123"));
+//
+//	if (!QNA::CreateMultipleDirectory(tszPath))
+//	{
+//		return -2;
+//	}
+//	return 1;
+//}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	PathUtil();
+	//PathUtil();
 
 	//TraceUtil();
 

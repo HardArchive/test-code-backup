@@ -27,9 +27,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	char szPath[MAX_PATH] = {0};
 	GetCurrentPathA(szPath);
 
-	char szUrl[MAX_PATH] = {"http://www.114best.com/ip/114.aspx?w="};
+	char szUrl[MAX_PATH] = {"http://ip.valu.cn/ip/ "};
 	char szRegex[MAX_PATH] = {"\</span\>\<a target=\"_blank\"\>(.+?)\</a\>&nbsp;&nbsp"};
 	//target="_blank"\>(.+?)\</a\>\</td\>
+	//<td>\d+</td>\s+<td><a href="http://(.+?)" target="_blank">
 	SetUrlRegexA(szUrl, szRegex);
 	if (!StartIpLookupA("112.127.141.86"))
 	{

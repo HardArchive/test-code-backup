@@ -49,9 +49,10 @@ namespace QNA
 		bool SetIniFilename(LPCTSTR IniFilename)
 		{
 			assert(IniFilename);
-			m_IniFilename = IniFilename;
 			if(m_IniFilename.empty()) 
 				return false;
+
+			m_IniFilename = IniFilename;
 			return true;
 		}
 
