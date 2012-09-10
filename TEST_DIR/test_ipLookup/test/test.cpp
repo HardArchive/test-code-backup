@@ -21,28 +21,85 @@
 //这是用窄字节的 需包含IpLookUp_dll库
 //#include "IpLookUp_dll.h" 
 #include <IpLookUp_dll.h>
+#include "IniUtil.h"
+
+bool GetConfig(TCHAR* ptszUrl, TCHAR* ptszRegex)
+{
+	QNA::CIniUtil clsIniUtil;
+	TCHAR tszIniPath[MAX_PATH] = {0};
+
+	if (!(ptszUrl||ptszRegex))
+	{
+		return false;
+	}
+	if (!clsIniUtil.GetExePath(tszIniPath))
+	{
+		return false;
+	}
+
+	_stprintf_s(tszIniPath, MAX_PATH, _T("%s\\config.ini"), tszIniPath);
+
+	if (!clsIniUtil.SetIniFilename(tszIniPath))
+	{
+		return false;
+	}
+
+	std::tstring strTem;
+
+	//获取Url
+	strTem = clsIniUtil.GetString(_T("SERVER"), _T("Url"));   //分发中心
+	if (!strTem.length())
+	{
+		//TRACE(_T("QNA-GetServer 获取Url错误……"));
+		return false;
+	}
+
+	_stprintf_s(ptszUrl, 128, _T("%s"), strTem.c_str());
+	strTem.clear();
+
+	//获取Regex
+	strTem = clsIniUtil.GetString(_T("SERVER"), _T("Regex"));   //分发中心
+	if (!strTem.length())
+	{
+		//QNA::TRACE(_T("QNA-GetServer 获取Regex错误……"));
+		return false;
+	}
+	_stprintf_s(ptszRegex, 128, _T("%s"), strTem.c_str());
+	strTem.clear();
+	return true;
+}
+
 #pragma comment(lib "IpLookUp_dll.lib");
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char szPath[MAX_PATH] = {0};
-	GetCurrentPathA(szPath);
+	char szUrl[MAX_PATH] = {0};
+	char szRegex[MAX_PATH] = {0};
+	vector<string> strVecDomain;
+	char szDomain[128] = {0};  //域名最大长度为72字符
 
-	char szUrl[MAX_PATH] = {"http://ip.valu.cn/ip/ "};
-	char szRegex[MAX_PATH] = {"\</span\>\<a target=\"_blank\"\>(.+?)\</a\>&nbsp;&nbsp"};
-	//target="_blank"\>(.+?)\</a\>\</td\>
-	//<td>\d+</td>\s+<td><a href="http://(.+?)" target="_blank">
+	if (!GetConfig(szUrl, szRegex))
+	{
+		return -1;
+	}
+
 	SetUrlRegexA(szUrl, szRegex);
-	if (!StartIpLookupA("112.127.141.86"))
+	if (!StartIpLookupA("119.75.218.77"))
 	{
 		printf("开始反查出错\r\n");
 	}
-	vector<string> strVecDomain;
 
-	if (!GetLookupDomainA(strVecDomain))
+	//将反查出的域名添加至向量
+	for (int i=0; i<GetLookupDomainTotalNum(); i++)
 	{
-		printf("获取解析结果出错\r\n");
+		if (GetLookupDomainA(szDomain, i)>0)
+		{
+			strVecDomain.push_back(string(szDomain));
+		}
+		ZeroMemory(szDomain, sizeof(szDomain));
 	}
+	printf("Over\r\n");
 
+	getchar();
 
 	return 0;
 }
