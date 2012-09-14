@@ -18,7 +18,7 @@ unit名词:
 文件说明
 IniUtil.h''''''''''INI文件操作类(已完成)
 MessageboxUtil.h'''Messagebox优化(已完成，但有可升级空间)
-TraceUtil.h''''''''MFC 的TRACE升级版  支持非MFC 宽字节、窄字节、Debug、release 可调(已完成)
+TraceUtil.h''''''''MFC 的TRACE升级版  支持非MFC 宽字节、窄字节、Debug、release 可调(已完成) perfect！支持动态调整栈大小、输出到控制台
 PathUtil.h'''''''''路径文件函数(未完成，改用SHLWAPI实现---待完成)
 RegistryDllUtil.h''注册com组件函数(未完成)
 RegUtil.h''''''''''注册表操作类(未完成)
