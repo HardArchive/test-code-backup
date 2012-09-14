@@ -1,0 +1,6 @@
+
+
+typedef struct tagNSString
+{
+	
+}NSString;
