@@ -122,6 +122,28 @@ namespace QNA
 		
 		return dwFileLen;
 	}
+	//获取桌面路径
+	char *GetDesktopPath()
+{
+	// Get the directory for Windows Desktop. This is
+    // stored in the Registry under HKEY_CURRENT_USER\Software\
+    // Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Desktop.
+    HKEY hCU;
+    DWORD lpType;
+    ULONG ulSize = MAX_PATH;
+	static char szPath[MAX_PATH];
+	const char szRegKey[] = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders";
+	
+    if(RegOpenKeyEx(HKEY_CURRENT_USER, szRegKey, 0, KEY_QUERY_VALUE, &hCU) == ERROR_SUCCESS)
+    {
+		RegQueryValueEx(hCU, "Desktop", NULL, &lpType, (BYTE *)&szPath, &ulSize);
+	}
+	
+	RegCloseKey(hCU);
+
+	return szPath;
+}
+
 }
 #endif
 

@@ -12,7 +12,6 @@
 #define __REG_UNTIL_H__
 namespace QNA
 {
-
 	class CRegUtil
 	{
 	public:

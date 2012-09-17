@@ -21,7 +21,7 @@
 			OutputDirectory="..\bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -173,6 +173,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\GetVersionString.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -196,20 +200,24 @@
 				RelativePath=".\test.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\TestPublic.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
 			>
-			<File
-				RelativePath=".\Config.h"
-				>
-			</File>
 			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
 			<File
 				RelativePath=".\targetver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TestPublic.h"
 				>
 			</File>
 		</Filter>
@@ -223,15 +231,23 @@
 			Name="public"
 			>
 			<File
+				RelativePath=".\public\FileUtil.h"
+				>
+			</File>
+			<File
+				RelativePath=".\public\FileVersionInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\public\FileVersionInfo.h"
+				>
+			</File>
+			<File
 				RelativePath=".\public\IniUtil.h"
 				>
 			</File>
 			<File
 				RelativePath=".\public\MessageboxUtil.h"
-				>
-			</File>
-			<File
-				RelativePath=".\public\PathUtil.h"
 				>
 			</File>
 			<File
