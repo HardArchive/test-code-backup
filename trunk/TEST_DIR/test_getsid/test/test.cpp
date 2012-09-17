@@ -58,6 +58,41 @@ BOOL GetCurrentUserForSID (VOID)
 	return TRUE;
 }
 
+//通过用户名获取SID
+PSID GetUserSid(LPCTSTR szUserName)
+{
+	SID		*sid = 0;
+	TCHAR	*dom = 0;
+
+	DWORD	sidlen = 0;
+	DWORD	domlen = 0;
+
+	SID_NAME_USE snu;
+
+	//
+	// with no machine specified, LookupAccountName looks up user's sid in
+	// following locations:
+	//
+	// well-known, built-in, local-machine, primary-domain, trusted-domain
+	//
+	while(!LookupAccountName(NULL, szUserName, sid, &sidlen, dom, &domlen, &snu))
+	{
+		if(sid) free(sid);
+		if(dom) free(dom);
+
+		if(GetLastError() != ERROR_INSUFFICIENT_BUFFER)
+			return 0;
+
+		sid = malloc(sidlen);
+		dom = malloc(domlen);
+	}
+
+	printf("domain: %s\n", dom);
+
+	free(dom);
+	return sid;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	GetCurrentUserForSID();
