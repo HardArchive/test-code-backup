@@ -225,6 +225,7 @@ string strCoding::UrlGB2312Decode(string str)
 
 	return output;
 }
+
 //把url utf8解码
 string strCoding::UrlUTF8Decode(string str)
 {

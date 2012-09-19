@@ -140,9 +140,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	string output1="//proxy.html";
 	string output2="\\proxy.html";
 	strCoding clsStrCoding;
-	string str1 = "%ce%b4%d3%f6%ca%e9%c9%fa";
+	string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E";
 	char szTem[MAX_PATH] = {"%B0%A1"};
-	string str2 = clsStrCoding.UrlGB2312Decode(str1);
+	string str2 = clsStrCoding.UrlUTF8Decode(str1);
+	//clsStrCoding.UrlUTF8Decode()
 	return 0;
 }
 
