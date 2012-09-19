@@ -134,6 +134,30 @@ using namespace std;
 
 #include "Url.h"
 
+int CheckSimplified() 
+{ 
+	char szText[] = "我是CIW.。"; 
+	char szChinese[3] = {0}; 
+
+	int i = 0, nLen = strlen(szText); 
+	for(; i < nLen; i++) 
+	{ 
+		if( szText[i] >= 0 && szText[i] <= 127 ) //不是全角字符？ 0-0x7F
+		{
+			printf("非中文:%c\n", szText[i]); 
+		}
+		else //是全角字符 >0x7F
+		{
+			szChinese[0] = szText[i];
+			szChinese[1] = szText[i + 1];
+			printf("中文:%s\n", szChinese), i++; //中文是2个字节,所以i++ 
+		}
+
+	} 
+	return 0; 
+}
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	string output="/proxy.html";
@@ -146,4 +170,5 @@ int _tmain(int argc, _TCHAR* argv[])
 	//clsStrCoding.UrlUTF8Decode()
 	return 0;
 }
+
 
