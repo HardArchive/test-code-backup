@@ -146,7 +146,7 @@ TCHAR *GetVersionString(TCHAR *szFileName, TCHAR *szValue, TCHAR *szBuffer, ULON
 //////};
 
 
-int main()
+int main2()
 {
 	TCHAR buf[MAX_PATH];
 
