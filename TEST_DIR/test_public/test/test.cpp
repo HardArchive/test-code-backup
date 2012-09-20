@@ -4,11 +4,11 @@
 #include "stdafx.h"
 #include "TestPublic.h"
 
-int _tmain1(int argc, _TCHAR* argv[])
+int _tmain(int argc, _TCHAR* argv[])
 {
 	//FileUtil();
 
-	//TraceUtil();
+	TraceUtil();
 
 	//IniUtil();
 
