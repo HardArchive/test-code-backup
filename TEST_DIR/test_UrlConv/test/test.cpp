@@ -165,10 +165,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	string output2="\\proxy.html";
 	strCoding clsStrCoding;
 	string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";
+	string str2 = "%E9%A5%B6%E5%88%9A";
 	char szTem[MAX_PATH] = {"%B0%A1"};
-	string str2 = clsStrCoding.UrlUTF8Decode(str1);
-
-	printf("%s\r\n", str2.c_str());
+	string str3 = clsStrCoding.UrlUTF8Decode(str1);
+	printf("%s\r\n", str3.c_str());
+	string str4 = clsStrCoding.UrlUTF8Decode(str2);
+	printf("%s\r\n", str4.c_str());
 	getchar();
 	//clsStrCoding.UrlUTF8Decode()
 	return 0;
