@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SQLite Test", "SQLite Test.vcproj", "{E4D13F4D-CC1B-49E6-8731-F15B6102B420}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SQLitelib", "sqlite-lib\SQLitelib.vcproj", "{D77FB93B-8C7A-41BA-8DA8-E52CFE409A90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4D13F4D-CC1B-49E6-8731-F15B6102B420}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E4D13F4D-CC1B-49E6-8731-F15B6102B420}.Debug|Win32.Build.0 = Debug|Win32
+		{E4D13F4D-CC1B-49E6-8731-F15B6102B420}.Release|Win32.ActiveCfg = Release|Win32
+		{E4D13F4D-CC1B-49E6-8731-F15B6102B420}.Release|Win32.Build.0 = Release|Win32
+		{D77FB93B-8C7A-41BA-8DA8-E52CFE409A90}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D77FB93B-8C7A-41BA-8DA8-E52CFE409A90}.Debug|Win32.Build.0 = Debug|Win32
+		{D77FB93B-8C7A-41BA-8DA8-E52CFE409A90}.Release|Win32.ActiveCfg = Release|Win32
+		{D77FB93B-8C7A-41BA-8DA8-E52CFE409A90}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

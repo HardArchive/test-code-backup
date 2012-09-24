@@ -1,0 +1,6 @@
+Current SQLite version:
+3.6.6
+
+Downloaded from:
+www.sqlite.org
+
