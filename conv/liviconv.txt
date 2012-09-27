@@ -1,0 +1,21 @@
+导出, libiconv.dll
+序列	地址	名字
+00000001	10135000	_libiconv_version
+00000002	1001513B	iconv_canonicalize
+00000003	100151EF	libiconv
+00000004	10015005	libiconv_close
+00000005	1001500A	libiconv_open
+00000006	10015145	libiconv_open_into
+00000007	10015069	libiconvctl
+00000008	1001518B	libiconvlist
+00000009	100151BD	locale_charset
+
+几个函数原型：
+//是打开一个编码流，类似于打开一个编码管道（通道），出错则返回 -1
+iconv_t iconv_open(const char *tocode, const char *fromcode);
+
+//用于具体输入的转换，如果出错，则返回 -1，否则返回 0；
+size_t iconv(iconv_t cd, char **inbuf, size_t *inbytesleft, char **outbuf, size_t *outbytesleft);
+
+//是关闭该管道（通道）。
+int iconv_close(iconv_t cd);
