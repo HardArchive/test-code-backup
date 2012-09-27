@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iconv", "iconv.vcproj", "{03B265CF-0B20-4676-A46D-D10EB4CD72F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug MTd|Win32 = Debug MTd|Win32
+		Debug|Win32 = Debug|Win32
+		Release MT|Win32 = Release MT|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Debug MTd|Win32.ActiveCfg = Debug MTd|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Debug MTd|Win32.Build.0 = Debug MTd|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Debug|Win32.Build.0 = Debug|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Release MT|Win32.ActiveCfg = Release MT|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Release MT|Win32.Build.0 = Release MT|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Release|Win32.ActiveCfg = Release|Win32
+		{03B265CF-0B20-4676-A46D-D10EB4CD72F4}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
