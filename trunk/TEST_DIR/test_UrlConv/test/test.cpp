@@ -131,7 +131,7 @@
 
 #include <string>
 using namespace std;
-
+#include "IsUTF_8.h"
 #include "Url.h"
 
 int CheckSimplified() 
@@ -157,20 +157,122 @@ int CheckSimplified()
 	return 0; 
 }
 
+//int UrlDecode(char* pszInUrl, char* pszOutDecode)
+//{
+//	int iCount = 0;
+//	char szTmp[MAX_PATH] = {0};
+//	int iLen = strlen(pszInUrl);
+//
+//	if (!(pszInUrl && pszOutDecode))
+//	{
+//		return false;
+//	}
+//
+//	for (int i=0; i<iLen+1; i++)
+//	{
+//		if ('%' != pszInUrl[i])
+//		{
+//			pszOutDecode[iCount++] = pszInUrl[i];
+//		}
+//	}
+//
+//	return iCount+1;
+//}
+
+//入侵检测系统最基本的功能就必须能对各种HTTP编码请求进行解码，如UTF和
+//HEX编码。多数商业和免费的IDS有能力解码这些请求来分析是否是攻击字符串。
+//
+//主流的编码了的URL基本是UTF (%xx%xx) 或者是明文的HEX编码(%xx)，这里的XX
+//是十六进制值。不过有一种不同类型的编码如%u编码，是用来代表Unicode/wide
+//特征字符。由于%u编码不是标准的编码，IDS系统不能解码%u，所以可以绕过
+//IDS的检测系统，一个真实的例子就是Codered蠕虫。
+
+
+
+string UrlDecode2(string str)
+{
+	
+	int iLen = 0;
+	char szTem[MAX_PATH] = {0};
+	string strRet;
+	strCoding clsStrCoding;
+
+
+	strRet = clsStrCoding.UrlGB2312Decode(str);
+	iLen = strRet.length();
+	strncpy(szTem, strRet.c_str(), iLen+1);
+
+	if (IsTextUTF8(szTem, iLen))
+	{
+		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+	}
+
+
+	if (IsUTF8_sina(szTem))
+	{
+		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+	}
+
+
+	if (IsUTF8_Notepad2(szTem, iLen))
+	{
+		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+	}
+
+	return strRet;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string output="/proxy.html";
-	string output1="//proxy.html";
-	string output2="\\proxy.html";
-	strCoding clsStrCoding;
+	//string output="/proxy.html";
+	//string output1="//proxy.html";
+	//string output2="\\proxy.html";
+	//strCoding clsStrCoding;
+	//string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";//"%ce%b4%d3%fa%ca%e9%c9%fa";
+	//string str2 = "%E9%A5%B6%E5%88%9A";
+	//char szTem[MAX_PATH] = {"%B0%A1"};
+	//string str3 = clsStrCoding.UrlUTF8Decode(str1);
+	//printf("%s\r\n", str3.c_str());
+	//string str4 = clsStrCoding.UrlUTF8Decode(str2);
+	//printf("%s\r\n", str4.c_str());
+	//string str5 = "rain%u5566%u5566%u9ed1%u8863%u4eba";
+	//string str6 = clsStrCoding.UrlGB2312Decode(str5);
+	//printf("%s\r\n", str6.c_str());
+	//string str7 = clsStrCoding.UrlUTF8Decode(str5);
+	//printf("%s\r\n", str7.c_str());
+
+	//char szTem2[MAX_PATH] = {"RAIN%C0%B2%C0%B2%BA%DA%D2%C2%C8%CB"};
+	//WCHAR wszTem[MAX_PATH] = L"rain%u5566%u5566%u9ed1%u8863%u4eba";
+	////clsStrCoding.UnicodeToUTF_8(szTem2, wszTem);
+	//str5 = szTem2;
+	//str6 = clsStrCoding.UrlGB2312Decode(str5);
+	//printf("%s\r\n", str6.c_str());
+	//str7 = clsStrCoding.UrlUTF8Decode(str5);
+	//printf("%s\r\n", str7.c_str());
+	// 
 	string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";
-	string str2 = "%E9%A5%B6%E5%88%9A";
-	char szTem[MAX_PATH] = {"%B0%A1"};
-	string str3 = clsStrCoding.UrlUTF8Decode(str1);
-	printf("%s\r\n", str3.c_str());
-	string str4 = clsStrCoding.UrlUTF8Decode(str2);
-	printf("%s\r\n", str4.c_str());
+	string str2 = "%ce%b4%d3%fa%ca%e9%c9%fa";
+	string str3 = "%E9%A5%B6%E5%88%9A";
+	string str5 = "rain%u5566%u5566%u9ed1%u8863%u4eba";
+	char szTem2[MAX_PATH] = {"RAIN%C0%B2%C0%B2%BA%DA%D2%C2%C8%CB"};
+	string str6 = szTem2;
+
+	string str11 = UrlDecode2(str1);
+	printf("str11:%s\r\n", str11.c_str());
+
+	string str21 = UrlDecode2(str2);
+	printf("str21:%s\r\n", str21.c_str());
+
+	string str31 = UrlDecode2(str3);
+	printf("str31:%s\r\n", str31.c_str());
+
+	string str51 = UrlDecode2(str5);
+	printf("str51:%s\r\n", str51.c_str());
+
+	string str61 = UrlDecode2(str6);
+	printf("str61:%s\r\n", str61.c_str());
+
+
 	getchar();
 	//clsStrCoding.UrlUTF8Decode()
 	return 0;

@@ -43,13 +43,16 @@ void strCoding::UnicodeToGB2312(char* pOut,WCHAR uData)
 }
 
 //做为解Url使用
-char strCoding:: CharToInt(char ch){
+char strCoding:: CharToInt(char ch)
+{
 	if(ch>='0' && ch<='9')return (char)(ch-'0');
 	if(ch>='a' && ch<='f')return (char)(ch-'a'+10);
 	if(ch>='A' && ch<='F')return (char)(ch-'A'+10);
 	return -1;
 }
-char strCoding::StrToBin(char *str){
+
+char strCoding::StrToBin(char *str)
+{
 	char tempWord[2];
 	char chn;
 
@@ -206,18 +209,22 @@ string strCoding::UrlGB2312Decode(string str)
 	char tmp[2];
 	int i=0,idx=0,ndx,len=str.length();
 
-	while(i<len){
-		if(str[i]=='%'){
+	while(i<len)
+	{
+		if(str[i]=='%')
+		{
 			tmp[0]=str[i+1];
 			tmp[1]=str[i+2];
 			output += StrToBin(tmp);
 			i=i+3;
 		}
-		else if(str[i]=='+'){
+		else if(str[i]=='+')
+		{
 			output+=' ';
 			i++;
 		}
-		else{
+		else
+		{
 			output+=str[i];
 			i++;
 		}
@@ -238,3 +245,12 @@ string strCoding::UrlUTF8Decode(string str)
 	return output;
 
 }
+
+//int strCoding::StandardUnicode(char* pInSrc, char* pOutDst, int nMaxLen=0)
+//{
+//	int iRet = 0;
+//	if (!(pInSrc && pOutDst))	return -1;
+//
+//
+//
+//}

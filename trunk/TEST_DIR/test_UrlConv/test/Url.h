@@ -20,13 +20,13 @@ public:
 	string UrlUTF8(char * str);                             //urlutf8 编码
 	string UrlUTF8Decode(string str);                  //urlutf8解码
 	string UrlGB2312Decode(string str);                //urlgb2312解码
-
+	void UnicodeToUTF_8(char* pOut,WCHAR* pText);
 private:
 	void Gb2312ToUnicode(WCHAR* pOut,char *gbBuffer);
 	void UTF_8ToUnicode(WCHAR* pOut,char *pText);
-	void UnicodeToUTF_8(char* pOut,WCHAR* pText);
+	//void UnicodeToUTF_8(char* pOut,WCHAR* pText);
 	void UnicodeToGB2312(char* pOut,WCHAR uData);
 	char CharToInt(char ch);
 	char StrToBin(char *str);
-
+	//int StandardUnicode(char* pSrc, char* pDst, int nMaxLen=0);   //将rain%u5566%u5566%u9ed1%u8863%u4eba转为为标准UNICODE
 };
