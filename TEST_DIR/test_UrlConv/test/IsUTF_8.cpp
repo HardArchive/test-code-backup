@@ -1,3 +1,6 @@
+#include "stdafx.h"
+#include "IsUTF_8.h"
+
 //UTF8是以8bits即1Bytes为编码的最基本单位，当然也可以有基于16bits和32bits的形式，分别称为UTF16和UTF32，但目前用得不多，
 // 而UTF8则被广泛应用在文件储存和网络传输中。
 //编码原理
@@ -71,7 +74,7 @@ int IsTextUTF8(char* str, ULONGLONG length)
 } 
 //sina weibo SDK
 
-static bool IsUTF8(const char *str)
+bool IsUTF8_sina(const char *str)
 {
 	int count = 0;
 	unsigned char chr;
@@ -163,7 +166,7 @@ BOOL IsUnicode(const char* pBuffer,int cb/*,LPBOOL lpbBOM,LPBOOL lpbReverse*/)
 }
 
 
-BOOL IsUTF8(const char* pTest,int nLength)
+BOOL IsUTF8_Notepad2(const char* pTest,int nLength)
 {
 	static int byte_class_table[256] = {
 		/*       00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  */
