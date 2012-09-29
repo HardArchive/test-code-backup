@@ -131,8 +131,8 @@
 
 #include <string>
 using namespace std;
-#include "IsUTF_8.h"
-#include "Url.h"
+//#include "IsUTF_8.h"
+//#include "Url.h"
 
 int CheckSimplified() 
 { 
@@ -188,90 +188,82 @@ int CheckSimplified()
 //IDS的检测系统，一个真实的例子就是Codered蠕虫。
 
 
+//
+//string UrlDecode2(string str)
+//{
+//	
+//	int iLen = 0;
+//	char szTem[MAX_PATH] = {0};
+//	string strRet;
+//	strCoding clsStrCoding;
+//
+//
+//	strRet = clsStrCoding.UrlGB2312Decode(str);
+//	iLen = strRet.length();
+//	strncpy(szTem, strRet.c_str(), iLen+1);
+//
+//	if (IsTextUTF8(szTem, iLen))
+//	{
+//		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+//	}
+//
+//
+//	if (IsUTF8_sina(szTem))
+//	{
+//		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+//	}
+//
+//
+//	if (IsUTF8_Notepad2(szTem, iLen))
+//	{
+//		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
+//	}
+//
+//	return strRet;
+//}
 
-string UrlDecode2(string str)
-{
-	
-	int iLen = 0;
-	char szTem[MAX_PATH] = {0};
-	string strRet;
-	strCoding clsStrCoding;
-
-
-	strRet = clsStrCoding.UrlGB2312Decode(str);
-	iLen = strRet.length();
-	strncpy(szTem, strRet.c_str(), iLen+1);
-
-	if (IsTextUTF8(szTem, iLen))
-	{
-		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
-	}
-
-
-	if (IsUTF8_sina(szTem))
-	{
-		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
-	}
-
-
-	if (IsUTF8_Notepad2(szTem, iLen))
-	{
-		clsStrCoding.UTF_8ToGB2312(strRet, szTem, iLen);
-	}
-
-	return strRet;
-}
+//#include "public/CodeUtil.h"
+#include "public/QNA_CodeUtil.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//string output="/proxy.html";
-	//string output1="//proxy.html";
-	//string output2="\\proxy.html";
-	//strCoding clsStrCoding;
-	//string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";//"%ce%b4%d3%fa%ca%e9%c9%fa";
-	//string str2 = "%E9%A5%B6%E5%88%9A";
-	//char szTem[MAX_PATH] = {"%B0%A1"};
-	//string str3 = clsStrCoding.UrlUTF8Decode(str1);
-	//printf("%s\r\n", str3.c_str());
-	//string str4 = clsStrCoding.UrlUTF8Decode(str2);
-	//printf("%s\r\n", str4.c_str());
-	//string str5 = "rain%u5566%u5566%u9ed1%u8863%u4eba";
-	//string str6 = clsStrCoding.UrlGB2312Decode(str5);
-	//printf("%s\r\n", str6.c_str());
-	//string str7 = clsStrCoding.UrlUTF8Decode(str5);
-	//printf("%s\r\n", str7.c_str());
-
-	//char szTem2[MAX_PATH] = {"RAIN%C0%B2%C0%B2%BA%DA%D2%C2%C8%CB"};
-	//WCHAR wszTem[MAX_PATH] = L"rain%u5566%u5566%u9ed1%u8863%u4eba";
-	////clsStrCoding.UnicodeToUTF_8(szTem2, wszTem);
-	//str5 = szTem2;
-	//str6 = clsStrCoding.UrlGB2312Decode(str5);
-	//printf("%s\r\n", str6.c_str());
-	//str7 = clsStrCoding.UrlUTF8Decode(str5);
-	//printf("%s\r\n", str7.c_str());
-	// 
-	string str1 = "%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";
-	string str2 = "%ce%b4%d3%fa%ca%e9%c9%fa";
-	string str3 = "%E9%A5%B6%E5%88%9A";
+	//CCodeUtil clsStrCoding;
+	string str1 = "abcd%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";
+	string str2 = "123%ce%b4%d3%fa%ca%e9%c9%fa";
+	string str3 = "aaa%E9%A5%B6%E5%88%9A";
 	string str5 = "rain%u5566%u5566%u9ed1%u8863%u4eba";
 	char szTem2[MAX_PATH] = {"RAIN%C0%B2%C0%B2%BA%DA%D2%C2%C8%CB"};
 	string str6 = szTem2;
 
-	string str11 = UrlDecode2(str1);
+	//string str11 = clsStrCoding.UrlToGb2312(str1);
+	//printf("str11:%s\r\n", str11.c_str());
+
+	//string str21 = clsStrCoding.UrlToGb2312(str2);
+	//printf("str21:%s\r\n", str21.c_str());
+
+	//string str31 = clsStrCoding.UrlToGb2312(str3);
+	//printf("str31:%s\r\n", str31.c_str());
+
+	//string str51 = clsStrCoding.UrlToGb2312(str5);
+	//printf("str51:%s\r\n", str51.c_str());
+
+	//string str61 = clsStrCoding.UrlToGb2312(str6);
+	//printf("str61:%s\r\n", str61.c_str());
+
+	string str11 = QNA::UrlToGb2312(str1);
 	printf("str11:%s\r\n", str11.c_str());
 
-	string str21 = UrlDecode2(str2);
+	string str21 = QNA::UrlToGb2312(str2);
 	printf("str21:%s\r\n", str21.c_str());
 
-	string str31 = UrlDecode2(str3);
+	string str31 = QNA::UrlToGb2312(str3);
 	printf("str31:%s\r\n", str31.c_str());
 
-	string str51 = UrlDecode2(str5);
+	string str51 = QNA::UrlToGb2312(str5);
 	printf("str51:%s\r\n", str51.c_str());
 
-	string str61 = UrlDecode2(str6);
+	string str61 = QNA::UrlToGb2312(str6);
 	printf("str61:%s\r\n", str61.c_str());
-
 
 	getchar();
 	//clsStrCoding.UrlUTF8Decode()
