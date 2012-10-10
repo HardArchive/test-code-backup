@@ -221,12 +221,15 @@ int CheckSimplified()
 //
 //	return strRet;
 //}
-
+#include <Windows.h>
 //#include "public/CodeUtil.h"
 #include "public/QNA_CodeUtil.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
+	UINT iRet = GetACP(); //获取当前系统的编码方式
+
 	//CCodeUtil clsStrCoding;
 	string str1 = "abcd%E6%9C%AA%E6%84%88%E4%B9%A6%E7%94%9F";
 	string str2 = "123%ce%b4%d3%fa%ca%e9%c9%fa";
