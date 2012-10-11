@@ -1,9 +1,0 @@
-[DEFAULT]
-BASEURL=http://www.baidu.com/s?wd=win7%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2&spt=query&rsv_bp=0&tn=baiduhome_pg&inputT=7828
-[InternetShortcut]
-URL=http://www.baidu.com/s?wd=win7%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2&spt=query&rsv_bp=0&tn=baiduhome_pg&inputT=7828
-IDList=
-IconFile=http://www.baidu.com/favicon.ico
-IconIndex=1
-[{000214A0-0000-0000-C000-000000000046}]
-Prop3=19,2

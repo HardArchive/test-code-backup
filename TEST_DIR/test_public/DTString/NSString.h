@@ -1,6 +1,0 @@
-
-
-typedef struct tagNSString
-{
-	
-}NSString;

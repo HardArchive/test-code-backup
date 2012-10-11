@@ -1,1 +1,0 @@
-// RegistryDll.h

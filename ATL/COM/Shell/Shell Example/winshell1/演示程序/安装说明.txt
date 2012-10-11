@@ -1,3 +1,0 @@
-直接运行install.bat即可以自动安装，运行uninstall.bat即可以卸载
-安装后在任何一个可执行文件图标上点击右键即可以看到效果
-如果用这两个文件安装不成功的话可以用regsvr32.exe 程序手工注册ContextShellExt.dll 这个文件

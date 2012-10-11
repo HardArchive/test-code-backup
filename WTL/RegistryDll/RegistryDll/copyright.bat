@@ -1,3 +1,0 @@
-@echo ===本程序下载于就上C++(www.9cpp.com)===
-@echo -------技术支持由QNA提供(www.9cpp.com)------
-@echo ......如遇到任何技术问题请发邮件happyhaoyun@qq.com......

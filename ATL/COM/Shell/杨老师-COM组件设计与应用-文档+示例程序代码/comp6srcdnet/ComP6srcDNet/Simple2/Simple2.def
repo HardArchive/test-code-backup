@@ -1,9 +1,0 @@
-; Simple2.def : 定义模块参数。
-
-LIBRARY      "Simple2.DLL"
-
-EXPORTS
-	DllCanUnloadNow		PRIVATE
-	DllGetClassObject	PRIVATE
-	DllRegisterServer	PRIVATE
-	DllUnregisterServer	PRIVATE

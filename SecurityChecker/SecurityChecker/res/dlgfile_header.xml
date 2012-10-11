@@ -1,5 +1,0 @@
-<img pos="8,8" skin="little_logo"/>
-<text pos="28,10" class="head_text_title">TIPTOP计算机保密检查工具</text>
-<imgbtn id="102" pos="-105,1" tip="最小化" skin="dlg_btn_min"/>
-<imgbtn id="101" pos="-74,1" tip="最大化" skin="dlg_btn_max"/>
-<imgbtn id="100" pos="-43,1" tip="关闭" skin="dlg_btn_close"/>

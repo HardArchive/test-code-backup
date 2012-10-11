@@ -1,1 +1,0 @@
-// Adapter_Modify.h

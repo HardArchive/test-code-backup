@@ -1,8 +1,0 @@
-TARGETNAME = ListOpenedFileDrv
-TARGETPATH = obj
-TARGETTYPE = DRIVER
-
-INCLUDES   = %BUILD%\inc
-LIBS       = %BUILD%\lib
-
-SOURCES    = ListFileDrv.c
