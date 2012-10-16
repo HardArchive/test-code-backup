@@ -268,6 +268,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	string str61 = QNA::UrlToGb2312(str6);
 	printf("str61:%s\r\n", str61.c_str());
 
+	string str7 = "http%3A%2F%2Fwww%2Eyouku%2Ecom%2Fv%5Fshow%2Fid%5FXNDk3NDA1Ng%3D%3D%2Ehtml";
+
+	string str71 = QNA::UrlToGb2312(str7);
+	printf("str61:%s\r\n", str71.c_str());
 	getchar();
 	//clsStrCoding.UrlUTF8Decode()
 	return 0;
