@@ -27,7 +27,7 @@ delete from NetDetective.dbo.tCompanyLog
 select *from NetDetective.dbo.tCompanyLog
 
 select *from NetDetective.dbo.tCompanyLog
-
+select *from NetDetective.dbo.tCompanyLog
 
 
 delete from NetDetective.dbo.tWebAccountType
@@ -41,14 +41,15 @@ select *from NetDetective.dbo.tViolateAccess
 
 delete from NetDetective.dbo.tUser
 select *from NetDetective.dbo.tUser
+delete from NetDetective.dbo.tComputer
+select *from NetDetective.dbo.tComputer
 
-
+select *from NetDetective.dbo.tSystem
 delete from NetDetective.dbo.tCompanyLog 
 
 select *from NetDetective.dbo.tCompanyLog
 
 
-select *from NetDetective.dbo.tComputer
 
 6	15950559990_1	sylar	NULL	NULL	0	NULL	NULL	136	15912345678	NULL	NULL	HA	CHN	0	2012-10-10 15:05:26.560	NULL	192.168.030.028	NULL	NULL	28513200C7A3	NULL	2012-10-10 15:05:26.560	NULL	NULL	NULL	NULL	2	0	1	0	NULL	NULL	NULL
 
