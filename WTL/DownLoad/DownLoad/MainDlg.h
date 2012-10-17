@@ -34,6 +34,9 @@ public:
 		COMMAND_HANDLER(IDC_BUTTON_DOWNLOAD, BN_CLICKED, OnBnClickedButtonDownload)
 		COMMAND_HANDLER(IDC_BUTTON_ABOUT, BN_CLICKED, OnBnClickedButtonAbout)
 		COMMAND_HANDLER(IDC_CHECK_ONTOP, BN_CLICKED, OnBnClickedCheckOntop)
+//		COMMAND_HANDLER(ID_BUTTON_SELECT, BN_DOUBLECLICKED, OnBnDoubleclickedButtonSelect)
+//		COMMAND_HANDLER(IDC_EDIT_URL, EN_UPDATE, OnEnUpdateEditUrl)
+COMMAND_HANDLER(IDC_EDIT_URL, EN_CHANGE, OnEnChangeEditUrl)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -52,4 +55,7 @@ public:
 	LRESULT OnBnClickedButtonDownload(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedButtonAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedCheckOntop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+//	LRESULT OnBnDoubleclickedButtonSelect(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+//	LRESULT OnEnUpdateEditUrl(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnEnChangeEditUrl(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };
