@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadLibrary", "ThreadLibrary.vcproj", "{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadLibraryTest", "ThreadLibraryTest\ThreadLibraryTest.vcproj", "{E278CB38-D4C9-4AC0-BE2D-F40B17E906C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA} = {5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}.Debug|Win32.Build.0 = Debug|Win32
+		{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}.Release|Win32.ActiveCfg = Release|Win32
+		{5667E13B-7C62-4CEE-AF4B-EB15627BB1DA}.Release|Win32.Build.0 = Release|Win32
+		{E278CB38-D4C9-4AC0-BE2D-F40B17E906C6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E278CB38-D4C9-4AC0-BE2D-F40B17E906C6}.Debug|Win32.Build.0 = Debug|Win32
+		{E278CB38-D4C9-4AC0-BE2D-F40B17E906C6}.Release|Win32.ActiveCfg = Release|Win32
+		{E278CB38-D4C9-4AC0-BE2D-F40B17E906C6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
