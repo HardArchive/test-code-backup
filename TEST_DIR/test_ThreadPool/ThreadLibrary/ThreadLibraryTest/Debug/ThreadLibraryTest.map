@@ -1,0 +1,1004 @@
+ ThreadLibraryTest
+
+ Timestamp is 507f7516 (Thu Oct 18 11:18:46 2012)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00010000H .textbss                DATA
+ 0002:00000000 0001321aH .text                   CODE
+ 0002:00013220 0000204aH .text$x                 CODE
+ 0002:00015270 0000105dH .text$yc                CODE
+ 0002:000162d0 0000103dH .text$yd                CODE
+ 0003:00000000 00000104H .CRT$XCA                DATA
+ 0003:00000104 00000104H .CRT$XCAA               DATA
+ 0003:00000208 00000109H .CRT$XCU                DATA
+ 0003:00000314 00000104H .CRT$XCZ                DATA
+ 0003:00000418 00000104H .CRT$XIA                DATA
+ 0003:0000051c 00000104H .CRT$XIAA               DATA
+ 0003:00000620 00000104H .CRT$XIY                DATA
+ 0003:00000724 00000104H .CRT$XIZ                DATA
+ 0003:00000830 00002bdaH .rdata                  DATA
+ 0003:0000340c 0000017bH .rdata$debug            DATA
+ 0003:00003588 000006b8H .rdata$r                DATA
+ 0003:00003c40 00000104H .rtc$IAA                DATA
+ 0003:00003d44 00000109H .rtc$IMZ                DATA
+ 0003:00003e50 00000104H .rtc$IZZ                DATA
+ 0003:00003f54 00000104H .rtc$TAA                DATA
+ 0003:00004058 00000109H .rtc$TMZ                DATA
+ 0003:00004164 00000104H .rtc$TZZ                DATA
+ 0003:00004268 000014feH .xdata$x                DATA
+ 0003:00005766 00000000H .edata                  DATA
+ 0004:00000000 000003c0H .data                   DATA
+ 0004:000003c0 00000494H .bss                    DATA
+ 0005:00000000 00000050H .idata$2                DATA
+ 0005:00000050 00000014H .idata$3                DATA
+ 0005:00000064 000002ecH .idata$4                DATA
+ 0005:00000350 000002ecH .idata$5                DATA
+ 0005:0000063c 00000fffH .idata$6                DATA
+ 0006:00000000 00000169H .rsrc$01                DATA
+ 0006:00000170 00000a99H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
+ 0001:00000000       __enc$textbss$begin        00401000     <linker-defined>
+ 0001:00010000       __enc$textbss$end          00411000     <linker-defined>
+ 0002:00001470       _main                      00412470 f   main.obj
+ 0002:000018d0       ??0TestRequest@@QAE@HAAV?$map@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@@std@@@Z 004128d0 f i main.obj
+ 0002:00001950       ??0ThreadRequest@@QAE@XZ   00412950 f i main.obj
+ 0002:00001980       ??_GThreadRequest@@UAEPAXI@Z 00412980 f i main.obj
+ 0002:00001980       ??_EThreadRequest@@UAEPAXI@Z 00412980 f i main.obj
+ 0002:000019d0       ??1ThreadRequest@@UAE@XZ   004129d0 f i main.obj
+ 0002:00001a00       ??RTestRequest@@UAEXH@Z    00412a00 f i main.obj
+ 0002:00001c60       ??0Guard@@QAE@AAVCriticalSection@@@Z 00412c60 f i main.obj
+ 0002:00001ca0       ?enter@CriticalSection@@QAEXXZ 00412ca0 f i main.obj
+ 0002:00001ce0       ??1Guard@@QAE@XZ           00412ce0 f i main.obj
+ 0002:00001d10       ?leave@CriticalSection@@QAEXXZ 00412d10 f i main.obj
+ 0002:00001d50       ?updateStats@TestRequest@@AAEXHH@Z 00412d50 f i main.obj
+ 0002:00002000       ??_ETestRequest@@UAEPAXI@Z 00413000 f i main.obj
+ 0002:00002000       ??_GTestRequest@@UAEPAXI@Z 00413000 f i main.obj
+ 0002:00002050       ??1iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 00413050 f i main.obj
+ 0002:00002080       ??1?$pair@Viterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@_N@std@@QAE@XZ 00413080 f i main.obj
+ 0002:000020b0       ??1TestRequest@@UAE@XZ     004130b0 f i main.obj
+ 0002:000020e0       ??1const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 004130e0 f i main.obj
+ 0002:00002110       ??1?$_Bidit@U?$pair@$$CBHUThreadStats@@@std@@HPBU12@ABU12@@std@@QAE@XZ 00413110 f i main.obj
+ 0002:00002140       ??1?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@U?$pair@$$CBHUThreadStats@@@2@HPBU32@ABU32@V_Iterator_base@2@@std@@QAE@XZ 00413140 f i main.obj
+ 0002:00002170       ??1_Iterator_base@std@@QAE@XZ 00413170 f i main.obj
+ 0002:00002260       ?_Orphan_me@_Iterator_base@std@@QAEXXZ 00413260 f i main.obj
+ 0002:00002330       ??0COMPool@@QAE@XZ         00413330 f i main.obj
+ 0002:00002380       ?onThreadStart@COMPool@@UAEXH@Z 00413380 f i main.obj
+ 0002:000024c0       ?onThreadFinish@COMPool@@UAEXH@Z 004134c0 f i main.obj
+ 0002:00002600       ??1COMPool@@UAE@XZ         00413600 f i main.obj
+ 0002:00002630       ??1?$map@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@@std@@QAE@XZ 00413630 f i main.obj
+ 0002:00002660       ??0const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@ABV012@@Z 00413660 f i main.obj
+ 0002:000026b0       ??_GCOMPool@@UAEPAXI@Z     004136b0 f i main.obj
+ 0002:000026b0       ??_ECOMPool@@UAEPAXI@Z     004136b0 f i main.obj
+ 0002:00002700       ??0?$_Bidit@U?$pair@$$CBHUThreadStats@@@std@@HPBU12@ABU12@@std@@QAE@ABU01@@Z 00413700 f i main.obj
+ 0002:00002740       ??0?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@U?$pair@$$CBHUThreadStats@@@2@HPBU32@ABU32@V_Iterator_base@2@@std@@QAE@ABU01@@Z 00413740 f i main.obj
+ 0002:00002780       ??0_Iterator_base@std@@QAE@ABV01@@Z 00413780 f i main.obj
+ 0002:000027d0       ??4_Iterator_base@std@@QAEAAV01@ABV01@@Z 004137d0 f i main.obj
+ 0002:000028e0       ?_Adopt@_Iterator_base@std@@QAEXPBV_Container_base_secure@2@@Z 004138e0 f i main.obj
+ 0002:00002a10       ??0?$map@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@@std@@QAE@XZ 00413a10 f i main.obj
+ 0002:00002a60       ??1?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 00413a60 f i main.obj
+ 0002:00002ae0       ?begin@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@XZ 00413ae0 f i main.obj
+ 0002:00002b50       ?end@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@XZ 00413b50 f i main.obj
+ 0002:00002bb0       ?insert@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBHUThreadStats@@@2@@Z 00413bb0 f i main.obj
+ 0002:00002ff0       ?find@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z 00413ff0 f i main.obj
+ 0002:00003250       ??Diterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBEAAU?$pair@$$CBHUThreadStats@@@2@XZ 00414250 f i main.obj
+ 0002:00003280       ??Dconst_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBEABU?$pair@$$CBHUThreadStats@@@2@XZ 00414280 f i main.obj
+ 0002:00003380       ??Econst_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEAAV012@XZ 00414380 f i main.obj
+ 0002:000033b0       ??8const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBE_NABV012@@Z 004143b0 f i main.obj
+ 0002:000034a0       ??9const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBE_NABV012@@Z 004144a0 f i main.obj
+ 0002:000034f0       ??1?$_Tree_val@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 004144f0 f i main.obj
+ 0002:00003520       ??0iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@ABV012@@Z 00414520 f i main.obj
+ 0002:00003560       ??1?$_Tree_ptr@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 00414560 f i main.obj
+ 0002:00003590       ??1?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@XZ 00414590 f i main.obj
+ 0002:000035c0       ??1?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@QAE@XZ 004145c0 f i main.obj
+ 0002:000035f0       ?_Isnil@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 004145f0 f i main.obj
+ 0002:00003600       ?_Key@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAABHPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00414600 f i main.obj
+ 0002:00003630       ?_Left@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@@Z 00414630 f i main.obj
+ 0002:00003640       ?_Right@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@@Z 00414640 f i main.obj
+ 0002:00003650       ?_Myval@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAAU?$pair@$$CBHUThreadStats@@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00414650 f i main.obj
+ 0002:00003660       ??0?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00414660 f i main.obj
+ 0002:00003710       ?lower_bound@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z 00414710 f i main.obj
+ 0002:00003780       ?_Insert@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBHUThreadStats@@@2@@Z 00414780 f i main.obj
+ 0002:00003d80       ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z 00414d80 f i main.obj
+ 0002:00003dd0       ??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z 00414dd0 f i main.obj
+ 0002:00003e90       ?what@logic_error@std@@UBEPBDXZ 00414e90 f i main.obj
+ 0002:00003ed0       ??_Glogic_error@std@@UAEPAXI@Z 00414ed0 f i main.obj
+ 0002:00003ed0       ??_Elogic_error@std@@UAEPAXI@Z 00414ed0 f i main.obj
+ 0002:00003f20       ??1logic_error@std@@UAE@XZ 00414f20 f i main.obj
+ 0002:00003f90       ??1length_error@std@@UAE@XZ 00414f90 f i main.obj
+ 0002:00003fd0       ??_Glength_error@std@@UAEPAXI@Z 00414fd0 f i main.obj
+ 0002:00003fd0       ??_Elength_error@std@@UAEPAXI@Z 00414fd0 f i main.obj
+ 0002:00004020       ??0logic_error@std@@QAE@ABV01@@Z 00415020 f i main.obj
+ 0002:000040e0       ?_Lmost@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@XZ 004150e0 f i main.obj
+ 0002:00004120       ?_Root@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@XZ 00415120 f i main.obj
+ 0002:00004160       ?_Tidy@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEXXZ 00415160 f i main.obj
+ 0002:00004330       ?_Kfn@?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@SAABHABU?$pair@$$CBHUThreadStats@@@2@@Z 00415330 f i main.obj
+ 0002:00004340       ??1?$_Container_base_aux_alloc_empty@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@std@@@std@@IAE@XZ 00415340 f i main.obj
+ 0002:00004380       ??0?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@std@@QAE@XZ 00415380 f i main.obj
+ 0002:000043a0       ??0iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PBV12@@Z 004153a0 f i main.obj
+ 0002:000043e0       ??Fiterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEAAV012@XZ 004153e0 f i main.obj
+ 0002:00004410       ?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEXXZ 00415410 f i main.obj
+ 0002:000045d0       ?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@3@XZ 004155d0 f i main.obj
+ 0002:000045f0       ??0?$pair@Viterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@_N@std@@QAE@ABViterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@1@AB_N@Z 004155f0 f i main.obj
+ 0002:00004640       ??0length_error@std@@QAE@ABV01@@Z 00415640 f i main.obj
+ 0002:00004690       ?_Color@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00415690 f i main.obj
+ 0002:000046a0       ?_Parent@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@@Z 004156a0 f i main.obj
+ 0002:000046b0       ?max_size@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBEIXZ 004156b0 f i main.obj
+ 0002:000046e0       ?erase@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z 004156e0 f i main.obj
+ 0002:00004970       ?_Init@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEXXZ 00415970 f i main.obj
+ 0002:00004a10       ?_Lbound@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@ABH@Z 00415a10 f i main.obj
+ 0002:00004b00       ?_Lrotate@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00415b00 f i main.obj
+ 0002:00004ca0       ?_Min@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@@Z 00415ca0 f i main.obj
+ 0002:00004cf0       ?_Rmost@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@XZ 00415cf0 f i main.obj
+ 0002:00004d30       ?_Rrotate@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00415d30 f i main.obj
+ 0002:00004ed0       ?_Buynode@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBHUThreadStats@@@2@D@Z 00415ed0 f i main.obj
+ 0002:00005020       ??2@YAPAXIPAX@Z            00416020 f i main.obj
+ 0002:00005030       ??3@YAXPAX0@Z              00416030 f i main.obj
+ 0002:00005040       ??0?$_Tree_val@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00416040 f i main.obj
+ 0002:000050b0       ??0?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@std@@QAE@ABV01@@Z 004160b0 f i main.obj
+ 0002:000050d0       ?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@I@Z 004160d0 f i main.obj
+ 0002:00005110       ?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00416110 f i main.obj
+ 0002:00005150       ??0const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PBV12@@Z 00416150 f i main.obj
+ 0002:000051f0       ??Fconst_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEAAV012@XZ 004161f0 f i main.obj
+ 0002:00005220       ??0?$_Bidit@U?$pair@$$CBHUThreadStats@@@std@@HPBU12@ABU12@@std@@QAE@XZ 00416220 f i main.obj
+ 0002:00005250       ??0?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@U?$pair@$$CBHUThreadStats@@@2@HPBU32@ABU32@V_Iterator_base@2@@std@@QAE@XZ 00416250 f i main.obj
+ 0002:00005280       ??0_Iterator_base@std@@QAE@XZ 00416280 f i main.obj
+ 0002:000052c0       ?_Make_iter@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QBE?AViterator@12@Vconst_iterator@12@@Z 004162c0 f i main.obj
+ 0002:000053b0       ?erase@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z 004163b0 f i main.obj
+ 0002:00005de0       ?clear@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEXXZ 00416de0 f i main.obj
+ 0002:00005e80       ?_Buynode@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@XZ 00416e80 f i main.obj
+ 0002:00006090       ??0?$_Tree_ptr@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00417090 f i main.obj
+ 0002:00006100       ?max_size@?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@std@@QBEIXZ 00417100 f i main.obj
+ 0002:00006160       ?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@I@Z 00417160 f i main.obj
+ 0002:000061a0       ??Econst_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE?AV012@H@Z 004171a0 f i main.obj
+ 0002:000062a0       ?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004172a0 f i main.obj
+ 0002:000065f0       ??0_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBHUThreadStats@@@2@D@Z 004175f0 f i main.obj
+ 0002:00006660       ?_Erase@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00417660 f i main.obj
+ 0002:00006720       ?_Max@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@PAU342@@Z 00417720 f i main.obj
+ 0002:00006770       ?_Orphan_ptr@?$_Tree@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IBEXAAV12@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 00417770 f i main.obj
+ 0002:00006880       ??0?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@IAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00417880 f i main.obj
+ 0002:000068f0       ?destroy@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@@Z 004178f0 f i main.obj
+ 0002:00006930       ?construct@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@2@ABQAU342@@Z 00417930 f i main.obj
+ 0002:00006970       ??0?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@QAE@U?$less@H@1@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00417970 f i main.obj
+ 0002:000069d0       ??0?$_Container_base_aux_alloc_empty@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 004179d0 f i main.obj
+ 0002:00006a20       ??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z 00417a20 f i main.obj
+ 0002:00006ef0       ??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@AAV12@@Z 00417ef0 f i main.obj
+ 0002:00007030       ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00418030 f i main.obj
+ 0002:000070e0       ??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QBE_NXZ 004180e0 f i main.obj
+ 0002:00007100       ??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@AAV12@@Z 00418100 f i main.obj
+ 0002:000071a0       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 004181a0 f i main.obj
+ 0002:00007230       ??$make_pair@HUThreadStats@@@std@@YA?AU?$pair@HUThreadStats@@@0@HUThreadStats@@@Z 00418230 f i main.obj
+ 0002:00007260       ??$?0HUThreadStats@@@?$pair@$$CBHUThreadStats@@@std@@QAE@ABU?$pair@HUThreadStats@@@1@@Z 00418260 f i main.obj
+ 0002:000072a0       ??$_Debug_lt_pred@U?$less@H@std@@HH@std@@YA_NU?$less@H@0@ABH1PB_WI@Z 004182a0 f i main.obj
+ 0002:00007320       ??$_Destroy@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@YAXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@0@@Z 00418320 f i main.obj
+ 0002:00007330       ??$swap@D@std@@YAXAAD0@Z   00418330 f i main.obj
+ 0002:00007370       ??$?0U?$pair@$$CBHUThreadStats@@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00418370 f i main.obj
+ 0002:00007390       ??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@0@IPAU120@@Z 00418390 f i main.obj
+ 0002:00007420       ??0bad_alloc@std@@QAE@PBD@Z 00418420 f i main.obj
+ 0002:00007480       ??1bad_alloc@std@@UAE@XZ   00418480 f i main.obj
+ 0002:000074d0       ??_Ebad_alloc@std@@UAEPAXI@Z 004184d0 f i main.obj
+ 0002:000074d0       ??_Gbad_alloc@std@@UAEPAXI@Z 004184d0 f i main.obj
+ 0002:00007520       ??0bad_alloc@std@@QAE@ABV01@@Z 00418520 f i main.obj
+ 0002:00007580       ??$?0U?$pair@$$CBHUThreadStats@@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@1@@Z 00418580 f i main.obj
+ 0002:000075a0       ??$_Destroy@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@@std@@YAXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@0@@Z 004185a0 f i main.obj
+ 0002:000075b0       ??$_Construct@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@std@@PAU123@@std@@YAXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUThreadStats@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUThreadStats@@@std@@@3@$0A@@std@@@0@ABQAU120@@Z 004185b0 f i main.obj
+ 0002:00007630       ??R?$less@H@std@@QBE_NABH0@Z 00418630 f i main.obj
+ 0002:00007660       ??0?$pair@HUThreadStats@@@std@@QAE@ABHABUThreadStats@@@Z 00418660 f i main.obj
+ 0002:000076a0       ??0CriticalSection@@QAE@XZ 004186a0 f i main.obj
+ 0002:000076f0       ??1CriticalSection@@QAE@XZ 004186f0 f i main.obj
+ 0002:0000772e       _Sleep@4                   0041872e f   kernel32:KERNEL32.dll
+ 0002:00007734       _EnterCriticalSection@4    00418734 f   kernel32:KERNEL32.dll
+ 0002:0000773a       _LeaveCriticalSection@4    0041873a f   kernel32:KERNEL32.dll
+ 0002:00007740       _InitializeCriticalSection@4 00418740 f   kernel32:KERNEL32.dll
+ 0002:00007746       _DeleteCriticalSection@4   00418746 f   kernel32:KERNEL32.dll
+ 0002:0000774c       _OleInitialize@4           0041874c f   ole32:ole32.dll
+ 0002:00007752       _OleUninitialize@0         00418752 f   ole32:ole32.dll
+ 0002:00007760       ??0ThreadPool@@QAE@HH@Z    00418760 f   threadlibrary:ThreadPool.obj
+ 0002:000078b0       ??0ManualEvent@@QAE@PBD@Z  004188b0 f i threadlibrary:ThreadPool.obj
+ 0002:000079f0       ??0Event@@QAE@XZ           004189f0 f i threadlibrary:ThreadPool.obj
+ 0002:00007a40       ??1Event@@UAE@XZ           00418a40 f i threadlibrary:ThreadPool.obj
+ 0002:00007ac0       ??_GEvent@@UAEPAXI@Z       00418ac0 f i threadlibrary:ThreadPool.obj
+ 0002:00007ac0       ??_EEvent@@UAEPAXI@Z       00418ac0 f i threadlibrary:ThreadPool.obj
+ 0002:00007b30       ??0EventException@@QAE@PBD@Z 00418b30 f i threadlibrary:ThreadPool.obj
+ 0002:00007bb0       ??_GEventException@@UAEPAXI@Z 00418bb0 f i threadlibrary:ThreadPool.obj
+ 0002:00007bb0       ??_EEventException@@UAEPAXI@Z 00418bb0 f i threadlibrary:ThreadPool.obj
+ 0002:00007c20       ??1EventException@@UAE@XZ  00418c20 f i threadlibrary:ThreadPool.obj
+ 0002:00007c80       ?signal@ManualEvent@@UAEXXZ 00418c80 f i threadlibrary:ThreadPool.obj
+ 0002:00007d20       ??_EManualEvent@@UAEPAXI@Z 00418d20 f i threadlibrary:ThreadPool.obj
+ 0002:00007d20       ??_GManualEvent@@UAEPAXI@Z 00418d20 f i threadlibrary:ThreadPool.obj
+ 0002:00007d90       ??0EventException@@QAE@ABV0@@Z 00418d90 f i threadlibrary:ThreadPool.obj
+ 0002:00007e10       ??1ManualEvent@@UAE@XZ     00418e10 f i threadlibrary:ThreadPool.obj
+ 0002:00007e60       ??0Semaphore@@QAE@HHPBD@Z  00418e60 f i threadlibrary:ThreadPool.obj
+ 0002:00007f60       ??0SemaphoreException@@QAE@PBD@Z 00418f60 f i threadlibrary:ThreadPool.obj
+ 0002:00007fe0       ??_ESemaphoreException@@UAEPAXI@Z 00418fe0 f i threadlibrary:ThreadPool.obj
+ 0002:00007fe0       ??_GSemaphoreException@@UAEPAXI@Z 00418fe0 f i threadlibrary:ThreadPool.obj
+ 0002:00008050       ??1SemaphoreException@@UAE@XZ 00419050 f i threadlibrary:ThreadPool.obj
+ 0002:000080b0       ??1Semaphore@@UAE@XZ       004190b0 f i threadlibrary:ThreadPool.obj
+ 0002:00008130       ??_GSemaphore@@UAEPAXI@Z   00419130 f i threadlibrary:ThreadPool.obj
+ 0002:00008130       ??_ESemaphore@@UAEPAXI@Z   00419130 f i threadlibrary:ThreadPool.obj
+ 0002:000081a0       ??0SemaphoreException@@QAE@ABV0@@Z 004191a0 f i threadlibrary:ThreadPool.obj
+ 0002:00008220       ??_EThreadPool@@UAEPAXI@Z  00419220 f i threadlibrary:ThreadPool.obj
+ 0002:00008220       ??_GThreadPool@@UAEPAXI@Z  00419220 f i threadlibrary:ThreadPool.obj
+ 0002:00008290       ??1?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QAE@XZ 00419290 f i threadlibrary:ThreadPool.obj
+ 0002:000082e0       ?internalThreadProc@ThreadPool@@CGIPAX@Z 004192e0 f   threadlibrary:ThreadPool.obj
+ 0002:000083e0       ?acceptHandler@ThreadPool@@AAEXI@Z 004193e0 f   threadlibrary:ThreadPool.obj
+ 0002:00008690       ??BSemaphore@@QAEPAXXZ     00419690 f i threadlibrary:ThreadPool.obj
+ 0002:00008710       ?onThreadStart@ThreadPool@@MAEXH@Z 00419710 f   threadlibrary:ThreadPool.obj
+ 0002:00008750       ?onThreadFinish@ThreadPool@@MAEXH@Z 00419750 f   threadlibrary:ThreadPool.obj
+ 0002:00008790       ?accept@ThreadPool@@QAEHXZ 00419790 f   threadlibrary:ThreadPool.obj
+ 0002:00008a40       ??1?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@XZ 00419a40 f i threadlibrary:ThreadPool.obj
+ 0002:00008a90       ??1?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@XZ 00419a90 f i threadlibrary:ThreadPool.obj
+ 0002:00008ae0       ??1?$_Ranit@PAXHPBQAXABQAX@std@@QAE@XZ 00419ae0 f i threadlibrary:ThreadPool.obj
+ 0002:00008b30       ??1?$_Iterator_with_base@Urandom_access_iterator_tag@std@@PAXHPBQAXABQAXV_Iterator_base@2@@std@@QAE@XZ 00419b30 f i threadlibrary:ThreadPool.obj
+ 0002:00008b80       ?submitRequest@ThreadPool@@QAEXPAVThreadRequest@@@Z 00419b80 f   threadlibrary:ThreadPool.obj
+ 0002:00008d00       ??BEvent@@QBEPAXXZ         00419d00 f i threadlibrary:ThreadPool.obj
+ 0002:00008d40       ?reset@ManualEvent@@QAEXXZ 00419d40 f i threadlibrary:ThreadPool.obj
+ 0002:00008de0       ?release@Semaphore@@QAE_NH@Z 00419de0 f i threadlibrary:ThreadPool.obj
+ 0002:00008e90       ??0ThreadPoolShutdownException@@QAE@XZ 00419e90 f i threadlibrary:ThreadPool.obj
+ 0002:00008f00       ??1ThreadPoolShutdownException@@UAE@XZ 00419f00 f i threadlibrary:ThreadPool.obj
+ 0002:00008f70       ??_GThreadPoolShutdownException@@UAEPAXI@Z 00419f70 f i threadlibrary:ThreadPool.obj
+ 0002:00008f70       ??_EThreadPoolShutdownException@@UAEPAXI@Z 00419f70 f i threadlibrary:ThreadPool.obj
+ 0002:00008fe0       ??0ThreadPoolShutdownException@@QAE@ABV0@@Z 00419fe0 f i threadlibrary:ThreadPool.obj
+ 0002:00009060       ?shutdown@ThreadPool@@QAEXXZ 0041a060 f   threadlibrary:ThreadPool.obj
+ 0002:00009400       ??0?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@ABV01@@Z 0041a400 f i threadlibrary:ThreadPool.obj
+ 0002:00009470       ??0SuicidePill@?A0x77723778@@QAE@XZ 0041a470 f i threadlibrary:ThreadPool.obj
+ 0002:000094d0       ??RSuicidePill@?A0x77723778@@UAEXH@Z 0041a4d0 f i threadlibrary:ThreadPool.obj
+ 0002:00009550       ??0?$_Ranit@PAXHPBQAXABQAX@std@@QAE@ABU01@@Z 0041a550 f i threadlibrary:ThreadPool.obj
+ 0002:000095b0       ??_GSuicidePill@?A0x77723778@@UAEPAXI@Z 0041a5b0 f i threadlibrary:ThreadPool.obj
+ 0002:000095b0       ??_ESuicidePill@?A0x77723778@@UAEPAXI@Z 0041a5b0 f i threadlibrary:ThreadPool.obj
+ 0002:00009620       ??0?$_Iterator_with_base@Urandom_access_iterator_tag@std@@PAXHPBQAXABQAXV_Iterator_base@2@@std@@QAE@ABU01@@Z 0041a620 f i threadlibrary:ThreadPool.obj
+ 0002:00009680       ??1SuicidePill@?A0x77723778@@UAE@XZ 0041a680 f i threadlibrary:ThreadPool.obj
+ 0002:000096d0       ??1ThreadPool@@UAE@XZ      0041a6d0 f   threadlibrary:ThreadPool.obj
+ 0002:000097c0       ??0?$vector@PAXV?$allocator@PAX@std@@@std@@QAE@XZ 0041a7c0 f i threadlibrary:ThreadPool.obj
+ 0002:00009880       ??1?$vector@PAXV?$allocator@PAX@std@@@std@@QAE@XZ 0041a880 f i threadlibrary:ThreadPool.obj
+ 0002:00009920       ?reserve@?$vector@PAXV?$allocator@PAX@std@@@std@@QAEXI@Z 0041a920 f i threadlibrary:ThreadPool.obj
+ 0002:00009b40       ?begin@?$vector@PAXV?$allocator@PAX@std@@@std@@QAE?AV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@2@XZ 0041ab40 f i threadlibrary:ThreadPool.obj
+ 0002:00009bd0       ?end@?$vector@PAXV?$allocator@PAX@std@@@std@@QAE?AV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@2@XZ 0041abd0 f i threadlibrary:ThreadPool.obj
+ 0002:00009c60       ?size@?$vector@PAXV?$allocator@PAX@std@@@std@@QBEIXZ 0041ac60 f i threadlibrary:ThreadPool.obj
+ 0002:00009cb0       ?push_back@?$vector@PAXV?$allocator@PAX@std@@@std@@QAEXABQAX@Z 0041acb0 f i threadlibrary:ThreadPool.obj
+ 0002:00009e20       ??0?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QAE@XZ 0041ae20 f i threadlibrary:ThreadPool.obj
+ 0002:00009e80       ?empty@?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QBE_NXZ 0041ae80 f i threadlibrary:ThreadPool.obj
+ 0002:00009ed0       ?size@?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QBEIXZ 0041aed0 f i threadlibrary:ThreadPool.obj
+ 0002:00009f20       ?front@?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QAEAAPAVThreadRequest@@XZ 0041af20 f i threadlibrary:ThreadPool.obj
+ 0002:00009f70       ?push@?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QAEXABQAVThreadRequest@@@Z 0041af70 f i threadlibrary:ThreadPool.obj
+ 0002:00009fd0       ?pop@?$queue@PAVThreadRequest@@V?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@@std@@QAEXXZ 0041afd0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a020       ??1?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAE@XZ 0041b020 f i threadlibrary:ThreadPool.obj
+ 0002:0000a0c0       ??0?$auto_ptr@VThreadRequest@@@std@@QAE@PAVThreadRequest@@@Z 0041b0c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a110       ??1?$auto_ptr@VThreadRequest@@@std@@QAE@XZ 0041b110 f i threadlibrary:ThreadPool.obj
+ 0002:0000a1c0       ??C?$auto_ptr@VThreadRequest@@@std@@QBEPAVThreadRequest@@XZ 0041b1c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a250       ??D?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBEABQAXXZ 0041b250 f i threadlibrary:ThreadPool.obj
+ 0002:0000a360       ??E?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QAEAAV01@XZ 0041b360 f i threadlibrary:ThreadPool.obj
+ 0002:0000a500       ?_Getmycont@_Iterator_base@std@@QBEPBV_Container_base_secure@2@XZ 0041b500 f i threadlibrary:ThreadPool.obj
+ 0002:0000a540       ?_Has_container@_Iterator_base@std@@QBE_NXZ 0041b540 f i threadlibrary:ThreadPool.obj
+ 0002:0000a590       ??9?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBE_NABV01@@Z 0041b590 f i threadlibrary:ThreadPool.obj
+ 0002:0000a600       ??1?$_Vector_val@PAXV?$allocator@PAX@std@@@std@@QAE@XZ 0041b600 f i threadlibrary:ThreadPool.obj
+ 0002:0000a650       ??1?$_Deque_val@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAE@XZ 0041b650 f i threadlibrary:ThreadPool.obj
+ 0002:0000a6a0       ??1?$_Deque_map@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAE@XZ 0041b6a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a6f0       ?capacity@?$vector@PAXV?$allocator@PAX@std@@@std@@QBEIXZ 0041b6f0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a760       ?max_size@?$vector@PAXV?$allocator@PAX@std@@@std@@QBEIXZ 0041b760 f i threadlibrary:ThreadPool.obj
+ 0002:0000a7c0       ?insert@?$vector@PAXV?$allocator@PAX@std@@@std@@QAE?AV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@2@V?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@2@ABQAX@Z 0041b7c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000a9c0       ?_Buy@?$vector@PAXV?$allocator@PAX@std@@@std@@IAE_NI@Z 0041b9c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000aaa0       ?_Destroy@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEXPAPAX0@Z 0041baa0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ab10       ?_Tidy@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEXXZ 0041bb10 f i threadlibrary:ThreadPool.obj
+ 0002:0000abf0       ?_Ufill@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEPAPAXPAPAXIABQAX@Z 0041bbf0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ac70       ?_Xlen@?$vector@PAXV?$allocator@PAX@std@@@std@@KAXXZ 0041bc70 f i threadlibrary:ThreadPool.obj
+ 0002:0000ad70       ?_Orphan_range@?$vector@PAXV?$allocator@PAX@std@@@std@@IBEXPAPAX0@Z 0041bd70 f i threadlibrary:ThreadPool.obj
+ 0002:0000ae80       ??0?$_Vector_val@PAXV?$allocator@PAX@std@@@std@@IAE@V?$allocator@PAX@1@@Z 0041be80 f i threadlibrary:ThreadPool.obj
+ 0002:0000af00       ??1?$_Container_base_aux_alloc_empty@V?$allocator@PAX@std@@@std@@IAE@XZ 0041bf00 f i threadlibrary:ThreadPool.obj
+ 0002:0000af60       ??0?$allocator@PAX@std@@QAE@XZ 0041bf60 f i threadlibrary:ThreadPool.obj
+ 0002:0000afa0       ?deallocate@?$allocator@PAX@std@@QAEXPAPAXI@Z 0041bfa0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b000       ?allocate@?$allocator@PAX@std@@QAEPAPAXI@Z 0041c000 f i threadlibrary:ThreadPool.obj
+ 0002:0000b060       ??0?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAE@XZ 0041c060 f i threadlibrary:ThreadPool.obj
+ 0002:0000b100       ?size@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QBEIXZ 0041c100 f i threadlibrary:ThreadPool.obj
+ 0002:0000b140       ?empty@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QBE_NXZ 0041c140 f i threadlibrary:ThreadPool.obj
+ 0002:0000b190       ?front@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAEAAPAVThreadRequest@@XZ 0041c190 f i threadlibrary:ThreadPool.obj
+ 0002:0000b270       ?pop_front@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAEXXZ 0041c270 f i threadlibrary:ThreadPool.obj
+ 0002:0000b3d0       ?push_back@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAEXABQAVThreadRequest@@@Z 0041c3d0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b530       ?_Tidy@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@IAEXXZ 0041c530 f i threadlibrary:ThreadPool.obj
+ 0002:0000b650       ??1?$_Container_base_aux_alloc_empty@V?$allocator@PAVThreadRequest@@@std@@@std@@IAE@XZ 0041c650 f i threadlibrary:ThreadPool.obj
+ 0002:0000b6b0       ?get@?$auto_ptr@VThreadRequest@@@std@@QBEPAVThreadRequest@@XZ 0041c6b0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b6f0       ??0?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@PAPAXPBV_Container_base_secure@1@@Z 0041c6f0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b750       ??8?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBE_NABV01@@Z 0041c750 f i threadlibrary:ThreadPool.obj
+ 0002:0000b7c0       ??1?$_Deque_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QAE@XZ 0041c7c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b810       ??1?$_Deque_const_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QAE@XZ 0041c810 f i threadlibrary:ThreadPool.obj
+ 0002:0000b860       ??1?$_Ranit@PAVThreadRequest@@HPBQAV1@ABQAV1@@std@@QAE@XZ 0041c860 f i threadlibrary:ThreadPool.obj
+ 0002:0000b8b0       ??1?$_Iterator_with_base@Urandom_access_iterator_tag@std@@PAVThreadRequest@@HPBQAV3@ABQAV3@V_Iterator_base@2@@std@@QAE@XZ 0041c8b0 f i threadlibrary:ThreadPool.obj
+ 0002:0000b900       ?_Insert_n@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEXV?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@2@IABQAX@Z 0041c900 f i threadlibrary:ThreadPool.obj
+ 0002:0000bec0       ??0?$_Container_base_aux_alloc_empty@V?$allocator@PAX@std@@@std@@IAE@V?$allocator@PAX@1@@Z 0041cec0 f i threadlibrary:ThreadPool.obj
+ 0002:0000bf30       ??0?$allocator@PAX@std@@QAE@ABV01@@Z 0041cf30 f i threadlibrary:ThreadPool.obj
+ 0002:0000bf70       ?max_size@?$allocator@PAX@std@@QBEIXZ 0041cf70 f i threadlibrary:ThreadPool.obj
+ 0002:0000bfe0       ?begin@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAE?AV?$_Deque_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@2@XZ 0041cfe0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c070       ?pop_back@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QAEXXZ 0041d070 f i threadlibrary:ThreadPool.obj
+ 0002:0000c1c0       ?_Growmap@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@IAEXI@Z 0041d1c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c4c0       ?_Orphan_off@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@IBEXI@Z 0041d4c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c660       ??0?$_Deque_val@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@IAE@V?$allocator@PAVThreadRequest@@@1@@Z 0041d660 f i threadlibrary:ThreadPool.obj
+ 0002:0000c6e0       ??0?$allocator@PAVThreadRequest@@@std@@QAE@XZ 0041d6e0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c720       ?deallocate@?$allocator@PAVThreadRequest@@@std@@QAEXPAPAVThreadRequest@@I@Z 0041d720 f i threadlibrary:ThreadPool.obj
+ 0002:0000c780       ?allocate@?$allocator@PAVThreadRequest@@@std@@QAEPAPAVThreadRequest@@I@Z 0041d780 f i threadlibrary:ThreadPool.obj
+ 0002:0000c7e0       ?construct@?$allocator@PAVThreadRequest@@@std@@QAEXPAPAVThreadRequest@@ABQAV3@@Z 0041d7e0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c840       ?destroy@?$allocator@PAVThreadRequest@@@std@@QAEXPAPAVThreadRequest@@@Z 0041d840 f i threadlibrary:ThreadPool.obj
+ 0002:0000c8a0       ?deallocate@?$allocator@PAPAVThreadRequest@@@std@@QAEXPAPAPAVThreadRequest@@I@Z 0041d8a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000c900       ?destroy@?$allocator@PAPAVThreadRequest@@@std@@QAEXPAPAPAVThreadRequest@@@Z 0041d900 f i threadlibrary:ThreadPool.obj
+ 0002:0000c960       ??H?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QBE?AV01@H@Z 0041d960 f i threadlibrary:ThreadPool.obj
+ 0002:0000ca80       ??0?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@PAPAXPBV_Container_base_secure@1@@Z 0041da80 f i threadlibrary:ThreadPool.obj
+ 0002:0000cbd0       ??G?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBEHABV01@@Z 0041dbd0 f i threadlibrary:ThreadPool.obj
+ 0002:0000cc40       ?_Compat@?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBEXABV12@@Z 0041dc40 f i threadlibrary:ThreadPool.obj
+ 0002:0000cd40       ??D?$_Deque_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QBEAAPAVThreadRequest@@XZ 0041dd40 f i threadlibrary:ThreadPool.obj
+ 0002:0000cd90       ??0?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QAE@ABV01@@Z 0041dd90 f i threadlibrary:ThreadPool.obj
+ 0002:0000cdf0       ??0?$_Ranit@PAXHPBQAXABQAX@std@@QAE@XZ 0041ddf0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ce50       ??0?$_Iterator_with_base@Urandom_access_iterator_tag@std@@PAXHPBQAXABQAXV_Iterator_base@2@@std@@QAE@XZ 0041de50 f i threadlibrary:ThreadPool.obj
+ 0002:0000ceb0       ?max_size@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@QBEIXZ 0041deb0 f i threadlibrary:ThreadPool.obj
+ 0002:0000cf10       ?_Xlen@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@KAXXZ 0041df10 f i threadlibrary:ThreadPool.obj
+ 0002:0000d010       ??0?$_Deque_map@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@IAE@V?$allocator@PAVThreadRequest@@@1@@Z 0041e010 f i threadlibrary:ThreadPool.obj
+ 0002:0000d090       ??0?$allocator@PAVThreadRequest@@@std@@QAE@ABV01@@Z 0041e090 f i threadlibrary:ThreadPool.obj
+ 0002:0000d0d0       ?allocate@?$allocator@PAPAVThreadRequest@@@std@@QAEPAPAPAVThreadRequest@@I@Z 0041e0d0 f i threadlibrary:ThreadPool.obj
+ 0002:0000d130       ??Y?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QAEAAV01@H@Z 0041e130 f i threadlibrary:ThreadPool.obj
+ 0002:0000d190       ??0?$_Deque_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QAE@IPBV_Container_base_secure@1@@Z 0041e190 f i threadlibrary:ThreadPool.obj
+ 0002:0000d1f0       ??D?$_Deque_const_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QBEABQAVThreadRequest@@XZ 0041e1f0 f i threadlibrary:ThreadPool.obj
+ 0002:0000d360       ??0?$_Container_base_aux_alloc_empty@V?$allocator@PAVThreadRequest@@@std@@@std@@IAE@V?$allocator@PAVThreadRequest@@@1@@Z 0041e360 f i threadlibrary:ThreadPool.obj
+ 0002:0000d3d0       ?max_size@?$allocator@PAVThreadRequest@@@std@@QBEIXZ 0041e3d0 f i threadlibrary:ThreadPool.obj
+ 0002:0000d440       ??Y?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QAEAAV01@H@Z 0041e440 f i threadlibrary:ThreadPool.obj
+ 0002:0000d5e0       ??0?$_Deque_const_iterator@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@$00@std@@QAE@IPBV_Container_base_secure@1@@Z 0041e5e0 f i threadlibrary:ThreadPool.obj
+ 0002:0000d740       ??0?$_Ranit@PAVThreadRequest@@HPBQAV1@ABQAV1@@std@@QAE@XZ 0041e740 f i threadlibrary:ThreadPool.obj
+ 0002:0000d7a0       ??0?$_Iterator_with_base@Urandom_access_iterator_tag@std@@PAVThreadRequest@@HPBQAV3@ABQAV3@V_Iterator_base@2@@std@@QAE@XZ 0041e7a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000d800       ??$for_each@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@P6GKPAX@Z@std@@YAP6GKPAX@ZV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@1P6GK0@Z@Z 0041e800 f i threadlibrary:ThreadPool.obj
+ 0002:0000da20       ??$_Umove@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEPAPAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@1@0PAPAX@Z 0041ea20 f i threadlibrary:ThreadPool.obj
+ 0002:0000db60       ??$_Destroy_range@V?$allocator@PAX@std@@@std@@YAXPAPAX0AAV?$allocator@PAX@0@@Z 0041eb60 f i threadlibrary:ThreadPool.obj
+ 0002:0000dbe0       ??$unchecked_uninitialized_fill_n@PAPAXIPAXV?$allocator@PAX@std@@@stdext@@YAXPAPAXIABQAXAAV?$allocator@PAX@std@@@Z 0041ebe0 f i threadlibrary:ThreadPool.obj
+ 0002:0000dc80       ??$_Allocate@PAX@std@@YAPAPAXIPAPAX@Z 0041ec80 f i threadlibrary:ThreadPool.obj
+ 0002:0000dd20       ??$_Umove@PAPAX@?$vector@PAXV?$allocator@PAX@std@@@std@@IAEPAPAXPAPAX00@Z 0041ed20 f i threadlibrary:ThreadPool.obj
+ 0002:0000dd90       ??$fill@PAPAXPAX@std@@YAXPAPAX0ABQAX@Z 0041ed90 f i threadlibrary:ThreadPool.obj
+ 0002:0000de00       ??$_Unchecked_move_backward@PAPAXPAPAX@stdext@@YAPAPAXPAPAX00@Z 0041ee00 f i threadlibrary:ThreadPool.obj
+ 0002:0000ded0       ??$unchecked_uninitialized_copy@PAPAPAVThreadRequest@@PAPAPAV1@V?$allocator@PAPAVThreadRequest@@@std@@@stdext@@YAPAPAPAVThreadRequest@@PAPAPAV1@00AAV?$allocator@PAPAVThreadRequest@@@std@@@Z 0041eed0 f i threadlibrary:ThreadPool.obj
+ 0002:0000df80       ??$unchecked_uninitialized_fill_n@PAPAPAVThreadRequest@@IPAPAV1@V?$allocator@PAPAVThreadRequest@@@std@@@stdext@@YAXPAPAPAVThreadRequest@@IABQAPAV1@AAV?$allocator@PAPAVThreadRequest@@@std@@@Z 0041ef80 f i threadlibrary:ThreadPool.obj
+ 0002:0000e020       ??$_Destroy_range@V?$allocator@PAPAVThreadRequest@@@std@@@std@@YAXPAPAPAVThreadRequest@@0AAV?$allocator@PAPAVThreadRequest@@@0@@Z 0041f020 f i threadlibrary:ThreadPool.obj
+ 0002:0000e0a0       ??$_Allocate@PAVThreadRequest@@@std@@YAPAPAVThreadRequest@@IPAPAV1@@Z 0041f0a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000e140       ??$_Construct@PAVThreadRequest@@PAV1@@std@@YAXPAPAVThreadRequest@@ABQAV1@@Z 0041f140 f i threadlibrary:ThreadPool.obj
+ 0002:0000e1e0       ??$_Destroy@PAVThreadRequest@@@std@@YAXPAPAVThreadRequest@@@Z 0041f1e0 f i threadlibrary:ThreadPool.obj
+ 0002:0000e210       ??$_Destroy@PAPAVThreadRequest@@@std@@YAXPAPAPAVThreadRequest@@@Z 0041f210 f i threadlibrary:ThreadPool.obj
+ 0002:0000e240       ??$?0PAVThreadRequest@@@?$allocator@PAPAVThreadRequest@@@std@@QAE@ABV?$allocator@PAVThreadRequest@@@1@@Z 0041f240 f i threadlibrary:ThreadPool.obj
+ 0002:0000e280       ??$_Allocate@PAPAVThreadRequest@@@std@@YAPAPAPAVThreadRequest@@IPAPAPAV1@@Z 0041f280 f i threadlibrary:ThreadPool.obj
+ 0002:0000e320       ??D?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QBEAAPAXXZ 0041f320 f i threadlibrary:ThreadPool.obj
+ 0002:0000e370       ??E?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QAEAAV01@XZ 0041f370 f i threadlibrary:ThreadPool.obj
+ 0002:0000e3d0       ??$_Debug_range@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@0PB_WI@Z 0041f3d0 f i threadlibrary:ThreadPool.obj
+ 0002:0000e500       ??$_Debug_pointer@$$A6GKPAX@Z@std@@YAXP6GKPAX@ZPB_WI@Z 0041f500 f i threadlibrary:ThreadPool.obj
+ 0002:0000e570       ??$_Checked_base@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YA?AV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@AAV10@@Z 0041f570 f i threadlibrary:ThreadPool.obj
+ 0002:0000e630       ??$_Unchecked_uninitialized_move@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@PAPAXV?$allocator@PAX@2@@stdext@@YAPAPAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@0PAPAXAAV?$allocator@PAX@2@@Z 0041f630 f i threadlibrary:ThreadPool.obj
+ 0002:0000e7a0       ??$_Ptr_cat@PAPAXPAPAX@std@@YA?AU_Scalar_ptr_iterator_tag@0@AAPAPAX0@Z 0041f7a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000e810       ??$_Destroy_range@V?$allocator@PAX@std@@@std@@YAXPAPAX0AAV?$allocator@PAX@0@U_Scalar_ptr_iterator_tag@0@@Z 0041f810 f i threadlibrary:ThreadPool.obj
+ 0002:0000e840       ??$_Uninit_fill_n@PAPAXIPAXV?$allocator@PAX@std@@@std@@YAXPAPAXIABQAXAAV?$allocator@PAX@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 0041f840 f i threadlibrary:ThreadPool.obj
+ 0002:0000e8a0       ??$_Unchecked_uninitialized_move@PAPAXPAPAXV?$allocator@PAX@std@@@stdext@@YAPAPAXPAPAX00AAV?$allocator@PAX@std@@@Z 0041f8a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000e950       ??$_Checked_base@PAPAX@std@@YAPAPAXAAPAPAX@Z 0041f950 f i threadlibrary:ThreadPool.obj
+ 0002:0000e9e0       ??$_Fill@PAPAXPAX@std@@YAXPAPAX0ABQAX@Z 0041f9e0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ea70       ??$_Iter_random@PAPAXPAPAX@std@@YA?AUrandom_access_iterator_tag@0@ABQAPAX0@Z 0041fa70 f i threadlibrary:ThreadPool.obj
+ 0002:0000eae0       ??$_Move_cat@PAPAX@std@@YA?AU_Undefined_move_tag@0@ABQAPAX@Z 0041fae0 f i threadlibrary:ThreadPool.obj
+ 0002:0000eb50       ??$_Move_backward_opt@PAPAXPAPAXUrandom_access_iterator_tag@std@@U_Undefined_move_tag@2@@std@@YAPAPAXPAPAX00Urandom_access_iterator_tag@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z 0041fb50 f i threadlibrary:ThreadPool.obj
+ 0002:0000ebf0       ??$_Checked_base@PAPAPAVThreadRequest@@@std@@YAPAPAPAVThreadRequest@@AAPAPAPAV1@@Z 0041fbf0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ec80       ??$_Ptr_cat@PAPAPAVThreadRequest@@PAPAPAV1@@std@@YA?AU_Scalar_ptr_iterator_tag@0@AAPAPAPAVThreadRequest@@0@Z 0041fc80 f i threadlibrary:ThreadPool.obj
+ 0002:0000ecf0       ??$_Uninit_copy@PAPAPAVThreadRequest@@PAPAPAV1@V?$allocator@PAPAVThreadRequest@@@std@@@std@@YAPAPAPAVThreadRequest@@PAPAPAV1@00AAV?$allocator@PAPAVThreadRequest@@@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 0041fcf0 f i threadlibrary:ThreadPool.obj
+ 0002:0000edd0       ??$_Uninit_fill_n@PAPAPAVThreadRequest@@IPAPAV1@V?$allocator@PAPAVThreadRequest@@@std@@@std@@YAXPAPAPAVThreadRequest@@IABQAPAV1@AAV?$allocator@PAPAVThreadRequest@@@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 0041fdd0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ee30       ??$_Destroy_range@V?$allocator@PAPAVThreadRequest@@@std@@@std@@YAXPAPAPAVThreadRequest@@0AAV?$allocator@PAPAVThreadRequest@@@0@U_Scalar_ptr_iterator_tag@0@@Z 0041fe30 f i threadlibrary:ThreadPool.obj
+ 0002:0000ee60       ??$_Iter_cat@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YA?AUrandom_access_iterator_tag@0@ABV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@@Z 0041fe60 f i threadlibrary:ThreadPool.obj
+ 0002:0000eed0       ??$_Debug_range2@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@0PB_WIUrandom_access_iterator_tag@0@@Z 0041fed0 f i threadlibrary:ThreadPool.obj
+ 0002:0000f000       ??$_Checked_base@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YA?AV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@AAV10@U_Unchanged_checked_iterator_base_type_tag@0@@Z 00420000 f i threadlibrary:ThreadPool.obj
+ 0002:0000f070       ??$_Uninit_move@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@PAPAXV?$allocator@PAX@2@U_Undefined_move_tag@2@@std@@YAPAPAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@0PAPAXAAV?$allocator@PAX@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z 00420070 f i threadlibrary:ThreadPool.obj
+ 0002:0000f1a0       ??$unchecked_fill_n@PAPAXIPAX@stdext@@YAXPAPAXIABQAX@Z 004201a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000f230       ??$_Uninit_move@PAPAXPAPAXV?$allocator@PAX@std@@U_Undefined_move_tag@2@@std@@YAPAPAXPAPAX00AAV?$allocator@PAX@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z 00420230 f i threadlibrary:ThreadPool.obj
+ 0002:0000f290       ??$_Checked_base@PAPAX@std@@YAPAPAXAAPAPAXU_Unchanged_checked_iterator_base_type_tag@0@@Z 00420290 f i threadlibrary:ThreadPool.obj
+ 0002:0000f2d0       ??$_Debug_range@PAPAX@std@@YAXPAPAX0PB_WI@Z 004202d0 f i threadlibrary:ThreadPool.obj
+ 0002:0000f350       ??$_Copy_backward_opt@PAPAXPAPAXUrandom_access_iterator_tag@std@@@std@@YAPAPAXPAPAX00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00420350 f i threadlibrary:ThreadPool.obj
+ 0002:0000f440       ??$_Checked_base@PAPAPAVThreadRequest@@@std@@YAPAPAPAVThreadRequest@@AAPAPAPAV1@U_Unchanged_checked_iterator_base_type_tag@0@@Z 00420440 f i threadlibrary:ThreadPool.obj
+ 0002:0000f480       ??$_Debug_range@PAPAPAVThreadRequest@@@std@@YAXPAPAPAVThreadRequest@@0PB_WI@Z 00420480 f i threadlibrary:ThreadPool.obj
+ 0002:0000f500       ??$_Debug_pointer@PAPAVThreadRequest@@@std@@YAXPAPAPAVThreadRequest@@PB_WI@Z 00420500 f i threadlibrary:ThreadPool.obj
+ 0002:0000f570       ??$unchecked_fill_n@PAPAPAVThreadRequest@@IPAPAV1@@stdext@@YAXPAPAPAVThreadRequest@@IABQAPAV1@@Z 00420570 f i threadlibrary:ThreadPool.obj
+ 0002:0000f600       ??M?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@std@@QBE_NABV01@@Z 00420600 f i threadlibrary:ThreadPool.obj
+ 0002:0000f670       ??$_Debug_pointer@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@@std@@YAXAAV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@PB_WI@Z 00420670 f i threadlibrary:ThreadPool.obj
+ 0002:0000f6a0       ??$unchecked_uninitialized_copy@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@PAPAXV?$allocator@PAX@2@@stdext@@YAPAPAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@0PAPAXAAV?$allocator@PAX@2@@Z 004206a0 f i threadlibrary:ThreadPool.obj
+ 0002:0000f810       ??$_Iter_cat@PAPAX@std@@YA?AUrandom_access_iterator_tag@0@ABQAPAX@Z 00420810 f i threadlibrary:ThreadPool.obj
+ 0002:0000f880       ??$_Fill_n@PAPAXIPAX@std@@YAXPAPAXIABQAXUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00420880 f i threadlibrary:ThreadPool.obj
+ 0002:0000f910       ??$unchecked_uninitialized_copy@PAPAXPAPAXV?$allocator@PAX@std@@@stdext@@YAPAPAXPAPAX00AAV?$allocator@PAX@std@@@Z 00420910 f i threadlibrary:ThreadPool.obj
+ 0002:0000f9c0       ??$_Debug_range2@PAPAX@std@@YAXPAPAX0PB_WIUrandom_access_iterator_tag@0@@Z 004209c0 f i threadlibrary:ThreadPool.obj
+ 0002:0000fa70       ??$_Debug_pointer@PAX@std@@YAXPAPAXPB_WI@Z 00420a70 f i threadlibrary:ThreadPool.obj
+ 0002:0000fae0       ??$_Iter_cat@PAPAPAVThreadRequest@@@std@@YA?AUrandom_access_iterator_tag@0@ABQAPAPAVThreadRequest@@@Z 00420ae0 f i threadlibrary:ThreadPool.obj
+ 0002:0000fb50       ??$_Debug_range2@PAPAPAVThreadRequest@@@std@@YAXPAPAPAVThreadRequest@@0PB_WIUrandom_access_iterator_tag@0@@Z 00420b50 f i threadlibrary:ThreadPool.obj
+ 0002:0000fc00       ??$_Fill_n@PAPAPAVThreadRequest@@IPAPAV1@@std@@YAXPAPAPAVThreadRequest@@IABQAPAV1@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00420c00 f i threadlibrary:ThreadPool.obj
+ 0002:0000fc90       ??$_Ptr_cat@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@PAPAX@std@@YA?AU_Scalar_ptr_iterator_tag@0@AAV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@AAPAPAX@Z 00420c90 f i threadlibrary:ThreadPool.obj
+ 0002:0000fd00       ??$_Uninit_copy@V?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@PAPAXV?$allocator@PAX@2@@std@@YAPAPAXV?$_Vector_iterator@PAXV?$allocator@PAX@std@@@0@0PAPAXAAV?$allocator@PAX@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00420d00 f i threadlibrary:ThreadPool.obj
+ 0002:0000fea0       ??$_Fill_n@PAPAXIPAX@std@@YAXPAPAXIABQAXU_Range_checked_iterator_tag@0@@Z 00420ea0 f i threadlibrary:ThreadPool.obj
+ 0002:0000ff00       ??$_Uninit_copy@PAPAXPAPAXV?$allocator@PAX@std@@@std@@YAPAPAXPAPAX00AAV?$allocator@PAX@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z 00420f00 f i threadlibrary:ThreadPool.obj
+ 0002:0000ffe0       ??$_Fill_n@PAPAPAVThreadRequest@@IPAPAV1@@std@@YAXPAPAPAVThreadRequest@@IABQAPAV1@U_Range_checked_iterator_tag@0@@Z 00420fe0 f i threadlibrary:ThreadPool.obj
+ 0002:00010040       ??G?$_Vector_iterator@PAXV?$allocator@PAX@std@@@std@@QBEHABV?$_Vector_const_iterator@PAXV?$allocator@PAX@std@@@1@@Z 00421040 f i threadlibrary:ThreadPool.obj
+ 0002:00010096       ??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z 00421096 f   msvcprtd:MSVCP90D.dll
+ 0002:0001009c       ??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z 0042109c f   msvcprtd:MSVCP90D.dll
+ 0002:000100a2       ?endl@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@1@AAV21@@Z 004210a2 f   msvcprtd:MSVCP90D.dll
+ 0002:000100a8       ??1_Lockit@std@@QAE@XZ     004210a8 f   msvcprtd:MSVCP90D.dll
+ 0002:000100ae       ??0_Lockit@std@@QAE@H@Z    004210ae f   msvcprtd:MSVCP90D.dll
+ 0002:000100b4       ?_Debug_message@std@@YAXPB_W0I@Z 004210b4 f   msvcprtd:MSVCP90D.dll
+ 0002:000100ba       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 004210ba f   msvcprtd:MSVCP90D.dll
+ 0002:000100c0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z 004210c0 f   msvcprtd:MSVCP90D.dll
+ 0002:000100c6       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z 004210c6 f   msvcprtd:MSVCP90D.dll
+ 0002:000100cc       ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ 004210cc f   msvcprtd:MSVCP90D.dll
+ 0002:000100d2       ??1_Container_base_secure@std@@QAE@XZ 004210d2 f   msvcprtd:MSVCP90D.dll
+ 0002:000100d8       ??0_Container_base_secure@std@@QAE@XZ 004210d8 f   msvcprtd:MSVCP90D.dll
+ 0002:000100de       ?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z 004210de f   msvcprtd:MSVCP90D.dll
+ 0002:000100e4       ?width@ios_base@std@@QAEHH@Z 004210e4 f   msvcprtd:MSVCP90D.dll
+ 0002:000100ea       ?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHPBDH@Z 004210ea f   msvcprtd:MSVCP90D.dll
+ 0002:000100f0       ?eq_int_type@?$char_traits@D@std@@SA_NABH0@Z 004210f0 f   msvcprtd:MSVCP90D.dll
+ 0002:000100f6       ?eof@?$char_traits@D@std@@SAHXZ 004210f6 f   msvcprtd:MSVCP90D.dll
+ 0002:000100fc       ?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z 004210fc f   msvcprtd:MSVCP90D.dll
+ 0002:00010102       ?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ 00421102 f   msvcprtd:MSVCP90D.dll
+ 0002:00010108       ?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDXZ 00421108 f   msvcprtd:MSVCP90D.dll
+ 0002:0001010e       ?flags@ios_base@std@@QBEHXZ 0042110e f   msvcprtd:MSVCP90D.dll
+ 0002:00010114       ?width@ios_base@std@@QBEHXZ 00421114 f   msvcprtd:MSVCP90D.dll
+ 0002:0001011a       ?length@?$char_traits@D@std@@SAIPBD@Z 0042111a f   msvcprtd:MSVCP90D.dll
+ 0002:00010120       ?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ 00421120 f   msvcprtd:MSVCP90D.dll
+ 0002:00010126       ?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ 00421126 f   msvcprtd:MSVCP90D.dll
+ 0002:0001012c       ?good@ios_base@std@@QBE_NXZ 0042112c f   msvcprtd:MSVCP90D.dll
+ 0002:00010132       ?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ 00421132 f   msvcprtd:MSVCP90D.dll
+ 0002:00010138       ?uncaught_exception@std@@YA_NXZ 00421138 f   msvcprtd:MSVCP90D.dll
+ 0002:0001013e       ?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ 0042113e f   msvcprtd:MSVCP90D.dll
+ 0002:00010144       ?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ 00421144 f   msvcprtd:MSVCP90D.dll
+ 0002:0001014a       ?_Orphan_all@_Container_base_secure@std@@QBEXXZ 0042114a f   msvcprtd:MSVCP90D.dll
+ 0002:00010150       ??3@YAXPAX@Z               00421150 f   MSVCRTD:MSVCR90D.dll
+ 0002:00010156       ??2@YAPAXI@Z               00421156 f   MSVCRTD:MSVCR90D.dll
+ 0002:0001015c       _rand                      0042115c f   MSVCRTD:MSVCR90D.dll
+ 0002:00010162       ___CxxFrameHandler3        00421162 f   MSVCRTD:MSVCR90D.dll
+ 0002:00010170       @__security_check_cookie@4 00421170 f   MSVCRTD:secchk.obj
+ 0002:00010190       __RTC_CheckEsp             00421190 f   MSVCRTD:_stack_.obj
+ 0002:000101c0       @_RTC_CheckStackVars@8     004211c0 f   MSVCRTD:_stack_.obj
+ 0002:00010240       @_RTC_AllocaHelper@12      00421240 f   MSVCRTD:_stack_.obj
+ 0002:00010280       @_RTC_CheckStackVars2@12   00421280 f   MSVCRTD:_stack_.obj
+ 0002:00010390       __RTC_InitBase             00421390 f   MSVCRTD:_init_.obj
+ 0002:000103d0       __RTC_Shutdown             004213d0 f   MSVCRTD:_init_.obj
+ 0002:000103e8       _srand                     004213e8 f   MSVCRTD:MSVCR90D.dll
+ 0002:000103f0       ??0type_info@@AAE@ABV0@@Z  004213f0 f   MSVCRTD:ti_inst.obj
+ 0002:00010420       ??_Etype_info@@UAEPAXI@Z   00421420 f i MSVCRTD:ti_inst.obj
+ 0002:000104b0       ??4type_info@@AAEAAV0@ABV0@@Z 004214b0 f   MSVCRTD:ti_inst.obj
+ 0002:000104c6       __purecall                 004214c6 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104cc       __time64                   004214cc f   MSVCRTD:MSVCR90D.dll
+ 0002:000104d2       __invalid_parameter        004214d2 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104d8       __CrtDbgReportW            004214d8 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104de       __CxxThrowException@8      004214de f   MSVCRTD:MSVCR90D.dll
+ 0002:000104e4       ??0exception@std@@QAE@ABV01@@Z 004214e4 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104ea       ??1exception@std@@UAE@XZ   004214ea f   MSVCRTD:MSVCR90D.dll
+ 0002:000104f0       ??0exception@std@@QAE@XZ   004214f0 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104f6       ??0exception@std@@QAE@ABQBD@Z 004214f6 f   MSVCRTD:MSVCR90D.dll
+ 0002:000104fc       ?what@exception@std@@UBEPBDXZ 004214fc f   MSVCRTD:MSVCR90D.dll
+ 0002:00010510       __onexit                   00421510 f   MSVCRTD:atonexit.obj
+ 0002:00010660       _atexit                    00421660 f   MSVCRTD:atonexit.obj
+ 0002:000107d0       _mainCRTStartup            004217d0 f   MSVCRTD:crtexe.obj
+ 0002:00010ad0       _NtCurrentTeb              00421ad0 f i MSVCRTD:crtexe.obj
+ 0002:00010bba       __wassert                  00421bba f   MSVCRTD:MSVCR90D.dll
+ 0002:00010bc0       __endthreadex              00421bc0 f   MSVCRTD:MSVCR90D.dll
+ 0002:00010bc6       __beginthreadex            00421bc6 f   MSVCRTD:MSVCR90D.dll
+ 0002:00010bcc       _memmove_s                 00421bcc f   MSVCRTD:MSVCR90D.dll
+ 0002:00010be0       ___report_gsfailure        00421be0 f   MSVCRTD:gs_report.obj
+ 0002:00010d40       _DebuggerKnownHandle       00421d40 f   MSVCRTD:_error_.obj
+ 0002:00010e20       ?_RTC_Failure@@YAXPAXH@Z   00421e20 f   MSVCRTD:_error_.obj
+ 0002:000111f0       ?_RTC_StackFailure@@YAXPAXPBD@Z 004221f0 f   MSVCRTD:_error_.obj
+ 0002:00011330       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 00422330 f   MSVCRTD:_error_.obj
+ 0002:00011540       __RTC_UninitUse            00422540 f   MSVCRTD:_error_.obj
+ 0002:00011670       __RTC_NumErrors            00422670 f   MSVCRTD:_userapi_.obj
+ 0002:00011680       __RTC_GetErrDesc           00422680 f   MSVCRTD:_userapi_.obj
+ 0002:000116a0       __RTC_SetErrorType         004226a0 f   MSVCRTD:_userapi_.obj
+ 0002:000116d0       __RTC_SetErrorFunc         004226d0 f   MSVCRTD:_userapi_.obj
+ 0002:00011700       __RTC_SetErrorFuncW        00422700 f   MSVCRTD:_userapi_.obj
+ 0002:00011730       ?_RTC_GetErrorFunc@@YAP6AHHPBDH00ZZPBX@Z 00422730 f   MSVCRTD:_userapi_.obj
+ 0002:00011740       ?_RTC_GetErrorFuncW@@YAP6AHHPB_WH00ZZPBX@Z 00422740 f   MSVCRTD:_userapi_.obj
+ 0002:00011746       __CRT_RTC_INITW            00422746 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011750       ??_M@YGXPAXIHP6EX0@Z@Z     00422750 f   MSVCRTD:ehvecdtr.obj
+ 0002:00011830       ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z 00422830 f   MSVCRTD:ehvecdtr.obj
+ 0002:0001191a       __unlock                   0042291a f   MSVCRTD:MSVCR90D.dll
+ 0002:00011920       ___dllonexit               00422920 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011926       __encode_pointer           00422926 f   MSVCRTD:MSVCR90D.dll
+ 0002:0001192c       __lock                     0042292c f   MSVCRTD:MSVCR90D.dll
+ 0002:00011932       __decode_pointer           00422932 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011940       __except_handler4          00422940 f   MSVCRTD:chandler4gs.obj
+ 0002:00011980       ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z 00422980 f   MSVCRTD:unhandld.obj
+ 0002:00011a00       ___CxxSetUnhandledExceptionFilter 00422a00 f   MSVCRTD:unhandld.obj
+ 0002:00011a1a       __configthreadlocale       00422a1a f   MSVCRTD:MSVCR90D.dll
+ 0002:00011a20       __setdefaultprecision      00422a20 f   MSVCRTD:fp8.obj
+ 0002:00011a70       __invoke_watson_if_error   00422a70 f i MSVCRTD:fp8.obj
+ 0002:00011aa6       ___setusermatherr          00422aa6 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011ab0       __matherr                  00422ab0 f   MSVCRTD:merr.obj
+ 0002:00011ac0       __setargv                  00422ac0 f   MSVCRTD:dllargv.obj
+ 0002:00011ad0       __RTC_Initialize           00422ad0 f   MSVCRTD:_initsect_.obj
+ 0002:00011b00       __RTC_Terminate            00422b00 f   MSVCRTD:_initsect_.obj
+ 0002:00011b30       ___p__commode              00422b30 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011b36       ___p__fmode                00422b36 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011b3c       ___set_app_type            00422b3c f   MSVCRTD:MSVCR90D.dll
+ 0002:00011b42       __amsg_exit                00422b42 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011b48       ___getmainargs             00422b48 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011b50       ___security_init_cookie    00422b50 f   MSVCRTD:gs_support.obj
+ 0002:00011c62       __exit                     00422c62 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011c68       __XcptFilter               00422c68 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011c6e       __cexit                    00422c6e f   MSVCRTD:MSVCR90D.dll
+ 0002:00011c74       _exit                      00422c74 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011c7a       __CrtSetCheckCount         00422c7a f   MSVCRTD:MSVCR90D.dll
+ 0002:00011c80       __ValidateImageBase        00422c80 f   MSVCRTD:pesect.obj
+ 0002:00011d00       __FindPESection            00422d00 f   MSVCRTD:pesect.obj
+ 0002:00011da0       __IsNonwritableInCurrentImage 00422da0 f   MSVCRTD:pesect.obj
+ 0002:00011ef6       __initterm                 00422ef6 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011efc       __initterm_e               00422efc f   MSVCRTD:MSVCR90D.dll
+ 0002:00011f02       __crt_debugger_hook        00422f02 f   MSVCRTD:MSVCR90D.dll
+ 0002:00011f10       ?_RTC_GetSrcLine@@YAHPAEPA_WKPAH1K@Z 00422f10 f   MSVCRTD:_pdblkup_.obj
+ 0002:000124cc       ?terminate@@YAXXZ          004234cc f   MSVCRTD:MSVCR90D.dll
+ 0002:000124d2       ??1type_info@@UAE@XZ       004234d2 f   MSVCRTD:MSVCR90D.dll
+ 0002:000124d2       ?_type_info_dtor_internal_method@type_info@@QAEXXZ 004234d2 f   MSVCRTD:MSVCR90D.dll
+ 0002:000124d8       __except_handler4_common   004234d8 f   MSVCRTD:MSVCR90D.dll
+ 0002:000124de       __controlfp_s              004234de f   MSVCRTD:MSVCR90D.dll
+ 0002:000124e4       __invoke_watson            004234e4 f   MSVCRTD:MSVCR90D.dll
+ 0002:000124ea       _CreateEventA@16           004234ea f   kernel32:KERNEL32.dll
+ 0002:000124f0       _CloseHandle@4             004234f0 f   kernel32:KERNEL32.dll
+ 0002:000124f6       _SetEvent@4                004234f6 f   kernel32:KERNEL32.dll
+ 0002:000124fc       _CreateSemaphoreA@16       004234fc f   kernel32:KERNEL32.dll
+ 0002:00012502       _WaitForSingleObject@8     00423502 f   kernel32:KERNEL32.dll
+ 0002:00012508       _ResumeThread@4            00423508 f   kernel32:KERNEL32.dll
+ 0002:0001250e       _ResetEvent@4              0042350e f   kernel32:KERNEL32.dll
+ 0002:00012514       _ReleaseSemaphore@12       00423514 f   kernel32:KERNEL32.dll
+ 0002:0001251a       _TerminateThread@8         0042351a f   kernel32:KERNEL32.dll
+ 0002:00012520       _InterlockedExchange@8     00423520 f   kernel32:KERNEL32.dll
+ 0002:00012526       _InterlockedCompareExchange@12 00423526 f   kernel32:KERNEL32.dll
+ 0002:0001252c       _TerminateProcess@8        0042352c f   kernel32:KERNEL32.dll
+ 0002:00012532       _GetCurrentProcess@0       00423532 f   kernel32:KERNEL32.dll
+ 0002:00012538       _UnhandledExceptionFilter@4 00423538 f   kernel32:KERNEL32.dll
+ 0002:0001253e       _SetUnhandledExceptionFilter@4 0042353e f   kernel32:KERNEL32.dll
+ 0002:00012544       _IsDebuggerPresent@0       00423544 f   kernel32:KERNEL32.dll
+ 0002:0001254a       _RaiseException@16         0042354a f   kernel32:KERNEL32.dll
+ 0002:00012550       _DebugBreak@0              00423550 f   kernel32:KERNEL32.dll
+ 0002:00012556       _WideCharToMultiByte@32    00423556 f   kernel32:KERNEL32.dll
+ 0002:0001255c       _MultiByteToWideChar@24    0042355c f   kernel32:KERNEL32.dll
+ 0002:00012562       _lstrlenA@4                00423562 f   kernel32:KERNEL32.dll
+ 0002:00012568       _GetProcAddress@8          00423568 f   kernel32:KERNEL32.dll
+ 0002:0001256e       _LoadLibraryA@4            0042356e f   kernel32:KERNEL32.dll
+ 0002:00012574       _QueryPerformanceCounter@4 00423574 f   kernel32:KERNEL32.dll
+ 0002:0001257a       _GetTickCount@0            0042357a f   kernel32:KERNEL32.dll
+ 0002:00012580       _GetCurrentThreadId@0      00423580 f   kernel32:KERNEL32.dll
+ 0002:00012586       _GetCurrentProcessId@0     00423586 f   kernel32:KERNEL32.dll
+ 0002:0001258c       _GetSystemTimeAsFileTime@4 0042358c f   kernel32:KERNEL32.dll
+ 0002:00012592       _HeapFree@12               00423592 f   kernel32:KERNEL32.dll
+ 0002:00012598       _HeapAlloc@12              00423598 f   kernel32:KERNEL32.dll
+ 0002:0001259e       _GetProcessHeap@0          0042359e f   kernel32:KERNEL32.dll
+ 0002:000125a4       _GetModuleFileNameW@12     004235a4 f   kernel32:KERNEL32.dll
+ 0002:000125aa       _VirtualQuery@12           004235aa f   kernel32:KERNEL32.dll
+ 0002:000125b0       _FreeLibrary@4             004235b0 f   kernel32:KERNEL32.dll
+ 0003:00000000       ___xc_a                    00429000     MSVCRTD:cinitexe.obj
+ 0003:00000314       ___xc_z                    00429314     MSVCRTD:cinitexe.obj
+ 0003:00000418       ___xi_a                    00429418     MSVCRTD:cinitexe.obj
+ 0003:00000724       ___xi_z                    00429724     MSVCRTD:cinitexe.obj
+ 0003:0000089d       ?_Value@?$_Is_swap_move@U_Swap_move_tag@std@@@std@@2_NB 0042989d     main.obj
+ 0003:000008a0       ?collate@?$_Locbase@H@std@@2HB 004298a0     main.obj
+ 0003:000008a4       ?ctype@?$_Locbase@H@std@@2HB 004298a4     main.obj
+ 0003:000008a8       ?monetary@?$_Locbase@H@std@@2HB 004298a8     main.obj
+ 0003:000008ac       ?numeric@?$_Locbase@H@std@@2HB 004298ac     main.obj
+ 0003:000008b0       ?time@?$_Locbase@H@std@@2HB 004298b0     main.obj
+ 0003:000008b4       ?messages@?$_Locbase@H@std@@2HB 004298b4     main.obj
+ 0003:000008b8       ?all@?$_Locbase@H@std@@2HB 004298b8     main.obj
+ 0003:000008bc       ?none@?$_Locbase@H@std@@2HB 004298bc     main.obj
+ 0003:000008c0       ?skipws@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298c0     main.obj
+ 0003:000008c4       ?unitbuf@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298c4     main.obj
+ 0003:000008c8       ?uppercase@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298c8     main.obj
+ 0003:000008cc       ?showbase@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298cc     main.obj
+ 0003:000008d0       ?showpoint@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298d0     main.obj
+ 0003:000008d4       ?showpos@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298d4     main.obj
+ 0003:000008d8       ?left@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298d8     main.obj
+ 0003:000008dc       ?right@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298dc     main.obj
+ 0003:000008e0       ?internal@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298e0     main.obj
+ 0003:000008e4       ?dec@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298e4     main.obj
+ 0003:000008e8       ?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298e8     main.obj
+ 0003:000008ec       ?hex@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298ec     main.obj
+ 0003:000008f0       ?scientific@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298f0     main.obj
+ 0003:000008f4       ?fixed@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298f4     main.obj
+ 0003:000008f8       ?hexfloat@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298f8     main.obj
+ 0003:000008fc       ?boolalpha@?$_Iosb@H@std@@2W4_Fmtflags@12@B 004298fc     main.obj
+ 0003:00000900       ?_Stdio@?$_Iosb@H@std@@2W4_Fmtflags@12@B 00429900     main.obj
+ 0003:00000904       ?adjustfield@?$_Iosb@H@std@@2W4_Fmtflags@12@B 00429904     main.obj
+ 0003:00000908       ?basefield@?$_Iosb@H@std@@2W4_Fmtflags@12@B 00429908     main.obj
+ 0003:0000090c       ?floatfield@?$_Iosb@H@std@@2W4_Fmtflags@12@B 0042990c     main.obj
+ 0003:00000910       ?goodbit@?$_Iosb@H@std@@2W4_Iostate@12@B 00429910     main.obj
+ 0003:00000914       ?eofbit@?$_Iosb@H@std@@2W4_Iostate@12@B 00429914     main.obj
+ 0003:00000918       ?failbit@?$_Iosb@H@std@@2W4_Iostate@12@B 00429918     main.obj
+ 0003:0000091c       ?badbit@?$_Iosb@H@std@@2W4_Iostate@12@B 0042991c     main.obj
+ 0003:00000920       ?_Hardfail@?$_Iosb@H@std@@2W4_Iostate@12@B 00429920     main.obj
+ 0003:00000924       ?in@?$_Iosb@H@std@@2W4_Openmode@12@B 00429924     main.obj
+ 0003:00000928       ?out@?$_Iosb@H@std@@2W4_Openmode@12@B 00429928     main.obj
+ 0003:0000092c       ?ate@?$_Iosb@H@std@@2W4_Openmode@12@B 0042992c     main.obj
+ 0003:00000930       ?app@?$_Iosb@H@std@@2W4_Openmode@12@B 00429930     main.obj
+ 0003:00000934       ?trunc@?$_Iosb@H@std@@2W4_Openmode@12@B 00429934     main.obj
+ 0003:00000938       ?_Nocreate@?$_Iosb@H@std@@2W4_Openmode@12@B 00429938     main.obj
+ 0003:0000093c       ?_Noreplace@?$_Iosb@H@std@@2W4_Openmode@12@B 0042993c     main.obj
+ 0003:00000940       ?binary@?$_Iosb@H@std@@2W4_Openmode@12@B 00429940     main.obj
+ 0003:00000944       ?beg@?$_Iosb@H@std@@2W4_Seekdir@12@B 00429944     main.obj
+ 0003:00000948       ?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B 00429948     main.obj
+ 0003:0000094c       ?end@?$_Iosb@H@std@@2W4_Seekdir@12@B 0042994c     main.obj
+ 0003:00000950       ?value@?$integral_constant@_N$0A@@tr1@std@@2_NB 00429950     main.obj
+ 0003:00000951       ?value@?$integral_constant@_N$00@tr1@std@@2_NB 00429951     main.obj
+ 0003:00000954       ?_EEM_DS@?$deque@PAVThreadRequest@@V?$allocator@PAVThreadRequest@@@std@@@std@@2HB 00429954     main.obj
+ 0003:0000095c       ??_7TestRequest@@6B@       0042995c     main.obj
+ 0003:0000096c       ??_7ThreadRequest@@6B@     0042996c     main.obj
+ 0003:00000978       ??_C@_0O@IALHGEAH@?5milliseconds?$AA@ 00429978     main.obj
+ 0003:00000988       ??_C@_0N@FFFIFAFD@?5waited?5for?5?$AA@ 00429988     main.obj
+ 0003:00000998       ??_C@_0M@DHHJODOH@?3?5Request?3?5?$AA@ 00429998     main.obj
+ 0003:000009a8       ??_C@_1DC@POOIKBAO@?$AAI?$AAT?$AAE?$AAR?$AAA?$AAT?$AAO?$AAR?$AA?5?$AAL?$AAI?$AAS?$AAT?$AA?5?$AAC?$AAO?$AAR?$AAR?$AAU?$AAP?$AAT?$AAE?$AAD?$AA?$CB?$AA?$AA@ 004299a8     main.obj
+ 0003:000009e8       ??_C@_1IC@BCABFDBJ@?$AAD?$AA?3?$AA?2?$AAP?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAF?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAV?$AAi?$AAs?$AAu?$AAa@ 004299e8     main.obj
+ 0003:00000a88       ??_7COMPool@@6B@           00429a88     main.obj
+ 0003:00000a98       ??_C@_0BJ@BLNMJIND@Starting?5COM?5for?5thread?5?$AA@ 00429a98     main.obj
+ 0003:00000ab8       ??_C@_0BJ@MKAGGELE@Stopping?5COM?5for?5thread?5?$AA@ 00429ab8     main.obj
+ 0003:00000ad8       ??_C@_1HM@HOHBDIDI@?$AAD?$AA?3?$AA?2?$AAP?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAF?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAV?$AAi?$AAs?$AAu?$AAa@ 00429ad8     main.obj
+ 0003:00000b6c       ??_C@_1BO@MEPPHOO@?$AA?$CC?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$CC?$AA?$AA@ 00429b6c     main.obj
+ 0003:00000b90       ??_C@_1BHA@GEGOHPML@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAm?$AAa?$AAp?$AA_?$AAt?$AAr?$AAa?$AAi@ 00429b90     main.obj
+ 0003:00000d50       ??_C@_1FG@CMLDHNON@?$AA?$CI?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAO?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5@ 00429d50     main.obj
+ 0003:00000db8       ??_C@_1EI@FHEHNNNM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa@ 00429db8     main.obj
+ 0003:00000e10       ??_C@_1CG@JNLFBNGN@?$AA?$CC?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAa?$AAr?$AAg?$AAu?$AAm?$AAe?$AAn?$AAt?$AA?$CC?$AA?$AA@ 00429e10     main.obj
+ 0003:00000e40       ??_C@_1BHC@PECGBEBJ@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAm?$AAa?$AAp?$AA_?$AAt?$AAr?$AAa?$AAi@ 00429e40     main.obj
+ 0003:00001000       ??_C@_1FO@OCPOOAIA@?$AA?$CI?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd@ 0042a000     main.obj
+ 0003:00001070       ??_C@_1DO@CFEEPGGJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 0042a070     main.obj
+ 0003:000010bc       ??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@ 0042a0bc     main.obj
+ 0003:000010d8       ??_7length_error@std@@6B@  0042a0d8     main.obj
+ 0003:000010e8       ??_7logic_error@std@@6B@   0042a0e8     main.obj
+ 0003:000010f8       ??_C@_1BGE@LDIJHPNF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAm?$AAa?$AAp?$AA_?$AAt?$AAr?$AAa?$AAi@ 0042a0f8     main.obj
+ 0003:000012a8       ??_C@_1EG@EHJFMBHJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 0042a2a8     main.obj
+ 0003:00001300       ??_C@_1EK@PPDBPCAN@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAe?$AAr?$AAa?$AAs?$AAe?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr@ 0042a300     main.obj
+ 0003:00001358       ??_C@_1BGE@ECELJKMH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAm?$AAa?$AAp?$AA_?$AAt?$AAr?$AAa?$AAi@ 0042a358     main.obj
+ 0003:00001508       ??_C@_1EG@OKCGOALM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 0042a508     main.obj
+ 0003:0000155c       ??_C@_1CE@IGJMOCCK@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAo?$AAp?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AA?$AA@ 0042a55c     main.obj
+ 0003:0000158c       ??_7bad_alloc@std@@6B@     0042a58c     main.obj
+ 0003:00001598       ??_C@_0P@GHFPNOJB@bad?5allocation?$AA@ 0042a598     threadlibrary:ThreadPool.obj
+ 0003:000015b0       ??_7ThreadPool@@6B@        0042a5b0     threadlibrary:ThreadPool.obj
+ 0003:000015c0       ??_C@_1O@MKHGGFNC@?$AAh?$AAa?$AAn?$AAd?$AAl?$AAe?$AA?$AA@ 0042a5c0     threadlibrary:ThreadPool.obj
+ 0003:000015d0       ??_C@_1FO@ODAHDKFP@?$AAd?$AA?3?$AA?2?$AAw?$AAi?$AAn?$AAp?$AAa?$AAt?$AAh?$AA?2?$AAd?$AAe?$AAs?$AAk?$AAt?$AAo?$AAp?$AA?2?$AAt?$AAh?$AAr?$AAe?$AAa?$AAd?$AAl?$AAi?$AAb?$AAr?$AAa?$AAr?$AAy@ 0042a5d0     threadlibrary:ThreadPool.obj
+ 0003:00001644       ??_7ManualEvent@@6B@       0042a644     threadlibrary:ThreadPool.obj
+ 0003:00001654       ??_7Event@@6B@             0042a654     threadlibrary:ThreadPool.obj
+ 0003:00001664       ??_7EventException@@6B@    0042a664     threadlibrary:ThreadPool.obj
+ 0003:00001670       ??_C@_1FK@CFBMCHAN@?$AAd?$AA?3?$AA?2?$AAw?$AAi?$AAn?$AAp?$AAa?$AAt?$AAh?$AA?2?$AAd?$AAe?$AAs?$AAk?$AAt?$AAo?$AAp?$AA?2?$AAt?$AAh?$AAr?$AAe?$AAa?$AAd?$AAl?$AAi?$AAb?$AAr?$AAa?$AAr?$AAy@ 0042a670     threadlibrary:ThreadPool.obj
+ 0003:000016e0       ??_7Semaphore@@6B@         0042a6e0     threadlibrary:ThreadPool.obj
+ 0003:000016ec       ??_7SemaphoreException@@6B@ 0042a6ec     threadlibrary:ThreadPool.obj
+ 0003:000016f8       ??_C@_1M@HLGKFCJM@?$AAf?$AAa?$AAl?$AAs?$AAe?$AA?$AA@ 0042a6f8     threadlibrary:ThreadPool.obj
+ 0003:00001708       ??_C@_19MLBBEMBH@?$AAd?$AAa?$AAt?$AAa?$AA?$AA@ 0042a708     threadlibrary:ThreadPool.obj
+ 0003:00001718       ??_C@_1GA@ODINEOCJ@?$AAd?$AA?3?$AA?2?$AAw?$AAi?$AAn?$AAp?$AAa?$AAt?$AAh?$AA?2?$AAd?$AAe?$AAs?$AAk?$AAt?$AAo?$AAp?$AA?2?$AAt?$AAh?$AAr?$AAe?$AAa?$AAd?$AAl?$AAi?$AAb?$AAr?$AAa?$AAr?$AAy@ 0042a718     threadlibrary:ThreadPool.obj
+ 0003:00001790       ??_C@_1IC@GIDGFDBF@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAv?$AAi?$AAs?$AAu?$AAa@ 0042a790     threadlibrary:ThreadPool.obj
+ 0003:00001830       ??_7ThreadPoolShutdownException@@6B@ 0042a830     threadlibrary:ThreadPool.obj
+ 0003:00001840       ??_7SuicidePill@?A0x77723778@@6B@ 0042a840     threadlibrary:ThreadPool.obj
+ 0003:0000184c       ??_C@_1DI@MCLINNKC@?$AAa?$AAu?$AAt?$AAo?$AA_?$AAp?$AAt?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa?$AAb?$AAl?$AAe?$AA?$AA@ 0042a84c     threadlibrary:ThreadPool.obj
+ 0003:00001890       ??_C@_1HO@DNODHCIF@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAv?$AAi?$AAs?$AAu?$AAa@ 0042a890     threadlibrary:ThreadPool.obj
+ 0003:00001928       ??_C@_1JM@OIMMEENE@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAV?$AAe?$AAc?$AAt?$AAo?$AAr?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAv?$AAo?$AAi?$AAd@ 0042a928     threadlibrary:ThreadPool.obj
+ 0003:000019e8       ??_C@_1EG@FOHJJHAC@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa?$AAb@ 0042a9e8     threadlibrary:ThreadPool.obj
+ 0003:00001a40       ??_C@_1HO@EDDIPOIO@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAv?$AAi?$AAs?$AAu?$AAa@ 0042aa40     threadlibrary:ThreadPool.obj
+ 0003:00001ad8       ??_C@_1EE@EJDKCLKB@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb?$AAl@ 0042aad8     threadlibrary:ThreadPool.obj
+ 0003:00001b30       ??_C@_1HE@NMBDDEHP@?$AA?$CI?$AA?$CC?$AA_?$AAM?$AAy?$AAp?$AAt?$AAr?$AA?5?$AA?$DM?$AA?5?$AA?$CI?$AA?$CI?$AA_?$AAM?$AAy?$AAv?$AAe?$AAc?$AA?5?$AA?$CK?$AA?$CJ?$AA?$CI?$AAt?$AAh?$AAi?$AAs?$AA?9?$AA?$DO?$AA_?$AAG?$AAe@ 0042ab30     threadlibrary:ThreadPool.obj
+ 0003:00001bc0       ??_C@_1JO@CIIKJGME@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAV?$AAe?$AAc?$AAt?$AAo?$AAr?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAv?$AAo?$AAi?$AAd@ 0042abc0     threadlibrary:ThreadPool.obj
+ 0003:00001c80       ??_C@_1DM@LBMEEJPP@?$AA?$CI?$AA?$CC?$AAt?$AAh?$AAi?$AAs?$AA?9?$AA?$DO?$AA_?$AAH?$AAa?$AAs?$AA_?$AAc?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr?$AA?$CI?$AA?$CJ?$AA?$CC?$AA?0?$AA?5?$AA0?$AA?$CJ?$AA?$AA@ 0042ac80     threadlibrary:ThreadPool.obj
+ 0003:00001cc8       ??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@ 0042acc8     threadlibrary:ThreadPool.obj
+ 0003:00001ce0       ??_C@_1CO@FNIDKHMC@?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AAe?$AAm?$AAp?$AAt?$AAy?$AA?5?$AAb?$AAe?$AAf?$AAo?$AAr?$AAe?$AA?5?$AAp?$AAo?$AAp?$AA?$AA@ 0042ace0     threadlibrary:ThreadPool.obj
+ 0003:00001d18       ??_C@_1HM@KOLBDPLB@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAv?$AAi?$AAs?$AAu?$AAa@ 0042ad18     threadlibrary:ThreadPool.obj
+ 0003:00001db0       ??_C@_1EK@EEHFMKDC@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr@ 0042adb0     threadlibrary:ThreadPool.obj
+ 0003:00001e08       ??_C@_1LE@EJOHCFKN@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAV?$AAe?$AAc?$AAt?$AAo?$AAr?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAv?$AAo?$AAi?$AAd@ 0042ae08     threadlibrary:ThreadPool.obj
+ 0003:00001ee0       ??_C@_1NK@JLHOCNGO@?$AA?$CI?$AA?$CC?$AA_?$AAP?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AAN?$AAU?$AAL?$AAL?$AA?5?$AA?$HM?$AA?$HM?$AA?5?$AA?$CI?$AA?$CI?$AA?$CI?$AA_?$AAM?$AAy?$AAv?$AAe?$AAc?$AA?5@ 0042aee0     threadlibrary:ThreadPool.obj
+ 0003:00001fe8       ??_C@_1JG@CBFADKIM@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAV?$AAe?$AAc?$AAt?$AAo?$AAr?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAv?$AAo?$AAi?$AAd@ 0042afe8     threadlibrary:ThreadPool.obj
+ 0003:0000209c       ??_C@_1DM@HINDPMBP@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 0042b09c     threadlibrary:ThreadPool.obj
+ 0003:000020e4       ??_C@_0BC@KBDMBKEH@deque?$DMT?$DO?5too?5long?$AA@ 0042b0e4     threadlibrary:ThreadPool.obj
+ 0003:00002100       ??_C@_1NI@GCEFOAFJ@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAD?$AAe?$AAq?$AAu?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs@ 0042b100     threadlibrary:ThreadPool.obj
+ 0003:00002208       ??_C@_1EE@INPCGGNP@?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa?$AAb?$AAl@ 0042b208     threadlibrary:ThreadPool.obj
+ 0003:00002260       ??_C@_1BAC@KBDNDJPK@?$AA?$CI?$AA?$CC?$AA_?$AAM?$AAy?$AAp?$AAt?$AAr?$AA?5?$AA?$CL?$AA?5?$AA_?$AAO?$AAf?$AAf?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AA?$CI?$AA?$CI?$AA_?$AAM?$AAy?$AAv?$AAe?$AAc?$AA?5?$AA?$CK?$AA?$CJ?$AA?$CI?$AAt@ 0042b260     threadlibrary:ThreadPool.obj
+ 0003:00002398       ??_C@_1JO@FNPIJOIH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAV?$AAe?$AAc?$AAt?$AAo?$AAr?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAv?$AAo?$AAi?$AAd@ 0042b398     threadlibrary:ThreadPool.obj
+ 0003:00002458       ??_C@_1OO@KEDCIFJG@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAD?$AAe?$AAq?$AAu?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs@ 0042b458     threadlibrary:ThreadPool.obj
+ 0003:00002578       ??_C@_1BBC@GFBPNMEP@?$AA?$CI?$AA?$CC?$AA_?$AAP?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA?$CI?$AA?$CI?$AA_?$AAM?$AAy?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AA?$CK?$AA?$CJ?$AA_@ 0042b578     threadlibrary:ThreadPool.obj
+ 0003:000026c0       ??_C@_1IE@NIMPINJA@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAv?$AAi?$AAs?$AAu?$AAa@ 0042b6c0     threadlibrary:ThreadPool.obj
+ 0003:00002760       ??_C@_1CK@EOPGIILJ@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAn?$AAu?$AAl?$AAl?$AA?5?$AAp?$AAo?$AAi?$AAn?$AAt?$AAe?$AAr?$AA?$AA@ 0042b760     threadlibrary:ThreadPool.obj
+ 0003:00002794       ??_C@_1CO@DGLIKNHI@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 0042b794     threadlibrary:ThreadPool.obj
+ 0003:000027d0       ??_7type_info@@6B@         0042b7d0     MSVCRTD:ti_inst.obj
+ 0003:000027d8       ??_C@_1GA@EHAKPACL@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA_?$AAb?$AAl?$AAd?$AA?2?$AAs?$AAe?$AAl?$AAf?$AA_?$AAx?$AA8?$AA6?$AA?2?$AAc@ 0042b7d8     MSVCRTD:crtexe.obj
+ 0003:00002850       ??_C@_1FA@DALEHHGL@?$AA_?$AA_?$AAn?$AAa?$AAt?$AAi?$AAv?$AAe?$AA_?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp?$AA_?$AAs?$AAt?$AAa?$AAt?$AAe?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA_?$AA_?$AAi?$AAn?$AAi?$AAt@ 0042b850     MSVCRTD:crtexe.obj
+ 0003:000028bc       ??_C@_0BO@GNIAFIKK@Unknown?5Runtime?5Check?5Error?6?$AN?$AA@ 0042b8bc     MSVCRTD:_error_.obj
+ 0003:000028e0       ??_C@_0CM@NGINOKPC@Stack?5memory?5around?5_alloca?5was?5@ 0042b8e0     MSVCRTD:_error_.obj
+ 0003:00002914       ??_C@_0DG@HKJMLLLP@A?5local?5variable?5was?5used?5before@ 0042b914     MSVCRTD:_error_.obj
+ 0003:00002954       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 0042b954     MSVCRTD:_error_.obj
+ 0003:00002978       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 0042b978     MSVCRTD:_error_.obj
+ 0003:00002ad0       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 0042bad0     MSVCRTD:_error_.obj
+ 0003:00002c98       ??_C@_0CA@IODNCDPG@Run?9Time?5Check?5Failure?5?$CD?$CFd?5?9?5?$CFs?$AA@ 0042bc98     MSVCRTD:_error_.obj
+ 0003:00002cc0       ??_C@_0BE@GNBOBNCK@Unknown?5Module?5Name?$AA@ 0042bcc0     MSVCRTD:_error_.obj
+ 0003:00002cd8       ??_C@_0BB@PFFGGCJP@Unknown?5Filename?$AA@ 0042bcd8     MSVCRTD:_error_.obj
+ 0003:00002cf0       ??_C@_1EA@NFKNIFJP@?$AAR?$AAu?$AAn?$AA?9?$AAT?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAF?$AAa?$AAi?$AAl?$AAu?$AAr?$AAe?$AA?5?$AA?$CD?$AA?$CF?$AAd?$AA?5?$AA?9?$AA?5?$AA?$CF?$AAs?$AA?$AA@ 0042bcf0     MSVCRTD:_error_.obj
+ 0003:00002d40       ??_C@_1GM@OLMCBDMB@?$AAR?$AAu?$AAn?$AAt?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAE?$AAr?$AAr?$AAo?$AAr?$AA?4?$AA?6?$AA?$AN?$AA?5?$AAU?$AAn?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAt?$AAo@ 0042bd40     MSVCRTD:_error_.obj
+ 0003:00002dc4       ??_C@_0CG@IAFNJNEE@Stack?5corrupted?5near?5unknown?5var@ 0042bdc4     MSVCRTD:_error_.obj
+ 0003:00002df8       ??_C@_0EJ@LJKNEOLN@Stack?5area?5around?5_alloca?5memory@ 0042bdf8     MSVCRTD:_error_.obj
+ 0003:00002e50       ??_C@_08KJEDNCKC@?$CFs?$CFs?$CFs?$CFs?$AA@ 0042be50     MSVCRTD:_error_.obj
+ 0003:00002e5c       ??_C@_02LLMPMKNF@?$DO?5?$AA@ 0042be5c     MSVCRTD:_error_.obj
+ 0003:00002e60       ??_C@_01EEMJAFIK@?6?$AA@   0042be60     MSVCRTD:_error_.obj
+ 0003:00002e64       ??_C@_0BC@KIBAILCI@?$CFs?$CFs?$CFp?$CFs?$CFld?$CFs?$CFd?$CFs?$AA@ 0042be64     MSVCRTD:_error_.obj
+ 0003:00002e80       ??_C@_0EI@CLEPFNGI@Stack?5area?5around?5_alloca?5memory@ 0042be80     MSVCRTD:_error_.obj
+ 0003:00002ed8       ??_C@_0N@MHFFIMFG@?6Address?3?50x?$AA@ 0042bed8     MSVCRTD:_error_.obj
+ 0003:00002ee8       ??_C@_07DFDJCKFN@?6Size?3?5?$AA@ 0042bee8     MSVCRTD:_error_.obj
+ 0003:00002ef4       ??_C@_0CK@DKGBICFE@?6Allocation?5number?5within?5this?5f@ 0042bef4     MSVCRTD:_error_.obj
+ 0003:00002f28       ??_C@_08OMAHNMHJ@?6Data?3?5?$DM?$AA@ 0042bf28     MSVCRTD:_error_.obj
+ 0003:00002f34       ??_C@_09FOPFMPEJ@wsprintfA?$AA@ 0042bf34     MSVCRTD:_error_.obj
+ 0003:00002f40       ??_C@_0L@GMPLCCII@user32?4dll?$AA@ 0042bf40     MSVCRTD:_error_.obj
+ 0003:00002f50       ??_C@_05MKKEDADM@?$CF?42X?5?$AA@ 0042bf50     MSVCRTD:_error_.obj
+ 0003:00002f58       ??_C@_0DE@OHJBPMBP@A?5variable?5is?5being?5used?5without@ 0042bf58     MSVCRTD:_error_.obj
+ 0003:00002f98       ??_C@_0BP@OGBCLIBO@Stack?5around?5_alloca?5corrupted?$AA@ 0042bf98     MSVCRTD:_userapi_.obj
+ 0003:00002fc0       ??_C@_0CK@CNLNOEPB@Local?5variable?5used?5before?5initi@ 0042bfc0     MSVCRTD:_userapi_.obj
+ 0003:00002ff4       ??_C@_0BI@CIGMDCBH@Stack?5memory?5corruption?$AA@ 0042bff4     MSVCRTD:_userapi_.obj
+ 0003:00003010       ??_C@_0CK@FEGOIOPB@Cast?5to?5smaller?5type?5causing?5los@ 0042c010     MSVCRTD:_userapi_.obj
+ 0003:00003044       ??_C@_0BJ@HEGAHDFO@Stack?5pointer?5corruption?$AA@ 0042c044     MSVCRTD:_userapi_.obj
+ 0003:0000307c       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 0042c07c     MSVCRTD:unhandld.obj
+ 0003:00003080       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 0042c080     MSVCRTD:unhandld.obj
+ 0003:00003084       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 0042c084     MSVCRTD:unhandld.obj
+ 0003:00003088       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 0042c088     MSVCRTD:unhandld.obj
+ 0003:0000308c       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 0042c08c     MSVCRTD:unhandld.obj
+ 0003:00003090       ??_C@_1GE@KOCFNGPB@?$AA_?$AAc?$AAo?$AAn?$AAt?$AAr?$AAo?$AAl?$AAf?$AAp?$AA_?$AAs?$AA?$CI?$AA?$CI?$AA?$CI?$AAv?$AAo?$AAi?$AAd?$AA?5?$AA?$CK?$AA?$CJ?$AA0?$AA?$CJ?$AA?0?$AA?5?$AA0?$AAx?$AA0?$AA0?$AA0?$AA1@ 0042c090     MSVCRTD:fp8.obj
+ 0003:00003108       ??_C@_1CK@JMKHCBEI@?$AA_?$AAs?$AAe?$AAt?$AAd?$AAe?$AAf?$AAa?$AAu?$AAl?$AAt?$AAp?$AAr?$AAe?$AAc?$AAi?$AAs?$AAi?$AAo?$AAn?$AA?$AA@ 0042c108     MSVCRTD:fp8.obj
+ 0003:00003140       ??_C@_1GG@PHGJJHBC@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA_?$AAb?$AAl?$AAd?$AA?2?$AAs?$AAe?$AAl?$AAf?$AA_?$AAx?$AA8?$AA6?$AA?2?$AAc@ 0042c140     MSVCRTD:fp8.obj
+ 0003:000031bc       ??_C@_0M@EKFFODEC@MSPDB80?4DLL?$AA@ 0042c1bc     MSVCRTD:_pdblkup_.obj
+ 0003:000031cc       ??_C@_01KDCPPGHE@r?$AA@    0042c1cc     MSVCRTD:_pdblkup_.obj
+ 0003:000031d0       ??_C@_0BB@KCIACLNC@PDBOpenValidate5?$AA@ 0042c1d0     MSVCRTD:_pdblkup_.obj
+ 0003:000031e4       ??_C@_0BF@BMIHBHCA@EnvironmentDirectory?$AA@ 0042c1e4     MSVCRTD:_pdblkup_.obj
+ 0003:00003200       ??_C@_0CN@JNNIHDGH@SOFTWARE?2Microsoft?2VisualStudio?2@ 0042c200     MSVCRTD:_pdblkup_.obj
+ 0003:00003238       ??_C@_0M@HLOHPNFA@RegCloseKey?$AA@ 0042c238     MSVCRTD:_pdblkup_.obj
+ 0003:00003248       ??_C@_0BB@HHEIPGME@RegQueryValueExA?$AA@ 0042c248     MSVCRTD:_pdblkup_.obj
+ 0003:0000325c       ??_C@_0O@DCOGKJGG@RegOpenKeyExA?$AA@ 0042c25c     MSVCRTD:_pdblkup_.obj
+ 0003:0000326c       ??_C@_0N@JJPEKNFO@ADVAPI32?4DLL?$AA@ 0042c26c     MSVCRTD:_pdblkup_.obj
+ 0003:00003588       ??_R4TestRequest@@6B@      0042c588     main.obj
+ 0003:000035a0       ??_R3TestRequest@@8        0042c5a0     main.obj
+ 0003:000035b4       ??_R2TestRequest@@8        0042c5b4     main.obj
+ 0003:000035c0       ??_R1A@?0A@EA@TestRequest@@8 0042c5c0     main.obj
+ 0003:000035e4       ??_R1A@?0A@EA@ThreadRequest@@8 0042c5e4     main.obj
+ 0003:00003608       ??_R3ThreadRequest@@8      0042c608     main.obj
+ 0003:0000361c       ??_R2ThreadRequest@@8      0042c61c     main.obj
+ 0003:00003624       ??_R4ThreadRequest@@6B@    0042c624     main.obj
+ 0003:0000363c       ??_R4COMPool@@6B@          0042c63c     main.obj
+ 0003:00003654       ??_R3COMPool@@8            0042c654     main.obj
+ 0003:00003668       ??_R2COMPool@@8            0042c668     main.obj
+ 0003:00003674       ??_R1A@?0A@EA@COMPool@@8   0042c674     main.obj
+ 0003:00003698       ??_R1A@?0A@EA@ThreadPool@@8 0042c698     main.obj
+ 0003:000036bc       ??_R3ThreadPool@@8         0042c6bc     main.obj
+ 0003:000036d0       ??_R2ThreadPool@@8         0042c6d0     main.obj
+ 0003:000036d8       ??_R4length_error@std@@6B@ 0042c6d8     main.obj
+ 0003:000036f0       ??_R3length_error@std@@8   0042c6f0     main.obj
+ 0003:00003704       ??_R2length_error@std@@8   0042c704     main.obj
+ 0003:00003714       ??_R1A@?0A@EA@length_error@std@@8 0042c714     main.obj
+ 0003:00003738       ??_R1A@?0A@EA@logic_error@std@@8 0042c738     main.obj
+ 0003:0000375c       ??_R3logic_error@std@@8    0042c75c     main.obj
+ 0003:00003770       ??_R2logic_error@std@@8    0042c770     main.obj
+ 0003:0000377c       ??_R1A@?0A@EA@exception@std@@8 0042c77c     main.obj
+ 0003:000037a0       ??_R3exception@std@@8      0042c7a0     main.obj
+ 0003:000037b4       ??_R2exception@std@@8      0042c7b4     main.obj
+ 0003:000037bc       ??_R4logic_error@std@@6B@  0042c7bc     main.obj
+ 0003:000037d4       ??_R4bad_alloc@std@@6B@    0042c7d4     main.obj
+ 0003:000037ec       ??_R3bad_alloc@std@@8      0042c7ec     main.obj
+ 0003:00003800       ??_R2bad_alloc@std@@8      0042c800     main.obj
+ 0003:0000380c       ??_R1A@?0A@EA@bad_alloc@std@@8 0042c80c     main.obj
+ 0003:00003830       ??_R4ThreadPool@@6B@       0042c830     threadlibrary:ThreadPool.obj
+ 0003:00003848       ??_R4ManualEvent@@6B@      0042c848     threadlibrary:ThreadPool.obj
+ 0003:00003860       ??_R3ManualEvent@@8        0042c860     threadlibrary:ThreadPool.obj
+ 0003:00003874       ??_R2ManualEvent@@8        0042c874     threadlibrary:ThreadPool.obj
+ 0003:00003880       ??_R1A@?0A@EA@ManualEvent@@8 0042c880     threadlibrary:ThreadPool.obj
+ 0003:000038a4       ??_R1A@?0A@EA@Event@@8     0042c8a4     threadlibrary:ThreadPool.obj
+ 0003:000038c8       ??_R3Event@@8              0042c8c8     threadlibrary:ThreadPool.obj
+ 0003:000038dc       ??_R2Event@@8              0042c8dc     threadlibrary:ThreadPool.obj
+ 0003:000038e4       ??_R4Event@@6B@            0042c8e4     threadlibrary:ThreadPool.obj
+ 0003:000038fc       ??_R4EventException@@6B@   0042c8fc     threadlibrary:ThreadPool.obj
+ 0003:00003914       ??_R3EventException@@8     0042c914     threadlibrary:ThreadPool.obj
+ 0003:00003928       ??_R2EventException@@8     0042c928     threadlibrary:ThreadPool.obj
+ 0003:00003934       ??_R1A@?0A@EA@EventException@@8 0042c934     threadlibrary:ThreadPool.obj
+ 0003:00003958       ??_R4Semaphore@@6B@        0042c958     threadlibrary:ThreadPool.obj
+ 0003:00003970       ??_R3Semaphore@@8          0042c970     threadlibrary:ThreadPool.obj
+ 0003:00003984       ??_R2Semaphore@@8          0042c984     threadlibrary:ThreadPool.obj
+ 0003:0000398c       ??_R1A@?0A@EA@Semaphore@@8 0042c98c     threadlibrary:ThreadPool.obj
+ 0003:000039b0       ??_R4SemaphoreException@@6B@ 0042c9b0     threadlibrary:ThreadPool.obj
+ 0003:000039c8       ??_R3SemaphoreException@@8 0042c9c8     threadlibrary:ThreadPool.obj
+ 0003:000039dc       ??_R2SemaphoreException@@8 0042c9dc     threadlibrary:ThreadPool.obj
+ 0003:000039e8       ??_R1A@?0A@EA@SemaphoreException@@8 0042c9e8     threadlibrary:ThreadPool.obj
+ 0003:00003a0c       ??_R4ThreadPoolShutdownException@@6B@ 0042ca0c     threadlibrary:ThreadPool.obj
+ 0003:00003a24       ??_R3ThreadPoolShutdownException@@8 0042ca24     threadlibrary:ThreadPool.obj
+ 0003:00003a38       ??_R2ThreadPoolShutdownException@@8 0042ca38     threadlibrary:ThreadPool.obj
+ 0003:00003a44       ??_R1A@?0A@EA@ThreadPoolShutdownException@@8 0042ca44     threadlibrary:ThreadPool.obj
+ 0003:00003a68       ??_R4SuicidePill@?A0x77723778@@6B@ 0042ca68     threadlibrary:ThreadPool.obj
+ 0003:00003a80       ??_R3SuicidePill@?A0x77723778@@8 0042ca80     threadlibrary:ThreadPool.obj
+ 0003:00003a94       ??_R2SuicidePill@?A0x77723778@@8 0042ca94     threadlibrary:ThreadPool.obj
+ 0003:00003aa0       ??_R1A@?0A@EA@SuicidePill@?A0x77723778@@8 0042caa0     threadlibrary:ThreadPool.obj
+ 0003:00003ac4       ??_R4type_info@@6B@        0042cac4     MSVCRTD:ti_inst.obj
+ 0003:00003adc       ??_R3type_info@@8          0042cadc     MSVCRTD:ti_inst.obj
+ 0003:00003af0       ??_R2type_info@@8          0042caf0     MSVCRTD:ti_inst.obj
+ 0003:00003af8       ??_R1A@?0A@EA@type_info@@8 0042caf8     MSVCRTD:ti_inst.obj
+ 0003:00003c40       ___rtc_iaa                 0042cc40     MSVCRTD:_initsect_.obj
+ 0003:00003e50       ___rtc_izz                 0042ce50     MSVCRTD:_initsect_.obj
+ 0003:00003f54       ___rtc_taa                 0042cf54     MSVCRTD:_initsect_.obj
+ 0003:00004164       ___rtc_tzz                 0042d164     MSVCRTD:_initsect_.obj
+ 0003:00004588       __TI3?AVlength_error@std@@ 0042d588     main.obj
+ 0003:000045cc       __CTA3?AVlength_error@std@@ 0042d5cc     main.obj
+ 0003:000045e0       __CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z44 0042d5e0     main.obj
+ 0003:00004600       __CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z44 0042d600     main.obj
+ 0003:00004620       __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12 0042d620     main.obj
+ 0003:000049c4       __TI2?AVbad_alloc@std@@    0042d9c4     main.obj
+ 0003:000049d8       __CTA2?AVbad_alloc@std@@   0042d9d8     main.obj
+ 0003:000049e8       __CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12 0042d9e8     main.obj
+ 0003:00004a5c       __TI2?AVEventException@@   0042da5c     threadlibrary:ThreadPool.obj
+ 0003:00004aa0       __CTA2?AVEventException@@  0042daa0     threadlibrary:ThreadPool.obj
+ 0003:00004ab0       __CT??_R0?AVEventException@@@8??0EventException@@QAE@ABV0@@Z12 0042dab0     threadlibrary:ThreadPool.obj
+ 0003:00004ad0       __TI2?AVSemaphoreException@@ 0042dad0     threadlibrary:ThreadPool.obj
+ 0003:00004ae4       __CTA2?AVSemaphoreException@@ 0042dae4     threadlibrary:ThreadPool.obj
+ 0003:00004af4       __CT??_R0?AVSemaphoreException@@@8??0SemaphoreException@@QAE@ABV0@@Z12 0042daf4     threadlibrary:ThreadPool.obj
+ 0003:00004c94       __TI2?AVThreadPoolShutdownException@@ 0042dc94     threadlibrary:ThreadPool.obj
+ 0003:00004d08       __CTA2?AVThreadPoolShutdownException@@ 0042dd08     threadlibrary:ThreadPool.obj
+ 0003:00004d18       __CT??_R0?AVThreadPoolShutdownException@@@8??0ThreadPoolShutdownException@@QAE@ABV0@@Z12 0042dd18     threadlibrary:ThreadPool.obj
+ 0003:00004db0       __TI1?AVSuicideException@?A0x77723778@@ 0042ddb0     threadlibrary:ThreadPool.obj
+ 0003:00004dc4       __CTA1?AVSuicideException@?A0x77723778@@ 0042ddc4     threadlibrary:ThreadPool.obj
+ 0003:00004dcc       __CT??_R0?AVSuicideException@?A0x77723778@@@81 0042ddcc     threadlibrary:ThreadPool.obj
+ 0004:00000004       ??_R0?AVTestRequest@@@8    0042f004     main.obj
+ 0004:00000024       ??_R0?AVThreadRequest@@@8  0042f024     main.obj
+ 0004:00000048       ??_R0?AVCOMPool@@@8        0042f048     main.obj
+ 0004:00000064       ??_R0?AVThreadPool@@@8     0042f064     main.obj
+ 0004:00000084       ??_R0?AVlength_error@std@@@8 0042f084     main.obj
+ 0004:000000ac       ??_R0?AVlogic_error@std@@@8 0042f0ac     main.obj
+ 0004:000000d0       ??_R0?AVexception@std@@@8  0042f0d0     main.obj
+ 0004:000000f4       ??_R0?AVbad_alloc@std@@@8  0042f0f4     main.obj
+ 0004:0000011c       ??_R0?AVManualEvent@@@8    0042f11c     threadlibrary:ThreadPool.obj
+ 0004:0000013c       ??_R0?AVEvent@@@8          0042f13c     threadlibrary:ThreadPool.obj
+ 0004:00000154       ??_R0?AVEventException@@@8 0042f154     threadlibrary:ThreadPool.obj
+ 0004:00000178       ??_R0?AVSemaphore@@@8      0042f178     threadlibrary:ThreadPool.obj
+ 0004:00000194       ??_R0?AVSemaphoreException@@@8 0042f194     threadlibrary:ThreadPool.obj
+ 0004:000001bc       ??_R0?AVSuicideException@?A0x77723778@@@8 0042f1bc     threadlibrary:ThreadPool.obj
+ 0004:000001f0       ?__LINE__Var@?1??accept@ThreadPool@@QAEHXZ@4JA 0042f1f0     threadlibrary:ThreadPool.obj
+ 0004:000001f4       ??_R0?AVThreadPoolShutdownException@@@8 0042f1f4     threadlibrary:ThreadPool.obj
+ 0004:00000228       ??_R0?AVSuicidePill@?A0x77723778@@@8 0042f228     threadlibrary:ThreadPool.obj
+ 0004:00000258       ___security_cookie         0042f258     MSVCRTD:gs_cookie.obj
+ 0004:0000025c       ___security_cookie_complement 0042f25c     MSVCRTD:gs_cookie.obj
+ 0004:00000260       ??_R0?AVtype_info@@@8      0042f260     MSVCRTD:ti_inst.obj
+ 0004:0000027c       ?_RTC_ErrorLevels@@3PAHA   0042f27c     MSVCRTD:_error_.obj
+ 0004:00000294       ___globallocalestatus      0042f294     MSVCRTD:xthdloc.obj
+ 0004:00000298       ___defaultmatherr          0042f298     MSVCRTD:merr.obj
+ 0004:0000029c       ___native_dllmain_reason   0042f29c     MSVCRTD:natstart.obj
+ 0004:000002a0       ___native_vcclrit_reason   0042f2a0     MSVCRTD:natstart.obj
+ 0004:000003c0       ?statsGuard@@3VCriticalSection@@A 0042f3c0     main.obj
+ 0004:000003d8       ?coutGuard@@3VCriticalSection@@A 0042f3d8     main.obj
+ 0004:000007ec       ?wsprintffp@@3P6AHPADPBDZZA 0042f7ec     MSVCRTD:_error_.obj
+ 0004:000007fc       __forceCRTManifestRTM      0042f7fc     MSVCRTD:crtmanifestrtm.obj
+ 0004:00000800       __commode                  0042f800     MSVCRTD:xncommod.obj
+ 0004:00000804       __fmode                    0042f804     MSVCRTD:xtxtmode.obj
+ 0004:00000808       __dowildcard               0042f808     MSVCRTD:wildcard.obj
+ 0004:0000080c       __newmode                  0042f80c     MSVCRTD:_newmode.obj
+ 0004:0000081c       ___native_startup_state    0042f81c     <common>
+ 0004:0000082c       ___native_startup_lock     0042f82c     <common>
+ 0004:00000830       __adjust_fdiv              0042f830     <common>
+ 0004:0000083c       ___dyn_tls_init_callback   0042f83c     <common>
+ 0004:00000840       ___onexitend               0042f840     <common>
+ 0004:00000850       ___onexitbegin             0042f850     <common>
+ 0005:00000000       __IMPORT_DESCRIPTOR_KERNEL32 00430000     kernel32:KERNEL32.dll
+ 0005:00000014       __IMPORT_DESCRIPTOR_ole32  00430014     ole32:ole32.dll
+ 0005:00000028       __IMPORT_DESCRIPTOR_MSVCP90D 00430028     msvcprtd:MSVCP90D.dll
+ 0005:0000003c       __IMPORT_DESCRIPTOR_MSVCR90D 0043003c     MSVCRTD:MSVCR90D.dll
+ 0005:00000050       __NULL_IMPORT_DESCRIPTOR   00430050     kernel32:KERNEL32.dll
+ 0005:00000350       __imp__Sleep@4             00430350     kernel32:KERNEL32.dll
+ 0005:00000354       __imp__EnterCriticalSection@4 00430354     kernel32:KERNEL32.dll
+ 0005:00000358       __imp__LeaveCriticalSection@4 00430358     kernel32:KERNEL32.dll
+ 0005:0000035c       __imp__InitializeCriticalSection@4 0043035c     kernel32:KERNEL32.dll
+ 0005:00000360       __imp__DeleteCriticalSection@4 00430360     kernel32:KERNEL32.dll
+ 0005:00000364       __imp__VirtualQuery@12     00430364     kernel32:KERNEL32.dll
+ 0005:00000368       __imp__GetModuleFileNameW@12 00430368     kernel32:KERNEL32.dll
+ 0005:0000036c       __imp__GetProcessHeap@0    0043036c     kernel32:KERNEL32.dll
+ 0005:00000370       __imp__HeapAlloc@12        00430370     kernel32:KERNEL32.dll
+ 0005:00000374       __imp__HeapFree@12         00430374     kernel32:KERNEL32.dll
+ 0005:00000378       __imp__GetSystemTimeAsFileTime@4 00430378     kernel32:KERNEL32.dll
+ 0005:0000037c       __imp__GetCurrentProcessId@0 0043037c     kernel32:KERNEL32.dll
+ 0005:00000380       __imp__GetCurrentThreadId@0 00430380     kernel32:KERNEL32.dll
+ 0005:00000384       __imp__GetTickCount@0      00430384     kernel32:KERNEL32.dll
+ 0005:00000388       __imp__QueryPerformanceCounter@4 00430388     kernel32:KERNEL32.dll
+ 0005:0000038c       __imp__LoadLibraryA@4      0043038c     kernel32:KERNEL32.dll
+ 0005:00000390       __imp__GetProcAddress@8    00430390     kernel32:KERNEL32.dll
+ 0005:00000394       __imp__lstrlenA@4          00430394     kernel32:KERNEL32.dll
+ 0005:00000398       __imp__MultiByteToWideChar@24 00430398     kernel32:KERNEL32.dll
+ 0005:0000039c       __imp__WideCharToMultiByte@32 0043039c     kernel32:KERNEL32.dll
+ 0005:000003a0       __imp__DebugBreak@0        004303a0     kernel32:KERNEL32.dll
+ 0005:000003a4       __imp__RaiseException@16   004303a4     kernel32:KERNEL32.dll
+ 0005:000003a8       __imp__IsDebuggerPresent@0 004303a8     kernel32:KERNEL32.dll
+ 0005:000003ac       __imp__SetUnhandledExceptionFilter@4 004303ac     kernel32:KERNEL32.dll
+ 0005:000003b0       __imp__UnhandledExceptionFilter@4 004303b0     kernel32:KERNEL32.dll
+ 0005:000003b4       __imp__GetCurrentProcess@0 004303b4     kernel32:KERNEL32.dll
+ 0005:000003b8       __imp__TerminateProcess@8  004303b8     kernel32:KERNEL32.dll
+ 0005:000003bc       __imp__InterlockedCompareExchange@12 004303bc     kernel32:KERNEL32.dll
+ 0005:000003c0       __imp__InterlockedExchange@8 004303c0     kernel32:KERNEL32.dll
+ 0005:000003c4       __imp__TerminateThread@8   004303c4     kernel32:KERNEL32.dll
+ 0005:000003c8       __imp__ReleaseSemaphore@12 004303c8     kernel32:KERNEL32.dll
+ 0005:000003cc       __imp__ResetEvent@4        004303cc     kernel32:KERNEL32.dll
+ 0005:000003d0       __imp__ResumeThread@4      004303d0     kernel32:KERNEL32.dll
+ 0005:000003d4       __imp__WaitForSingleObject@8 004303d4     kernel32:KERNEL32.dll
+ 0005:000003d8       __imp__CreateSemaphoreA@16 004303d8     kernel32:KERNEL32.dll
+ 0005:000003dc       __imp__SetEvent@4          004303dc     kernel32:KERNEL32.dll
+ 0005:000003e0       __imp__CloseHandle@4       004303e0     kernel32:KERNEL32.dll
+ 0005:000003e4       __imp__CreateEventA@16     004303e4     kernel32:KERNEL32.dll
+ 0005:000003e8       __imp__FreeLibrary@4       004303e8     kernel32:KERNEL32.dll
+ 0005:000003ec       \177KERNEL32_NULL_THUNK_DATA 004303ec     kernel32:KERNEL32.dll
+ 0005:00000434       __imp_?_Orphan_all@_Container_base_secure@std@@QBEXXZ 00430434     msvcprtd:MSVCP90D.dll
+ 0005:00000438       __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z 00430438     msvcprtd:MSVCP90D.dll
+ 0005:0000043c       __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A 0043043c     msvcprtd:MSVCP90D.dll
+ 0005:00000440       __imp_?endl@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@1@AAV21@@Z 00430440     msvcprtd:MSVCP90D.dll
+ 0005:00000444       __imp_??1_Lockit@std@@QAE@XZ 00430444     msvcprtd:MSVCP90D.dll
+ 0005:00000448       __imp_??0_Lockit@std@@QAE@H@Z 00430448     msvcprtd:MSVCP90D.dll
+ 0005:0000044c       __imp_?_Debug_message@std@@YAXPB_W0I@Z 0043044c     msvcprtd:MSVCP90D.dll
+ 0005:00000450       __imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 00430450     msvcprtd:MSVCP90D.dll
+ 0005:00000454       __imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z 00430454     msvcprtd:MSVCP90D.dll
+ 0005:00000458       __imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z 00430458     msvcprtd:MSVCP90D.dll
+ 0005:0000045c       __imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ 0043045c     msvcprtd:MSVCP90D.dll
+ 0005:00000460       __imp_??1_Container_base_secure@std@@QAE@XZ 00430460     msvcprtd:MSVCP90D.dll
+ 0005:00000464       __imp_??0_Container_base_secure@std@@QAE@XZ 00430464     msvcprtd:MSVCP90D.dll
+ 0005:00000468       __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z 00430468     msvcprtd:MSVCP90D.dll
+ 0005:0000046c       __imp_?width@ios_base@std@@QAEHH@Z 0043046c     msvcprtd:MSVCP90D.dll
+ 0005:00000470       __imp_?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHPBDH@Z 00430470     msvcprtd:MSVCP90D.dll
+ 0005:00000474       __imp_?eq_int_type@?$char_traits@D@std@@SA_NABH0@Z 00430474     msvcprtd:MSVCP90D.dll
+ 0005:00000478       __imp_?eof@?$char_traits@D@std@@SAHXZ 00430478     msvcprtd:MSVCP90D.dll
+ 0005:0000047c       __imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z 0043047c     msvcprtd:MSVCP90D.dll
+ 0005:00000480       __imp_?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ 00430480     msvcprtd:MSVCP90D.dll
+ 0005:00000484       __imp_?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDXZ 00430484     msvcprtd:MSVCP90D.dll
+ 0005:00000488       __imp_?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ 00430488     msvcprtd:MSVCP90D.dll
+ 0005:0000048c       __imp_?flags@ios_base@std@@QBEHXZ 0043048c     msvcprtd:MSVCP90D.dll
+ 0005:00000490       __imp_?width@ios_base@std@@QBEHXZ 00430490     msvcprtd:MSVCP90D.dll
+ 0005:00000494       __imp_?length@?$char_traits@D@std@@SAIPBD@Z 00430494     msvcprtd:MSVCP90D.dll
+ 0005:00000498       __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ 00430498     msvcprtd:MSVCP90D.dll
+ 0005:0000049c       __imp_?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ 0043049c     msvcprtd:MSVCP90D.dll
+ 0005:000004a0       __imp_?good@ios_base@std@@QBE_NXZ 004304a0     msvcprtd:MSVCP90D.dll
+ 0005:000004a4       __imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ 004304a4     msvcprtd:MSVCP90D.dll
+ 0005:000004a8       __imp_?uncaught_exception@std@@YA_NXZ 004304a8     msvcprtd:MSVCP90D.dll
+ 0005:000004ac       __imp_?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEXXZ 004304ac     msvcprtd:MSVCP90D.dll
+ 0005:000004b0       __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z 004304b0     msvcprtd:MSVCP90D.dll
+ 0005:000004b4       \177MSVCP90D_NULL_THUNK_DATA 004304b4     msvcprtd:MSVCP90D.dll
+ 0005:000004f8       __imp____set_app_type      004304f8     MSVCRTD:MSVCR90D.dll
+ 0005:000004fc       __imp___amsg_exit          004304fc     MSVCRTD:MSVCR90D.dll
+ 0005:00000500       __imp____getmainargs       00430500     MSVCRTD:MSVCR90D.dll
+ 0005:00000504       __imp___exit               00430504     MSVCRTD:MSVCR90D.dll
+ 0005:00000508       __imp___XcptFilter         00430508     MSVCRTD:MSVCR90D.dll
+ 0005:0000050c       __imp___cexit              0043050c     MSVCRTD:MSVCR90D.dll
+ 0005:00000510       __imp__exit                00430510     MSVCRTD:MSVCR90D.dll
+ 0005:00000514       __imp____p__fmode          00430514     MSVCRTD:MSVCR90D.dll
+ 0005:00000518       __imp___CrtSetCheckCount   00430518     MSVCRTD:MSVCR90D.dll
+ 0005:0000051c       __imp___initterm           0043051c     MSVCRTD:MSVCR90D.dll
+ 0005:00000520       __imp___initterm_e         00430520     MSVCRTD:MSVCR90D.dll
+ 0005:00000524       __imp___crt_debugger_hook  00430524     MSVCRTD:MSVCR90D.dll
+ 0005:00000528       __imp_?terminate@@YAXXZ    00430528     MSVCRTD:MSVCR90D.dll
+ 0005:0000052c       __imp_?_type_info_dtor_internal_method@type_info@@QAEXXZ 0043052c     MSVCRTD:MSVCR90D.dll
+ 0005:00000530       __imp___except_handler4_common 00430530     MSVCRTD:MSVCR90D.dll
+ 0005:00000534       __imp___controlfp_s        00430534     MSVCRTD:MSVCR90D.dll
+ 0005:00000538       __imp___invoke_watson      00430538     MSVCRTD:MSVCR90D.dll
+ 0005:0000053c       __imp____p__commode        0043053c     MSVCRTD:MSVCR90D.dll
+ 0005:00000540       __imp___adjust_fdiv        00430540     MSVCRTD:MSVCR90D.dll
+ 0005:00000544       __imp____setusermatherr    00430544     MSVCRTD:MSVCR90D.dll
+ 0005:00000548       __imp___configthreadlocale 00430548     MSVCRTD:MSVCR90D.dll
+ 0005:0000054c       __imp___decode_pointer     0043054c     MSVCRTD:MSVCR90D.dll
+ 0005:00000550       __imp___onexit             00430550     MSVCRTD:MSVCR90D.dll
+ 0005:00000554       __imp___lock               00430554     MSVCRTD:MSVCR90D.dll
+ 0005:00000558       __imp___encode_pointer     00430558     MSVCRTD:MSVCR90D.dll
+ 0005:0000055c       __imp____dllonexit         0043055c     MSVCRTD:MSVCR90D.dll
+ 0005:00000560       __imp___CRT_RTC_INITW      00430560     MSVCRTD:MSVCR90D.dll
+ 0005:00000564       __imp__memmove_s           00430564     MSVCRTD:MSVCR90D.dll
+ 0005:00000568       __imp___beginthreadex      00430568     MSVCRTD:MSVCR90D.dll
+ 0005:0000056c       __imp___endthreadex        0043056c     MSVCRTD:MSVCR90D.dll
+ 0005:00000570       __imp___wassert            00430570     MSVCRTD:MSVCR90D.dll
+ 0005:00000574       __imp_?what@exception@std@@UBEPBDXZ 00430574     MSVCRTD:MSVCR90D.dll
+ 0005:00000578       __imp_??0exception@std@@QAE@ABQBD@Z 00430578     MSVCRTD:MSVCR90D.dll
+ 0005:0000057c       __imp_??0exception@std@@QAE@XZ 0043057c     MSVCRTD:MSVCR90D.dll
+ 0005:00000580       __imp_??1exception@std@@UAE@XZ 00430580     MSVCRTD:MSVCR90D.dll
+ 0005:00000584       __imp_??0exception@std@@QAE@ABV01@@Z 00430584     MSVCRTD:MSVCR90D.dll
+ 0005:00000588       __imp___CxxThrowException@8 00430588     MSVCRTD:MSVCR90D.dll
+ 0005:0000058c       __imp___CrtDbgReportW      0043058c     MSVCRTD:MSVCR90D.dll
+ 0005:00000590       __imp___invalid_parameter  00430590     MSVCRTD:MSVCR90D.dll
+ 0005:00000594       __imp___time64             00430594     MSVCRTD:MSVCR90D.dll
+ 0005:00000598       __imp___purecall           00430598     MSVCRTD:MSVCR90D.dll
+ 0005:0000059c       __imp__srand               0043059c     MSVCRTD:MSVCR90D.dll
+ 0005:000005a0       __imp____CxxFrameHandler3  004305a0     MSVCRTD:MSVCR90D.dll
+ 0005:000005a4       __imp__rand                004305a4     MSVCRTD:MSVCR90D.dll
+ 0005:000005a8       __imp_??2@YAPAXI@Z         004305a8     MSVCRTD:MSVCR90D.dll
+ 0005:000005ac       __imp_??3@YAXPAX@Z         004305ac     MSVCRTD:MSVCR90D.dll
+ 0005:000005b0       __imp____initenv           004305b0     MSVCRTD:MSVCR90D.dll
+ 0005:000005b4       __imp___unlock             004305b4     MSVCRTD:MSVCR90D.dll
+ 0005:000005b8       \177MSVCR90D_NULL_THUNK_DATA 004305b8     MSVCRTD:MSVCR90D.dll
+ 0005:00000608       __imp__OleInitialize@4     00430608     ole32:ole32.dll
+ 0005:0000060c       __imp__OleUninitialize@0   0043060c     ole32:ole32.dll
+ 0005:00000610       \177ole32_NULL_THUNK_DATA  00430610     ole32:ole32.dll
+
+ entry point at        0002:00000672
+
