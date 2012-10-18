@@ -1,0 +1,33 @@
+ARP AntiSpoofer for Win32
+
+1.0.1.32 (2009-11-20):
+	* Allow protected hosts with empty protect flag.
+
+1.0.1.31 (2009-11-19):
+	* IMPORTANT! Rename reply_for_hosts_interval key to reply_for_hosts_intv in config file.
+	* Change the unit of reply for hosts interval from second to millisecond.
+	* Change "reply ARP for hosts to gateway" to "reply ARP for hosts to the whole subnet".
+
+1.0.1.30 Stable(2009-10-28):
+	* Minor bugs fixed
+
+1.0.1.26 (2009-10-14):
+	* Fixed the bug that the local MAC cannot be the same as gateway MAC
+
+1.0.1.25 (2009-10-12):
+	* Added check ARP protocol type (currently only IPv4)
+	* Minor bugs fixed
+
+1.0.1.23 (2009-10-07):
+	* Fixed crash when protected hosts list is empty.
+	* Optimized GUI of choosing gateway MAC
+	* Renamed default preferences file to .\arpas.ini
+	* Renamed default log file to .\arpas.log
+	* Minor bugs fixed.
+
+1.0.1.8 (2009-09-07):
+	* Added detecting gateway MAC.
+	* Prompt user to correct zero MAC address in protected hosts list.
+	* Check for abuse of spoofing
+	* Minor Bugs Fixed.
+	* Created Changelog File :)
