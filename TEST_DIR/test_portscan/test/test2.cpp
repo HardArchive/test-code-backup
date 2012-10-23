@@ -4,6 +4,7 @@
 #include "stdafx.h"
 
 //#include <afxext.h>
+#include <time.h>
 #include <winsock.h>
 // 编译时需使用的库
 #pragma comment(lib,"wsock32.lib")
@@ -95,6 +96,7 @@ void usage(char *prog)
 // 进度提示
 void playx(int play = 0)
 {
+	int i = 0 ;
     // 进度条
     char *plays[12] =
     {
@@ -114,7 +116,7 @@ void playx(int play = 0)
 
     if (searchnum != 0)
     {
-        for (int i = 0 ; i <= 3; i ++)
+        for (i = 0 ; i <= 3; i ++)
         {
             printf(" =%s= %d%s Completed.  \r", plays[i] , searched * 100 / (searchnum + 1), "%");
             Sleep(5);
@@ -138,9 +140,9 @@ void setip2(char *cp)
     if (strstr(cp, "-") && strlen(cp) > 15 && strlen(cp) < 32)
     {
         // 提取出结束IP
-        endip = strchr(cp, &#39;-&#39;) + 1;
+        endip = strchr(cp, '-') + 1;
         // 提取出开始IP
-        strncpy(startip, cp, strlen(cp) - strlen(strchr(cp, &#39;-&#39;)));
+        strncpy(startip, cp, strlen(cp) - strlen(strchr(cp, 45)));
 
         // 给控制要扫描IP段的变量赋值
         hoststart = ntohl(inet_addr(startip));
@@ -220,7 +222,7 @@ void customport(char *cp, char *cp2, char *cp3)
     // 判断是否 21-80 形式
     if (strstr(cp2, "-"))
     {
-        intport = atoi(checker = strchr(cp2, &#39;-&#39;) + 1);
+        intport = atoi(checker = strchr(cp2, '-') + 1);
         if (intport > 0 && intport < 65536)
             // 扫描结束端口变量赋值
             endport = intport;
@@ -395,7 +397,7 @@ void portscannow(int xp)
             continue;
         }
 
-        if(i > 11) i = 0;
+        //if(i > 11) i = 0;
         // 默认端口扫描
         // scan 192.168.0.1
         // scan 192.168.0.1-192.168.0.254

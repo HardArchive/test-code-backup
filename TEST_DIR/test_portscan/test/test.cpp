@@ -20,7 +20,7 @@ using namespace std;
 void CopyRight();
 typedef unsigned int uint;
 vector<uint> v;
-int main2()
+int main()
 {
 	WORD wsVersion = MAKEWORD(2,0); //socket的版本
 	WSADATA wsaData;    //这个结构被用来存储被WSAStartup函数调用后返回的Windows Sockets数据。它包含Winsock.dll 执行的数据。
