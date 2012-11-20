@@ -1,0 +1,181 @@
+12.1.1  事务分类
+1．系统提供的事务
+系统提供的事务是指在执行某些T-SQL语句时，一条语句节构成了一个事务，这些语句包括：ALTER TABLE、CREATE、DELETE、DROP、FETCH、GRANT、INSERT、OPEN、REVOKE、SELECT、UPDATE、TRUNCATE TABLE。
+例如执行创建表的语句：
+CREATE TABLE 学生表
+(		学号 int not null,
+		班号 int not null,
+		姓名 char(16) not null,
+		性别 char(2) null,
+		出生日期 smalldatetime null,
+		系别 char(20) null,
+		政治面貌 nvarchar(16) null,
+		家庭住址 nvarchar(30) null
+)
+这条语句本身就构成了一个事务，它要么建立起含8列的表数据，要么对数据库没有任何影响，而不会建立起含少于8列的表结构。
+2．ROLLBACK TRANSACTION语句
+下面通过示例来说明事务处理语句的使用。
+示例1，定义一个事务，删除数据库“经销商”中的“销售人员表”中姓名为“王吴”的一行数据。
+BEGIN TRANSACTION
+USE 经销商
+DELETE FROM 销售人员表
+WHERE 姓名='王吴'
+COMMIT TRANSACTION
+GO
+示例2，首先利用事务变量命名一个事务，提交事务后，为所有商品名称为“主机”的商品的“单价”减去50。
+DECLARE @tran_name varchar(20)
+SET @tran_name='事务1'
+BEGIN TRANSACTION @tran_name
+GO
+USE 经销商
+GO
+UPDATE 商品信息表
+SET 单价=单价-50
+WHERE 商品名称='主机'
+GO
+COMMIT TRANSACTION 事务1
+GO
+示例3，在数据库“经销商”中，标记名为“库存数量_Update”的事务。要求将“库存表”中的“库存数量”增加为原来的1.1倍。
+BEGIN TRANSACTION 库存数量_Update
+   WITH MARK '修改库存数量'
+GO
+USE 经销商
+GO
+UPDATE 库存表
+   SET 库存数量=库存数量*1.10
+GO
+COMMIT TRANSACTION 库存数量_Update
+GO
+12.2.1  显示事务
+保存点使用SAVE TRANSACTION语句。如果在一定条件下取消事务的一部分，并在事务中返回保存点。例如：
+USE 图书管理系统
+GO
+BEGIN TRANSACTION my_transaction            /*启动事务*/
+INSERT INTO 图书明细表
+VALUES('8013','8','C++实用教程','10020','1001','2005-5-8',38,0,NULL)
+SAVE TRANSACTION my_transaction             /*保存点*/
+DELETE 图书明细表
+WHERE 图书编号= '8010'                        /*删除记录*/
+ROLLBACK TRANSACTION my_transaction       /*回滚事务*/
+COMMIT TRANSACTION
+GO
+SELECT * FROM 图书明细表
+运行结果如图12-2所示。
+12.2.2  自动提交事务
+在自动提交事务模式下，当遇到的错误不是运行时错误，而是编译时错误时，SQL Server看起来回滚的是整个批处理，而不是仅仅一个T-SQL语句。在这种情况下，编译错误将阻止SQL Server建立执行计划，而此时批处理中的任何语句都不会执行。例如，在下列语句中，由于编译错误，第三个批处理语句中的任何INSERT语句都没有执行。但看起来好像是前两个INSERT语句没有执行便进行了回滚。
+USE 图书管理系统
+GO
+CREATE TABLE 非京籍作者表
+(作者编号 INT PRIMARY KEY,作者姓名 char(16),性别 char(2),电话 char(12),籍贯 char(16))
+GO
+INSERT INTO 非京籍作者表
+VALUES(1001,'张扬','男','13865263598','山东济南')
+INSERT INTO 非京籍作者表
+VALUES(1002,'李梅','女','13658965425','河南郑州')
+INSERT INTO 非京籍作者表
+VALUSE(1003,'薛红林','男','13986595315','陕西西安')     /*语法错误*/
+GO
+SELECT * FROM 非京籍作者表      /*不返回任何行*/
+GO
+而在下面的示例中，第三个INSERT语句产生运行时重复键错误。由于前两个INSERT语句成功地执行并且提交，因此他们在运行时错误之后被保留下来。
+USE 图书管理系统
+GO
+CREATE TABLE 非京籍作者表
+(作者编号 INT PRIMARY KEY,作者姓名 char(16),性别 char(2),电话 char(12),籍贯 char(16))
+GO
+INSERT INTO 非京籍作者表
+VALUES(1001,'张扬','男','13865263598','山东济南')
+INSERT INTO 非京籍作者表
+VALUES(1002,'李梅','女','13658965425','河南郑州')
+INSERT INTO 非京籍作者表
+VALUES(1001,'薛红林','男','13986595315','陕西西安')     /*重复键错误*/
+GO
+SELECT * FROM 非京籍作者表      /*返回第一行和第二行*/
+GO
+由于在SQL Server使用了延迟的名称解析，所以对象名直到执行时才被解析。在下面的示例中，前两个INSERT语句执行并提交，当第三个INSERT语句由于引用了一个并不存在的表而产生运行时错误之后，前两行将仍然保留在“非京籍作者表”中。
+USE 图书管理系统
+GO
+CREATE TABLE 非京籍作者表
+(作者编号 INT PRIMARY KEY,作者姓名 char(16),性别 char(2),电话 char(12),籍贯 char(16))
+GO
+INSERT INTO 非京籍作者表
+VALUES(1001,'张扬','男','13865263598','山东济南')
+INSERT INTO 非京籍作者表
+VALUES(1002,'李梅','女','13658965425','河南郑州')
+INSERT INTO 京籍作者表
+VALUES(1001,'薛红林','男','13986595315','陕西西安')     /*表名称错误*/
+GO
+SELECT * FROM 非京籍作者表      /*返回第一行和第二行*/
+GO
+12.3.4  自定义锁定
+1.LOCK_TIMEOUT设置允许应用程序设置语句等待阻塞资源的最长时间。当语句等待的时间大于LOCK_TIMEOUT设置时，系统将自动取消阻塞的语句。
+若要确定当前LOCK_TIMEOUT设置，可以执行@@LOCK_TIMEOUT函数。
+DECLARE @Timeout int
+SELECT @Timeout=@@lock_timeout
+SELECT @Timeout
+GO
+2.例如，如果要设置事务隔离级别为可串行读，以确保并发事务不能在数据库“图书管理系统”的“作者表”中插入幻像行，可以执行以下语句：
+USE 图书管理系统
+GO
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+GO
+BEGIN TRANSACTION
+SELECT 作者姓名 FROM 作者表
+3.如果要确定当前设置的事务隔离级别，可以使用DBCC USEROPTIONS执行以下语句：
+USE 图书管理系统
+GO
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+GO
+DBCC USEROPTIONS
+GO
+其运行结果如图12-3所示。
+3.例如，如果将事务隔离级别设置为SERIALIZABLE，并且在SELECT语句中使用表级锁定提示NOLOCK，则键范围锁通常用于维护不采用可串行事务。
+USE 图书管理系统
+GO
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+GO
+BEGIN TRANSACTION
+SELECT 作者姓名
+FROM 作者表
+WITH (NOLOCK)
+GO
+生成的锁查看语句为：
+EXEC sp_lock
+GO
+12.3.5  查看锁定信息
+例如，显示当前系统中所有的锁。
+USE 图书管理系统
+EXEC sp_lock
+上机练习12-1：事务处理语句的使用
+在数据库“图书管理系统”的“学生信息表”中，删除“班号”为'04063321'班级，并把该班的学生归到“班号”为'04063312'的班级。
+BEGIN TRANSACTION my_transaction_delete
+USE 图书管理系统
+GO
+DELETE FROM 学生信息表
+WHERE 班号='04063321'
+SAVE TRANSACTION after_delete
+UPDATE 学生信息表
+   SET 班号='04063312'
+   WHERE 班号='04063321'
+IF (@@ERROR!=0 OR @@ROWCOUNT=0) 
+BEGIN
+   ROLLBACK TRANSACTION after_delete          /*回滚到保存点after_delete，如果
+使用ROLLBACK TRANSACTION my_transaction_delete，则会回滚到事务开始前*/
+COMMIT TRANSACTION
+RETURN
+END
+COMMIT TRANSACTION my_transaction_delete 
+GO
+如果不指定回滚的事务名称或保存点，则ROLLBACK TRANSACTION命令会将事务回滚到事务执行前，如果事务是嵌套的，则会回滚到最靠近的BEGIN TRANSACTION命令前。
+上机练习12-2：锁定提示的使用
+将事务隔离级别设置为REPEATABLE READ，并且在SELECT语句中使用表级锁定提示XLOCK。
+USE 经销商
+GO
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+GO
+BEGIN TRANSACTION
+SELECT 姓名
+FROM 销售人员表
+WITH (XLOCK)
+GO
+

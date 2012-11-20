@@ -1,0 +1,140 @@
+11.2.2  创建备份设备
+例如，创建一个用于“经销商”数据库的本地磁盘设备IT_Bak代码如下：
+USE 经销商
+GO
+EXEC SP_ADDUMPDEVICE 'DISK','IT_Bak','D:\About Database\it_bak.bak'
+在远程服务器ZHT上创建网络磁盘设备代码是：
+USE 经销商
+GO
+EXEC SP_ADDUMPDEVICE 'DISK','NET_IT_Bak','\\ZHT\DATABASEbak\it_bak.bak'
+创建本地磁带备份设备：
+USE 经销商
+GO
+EXEC SP_ADDUMPDEVICE 'DISK','IT_Bak','\\.\tape0'
+11.2.3  使用T-SQL语句备份数据库
+1．全库备份
+例如，对“图书管理系统”做一次全库备份，备份设备是名为Book_sys_bak的本地磁盘设备，并且此次备份覆盖以前所有的备份。代码如下：
+BACKUP DATABASE 图书管理系统
+   TO DISK='Book_sys_bak'
+   WITH  NAME='图书管理系统备份',
+   DESCRIPTION='图书管理系统的全库备份'
+   ,INIT
+在查询分析器中执行上述代码返回的结果如下：
+已处理 168 页，这些页属于数据库 '图书管理系统' 的文件 '图书管理系统_Data'（位于文件 1 上）。
+已处理 1 页，这些页属于数据库 '图书管理系统' 的文件 '图书管理系统_Log'（位于文件 1 上）。
+BACKUP DATABASE 操作成功地处理了 169 页，花费了 0.260 秒（5.301 MB/秒）。
+2.如图11-5所示，从返回的结果可以看出，全库备份将数据库中的所有数据库文件和日志文件都进行了备份。也可以备份到一个磁盘文件，这样SQL Server将自动为其创建备份设备。例如，同样是备份“图书管理系统”数据库，代码如下，返回结果如图11-6所示。
+BACKUP DATABASE 图书管理系统
+   TO DISK='D:\About DataBase\BOOK_SYS_BAK.BAK'
+   WITH  NAME='图书管理系统备份',
+   DESCRIPTION='图书管理系统的全库备份'
+   ,INIT
+如果要将“图书管理系统”数据库备份到磁带上，则可以使用下列代码：
+BACKUP DATABASE 图书管理系统
+   TO TAPE='\\H\DATABASE\BOOK_TAP0_BAK'
+   WITH  NAME='图书管理系统备份',
+   DESCRIPTION='图书管理系统的全库备份'
+   ,INIT
+3.其中使用了WITH DIFFERENTIAL子句表示指定本次备份是差异备份，其他的备份选项与全库备份一样，在此不再重复。例如，对“图书管理系统”数据库做差异备份，备份的设备为Mybak_Books的本地磁盘设备。代码如下：
+BACKUP DATABASE 图书管理系统
+   TO DISK='Mybak_Books'
+   WITH DIFFERENTIAL,
+   NAME='图书管理系统备份',
+   DESCRIPTION='图书管理系统的差异备份'
+   ,NOINIT
+上述代码返回的结果如下：
+已处理 16 页，这些页属于数据库 '图书管理系统' 的文件 '图书管理系统_Data'（位于文件 1 上）。
+4.其中，在使用了LOG子句后表示为日志备份，database_name为要备份日志的数据库名称。例如，对“图书管理系统”数据库做日志备份，备份到Mybak_Book_Log的本地磁盘设备。代码如下：
+BACKUP LOG 图书管理系统
+   TO DISK='Mybak_Book_Log'
+   WITH  NAME='图书管理系统备份',
+   DESCRIPTION='图书管理系统的日志备份'
+   ,NOINIT
+代码执行的结果如下：
+已处理 2 页，这些页属于数据库 '图书管理系统' 的文件 '图书管理系统_Log'（位于文件 1 上）。
+BACKUP LOG 操作成功地处理了 2 页，花费了 0.080 秒（0.185 MB/秒）。
+5.例如，将“图书管理系统”数据库的图书管理系统_data文件备份到本地磁盘设备BOOK_FILE_BAK，使用以下语句：
+BACKUP DATABASE 图书管理系统
+  File='图书管理系统_data'
+  TO DISK='BOOK_FILE_BAK'
+    WITH  NAME='图书管理系统备份',
+    DESCRIPTION='图书管理系统的文件备份'
+    ,NOINIT
+执行代码返回的结果如下：
+已处理 168 页，这些页属于数据库 '图书管理系统' 的文件 '图书管理系统_Data'（位于文件 1 上）。
+BACKUP DATABASE...FILE=<name> 操作成功地处理了 168 页，花费了 0.219 秒（6.284 MB/秒）。
+11.3.1  使用T-SQL语句恢复数据库
+（1）恢复全库备份
+RESTORE DATABASE 图书管理系统
+  FROM Book_sys_bak
+   WITH FILE=1,
+   NORECOVERY
+（2）执行以下代码恢复差异备份
+RESTORE DATABASE 图书管理系统
+  FROM Book_sys_bak
+   WITH FILE=2,
+   NORECOVERY
+（3）最后，再恢复日志备份。代码如下：
+RESTORE LOG  图书管理系统
+  FROM Book_sys_bak
+   WITH FILE=3,
+2.恢复事务日志
+在上个例子恢复事务日志时，如果只想恢复2006年1月7日9点前的数据，原因是在那以后有人对数据库进行了恶意的修改，造成了数据库的崩溃。这时可以使用以下代码进行恢复：
+RESTORE LOG  图书管理系统
+  FROM Book_sys_bak
+   WITH FILE=3,
+   STOPAT='January,7,2006 9:00 AM'
+下面说明如何将事务日志恢复到某一个有标记的事务，以在“图书管理系统”数据库中进行了插入操作为例，代码如下：
+BEGIN TRANSACTION 插入图书类别
+  WITH MARK '图书事务标记'
+GO
+USE 图书管理系统
+GO
+  INSERT INTO 图书类别(类别编号,图书类别) 
+     VALUES(9,'计算机多媒体')
+GO
+COMMIT TRANSACTION 插入图书类别
+执行上述代码后，此时如果要恢复最后一次的事务日志，则需要使用下列语句：
+RESTORE LOG 图书管理系统
+  FROM Book_sys_bak
+    WITH FILE=4,
+     STOPATMARK='插入图书类别'
+3．恢复部分数据库
+可以从整个数据库的备份中指定只恢复某几个文件。例如，在“图书管理系统”数据库的文件组Book_Detail，该文件组包括文件图书管理系统_DATA1，其中图书明细表中的数据就存储在该文件。此时，如果图书明细表损坏，需要从本地磁盘备份设备Book_Detail_BAK中恢复表、文件及文件组，可以使用以下语句。
+RESTORE DATABASE 图书管理系统
+ FILEGROUP='Book_Detail'
+  FROM DISK='BOOK_Detail_Bak'
+    WITH FILE=1, PARTIAL,
+    MOVE '图书管理系统_Data' TO 'D:\About Database\Book.pri',
+    MOVE '图书管理系统_Log' TO 'D:\About Database\Book.log',
+    MOVE '图书管理系统_Data1' TO 'D:\About Database\Book.data1'
+在以上语句中恢复了“图书管理系统”数据库主文件和文件组（图书管理系统_Data）、日志文件（图书管理系统_Log）和图书明细表所在的文件组（Book_Detail）的所有文件（Book.data1）。
+上机练习11-2：使用查询分析器备份数据库
+下面，根据在本章介绍的有关使用T-SQL语句创建备份设备和备份数据库的内容进行练习。例如，实现11-1上机练习中的功能，代码如下：
+（1）在Northwind数据库创建本地磁盘“备份1”备份设备：
+USE Northwind
+GO
+EXEC SP_ADDUMPDEVICE 'DISK','备份1','D:\About Database\备份1.bak'
+（2）使用“备份1”对Northwind数据库进行全库备份：
+BACKUP DATABASE Northwind
+   TO DISK='备份1'
+   WITH  NAME='Northwind备份',
+   DESCRIPTION='备份1在Northwind数据库上'
+   ,INIT
+上机练习11-3：使用查询分析器恢复数据库
+当数据库出现问题，无法打开或数据损坏后，则需要从备份中将数据库恢复到正常状态。在前面两个练习中创建了本地磁盘备份设备“备份1”，它保存了对Northwind数据库的全库备份。将“备份1”恢复到数据库的代码如下，此处在“备份1”中作了3次备份，包括一次全库备份、一次差异备份和一次日志备份。
+（1）恢复全库备份
+RESTORE DATABASE Northwind
+  FROM 备份1
+   WITH FILE=1,
+   NORECOVERY
+（2）执行以下代码恢复差异备份
+RESTORE DATABASE Northwind
+  FROM 备份1
+   WITH FILE=2,
+   NORECOVERY
+（3）最后，再恢复日志备份。
+RESTORE LOG  Northwind
+  FROM 备份1
+   WITH FILE=3
+

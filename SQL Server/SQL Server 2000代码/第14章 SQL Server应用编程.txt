@@ -1,0 +1,305 @@
+14.2.1  使用ADO
+下面是在Visual Basic中编写的代码片段，其中对ADO的操纵完全用代码来实现。创建Connection对象，对立一个与数据库服务器的连接，Connection对象的VB代码如下：
+Dim cn As ADODB.Connection
+声明ADODB.Connection对象变量
+Dim strCN As String
+' 声明存放连接串的字符串变量
+Set cn= New Connection
+' 实例化Connection对象
+' 生成连接串（ConnectionString）
+strCN="Provider=Microsoft.Jet.Oledb.3.51;
+UserID=Admin;"&_
+"DataSource=D:\MicrosoftVisual
+Studio\VB98\Nwind.mdb;"
+' 调用Connection对象的方法Open连接数据源 
+cn.Open strCN
+14.2.3  使用JDBC
+使用java连接sql server数据库首先需要安装Microsoft SQL Server 2000 Driver for JDBC，可以从微软的网站上下载，然后设置环境变量如下。
+CLASSPATH＝.;c:\program files\Microsoft SQL Server 2000 Driver for JDBC\lib\msbase.jar;c:\program files\Microsoft SQL Server 2000 Driver for JDBC\lib\msutil.jar;c:\program files\Microsoft SQL Server 2000 Driver for JDBC\lib\mssqlserver.jar
+设置了环境变量需要重新启动计算机。然后使用示例代码来测试一下连接是否可以建立成功，示例代码如下：
+import java.sql.*;
+public class Connect{
+     private java.sql.Connection  con = null;
+     private final String url = "jdbc:microsoft:sqlserver://";
+     private final String serverName= "localhost";
+     private final String portNumber = "1433";
+     private final String databaseName= "pubs";
+     private final String userName = "username";
+     private final String password = "password";
+     // Informs the driver to use server a side-cursor,
+     // which permits more than one active statement
+     // on a connection.
+     private final String selectMethod = "cursor";
+     // Constructor
+     public Connect（）{}
+     private String getConnectionUrl（）{
+          return url+serverName+":"+portNumber+";databaseName="+databaseName+";selectMethod="+selectMethod+";";
+     }
+     private java.sql.Connection getConnection（）{
+          try{
+               Class.forName（"com.microsoft.jdbc.sqlserver.SQLServerDriver"）;
+               con = java.sql.DriverManager.getConnection（getConnectionUrl（）,userName,password）;
+               if（con!=null） System.out.println（"Connection Successful!"）;
+          }catch（Exception e）{
+               e.printStackTrace（）;
+               System.out.println（"Error Trace in getConnection（） : " + e.getMessage（））;
+         }
+          return con;
+      }
+     /*
+          Display the driver properties, database details
+     */
+     public void displayDbProperties（）{
+          java.sql.DatabaseMetaData dm = null;
+          java.sql.ResultSet rs = null;
+          try{
+               con= this.getConnection（）;
+               if（con!=null）{
+                    dm = con.getMetaData（）;
+                    System.out.println（"Driver Information"）;
+                    System.out.println（"\tDriver Name: "+ dm.getDriverName（））;
+                    System.out.println（"\tDriver Version: "+ dm.getDriverVersion （））;
+                    System.out.println（"\nDatabase Information "）;
+                    System.out.println（"\tDatabase Name: "+ dm.getDatabaseProductName（））;
+                    System.out.println（"\tDatabase Version: "+ dm.getDatabaseProductVersion（））;
+                    System.out.println（"Avalilable Catalogs "）;
+                    rs = dm.getCatalogs（）;
+                    while（rs.next（））{
+                         System.out.println（"\tcatalog: "+ rs.getString（1））;
+                    }
+                    rs.close（）;
+                    rs = null;
+                    closeConnection（）;
+               }else System.out.println（"Error: No active Connection"）;
+          }catch（Exception e）{
+               e.printStackTrace（）;
+          }
+          dm=null;
+     }
+     private void closeConnection（）{
+          try{
+               if（con!=null）
+                    con.close（）;
+               con=null;
+          }catch（Exception e）{
+               e.printStackTrace（）;
+          }
+     }
+     public static void main（String[] args） throws Exception
+       {
+          Connect myDbTest = new Connect（）;
+          myDbTest.displayDbProperties（）;
+       }
+}
+保存为Connect.java，编译执行：
+javac Connect.java
+java Connect
+结果应该显示出来：Connection Successful!
+14.3  SQL-DMO
+1.SQL-DMO应用
+在窗体任意位置双击，输入以下程序实现代码：
+'定义程序中使用的对象
+Dim mysql As New SQLDMO.SQLServer
+Dim dbname As SQLDMO.Database
+Dim objSQLApp As SQLDMO.Application
+Dim objNameList As SQLDMO.NameList
+Dim intCount As Integer
+Private Sub Form_Load()
+'程序载入时对对象进行初始化并赋值
+mysql.LoginTimeout = 15
+mysql.Connect "zht", "sa", ""
+For Each dbname In mysql.Databases
+    Call dblist.AddItem(dbname.Name)
+Next
+Set objSQLApp = New SQLDMO.Application
+Set objNameList = objSQLApp.ListAvailableSQLServers()
+For intCount = 1 To objNameList.Count
+    Call serlist.AddItem(objNameList.Item(intCount))
+Next
+End Sub
+Private Sub Form_Unload(Cancel As Integer)
+'退出程序时释放各对象
+Set mysql = Nothing
+Set dbname = Nothing
+Set objSQLApp = Nothing
+Set objNameList = Nothing
+End Sub
+14.4.2  XML文档模式
+1.例如，从“图书管理系统”数据库中查询价格最高的5种图书，并显示出图书的编号、名称、定价、作者姓名和出版社信息使用的XML语句如下：
+USE 图书管理系统
+GO
+SELECT TOP 5  图书编号,图书名称,定价, 作者姓名,出版社名称
+FROM 作者表 join 图书明细表 on
+   作者表.作者编号 = 图书明细表.作者编号 JOIN 出版社信息表 
+   ON 图书明细表.出版社编号=出版社信息表.出版社编号
+   ORDER BY 图书明细表.定价 DESC FOR XML RAW
+返回的XML文档为：
+<row 图书编号="6008" 图书名称="DIY电脑选购组装与维修" 定价="450.0" 作者姓名="王为" 出版社名称="人民教育出版社"/>
+<row 图书编号="1001" 图书名称="ASP.NET高级编程" 定价="128.0" 作者姓名="赵六安" 出版社名称="清华大学出版社"/>
+<row 图书编号="2001" 图书名称="Oracle编程入门经典" 定价="128.0" 作者姓名="王颖" 出版社名称="清华大学出版社"/>
+<row 图书编号="8008" 图书名称="高等教育心理学标准教程" 定价="125.0" 作者姓名="马利" 出版社名称="高等教育出版社"/>
+<row 图书编号="8004" 图书名称="英汉双解微软计算机辞典" 定价="100.0" 作者姓名="史微" 出版社名称="清华大学出版社"/>
+2.例如，下面是一个简单的AUTO模式的FOR XML查询的例子，实现上述RAW模式的功能。
+SELECT TOP 5  图书编号,图书名称,定价, 作者姓名,出版社名称
+FROM 作者表 JOIN 图书明细表 ON
+   作者表.作者编号 = 图书明细表.作者编号 
+   JOIN 出版社信息表 ON
+   图书明细表.出版社编号=出版社信息表.出版社编号
+   ORDER BY 图书明细表.定价 DESC FOR XML AUTO
+返回的XML文档结果为：
+<图书明细表 图书编号="6008" 图书名称="DIY电脑选购组装与维修" 定价="450.0">
+    <作者表 作者姓名="王为">
+      <出版社信息表 出版社名称="人民教育出版社"/>
+    </作者表>
+</图书明细表>
+<图书明细表 图书编号="1001" 图书名称="ASP.NET高级编程" 定价="128.0">
+    <作者表 作者姓名="赵六安">
+      <出版社信息表 出版社名称="清华大学出版社"/>
+    </作者表>
+</图书明细表>
+<图书明细表 图书编号="2001" 图书名称="Oracle编程入门经典" 定价="128.0">
+    <作者表 作者姓名="王颖">
+      <出版社信息表 出版社名称="清华大学出版社"/>
+    </作者表>
+</图书明细表>
+<图书明细表 图书编号="8008" 图书名称="高等教育心理学标准教程" 定价="125.0">
+    <作者表 作者姓名="马利">
+      <出版社信息表 出版社名称="高等教育出版社"/>
+    </作者表>
+</图书明细表>
+这个结果比采用RAW模式返回的结果要好的多。在结果中不再对多个图书信息重复相同的图书编号，其结果的形状也更像一棵XML树了。
+14.4.3  将XML文档转换为表
+1.下面来看一个在SELECT语句中使用OPENXML的例子。在这个例子中，首先将XML文档保存在一个字符型变量中，再使用sp_xml_preparedocument系统存储过程将这个XML文档解析为文档对象，并将树的句柄保存起来，第三步使用OPENXML语句将该XML文档的对象转换为表的形式，表的结构在WITH子句中给出，并对这个表进行查询。最后，使用sp_xml_removedocument系统存储过程删除XML文档的对象。
+DECLARE @idoc int
+DECLARE @doc varchar(1000)
+SET @doc ='
+<ROOT>
+<Orders OrderID="10248" CustomerID="VINET" EmployeeID="5" ShipVia="3" ShipName="Vins et alcools Chevalier" />
+<Orders OrderID="10249" CustomerID="TOMSP" EmployeeID="6" ShipVia="1" ShipName="Toms Spezialit?ten" />
+<Orders OrderID="10250" CustomerID="HANAR" EmployeeID="4" ShipVia="2" ShipName="Hanari Carnes" />
+<Orders OrderID="10251" CustomerID="VICTE" EmployeeID="3" ShipVia="1" ShipName="Victuailles en stock" />
+<Orders OrderID="10256" CustomerID="WELLI" EmployeeID="3" ShipVia="2" ShipName="Wellington Importadora" />
+</ROOT>'
+EXEC sp_xml_preparedocument @idoc OUTPUT, @doc
+-- 从OPENXML返回的行集中执行SELECT语句
+SELECT    *
+FROM       OPENXML (@idoc, '/ROOT/Orders',1)
+            WITH (OrderID  varchar(5),
+                  CustomerID varchar(5),
+                  EmployeeID varchar(2),
+                  ShipVia varchar(2),
+                  ShipName varchar(50))
+EXEC sp_xml_removedocument @idoc
+在查询分析器中执行以上代码，返回的结果如图14-28所示。
+2.利用这种方法，就可以从文件中读出XML文档，并将它用表的形式显示出来，甚至将其作为向数据库中添加数据的数据源。
+例如，可以使用以下代码将XML文档中的数据添加表中。
+SET IDENTITY_INSERT ON
+DECLARE @idoc int
+DECLARE @doc varchar(1000)
+SET @doc ='
+<ROOT>
+<Orders OrderID="10248" CustomerID="VINET" EmployeeID="5" ShipVia="3" ShipName="Vins et alcools Chevalier" />
+<Orders OrderID="10249" CustomerID="TOMSP" EmployeeID="6" ShipVia="1" ShipName="Toms Spezialit?ten" />
+<Orders OrderID="10250" CustomerID="HANAR" EmployeeID="4" ShipVia="2" ShipName="Hanari Carnes" />
+<Orders OrderID="10251" CustomerID="VICTE" EmployeeID="3" ShipVia="1" ShipName="Victuailles en stock" />
+<Orders OrderID="10256" CustomerID="WELLI" EmployeeID="3" ShipVia="2" ShipName="Wellington Importadora" />
+</ROOT>'
+EXEC sp_xml_preparedocument @idoc OUTPUT, @doc
+INSERT INTO Orders(Orderid,CustomerID,EmployeeID,Shipvia,ShipName)
+SELECT    *
+FROM       OPENXML (@idoc, '/ROOT/Orders',1)
+            WITH (OrderID  varchar(5),
+                  CustomerID varchar(5),
+                  EmployeeID varchar(2),
+                  ShipVia varchar(2),
+                  ShipName varchar(50))
+EXEC sp_xml_removedocument @idoc
+在查询分析器中执行以上代码，即可将记录成功地添加到表中。
+14.4.4  HTTP访问SQL Server
+例如，要查询销售人员的销售情况，要求显示销售人员的姓名及其相关的销售信息。要实现该功能，在“经销商”数据库中涉及到两个表：销售人员和销售表，并且两表之间的存在一对多关系，也就是在销售表中可能存在相同的销售人员的信息（编号）。
+在查询分析器中使用T-SQL语句如下：
+USE 经销商
+GO
+SELECT 姓名,销售编号,商品编号,顾客编号,金额
+   FROM  销售表,销售人员表
+   WHERE 销售表.销售人员编号=销售人员表.编号
+如果希望在浏览器中执行这一查询，可以在【地址】栏输入以下URL地址：
+http://zht/bookdb?sql=SELECT+姓名,销售编号,商品编号,顾客编号,金额,销售数量+FROM+销售表,销售人员表+WHERE+销售表.销售人员编号=销售人员表.编号+FOR+XML+auto&ROOT=root
+如图14-36所示是在浏览中执行查询的结果。
+14.5.2  在SQL语句中使用主变量
+可以在嵌入式SQL语句中任何欲使用主变量的地方。例如，下面的SELECT语句就可以嵌入在C语言程序中：
+EXEC SQL SELECT * FROM 图书明细表
+    WHERE 图书编号= :M_BookID ；
+在上述语句中M_BookID主变量是以冒号开头，该冒号仅在SQL语句中使用。当在C语言的主程序中声明变量时并不需要使用冒号。
+说明性语句是专为在嵌入式SQL中说明主变量等而设置的，主要有两条语句：
+EXEC SQL BEGIN DECLARE SECTION
+和
+EXEC SQL END DECLARE SECTION
+这两个语句必须配对出现，相当于一对括号，两条语句中间是主变量的说明。下面，我们来做个实例。假设要声明两个变量，一个用来接收标识CD的值，另一个接收CD的名称。在C语言中使用如下语句声明变量：
+EXEC SQL BEGIN DECLARE SECTION ;
+LONG V_CD ;  /*  定义变量接收CD值  */
+VARCHAR V_CDNAME[60] ;  /*  定义变量接收CD名称  */
+EXEC SQL END DECLARE SECTION ;
+可以看出，变量声明放在两个与声明相关的SQL语句中。注意这些语句在C语言中被认为和其他嵌入式SQL语句一样，每个语句都以EXEC SQL开始，以分号结束。
+14.5.3  查询SQL数据
+1.例如，建立一个学生表Student。
+EXEC SQL CREATE TABLE Student
+       (Sno  CHAR(5) NOT NULL UNIQUE,
+        Sname CHAR(20),
+        Ssex  CHAR(1),
+        Sage  INT,
+        Sdept CHAR(15)) ；
+EXEC SQL DROP TABLE Student ；
+2.使用嵌入式SQL查询数据—SELECT
+查询某个学生选修某门课程的成绩。假设已经将要查询的学生的学号赋给了主变量M_StuID，将课程号赋给了主变量M_ClassID。
+EXEC SQL SELECT Sno,Scno,Sgrade
+     INTO :Hsno, :Hscno, :Hsgrad
+     FROM Stu_Class
+     WHERE Sno=:M_StuID AND Scno=:M_ClassID ;
+3.使用嵌入式SQL查询数据—UPDATE
+修改某个学生1号课程的成绩。假设该学生的学号已赋给主变量M_StuID，修改后的成绩已赋于主变量NEWgrade。
+EXEC SQL UPDATE Stu_Class
+     SET Sgrade=:NEWgrade
+     WHERE Sno=:M_StuID ;
+4.使用嵌入式SQL查询数据—DELETE
+某个学生退学了，现要将有关他的所有选课记录删除掉。假设该学生的姓名已赋给主变量Stuname。
+EXEC SQL DELETE FROM Stu_Class
+     WHERE Sno=(
+      SELECT Sno From Student WHERE Stuname=:Stuname) ;
+5.使用嵌入式SQL查询数据—INSERT
+某个学生新选修了某门课程，将有关记录插入Stu_Class表中。假设学生的学号赋给主变量M_StuID，课程号已赋给主变量M_ClassID。由于该学生刚选修课程，还未考试，所以要把主变量GardID赋为负值。
+GardeID=-1;
+EXEC SQL INSERT
+  INTO Stu_Class (Sno,Scno,Sgrade)
+  VALUES (:M_StuID,:M_ClassID,:GardeID) ;
+最后，为了能够更好地理解上面的概念，下面给出带有嵌入式SQL完整的C程序。
+EXEC SQL INCLUDE SQLCA;   
+ /* (1)定义SQL通信区  */
+EXEC SQL BEGIN DECLARE SECTION;
+ /*  (2) 说明主变量 */
+CHAR title_id(7);
+CHAR title(81);
+INT royalty;
+EXEC SQL END DECLARE SECTION;
+main()
+{
+    EXEC SQL DECLARE C1 CURSOR FOR   
+    /*  (3) 游标操作（定义游标）*/
+    SELECT tit_id, tit, roy FROM titles;
+    /* 从titles表中查询 tit_id, tit, roy */
+    EXEC SQL OPEN C1;
+    /* (4) 游标操作（打开游标）*/
+    for(;;)
+    {
+         EXEC SQL FETCH C1 INTO :title_id, :title, :royalty;
+     /*  (5) 游标操作（移动游标指针）*/
+       /* （将当前数据放入主变量）*/
+            if (sqlca.sqlcode <> SUCCESS)
+               /*(6) 利用SQLCA中的状态信息决定何时退出循环*/
+             break; 
+         printf("Title ID: %s, Royalty: %d", :title_id, :royalty);
+         printf("Title: %s", :title);
+         /* 打印查询结果 */
+}
+ /* (7) 游标操作（关闭游标）*/
+EXEC SQL CLOSE C1;

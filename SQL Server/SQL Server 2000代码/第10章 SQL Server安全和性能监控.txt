@@ -1,0 +1,157 @@
+10.2.1  服务器的登录账户
+1.下面介绍如何使用sp_addlogin存储过程来创建登录账户。例如，在SQL Server中创建一个名为'li'的登录账户，并设置登录密码为'nihao'，指定登录后能够用到的数据库为“经销商”，设置默认语言是'English'，SID和encryption_option使用默认值。
+EXEC sp_addlogin @loginame='li',
+     @passwd='nihao',
+     @defdb='经销商',
+     @deflanguage='English'
+2.例如，利用sp_helplogins存储过程查看SQL Server中的登录账户wang。
+EXEC sp_helplogins 'wang'
+GO
+3.例如，利用sp_droplogin存储过程删除SQL Server中的登录账户zhang。在利用sp_droplogin语句之前，先来分析登录账户zhang在某一数据库中是否有别名或映射到了用户上。在介绍创建登录账户时，我们了解到SQL Server会在创建登录账户的同时，自动在该数据库中创建与新建登录账户同名的数据库用户账户，所以在删除登录账户之前，先要删除与之对应的数据库用户。以下语句将会完成对登录账户zhang的删除。
+USE 图书管理系统
+GO
+EXEC sp_dropuser 'zhang'
+USE 经销商
+GO
+EXEC sp_dropuser 'zhang'
+EXEC sp_droplogin 'zhang'
+10.2.2  数据库用户账户
+1.下面的示例为在数据库“经销商”中为登录账户wang添加账户，并取名为pan。
+USE 经销商
+GO
+EXEC sp_grantdbaccess @loginame='wang',
+     @name_in_db='pan'
+2.使用sp_helpuser存储过程也可以查看数据库用户账户。它的基本语法格式为：
+sp_helpuser [[@name_in_db=] 'security_account']
+其中，[@name_in_db=] 'security_account'是指当前数据库中的数据库用户账户的名称。security_account必须存在于当前的数据库中。security_account的数据类型为sysname，默认值为NULL。如果没有指定security_account，系统过程将报告当前数据库中的所有数据库用户账户的信息。
+通过以下示例来了解sp_helpuser的用法。
+示例1，查看数据库“图书管理系统”中所有数据库用户账户。
+USE 图书管理系统
+GO
+EXEC sp_helpuser
+运行结果如图10-23所示。
+3.示例2，查看数据库“图书管理系统”中名为wang的数据库用户账户。
+USE 图书管理系统
+GO
+EXEC sp_helpuser 'wang'
+查询结果如图10-24所示。
+4.例如，利用sp_revokedbaccess从数据库“图书管理系统”中删除数据库用户账户deng。
+USE 图书管理系统
+GO
+EXEC sp_revokedbaccess 'deng'
+5.例如，将登录账户wang添加到sysadmin角色中。
+EXEC sp_addsrvrolemember @loginame='wang',
+@rolename='sysadmin'
+从服务器角色中删除用户登录账户同样能够使用T-SQL语句。其基本语法格式为：
+sp_dropsrvrolemember [@loginame=] 'login',
+[@rolename=] 'role'
+其中，[@loginame=] 'login'表示将要从服务器角色删除的登录账户名称。login的数据类型为sysname，没有默认值，并且login必须已经存在。[@rolename=] 'role'表示服务器角色的名称。role的数据类型为sysname，带有默认值NULL。role必须是有效的服务器角色，并且必须是上述八个服务器角色之一。
+例如，将登录账户zhang从sysadmin中删除。
+EXEC sp_dropsrvrolemember @loginame='zhang',
+@rolename='sysadmin'
+6.固定数据库角色
+也可以用T-SQL语句将数据库用户账户添加到数据库角色。它的基本语法格式为：
+sp_addrolemember [@rolename=] 'role',
+    [@membername=] 'security_account'
+其中，[@rolename=] 'role'表示当前数据库中数据库角色的名称。role的数据类型为sysname，没有默认值。[@membername=] 'security_account'表示添加到数据库角色的数据库用户账户。security_account的数据类型为sysname，没有默认值。
+例如，在数据库“图书管理系统”中，将数据库用户账户wang，添加到db_owner角色中。
+USE 图书管理系统
+GO
+EXEC sp_addrolemember @rolename='db_owner',
+@membername='wang'
+同样能够使用T-SQL语句从数据库角色中删除数据库用户账户。它的基本语法格式为：
+sp_droprolemember [@rolename=] 'role',
+     [@membername=]'security_account'
+其中，[@rolename=]'role'表示某个数据库角色的名称，将要从该角色删除数据库用户账户。role的数据类型为sysname，没有默认值。role必须已经存在于当前的数据库中。[@membername=]'security_account'表示要从数据库角色中删除的数据库用户账户名称。security_account的数据类型为sysname，没有默认值。当前数据库中必须存在security_account。
+例如，在数据库“图书管理系统”中，将db_owner角色中的数据库用户账户wang删除。
+USE 图书管理系统
+GO
+EXEC sp_droprolemember @rolename='db_owner',
+@membername='wang'
+7.下面通过示例为在数据库“图书管理系统”中，自定义一个名为tsglxt_role的角色。
+USE 图书管理系统
+GO
+EXEC sp_addrole @rolename='tsglxt_role',
+       @ownername='wang'
+在前面介绍的服务器角色和固定数据库角色都是无法删除的，但用户自定义数据库角色是可以删除的。可以用T-SQL语句删除用户自定义数据库角色。它的基本语法格式为：
+sp_droprole [@rolename=] 'role'
+其中，[@rolename=] 'role'表示将要从当前数据库中删除的角色的名称。role的数据类型为sysname，没有默认值。role必须已经存在于当前的数据库中。
+例如，在数据库“图书管理系统”中，删除用户自定义数据库角色tsglxt_role。
+USE 图书管理系统
+GO
+EXEC sp_droprole @rolename='tsglxt_role'
+在用户自定义数据库角色中添加和删除数据库用户账户方法与在固定数据库角色中一样，这里不再累赘。
+10.2.4  用户和角色的权限问题
+1.下面通过具体的示例来进一步地了解GRANT语句的用法。
+示例1，在数据库“图书管理系统”中，授予数据库用户wang执行CREATE TABLE和CREATE VIEW的权限。
+USE 图书管理系统
+GO
+GRANT CREATE TABLE,CREATE VIEW
+TO wang
+示例2，首先在数据库“经销商”中给public角色授予SELECT权限，然后将INSERT、UPDATE、DELETE权限授予数据库用户pan和zhang。
+USE 经销商
+GO
+GRANT SELECT ON 顾客信息表 TO public
+GO
+GRANT INSERT,UPDATE,DELETE ON 顾客信息表 TO pan,zhang
+GO
+示例3，在数据库“经销商”中，数据库用户pan拥有对“顾客信息表”的所有操作权限，pan将“顾客信息表”的SELECT权限授予jxs_role角色。数据库用户li是jxs_role角色的成员，它要将“顾客信息表”的SELECT权限授予数据库用户wei，但是wei不是jxs_role角色的成员。
+USE 经销商
+GO
+/*数据库用户pan*/
+GRANT SELECT ON 顾客信息表
+TO jxs_role WITH GRANT OPTION
+GO
+/*数据库用户li*/
+GRANT SELECT ON 顾客信息表
+TO wei AS jxs_role       /*由于数据库用户li是jxs_role角色的成员，所以必须用AS授予wei权限*/
+GO
+示例4，在数据库“图书管理系统”中给public角色赋予对“学生信息表”中列“学号”、“姓名”、“性别”和“出生日期”的SELECT权限。
+USE 图书管理系统
+GRANT SELECT (学号,姓名,性别,出生日期) ON 学生信息表
+TO public
+GO
+2.下面通过具体的示例来进一步地了解DENY语句的用法。
+示例1，在数据库“图书管理系统”中，拒绝数据库用户wang执行CREATE TABLE和CREATE VIEW的权限。
+USE 图书管理系统
+GO
+DENY CREATE TABLE,CREATE VIEW
+TO wang
+示例2，首先在数据库“经销商”中给public角色授予SELECT权限，然后拒绝数据库用户pan和zhang执行INSERT、UPDATE、DELETE权限。
+USE 经销商
+GO
+GRANT SELECT ON 顾客信息表 TO public
+GO
+DENY INSERT,UPDATE,DELETE ON 顾客信息表 TO pan,zhang
+GO
+示例3，对数据库“经销商”中的用户自定义数据库角色jxs_role的成员拒绝CREATE VIEW权限。
+USE 经销商
+GO
+DENY CREATE VIEW TO jxs_role
+GO
+3.语句中其他参数的含义与前面语句中的定义相同。下面通过具体的示例来进一步了解REVOKE语句的用法。
+示例1，在数据库“图书管理系统”中，废除授予数据库用户wang的CREATE TABLE和CREATE VIEW权限。
+USE 图书管理系统
+GO
+REVOKE CREATE TABLE,CREATE VIEW
+FROM wang
+示例2，在数据库“经销商”中，废除数据库用户pan和zhang被授予的INSERT、UPDATE、DELETE权限。
+USE 经销商
+GO
+REVOKE INSERT,UPDATE,DELETE ON 顾客信息表 FROM pan,zhang
+GO
+示例3，在数据库“经销商”中，数据库用户zhang拥有“顾客信息表”的操作权限，zhang将“顾客信息表”的权限授予jxs_role角色。数据库用户li是jxs_role角色的成员，它要将已授予数据库用户wei的在“顾客信息表”上的SELECT权限废除，wei不是jxs_role的成员。
+USE 经销商
+GO
+GRANT SELECT ON 顾客信息表 
+TO jxs_role
+WITH GRANT OPTION
+GO
+GRANT SELECT ON 顾客信息表
+TO wei
+AS jxs_role
+GO
+REVOKE SELECT ON 顾客信息表
+TO wei
+AS jxs_role
+GO
