@@ -1,0 +1,200 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\http.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\http.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 335, 90
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Http Demo"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Simple\n\nDownload",1200,25,18,73,53,BS_MULTILINE
+    LTEXT           "Illustrate how to download a url",IDC_STATIC,111,40,203,17
+    CONTROL         "<a>(C) by 9CPP</a>",2000,"SysLink",WS_TABSTOP,269,76,64,12
+END
+
+IDD_DOWNLOAD DIALOGEX 0, 0, 488, 313
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Simple Download"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        1200,57,24,231,12,ES_AUTOHSCROLL
+    EDITTEXT        1201,57,44,50,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        1202,57,65,231,12,ES_AUTOHSCROLL
+    EDITTEXT        1203,57,85,231,34,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    GROUPBOX        "Send",-1,10,8,295,146
+    RTEXT           "URL : ",-1,16,26,36,8
+    RTEXT           "Start : ",-1,16,46,36,8
+    RTEXT           "Agent : ",-1,16,67,36,8
+    RTEXT           "Header : ",-1,16,86,36,8
+    PUSHBUTTON      "Proxy",1501,57,127,43,18
+    DEFPUSHBUTTON   "Download",IDOK,215,127,58,18
+    GROUPBOX        "Response",-1,10,162,295,143
+    CONTROL         "",1600,"msctls_progress32",WS_BORDER,29,178,253,10
+    RTEXT           "Status : ",-1,19,197,58,8
+    RTEXT           "Total : ",-1,19,216,58,8
+    RTEXT           "Elapsed Time : ",-1,19,235,58,8
+    RTEXT           "MD5 : ",-1,19,256,58,8
+    LTEXT           "XXXXXXXXXXXXXXXX",1300,83,197,170,8
+    LTEXT           "XXXXX",1301,83,216,60,8
+    LTEXT           "XXXXX",1305,83,235,60,8
+    LTEXT           "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",1306,83,256,187,8
+    RTEXT           "Download : ",-1,152,216,64,8
+    RTEXT           "Average Speed : ",-1,152,235,64,8
+    LTEXT           "XXXXX",1302,222,216,60,8
+    LTEXT           "XXXXX",1304,222,235,60,8
+    PUSHBUTTON      "Save",1500,215,277,58,18
+    EDITTEXT        1800,316,12,164,128,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
+    EDITTEXT        1801,316,167,164,128,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_PROXY DIALOGEX 0, 0, 200, 137
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Proxy"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    RTEXT           "IP",IDC_STATIC,7,16,51,11
+    RTEXT           "Port",IDC_STATIC,7,38,51,11
+    RTEXT           "User Name",IDC_STATIC,7,60,51,11
+    RTEXT           "Password",IDC_STATIC,7,82,51,11
+    EDITTEXT        1200,66,13,116,12,ES_AUTOHSCROLL
+    EDITTEXT        1201,66,35,116,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        1202,66,57,116,12,ES_AUTOHSCROLL
+    EDITTEXT        1203,66,79,116,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Ok",IDOK,63,105,54,18
+    PUSHBUTTON      "Cancel",IDCANCEL,135,105,54,18
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "http.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "http.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\http.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

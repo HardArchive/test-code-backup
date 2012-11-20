@@ -1,0 +1,7 @@
+HTTP Spy 0.2 
+-Vinod Vijayan (vinod_vijayanvin@hotmail.com)
+
+New Features:
+1. HTTP Proxy support.
+2. Reset of both Settings and Results.
+3. Some minor bugs resolved

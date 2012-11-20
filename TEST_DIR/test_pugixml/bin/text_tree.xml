@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<mesh name="mesh_root">
+  <!-- here is a mesh node -->
+  some text
+  <![CDATA[someothertext]]>
+  some more text
+  <node attr1="aa"/>
+  <node attr1="vbb"  attr2="value2" >
+    <innernode name="d"/>
+  </node>
+  <xxx>
+    dsfdsf
+    dsfsdf
+    sdfdsf
+  </xxx>
+</mesh>
