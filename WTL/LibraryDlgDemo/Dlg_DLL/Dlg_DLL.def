@@ -1,0 +1,8 @@
+LIBRARY	"IpLookUp_dll"
+; IpLookUp_dll.def : 声明 DLL 的模块参数。
+
+EXPORTS
+	ShowDllWindow @ 1
+
+
+; 此处可以是显式导出
