@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibraryDlgDemo", "LibraryDlgDemo\LibraryDlgDemo.vcproj", "{57816871-B63F-4CE0-A85B-730723597907}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WTL_Dlg_DLL", "WTL_Dlg_DLL\WTL_Dlg_DLL.vcproj", "{C6E33B8E-AB9B-4DC1-B6AD-4139F4ACAF2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57816871-B63F-4CE0-A85B-730723597907}.Debug|Win32.ActiveCfg = Debug|Win32
+		{57816871-B63F-4CE0-A85B-730723597907}.Debug|Win32.Build.0 = Debug|Win32
+		{57816871-B63F-4CE0-A85B-730723597907}.Release|Win32.ActiveCfg = Release|Win32
+		{57816871-B63F-4CE0-A85B-730723597907}.Release|Win32.Build.0 = Release|Win32
+		{C6E33B8E-AB9B-4DC1-B6AD-4139F4ACAF2B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C6E33B8E-AB9B-4DC1-B6AD-4139F4ACAF2B}.Debug|Win32.Build.0 = Debug|Win32
+		{C6E33B8E-AB9B-4DC1-B6AD-4139F4ACAF2B}.Release|Win32.ActiveCfg = Release|Win32
+		{C6E33B8E-AB9B-4DC1-B6AD-4139F4ACAF2B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
