@@ -1,0 +1,27 @@
+3.2.5  模板的使用
+1.例如，前面我们所打开的Create Database模板，其内容如下：
+-- =============================================
+-- Basic Create Database Template
+-- =============================================
+IF EXISTS (SELECT *
+....   FROM   master..sysdatabases
+....   WHERE  name = N'<database_name, sysname, test_db>')
+....DROP DATABASE <database_name, sysname, test_db>
+GO
+	
+CREATE DATABASE <database_name, sysname, test_db>
+GO 
+2.下面我们修改其模板中的代码，输入创建数据库的名称为“学生管理”，如图3-33所示。
+其代码如下：
+-- =============================================
+-- Basic Create Database Template
+-- =============================================
+IF EXISTS (SELECT * 
+	   FROM   master..sysdatabases 
+	   WHERE  name = N'学生管理')
+	DROP DATABASE 学生管理
+GO
+
+CREATE DATABASE 学生管理
+GO
+

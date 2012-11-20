@@ -1,0 +1,256 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\HTTP Spy.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\HTTP Spy.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About HTTP Spy"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "HTTP Spy Version 0.2",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2008",IDC_STATIC,40,35,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "vinod_vijayanvin@hotmail.com",IDC_STATIC,40,24,117,8
+END
+
+IDD_HTTPSPY_DIALOG DIALOGEX 0, 0, 334, 255
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "HTTP Spy 0.2"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Define target and port",IDC_TARGET_PORT,2,0,329,89
+    LTEXT           "Target:",IDC_STATIC_URL,10,13,25,8
+    EDITTEXT        IDC_EDIT_URL,44,11,278,12,ES_AUTOHSCROLL
+    LTEXT           "User-Agent:",IDC_STATIC_UA,10,29,37,8
+    COMBOBOX        IDC_COMBO_USRAGENT,57,27,265,13,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Connection Type",IDC_STATIC,10,41,312,20
+    CONTROL         "Direct to Internet",IDC_DIRECT_INTERNET,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,14,49,66,10
+    CONTROL         "Thru HTTP Proxy",IDC_HTTP_PROXY,"Button",
+                    BS_AUTORADIOBUTTON,83,49,69,10
+    LTEXT           "IP Addr",IDC_STATIC_PROXYIP,164,49,26,9
+    CONTROL         "IPAddress1",IDC_PROXY_IPADDRESS,"SysIPAddress32",
+                    WS_TABSTOP,194,47,78,12
+    LTEXT           "Port",IDC_PROXY_PORT,278,50,14,8
+    EDITTEXT        IDC_EDIT_PROXY_PORT,293,46,26,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    GROUPBOX        "HTTP port",IDC_STATIC,10,62,75,20
+    CONTROL         "Port",IDC_CHECK_PORT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,17,72,28,8
+    EDITTEXT        IDC_EDIT_PORT,51,68,26,12,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Reset",IDC_RESET,87,62,113,20
+    CONTROL         "Setting",IDC_RESET_SETTING,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,90,70,38,10
+    CONTROL         "Result",IDC_RESET_RESULT,"Button",BS_AUTORADIOBUTTON,
+                    128,70,36,10
+    PUSHBUTTON      "Reset",IDC_BUTTON_RESET,172,67,26,14
+    GROUPBOX        "HTTP Method",IDC_REQUEST_METHOD,202,62,120,20
+    CONTROL         "HEAD",IDC_METHOD_HEAD,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,204,70,31,10
+    CONTROL         "GET",IDC_METHOD_GET,"Button",BS_AUTORADIOBUTTON,242,70,
+                    31,10
+    PUSHBUTTON      "Do it!",IDC_BUTTON_DOIT,287,67,32,14
+    CONTROL         "Tab1",IDC_TAB_RESPONSE,"SysTabControl32",WS_TABSTOP,2,
+                    89,329,164
+END
+
+IDD_RESPONSE_DIALOG DIALOG DISCARDABLE  0, 0, 325, 168
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT_HTTPRES,1,1,324,163,ES_MULTILINE | ES_READONLY | 
+                    WS_HSCROLL
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "HTTP Spy MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "HTTP Spy\0"
+            VALUE "LegalCopyright", "Copyright (C) 2007\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "HTTP Spy.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "HTTP Spy Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_HTTPSPY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 331
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_RESPONSE_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 254
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About HTTP Spy..."
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\HTTP Spy.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<title>IPENUM v1.01</title>
+</head>
+
+<body>
+
+<p align="left"><font face="Arial"><big><big><big><big><strong>IPENUM v1.01</strong></big></big></big></big></font></p>
+
+<p><font face="Arial">Welcome to <strong>IPENUM</strong>, a freeware MFC class and console
+application to allow enumeration of the IP addresses a machine possesses. </font></p>
+
+<table>
+  <tr>
+    <td><font face="Arial"><a href="#History">History</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Usage">Usage</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Contact">Contacting the Author</a></font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><a name="History"></a></big><font color="#000000" size="5"><strong>History</strong></font></font></p>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.0 (21th April 1998)</strong></font>
+
+<ul>
+  <li><font face="Arial"><font size="3"><font color="#000000">Initial public release.</font></font><big>
+    </big></font></li>
+</ul>
+
+<p><font face="Arial" color="#000000" size="3"><strong>V1.01 (4th January 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial" color="#000000" size="3">Minor update to the documentation.</font></li>
+  <li><font face="Arial" color="#000000" size="3">Provision of a VC 5 workspace file now as
+    standard</font></li>
+  <li><font face="Arial" color="#000000" size="3">UNICODE enabled all the code.</font></li>
+  <li><font face="Arial" color="#000000" size="3">IPENUM now uses MFC DLL and C Runtime DLL's
+    instead of statically linking. This means that the IPENUM executable requires these files
+    to be installed. </font><font face="Arial" size="3">If you haven't already got the MFC
+    4.2b DLL&#146;s on your machine (MFC42.DLL in your Windows system directory), then grab
+    them from Microsoft's web site at <a
+    href="http://activex.microsoft.com/controls/vc/mfc42.cab">http://activex.microsoft.com/controls/vc/mfc42.cab</a>.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><a name="Usage"></a><big><strong>Usage</strong></big></big></font></p>
+
+<p><font face="Arial" color="#000000" size="3">To run the IPEnum console application, open
+a command prompt and simple type IPEnum. It will then display all the IP addresses which
+the </font></p>
+
+<p><font face="Arial" color="#000000" size="3">To use the MFC class &quot;CIPEnum&quot; in
+your own code, s</font><font face="Arial"><font size="3"><font color="#000000">imply
+include the ipenum.cpp module in your project and #include the ipenum.h file in whichever
+of your modules require it. You will then </font></font><font color="#000000" size="3">need
+</font></font><font face="Arial" color="#000000" size="3">to derive your own class from
+CIPEnum and override the pure virtual function &quot;</font><font face="Arial">EnumCallbackFunction&quot;.
+Further information about this function is included below. To see this in action, have a
+look at the CMyIPEnum in the module &quot;main.cpp&quot;.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><strong>CIPEnum::EnumCallbackFunction</strong></big></font></p>
+
+<p><font face="Arial">virtual BOOL CIPEnum::EnumCallbackFunction(int nAdapter, const
+in_addr&amp; address)=0;</font></p>
+
+<p class="rl"><font face="Arial"><strong>Return Value</strong></font></p>
+
+<p class="t"><font face="Arial">TRUE if the the enumeration of the IP addresses should
+continue, FALSE to stop enumeration.</font></p>
+
+<p><font face="Arial"><strong>Parameters</strong></font></p>
+
+<p><font face="Arial"><em>nAdapter</em> The index of the IP address being returned. This
+value will be incremented each time your callback function is called.&nbsp; The value will
+start from 0.</font></p>
+
+<p><font face="Arial"><em>address</em> The IP address for the current adapter. For further
+information about this structure have a look at the Win32 SDK documentation.</font></p>
+
+<p class="crt">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><a name="Contact"></a><font color="#000000" size="4"><strong>CONTACTING
+THE AUTHOR</strong></font></font></p>
+
+<p><font face="Arial" color="#000000" size="3">PJ Naughter<br>
+Email: </font><font face="Arial" color="#000000" size="3"><a href="mailto:pjn@indigo..ie">pjn@indigo.ie</a><br>
+Web: </font><font face="Arial" color="#000000" size="3"><a href="http://indigo.ie/~pjn">http://indigo.ie/~pjn</a><br>
+4th January 1999<br>
+</font></p>
+</body>
+</html>

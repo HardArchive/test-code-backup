@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-15"?>
+<root name="Project" separator="0" checked="0" enabled="1" image="0">
+	<item name="Debug" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.bsc" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.dep" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.htm" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.idb" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.ilk" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.manifest" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.obj" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.pch" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.pdb" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.res" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.sbr" separator="0" checked="1" enabled="1" image="2"/>
+	</item>
+	<item name="Release" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.dep" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.htm" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.idb" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.manifest" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.obj" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.pch" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.pdb" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.res" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.sbr" separator="0" checked="1" enabled="1" image="2"/>
+	</item>
+	<item name="debug" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.ilk" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.pdb" separator="0" checked="1" enabled="1" image="2"/>
+	</item>
+	<item name="release" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.pdb" separator="0" checked="1" enabled="1" image="2"/>
+	</item>
+	<item name="res" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.ico" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.rc2" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.bmp" separator="0" checked="0" enabled="1" image="2"/>
+	</item>
+	<item name="bin" separator="0" checked="0" enabled="1" image="0">
+		<item name="*.dll" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.lib" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.bat" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.zip" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.7z" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.ini" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.txt" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.exp" separator="0" checked="1" enabled="1" image="2"/>
+		<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.ilk" separator="0" checked="0" enabled="1" image="2"/>
+		<item name="*.pdb" separator="0" checked="1" enabled="1" image="2"/>
+	</item>
+	<item name="*.aps" separator="0" checked="1" enabled="1" image="2"/>
+	<item name="*.ncb" separator="0" checked="1" enabled="1" image="2"/>
+	<item name="*.opt" separator="0" checked="1" enabled="1" image="2"/>
+	<item name="*.plg" separator="0" checked="1" enabled="1" image="2"/>
+	<item name="*.positions" separator="0" checked="1" enabled="1" image="2"/>
+	<item name="*.suo" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.user" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.c" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.clw" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.cpp" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.h" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.rc" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.vcproj" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.dsp" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.dsw" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.sln" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.txt" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.exe" separator="0" checked="0" enabled="1" image="2"/>
+	<item name="*.old" separator="0" checked="1" enabled="1" image="2"/>
+</root>

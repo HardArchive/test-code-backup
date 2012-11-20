@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<mesh name="mesh_root">
+  <!-- here is a mesh node -->
+  some text
+  <![CDATA[someothertext]]>
+  some more text
+  <node attr1="节点属性"/>
+  <node attr1="vbb"  attr2="value2" >
+    <innernode name="d"/>
+  </node>
+  <xxx>
+    节点内容:
+    dsfsdf
+    sdfdsf
+  </xxx>
+</mesh>

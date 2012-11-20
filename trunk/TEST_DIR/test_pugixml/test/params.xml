@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 输入参数配置 -->
+  <form ip="10.2.134.243" port="80" action="sisserver.php">
+    <input name="data_type" value="POI" />
+    <input name="query_type" value="TQUERY" />
+    <input name="category" value="" />
+  </form>
+
+  <!-- 查询词的返回结果xpath配置 -->
+  <xpath poiroot="//list/poi" idfield="pguid" namefield="name"/>
+  
+  <!-- 评分权重配置 r1~r4-期望结果的权重，n1~n10-实际查询结果的排名权重-->
+  <weight>
+    <!-- 查询词正常得分阀值 -->
+    <threshold>3</threshold>
+    <!-- 计算分数分布情况的步长值 -->
+    <step>0.5</step>
+  </weight>
+</root>

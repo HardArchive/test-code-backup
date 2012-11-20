@@ -1,0 +1,228 @@
+9.1.2  创建存储过程
+1.例如，创建一个存储过程Proc_Books，查看“图书管理系统”数据库中所有的“清华大学出版社”的图书信息，包括图书编号、图书名称、作者、图书出版时间以及出版社等。可以在查询分析器中输入以下代码，如图9-1所示是创建存储过程的运行结果。
+USE 图书管理系统
+GO
+CREATE PROCEDURE Proc_Books
+AS
+  SELECT 图书编号, 图书名称, 作者姓名,出版日期,出版社名称
+  FROM 出版社信息表 INNER JOIN 图书明细表 ON 
+       出版社信息表.出版社编号 = 图书明细表.出版社编号 INNER JOIN
+       作者表 ON 图书明细表.作者编号 = 作者表.作者编号
+GO
+2.创建查询学生借出信息的存储过程
+下面创建一个存储过程Proc_Stu，从“图书管理系统”的表中查询学生的借书信息，包括有图书编号、姓名、班号、性别、出生日期、系别、政治面貌以及家庭住址。该存储过程不使用任何参数，创建存储过程的运行结果如图9-2所示。
+USE 图书管理系统
+GO
+CREATE PROCEDURE Proc_Stu
+AS
+  SELECT 图书编号,姓名,班号,性别,出生日期,系别,政治面貌,家庭住址
+  FROM 学生信息表 INNER JOIN 借出信息 ON 
+       学生信息表.学号 = 借出信息.学号 
+GO
+9.2.2  使用存储过程的参数
+1．使用输入参数
+在前面的示例中，存储过程Proc_Books只能对表进行特定的查询。要使这个存储过程更加通用化、灵活能够查询某个出版社的图书，那么图书的出版社就应该是可变的，这样存储过程才能返回一个出版社的图书信息。这个功能可以通过将图书出版社作为参数传递给存储过程来实现，其代码如下：
+USE 图书管理系统
+GO
+CREATE PROCEDURE Proc_BooksA
+@Book_Pub  char(50)
+AS
+  SELECT 图书编号, 图书名称, 作者姓名,出版日期,出版社名称
+  FROM 出版社信息表 INNER JOIN 图书明细表 ON 
+       出版社信息表.出版社编号 = 图书明细表.出版社编号 INNER JOIN
+       作者表 ON 图书明细表.作者编号 = 作者表.作者编号
+  WHERE 出版社信息表.出版社名称=@Book_Pub
+GO
+2.创建查询商品销售情况的存储过程
+创建Pro_Search存储过程，通过输入商品的编号在“经销商”数据库中查询指定商品编号的销售情况，包括，销售编号、供应商代号、商品名称、单击、商品单位、销售数量等信息。
+USE 经销商
+GO
+CREATE PROCEDURE Pro_Search
+   @Pro_id int
+    AS
+       SELECT 销售编号,供应商代号,商品名称,单价,商品单位,销售数量,金额,姓名,售出时间
+       FROM 销售表 INNER JOIN
+      商品信息表 ON 销售表.商品编号 = 商品信息表.商品编号 INNER JOIN
+      销售人员表 ON 销售表.销售人员编号 = 销售人员表.编号
+     WHERE 销售表.商品编号=@Pro_id
+GO
+3.使用默认参数值
+执行存储过程Proc_BooksA时，如果没有指定参数，则系统运行就会出错；如果希望不给出参数时也能够正确运行，则可以给参数设置默认值来实现。因此，如果要将Proc_BooksA存储过程修改为默认值使用“清华大学出版社”的Proc_BooksB，则可以运行下列代码。
+USE 图书管理系统
+GO
+CREATE PROCEDURE Proc_BooksB
+@Book_Pub  char(50)='清华大学出版社'
+AS
+  SELECT 图书编号, 图书名称, 作者姓名,出版日期,出版社名称
+  FROM 出版社信息表 INNER JOIN 图书明细表 ON 
+       出版社信息表.出版社编号 = 图书明细表.出版社编号 INNER JOIN
+       作者表 ON 图书明细表.作者编号 = 作者表.作者编号
+  WHERE 出版社信息表.出版社名称=@Book_Pub
+GO
+4.使用输出参数
+通过定义输出参数，可以从存储过程中返回一个或多个值。定义输出参数需要在参数定义后使用OUTPUT关键字。
+CREATE PROCEDURE Proc_BookSum
+@Book_Pub  char(50)='清华大学出版社',
+@Sum_Book int output
+AS
+  SELECT @Sum_Book=count(图书编号)
+  FROM 出版社信息表 INNER JOIN 图书明细表 ON 
+       出版社信息表.出版社编号 = 图书明细表.出版社编号 
+  WHERE 出版社信息表.出版社名称=@Book_Pub
+GO
+5.为了接收某一存储过程的返回值，需要一个变量来存放返回参数的值，在该存储过程的调用语句中，必须为这个变量加上OUTPUT关键字来声明。下面的代码显示了如何调用Proc_BookSum，并将得到的结果返回到@Sum_Book中，其运行效果如图9-18所示。
+DECLARE @Sum_Book int
+EXEC Proc_BookSum '清华大学出版社', @Sum_Book OUTPUT
+SELECT '现存该出版社图书共:'+STR(@Sum_Book)
+GO
+6.例如，创建一个查看商品库存量并返回执行状态码和库存信息的存储过程Product_a，它接受商品编号为输入参数。然后判断该商品的库存数量，如果数量大于15，则输出“商品库存量充裕！”并返回3；如果数量小于5，则输出“商品库存量不多，请及时进货！”并返回1；如果数量在5和15之间，则输出“商品库存量良好，供应正常！”并返回2。该存储过程使用了“经销商”数据库中的“库存表”表，实现代码如下：
+USE 经销商
+GO
+  CREATE PROCEDURE Product_a
+    @Product_id int
+    AS
+       IF (SELECT 库存数量 FROM 库存表 WHERE 商品编号=@Product_id)<=5
+         BEGIN
+             PRINT '商品库存量不多,请及时进货!'
+             RETURN(1)
+          END
+       ELSE
+                IF (SELECT 库存数量 FROM 库存表 WHERE 商品编号=@Product_id)>5 and (SELECT 库存数量 FROM 库存表 WHERE 商品编号 =@Product_id)<=15
+               BEGIN          
+                   PRINT '商品库存量良好,供应正常!'
+                   RETURN(2)
+               END     
+       ELSE 
+          IF (SELECT 库存数量 FROM 库存表 WHERE 商品编号=@Product_id)>15
+            BEGIN        
+               PRINT '商品库存量充裕!'
+               RETURN(3)
+            END
+    GO
+上面创建了存储过程Product_a，运行结果如图9-19所示。同使用输出参数一样，为了在调用程序中使用存储过程返回的代码值，需要将其保存在变量中。例如，要从库存中查询编号为1001的商品，使用存储过程Product_a的代码如下，图9-20所示是代码运行结果。
+DECLARE @Sum_Book int
+PRINT '该类商品的库存信息.'
+EXEC @Sum_Book=Product_a 1001
+PRINT '存储过程Sum_Book的返回值为:'+STR(@Sum_Book)
+GO
+7.创建存储过程查询图书是否被借出
+在本节前面的内容中分别介绍了使用参数存储过程和使用返回值存储过程的创建方法，并结合实例演示了他们的应用。下面将创建一个存储过程Book_Search实现查看图书是否被借出的功能。在该存储过程中指定了一个默认的查询参数值Book_id（图书编号）为1001，如果该被借出则输出借出信息并返回1，否则输出图书信息并返回0，其实现代码如下。
+USE 图书管理系统
+GO
+CREATE PROCEDURE Book_Search
+@Book_id  int=1001
+AS
+  IF EXISTS (SELECT 图书编号 FROM 借出信息 WHERE 图书编号=@Book_id) 
+    BEGIN    
+      SELECT * FROM 借出信息 WHERE 图书编号=@Book_id
+      RETURN(1)
+    END
+  ELSE
+    BEGIN
+       SELECT * FROM 图书明细表 WHERE 图书编号=@Book_id
+       RETURN(0)
+    END
+GO
+9.2.3  编译存储过程
+1．CREATE PRODURCE中的RECOMPILE
+在使用CREATE PRODURCE创建存储过程时使用WITH RECOMPILE子句来提示SQL Server不将该存储过程的查询计划存在缓存中，而是在每次运行时重新编译来优化，并创建新的计划。例如，下面是使用RECOMPILE参数的CREATE PRODURCE语句，如图9-21所示。
+Use 经销商
+GO
+CREATE PROCEDURE Proc_order
+@Orderid int
+WITH RECOMPILE
+AS 
+   SELECT 销售编号,商品编号,销售数量,金额,售出时间
+   FROM 顾客信息表 INNER JOIN
+      销售表 ON 顾客信息表.编号 = 销售表.顾客编号 INNER JOIN
+      销售人员表 ON 销售表.销售人员编号 = 销售人员表.编号
+   WHERE 销售人员表.编号=@Orderid
+GO
+9.3.2  创建触发器
+1．使用T-SQL语句创建触发器
+例如，在“图书管理系统”中创建T_DEL触发器，实现“图书明细表”和“借出信息”的级联删除代码如下。
+USE 图书管理系统
+GO
+CREATE TRIGGER T_Del
+ON 借出信息
+AFTER DELETE
+AS 
+BEGIN
+  DELETE FROM 图书明细表 
+  WHERE  图书编号 IN (SELECT 图书编号 FROM DELETED)
+END
+GO
+9.3.3  操作触发器
+1.系统存储过程sp_helptrigger可以浏览指定表中定义的当前数据库的触发器信息，其语法如下：
+sp_helptrigger table_name , [type]
+其中，参数type是触发器类型的取值范围，包括INSERT、UPDATE和DELETE；如果未定义该参数的值，则返回在该表上所有触发器的信息。例如，图9-31所示为查看“图书管理系统”中“借出信息”表的触发器信息，程序代码是：
+USE 图书管理系统
+GO
+EXEC sp_helptrigger 借出信息
+2.使用系统存储过程显示触发器的代码
+系统存储过程sp_helptext可以显示规则、默认值、未加密的存储过程、用户定义函数或视图的文本。使用该存储过程还可以显示一个指定触发器的代码，例如下面的代码显示了如何查看T_Del触发器的代码，其执行结果如图9-32所示。
+USE 图书管理系统
+GO
+EXEC sp_helptext T_del
+3.删除触发器
+当不再需要某个触发器时，可以删除它。触发器被删除时，触发器所在表中数据不会因此改变。当某个表被删除时，该表上的所有触发器也自动被删除。
+使用DROP TRIIGER语句可以删除当前数据库中的一个或多个触发器。例如，删除T_Del触发器语句是：
+USE 图书管理系统
+GO
+DROP TRIGGER  T_del
+9.4  使用存储过程和触发器维护数据完整性
+
+下面的例子建立了一个存储过程来实现针对“图书管理系统”数据库的“工作人员”表和“借出信息”表的级联删除。当用户从“工作人员”表中删除记录时，将首先删除“借出信息”表中所有的相关数据。
+USE 图书管理系统
+GO
+CREATE PROCEDURE Proc_Del
+   @Stu_ID  CHAR(10)
+    AS
+      BEGIN
+        DELETE 借出信息 WHERE 工作人员编号=@Stu_ID
+        DELETE 工作人员  WHERE 工作人员编号=@Stu_ID
+      END
+GO
+上机练习6-1：存储过程的实际应用
+创建一个名为FindCustomer1的存储过程，可以用它来找出SQL SERVER中的northwind数据库的Customer表中，CustomerID为指定值（输入参数）的记录的ContactName字段的名称，另外指定一个输出参数LineNum做为输出参数，还有必须在存储过程中判断CustomerID不能为空串，是的话要打印出出错信息，并返回错误值-1，如果查询成功在输出变量LineNum中保留选出的行数，然后返回值0。写出相应的SQL语句。
+USE NorthWind
+GO
+CREATE PROC FindCustomer3
+@LineNum int OUTPUT,
+@CustomerID char (5)
+AS
+IF LEN(@CustomerID)=0
+BEGIN
+  PRINT 'You must supply a valid CustomerID'
+  RETURN -1
+END
+SELECT contactName   
+From Customers WHERE CustomerID=@CustomerID 
+SET @LineNum = @@ROWCOUNT
+RETURN 0
+上机练习6-2：触发器的实际应用
+你在开发某公司的管理信息系统，其中要跟踪经理的购买情况。每个经理在预算表中都有一个记录。预算表包含列“经理代号”、列“预算总金额”、列“现有预算金额”；购买表包含列“购买代号”、列“购买金额”，列“经理代号”。每次购买都要与“现有预算金额”作比较，当该次购买的“购买金额”小于“现有预算金额”时，才允许插入到购买表中（一次购买只插入一个记录），同时自动更改预算表的“现有预算金额”。请在购买表上编写一个触发器，完成该任务。
+CREATE TRIGGER Purchase_Insert ON 购买表
+FOR INSERT
+AS
+BEGIN
+  IF (SELECT count(*) FROM Inserted) <> 1 
+    BEGIN
+    RAISERROR(‘一次购买只允许插入一个记录！’,16, 1)
+    ROLLBACK TRANSACTION
+    RETURN 
+    END
+  IF ( SELECT a.现有预算金额-b.购买金额 
+    FROM 预算表 AS a INNER JOIN 
+        Inserted AS b ON a.经理代号=b.经理代号)<0
+    BEGIN
+      RAISERROR(‘现有预算金额不足支付购买金额 ！’,16, 1)
+      ROLLBACK TRANSACTION
+      RETURN 
+    END
+  UPDATE 预算表
+  SET 现有预算金额 = a.现有预算金额 – b.购买金额
+  FROM 预算表 AS a INNER JOIN 
+        Inserted AS b ON a.经理代号=b.经理代号
+END
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <list count="3" time="10">
+    <poi>
+      <pguid>123</pguid>
+      <name>xx1</name>
+    </poi>
+    <poi>
+      <pguid>456</pguid>
+      <name>xx2</name>
+    </poi>
+    <poi>
+      <pguid>789</pguid>
+      <name>xx3</name>
+    </poi>
+  </list>
+</root>
+<!--
+其中，xpath根路径：m_strPOIRoot="//list/poi",
+需要取值的项：strPOIID=“pguid”，strPOINam=“name”。
+
+读取代码：
+//从strWebContent内容中解析出pguid和name
+pugi::xml_document doc;
+pugi::xml_parse_result result = doc.load(strWebContent.c_str());
+if (!result)
+{return -1;}
+pugi::xpath_node_set tools = doc.select_nodes(m_strPOIRoot.c_str());
+for (pugi::xpath_node_set::const_iterator it = tools.begin();
+it !=  tools.end(); ++it)
+{
+pugi::xpath_node node = *it;
+string strPOI = node.node().child_value(m_strPOIID.c_str());
+string strName = node.node().child_value(m_strPOIName.c_str());
+}
+-->

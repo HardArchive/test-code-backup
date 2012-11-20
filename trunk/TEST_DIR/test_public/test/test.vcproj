@@ -21,7 +21,7 @@
 			OutputDirectory="..\bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="2"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -252,6 +252,10 @@
 			</File>
 			<File
 				RelativePath=".\public\RegUtil.h"
+				>
+			</File>
+			<File
+				RelativePath=".\public\Socket.h"
 				>
 			</File>
 			<File

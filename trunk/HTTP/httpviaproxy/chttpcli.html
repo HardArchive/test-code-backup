@@ -1,0 +1,301 @@
+<HTML>
+<HEAD>
+<META NAME="Author" Content="Tair Abdurman">
+<TITLE>CHTTPSocket -  Reusable class to explore web Visual C++ 6.0</TITLE>
+</HEAD>
+<BODY BGCOLOR="#000000" TEXT="#FFFFFF">
+<CENTER>
+<FONT FACE="Tahoma,Arial" SIZE="+1"><B>CHTTPSocket -  Reusable class to explore web Visual C++ 6.0</B></FONT><BR><BR>
+</CENTER>
+<FONT FACE="Tahoma,Arial"><B>
+<PRE>
+
+  Hmm, now show time! Here is CHTTPSocket class with full source code,
+full qualified, one step, HTTP client. Can fetch pages from web, no problems
+if You try virtual host. If You use proxy server, only set some variables and
+get it worked also. I also compile sample application which You can download
+and test. Ok, leme start with exe sample. Download <A HREF="http://tair.virtualave.net/patches/dtsexe.zip">dtsexe.zip</A>, rename to
+dtsexe.zip, and uzip it, 37K in length and usage very simple:
+
+//-----------------------------------------------------------------------
+//call style:
+//-----------------------------------------------------------------------
+// dts.exe /URL &#60;url&#62; [/PRX &#60;phost&#62;] [/PRT &#60;pport&#62;]
+//-----------------------------------------------------------------------
+// where /URL - U see
+//       /PRX - proxy's internet address
+//       /PRT - proxy's port
+//-----------------------------------------------------------------------
+// You must have KERNEL32.DLL, USER32.DLL and WS2_32.DLL installed.
+//-----------------------------------------------------------------------
+
+for example: dts.exe /URL http://www.tair.freeservers.com for direct access
+or: dts.exe /URL http://www.yahoo.com /PRX 127.0.0.1 /PRT 8080 access via proxy
+(Tested on WinNT 4.0 SP 6.0)
+
+If slightly in deep, the example derived class and usage test code as console app
+like this:
+
+
+/************************************************************************
+HTTP socket - DTS Project
+Copyright (C) 2000 by Tair Abdurman, All Rights Reserved
+http://www.tair.freeservers.com, dts@tair.freeservers.com
+No any part of this code can be used in comercial purposes.
+************************************************************************/
+
+#include &#60;stdio.h&#62;
+#include "httpsocket.h"
+
+/************************************************************************
+Sample derived class
+************************************************************************/
+
+class CMySock : public CHTTPSocket
+{
+char szErrMessage[255];
+public:
+	void OnError();
+	void OnResponse(); 
+
+};
+
+//error trigger
+void CMySock::OnError()
+{
+	wsprintf(szErrMessage,"Error: %d, %d, %s",m_nErrCode,m_nExtErrCode,m_nErrInfo);
+	MessageBox(NULL,szErrMessage,"Error",MB_OK);
+	CHTTPSocket::OnError();
+};
+
+
+//response trigger
+void CMySock::OnResponse()
+{
+
+  printf("----m_ulResponseSize=%d\r\n",m_ulResponseSize);
+  printf("%s\r\n",(char *)m_szResponse);
+
+  CHTTPSocket::OnResponse();
+};
+
+//-----------------------------------------------------------------------
+//call style:
+//-----------------------------------------------------------------------
+// dts.exe /URL http://www.yahoo.com [/PRX 127.0.0.1] [/PRT 8080]
+//-----------------------------------------------------------------------
+// where /URL - U see
+//       /PRX - proxy's internet address
+//       /PRT - proxy's port
+//-----------------------------------------------------------------------
+// You must have KERNEL32.DLL, USER32.DLL and WS2_32.DLL installed.
+//-----------------------------------------------------------------------
+/************************************************************************
+main. entry point for service
+************************************************************************/
+void main(int argc,char* argv[])
+{
+
+	CMySock cs;
+	cs.m_bUseProxy=FALSE;
+	int i=0;
+	char* page=NULL;
+	char* serverHost=NULL;
+	char* serverPort=NULL;
+
+		while(i&#60;argc)
+	{
+		if (strcmp(argv[i],"/URL")==0)
+		{
+			if (argv[++i]!=NULL)
+			   page=argv[i];
+			else
+			   page=NULL;
+		}
+
+		if (strcmp(argv[i],"/PRX")==0)
+		{
+			if (argv[++i]!=NULL)
+			   serverHost=argv[i];
+			else
+			   serverHost=NULL;
+		}
+
+		if (strcmp(argv[i],"/PRT")==0)
+		{
+			if (argv[++i]!=NULL)
+			   serverPort=argv[i];
+			else
+			   serverPort=NULL;
+		}
+        i++;
+
+	}
+
+	if (page==NULL)
+	{
+		cs.ThrowError(0,0,"Please specify URL to fetch!");
+		return;
+	}
+
+	if (serverHost!=NULL)
+	{
+		//sets proxy server's internet address
+		cs.SetServerHost((const char*)serverHost);
+	    i=0;
+		if(serverPort!=NULL)
+		  i=atoi(serverPort);
+	    if (i==0)
+		   i=8080;
+		//sets proxy server's port number (8080 by default)
+		cs.m_nServerPort=i;
+		//says use proxy to CHTTPSocket derived class
+	    cs.m_bUseProxy=TRUE;
+	}
+
+
+    printf("URL to fetch: %s\r\n",page);
+	printf("Use proxy %s\r\n",serverHost);
+    printf("Port for proxy %d\r\n",i);
+
+
+	//page request here
+	cs.Request(page);
+}
+
+
+and CHTTPSocket interface:
+
+/************************************************************************
+clicksocket.h
+************************************************************************/
+
+#ifndef __HTTPSOCKET__H__
+#define __HTTPSOCKET__H__
+
+
+#include &#60;windows.h&#62;
+//rem next  line if no debug dump wanted 
+#define DEBON
+#include &#60;stdio.h&#62;
+
+//default send and recieve timeouts in sec
+#define HTTPRTIMEOUTDEF 90000
+#define HTTPSTIMEOUTDEF 90000
+
+#define MAXHOSTLENGTH   65
+#define MAXIPLENGTH     16
+#define MAXBLOCKSIZE    1024
+#define MAXURLLENGTH    255
+#define MAXHEADERLENGTH 269
+
+//primary error codes
+#define ERR_OK           0
+//if this error occurs, extended code is WSA's error code
+#define ERR_WSAINTERNAL  1
+#define ERR_URLNOTHING   2
+#define ERR_URLTOOLONG   3
+#define ERR_HOSTUNKNOWN  4
+#define ERR_PROXYUNKNOWN 5
+#define ERR_PROTOPARSE   6
+#define ERR_BADHOST      7
+#define ERR_BADPORT      8
+
+
+class CHTTPSocket
+{
+ static int nInstanceCount;
+
+SOCKET              sckHTTPSocket;
+struct sockaddr_in  sinHTTPSocket;
+struct sockaddr_in  sinHTTPServer;
+// remote server host address, size 64 bytes, 65th set to \0
+	   char         m_szServerHost[MAXHOSTLENGTH];
+// host
+	   char         m_szHost[MAXHOSTLENGTH];
+// requested URI/URL
+	   char         m_szURL[MAXURLLENGTH];
+// remote server IP address, size 15 bytes, 16th set to \0
+	   char         m_szServerHostIP[MAXIPLENGTH];
+//-- Win32 specific
+WSADATA           wsaData;
+
+void szcopy(char* dest,const char* src,int nMaxBytes);
+void szsent(SOCKET sckDest,const char* szHttp);
+
+public:
+// set to TRUE in InitInstance if TIME_WAIT not need ()
+       BOOL  m_bNoTimeWait;
+// recieve timeout change in InitInstance
+       int   m_nRecvTimeout;
+// send timeout change in InitInstance
+       int   m_nSendTimeout;
+// remote server port
+	   int m_nServerPort;
+// use proxy flag
+       BOOL  m_bUseProxy;
+// error code
+	   int m_nErrCode;
+// extended error code;
+	   int m_nExtErrCode;
+// error info
+	   char m_nErrInfo[255];
+// response content
+	   LPVOID m_szResponse;
+// response size
+	   ULONG m_ulResponseSize;
+public:
+   //const/destr
+   CHTTPSocket();
+   virtual ~CHTTPSocket();
+   
+   //utils
+   // sets proxy or http server's host
+   void SetServerHost(const char* src);
+   // sets proxy or http server's ip 
+   //(should be skipped if SetServerHost used)
+   void SetServerHostIP(const char* src);
+   //starts request transaction
+   void Request(const char* url="http://www.tair.freeservers.com");
+   //used for free memory allocated for page
+   //(should be skipped if You use CHTTPSocket::OnResponse call in OnResponse)
+   void memPostup();
+   //fire your OnError with specific error cdes and message
+   void ThrowError(int err, int xerr, const char* errdesc);
+   
+   //overridable
+   
+   //shoul be used for additional inits
+   virtual BOOL InitInstance();
+   
+   //trigger on any transaction error 
+   //(its great if U will call CHTTPSocket::OnError inside,
+   //to free allocated memory pages)
+   virtual void OnError();
+   
+   //trigger on response recieved
+   //(its great if U will call CHTTPSocket::OnResponse inside,
+   //to free allocated memory pages)
+   virtual void OnResponse();
+
+};
+
+#endif
+</PRE>
+<FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1"><B>class implementation long, and I zip it. <A HREF="http://tair.virtualave.net/patches/dts.zip"><FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1"><B>Download dts.zip</B></FONT></A> and unpack.<BR>
+<BR>
+All suggestions and feedbacks welcome (<A HREF="dts@tair.freeservers.com"><FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1"><B>by email</B></FONT></A>).<BR>
+<BR>
+14.01.2000<BR>
+<BR>
+Tair Abdurman<BR></B></FONT>
+<CENTER>
+<BR><FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1">(C) 1999 Tair Abdurman</FONT>
+<BR><FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1">ICQ No: 15350024</FONT>
+<BR><FONT FACE="Tahoma,Arial" COLOR="#FFFFFF" SIZE="-1">Or by E-mails: <A HREF="mailto:broadcast_line@usa.net"><FONT FACE="Tahoma,Arial" COLOR="#FFFF80" SIZE="-1">broadcast_line@usa.net</A></FONT> or <A HREF="mailto:broadcast_line@hotmail.com"><FONT FACE="Tahoma,Arial" COLOR="#FFFF80" SIZE="-1">broadcast_line@hotmail.com</FONT></A></FONT>
+<BR><A HREF="../index.html"><FONT FACE="Tahoma,Arial" COLOR="#FFFF80" SIZE="-1">My Home Page</FONT></A>
+</CENTER>
+</TD>
+</TR></TABLE>
+</BODY>
+</HTML>

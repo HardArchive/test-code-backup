@@ -1,0 +1,192 @@
+7.3.1  通过企业管理器和SQL语言创建索引
+例如，为数据库“图书管理系统”的“作者表”的列“作者编号”创建索引。
+USE 图书管理系统
+CREATE UNIQUE INDEX 作者表_ind
+ON 作者表(作者编号)
+WITH
+PAD_INDEX,
+FILLFACTOR=16,
+IGNORE_DUP_KEY,
+STATISTICS_NORECOMPUTE
+ON [PRIMARY]
+如果创建一个与已有索引同名的索引，只是与原同名索引的某些属性不同，则只需增加DROP_EXISTING及修改相应的属性即可。例如，创建一个与上例中同名的索引，将填充因子FILLFACTOR改为20，则可以用以下语句来完成。
+USE 图书管理系统
+CREATE UNIQUE INDEX 作者表_ind
+ON 作者表(作者编号)
+WITH
+PAD_INDEX,
+FILLFACTOR=20,
+DROP_EXISTING,
+IGNORE_DUP_KEY,
+STATISTICS_NORECOMPUTE
+ON [PRIMARY]
+如果在创建一个索引时，并不知道表中是否具有与之同名的索引，则可以简单的语句来表示。例如，为数据库“经销商”的“顾客信息表”的列“编号”创建索引，索引的名称为“顾客信息表_ind”。
+USE 经销商
+IF EXISTS (SELECT name FROM sysindexes 
+      WHERE name = '顾客信息表_ind')
+   DROP INDEX 顾客信息表.顾客信息表_ind
+GO
+USE 经销商
+CREATE UNIQUE INDEX 顾客信息表_ind
+   ON 顾客信息表 (编号)
+WITH
+PAD_INDEX,
+FILLFACTOR=20,
+IGNORE_DUP_KEY,
+STATISTICS_NORECOMPUTE
+ON [PRIMARY]
+GO
+7.3.2  索引的查看和删除
+1.下面的SQL语句用于显示数据库“图书管理系统”的“作者表”上的索引信息。
+USE 图书管理系统
+GO
+EXEC sp_helpindex 作者表
+GO
+执行结果如图7-20所示。
+2.例如，下面的SQL语句用于删除数据库“图书管理系统”的“作者表”中的索引“作者表_ind”。
+USE 图书管理系统
+GO
+DROP INDEX 作者表.作者表_ind
+GO
+如果想删除一个索引，但是不能确定这个索引是否存在，则同样可以添加简单的判断语句先进行判断。例如，删除数据库“经销商”的“顾客信息表”中名称为“顾客信息表_ind”索引。
+USE 经销商
+IF EXISTS (SELECT name FROM sysindexes
+      WHERE name='顾客信息表_ind')
+   DROP INDEX 顾客信息表.顾客信息表_ind
+GO
+7.4.1  创建视图
+例如，用CREATE VIEW语句为数据库“图书管理系统”创建名为“图书_作者_VIEW”的视图，要求其中包括“图书明细表.图书编号”、“图书明细表.图书名称”、“图书明细表.作者编号”和“作者表.作者姓名”。
+USE 图书管理系统
+GO
+CREATE VIEW 图书_作者_VIEW
+AS
+SELECT dbo.图书明细表.图书编号,
+dbo.图书明细表.图书名称,
+dbo.图书明细表.作者编号,
+dbo.作者表.作者姓名
+FROM dbo.图书明细表,dbo.作者表
+WHERE 图书明细表.作者编号=作者表.作者编号
+7.4.2  删除视图
+例如，删除数据库“图书管理系统”中的视图“图书_作者_VIEW”。
+USE 图书管理系统
+DROP VIEW图书_作者_VIEW
+7.5.1  使用视图
+1.视图定义后，就可以如同查询基本表一样对视图进行浏览。例如，浏览前面所创建的视图“图书明细表_VIEW”中的图书名称及作者姓名信息。
+USE 图书管理系统
+SELECT 图书名称,作者姓名
+FROM 图书明细表_VIEW
+查询结果如图7-36所示。
+2.还可以通过SQL Server自带的系统存储过程sp_help来浏览视图中各列的列表。sp_help的语法结构为：sp_help view_name
+例如，使用sp_help存储过程语句浏览视图“图书明细表_VIEW”中的列表。
+USE 图书管理系统
+GO
+sp_help 图书明细表_VIEW
+执行结果如图7-38所示。
+3.例如，需要查询“学生信息表”中“性别”为“男”，“系别”是“机械自动化”，并且“政治面貌”是“团员”的学生信息。其查询语句为：
+USE 图书管理系统
+GO
+CREATE VIEW 学生信息表_VIEW
+AS SELECT dbo.学生信息表.学号,dbo.学生信息表.班号,dbo.学生信息表.姓名,dbo.学生信息表.性别,dbo.学生信息表.出生日期,dbo.学生信息表.系别,dbo.学生信息表.政治面貌,dbo.学生信息表.家庭住址
+FROM dbo.学生信息表
+WHERE 性别='男' and 系别='机械自动化' and 政治面貌='团员'
+而如果为该查询结果创建一个名为“学生信息表_VIEW”的视图。在每次需要该查询结果时，只需输入下列查询语句即可。
+USE 图书管理系统
+GO
+SELECT *
+FROM 学生信息表_VIEW
+7.5.2  更新视图
+1.例如，将“图书明细表_VIEW”视图修改为作者籍贯是北京的信息。
+USE 图书管理系统
+GO
+ALTER VIEW 图书明细表_VIEW
+AS
+SELECT 图书明细表.图书编号,图书明细表.图书名称,图书明细表.作者编号,作者表.作者姓名
+FROM 图书明细表,作者表
+WHERE 籍贯='北京'
+2.通过视图修改是通过INSERT、UPDATE和DELETE语句来完成的。下面通过示例来了解这些用法。
+首先在数据库“图书管理系统”中创建一个视图“学生信息表_VIEW”。
+CREATE VIEW 学生信息表_VIEW
+AS SELECT dbo.学生信息表.学号,dbo.学生信息表.班号,
+dbo.学生信息表.姓名,dbo.学生信息表.性别,
+dbo.学生信息表.出生日期,dbo.学生信息表.系别,
+dbo.学生信息表.政治面貌,dbo.学生信息表.家庭住址
+FROM dbo.学生信息表
+使用INSERT语句向基本表中插入数据。例如，向上述视图中插入一条记录：('04063321104','04063321','未先梅','女','1986-11-26',
+       '计算机科学与技术','中国共产党员','北京市海淀区')
+USE 图书管理系统
+INSERT INTO 学生信息表_VIEW
+VALUES('04063321104','04063321','未先梅','女','1986-11-26',
+       '计算机科学与技术','中国共产党员','北京市海淀区')
+打开“学生信息表”进行查看，可看到在表数据中新添了一条记录，如图7-41所示。
+使用UPDATE语句修改基本表中的数据。例如，将上例中添加的学生信息的“系别”由“计算机科学与技术”改为“计算机应用”。
+USE 图书管理系统
+UPDATE 学生信息表_VIEW
+SET 系别='计算机应用'
+WHERE 姓名='未先梅'
+打开“学生信息表”进行查看，可看到在表数据中新添记录的“系别”改为“计算机应用”，如图7-42所示。
+使用DELETE语句删除基本表中的数据。例如，删除前面添加的记录。
+USE 图书管理系统
+DELETE FROM 学生信息表_VIEW
+WHERE 姓名='未先梅'
+打开“学生信息表”进行查看，会发现添加的那条记录已被删除。
+3.例如，利用下列语句创建一个名为“学生借书_VIEW”的视图。
+CREATE VIEW dbo.学生借书_VIEW
+AS
+SELECT dbo.学生信息表.学号, dbo.学生信息表.姓名, dbo.借出信息.图书编号
+FROM dbo.学生信息表 INNER JOIN
+      dbo.借出信息 ON dbo.学生信息表.学号 = dbo.借出信息.学号
+将视图“学生借书_VIEW”中学号为“0406331202”学生姓名改为“张三”。
+USE 图书管理系统
+UPDATE 学生借书_VIEW
+SET 姓名='张三'
+WHERE 学号='0406331202'
+7.6.1  对视图进行加密
+例如，创建一个简单的视图，在创建视图的语句中加上WITH ENCRYPTION关键字。
+USE 图书管理系统
+GO
+CREATE VIEW VIEW1
+WITH ENCRYPTION
+AS
+SELECT *
+FROM 学生信息表
+GO
+7.6.3  通过使用视图实现行级数据安全
+例如，在数据库“图书管理系统”中，采用视图使用户只能看到“作者表”中籍贯为北京的作者信息。
+USE 图书管理系统
+GO
+CREATE VIEW 作者表_北京_VIEW
+AS
+SELECT* FROM 作者表 WHERE 籍贯='北京'
+创建视图“作者表_北京_VIEW”后，将该视图的SELECT权限授予用户。当用户执行语句SELECT* FROM作者表_北京_VIEW时，只显示籍贯为北京的作者信息。
+7.6.4  通过使用视图实现列级数据安全
+例如，在数据库“图书管理系统”中，采用视图使用户只能看到“作者表”中“作者姓名”和“电话”列的作者信息。
+USE 图书管理系统
+GO
+CREATE VIEW 作者表_VIEW
+AS
+SELECT 作者姓名,电话 FROM 作者表
+创建视图“作者表_VIEW”后，将该视图的SELECT权限授予用户，当用户执行语句SELECT * FROM 作者表_VIEW时，只显示“作者表”中的“作者姓名”和“电话”列。
+上机练习7-1：为数据库表创建索引
+用SQL语句为数据库“图书管理系统”的“出版社信息表”创建索引，选择索引所引用的列是“出版社编号”。要求：该索引为聚集索引，据有惟一值且忽略重复的值，在索引中不重新计算统计，填充因子为30%。
+CREATE UNIQUE CLUSTERED
+INDEX 出版社信息表_ind
+ON dbo.出版社信息表 (出版社编号  desc )
+WITH
+FILLFACTOR=30,
+IGNORE_DUP_KEY,
+DROP_EXISTING,
+STATISTICS_NORECOMPUTE
+ON [PRIMARY]
+上机练习7-2：在数据库中创建视图
+利用CREATE VIEW命令在数据库“图书管理系统”中创建名为“学生_图书_VIEW”的视图，要求包含：学生信息表.学号，学生信息表.姓名，学生信息表.性别，图书明细表.图书名称，借出信息.应还日期，并按学生信息表.学号的升序排序。
+USE 图书管理系统
+GO
+CREATE VIEW dbo.学生_图书_VIEW
+AS
+SELECT TOP 100 PERCENT dbo.学生信息表.学号,dbo.学生信息表.姓名,
+      dbo.学生信息表.性别,dbo.图书明细表.图书名称,dbo.借出信息.应还日期
+FROM dbo.学生信息表 INNER JOIN dbo.借出信息 
+      ON dbo.学生信息表.学号=dbo.借出信息.学号 INNER JOIN dbo.图书明细表
+      ON dbo.借出信息.图书编号=dbo.图书明细表.图书编号
+ORDER BY dbo.学生信息表.学号
+

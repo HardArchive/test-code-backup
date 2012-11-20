@@ -3,14 +3,23 @@
 
 #include "stdafx.h"
 #include "TestPublic.h"
+#include <TraceUtil.h>
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	int iRet = 0;
 	//FileUtil();
 
-	TraceUtil();
+	//TraceUtil();
 
 	//IniUtil();
+
+	//iRet = TestSocket("av360.cn", "202.91.240.190");
+	//iRet = CheckIsEffective("av360.cn", "202.91.240.190");
+	//QNA::TRACE("TestSocket·µ»Ø½á¹û:%d\r\n", iRet);
+
+
+
 
 	getchar();
 	return 0;

@@ -60,12 +60,30 @@ string ValueToIP(const int& nValue)
 
 	return string(strTemp);
 }
+#include "stdafx.h"
+#include <iostream>
+#include <winsock2.h>
+
+#pragma comment(lib,"ws2_32.lib")
+using namespace std;
+
+int IPToValue2(const string& strIP)
+{
+	return (int)htonl(inet_addr(strIP.c_str()));
+}
+
+string ValueToIP2(const int& nValue)
+{
+	struct in_addr addr;
+	addr.S_un.S_addr = ntohl(nValue);
+	string str = inet_ntoa( addr );
+	return str;
+}
 
 int main(void)
 {
 	//对于218.92.189.40转化后-631456472
 	//cout<<hex<<-631456472 <<endl;//输出da5cbd28
-
 	string strIP= "218.92.189.40";
 	cout<<dec<<IPToValue(strIP)<<endl;
 	//cout<<hex<<IPToValue(strIP)<<endl;
@@ -76,6 +94,19 @@ int main(void)
 	cout<<dec<<IPToValue(strIP)<<endl;
 	//cout<<hex<<IPToValue(strIP)<<endl;
 	cout<<ValueToIP(-631459758)<<endl;
+
+	//对于218.92.189.40转化后-631456472
+	//cout<<hex<<-631456472 <<endl;//输出da5cbd28
+	string strIP2= "218.92.189.40";
+	cout<<dec<<IPToValue2(strIP2)<<endl;
+	//cout<<hex<<IPToValue(strIP)<<endl;
+	cout<<ValueToIP2(-631456472)<<endl;
+
+	//IP为：218.92.176.82转化后 -631459758
+	strIP2= "218.92.176.82";
+	cout<<dec<<IPToValue2(strIP2)<<endl;
+	//cout<<hex<<IPToValue(strIP)<<endl;
+	cout<<ValueToIP2(-631459758)<<endl;
 
 	return 0 ;
 }

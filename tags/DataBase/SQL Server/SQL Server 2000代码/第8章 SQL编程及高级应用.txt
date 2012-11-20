@@ -1,0 +1,282 @@
+8.1.2  变量
+1.全局变量
+下面我们在【查询分析器】窗口中，输入相关语句，来查看SQL Server当前安装的日期、版本和处理器类型等信息。例如，在【查询分析器】中运行如下语句：
+SELECT @@version
+其返回的结果为：
+Microsoft SQL Server  2000 - 8.00.760 (Intel X86)
+Dec 17 2002 14:22:05   Copyright (c) 1988-2003 
+Microsoft Corporation  Developer Edition on Windows NT 5.1
+(Build 2600: Service Pack 2)
+2.局部变量
+下面我们来声明两个变量，并将其变量赋值。例如，下面语句中我们声明@maxprice和@pub两个变量，分别将其类型设置为float和char(12)，再将其赋值为50和'梁祝'。最后我们使用SELECT语句，显示结果，如图8-1所示。
+DECLARE @maxprice float,@pub char(12)
+SET @maxprice=50
+SET @pub='梁祝'
+SELECT @maxprice,@pub
+GO
+3.使用DECLARE语句，查看学生信息
+下面我们通过DECLARE语句来查看“图书管理系统”数据库中的“学生信息表”表中的学生信息。例如，我们查看“学生信息表”中“性别='女'”的同学信息。
+USE 图书管理系统
+DECLARE @sex nvarchar
+SET @sex='女'
+SELECT 学号,姓名
+  FROM 学生信息表
+  WHERE 性别=@sex
+GO
+其结果如图8-2所示。
+8.2.1  算术运算符
+下面我们来通过算术运算符，计算在“图书管理系统”数据库中“学生信息表”表中学生年龄。例如，我们将当前日期减去学生的出生日期，即可以得出学生年龄。
+在语句中，我们声明了一个变量为nl，并将其赋值为当前日期；再在SELECT语句中使用datepart()函数。最后，将两个日期相减操作，求出年龄。
+USE 图书管理系统
+DECLARE @nl datetime
+SET @nl=getdate()
+SELECT 学号,姓名, datepart(year,@nl)-datepart(year,出生日期) as 年龄
+  FROM 学生信息表
+GO
+8.2.2  位运算符
+在T-SQL语言中，首先把整数数据转换为二进制数据，然后再对二进制数据进行按位运算。例如，下面我们对两个变量进行按位运算：
+DECLARE @A int,@b int
+SET @A=5
+SET @B=10
+SELECT @A&@B as '@A&@B'
+SELECT @A|@B as '@A|@B'
+SELECT @A^@B as '@A^@B'
+在语句中，首先我们声明两个变量@A和@B，再分别赋值为5和10。然后，我们根据按位运算的三种运算符，分别求出两个变量的“与”、“或”和“异或”运算，如图8-4所示。
+8.2.3  比较运算符
+在使用比较运算符时，用户可以根据不同情况来使用运算符。例如，我们在“经销商”数据库中，来查找顾客所购买的商品数量，在该数据库的“库存表”是否有足够的库存量。在语句中，我们来声明两个变量@ks和@sp，并将其赋值商品编号和所够商品数量，然后进行判断，输入结果，如图8-5所示。
+USE 经销商
+DECLARE @ks int,@sp int 
+SET @sp=1007
+SET @ks=10
+IF EXISTS (SELECT 库存数量 FROM 库存表 WHERE 库存数量>=10 and 商品编号=@sp)
+print '此商品数量比较多'
+ELSE
+print '库存量不够,请定购'
+8.2.4  逻辑运算符
+1.下面我们以“经销商”数据库为例。在该数据库中，我们来查询“库存数量”最多的商品信息。在下列语句中，我们主要使用“>ALL”语句来查询最多库存数量，如图8-6所示。
+USE 经销商
+SELECT 商品名称,单价,库存数量
+  FROM 商品信息表,库存表
+    WHERE 库存数量>ALL(SELECT 库存数量 
+                         FROM 库存表 
+                           WHERE 商品信息表.商品编号=库存表.商品编号)
+2.在“图书管理系统”数据库中，我们通过BETWEEN语句来查询图书的定价在80~150之间的图书，同时显示图书的部分信息，如图8-7所示。
+USE 图书管理系统
+SELECT 图书编号,图书名称,定价
+  FROM 图书明细表
+   WHERE 定价 BETWEEN 80 AND 150
+3.使用BETWEEN语句来查询数据范围，同时我们也可以使用>=和<=代替此语，达到同等效果，如图8-8所示。
+USE 图书管理系统
+SELECT 图书编号,图书名称,定价
+  FROM 图书明细表
+   WHERE 定价>=80 AND 定价<=150
+8.2.5  字符串连接运算符
+1.字符串连接运算符为加号（＋）。可以将两个或多个字符串合并或连接成一个字符串。还可以连接二进制字符串。
+下面我们通过多语句来应用连接运算符，如图8-9所示。
+SELECT ('abc'+'def')
+SELECT ('中国'+'是我们的祖国')
+SELECT (5+8)
+SELECT ('8'+'15')
+SELECT ('  '+'空格')
+2.下面我们以“图书管理系统”数据库为例，查询“图书编号”和“图书名称”信息，如图8-10所示。在查询过程中，我们来查询以A开头的图书。
+USE 图书管理系统
+SELECT (STR(图书编号)+','+SPACE(1)+图书名称)
+AS 图书编号及图书名称
+  FROM 图书明细表
+    WHERE SUBSTRING(图书名称,1,1)='A'
+8.3.1  数学函数
+1.下面我们通过定义，一个局部变量，并将其值赋值为1。通过WHILE语句循环产生5个随机函数值，如图8-11所示。
+DECLARE @counter smallint
+SET @counter=1
+WHILE @counter<=5
+   BEGIN
+      SELECT RAND(@counter) AS 'RAND随机函数值'
+      SET @counter=@counter+1
+   END
+GO
+2.下面我们通过ROUND函数，分别来求出四舍五入的精度为-1、-2和0时，数据的四舍五入的方法，如图8-12所示。
+SELECT ROUND(845.56,-1)AS '参数为-1',
+ROUND(657.88,-2)AS'参数为-2',
+ROUND(845.60,0) AS'参数为0'
+8.3.2  字符串函数
+1.下面我们“图书管理系统”数据库为例，来学习在“图书明细表”表中，分别从左边提取图书名称的2个字符和10个字符的效果，如图8-13所示。
+USE 图书管理系统
+GO
+SELECT LEFT(图书名称,2) AS '图书名称取2个字符',
+LEFT(图书名称,10)AS '图书名称取10个字符' FROM 图书明细表
+2.在“图书管理系统”数据库中，将“图书明细表”中的“图书名称”复制两边。我们可以使用REPLICATE函数得到效果，如图8-14所示，其应用方法如下：
+USE 图书管理系统
+GO
+SELECT REPLICATE(图书名称,2)AS'将图书名称复制2边'
+ FROM 图书明细表
+ORDER BY 图书名称
+GO
+8.3.5  用户定义函数
+1.下面我们以“图书管理系统”数据库为例，来定义一个sumlb()函数。该函数主要来计算“图书明细表”中不同类别的图书总价。通过计算不类别图书的数量以及总价，来分析一类图书占用资金较多等，如图8-15所示。
+USE 图书管理系统
+GO
+CREATE FUNCTION sumlb(@lb int) RETURNS int
+AS
+BEGIN
+    DECLARE @sumdj int
+    SELECT @sumdj=
+         (SELECT sum(定价)
+            FROM 图书明细表
+            WHERE 类别编号=@lb
+            GROUP BY 类别编号
+          )
+    RETURN @sumdj
+END
+GO
+2.下面我们再来定sumzl()函数，该函数计算在“经销商”数据库中的“销售表”中，某一个月内所销售出的商品信息，如图8-16所示。
+USE 经销商
+GO
+CREATE FUNCTION sumzl(@scsj char(2)) RETURNS int
+AS
+BEGIN
+    DECLARE @sumje int
+    SELECT @sumje=
+         (SELECT sum(金额)
+            FROM 销售表
+            WHERE MONTH(售出时间)=@scsj
+            GROUP BY 售出时间
+          )
+    RETURN @sumje
+END
+GO
+3.下面我们执行了一个简单查询返回，返回一个表数据。
+USE pubs
+GO
+CREATE FUNCTION salesbystore(@storeid varchar(30))
+RETURNS TABLE
+AS
+RETURN (SELECT title qty
+        FROM sales s,titles t
+        WHERE s.stor_id=@storeid and t.title_id=S.title_id)
+8.4.1  IF…ELSE语句
+下面我们使用IF…ELSE语句来查询“图书管理系统”数据库中，“图书名称=' Access 2003教程'”的图书信息。如果查询出结果，如图8-17所示；如果查询无此图书，则显示“无此图书”，如图8-18所示。
+USE 图书管理系统
+IF EXISTS(SElECT 图书名称 FROM 图书明细表 WHERE 图书名称='Access 2003教程')
+ SELECT * FROM 图书明细表 WHERE 图书名称='Access 2003教程'
+ELSE
+BEGIN
+  print '无此图书'
+END
+8.4.2  无条件跳转（GOTO）语句
+下面我们来判断在“经销商”数据库中，查询当天是否销售出商品。如果销售出商品，则显示出商品信息，如图8-19所示。如果没有销售商品，则显示“当前无售出信息”，如图8-20所示。
+USE 经销商
+IF(SELECT count(商品编号) FROM 销售表 WHERE day(售出时间)=day(getdate()))<>0
+ goto list
+ELSE
+  BEGIN
+   print '现无售出商品' 
+  END
+return
+list:
+  SELECT * FROM 销售表 WHERE day(售出时间)=day(getdate())
+8.4.3  WHILE、BREAK和CONTINUE语句
+下面我们使用WHILE语句，将字符口串“China”转换成ASCII码的值和字符，如图8-21所示。
+DECLARE @position int,@string char(8)
+SET @position=1
+SET @string='China'
+WHILE @position<=DATALENGTH(@string)
+   BEGIN
+        SELECT ASCII(SUBSTRING(@string,@position,1)),
+            CHAR(ASCII(SUBSTRING(@string,@position,1)))
+        SET @position=@position+1
+   END
+8.4.5  CASE语句
+下面我们来学习CASE语句的用法。例如，在下面的语句中，我们首先定义一个lb变量，并将其赋值为2；然后我们查询“图书类别=lb”的选择条件语句；最后根据lb值查询其结果值，如图8-22所示。
+DECLARE @lb int
+SET @lb=2
+SELECT '图书类别'=
+     CASE @lb
+      WHEN 1 THEN '程序设计'
+      WHEN 2 THEN '数据库开发'
+      WHEN 3 THEN '图形图像处理'
+      WHEN 4 THEN '办公自动化'
+      WHEN 5 THEN '网络管理'
+      WHEN 6 THEN '计算机硬件'
+      WHEN 7 THEN '计算机辅助设计'
+      WHEN 8 THEN '其他'
+     END
+8.4.6  WAITFOR语句
+例如，设定在早上八点半执行存储过程Manager。
+BEGIN
+     WAITFOR TIME '8:30'
+     EXECUTE sp_addrole 'Manager'
+END
+8.5.3  声明游标
+下面我们以“图书管理系统”数据库为例，来定义you1游标。在该游标中，我们来查询“图书明细表”中的“类别编号=1”的所有数据，并显示出“图书编号”和“图书名称”等信息，如图所示。
+USE 图书管理系统
+DECLARE you1 CURSOR
+ DYNAMIC
+FOR SELECT 图书编号,图书名称 FROM 图书明细表  WHERE 类别编号=1
+FOR read ONLY
+8.5.2  使用游标
+1.下面我们以“图书管理系统”为例，来综合学习游标的使用方法。例如，在学习过程中，我们首先以查询方式声明一个book_cursor游标，然后将其打开并提取第一行数据，如图8-25所示。
+DECLARE book_cursor CURSOR
+  FOR SELECT * FROM 图书明细表
+OPEN book_cursor
+FETCH NEXT FROM book_cursor
+CLOSE book_cursor
+DEALLOCATE book_cursor
+2.下面我们再声明的book_cursor游标内容打印出来。例如，我们首先打开“图书管理系统”数据库，然后再声明游标，并定义变量，将所查询的内容赋值于该变量，最后打印出来，如图8-26所示。在执行过程中，用户需要将【定价】字段类型更改为“varchar”。
+USE 图书管理系统
+GO
+SET NOCOUNT ON
+PRINT '      *********书籍信息表***********'
+PRINT ' '
+PRINT '-----------------------------------------------------------------'
+PRINT '|     书    名               | 作  者 |价格|'
+PRINT '-----------------------------------------------------------------'
+DECLARE @bookname varchar(100), @authorname varchar(20), 
+@bookprice varchar(40),@pubname varchar(80)
+DECLARE book_cursor CURSOR
+  FOR SELECT 图书名称,作者姓名,定价 FROM 图书明细表,作者表
+            WHERE 图书明细表.作者编号=作者表.作者编号
+OPEN book_cursor
+FETCH NEXT FROM book_cursor 
+INTO @bookname, @authorname, @bookprice
+WHILE @@FETCH_STATUS=0
+BEGIN
+   PRINT '|'+@bookname+space(10)+'|'+@authorname+'|'+CAST(@bookprice AS char(5))+'|'
+   PRINT '-----------------------------------------------------------------'
+   FETCH NEXT FROM book_cursor 
+   INTO @bookname, @authorname, @bookprice
+END
+CLOSE book_cursor
+DEALLOCATE book_cursor
+GO
+上机练习8-1：使用一个 IF...ELSE 块
+下面我们以pubs示例数据库为例，来学习IF…ELSE语句块的用法。例如，当图书的平均价格不低于$15时，显示Average title price is more than $15信息，如图8-27所示。
+USE pubs
+IF (SELECT AVG(price) FROM titles WHERE type = 'mod_cook') < $15
+BEGIN
+   PRINT 'The following titles are excellent mod_cook books:'
+   PRINT ' '
+   SELECT SUBSTRING(title, 1, 35) AS Title
+   FROM titles
+   WHERE type = 'mod_cook' 
+END
+ELSE
+   PRINT 'Average title price is more than $15.'
+上机练习8-2：使用CASE语句
+下面我们还以pubs示例数据库为例，来学习CASE语句块的用法。例如，在实例中我们使用state变量，当state变量等于CA时，其变量结果将赋值为California值，如图8-28所示。
+SELECT au_fname, au_lname, 
+   CASE state
+      WHEN 'CA' THEN 'California'
+      WHEN 'KS' THEN 'Kansas'
+      WHEN 'TN' THEN 'Tennessee'
+      WHEN 'OR' THEN 'Oregon'
+      WHEN 'MI' THEN 'Michigan'
+      WHEN 'IN' THEN 'Indiana'
+      WHEN 'MD' THEN 'Maryland'
+      WHEN 'UT' THEN 'Utah'
+        END AS StateName
+FROM pubs.dbo.authors
+ORDER BY au_lname
+
+
+
+
