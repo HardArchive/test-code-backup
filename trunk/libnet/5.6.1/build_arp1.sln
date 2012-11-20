@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "build_arp1", "build_arp1.vcproj", "{EAE0DC3A-5130-4C7E-81A4-324F695297BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAE0DC3A-5130-4C7E-81A4-324F695297BA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EAE0DC3A-5130-4C7E-81A4-324F695297BA}.Debug|Win32.Build.0 = Debug|Win32
+		{EAE0DC3A-5130-4C7E-81A4-324F695297BA}.Release|Win32.ActiveCfg = Release|Win32
+		{EAE0DC3A-5130-4C7E-81A4-324F695297BA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
