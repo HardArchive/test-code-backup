@@ -1,0 +1,44 @@
+李照(李照) 18:56:21
+SELECT a.* FROM OPENROWSET( BULK 'E:\test\a1.txt', 
+   FORMATFILE = 'E:\Test\a1.fmt') AS a;
+
+
+--生成格式文件 字符串形式，\t分隔字段，\r\n分隔行
+bcp Test.dbo.Test format nul -T -c -fe:\Test\test.fmt -S127.0.0.1 -Usa -P888888
+
+bcp NDrcvNetInfo.dbo.v_tCompanyLog format nul -T -c -fe:\Test\tCompanyLog.fmt -S127.0.0.1 -Usa -P888888
+bcp NDrcvNetInfo.dbo.v_tIMMsgLog format nul -T -c -fe:\Test\tIMMsgLog.fmt -S127.0.0.1 -Usa -P888888
+bcp NDrcvNetInfo.dbo.v_tGroupAccount format nul -T -c -fe:\Test\tGroupAccount.fmt -S127.0.0.1 -Usa -P888888
+bcp NDrcvNetInfo.dbo.v_tWebSendContent format nul -T -c -fe:\
+李照(李照) 18:56:22
+Test\tWebSendContent.fmt -S127.0.0.1 -Usa -P888888
+
+
+用户表：用户ID[SessionId]
+主机表：主机ID
+
+--导入数据
+bcp NDEdurcvNetInfo.dbo.V_FILE_IMMSGLOG in "D:\testout\Out\20111228\1_nd_im_40905.im" -T -f "D:\testout\Format\V_FILE_IMMSGLOG.fmt" -S127.0.0.1 -Usa -P888888
+
+
+bcp NDHotelrcvNetInfo.dbo.V_FILE_HTTPPOST in "D:\testout\Out\20111228\[12345]1_nd_post_3181457.wsend" -T -f "D:\testout\Format\V_FILE_HTTPPOST.fmt" -S127.0.0.1 -Usa -P888888
+
+
+BCP格式文件说明：
+    文件(10.0)第一行确定了目前使用的bcp版本。第二行(3) 确定了表中的列数，接下来的三行为列的相关信息：
+
+　　·第一个域为列在源文件中出现的顺序。
+
+　　·第二个域显示每个列的源文件数据类型。因为在生成文件时指定了–c swi
+李照(李照) 18:56:22
+tch，在从数据文件中提取时，所有的域都用字符型数据类型。插入数据时，SQL Server会将数据转换到正确的类型。
+
+　　·第三个域表示域的前缀长度，SQL Server通常会用它来提供最紧凑的文件存储。在创建格式文件时如果你指定-c switch，那么就会自动用到0。
+
+　　·第四个域代表特殊域数据类型字节长度。
+
+　　·第五个域表明如何终止行和列。由于在创建格式文件时用了-t switch，源文件的域值就必须通过逗号终止。
+
+　　·第六个域映射这些列在SQL Server表中的排列顺序。
+
+　　·第七个和最后一个域提供了SQL Server表中字符列的整理信息。

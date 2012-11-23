@@ -1,0 +1,12 @@
+//bcp命令
+exec sp_configure 'xp_cmdshell',1
+EXEC master..xp_cmdshell 'BCP %s.dbo.表名 in BCP文件全路径 -c -T'
+
+文件格式
+index age name SID
+
+
+0 23 abc 123456
+1 52 bca 654321
+
+0\t23\tabc\t123456\r\n
