@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arp", "arp\arp.vcproj", "{D2FB2A27-3F0F-4886-BA1F-3F8981E29465}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPArp", "IPArp\IPArp.vcproj", "{9BF32234-093A-4388-8479-59DA4F1202B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2FB2A27-3F0F-4886-BA1F-3F8981E29465}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D2FB2A27-3F0F-4886-BA1F-3F8981E29465}.Debug|Win32.Build.0 = Debug|Win32
+		{D2FB2A27-3F0F-4886-BA1F-3F8981E29465}.Release|Win32.ActiveCfg = Release|Win32
+		{D2FB2A27-3F0F-4886-BA1F-3F8981E29465}.Release|Win32.Build.0 = Release|Win32
+		{9BF32234-093A-4388-8479-59DA4F1202B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9BF32234-093A-4388-8479-59DA4F1202B5}.Debug|Win32.Build.0 = Debug|Win32
+		{9BF32234-093A-4388-8479-59DA4F1202B5}.Release|Win32.ActiveCfg = Release|Win32
+		{9BF32234-093A-4388-8479-59DA4F1202B5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
