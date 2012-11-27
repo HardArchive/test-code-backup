@@ -1,0 +1,10 @@
+E:\LZTest\PDReverseApp\LZ.Lexer\bin\x86\Debug\LZ.Lexer.dll
+E:\LZTest\PDReverseApp\LZ.Lexer\bin\x86\Debug\LZ.Lexer.pdb
+E:\LZTest\PDReverseApp\LZ.Lexer\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\LZTest\PDReverseApp\LZ.Lexer\obj\x86\Debug\LZ.Lexer.dll
+E:\LZTest\PDReverseApp\LZ.Lexer\obj\x86\Debug\LZ.Lexer.pdb
+D:\WinPath\desktop\PDReverseCpp\LZ.Lexer\bin\x86\Debug\LZ.Lexer.dll
+D:\WinPath\desktop\PDReverseCpp\LZ.Lexer\bin\x86\Debug\LZ.Lexer.pdb
+D:\WinPath\desktop\PDReverseCpp\LZ.Lexer\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\WinPath\desktop\PDReverseCpp\LZ.Lexer\obj\x86\Debug\LZ.Lexer.dll
+D:\WinPath\desktop\PDReverseCpp\LZ.Lexer\obj\x86\Debug\LZ.Lexer.pdb

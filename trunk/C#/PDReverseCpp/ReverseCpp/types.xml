@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <item>void</item>
+  <item>bool</item>
+  <item>float</item>
+  <item>double</item>
+  <item>char</item>
+  <item>byte</item>
+  <item>short</item>
+  <item>int</item>
+  <item>long</item>
+  <item>long long</item>
+
+  <item>enum</item>
+  <item>union</item>
+  <item>struct</item>
+  <item>set</item>
+  <item>map</item>
+  <item>vector</item>
+  <item>queue</item>
+  <item>string</item>
+  <item>FILE</item>
+  
+  <item>MSXML2</item>
+  <item>HANDLE</item>
+  <item>HINSTANCE</item>
+  <item>UINT</item>
+  <item>DWORD</item>
+  <item>WORD</item>
+  <item>BYTE</item>
+  <item>DATE</item>
+  <item>BOOL</item>
+  <item>HWND</item>
+  <item>PSID</item>
+  <item>SERVICE_STATUS</item>
+  <item>SERVICE_STATUS_HANDLE</item>
+  <item>PROCESS_INFORMATION</item>
+  
+  <item>HKEY</item>
+  <item>LPVOID</item>
+  <item>LPTSTR</item>
+  <item>LPCTSTR</item>
+  <item>CRITICAL_SECTION</item>
+  <item>COleDateTime</item>
+  <item>time_t</item>
+  <item>in_addr</item>
+  
+  <item>u_char</item>
+  <item>u_short</item>
+  <item>u_int</item>
+  <item>u_long</item>
+
+  <item>T</item>
+  <item>TKEY</item>
+  <item>TVALUE</item>
+</config>

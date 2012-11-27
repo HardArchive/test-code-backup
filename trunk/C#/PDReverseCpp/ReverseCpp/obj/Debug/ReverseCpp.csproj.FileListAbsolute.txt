@@ -1,0 +1,4 @@
+D:\WinPath\desktop\PDReverseCpp\ReverseCpp\obj\Debug\ResolveAssemblyReference.cache
+D:\WinPath\desktop\PDReverseCpp\ReverseCpp\obj\Debug\LZ.Reverse.Form1.resources
+D:\WinPath\desktop\PDReverseCpp\ReverseCpp\obj\Debug\Test.Properties.Resources.resources
+D:\WinPath\desktop\PDReverseCpp\ReverseCpp\obj\Debug\ReverseCpp.csproj.GenerateResource.Cache
