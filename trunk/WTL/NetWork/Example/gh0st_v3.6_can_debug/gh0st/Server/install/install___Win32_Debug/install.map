@@ -1,0 +1,320 @@
+ install
+
+ Timestamp is 4c25dad4 (Sat Jun 26 18:47:48 2010)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000001d4H .idata$5                CODE
+ 0001:000001d4 00000004H .CRT$XCA                CODE
+ 0001:000001d8 00000004H .CRT$XCZ                CODE
+ 0001:000001dc 00000004H .CRT$XIA                CODE
+ 0001:000001e0 00000004H .CRT$XIZ                CODE
+ 0001:000001f0 0000043cH .data                   CODE
+ 0001:00000630 00000074H .rdata                  CODE
+ 0001:000006a8 00000044H .rdata$r                CODE
+ 0001:000006f0 0000277cH .text                   CODE
+ 0001:00002e70 00000014H .text$x                 CODE
+ 0001:00002e88 00000110H .xdata$x                CODE
+ 0001:00002f98 00000028H .bss                    CODE
+ 0001:00002fc0 00000064H .idata$2                CODE
+ 0001:00003024 00000014H .idata$3                CODE
+ 0001:00003038 000001d4H .idata$4                CODE
+ 0001:0000320c 00000780H .idata$6                CODE
+ 0001:0000398c 00000000H .edata                  CODE
+ 0002:00000000 00000060H .rsrc$01                DATA
+ 0002:00000060 00018a00H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000000       __imp__GetSecurityDescriptorDacl@16 00401000     advapi32:ADVAPI32.dll
+ 0001:00000004       __imp__CloseServiceHandle@4 00401004     advapi32:ADVAPI32.dll
+ 0001:00000008       __imp__GetUserNameA@8      00401008     advapi32:ADVAPI32.dll
+ 0001:0000000c       __imp__RegCreateKeyExA@36  0040100c     advapi32:ADVAPI32.dll
+ 0001:00000010       __imp__RegSetValueExA@24   00401010     advapi32:ADVAPI32.dll
+ 0001:00000014       __imp__RegDeleteKeyA@8     00401014     advapi32:ADVAPI32.dll
+ 0001:00000018       __imp__RegDeleteValueA@8   00401018     advapi32:ADVAPI32.dll
+ 0001:0000001c       __imp__RegQueryValueExA@24 0040101c     advapi32:ADVAPI32.dll
+ 0001:00000020       __imp__RegEnumKeyExA@32    00401020     advapi32:ADVAPI32.dll
+ 0001:00000024       __imp__RegEnumValueA@32    00401024     advapi32:ADVAPI32.dll
+ 0001:00000028       __imp__RegOpenKeyExA@20    00401028     advapi32:ADVAPI32.dll
+ 0001:0000002c       __imp__AllocateAndInitializeSid@44 0040102c     advapi32:ADVAPI32.dll
+ 0001:00000030       __imp__RegSetKeySecurity@12 00401030     advapi32:ADVAPI32.dll
+ 0001:00000034       __imp__RegCloseKey@4       00401034     advapi32:ADVAPI32.dll
+ 0001:00000038       __imp__FreeSid@4           00401038     advapi32:ADVAPI32.dll
+ 0001:0000003c       __imp__LookupAccountNameA@28 0040103c     advapi32:ADVAPI32.dll
+ 0001:00000040       __imp__GetFileSecurityA@20 00401040     advapi32:ADVAPI32.dll
+ 0001:00000044       __imp__InitializeSecurityDescriptor@8 00401044     advapi32:ADVAPI32.dll
+ 0001:00000048       __imp__GetAclInformation@16 00401048     advapi32:ADVAPI32.dll
+ 0001:0000004c       __imp__GetLengthSid@4      0040104c     advapi32:ADVAPI32.dll
+ 0001:00000050       __imp__InitializeAcl@12    00401050     advapi32:ADVAPI32.dll
+ 0001:00000054       __imp__GetAce@12           00401054     advapi32:ADVAPI32.dll
+ 0001:00000058       __imp__EqualSid@8          00401058     advapi32:ADVAPI32.dll
+ 0001:0000005c       __imp__AddAce@20           0040105c     advapi32:ADVAPI32.dll
+ 0001:00000060       __imp__AddAccessAllowedAce@16 00401060     advapi32:ADVAPI32.dll
+ 0001:00000064       __imp__SetSecurityDescriptorDacl@16 00401064     advapi32:ADVAPI32.dll
+ 0001:00000068       __imp__GetSecurityDescriptorControl@12 00401068     advapi32:ADVAPI32.dll
+ 0001:0000006c       __imp__SetFileSecurityA@12 0040106c     advapi32:ADVAPI32.dll
+ 0001:00000070       __imp__OpenSCManagerA@12   00401070     advapi32:ADVAPI32.dll
+ 0001:00000074       __imp__StartServiceA@12    00401074     advapi32:ADVAPI32.dll
+ 0001:00000078       __imp__OpenServiceA@12     00401078     advapi32:ADVAPI32.dll
+ 0001:0000007c       __imp__CreateServiceA@52   0040107c     advapi32:ADVAPI32.dll
+ 0001:00000080       \177ADVAPI32_NULL_THUNK_DATA 00401080     advapi32:ADVAPI32.dll
+ 0001:00000084       __imp__ReadFile@20         00401084     kernel32:KERNEL32.dll
+ 0001:00000088       __imp__SetFilePointer@16   00401088     kernel32:KERNEL32.dll
+ 0001:0000008c       __imp__GetModuleFileNameA@12 0040108c     kernel32:KERNEL32.dll
+ 0001:00000090       __imp__SetUnhandledExceptionFilter@4 00401090     kernel32:KERNEL32.dll
+ 0001:00000094       __imp__Sleep@4             00401094     kernel32:KERNEL32.dll
+ 0001:00000098       __imp__LoadLibraryA@4      00401098     kernel32:KERNEL32.dll
+ 0001:0000009c       __imp__CreateMutexA@12     0040109c     kernel32:KERNEL32.dll
+ 0001:000000a0       __imp__GetCommandLineA@0   004010a0     kernel32:KERNEL32.dll
+ 0001:000000a4       __imp__GetCurrentThreadId@0 004010a4     kernel32:KERNEL32.dll
+ 0001:000000a8       __imp__GetStartupInfoA@4   004010a8     kernel32:KERNEL32.dll
+ 0001:000000ac       __imp__FreeLibrary@4       004010ac     kernel32:KERNEL32.dll
+ 0001:000000b0       __imp__GetFileAttributesA@4 004010b0     kernel32:KERNEL32.dll
+ 0001:000000b4       __imp__SetLastError@4      004010b4     kernel32:KERNEL32.dll
+ 0001:000000b8       __imp__lstrcmpiA@8         004010b8     kernel32:KERNEL32.dll
+ 0001:000000bc       __imp__lstrcpyA@8          004010bc     kernel32:KERNEL32.dll
+ 0001:000000c0       __imp__GetTempPathA@8      004010c0     kernel32:KERNEL32.dll
+ 0001:000000c4       __imp__GetTickCount@0      004010c4     kernel32:KERNEL32.dll
+ 0001:000000c8       __imp__FindResourceA@12    004010c8     kernel32:KERNEL32.dll
+ 0001:000000cc       __imp__LoadResource@8      004010cc     kernel32:KERNEL32.dll
+ 0001:000000d0       __imp__CreateFileA@28      004010d0     kernel32:KERNEL32.dll
+ 0001:000000d4       __imp__SystemTimeToFileTime@8 004010d4     kernel32:KERNEL32.dll
+ 0001:000000d8       __imp__LocalFileTimeToFileTime@8 004010d8     kernel32:KERNEL32.dll
+ 0001:000000dc       __imp__SetFileTime@16      004010dc     kernel32:KERNEL32.dll
+ 0001:000000e0       __imp__SizeofResource@8    004010e0     kernel32:KERNEL32.dll
+ 0001:000000e4       __imp__HeapFree@12         004010e4     kernel32:KERNEL32.dll
+ 0001:000000e8       __imp__WriteFile@20        004010e8     kernel32:KERNEL32.dll
+ 0001:000000ec       __imp__lstrlenA@4          004010ec     kernel32:KERNEL32.dll
+ 0001:000000f0       __imp__CloseHandle@4       004010f0     kernel32:KERNEL32.dll
+ 0001:000000f4       __imp__FreeResource@4      004010f4     kernel32:KERNEL32.dll
+ 0001:000000f8       __imp__MoveFileA@8         004010f8     kernel32:KERNEL32.dll
+ 0001:000000fc       __imp__SetFileAttributesA@8 004010fc     kernel32:KERNEL32.dll
+ 0001:00000100       __imp__DeleteFileA@4       00401100     kernel32:KERNEL32.dll
+ 0001:00000104       __imp__GetSystemDirectoryA@8 00401104     kernel32:KERNEL32.dll
+ 0001:00000108       __imp__MultiByteToWideChar@24 00401108     kernel32:KERNEL32.dll
+ 0001:0000010c       __imp__WideCharToMultiByte@32 0040110c     kernel32:KERNEL32.dll
+ 0001:00000110       __imp__ExitProcess@4       00401110     kernel32:KERNEL32.dll
+ 0001:00000114       __imp__lstrcatA@8          00401114     kernel32:KERNEL32.dll
+ 0001:00000118       __imp__GetLastError@0      00401118     kernel32:KERNEL32.dll
+ 0001:0000011c       __imp__GetProcessHeap@0    0040111c     kernel32:KERNEL32.dll
+ 0001:00000120       __imp__HeapAlloc@12        00401120     kernel32:KERNEL32.dll
+ 0001:00000124       __imp__GetModuleHandleA@4  00401124     kernel32:KERNEL32.dll
+ 0001:00000128       __imp__GetProcAddress@8    00401128     kernel32:KERNEL32.dll
+ 0001:0000012c       __imp__ReleaseMutex@4      0040112c     kernel32:KERNEL32.dll
+ 0001:00000130       \177KERNEL32_NULL_THUNK_DATA 00401130     kernel32:KERNEL32.dll
+ 0001:00000134       __imp___exit               00401134     msvcrt:MSVCRT.dll
+ 0001:00000138       __imp___onexit             00401138     msvcrt:MSVCRT.dll
+ 0001:0000013c       __imp____dllonexit         0040113c     msvcrt:MSVCRT.dll
+ 0001:00000140       __imp___controlfp          00401140     msvcrt:MSVCRT.dll
+ 0001:00000144       __imp___except_handler3    00401144     msvcrt:MSVCRT.dll
+ 0001:00000148       __imp__realloc             00401148     msvcrt:MSVCRT.dll
+ 0001:0000014c       __imp__malloc              0040114c     msvcrt:MSVCRT.dll
+ 0001:00000150       __imp__strlen              00401150     msvcrt:MSVCRT.dll
+ 0001:00000154       __imp__strcat              00401154     msvcrt:MSVCRT.dll
+ 0001:00000158       __imp__strncat             00401158     msvcrt:MSVCRT.dll
+ 0001:0000015c       __imp__strchr              0040115c     msvcrt:MSVCRT.dll
+ 0001:00000160       __imp__strcpy              00401160     msvcrt:MSVCRT.dll
+ 0001:00000164       __imp__memset              00401164     msvcrt:MSVCRT.dll
+ 0001:00000168       __imp_??2@YAPAXI@Z         00401168     msvcrt:MSVCRT.dll
+ 0001:0000016c       __imp__memcpy              0040116c     msvcrt:MSVCRT.dll
+ 0001:00000170       __imp____CxxFrameHandler   00401170     msvcrt:MSVCRT.dll
+ 0001:00000174       __imp___CxxThrowException@8 00401174     msvcrt:MSVCRT.dll
+ 0001:00000178       __imp_??3@YAXPAX@Z         00401178     msvcrt:MSVCRT.dll
+ 0001:0000017c       __imp__strstr              0040117c     msvcrt:MSVCRT.dll
+ 0001:00000180       __imp_??1type_info@@UAE@XZ 00401180     msvcrt:MSVCRT.dll
+ 0001:00000184       __imp___strnicmp           00401184     msvcrt:MSVCRT.dll
+ 0001:00000188       __imp___XcptFilter         00401188     msvcrt:MSVCRT.dll
+ 0001:0000018c       __imp__exit                0040118c     msvcrt:MSVCRT.dll
+ 0001:00000190       __imp___acmdln             00401190     msvcrt:MSVCRT.dll
+ 0001:00000194       __imp____getmainargs       00401194     msvcrt:MSVCRT.dll
+ 0001:00000198       __imp___initterm           00401198     msvcrt:MSVCRT.dll
+ 0001:0000019c       __imp____setusermatherr    0040119c     msvcrt:MSVCRT.dll
+ 0001:000001a0       __imp___adjust_fdiv        004011a0     msvcrt:MSVCRT.dll
+ 0001:000001a4       __imp____p__commode        004011a4     msvcrt:MSVCRT.dll
+ 0001:000001a8       __imp____p__fmode          004011a8     msvcrt:MSVCRT.dll
+ 0001:000001ac       __imp____set_app_type      004011ac     msvcrt:MSVCRT.dll
+ 0001:000001b0       \177MSVCRT_NULL_THUNK_DATA 004011b0     msvcrt:MSVCRT.dll
+ 0001:000001b4       __imp__NetUserGetLocalGroups@32 004011b4     NetApi32:NETAPI32.dll
+ 0001:000001b8       __imp__NetApiBufferFree@4  004011b8     NetApi32:NETAPI32.dll
+ 0001:000001bc       \177NETAPI32_NULL_THUNK_DATA 004011bc     NetApi32:NETAPI32.dll
+ 0001:000001c0       __imp__GetInputState@0     004011c0     user32:USER32.dll
+ 0001:000001c4       __imp__PostThreadMessageA@16 004011c4     user32:USER32.dll
+ 0001:000001c8       __imp__wsprintfA           004011c8     user32:USER32.dll
+ 0001:000001cc       __imp__GetMessageA@16      004011cc     user32:USER32.dll
+ 0001:000001d0       \177USER32_NULL_THUNK_DATA 004011d0     user32:USER32.dll
+ 0001:000001d4       ___xc_a                    004011d4     msvcrt:cinitexe.obj
+ 0001:000001d8       ___xc_z                    004011d8     msvcrt:cinitexe.obj
+ 0001:000001dc       ___xi_a                    004011dc     msvcrt:cinitexe.obj
+ 0001:000001e0       ___xi_z                    004011e0     msvcrt:cinitexe.obj
+ 0001:000005e8       ??_R0PAX@8                 004015e8     install.obj
+ 0001:000005f8       ??_R0PAD@8                 004015f8     install.obj
+ 0001:00000610       ??_R0?AVtype_info@@@8      00401610     msvcrt:ti_inst.obj
+ 0001:00000628       ___defaultmatherr          00401628     msvcrt:merr.obj
+ 0001:00000690       ??_7type_info@@6B@         00401690     msvcrt:ti_inst.obj
+ 0001:000006a8       ??_R1A@?0A@A@type_info@@8  004016a8     msvcrt:ti_inst.obj
+ 0001:000006c0       ??_R2type_info@@8          004016c0     msvcrt:ti_inst.obj
+ 0001:000006c8       ??_R3type_info@@8          004016c8     msvcrt:ti_inst.obj
+ 0001:000006d8       ??_R4type_info@@6B@        004016d8     msvcrt:ti_inst.obj
+ 0001:000006f0       ?AddAccessRights@@YAHPAD0K@Z 004016f0 f   install.obj
+ 0001:00000c99       ?base64_decode@@YAHPBDPAPAD@Z 00401c99 f   install.obj
+ 0001:00000eb5       ?MyDecode@@YAPADPAD@Z      00401eb5 f   install.obj
+ 0001:00000f1e       ?DelSpace@@YAPADPAD@Z      00401f1e f   install.obj
+ 0001:00000f63       ?SetKeySecurityEx@@YAHPAUHKEY__@@PBDK@Z 00401f63 f   install.obj
+ 0001:00001178       ?ReadRegEx@@YAHPAUHKEY__@@PBD1KPADPAEKH@Z 00402178 f   install.obj
+ 0001:000016fa       ?WriteRegEx@@YAHPAUHKEY__@@PBD1KPADKH@Z 004026fa f   install.obj
+ 0001:000018c2       ?dbg_dump@@YAXPAU_EXCEPTION_POINTERS@@@Z 004028c2 f   install.obj
+ 0001:000018c7       ?bad_exception@@YGJPAU_EXCEPTION_POINTERS@@@Z 004028c7 f   install.obj
+ 0001:000018e2       ?SetAccessRights@@YAXXZ    004028e2 f   install.obj
+ 0001:00001af6       ?ReleaseResource@@YAHPAUHINSTANCE__@@GPBD11@Z 00402af6 f   install.obj
+ 0001:00001ceb       ?AddsvchostService@@YAPADXZ 00402ceb f   install.obj
+ 0001:00001f0a       ?InstallService@@YAPADPBD00@Z 00402f0a f   install.obj
+ 0001:00002432       ?StartServiceA@@YAXPBD@Z   00403432 f   install.obj
+ 0001:0000248f       ?ResetSSDT@@YA_NPAUHINSTANCE__@@@Z 0040348f f   install.obj
+ 0001:000025dc       ?memfind@@YAHPBD0HH@Z      004035dc f   install.obj
+ 0001:00002667       ?FindConfigString@@YAPBDPAUHINSTANCE__@@PBD@Z 00403667 f   install.obj
+ 0001:00002776       _WinMain@16                00403776 f   install.obj
+ 0001:000029f0       _HeapFree@12               004039f0 f   kernel32:KERNEL32.dll
+ 0001:000029f6       _GetProcAddress@8          004039f6 f   kernel32:KERNEL32.dll
+ 0001:000029fc       _GetModuleHandleA@4        004039fc f   kernel32:KERNEL32.dll
+ 0001:00002a02       _HeapAlloc@12              00403a02 f   kernel32:KERNEL32.dll
+ 0001:00002a08       _GetProcessHeap@0          00403a08 f   kernel32:KERNEL32.dll
+ 0001:00002a0e       _GetLastError@0            00403a0e f   kernel32:KERNEL32.dll
+ 0001:00002a14       _lstrcatA@8                00403a14 f   kernel32:KERNEL32.dll
+ 0001:00002a1a       _ExitProcess@4             00403a1a f   kernel32:KERNEL32.dll
+ 0001:00002a20       _WideCharToMultiByte@32    00403a20 f   kernel32:KERNEL32.dll
+ 0001:00002a26       _MultiByteToWideChar@24    00403a26 f   kernel32:KERNEL32.dll
+ 0001:00002a2c       _GetSystemDirectoryA@8     00403a2c f   kernel32:KERNEL32.dll
+ 0001:00002a32       _DeleteFileA@4             00403a32 f   kernel32:KERNEL32.dll
+ 0001:00002a38       _SetFileAttributesA@8      00403a38 f   kernel32:KERNEL32.dll
+ 0001:00002a3e       _MoveFileA@8               00403a3e f   kernel32:KERNEL32.dll
+ 0001:00002a44       _FreeResource@4            00403a44 f   kernel32:KERNEL32.dll
+ 0001:00002a4a       _CloseHandle@4             00403a4a f   kernel32:KERNEL32.dll
+ 0001:00002a50       _lstrlenA@4                00403a50 f   kernel32:KERNEL32.dll
+ 0001:00002a56       _WriteFile@20              00403a56 f   kernel32:KERNEL32.dll
+ 0001:00002a5c       _SizeofResource@8          00403a5c f   kernel32:KERNEL32.dll
+ 0001:00002a62       _SetFileTime@16            00403a62 f   kernel32:KERNEL32.dll
+ 0001:00002a68       _LocalFileTimeToFileTime@8 00403a68 f   kernel32:KERNEL32.dll
+ 0001:00002a6e       _SystemTimeToFileTime@8    00403a6e f   kernel32:KERNEL32.dll
+ 0001:00002a74       _CreateFileA@28            00403a74 f   kernel32:KERNEL32.dll
+ 0001:00002a7a       _LoadResource@8            00403a7a f   kernel32:KERNEL32.dll
+ 0001:00002a80       _FindResourceA@12          00403a80 f   kernel32:KERNEL32.dll
+ 0001:00002a86       _GetTickCount@0            00403a86 f   kernel32:KERNEL32.dll
+ 0001:00002a8c       _GetTempPathA@8            00403a8c f   kernel32:KERNEL32.dll
+ 0001:00002a92       _lstrcpyA@8                00403a92 f   kernel32:KERNEL32.dll
+ 0001:00002a98       _lstrcmpiA@8               00403a98 f   kernel32:KERNEL32.dll
+ 0001:00002a9e       _SetLastError@4            00403a9e f   kernel32:KERNEL32.dll
+ 0001:00002aa4       _GetFileAttributesA@4      00403aa4 f   kernel32:KERNEL32.dll
+ 0001:00002aaa       _FreeLibrary@4             00403aaa f   kernel32:KERNEL32.dll
+ 0001:00002ab0       _LoadLibraryA@4            00403ab0 f   kernel32:KERNEL32.dll
+ 0001:00002ab6       _ReadFile@20               00403ab6 f   kernel32:KERNEL32.dll
+ 0001:00002abc       _SetFilePointer@16         00403abc f   kernel32:KERNEL32.dll
+ 0001:00002ac2       _GetModuleFileNameA@12     00403ac2 f   kernel32:KERNEL32.dll
+ 0001:00002ac8       _SetUnhandledExceptionFilter@4 00403ac8 f   kernel32:KERNEL32.dll
+ 0001:00002ace       _Sleep@4                   00403ace f   kernel32:KERNEL32.dll
+ 0001:00002ad4       _ReleaseMutex@4            00403ad4 f   kernel32:KERNEL32.dll
+ 0001:00002ada       _CreateMutexA@12           00403ada f   kernel32:KERNEL32.dll
+ 0001:00002ae0       _GetCommandLineA@0         00403ae0 f   kernel32:KERNEL32.dll
+ 0001:00002ae6       _GetCurrentThreadId@0      00403ae6 f   kernel32:KERNEL32.dll
+ 0001:00002aec       _wsprintfA                 00403aec f   user32:USER32.dll
+ 0001:00002af2       _GetMessageA@16            00403af2 f   user32:USER32.dll
+ 0001:00002af8       _PostThreadMessageA@16     00403af8 f   user32:USER32.dll
+ 0001:00002afe       _GetInputState@0           00403afe f   user32:USER32.dll
+ 0001:00002b04       _SetFileSecurityA@12       00403b04 f   advapi32:ADVAPI32.dll
+ 0001:00002b0a       _GetSecurityDescriptorControl@12 00403b0a f   advapi32:ADVAPI32.dll
+ 0001:00002b10       _SetSecurityDescriptorDacl@16 00403b10 f   advapi32:ADVAPI32.dll
+ 0001:00002b16       _AddAccessAllowedAce@16    00403b16 f   advapi32:ADVAPI32.dll
+ 0001:00002b1c       _AddAce@20                 00403b1c f   advapi32:ADVAPI32.dll
+ 0001:00002b22       _EqualSid@8                00403b22 f   advapi32:ADVAPI32.dll
+ 0001:00002b28       _GetAce@12                 00403b28 f   advapi32:ADVAPI32.dll
+ 0001:00002b2e       _InitializeAcl@12          00403b2e f   advapi32:ADVAPI32.dll
+ 0001:00002b34       _GetLengthSid@4            00403b34 f   advapi32:ADVAPI32.dll
+ 0001:00002b3a       _GetAclInformation@16      00403b3a f   advapi32:ADVAPI32.dll
+ 0001:00002b40       _GetSecurityDescriptorDacl@16 00403b40 f   advapi32:ADVAPI32.dll
+ 0001:00002b46       _InitializeSecurityDescriptor@8 00403b46 f   advapi32:ADVAPI32.dll
+ 0001:00002b4c       _GetFileSecurityA@20       00403b4c f   advapi32:ADVAPI32.dll
+ 0001:00002b52       _LookupAccountNameA@28     00403b52 f   advapi32:ADVAPI32.dll
+ 0001:00002b58       _FreeSid@4                 00403b58 f   advapi32:ADVAPI32.dll
+ 0001:00002b5e       _RegCloseKey@4             00403b5e f   advapi32:ADVAPI32.dll
+ 0001:00002b64       _RegSetKeySecurity@12      00403b64 f   advapi32:ADVAPI32.dll
+ 0001:00002b6a       _AllocateAndInitializeSid@44 00403b6a f   advapi32:ADVAPI32.dll
+ 0001:00002b70       _RegOpenKeyExA@20          00403b70 f   advapi32:ADVAPI32.dll
+ 0001:00002b76       _RegEnumValueA@32          00403b76 f   advapi32:ADVAPI32.dll
+ 0001:00002b7c       _RegEnumKeyExA@32          00403b7c f   advapi32:ADVAPI32.dll
+ 0001:00002b82       _RegQueryValueExA@24       00403b82 f   advapi32:ADVAPI32.dll
+ 0001:00002b88       _RegDeleteValueA@8         00403b88 f   advapi32:ADVAPI32.dll
+ 0001:00002b8e       _RegDeleteKeyA@8           00403b8e f   advapi32:ADVAPI32.dll
+ 0001:00002b94       _RegSetValueExA@24         00403b94 f   advapi32:ADVAPI32.dll
+ 0001:00002b9a       _RegCreateKeyExA@36        00403b9a f   advapi32:ADVAPI32.dll
+ 0001:00002ba0       _GetUserNameA@8            00403ba0 f   advapi32:ADVAPI32.dll
+ 0001:00002ba6       _CloseServiceHandle@4      00403ba6 f   advapi32:ADVAPI32.dll
+ 0001:00002bac       _CreateServiceA@52         00403bac f   advapi32:ADVAPI32.dll
+ 0001:00002bb2       _OpenSCManagerA@12         00403bb2 f   advapi32:ADVAPI32.dll
+ 0001:00002bb8       _StartServiceA@12          00403bb8 f   advapi32:ADVAPI32.dll
+ 0001:00002bbe       _OpenServiceA@12           00403bbe f   advapi32:ADVAPI32.dll
+ 0001:00002bd0       __except_handler3          00403bd0 f   msvcrt:MSVCRT.dll
+ 0001:00002bd6       _realloc                   00403bd6 f   msvcrt:MSVCRT.dll
+ 0001:00002bdc       _malloc                    00403bdc f   msvcrt:MSVCRT.dll
+ 0001:00002be2       _strlen                    00403be2 f   msvcrt:MSVCRT.dll
+ 0001:00002be8       _strcat                    00403be8 f   msvcrt:MSVCRT.dll
+ 0001:00002bee       _strncat                   00403bee f   msvcrt:MSVCRT.dll
+ 0001:00002bf4       _strchr                    00403bf4 f   msvcrt:MSVCRT.dll
+ 0001:00002bfa       _strcpy                    00403bfa f   msvcrt:MSVCRT.dll
+ 0001:00002c00       _memset                    00403c00 f   msvcrt:MSVCRT.dll
+ 0001:00002c06       ??2@YAPAXI@Z               00403c06 f   msvcrt:MSVCRT.dll
+ 0001:00002c0c       _memcpy                    00403c0c f   msvcrt:MSVCRT.dll
+ 0001:00002c12       ??0type_info@@AAE@ABV0@@Z  00403c12 f   msvcrt:ti_inst.obj
+ 0001:00002c1d       ??_Gtype_info@@UAEPAXI@Z   00403c1d f i msvcrt:ti_inst.obj
+ 0001:00002c1d       ??_Etype_info@@UAEPAXI@Z   00403c1d f i msvcrt:ti_inst.obj
+ 0001:00002c39       ??4type_info@@AAEAAV0@ABV0@@Z 00403c39 f   msvcrt:ti_inst.obj
+ 0001:00002c3e       ___CxxFrameHandler         00403c3e f   msvcrt:MSVCRT.dll
+ 0001:00002c44       __CxxThrowException@8      00403c44 f   msvcrt:MSVCRT.dll
+ 0001:00002c4a       ??3@YAXPAX@Z               00403c4a f   msvcrt:MSVCRT.dll
+ 0001:00002c50       _strstr                    00403c50 f   msvcrt:MSVCRT.dll
+ 0001:00002c56       _WinMainCRTStartup         00403c56 f   msvcrt:crtexew.obj
+ 0001:00002db4       ??1type_info@@UAE@XZ       00403db4 f   msvcrt:MSVCRT.dll
+ 0001:00002dba       __exit                     00403dba f   msvcrt:MSVCRT.dll
+ 0001:00002dc0       __XcptFilter               00403dc0 f   msvcrt:MSVCRT.dll
+ 0001:00002dc6       _exit                      00403dc6 f   msvcrt:MSVCRT.dll
+ 0001:00002dcc       ___getmainargs             00403dcc f   msvcrt:MSVCRT.dll
+ 0001:00002dd2       __initterm                 00403dd2 f   msvcrt:MSVCRT.dll
+ 0001:00002dd8       __setdefaultprecision      00403dd8 f   msvcrt:fp8.obj
+ 0001:00002dea       ___setusermatherr          00403dea f   msvcrt:MSVCRT.dll
+ 0001:00002df0       __matherr                  00403df0 f   msvcrt:merr.obj
+ 0001:00002df3       __setargv                  00403df3 f   msvcrt:dllargv.obj
+ 0001:00002df4       ___p__commode              00403df4 f   msvcrt:MSVCRT.dll
+ 0001:00002dfa       ___p__fmode                00403dfa f   msvcrt:MSVCRT.dll
+ 0001:00002e00       __onexit                   00403e00 f   msvcrt:atonexit.obj
+ 0001:00002e2c       _atexit                    00403e2c f   msvcrt:atonexit.obj
+ 0001:00002e3e       ___set_app_type            00403e3e f   msvcrt:MSVCRT.dll
+ 0001:00002e44       __controlfp                00403e44 f   msvcrt:MSVCRT.dll
+ 0001:00002e4a       ___dllonexit               00403e4a f   msvcrt:MSVCRT.dll
+ 0001:00002e50       _NetApiBufferFree@4        00403e50 f   NetApi32:NETAPI32.dll
+ 0001:00002e56       _NetUserGetLocalGroups@32  00403e56 f   NetApi32:NETAPI32.dll
+ 0001:00002e60       _GetStartupInfoA@4         00403e60 f   kernel32:KERNEL32.dll
+ 0001:00002e66       __strnicmp                 00403e66 f   msvcrt:MSVCRT.dll
+ 0001:00002e66       _strnicmp                  00403e66 f   msvcrt:MSVCRT.dll
+ 0001:00002e88       __CT??_R0PAX@84            00403e88     install.obj
+ 0001:00002ea8       __CT??_R0PAD@84            00403ea8     install.obj
+ 0001:00002ec8       __CTA2PAD                  00403ec8     install.obj
+ 0001:00002ed8       __TI2PAD                   00403ed8     install.obj
+ 0001:00002fa4       __dowildcard               00403fa4     msvcrt:wildcard.obj
+ 0001:00002fa8       __newmode                  00403fa8     msvcrt:_newmode.obj
+ 0001:00002fac       __commode                  00403fac     msvcrt:xncommod.obj
+ 0001:00002fb0       __fmode                    00403fb0     msvcrt:xtxtmode.obj
+ 0001:00002fb4       ___onexitend               00403fb4     <common>
+ 0001:00002fb8       ___onexitbegin             00403fb8     <common>
+ 0001:00002fbc       __adjust_fdiv              00403fbc     <common>
+ 0001:00002fc0       __IMPORT_DESCRIPTOR_KERNEL32 00403fc0     kernel32:KERNEL32.dll
+ 0001:00002fd4       __IMPORT_DESCRIPTOR_USER32 00403fd4     user32:USER32.dll
+ 0001:00002fe8       __IMPORT_DESCRIPTOR_ADVAPI32 00403fe8     advapi32:ADVAPI32.dll
+ 0001:00002ffc       __IMPORT_DESCRIPTOR_MSVCRT 00403ffc     msvcrt:MSVCRT.dll
+ 0001:00003010       __IMPORT_DESCRIPTOR_NETAPI32 00404010     NetApi32:NETAPI32.dll
+ 0001:00003024       __NULL_IMPORT_DESCRIPTOR   00404024     kernel32:KERNEL32.dll
+
+ entry point at        0001:00002c56
+
+ Static symbols
+
+ 0001:00000e74       ?pos@@YAHD@Z               00401e74 f   install.obj
