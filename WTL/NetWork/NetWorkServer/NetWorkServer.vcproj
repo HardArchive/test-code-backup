@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="NetWorkServer"
 	ProjectGUID="{57FDC249-5D91-427B-B23B-CFD1C2D7EC4F}"
+	RootNamespace="NetWorkServer"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -192,6 +193,10 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
 			<File
+				RelativePath=".\NetworkHelpers.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\NetWorkServer.cpp"
 				>
 			</File>
@@ -229,6 +234,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\NetworkHelpers.h"
+				>
+			</File>
+			<File
 				RelativePath=".\resource.h"
 				>
 			</File>
@@ -252,5 +261,9 @@
 		</Filter>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="NetWorkServer.rc"
+		/>
 	</Globals>
 </VisualStudioProject>
