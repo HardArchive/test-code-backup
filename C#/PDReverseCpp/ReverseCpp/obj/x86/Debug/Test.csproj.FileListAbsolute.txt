@@ -1,0 +1,15 @@
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\Test.exe
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\Test.pdb
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\LZ.Lexer.dll
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\LZ.Lexer.pdb
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\Test.Properties.Resources.resources
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\Test.csproj.GenerateResource.Cache
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\Test.exe
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\Test.pdb
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\Interop.PdCommon.dll
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\Interop.PdOOM.dll
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\Interop.PdWSP.dll
+E:\LZTest\PDReverseApp\Test\obj\x86\Debug\LZ.Reverse.Form1.resources
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\types.xml
+E:\LZTest\PDReverseApp\Test\bin\x86\Debug\LZTools.dll
