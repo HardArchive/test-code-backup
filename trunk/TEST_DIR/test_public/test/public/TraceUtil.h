@@ -120,7 +120,7 @@ namespace QNA
 		fclose(pFile);
 #endif 
 #else
-		OutputDebugStr(tszOutput);
+		OutputDebugString(tszOutput);
 #endif
 #endif
 	}

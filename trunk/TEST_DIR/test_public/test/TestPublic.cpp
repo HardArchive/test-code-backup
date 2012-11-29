@@ -16,6 +16,7 @@ using namespace std;
 
 
 #include <TraceUtil.h>
+
 int TraceUtil()
 {
 	TCHAR tszTem[32] = {_T("Test^^^^^^TCHAR")};
@@ -96,7 +97,7 @@ int TestFileVersionInfo()
 //}
 
 #define MAX_URL_LENGTH    255
-#define HTTP_OK "HTTP/1.1 200 OK"
+#define HTTP_OK _T("HTTP/1.1 200 OK")
 
 const TCHAR g_szHttpHead[] = 
 _T("HEAD / HTTP/1.1\r\n\
@@ -136,9 +137,9 @@ int CheckHTTPHEAD(char* pstrDomain, DWORD dwIPValue, UINT uiPort)
 
 	ZeroMemory(tszTem, sizeof(tszTem));
 	iLen = _tcslen(HTTP_OK);
-	_tcsncpy(tszTem, (char*)tszSend, iLen);
+	_tcsncpy(tszTem, (TCHAR*)tszSend, iLen);
 	if (!_tcsicmp(tszTem, HTTP_OK))  return 1;	
-	QNA::TRACE("HTTP HEAD 可行\r\n");
+	QNA::TRACE(_T("HTTP HEAD 可行\r\n"));
 	return 0;
 }
 
@@ -180,10 +181,12 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 	TCHAR tszSend[1024] = {0};
 	struct in_addr addr;
 	HOSTENT *host_entry = NULL;   //结构指针
-
+	char szDomian[128] = {0};
 	QNA::CSocket clsSocket;
 	/* 即要解析的域名或主机名 */
-	host_entry = gethostbyname(pstrDomain);
+
+	wcstombs(szDomian, pstrDomain, _tcslen(pstrDomain)*2);
+	host_entry = gethostbyname(szDomian);
 	if (NULL == host_entry)
 	{
 		return -1;
@@ -218,10 +221,10 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 
 		ZeroMemory(tszTem, sizeof(tszTem));
 		iLen = _tcslen(HTTP_OK);
-		_tcsncpy(tszTem, (char*)tszSend, iLen);
+		_tcsncpy(tszTem, (TCHAR*)tszSend, iLen);
 		if (!_tcsicmp(tszTem, HTTP_OK))
 		{
-			QNA::TRACE("HTTP HEAD 可行\r\n");
+			QNA::TRACE(_T("HTTP HEAD 可行\r\n"));
 			//if (!_tcsncmp(pstrIP, inet_ntoa(addr), _tcslen(pstrIP)))
 			//{
 			//	QNA::TRACE("####################HTTP HEAD 检查成功#######################\r\n");
@@ -231,7 +234,7 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 		}
 		else
 		{
-			QNA::TRACE("HTTP HEAD 不可行\r\n");
+			QNA::TRACE(_T("HTTP HEAD 不可行\r\n"));
 		}
 		
 		iNum++;

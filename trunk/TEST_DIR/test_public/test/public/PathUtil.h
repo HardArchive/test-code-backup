@@ -51,7 +51,7 @@ namespace QNA
 				if(_tcscmp(stuWFD.cFileName, _T(".")) == 0 || _tcscmp(stuWFD.cFileName, _T("..")) == 0)
 					continue;
 				ZeroMemory(tszFullPath, sizeof(tszFullPath));
-				sprintf(tszFullPath, "%s\\%s", ptInPath, stuWFD.cFileName);  //得到文件(夹)完整路径
+				_stprintf(tszFullPath, _T("%s\\%s"), ptInPath, stuWFD.cFileName);  //得到文件(夹)完整路径
 
 				//如果找到的是目录，则进入此目录进行递归
 				if(stuWFD.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) 
@@ -199,7 +199,7 @@ namespace QNA
 
 			if(ERROR_SUCCESS != ::RegOpenKeyEx(HKEY_CURRENT_USER, tszRegKey, 0, KEY_QUERY_VALUE, &hCU))	return false;
 
-			if(ERROR_SUCCESS != ::RegQueryValueEx(hCU, "Desktop", NULL, &lpType, (BYTE *)&tszPath, &ulSize))
+			if(ERROR_SUCCESS != ::RegQueryValueEx(hCU, _T("Desktop"), NULL, &lpType, (BYTE *)&tszPath, &ulSize))
 			{
 				RegCloseKey(hCU);
 				return false;
