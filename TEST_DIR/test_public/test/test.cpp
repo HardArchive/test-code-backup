@@ -10,7 +10,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int iRet = 0;
 	//FileUtil();
 
-	//TraceUtil();
+	TraceUtil();
 
 	//IniUtil();
 

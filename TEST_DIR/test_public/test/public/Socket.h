@@ -144,7 +144,9 @@ namespace QNA
 		//连接服务器  这是客户端用的函数  IP地址为字符串
 		int Connect(LPCTSTR lpszIP, UINT uiPort)
 		{
-			return Connect(inet_addr(lpszIP), uiPort);
+			char cip[32] = {0};
+			wcstombs(cip, lpszIP, _tcslen(lpszIP)*2);
+			return Connect(inet_addr(cip), uiPort);
 		}
 
 		//发送数据 1成功， -1发送指针为空， -2 长度错误 -3 SOCKET_ERROR -4 WSA_IO_PENDING -5 iSent
@@ -161,7 +163,7 @@ namespace QNA
 
 			while(true)
 			{
-				iSent = send(sock, (TCHAR*)pbRecvBuf + iSent, uiBufLen, 0);
+				iSent = send(sock, (char*)pbRecvBuf + iSent, uiBufLen, 0);
 
 				iRes = WSAGetLastError();
 
@@ -200,7 +202,7 @@ namespace QNA
 			while(true)
 			{
 				//返回读入的字节数。如果连接已中止，返回0。否则的话，返回SOCKET_ERROR错误
-				iRet = recv(sock, (TCHAR*)pbRecvBuf + iRecvedLen, uiBufLen-iRecvedLen, 0);
+				iRet = recv(sock, (char*)pbRecvBuf + iRecvedLen, uiBufLen-iRecvedLen, 0);
 
 				if(SOCKET_ERROR == iRet)
 				{
