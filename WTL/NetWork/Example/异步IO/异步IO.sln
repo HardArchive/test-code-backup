@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SELECT服务端", "SELECT服务端\SELECT服务端.vcproj", "{EEF89EFB-88BC-428B-8577-53BAA2F7EBEC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "客户端Client", "客户端Client\客户端Client.vcproj", "{B813CD6E-C6D4-47FE-AA37-7FDFC1D9830C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "事件选择服务端", "事件选择服务端\事件选择服务端.vcproj", "{DA5CDA6D-36C6-4280-9FA1-9732A77693DC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "完成端口服务端", "完成端口服务端\完成端口服务端.vcproj", "{969F0A69-22AD-41D4-B45D-B8DA43213D09}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "完成例程重叠IO服务端", "完成例程重叠IO服务端\完成例程重叠IO服务端.vcproj", "{70C1191D-E1CB-4997-9ECA-935D34B9E5AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEF89EFB-88BC-428B-8577-53BAA2F7EBEC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EEF89EFB-88BC-428B-8577-53BAA2F7EBEC}.Debug|Win32.Build.0 = Debug|Win32
+		{EEF89EFB-88BC-428B-8577-53BAA2F7EBEC}.Release|Win32.ActiveCfg = Release|Win32
+		{EEF89EFB-88BC-428B-8577-53BAA2F7EBEC}.Release|Win32.Build.0 = Release|Win32
+		{B813CD6E-C6D4-47FE-AA37-7FDFC1D9830C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B813CD6E-C6D4-47FE-AA37-7FDFC1D9830C}.Debug|Win32.Build.0 = Debug|Win32
+		{B813CD6E-C6D4-47FE-AA37-7FDFC1D9830C}.Release|Win32.ActiveCfg = Release|Win32
+		{B813CD6E-C6D4-47FE-AA37-7FDFC1D9830C}.Release|Win32.Build.0 = Release|Win32
+		{DA5CDA6D-36C6-4280-9FA1-9732A77693DC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DA5CDA6D-36C6-4280-9FA1-9732A77693DC}.Debug|Win32.Build.0 = Debug|Win32
+		{DA5CDA6D-36C6-4280-9FA1-9732A77693DC}.Release|Win32.ActiveCfg = Release|Win32
+		{DA5CDA6D-36C6-4280-9FA1-9732A77693DC}.Release|Win32.Build.0 = Release|Win32
+		{969F0A69-22AD-41D4-B45D-B8DA43213D09}.Debug|Win32.ActiveCfg = Debug|Win32
+		{969F0A69-22AD-41D4-B45D-B8DA43213D09}.Debug|Win32.Build.0 = Debug|Win32
+		{969F0A69-22AD-41D4-B45D-B8DA43213D09}.Release|Win32.ActiveCfg = Release|Win32
+		{969F0A69-22AD-41D4-B45D-B8DA43213D09}.Release|Win32.Build.0 = Release|Win32
+		{70C1191D-E1CB-4997-9ECA-935D34B9E5AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70C1191D-E1CB-4997-9ECA-935D34B9E5AC}.Debug|Win32.Build.0 = Debug|Win32
+		{70C1191D-E1CB-4997-9ECA-935D34B9E5AC}.Release|Win32.ActiveCfg = Release|Win32
+		{70C1191D-E1CB-4997-9ECA-935D34B9E5AC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
