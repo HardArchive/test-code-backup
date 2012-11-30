@@ -201,6 +201,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SockeHelperIOCP.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -239,6 +243,10 @@
 			</File>
 			<File
 				RelativePath=".\resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SockeHelperIOCP.h"
 				>
 			</File>
 			<File

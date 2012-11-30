@@ -13,8 +13,9 @@
 
 #include <atlbase.h>
 #include <atlapp.h>
-
+#include <atlframe.h>
 extern CAppModule _Module;
+extern char g_szRecvbuf[512];  //Ω” ’ª∫¥Ê
 
 #include <atlwin.h>
 
