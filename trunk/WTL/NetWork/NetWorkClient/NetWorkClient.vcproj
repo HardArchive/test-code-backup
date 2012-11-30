@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="NetWorkClient"
 	ProjectGUID="{E4FA26EB-C06D-4290-889C-0271202F0469}"
+	RootNamespace="NetWorkClient"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -20,7 +21,7 @@
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)"
 			ConfigurationType="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -166,6 +167,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				EmbedManifest="false"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -252,5 +254,9 @@
 		</Filter>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="NetWorkClient.rc"
+		/>
 	</Globals>
 </VisualStudioProject>
