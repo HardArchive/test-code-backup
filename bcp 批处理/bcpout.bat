@@ -1,0 +1,1 @@
+bcp test.dbo.emp out D:\WinPath\desktop\bcp2.txt -T -c
