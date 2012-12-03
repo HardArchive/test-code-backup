@@ -334,8 +334,11 @@ void main()
 {
 	// 创建监听套节字，绑定到本地端口，进入监听模式
 	int nPort = 4567;
-	SOCKET sListen = 
-		::WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
+	SOCKET sListen = ::WSASocket(
+		AF_INET, SOCK_STREAM, IPPROTO_TCP, //此三个参数与标准socket相同
+		NULL, //指定下层服务提供者，可以是NULL
+		0,    //保留
+		WSA_FLAG_OVERLAPPED); //指定socket属性，要使用重叠I/O模型，必须指定WSA_FLAG_OVERLAPPED
 	SOCKADDR_IN si;
 	si.sin_family = AF_INET;
 	si.sin_port = ::ntohs(nPort);
@@ -349,6 +352,7 @@ void main()
 	// 加载扩展函数AcceptEx
 	GUID GuidAcceptEx = WSAID_ACCEPTEX;
 	DWORD dwBytes;
+	//套接字选项和I/O控制命令
 	WSAIoctl(pListen->s, 
 		SIO_GET_EXTENSION_FUNCTION_POINTER, 
 		&GuidAcceptEx, 
