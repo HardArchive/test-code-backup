@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////
 // EventSelectServer.h文件
-
+#include <Windows.h>
 DWORD WINAPI ServerThread(LPVOID lpParam);
 
 
@@ -41,7 +41,7 @@ LONG g_nCurrentConnections;		// 当前连接数量
 // 申请一个套节字对象，初始化它的成员
 PSOCKET_OBJ GetSocketObj(SOCKET s)	
 {
-	PSOCKET_OBJ pSocket = (PSOCKET_OBJ)::GlobalAlloc(GPTR, sizeof(SOCKET_OBJ));
+	PSOCKET_OBJ pSocket = (PSOCKET_OBJ)::GlobalAlloc(GPTR, sizeof(SOCKET_OBJ));//分配初始值为零的固定内存
 	if(pSocket != NULL)
 	{
 		pSocket->s = s;
@@ -59,6 +59,7 @@ void FreeSocketObj(PSOCKET_OBJ pSocket)
 		::closesocket(pSocket->s);
 	}
 	::GlobalFree(pSocket);
+	printf("释放一个套节字对象\r\n");
 }
 
 // 申请一个线程对象，初始化它的成员，并将它添加到线程对象列表中
@@ -149,9 +150,9 @@ BOOL InsertSocketObj(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 
 	// 插入成功，说明成功处理了客户的连接请求
 	if(bRet)
-	{
-		::InterlockedIncrement(&g_nTatolConnections);
-		::InterlockedIncrement(&g_nCurrentConnections);
+	{   //因为所谓“原语”是一种不可中断的操作，操作系统能保证在一个“原语”执行完毕前不会进行线程切换
+		::InterlockedIncrement(&g_nTatolConnections);  //能够保证在一个线程访问变量时其它线程不能访问。 
+		::InterlockedIncrement(&g_nCurrentConnections);//实现对变量自增1
 	}	
 	return bRet;
 }
@@ -162,10 +163,10 @@ void AssignToFreeThread(PSOCKET_OBJ pSocket)
 	pSocket->pNext = NULL;
 
 	::EnterCriticalSection(&g_cs);
-	PTHREAD_OBJ pThread = g_pThreadList;
+	PTHREAD_OBJ pThread = g_pThreadList;  //指向线程对象列表表头
 	// 试图插入到现存线程
 	while(pThread != NULL)
-	{
+	{//插入线程对象列表表头
 		if(InsertSocketObj(pThread, pSocket))
 			break;
 		pThread = pThread->pNext;
@@ -174,7 +175,7 @@ void AssignToFreeThread(PSOCKET_OBJ pSocket)
 	// 没有空闲线程，为这个套节字创建新的线程
 	if(pThread == NULL)
 	{
-		pThread = GetThreadObj();
+		pThread = GetThreadObj();  //申请一个线程对象，初始化它的成员，并将它添加到线程对象列表中
 		InsertSocketObj(pThread, pSocket);	
 		::CreateThread(NULL, 0, ServerThread, pThread, 0, NULL);
 	}
@@ -215,9 +216,10 @@ void RemoveSocketObj(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 
 	// 指示线程重建句柄数组
 	::WSASetEvent(pThread->events[0]);
+	printf("从给定线程的套节字对象列表中移除一个套节字对象\r\n");
 
 	// 说明一个连接中断
-	::InterlockedDecrement(&g_nCurrentConnections);
+	::InterlockedDecrement(&g_nCurrentConnections); //对变量自减1
 }
 
 
@@ -228,6 +230,7 @@ BOOL HandleIO(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 	::WSAEnumNetworkEvents(pSocket->s, pSocket->event, &event);
 	do
 	{
+		//可以在此处将socket的读写操作 压入取出队列实现 接收 
 		if(event.lNetworkEvents & FD_READ)			// 套节字可读
 		{
 			if(event.iErrorCode[FD_READ_BIT] == 0)
@@ -237,7 +240,12 @@ BOOL HandleIO(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 				if(nRecv > 0)				
 				{
 					szText[nRecv] = '\0';
-					printf("接收到数据：%s \n", szText);
+					// 将sockaddr强制转换为 sockaddr_in
+					sockaddr_in sin;
+					memcpy(&sin, &pSocket->addrRemote, sizeof(sin));
+					// 取得ip和端口号					
+					printf("接收IP:%s, Port:%d; 数据：%s \n", inet_ntoa(sin.sin_addr),
+						sin.sin_port, szText);
 				}
 			}
 			else
@@ -245,12 +253,14 @@ BOOL HandleIO(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 		}
 		else if(event.lNetworkEvents & FD_CLOSE)	// 套节字关闭
 		{
+			printf("收到套接字关闭事件消息！！！！\r\n");
 			break;
 		}
 		else if(event.lNetworkEvents & FD_WRITE)	// 套节字可写
 		{
 			if(event.iErrorCode[FD_WRITE_BIT] == 0)
 			{	
+				printf("收到套接字可写事件消息\r\n");
 			}
 			else
 				break;
@@ -315,7 +325,7 @@ DWORD WINAPI ServerThread(LPVOID lpParam)
 					PSOCKET_OBJ pSocket = (PSOCKET_OBJ)FindSocketObj(pThread, i);
 					if(pSocket != NULL)
 					{
-						if(!HandleIO(pThread, pSocket))
+						if(!HandleIO(pThread, pSocket))//处理套接字上的事件
 							RebuildArray(pThread);
 					}
 					else

@@ -10,7 +10,9 @@
 
 // 初始化Winsock库
 CInitSock theSock;
-
+//基本上是理清楚了，但是有以下几个问题：
+//1、发送怎么处理
+//2、如何处理同步问题
 int main()
 {
 	USHORT nPort = 4567;	// 此服务器监听的端口号
@@ -63,8 +65,8 @@ int main()
 					break;
 				PSOCKET_OBJ pSocket = GetSocketObj(sNew);
 				pSocket->addrRemote = si;
-				::WSAEventSelect(pSocket->s, pSocket->event, FD_READ|FD_CLOSE|FD_WRITE);
-				AssignToFreeThread(pSocket);
+				::WSAEventSelect(pSocket->s, pSocket->event, FD_READ|FD_CLOSE|FD_WRITE);  //监听读、写、关闭
+				AssignToFreeThread(pSocket);   // 将一个套节字对象安排给空闲的线程处理
 			}
 		}
 	}
