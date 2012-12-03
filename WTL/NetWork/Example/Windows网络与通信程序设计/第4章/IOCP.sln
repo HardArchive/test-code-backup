@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOCPDemo", "IOCPDemo\IOCPDemo.vcproj", "{BCCF3510-6153-4EC5-9133-F6B397806553}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iocpsys", "iocpsys\iocpsys.vcproj", "{40D7ADF0-B769-4BD6-89F5-9247F70A033C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerShutdown", "ServerShutdown\ServerShutdown.vcproj", "{0E3D11A6-2A43-405E-8F17-40E97068FC43}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CIOCPServer", "CIOCPServer\CIOCPServer.vcproj", "{EA885C40-4D46-4720-AAAC-EC31F082CCFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCCF3510-6153-4EC5-9133-F6B397806553}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BCCF3510-6153-4EC5-9133-F6B397806553}.Debug|Win32.Build.0 = Debug|Win32
+		{BCCF3510-6153-4EC5-9133-F6B397806553}.Release|Win32.ActiveCfg = Release|Win32
+		{BCCF3510-6153-4EC5-9133-F6B397806553}.Release|Win32.Build.0 = Release|Win32
+		{40D7ADF0-B769-4BD6-89F5-9247F70A033C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{40D7ADF0-B769-4BD6-89F5-9247F70A033C}.Debug|Win32.Build.0 = Debug|Win32
+		{40D7ADF0-B769-4BD6-89F5-9247F70A033C}.Release|Win32.ActiveCfg = Release|Win32
+		{40D7ADF0-B769-4BD6-89F5-9247F70A033C}.Release|Win32.Build.0 = Release|Win32
+		{0E3D11A6-2A43-405E-8F17-40E97068FC43}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E3D11A6-2A43-405E-8F17-40E97068FC43}.Debug|Win32.Build.0 = Debug|Win32
+		{0E3D11A6-2A43-405E-8F17-40E97068FC43}.Release|Win32.ActiveCfg = Release|Win32
+		{0E3D11A6-2A43-405E-8F17-40E97068FC43}.Release|Win32.Build.0 = Release|Win32
+		{EA885C40-4D46-4720-AAAC-EC31F082CCFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EA885C40-4D46-4720-AAAC-EC31F082CCFF}.Debug|Win32.Build.0 = Debug|Win32
+		{EA885C40-4D46-4720-AAAC-EC31F082CCFF}.Release|Win32.ActiveCfg = Release|Win32
+		{EA885C40-4D46-4720-AAAC-EC31F082CCFF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

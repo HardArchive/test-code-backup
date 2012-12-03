@@ -16,12 +16,15 @@ class CSockeHelperIOCP
 public:
 	CSockeHelperIOCP(void);
 	~CSockeHelperIOCP(void);
-	static DWORD WINAPI AcceptConnetProc(LPVOID lpParam);  //接收连接线程
-	//接收探针数据
-	static DWORD WINAPI ReceiveDataProc(LPVOID lpParam);   //接收处理数据线程
+
+	//线程函数
+private:
+	static DWORD WINAPI _ListenThreadProc(LPVOID lpParam);  //监听线程 - 接受连接线程
+	static DWORD WINAPI _WorkerThreadProc(LPVOID lpParam);  //工作线程 - 接收处理数据线程
+
 
 public:
-	bool Init();     //初始化函数
+	bool Init(int nPort = 4567);     //初始化函数
 	bool UnInit();   //退出清理函数
 
 

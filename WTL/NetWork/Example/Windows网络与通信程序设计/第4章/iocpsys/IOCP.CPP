@@ -647,7 +647,7 @@ DWORD WINAPI CIOCPServer::_ListenThreadProc(LPVOID lpParam)
 	hWaitEvents[nEventCount ++] = pThis->m_hRepostEvent;
 
 	// 创建指定数量的工作线程在完成端口上处理I/O
-	for(i=0; i<MAX_THREAD; i++)
+	for(int i=0; i<MAX_THREAD; i++)
 	{
 		hWaitEvents[nEventCount ++] = ::CreateThread(NULL, 0, _WorkerThreadProc, pThis, 0, NULL);
 	}
@@ -677,7 +677,7 @@ DWORD WINAPI CIOCPServer::_ListenThreadProc(LPVOID lpParam)
 			// 等待I/O处理线程退出
 			::WaitForMultipleObjects(MAX_THREAD, &hWaitEvents[2], TRUE, 5*1000);
 
-			for(i=2; i<MAX_THREAD + 2; i++)
+			for(int i=2; i<MAX_THREAD + 2; i++)
 			{	
 				::CloseHandle(hWaitEvents[i]);
 			}

@@ -156,7 +156,7 @@ protected:
 	int m_nMaxSends;
 	int m_nMaxFreeBuffers;
 	int m_nMaxFreeContexts;
-	int m_nMaxConnections;
+	int m_nMaxConnections;    //最大连接数
 
 	HANDLE m_hListenThread;			// 监听线程
 	HANDLE m_hCompletion;			// 完成端口句柄

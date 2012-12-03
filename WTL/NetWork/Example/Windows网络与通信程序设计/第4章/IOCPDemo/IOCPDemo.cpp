@@ -91,6 +91,7 @@ void main()
 	int nPort = 4567;
 	// 创建完成端口对象，创建工作线程处理完成端口对象中事件
 	HANDLE hCompletion = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
+	//关联一个已打开的文件实例和新建的或已存在的I/0完成端口，或者创建一个未关联任何文件的I/O完成端口。
 	::CreateThread(NULL, 0, ServerThread, (LPVOID)hCompletion, 0, 0);
 
 	// 创建监听套节字，绑定到本地地址，开始监听
