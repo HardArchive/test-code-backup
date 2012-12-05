@@ -2,7 +2,7 @@
 #include "TestPublic.h"
 
 #include "public/Socket.h"
-//#include "public/RegUtil.h"
+#include "public/RegUtil.h"
 //#include "public/IniUtil.h"
 #include "public/PathUtil.h"
 #include <iostream>
@@ -240,4 +240,23 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 		iNum++;
 	}	
 	return 0;
+}
+
+
+
+int TestRegUtil()
+{
+	TCHAR* ptTem = NULL;
+	TCHAR tszTem[MAX_PATH] = {_T("0x12345678")};
+	QNA::CRegUtil clsRegUtil;
+	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID*)&ptTem);
+	delete ptTem;
+	ptTem = NULL;
+
+	clsRegUtil.SetRegistryValue(_T("SOFTWARE\\RainSoft"), _T("RSDataToDb"), _T("test"), REG_SZ, (PBYTE)tszTem, _tcslen(tszTem));
+
+	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID*)&ptTem);
+	delete ptTem;
+	ptTem = NULL;
+	return 1;
 }

@@ -11,6 +11,8 @@ int FileUtil();
 
 //int TestPathUtil();
 
+int TestRegUtil();
+
 int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP);
 
 int CheckIsEffective(char* pstrDomain, char* pstrIP);
