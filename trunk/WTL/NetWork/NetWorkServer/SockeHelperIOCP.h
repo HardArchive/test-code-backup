@@ -9,7 +9,6 @@
 * 6、 History    ： 
 * 7、 Remark     ： 
 ****************************************************************************************************/
-extern bool g_bExit;   //全局退出函数
 
 #define IO_BUFFER_LEN 512
 //每次IO操作的数据
@@ -46,12 +45,25 @@ typedef struct PER_IO_OPERATION_DATA
 
 }PERIODATA, *LPPERIODATA;
 
+//外部传入线程结构
+typedef struct THREAD_AFFERENT_DATA
+{
+	HANDLE hIoPort;                   //完成端口
+	SOCKET sockListen;                //监听套接字
+	CRITICAL_SECTION  csMem;          //申请内存临界区变量
+	PVOID pAllMemory;                 //指向申请的大块内存首地址
+	DWORD dwDataCount;                //总的已使用的数据的数量
+	LPPERIODATA pstuIoDataUnUsed;     //已标记未使用的数据	
+}THREADAFFERENT;
 
 class CSockeHelperIOCP
 {
 public:
 	CSockeHelperIOCP(void);
 	~CSockeHelperIOCP(void);
+
+public:
+	
 
 	//线程函数
 private:
@@ -70,13 +82,8 @@ private:
 	//static void CloseClient(SOCKET clientSocket, LPPERIODATA lpOperationData); //关闭客户端的连接并回收内存
 	
 private:
-	PVOID m_pAllMemory;                 //指向申请的大块内存首地址
-	DWORD m_dwDataCount;                //总的已使用的数据的数量
-	LPPERIODATA m_pstuIoDataUnUsed;     //已标记未使用的数据
-
-	
-	HANDLE m_hIoPort;      //完成端口	
-	SOCKET m_sockListen;   //监听套接字
+	//SOCKET m_sockListen;   //监听套接字
+	THREADAFFERENT m_stuThreadAfferent;  //传入线程结构
 
 	HANDLE m_hListenThreadHandle;   //接收连接线程句柄	
 	HANDLE* m_pszThreadHandle;      //接收线程句柄数组	

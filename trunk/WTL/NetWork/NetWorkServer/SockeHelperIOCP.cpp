@@ -9,7 +9,11 @@ bool g_bExit = false;   //全局退出函数
 
 //PER_IO_OPERATION_DATA 结构链表-----------------------
 #define MAX_MEM_ITEM_COUNT 10000
-static CRITICAL_SECTION  g_csMem;    //申请内存临界区变量
+//static CRITICAL_SECTION  g_csMem;    //申请内存临界区变量
+//PVOID g_pAllMemory;                 //指向申请的大块内存首地址
+//DWORD g_dwDataCount;                //总的已使用的数据的数量
+//LPPERIODATA g_pstuIoDataUnUsed;     //已标记未使用的数据
+
 //-----------------------------------------------------
 
 
@@ -23,10 +27,7 @@ CSockeHelperIOCP::CSockeHelperIOCP(void)
 		QNA::TRACE(_T("Socket2.0初始化失败，Exit!"));
 		exit(0);
 	}
-	m_hIoPort = NULL;
-	m_dwDataCount = 0;
-	m_pAllMemory = NULL;
-	m_pstuIoDataUnUsed = NULL;	
+	ZeroMemory(m_stuThreadAfferent, sizeof(THREADAFFERENT));
 	g_bExit = true;
 }
 
@@ -35,16 +36,13 @@ CSockeHelperIOCP::~CSockeHelperIOCP(void)
 	UnInit();
 
 	g_bExit = false;
-	m_hIoPort = NULL;
-	m_dwDataCount = 0;
-	m_pAllMemory = NULL;
-	m_pstuIoDataUnUsed = NULL;	
+	ZeroMemory(m_stuThreadAfferent, sizeof(THREADAFFERENT));
 }
 
 //初始化函数，开启完成端口
 bool CSockeHelperIOCP::Init(int nPort)
 {
-	::InitializeCriticalSection(&g_csMem);
+	::InitializeCriticalSection(&m_stuThreadAfferent.csMem);
 	if (!MemoryApply(MAX_MEM_ITEM_COUNT))
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::Init: MemoryApply failure!\n"));
@@ -59,7 +57,7 @@ bool CSockeHelperIOCP::Init(int nPort)
 	
 
 	//创建接受连接线程
-	m_hListenThreadHandle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)_ListenThreadProc, (LPVOID)m_sockListen, 0, NULL);
+	m_hListenThreadHandle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)_ListenThreadProc, (LPVOID)&m_stuThreadAfferent, 0, NULL);
 	if(!m_hListenThreadHandle)
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::Init: Create listen thread failure!\n"));
@@ -78,9 +76,9 @@ bool CSockeHelperIOCP::Init(int nPort)
 void CSockeHelperIOCP::UnInit()
 {
 	//关闭完成端口
-	if(m_hIoPort)
+	if(m_stuThreadAfferent.hIoPort)
 	{
-		CloseHandle(m_hIoPort);
+		CloseHandle(m_stuThreadAfferent.hIoPort);
 	}
 
 	//关闭监听线程
@@ -91,9 +89,9 @@ void CSockeHelperIOCP::UnInit()
 	}
 
 	//关闭监听socket
-	if(m_sockListen!=INVALID_SOCKET)
+	if(m_stuThreadAfferent.sockListen!=INVALID_SOCKET)
 	{
-		closesocket(m_sockListen);
+		closesocket(m_stuThreadAfferent.sockListen);
 	}
 	//关闭接收线程数组线程 释放空间
 	if(m_pszThreadHandle)
@@ -109,12 +107,12 @@ void CSockeHelperIOCP::UnInit()
 		free(m_pszThreadHandle);
 	}
 
-	::DeleteCriticalSection(&g_csMem);
+	::DeleteCriticalSection(&m_stuThreadAfferent.csMem);
 
-	if(m_pAllMemory !=NULL)
+	if(m_stuThreadAfferent.pAllMemory !=NULL)
 	{
-		free(m_pAllMemory);
-		m_pAllMemory = NULL;
+		free(m_stuThreadAfferent.pAllMemory);
+		m_stuThreadAfferent.pAllMemory = NULL;
 	}
 }
 
@@ -141,11 +139,11 @@ DWORD WINAPI CSockeHelperIOCP::_ListenThreadProc(LPVOID lpParam)
 				char *pClientIp = inet_ntoa(clietnAddr.sin_addr);
 
 				//将客户端Socket加上完成端口
-				//////////if(NULL==CreateIoCompletionPort((HANDLE)clientSocket, m_hIoPort, (ULONG_PTR)clientSocket, 0))
-				//////////{//关联一个已打开的文件实例和新建的或已存在的I/0完成端口，或者创建一个未关联任何文件的I/O完成端口。
-				//////////	QNA::TRACE(_T("CSockeHelperIOCP::_ListenThreadProc:关键套接字到完成端口上失败！\r\n"));
-				//////////	continue;
-				//////////}
+				if(NULL==CreateIoCompletionPort((HANDLE)clientSocket, m_hIoPort, (ULONG_PTR)clientSocket, 0))
+				{//关联一个已打开的文件实例和新建的或已存在的I/0完成端口，或者创建一个未关联任何文件的I/O完成端口。
+					QNA::TRACE(_T("CSockeHelperIOCP::_ListenThreadProc:关键套接字到完成端口上失败！\r\n"));
+					continue;
+				}
 				//申请PPER_IO_OPERATION_DATA 结构内存块
 				LPPERIODATA lpOperationData = NULL;
 				////////::EnterCriticalSection(&csMem);
@@ -275,25 +273,25 @@ bool CSockeHelperIOCP::MemoryApply(int iCount)
 {
 	LPPERIODATA pFirstData = NULL;
 	LPPERIODATA pCurrent = NULL;
-	::EnterCriticalSection(&g_csMem);
-	m_pAllMemory = malloc(iCount * sizeof(PER_IO_OPERATION_DATA));
-	if(NULL == m_pAllMemory)
+	::EnterCriticalSection(&m_stuThreadAfferent.csMem);
+	m_stuThreadAfferent.pAllMemory = malloc(iCount * sizeof(PER_IO_OPERATION_DATA));
+	if(NULL == m_stuThreadAfferent.pAllMemory)
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::MemoryApply 申请大内存块失败!\n"));
 		return false;
 	}
 
-	ZeroMemory(m_pAllMemory, iCount * sizeof(PER_IO_OPERATION_DATA));
-	pFirstData = (LPPERIODATA)m_pAllMemory;
+	ZeroMemory(m_stuThreadAfferent.pAllMemory, iCount * sizeof(PER_IO_OPERATION_DATA));
+	pFirstData = (LPPERIODATA)m_stuThreadAfferent.pAllMemory;
 	for(int i=0; i<iCount; i++)
 	{
 		pCurrent = NULL;
 		pCurrent = pFirstData + i;
-		pCurrent->pNext = m_pstuIoDataUnUsed;
-		m_pstuIoDataUnUsed = pCurrent;		
-		m_dwDataCount++;
+		pCurrent->pNext = m_stuThreadAfferent.pstuIoDataUnUsed;
+		m_stuThreadAfferent.pstuIoDataUnUsed = pCurrent;		
+		m_stuThreadAfferent.dwDataCount++;
 	}
-	::LeaveCriticalSection(&g_csMem);
+	::LeaveCriticalSection(&m_stuThreadAfferent.csMem);
 	return true;
 }
 
@@ -301,16 +299,16 @@ bool CSockeHelperIOCP::MemoryApply(int iCount)
 bool CSockeHelperIOCP::InitIocp(int nPort)
 {
 	//创建完成端口
-	m_hIoPort = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0);
-	if(NULL == m_hIoPort)
+	m_stuThreadAfferent.hIoPort = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0);
+	if(NULL == m_stuThreadAfferent.hIoPort)
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::InitIocp:CreateIoCompletionPort failure!\n"));
 		return false;
 	}
 
 	//创建监听Socket //绑定到端口 //在端口监听
-	m_sockListen =WSASocket(AF_INET,SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
-	if(INVALID_SOCKET == m_sockListen)
+	m_stuThreadAfferent.sockListen =WSASocket(AF_INET,SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
+	if(INVALID_SOCKET == m_stuThreadAfferent.sockListen)
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::InitIocp: create listen socket failure!\n"));
 		return false;
@@ -320,12 +318,12 @@ bool CSockeHelperIOCP::InitIocp(int nPort)
 	localAddr.sin_family = AF_INET;
 	localAddr.sin_port = htons(nPort);
 	localAddr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
-	if(SOCKET_ERROR == bind(m_sockListen, (sockaddr *)&localAddr, sizeof(localAddr)))
+	if(SOCKET_ERROR == bind(m_stuThreadAfferent.sockListen, (sockaddr *)&localAddr, sizeof(localAddr)))
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::InitIocp:  bind socket failure!\n"));
 		return false;
 	}
-	if(SOCKET_ERROR == listen(m_sockListen, 300))
+	if(SOCKET_ERROR == listen(m_stuThreadAfferent.sockListen, 300))
 	{
 		QNA::TRACE(_T("CSockeHelperIOCP::InitIocp:  listen socket failure!\n"));
 		return false;
