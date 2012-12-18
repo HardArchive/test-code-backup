@@ -25,21 +25,23 @@
 
 //#include "9CppFile.h"
 using namespace QNA;
+#include "file.h"
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char szFilename[MAX_PATH] = {"D:\\WinPath\\desktop\\test\\reec.html"};
-	CFile f;
-	if( f.Open(szFilename)==TRUE ) 
-	{
-		FILETIME ftModified;
-		f.GetFileTime(NULL, NULL, &ftModified);
-		DWORD dwSize = f.GetSize();
-		LPSTR pBuffer = (LPSTR)new CHAR[dwSize + 1];
-		f.Read(pBuffer, dwSize);
-		pBuffer[dwSize] = '\0';
-		f.Close();
-		delete [] pBuffer;
-	}
+	//char szFilename[MAX_PATH] = {"D:\\WinPath\\desktop\\test\\reec.html"};
+	//CFile f;
+	//if( f.Open(szFilename)==TRUE ) 
+	//{
+	//	FILETIME ftModified;
+	//	f.GetFileTime(NULL, NULL, &ftModified);
+	//	DWORD dwSize = f.GetSize();
+	//	LPSTR pBuffer = (LPSTR)new CHAR[dwSize + 1];
+	//	f.Read(pBuffer, dwSize);
+	//	pBuffer[dwSize] = '\0';
+	//	f.Close();
+	//	delete [] pBuffer;
+	//}
 
 
 
