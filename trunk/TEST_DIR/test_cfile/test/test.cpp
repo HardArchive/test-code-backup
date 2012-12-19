@@ -42,6 +42,41 @@ int _tmain(int argc, _TCHAR* argv[])
 	//	f.Close();
 	//	delete [] pBuffer;
 	//}
+	
+	PCHAR ptem = NULL;
+	size_t nTemLen = 0;
+	TCHAR tszFileName[MAX_PATH] =  {_T("D:\\b.txt")};
+	BYTE szbyFileTem[1024*10] = {0};
+
+	RG::CFile clsFile(tszFileName, _T("rt+"));
+
+	nTemLen = 1024*10;
+	ptem = (PCHAR)szbyFileTem;
+	memset(szbyFileTem, 0, 1024*10);
+	nTemLen = clsFile.ReadAll(szbyFileTem, nTemLen);
+	
+	if (clsFile.Eof())
+	{
+		clsFile.SeekStart();
+	}
+	
+	memset(szbyFileTem, 0, 1024*10);
+	nTemLen = 16;
+	nTemLen = clsFile.Read(szbyFileTem, nTemLen);
+	ptem = (PCHAR)szbyFileTem;
+
+
+	clsFile.Write(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!"));
+	clsFile.Flush();
+	clsFile.Write(_T("123456789"));
+	clsFile.Write(_T("Go beyond myself, transcend myself!"));
+
+	clsFile.Write(_T("123456789"));
+	clsFile.Write(_T("123456789"));
+	clsFile.Flush();
+	
+
+	clsFile.Close();
 
 
 

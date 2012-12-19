@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="RG::CFile">
+    <Position X="0.5" Y="0.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAEAIQIAGEAAAQBgBIBAEAAACBAAAAGIBBA=</HashCode>
+      <FileName>file.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="RG::byte" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>file.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="RG::SeekMode">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>file.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>
