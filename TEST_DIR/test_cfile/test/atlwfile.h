@@ -250,7 +250,9 @@ public:
    static BOOL FileExists(LPCTSTR pstrFileName)
    {
       _ASSERTE(pstrFileName!=NULL);
-      DWORD dwErrMode = ::SetErrorMode(SEM_FAILCRITICALERRORS);
+	  //系统不显示关键错误处理消息框。 相反，系统发送错误给调用进程
+	  //返回值是错误的模式位标志先前的状态
+      DWORD dwErrMode = ::SetErrorMode(SEM_FAILCRITICALERRORS); 
       DWORD dwAttribs = ::GetFileAttributes(pstrFileName);
       ::SetErrorMode(dwErrMode);
       return dwAttribs != INVALID_FILE_ATTRIBUTES && ((dwAttribs & FILE_ATTRIBUTE_DIRECTORY) == 0);
