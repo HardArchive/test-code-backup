@@ -231,6 +231,22 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="common"
+			>
+			<File
+				RelativePath="..\common\MessageboxUtil.h"
+				>
+			</File>
+			<File
+				RelativePath="..\common\RegUtil.h"
+				>
+			</File>
+			<File
+				RelativePath="..\common\TraceUtil.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>
