@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include <Windows.h>
-#include "atlwfile.h"
+//#include "atlwfile.h"
 //#include <atlfile.h>
 //Interface
 //Name                 Description 
@@ -24,9 +24,9 @@
 //using namespace 9CPPL;
 
 //#include "9CppFile.h"
-using namespace QNA;
-#include "file.h"
 
+#include "file1.h"
+using namespace RG;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//char szFilename[MAX_PATH] = {"D:\\WinPath\\desktop\\test\\reec.html"};
@@ -48,7 +48,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	TCHAR tszFileName[MAX_PATH] =  {_T("D:\\b.txt")};
 	BYTE szbyFileTem[1024*10] = {0};
 
-	RG::CFile clsFile(tszFileName, _T("rt+"));
+	RG::CFile clsFile(tszFileName, _T("wt+"));
 
 	nTemLen = 1024*10;
 	ptem = (PCHAR)szbyFileTem;
@@ -66,13 +66,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	ptem = (PCHAR)szbyFileTem;
 
 
-	clsFile.Write(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!"));
+	clsFile.Write(string(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!")));
 	clsFile.Flush();
-	clsFile.Write(_T("123456789"));
-	clsFile.Write(_T("Go beyond myself, transcend myself!"));
+	clsFile.Write(string(_T("123456789")));
+	clsFile.Write(string(_T("Go beyond myself, transcend myself!")));
 
-	clsFile.Write(_T("123456789"));
-	clsFile.Write(_T("123456789"));
+	clsFile.Write(string(_T("123456789")));
+	clsFile.Write(string(_T("123456789")));
 	clsFile.Flush();
 	
 

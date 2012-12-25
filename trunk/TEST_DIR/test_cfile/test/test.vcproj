@@ -41,6 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(ProjectDir)\common"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -201,11 +202,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\atlwfile.h"
+				RelativePath=".\common\atlwfile.h"
 				>
 			</File>
 			<File
-				RelativePath=".\file.h"
+				RelativePath=".\common\file1.h"
+				>
+			</File>
+			<File
+				RelativePath=".\common\FileHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\common\RegUtil.h"
 				>
 			</File>
 			<File
