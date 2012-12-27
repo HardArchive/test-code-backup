@@ -59,7 +59,7 @@ void FreeSocketObj(PSOCKET_OBJ pSocket)
 		::closesocket(pSocket->s);
 	}
 	::GlobalFree(pSocket);
-	printf("释放一个套节字对象\r\n");
+	printf("FreeSocketObj释放一个套节字对象\r\n");
 }
 
 // 申请一个线程对象，初始化它的成员，并将它添加到线程对象列表中
@@ -127,7 +127,7 @@ void RebuildArray(PTHREAD_OBJ pThread)
 
 /////////////////////////////////////////////////////////////////////
 
-// 向一个线程的套节字列表中插入一个套节字
+// 向一个线程的套节字列表中插入一个套节字 最多插入64个socket
 BOOL InsertSocketObj(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 {
 	BOOL bRet = FALSE;
@@ -175,7 +175,8 @@ void AssignToFreeThread(PSOCKET_OBJ pSocket)
 	// 没有空闲线程，为这个套节字创建新的线程
 	if(pThread == NULL)
 	{
-		pThread = GetThreadObj();  //申请一个线程对象，初始化它的成员，并将它添加到线程对象列表中
+		//申请一个线程对象，初始化它的成员，并将它添加到线程对象列表中
+		pThread = GetThreadObj();   //这个函数内部仅仅创建了一个事件 并且把事件存放在pThread 事件数组第一个
 		InsertSocketObj(pThread, pSocket);	
 		::CreateThread(NULL, 0, ServerThread, pThread, 0, NULL);
 	}
@@ -216,7 +217,7 @@ void RemoveSocketObj(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 
 	// 指示线程重建句柄数组
 	::WSASetEvent(pThread->events[0]);
-	printf("从给定线程的套节字对象列表中移除一个套节字对象\r\n");
+	printf("RemoveSocketObj从给定线程的套节字对象列表中移除一个套节字对象\r\n");
 
 	// 说明一个连接中断
 	::InterlockedDecrement(&g_nCurrentConnections); //对变量自减1
@@ -244,8 +245,9 @@ BOOL HandleIO(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 					sockaddr_in sin;
 					memcpy(&sin, &pSocket->addrRemote, sizeof(sin));
 					// 取得ip和端口号					
-					printf("接收IP:%s, Port:%d; 数据：%s \n", inet_ntoa(sin.sin_addr),
+					printf("HandleIO接收IP:%s, Port:%d; 数据：%s \n", inet_ntoa(sin.sin_addr),
 						sin.sin_port, szText);
+					::send(pSocket->s, szText, strlen(szText), 0);
 				}
 			}
 			else
@@ -253,14 +255,17 @@ BOOL HandleIO(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 		}
 		else if(event.lNetworkEvents & FD_CLOSE)	// 套节字关闭
 		{
-			printf("收到套接字关闭事件消息！！！！\r\n");
+			printf("HandleIO收到套接字关闭事件消息！！！！\r\n");
 			break;
 		}
 		else if(event.lNetworkEvents & FD_WRITE)	// 套节字可写
 		{
 			if(event.iErrorCode[FD_WRITE_BIT] == 0)
 			{	
-				printf("收到套接字可写事件消息\r\n");
+				char szText[256];
+				sprintf(szText, "hello!! socket:%X\r\n", pSocket->s);
+				printf("HandleIO收到套接字可写事件消息\r\n");
+				::send(pSocket->s, szText, strlen(szText), 0);
 			}
 			else
 				break;
