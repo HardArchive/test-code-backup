@@ -15,7 +15,6 @@ typedef struct _SOCKET_OBJ
 {
 	SOCKET s;						// 套节字句柄
 	int nOutstandingOps;			// 记录此套节字上的重叠I/O数量
-	
 	LPFN_ACCEPTEX lpfnAcceptEx;		// 扩展函数AcceptEx的指针（仅对监听套节字而言）
 } SOCKET_OBJ, *PSOCKET_OBJ;
 
@@ -39,6 +38,29 @@ HANDLE g_events[WSA_MAXIMUM_WAIT_EVENTS];	// I/O事件句柄数组
 int g_nBufferCount;							// 上数组中有效句柄数量
 PBUFFER_OBJ g_pBufferHead, g_pBufferTail;	// 记录缓冲区对象组成的表的地址
 
+//获取扩展函数指针
+PVOID GetExtensionFuncPtr(SOCKET sock)
+{
+	DWORD dwBytes;
+	PVOID pfn = NULL;
+	GUID guid = WSAID_GETACCEPTEXSOCKADDRS;  //GetAcceptExSockAddrs
+
+	//I/O控制命令winsock1版是ioctlsocket与winsock2版是WSAIoctl,传一个套接字进来即可
+	//通过WSAIoctl() (选项参数为SIO_GET_EXTENSION_FUNCTION_POINTER)动态获得函数的指针
+	::WSAIoctl	(
+		sock,
+		SIO_GET_EXTENSION_FUNCTION_POINTER,
+		&guid,
+		sizeof(guid),
+		&pfn,
+		sizeof(pfn),
+		&dwBytes,
+		NULL,
+		NULL
+		);
+
+	return pfn;
+}
 // 申请套节字对象和释放套节字对象的函数
 PSOCKET_OBJ GetSocketObj(SOCKET s)
 {
@@ -139,9 +161,12 @@ void RebuildArray()
 	}
 }
 
+//投递一个接收
 BOOL PostAccept(PBUFFER_OBJ pBuffer)
 {
 	PSOCKET_OBJ pSocket = pBuffer->pSocket;
+	LPFN_GETACCEPTEXSOCKADDRS pfnGetAcceptExSockaddrs = NULL; //获取连接addr
+
 	if(pSocket->lpfnAcceptEx != NULL)
 	{	
 		// 设置I/O类型，增加套节字上的重叠I/O计数
@@ -150,21 +175,36 @@ BOOL PostAccept(PBUFFER_OBJ pBuffer)
 
 		// 投递此重叠I/O  
 		DWORD dwBytes;
-		pBuffer->sAccept = 
-			::WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);
+		pBuffer->sAccept = ::WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);  //创建socket
+		//开始接收
 		BOOL b = pSocket->lpfnAcceptEx(pSocket->s, 
 			pBuffer->sAccept,
 			pBuffer->buff, 
-			BUFFER_SIZE - ((sizeof(sockaddr_in) + 16) * 2),
-			sizeof(sockaddr_in) + 16, 
-			sizeof(sockaddr_in) + 16, 
-			&dwBytes, 
-			&pBuffer->ol);
+			BUFFER_SIZE - ((sizeof(sockaddr_in) + 16) * 2), //buf大小
+			sizeof(sockaddr_in) + 16,  //缓冲区中为本地地址预留的长度，必须比最大专址长度多16
+			sizeof(sockaddr_in) + 16,  //缓冲区中为远程地址预留的长度，必须比最大专址长度多16
+			&dwBytes,                  //用来接收到的数据长度
+			&pBuffer->ol);             //用来处理本请求的重叠结构(OVERLAPPED)
 		if(!b)
 		{
 			if(::WSAGetLastError() != WSA_IO_PENDING)
 				return FALSE;
 		}
+		pfnGetAcceptExSockaddrs = (LPFN_GETACCEPTEXSOCKADDRS)GetExtensionFuncPtr(pBuffer->sAccept);
+		SOCKADDR_IN *LocalSockaddr    = NULL;
+		SOCKADDR_IN *RemoteSockaddr    = NULL;
+		int    nLocalSockaddrLen        = 0;
+		int    nRemoteSockaddrLen        = 0;
+		pfnGetAcceptExSockaddrs(pBuffer->buff, 0, sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, 
+			(SOCKADDR **)&LocalSockaddr, &nLocalSockaddrLen, (SOCKADDR **)&RemoteSockaddr, &nRemoteSockaddrLen);    
+		printf("1Accepted client:%s:%d\n", inet_ntoa(RemoteSockaddr->sin_addr), ntohs(RemoteSockaddr->sin_port));
+
+		SOCKADDR_IN* pbLocalSockAddr = NULL;
+		SOCKADDR_IN* pbRemoteSockAddr = NULL;
+		pbLocalSockAddr = (sockaddr_in*)((PBYTE)pBuffer->buff + (BUFFER_SIZE - 2*(sizeof(sockaddr_in) + 16)) + 10);		
+		pbRemoteSockAddr = (sockaddr_in*)(pbLocalSockAddr + sizeof(sockaddr_in) + 10 + 2);		
+		printf("2Accepted client:%s:%d\n", inet_ntoa(pbRemoteSockAddr->sin_addr), ntohs(pbRemoteSockAddr->sin_port));
+
 		return TRUE;
 	}
 	return FALSE;
@@ -277,6 +317,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 			{
 				// 创建一个缓冲区，以发送数据。这里就使用原来的缓冲区
 				PBUFFER_OBJ pSend = pBuffer;
+				printf("收到:%s\r\n", pBuffer->buff);
 				pSend->nLen = dwTrans;
 				
 				// 投递发送I/O（将数据回显给客户）
@@ -339,6 +380,8 @@ void main()
 		NULL, //指定下层服务提供者，可以是NULL
 		0,    //保留
 		WSA_FLAG_OVERLAPPED); //指定socket属性，要使用重叠I/O模型，必须指定WSA_FLAG_OVERLAPPED
+	//如果使用socket则默认指定WSA_FLAG_OVERLAPPED
+	//绑定并监听IP和端口
 	SOCKADDR_IN si;
 	si.sin_family = AF_INET;
 	si.sin_port = ::ntohs(nPort);
@@ -346,13 +389,13 @@ void main()
 	::bind(sListen, (sockaddr*)&si, sizeof(si));
 	::listen(sListen, 200);
 
-	// 为监听套节字创建一个SOCKET_OBJ对象
+	// 为监听套节字创建一个SOCKET_OBJ对象 GetSocketObj函数仅仅开辟一个PSOCKET_OBJ内存并将套接字传入，
 	PSOCKET_OBJ pListen = GetSocketObj(sListen);
 
 	// 加载扩展函数AcceptEx
 	GUID GuidAcceptEx = WSAID_ACCEPTEX;
 	DWORD dwBytes;
-	//套接字选项和I/O控制命令
+	//套接字选项和I/O控制命令  此处用来获取AcceptEx函数指针
 	WSAIoctl(pListen->s, 
 		SIO_GET_EXTENSION_FUNCTION_POINTER, 
 		&GuidAcceptEx, 

@@ -130,7 +130,7 @@ private:
 	//接受连接函数指针
 	LPFN_ACCEPTEX				m_pfnAcceptEx;              
 	//是专门为AcceptEx函数准备的，它将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户。
-	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;  
+	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;    //函数指针用来取得接收socket的IP端口
 private:
 	IServerSocketListener*	m_psoListener;
 
@@ -184,8 +184,8 @@ public:
 	DWORD GetKeepAliveInterval	()	{return m_dwKeepAliveInterval;}
 
 private:
-	DWORD m_dwIocpThreadCount;
-	DWORD m_dwAcceptSocketCount;
+	DWORD m_dwIocpThreadCount;     //工作线程数量  CPU Core Number * 2 + 2
+	DWORD m_dwAcceptSocketCount;   //接受连接数量
 	DWORD m_dwIocpBufferSize;
 	DWORD m_dwSocketListenQueue;  //指定内核为此套接口排队的最大连接个数 此处为30
 	DWORD m_dwFreeSocketObjPool;
