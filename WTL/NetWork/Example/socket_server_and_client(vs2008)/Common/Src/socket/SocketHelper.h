@@ -70,6 +70,8 @@ public:
 	virtual ~ISocketListener() {}
 };
 
+
+//IServerSocketListener 接口提供组件通知方法，由上层应用实现
 class IServerSocketListener : public ISocketListener
 {
 public:
@@ -83,6 +85,7 @@ public:
 	virtual EnHandleResult OnConnect(DWORD dwConnectionID)	= 0;
 };
 
+//ISocketServer 接口提供组件操作方法，由上层应用直接调用
 class ISocketServer
 {
 public:
@@ -149,7 +152,7 @@ typedef auto_ptr<ISocketClient>	ISocketClientPtr;
 
 struct TBufferObjBase
 {
-	OVERLAPPED			ov;
+	OVERLAPPED			ov;           //WSAOVERLAPPED
 	WSABUF				buff;
 	EnSocketOperation	operation;
 };
