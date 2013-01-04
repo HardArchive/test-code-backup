@@ -27,8 +27,8 @@ typedef struct _BUFFER_OBJ
 
 	int nOperation;			// 提交的操作类型
 #define OP_ACCEPT	1
-#define OP_READ		2
-#define OP_WRITE	3
+#define OP_RECV		2
+#define OP_SEND	    3
 
 	SOCKET sAccept;			// 用来保存AcceptEx接受的客户套节字（仅对监听套节字而言）
 	_BUFFER_OBJ *pNext;
@@ -161,7 +161,7 @@ void RebuildArray()
 	}
 }
 
-//投递一个接收
+//投递一个连接
 BOOL PostAccept(PBUFFER_OBJ pBuffer)
 {
 	PSOCKET_OBJ pSocket = pBuffer->pSocket;
@@ -210,10 +210,11 @@ BOOL PostAccept(PBUFFER_OBJ pBuffer)
 	return FALSE;
 };
 
+//投递一个接收
 BOOL PostRecv(PBUFFER_OBJ pBuffer)
 {	
 	// 设置I/O类型，增加套节字上的重叠I/O计数
-	pBuffer->nOperation = OP_READ;
+	pBuffer->nOperation = OP_RECV;
 	pBuffer->pSocket->nOutstandingOps ++;
 
 	// 投递此重叠I/O
@@ -230,10 +231,11 @@ BOOL PostRecv(PBUFFER_OBJ pBuffer)
 	return TRUE;
 }
 
+//投递一个发送
 BOOL PostSend(PBUFFER_OBJ pBuffer)
 {
 	// 设置I/O类型，增加套节字上的重叠I/O计数
-	pBuffer->nOperation = OP_WRITE;
+	pBuffer->nOperation = OP_SEND;
 	pBuffer->pSocket->nOutstandingOps ++;
 
 	// 投递此重叠I/O
@@ -311,7 +313,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 			PostAccept(pBuffer);
 		}
 		break;
-	case OP_READ:	// 接收数据完成
+	case OP_RECV:	// 接收数据完成
 		{
 			if(dwTrans > 0)
 			{
@@ -341,7 +343,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 			}
 		}
 		break;
-	case OP_WRITE:		// 发送数据完成
+	case OP_SEND:		// 发送数据完成
 		{
 			if(dwTrans > 0)
 			{
@@ -374,7 +376,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 void main()
 {
 	// 创建监听套节字，绑定到本地端口，进入监听模式
-	int nPort = 4567;
+	int nPort = 4000;
 	SOCKET sListen = ::WSASocket(
 		AF_INET, SOCK_STREAM, IPPROTO_TCP, //此三个参数与标准socket相同
 		NULL, //指定下层服务提供者，可以是NULL
