@@ -259,7 +259,7 @@ void CIocpServer::CloseClientSocket()
 		DeleteSocketObj(pSocketObj);
 	}
 
-	 m_mpClientSocket.clear();
+	m_mpClientSocket.clear();
 }
 
 TSocketObj*	CIocpServer::GetFreeSocketObj()
@@ -342,7 +342,7 @@ TSocketObj*	CIocpServer::CreateSocketObj()
 	ASSERT(pcrisec);
 	::InitializeCriticalSection(pcrisec);
 	pSocketObj->crisec.Attach(pcrisec);
-	
+
 	return pSocketObj;
 }
 
@@ -513,12 +513,12 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 		/*
 		if(dwResult == WAIT_OBJECT_0)
 		{
-			DWORD dwResult2 = ::WaitForSingleObjectEx(pServer->m_evtAccept, 0L, FALSE);
+		DWORD dwResult2 = ::WaitForSingleObjectEx(pServer->m_evtAccept, 0L, FALSE);
 
-			if(dwResult2 == WAIT_OBJECT_0)
-				dwResult = WAIT_OBJECT_0 + 1;
-			else if(dwResult2 != WAIT_TIMEOUT)
-				VERIFY(FALSE);
+		if(dwResult2 == WAIT_OBJECT_0)
+		dwResult = WAIT_OBJECT_0 + 1;
+		else if(dwResult2 != WAIT_TIMEOUT)
+		VERIFY(FALSE);
 		}
 		*/
 
@@ -532,12 +532,12 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 			/*
 			if(::PostAccept(pServer->m_pfnAcceptEx, pServer->m_soListen, soClient, pBufferObj) != NO_ERROR)
 			{
-				pServer->DeleteBufferObj(pBufferObj);
-				pServer->ReleaseAcceptSockets();
-				pServer->Stop();
+			pServer->DeleteBufferObj(pBufferObj);
+			pServer->ReleaseAcceptSockets();
+			pServer->Stop();
 
-				TRACE1("-----> Accept Thread terminated (EC: %d) <-----\n", ::WSAGetLastError());
-				break;
+			TRACE1("-----> Accept Thread terminated (EC: %d) <-----\n", ::WSAGetLastError());
+			break;
 			}
 			*/
 		}
@@ -622,13 +622,13 @@ UINT WINAPI CIocpServer::WorkerThreadProc(LPVOID pv)
 		TBufferObj* pBufferObj;
 
 		BOOL result = ::GetQueuedCompletionStatus
-												(
-													pServer->m_hCompletePort,
-													&dwBytes,                 //一次完成后的I/O操作所传送数据的字节数
-													(PULONG_PTR)&pSocketObj,  //当文件I/O操作完成后，用于存放与之关联的CK socket
-													&pOverlapped,             //为调用IOCP机制所引用的OVERLAPPED结构
-													INFINITE
-												);
+			(
+			pServer->m_hCompletePort,
+			&dwBytes,                 //一次完成后的I/O操作所传送数据的字节数
+			(PULONG_PTR)&pSocketObj,  //当文件I/O操作完成后，用于存放与之关联的CK socket
+			&pOverlapped,             //为调用IOCP机制所引用的OVERLAPPED结构
+			INFINITE
+			);
 
 		//只有当 接收长度 接收socket 接收缓冲区都为空时才退出
 		if((0 == dwBytes) && (NULL == pSocketObj) && (NULL == pOverlapped))
@@ -725,16 +725,16 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 	SOCKADDR* pRemoteSockAddr;
 
 	m_pfnGetAcceptExSockaddrs
-							(
-								pBufferObj->buff.buf,
-								0,
-								sizeof(SOCKADDR_IN) + 16,
-								sizeof(SOCKADDR_IN) + 16,
-								(SOCKADDR **)&pLocalSockAddr,
-								&iLocalSockaddrLen,
-								(SOCKADDR **)&pRemoteSockAddr,
-								&iRemoteSockaddrLen
-							);
+		(
+		pBufferObj->buff.buf,
+		0,
+		sizeof(SOCKADDR_IN) + 16,
+		sizeof(SOCKADDR_IN) + 16,
+		(SOCKADDR **)&pLocalSockAddr,
+		&iLocalSockaddrLen,
+		(SOCKADDR **)&pRemoteSockAddr,
+		&iRemoteSockaddrLen
+		);
 
 	TSocketObj* pSocketObj	= GetFreeSocketObj();
 	pSocketObj->socket		= pBufferObj->client;

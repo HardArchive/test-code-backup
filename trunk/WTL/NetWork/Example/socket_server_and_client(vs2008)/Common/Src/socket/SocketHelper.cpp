@@ -96,6 +96,8 @@ PVOID GetExtensionFuncPtr(SOCKET sock, GUID guid)
 	return pfn;
 }
 
+//AcceptEx函数 接受连接 
+//功能：1、接受新连接 2、新连接的本地地址和远程地址都会返回 3、接收到了远程主机发来的第一块数据
 LPFN_ACCEPTEX Get_AcceptEx_FuncPtr(SOCKET sock)
 {
 	GUID guid = WSAID_ACCEPTEX;  //AcceptEx函数

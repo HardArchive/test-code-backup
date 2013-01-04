@@ -142,11 +142,16 @@ public:
 	};
 
 public:
+	//从heap中分配一块内存
 	PVOID Alloc(DWORD size, EnAllocOptions options = AO_DEFAULT)
 		{return ::HeapAlloc(m_heap, options, size);}
 
+	//
 	PVOID ReAlloc(PVOID pvmem, DWORD size, EnReAllocOptions options = RAO_DEFAULT)
-		{return ::HeapReAlloc(m_heap, options, pvmem, size);}
+	{
+		//可以改变堆中某一块内存的大小
+		return ::HeapReAlloc(m_heap, options, pvmem, size);
+	}
 
 	DWORD Size(PVOID pvmem, EnSizeOptions options = SO_DEFAULT)
 		{return (DWORD)::HeapSize(m_heap, options, pvmem);}
@@ -160,6 +165,13 @@ public:
 	BOOL IsValid() {return m_heap != NULL;}
 
 public:
+	//在原有默认堆的基础上动态创建一个堆
+	//如果该值为0，那么将创建一个可扩展的堆，堆的大小仅受可用内存的限制。
+	//如果应用程序需要分配大的内存块，通常要将该参数设置为0。如果dwMaximumSize大于0，则该值限定了堆所能创建的最大值
+	//HANDLE HeapCreate(
+	//	DWORD flOptions,
+	//	DWORD dwInitialSize,   //堆初始大小
+	//	DWORD dwMaximumSize);  //最大尺寸
 	CPrivateHeap(EnCreateOptions options = CO_DEFAULT, DWORD initsize = 0, DWORD maxsize = 0)
 		{m_heap = ::HeapCreate(options, initsize, maxsize);}
 
