@@ -25,7 +25,7 @@
 
 //#include "9CppFile.h"
 
-#include "file1.h"
+#include "file2.h"
 using namespace RG;
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -48,6 +48,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	TCHAR tszFileName[MAX_PATH] =  {_T("D:\\b.txt")};
 	BYTE szbyFileTem[1024*10] = {0};
 
+	//RG::CFile clsFile(tszFileName, _T("wt+"));
 	RG::CFile clsFile(tszFileName, _T("wt+"));
 
 	nTemLen = 1024*10;
@@ -66,13 +67,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	ptem = (PCHAR)szbyFileTem;
 
 
-	clsFile.Write(string(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!")));
+	clsFile.Write(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!\t"));
 	clsFile.Flush();
-	clsFile.Write(string(_T("123456789")));
-	clsFile.Write(string(_T("Go beyond myself, transcend myself!")));
+	clsFile.Write(_T("123456789\t"));
+	clsFile.Write(_T("Go beyond myself, transcend myself!\t\n"));
 
-	clsFile.Write(string(_T("123456789")));
-	clsFile.Write(string(_T("123456789")));
+	clsFile.Write(_T("123456789\t"));
+	clsFile.Write(_T("123456789\r\n"));
+
+	//clsFile.Write(string(_T("°¢Ã«£¬ÄãÕæË§£¡£¡£¡£¡!\t")));
+	//clsFile.Flush();
+	//clsFile.Write(string(_T("123456789\t")));
+	//clsFile.Write(string(_T("Go beyond myself, transcend myself!\t\n")));
+
+	//clsFile.Write(string(_T("123456789\t")));
+	//clsFile.Write(string(_T("123456789\r\n")));
 	clsFile.Flush();
 	
 
