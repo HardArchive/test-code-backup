@@ -103,7 +103,7 @@ cleanup:
 			__in LPTSTR ptszRegKey,
 			__in LPTSTR ptszValueName,
 			DWORD ValueType,
-			__deref_out PVOID* pData)
+			__deref_out PVOID pData)
 		{
 			return GetRegistryValue(
 				HKEY_LOCAL_MACHINE,
@@ -115,116 +115,52 @@ cleanup:
 
 		//获取一个注册表项或值的数据
 		//hHive主键名 ptszRegKey子键名 ptszValueName 值名 dwValueType值类型 pData输出值内容指针
-		//零（ERROR_SUCCESS）表示成功。其他任何值都代表一个错误代码
-		//注意：缓冲区空间是本函数内申请，调用方必须释放缓冲区
-		DWORD
+		//零表示成功。负值都代表一个错误代码 正值表示需要的空间长度
+		//注意：pData缓冲区空间是必须足够的大不然会返回错误
+		DWORD 
 			GetRegistryValue(
 			HKEY hHive,
 			__in LPTSTR ptszRegKey,
 			__in LPTSTR ptszValueName,
 			DWORD dwValueType,
-			__deref_out PVOID* pData)
-
-			// Data -- buffer to copy the data -- this function allocates memory for string and binary data.
-			// Caller must free the buffer.
-			//
+			__deref_out PVOID pData)
 		{    
-			DWORD result = ERROR_SUCCESS;
 			HKEY hKey = NULL;
-			DWORD dwLocalValueType = 0;
-			DWORD dwValueSize = 0;
-			LPTSTR ptszBuf = NULL;
-			BOOL bStringValue = FALSE;
+			DWORD dwResult = 0;
+			DWORD dwValueSize = 0;       //数据的长度
 
-			if (ptszRegKey == NULL ||ptszValueName == NULL)
-			{
-				return ERROR_INVALID_PARAMETER;
-			}
-
-			result = OpenRegKey(
-				hHive,
-				ptszRegKey,
-				FALSE,
-				&hKey);
-
-			if( result != ERROR_SUCCESS ) 
-			{
-				goto cleanup;
-			}
+			if (ptszRegKey == NULL ||ptszValueName == NULL)	return -1;
 
 			//成功打开键取值
+			dwResult = OpenRegKey(hHive, ptszRegKey, FALSE, &hKey);
+			if( dwResult != ERROR_SUCCESS ) return -2;			
 
 			//查询的数据类型和 BufferSize。
-			result = RegQueryValueEx(
+			dwResult = RegQueryValueEx(
 				hKey,
 				ptszValueName,
 				0,
-				&dwLocalValueType,
+				&dwValueType,
 				NULL,
 				&dwValueSize
 				);
+			if( dwResult != ERROR_SUCCESS ) return -3;
 
-			if( result != ERROR_SUCCESS )
-			{
-				goto cleanup;
-			}
+			//当缓冲区指向NULL时 返回 数据长度
+			if (pData == NULL) return dwValueSize;
 
-			if( dwLocalValueType != dwValueType ) {
-				result = ERROR_INVALID_PARAMETER;
-				goto cleanup;
-			}
+			//读取键值到缓冲区
+			dwResult  = RegQueryValueEx(
+				hKey,
+				ptszValueName,
+				0,
+				&dwValueType,
+				(LPBYTE)(pData),
+				&dwValueSize);
 
-			switch(dwLocalValueType)
-			{
-			case REG_DWORD:
-				assert(dwValueSize == sizeof(DWORD));
-				break;
+			if (dwResult != ERROR_SUCCESS) return -4;
 
-			case REG_SZ :
-			case REG_MULTI_SZ:
-				bStringValue = TRUE;
-
-				assert(*pData == NULL);
-				//分配内存
-				ptszBuf = (LPTSTR)new TCHAR[dwValueSize];
-				if (ptszBuf == NULL)
-				{
-					result = ERROR_OUTOFMEMORY;
-					goto cleanup;
-				}
-				break;
-			default:
-				result = ERROR_INVALID_PARAMETER;
-				break;
-			}
-
-			if (result == ERROR_SUCCESS)
-			{
-				//读取键值到缓冲区
-				result  = RegQueryValueEx(
-					hKey,
-					ptszValueName,
-					0,
-					&dwLocalValueType,
-					bStringValue==TRUE?((LPBYTE)(ptszBuf)):((LPBYTE)(pData)),
-					&dwValueSize);
-
-				if (result != ERROR_SUCCESS)
-				{
-					if (ptszBuf != NULL)
-					{
-						delete[] ptszBuf;
-					}
-					goto cleanup;
-				}
-
-				if (bStringValue == TRUE)
-				{
-					*pData = ptszBuf;
-				}
-			}
-cleanup:
-			return result;        
+			return 0;        
 		}
 
 		//设置键值 ，默认主键HKEY_LOCAL_MACHINE
