@@ -61,6 +61,7 @@ void DlgDownload::OnOK()
         return ;
     }
 
+	//检测URL是否有效 形式为  http:// + 域名 + /
     if (!UrlIs(m_header.m_url, URLIS_URL))
     {
         EDITBALLOONTIP   t ;
