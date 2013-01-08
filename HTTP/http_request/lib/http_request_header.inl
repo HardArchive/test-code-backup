@@ -12,9 +12,10 @@ public:
     enum VERB_TYPE
     {
         VERB_TYPE_GET = 0,
-        VERB_TYPE_POST = 1,
-        VERB_TYPE_POST_MULTIPART = 2,
-        VERB_TYPE_DELETE = 3,
+		VERB_TYPE_HEAD = 1,
+        VERB_TYPE_POST = 2,
+        VERB_TYPE_POST_MULTIPART = 3,
+		VERB_TYPE_DELETE = 4,	
     };
 
     /**
@@ -58,6 +59,11 @@ public:
         m_proxy_port = 80 ;
     }
 
+	void SetVer(int nVerb)
+	{
+		m_verb = (VERB_TYPE)nVerb;
+	}
+
     /// Get text of current verb.
     CString GetVerbText() const
     {
@@ -67,6 +73,7 @@ public:
             case VERB_TYPE_POST :
             case VERB_TYPE_POST_MULTIPART : return _T("POST") ;
             case VERB_TYPE_DELETE : return _T("DELETE") ;
+			case VERB_TYPE_HEAD : return _T("HEAD") ;
         }
         return _T("GET") ;
     }
@@ -151,6 +158,7 @@ private:
     {
         DWORD  n = 1024 ;
         char   t[1024] = {0} ;
+		//检索当前正在使用的用户代理 HTTP 请求标头字符串。
         ObtainUserAgentString (0, t, &n) ;
         return CString(t) ;
     }

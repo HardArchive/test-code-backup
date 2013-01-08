@@ -91,30 +91,32 @@ BEGIN
     EDITTEXT        1201,57,44,50,12,ES_AUTOHSCROLL | ES_NUMBER
     EDITTEXT        1202,57,65,231,12,ES_AUTOHSCROLL
     EDITTEXT        1203,57,85,231,34,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    GROUPBOX        "Send",-1,10,8,295,146
-    RTEXT           "URL : ",-1,16,26,36,8
-    RTEXT           "Start : ",-1,16,46,36,8
-    RTEXT           "Agent : ",-1,16,67,36,8
-    RTEXT           "Header : ",-1,16,86,36,8
+    GROUPBOX        "Send",IDC_STATIC,10,8,295,146
+    RTEXT           "URL : ",IDC_STATIC,16,26,36,8
+    RTEXT           "Start : ",IDC_STATIC,16,46,36,8
+    RTEXT           "Agent : ",IDC_STATIC,16,67,36,8
+    RTEXT           "Header : ",IDC_STATIC,16,86,36,8
     PUSHBUTTON      "Proxy",1501,57,127,43,18
     DEFPUSHBUTTON   "Download",IDOK,215,127,58,18
-    GROUPBOX        "Response",-1,10,162,295,143
+    GROUPBOX        "Response",IDC_STATIC,10,162,295,143
     CONTROL         "",1600,"msctls_progress32",WS_BORDER,29,178,253,10
-    RTEXT           "Status : ",-1,19,197,58,8
-    RTEXT           "Total : ",-1,19,216,58,8
-    RTEXT           "Elapsed Time : ",-1,19,235,58,8
-    RTEXT           "MD5 : ",-1,19,256,58,8
+    RTEXT           "Status : ",IDC_STATIC,19,197,58,8
+    RTEXT           "Total : ",IDC_STATIC,19,216,58,8
+    RTEXT           "Elapsed Time : ",IDC_STATIC,19,235,58,8
+    RTEXT           "MD5 : ",IDC_STATIC,19,256,58,8
     LTEXT           "XXXXXXXXXXXXXXXX",1300,83,197,170,8
     LTEXT           "XXXXX",1301,83,216,60,8
     LTEXT           "XXXXX",1305,83,235,60,8
     LTEXT           "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",1306,83,256,187,8
-    RTEXT           "Download : ",-1,152,216,64,8
-    RTEXT           "Average Speed : ",-1,152,235,64,8
+    RTEXT           "Download : ",IDC_STATIC,152,216,64,8
+    RTEXT           "Average Speed : ",IDC_STATIC,152,235,64,8
     LTEXT           "XXXXX",1302,222,216,60,8
     LTEXT           "XXXXX",1304,222,235,60,8
     PUSHBUTTON      "Save",1500,215,277,58,18
     EDITTEXT        1800,316,12,164,128,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
     EDITTEXT        1801,316,167,164,128,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
+    COMBOBOX        IDC_COMBO_METHOD,183,44,79,40,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Method:",IDC_STATIC,139,46,36,8
 END
 
 IDD_PROXY DIALOGEX 0, 0, 200, 137
