@@ -246,17 +246,18 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 
 int TestRegUtil()
 {
-	TCHAR* ptTem = NULL;
-	TCHAR tszTem[MAX_PATH] = {_T("0x12345678")};
+	TCHAR tszTem1[MAX_PATH] = {0};
+	TCHAR tszTem2[MAX_PATH] = {_T("in, out ,retval")};
 	QNA::CRegUtil clsRegUtil;
-	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID*)&ptTem);
-	delete ptTem;
-	ptTem = NULL;
+	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID)tszTem1);
 
-	clsRegUtil.SetRegistryValue(_T("SOFTWARE\\RainSoft"), _T("RSDataToDb"), _T("test"), REG_SZ, (PBYTE)tszTem, _tcslen(tszTem));
 
-	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID*)&ptTem);
-	delete ptTem;
-	ptTem = NULL;
+	clsRegUtil.SetRegistryValue(_T("SOFTWARE\\RainSoft"), _T("RSDataToDb"), _T("test"), REG_SZ, (PBYTE)tszTem2, _tcslen(tszTem2)*2);
+
+	DWORD dwInsertDatabaseFileSize = 0;
+	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\BJCultureBackGround"), _T("InsertDatabaseFileSize"), REG_DWORD,  (PVOID)&dwInsertDatabaseFileSize);
+
+	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ,  (PVOID)tszTem1);
+
 	return 1;
 }
