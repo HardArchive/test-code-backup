@@ -18,7 +18,32 @@ BOOL DlgDownload::OnInitDialog()
 
     m_header.m_header += L"Referer: http://www.9cpp.com/\r\n" ;
     m_header.m_header += L"Accept: */*\r\n" ;
+	TCHAR tszTem[16] = {0};	
+	HWND hwndCombo = ::GetDlgItem(m_hWnd, IDC_COMBO_METHOD);
+	//重置内容
+	::SendMessage(hwndCombo, CB_RESETCONTENT, 0, 0);
+	int idx;
+	_tcscpy(tszTem, _T("GET"));
+	idx = ::SendMessage(hwndCombo, CB_INSERTSTRING, -1, (LPARAM)tszTem);  //增加内容
 
+	_tcscpy(tszTem, _T("HEAD"));
+	::SendMessage(hwndCombo, CB_INSERTSTRING, -1, (LPARAM)tszTem);
+	_tcscpy(tszTem, _T("POST"));
+	::SendMessage(hwndCombo, CB_INSERTSTRING, -1, (LPARAM)tszTem);
+	_tcscpy(tszTem, _T("POST_MULTIPART"));
+	::SendMessage(hwndCombo, CB_INSERTSTRING, -1, (LPARAM)tszTem);
+	_tcscpy(tszTem, _T("DELETE"));
+	::SendMessage(hwndCombo, CB_INSERTSTRING, -1, (LPARAM)tszTem);
+	//设置当前选择项
+	::SendMessage(hwndCombo, CB_SETCURSEL, 1, 0);
+
+	////获取当前选择下拉框序号
+	//idx = (int)::SendMessage(hwndCombo, CB_GETCURSEL, 0, 0L);
+	//_tcscpy(tszTem, _T(""));
+	////获取当前选择下拉框内容
+	//GetDlgItemText(IDC_COMBO_METHOD, tszTem, 16);
+
+	
     return __super::OnInitDialog() ;
 }
 //-------------------------------------------------------------------------------------
@@ -48,6 +73,17 @@ void DlgDownload::ClearOutputText()
 void DlgDownload::OnOK()
 {
     UpdateData() ;
+
+	//获取当前选择下拉框序号
+	//int idx = (int)::SendMessage(::GetDlgItem(m_hWnd, IDC_COMBO_METHOD), CB_GETCURSEL, 0, 0L);
+	//_tcscpy(tszTem, _T(""));
+	//获取当前选择下拉框内容
+	//GetDlgItemText(IDC_COMBO_METHOD, tszTem, 16);
+	//m_header.m_verb = (HTTP_REQUEST_HEADER.VERB_TYPE)idx;
+	
+	//设置发送方法
+	m_header.SetVer((int)::SendMessage(::GetDlgItem(m_hWnd, IDC_COMBO_METHOD), CB_GETCURSEL, 0, 0L));
+
 
     // is stop
     CString   btn_txt ;
