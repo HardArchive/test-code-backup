@@ -76,10 +76,8 @@ namespace QNA
 			FindClose(hFind);
 
 			return 1;
-
-
-
 		}
+
 		//删除文件夹
 		//检查当前目录需要的文件夹是否存在,如果不存在返回false，存在返回true
 		bool ChickDirExist(const TCHAR* ptInPath)
@@ -122,24 +120,15 @@ namespace QNA
 					::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
 					return false;
 				}
-				else
-				{
-					SetFileAttributes(tszPath, FILE_ATTRIBUTE_NORMAL);	
-					return true;
-				}
-				return true;
+				SetFileAttributes(tszPath, FILE_ATTRIBUTE_NORMAL);	
+				return true;		
 			}	
 			else
 			{	//如果不存在则递归
-				if (!CreateMultipleDirectory(tszTemPath))
-				{
-					return false;
-				}
-				else
-				{   //父目录创建完毕则创建子目录
-					if (!CreateMultipleDirectory(tszPath))
-						return false;		
-				}
+				if (!CreateMultipleDirectory(tszTemPath))	return false;
+
+				//父目录创建完毕则创建子目录
+				if (!CreateMultipleDirectory(tszPath))	return false;						
 			}
 
 			return true;
