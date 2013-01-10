@@ -1,7 +1,16 @@
 使用 Text 和 Image 数据
 BCP 导出格式命令:
-bcp pubs.dbo.pub_info format nul -c -fD:
-\V_pub_info.fmt -S192.168.30.124 -Usa -Psa
+bcp pubs.dbo.pub_info format nul -c -fD:\V_pub_info.fmt -S192.168.30.124 -Usa -Psa
 BCP 导出表命令
-bcp pubs.dbo.pub_info out D:\pub_info.tx
-t -fD:\V_pub_info.fmt -S192.168.30.124 -Usa -Psa
+bcp pubs.dbo.pub_info out D:\pub_info.txt -fD:\V_pub_info.fmt -S192.168.30.124 -Usa -Psa
+BCP 导入表命令
+bcp pubs.dbo.pub_info int D:\pub_info.txt -fD:\V_pub_info.fmt -S192.168.30.124 -Usa -Psa
+
+选择表命令
+select * from dbo.pub_info
+
+清空表命令
+一、
+delete from dbo.pub_info
+二、
+truncate table dbo.pub_info
