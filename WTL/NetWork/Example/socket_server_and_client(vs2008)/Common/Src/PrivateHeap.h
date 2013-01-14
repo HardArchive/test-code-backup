@@ -142,23 +142,32 @@ public:
 	};
 
 public:
-	//从heap中分配一块内存
+	//HeapAlloc函数
+	//1）遍历分配的和释放的内存块的链接表；
+	//2）寻找一个空闲内存块的地址；
+	//3）通过将空闲内存块标记为“已分配”分配新内存块；
+	//4）将新内存块添加给内存块链接表；
+	//注意，在堆中分配的内存块只能是固定的内存块，不想GlobalAlloc函数一样可以分配可移动的内存块。
+	// m_heap用于标识分配的内存块来自的堆栈的句柄，size参数用于设定从堆栈中分配的内存块的字节数
+	//从私有堆heap中分配内存块  options 以下标识的组合：HEAP_NO_SERIALIZE HEAP_GENERATE_EXCEPTIONS HEAP_ZERO_MEMORY
 	PVOID Alloc(DWORD size, EnAllocOptions options = AO_DEFAULT)
 		{return ::HeapAlloc(m_heap, options, size);}
 
-	//
+	//改变内存块的大小
 	PVOID ReAlloc(PVOID pvmem, DWORD size, EnReAllocOptions options = RAO_DEFAULT)
 	{
 		//可以改变堆中某一块内存的大小
 		return ::HeapReAlloc(m_heap, options, pvmem, size);
 	}
 
+	//检索内存块的实际大小 参数hHeap用于标识堆栈，参数pvMem用于指明内存块的地址，参数fdwFlags既可以是0，也可以是HEAP_NO_SERIALIZE
 	DWORD Size(PVOID pvmem, EnSizeOptions options = SO_DEFAULT)
 		{return (DWORD)::HeapSize(m_heap, options, pvmem);}
 
 	BOOL Free(PVOID pvmem, EnFreeOptions options = FO_DEFAULT)
 		{return ::HeapFree(m_heap, options, pvmem);}
 
+	//合并堆中的空闲内存块并释放不在使用中的内存页面
 	DWORD Comapct(EnCompactOptions options = CPO_DEFAULT)
 		{return (DWORD)::HeapCompact(m_heap, options);}
 
@@ -169,12 +178,17 @@ public:
 	//如果该值为0，那么将创建一个可扩展的堆，堆的大小仅受可用内存的限制。
 	//如果应用程序需要分配大的内存块，通常要将该参数设置为0。如果dwMaximumSize大于0，则该值限定了堆所能创建的最大值
 	//HANDLE HeapCreate(
-	//	DWORD flOptions,
-	//	DWORD dwInitialSize,   //堆初始大小
-	//	DWORD dwMaximumSize);  //最大尺寸
+	//	DWORD flOptions,  //指定堆的属性：
+			//HEAP_GENERATE_EXCEPTIONS---指定函数失败时返回值，不指定这个标志时，函数失败时返回NULL、否则返回一个具体的错误代码
+			//HEAP_NO_SERIALIZE---控制对私有堆的访问是否要进行独占性的检测；指定这个标志时，建立堆时不进行独占性检测，访问速度可以更快
+	//	DWORD dwInitialSize,   //创建堆时分配给堆的物理内存（堆的内存不足时可以自动扩展）
+	//	DWORD dwMaximumSize);  //能够扩展到的最大物理内存
 	CPrivateHeap(EnCreateOptions options = CO_DEFAULT, DWORD initsize = 0, DWORD maxsize = 0)
 		{m_heap = ::HeapCreate(options, initsize, maxsize);}
 
+	//HeapDestroy函数释放私有堆可以释放堆中包含的所有内存块，也可以将堆占用的物理内存和保留的地址空间全部返还给系统。
+	//如果函数运行成功，返回值是TRUE；
+	//当在进程终止时没有调用HeapDestry函数将私有堆释放时，系统会自动释放。
 	~CPrivateHeap() {if(IsValid()) ::HeapDestroy(m_heap);}
 
 private:
