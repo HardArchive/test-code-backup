@@ -79,7 +79,7 @@ private:
 	BOOL StartAcceptThread();            //创建接收连接线程
 
 	void CloseListenSocket();
-	void WaitForAcceptThreadEnd();
+	void WaitForAcceptThreadEnd();      //设置m_evtAccept事件 ，退出接收线程
 	void CloseClientSocket();
 	void ReleaseFreeSocket();
 	void CompressFreeSocket(size_t size);
@@ -128,9 +128,9 @@ private:
 private:
 	CInitSocket					m_wsSocket;
 	//接受连接函数指针
-	LPFN_ACCEPTEX				m_pfnAcceptEx;              
-	//是专门为AcceptEx函数准备的，它将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户。
+	LPFN_ACCEPTEX				m_pfnAcceptEx;          //AcceptEx函数指针       
 	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;    //函数指针用来取得接收socket的IP端口
+	//GetAcceptExSockaddrs是专门为AcceptEx函数准备的，它将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户。
 private:
 	IServerSocketListener*	m_psoListener;
 
@@ -150,11 +150,11 @@ private:
 
 	CCriSec				m_csFreeBuffer;
 	CCriSec				m_csFreeSocket;
-	CCriSec				m_csClientSocket;
+	CCriSec				m_csClientSocket;  //临界区处理类
 
-	CEvt				m_evtAccept;
+	CEvt				m_evtAccept;       //事件内核对象昝类-接收事件
 
-	smart_simple_ptr<CSEM>	m_psemAccept;
+	smart_simple_ptr<CSEM>	m_psemAccept;  //单实体智能指针-接收信号量
 	CCriSec					m_csAccept;
 	ulong_set				m_setAccept;
 

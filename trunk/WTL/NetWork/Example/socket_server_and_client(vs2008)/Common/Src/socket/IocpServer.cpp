@@ -123,8 +123,8 @@ BOOL CIocpServer::CreateListenSocket(LPCTSTR pszBindAddress, USHORT usPort)
 		{
 			if(::listen(m_soListen, m_dwSocketListenQueue) != SOCKET_ERROR)
 			{
-				m_pfnAcceptEx				= ::Get_AcceptEx_FuncPtr(m_soListen);  //取得接收扩展函数指针
-				m_pfnGetAcceptExSockaddrs	= ::Get_GetAcceptExSockaddrs_FuncPtr(m_soListen);
+				m_pfnAcceptEx				= ::Get_AcceptEx_FuncPtr(m_soListen);  //取得接收扩展函数AcceptEx指针
+				m_pfnGetAcceptExSockaddrs	= ::Get_GetAcceptExSockaddrs_FuncPtr(m_soListen);//最得GetAcceptExSockaddrs扩展函数指针
 
 				ASSERT(m_pfnAcceptEx);
 				ASSERT(m_pfnGetAcceptExSockaddrs);
@@ -527,6 +527,7 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 			TBufferObj* pBufferObj	= pServer->GetFreeBufferObj();
 			SOCKET soClient			= pServer->GetAcceptSocket();
 
+			//投递一个接收
 			VERIFY(::PostAccept(pServer->m_pfnAcceptEx, pServer->m_soListen, soClient, pBufferObj) == NO_ERROR);
 
 			/*
