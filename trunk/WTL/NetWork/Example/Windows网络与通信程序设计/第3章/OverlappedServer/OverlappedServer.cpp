@@ -8,7 +8,7 @@
 #include <windows.h>
 
 CInitSock theSock;
-
+LPFN_GETACCEPTEXSOCKADDRS g_pfnGetAcceptExSockaddrs = NULL; //获取连接addr
 #define BUFFER_SIZE 1024
 
 typedef struct _SOCKET_OBJ
@@ -90,6 +90,7 @@ PBUFFER_OBJ GetBufferObj(PSOCKET_OBJ pSocket, ULONG nLen)
 		pBuffer->ol.hEvent = ::WSACreateEvent();
 		pBuffer->pSocket = pSocket;
 		pBuffer->sAccept = INVALID_SOCKET;
+		pBuffer->nLen = nLen;
 
 		// 将新的BUFFER_OBJ添加到列表中
 		if(g_pBufferHead == NULL)
@@ -165,7 +166,7 @@ void RebuildArray()
 BOOL PostAccept(PBUFFER_OBJ pBuffer)
 {
 	PSOCKET_OBJ pSocket = pBuffer->pSocket;
-	LPFN_GETACCEPTEXSOCKADDRS pfnGetAcceptExSockaddrs = NULL; //获取连接addr
+	
 
 	if(pSocket->lpfnAcceptEx != NULL)
 	{	
@@ -177,8 +178,8 @@ BOOL PostAccept(PBUFFER_OBJ pBuffer)
 		DWORD dwBytes;
 		pBuffer->sAccept = ::WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);  //创建socket
 		//开始接收
-		BOOL b = pSocket->lpfnAcceptEx(pSocket->s, 
-			pBuffer->sAccept,
+		BOOL b = pSocket->lpfnAcceptEx(pSocket->s,   //监听套接字
+			pBuffer->sAccept,   //接收套接字
 			pBuffer->buff, 
 			BUFFER_SIZE - ((sizeof(sockaddr_in) + 16) * 2), //buf大小
 			sizeof(sockaddr_in) + 16,  //缓冲区中为本地地址预留的长度，必须比最大专址长度多16
@@ -190,21 +191,6 @@ BOOL PostAccept(PBUFFER_OBJ pBuffer)
 			if(::WSAGetLastError() != WSA_IO_PENDING)
 				return FALSE;
 		}
-		pfnGetAcceptExSockaddrs = (LPFN_GETACCEPTEXSOCKADDRS)GetExtensionFuncPtr(pBuffer->sAccept);
-		SOCKADDR_IN *LocalSockaddr    = NULL;
-		SOCKADDR_IN *RemoteSockaddr    = NULL;
-		int    nLocalSockaddrLen        = 0;
-		int    nRemoteSockaddrLen        = 0;
-		pfnGetAcceptExSockaddrs(pBuffer->buff, 0, sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, 
-			(SOCKADDR **)&LocalSockaddr, &nLocalSockaddrLen, (SOCKADDR **)&RemoteSockaddr, &nRemoteSockaddrLen);    
-		printf("1Accepted client:%s:%d\n", inet_ntoa(RemoteSockaddr->sin_addr), ntohs(RemoteSockaddr->sin_port));
-
-		SOCKADDR_IN* pbLocalSockAddr = NULL;
-		SOCKADDR_IN* pbRemoteSockAddr = NULL;
-		pbLocalSockAddr = (sockaddr_in*)((PBYTE)pBuffer->buff + (BUFFER_SIZE - 2*(sizeof(sockaddr_in) + 16)) + 10);		
-		pbRemoteSockAddr = (sockaddr_in*)(pbLocalSockAddr + sizeof(sockaddr_in) + 10 + 2);		
-		printf("2Accepted client:%s:%d\n", inet_ntoa(pbRemoteSockAddr->sin_addr), ntohs(pbRemoteSockAddr->sin_port));
-
 		return TRUE;
 	}
 	return FALSE;
@@ -257,6 +243,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 {
 	PSOCKET_OBJ pSocket = pBuffer->pSocket; // 从BUFFER_OBJ对象中提取SOCKET_OBJ对象指针，为的是方便引用
 	pSocket->nOutstandingOps --;
+	
 
 	// 获取重叠操作结果
 	DWORD dwTrans;
@@ -295,7 +282,28 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 				FreeSocketObj(pClient);
 				return FALSE;
 			}
-			RebuildArray();
+
+			SOCKADDR_IN LocalSockAddr;
+			SOCKADDR_IN RemoteSockAddr;
+			int nLocalLen, nRmoteLen;
+			LPSOCKADDR pLocalAddr, pRemoteAddr;
+			g_pfnGetAcceptExSockaddrs(
+				pBuffer->buff,
+				pBuffer->nLen - ((sizeof(sockaddr_in) + 16) * 2),
+				sizeof(sockaddr_in) + 16,
+				sizeof(sockaddr_in) + 16,
+				(SOCKADDR **)&pLocalAddr,
+				&nLocalLen,
+				(SOCKADDR **)&pRemoteAddr,
+				&nRmoteLen);
+
+			memcpy(&LocalSockAddr, pLocalAddr, nLocalLen);
+			memcpy(&RemoteSockAddr, pRemoteAddr, nRmoteLen);
+			printf("Local Accepted client:%s:%d\n", inet_ntoa(LocalSockAddr.sin_addr), ntohs(LocalSockAddr.sin_port));
+			printf("Remote Accepted client:%s:%d\n", inet_ntoa(RemoteSockAddr.sin_addr), ntohs(RemoteSockAddr.sin_port));
+
+			RebuildArray();		
+
 			
 			// 将数据复制到发送缓冲区
 			pSend->nLen = dwTrans;
@@ -376,7 +384,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 void main()
 {
 	// 创建监听套节字，绑定到本地端口，进入监听模式
-	int nPort = 4000;
+	int nPort = 4567;
 	SOCKET sListen = ::WSASocket(
 		AF_INET, SOCK_STREAM, IPPROTO_TCP, //此三个参数与标准socket相同
 		NULL, //指定下层服务提供者，可以是NULL
@@ -408,6 +416,7 @@ void main()
 		NULL, 
 		NULL);
 
+	g_pfnGetAcceptExSockaddrs = (LPFN_GETACCEPTEXSOCKADDRS)GetExtensionFuncPtr(pListen->s);
 	// 创建用来重新建立g_events数组的事件对象
 	g_events[0] = ::WSACreateEvent();
 
