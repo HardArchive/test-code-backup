@@ -1,5 +1,6 @@
 #pragma once
 
+//信号量处理类
 class CSEM
 {
 public:
