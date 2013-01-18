@@ -379,7 +379,18 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 	}
 	return TRUE;
 }
+DWORD WINAPI WorkerThreadProc(LPVOID lpParam)
+{
 
+	return 1;
+}
+
+DWORD WINAPI AcceptThreadProc(LPVOID lpParam)
+{
+
+
+	return 1;
+}
 
 void main()
 {
