@@ -27,7 +27,7 @@ CSockeHelperIOCP::CSockeHelperIOCP(void)
 		QNA::TRACE(_T("Socket2.0初始化失败，Exit!"));
 		exit(0);
 	}
-	ZeroMemory(m_stuThreadAfferent, sizeof(THREADAFFERENT));
+	ZeroMemory(&m_stuThreadAfferent, sizeof(THREADAFFERENT));
 	g_bExit = true;
 }
 
@@ -36,7 +36,7 @@ CSockeHelperIOCP::~CSockeHelperIOCP(void)
 	UnInit();
 
 	g_bExit = false;
-	ZeroMemory(m_stuThreadAfferent, sizeof(THREADAFFERENT));
+	ZeroMemory(&m_stuThreadAfferent, sizeof(THREADAFFERENT));
 }
 
 //初始化函数，开启完成端口
@@ -139,7 +139,7 @@ DWORD WINAPI CSockeHelperIOCP::_ListenThreadProc(LPVOID lpParam)
 				char *pClientIp = inet_ntoa(clietnAddr.sin_addr);
 
 				//将客户端Socket加上完成端口
-				if(NULL==CreateIoCompletionPort((HANDLE)clientSocket, m_hIoPort, (ULONG_PTR)clientSocket, 0))
+				//if(NULL==CreateIoCompletionPort((HANDLE)clientSocket, m_hIoPort, (ULONG_PTR)clientSocket, 0))
 				{//关联一个已打开的文件实例和新建的或已存在的I/0完成端口，或者创建一个未关联任何文件的I/O完成端口。
 					QNA::TRACE(_T("CSockeHelperIOCP::_ListenThreadProc:关键套接字到完成端口上失败！\r\n"));
 					continue;
