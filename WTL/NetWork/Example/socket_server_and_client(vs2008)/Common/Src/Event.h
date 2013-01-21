@@ -14,6 +14,7 @@ public:
 	CEvt(BOOL bManualReset = FALSE, BOOL bInitialState = FALSE, LPCTSTR pszName = NULL, LPSECURITY_ATTRIBUTES pSecurity = NULL)
 	{
 		m_hEvent = ::CreateEvent(pSecurity, bManualReset, bInitialState, pszName);
+		//创建一个不能被继承（pSecurity NULL）自动将复原为无信号状态（bManualReset）初始状态为无信号（bInitialState）无名(pszName)的事件对象
 		ASSERT(IsValid());
 	}
 

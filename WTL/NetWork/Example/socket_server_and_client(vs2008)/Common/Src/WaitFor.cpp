@@ -3,7 +3,7 @@
 #include "GeneralHelper.h"
 #include "CriticalSection.h"
 
-// 支持 timeGetTime() 函数
+//支持 timeGetTime() 函数
 #ifdef _WIN32_WCE
 	#include <Mmsystem.h>
 	#pragma comment(lib, "Mmtimer")
@@ -13,8 +13,8 @@
 #endif
 
 /*
-// class CShareUnSetEvent用于WaitWithMessageLoop()函数中作为共享的永远等待的事件
-// 当多个线程同时调用WaitWithMessageLoop()函数时, 避免每个线程都创建一个事件对象
+//class CShareUnSetEvent用于WaitWithMessageLoop()函数中作为共享的永远等待的事件
+//当多个线程同时调用WaitWithMessageLoop()函数时, 避免每个线程都创建一个事件对象
 class CShareUnSetEvent
 {
 public:

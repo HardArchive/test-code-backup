@@ -1,5 +1,5 @@
 
-// Server.h : main header file for the PROJECT_NAME application
+//Server.h : main header file for the PROJECT_NAME application
 //
 
 #pragma once
@@ -8,11 +8,11 @@
 	#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
-#include "resource.h"		// main symbols
+#include "resource.h"		//main symbols
 
 
-// CServerApp:
-// See Server.cpp for the implementation of this class
+//CServerApp:
+//See Server.cpp for the implementation of this class
 //
 
 class CServerApp : public CWinApp
@@ -20,11 +20,11 @@ class CServerApp : public CWinApp
 public:
 	CServerApp();
 
-// Overrides
+//Overrides
 public:
 	virtual BOOL InitInstance();
 
-// Implementation
+//Implementation
 
 	DECLARE_MESSAGE_MAP()
 };

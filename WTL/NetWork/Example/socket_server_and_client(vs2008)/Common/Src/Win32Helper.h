@@ -2,7 +2,7 @@
 
 #include "GeneralHelper.h"
 
-// RECT 帮助宏
+//RECT 帮助宏
 #define RC_WIDTH(rc)		(rc.right - rc.left)
 #define RC_HEIGHT(rc)		(rc.bottom - rc.top)
 #define RC_CENTER_X(rc)		((rc.right + rc.left) / 2)
@@ -48,7 +48,7 @@
 		switch(msg)																		\
 		{
 
-// 窗口过程为类中的静态成员函数
+//窗口过程为类中的静态成员函数
 #define GET_WND_PROC(theClass)			GET_WND_PROC_INTERNAL(theClass, ::)
 #define GET_DLG_PROC(theClass)			GET_DLG_PROC_INTERNAL(theClass, ::)
 
@@ -90,7 +90,7 @@ public:												\
 		return retVal;																	\
 	}
 
-// 窗口过程为全局函数
+//窗口过程为全局函数
 #define GET_GLOBAL_WND_PROC(theClass)			GET_WND_PROC_INTERNAL(theClass,			_)
 #define DECLARE_GLOBAL_MSG_MAP(theClass)		DECLARE_MSG_MAP_INTERNAL(theClass,		_)
 #define BEGIN_GLOBAL_MSG_MAP(theClass)			BEGIN_MSG_MAP_INTERNAL(theClass,		_)
@@ -101,7 +101,7 @@ public:												\
 #define BEGIN_GLOBAL_DLG_MSG_MAP(theClass)		BEGIN_DLG_MSG_MAP_INTERNAL(theClass,	_)
 #define END_GLOBAL_DLG_MSG_MAP()				END_DLG_MSG_MAP()
 
-// 绑定对象指针到窗口
+//绑定对象指针到窗口
 #define ATTACH_OBJ_PTR_TO_WINDOW(hwnd, objPtr)	::SetWindowLong(hwnd, GWL_USERDATA, (LONG_PTR)objPtr)
 #define GET_OBJ_PTR_FROM_WINDOW(hwnd, theClass)	(theClass*)(LONG_PTR)::GetWindowLong(hwnd, GWL_USERDATA)
 
@@ -217,7 +217,7 @@ public:
 private:
 	void set(HANDLE h)	{m_h = h;}
 
-	// ~! do not define these conversion, because it's very easy to making mistake !~
+	//~! do not define these conversion, because it's very easy to making mistake !~
 	template<HANDLE _Other> auto_handle(const auto_handle<_Other>&);
 	template<HANDLE _Other> auto_handle<NULL_VALUE>& operator = (const auto_handle<_Other>&);
 
@@ -225,8 +225,8 @@ private:
 	HANDLE	m_h;
 };
 
-typedef auto_handle<INVALID_HANDLE_VALUE>	auto_file_handle;	// 文件智能句柄
-typedef auto_handle<NULL>					auto_res_handle;	// 普通资源智能句柄
+typedef auto_handle<INVALID_HANDLE_VALUE>	auto_file_handle;	//文件智能句柄
+typedef auto_handle<NULL>					auto_res_handle;	//普通资源智能句柄
 
 /************************************************************************/
 /*                 	  	 	DC 智能包装器 					            */
@@ -730,32 +730,32 @@ public:
 	}
 
 	HFONT CreateFont(
-						int nHeight,				// height of font
-						int nWidth,					// average character width
-						int nEscapement,			// angle of escapement
-						int nOrientation,			// base-line orientation angle
-						int fnWeight,				// font weight
+						int nHeight,				//height of font
+						int nWidth,					//average character width
+						int nEscapement,			//angle of escapement
+						int nOrientation,			//base-line orientation angle
+						int fnWeight,				//font weight
 #ifndef _WIN32_WCE
-						DWORD bItalic,				// italic attribute option
-						DWORD bUnderline,			// underline attribute option
-						DWORD cStrikeOut,			// strikeout attribute option
-						DWORD nCharSet,				// character set identifier
-						DWORD nOutPrecision,		// output precision
-						DWORD nClipPrecision,		// clipping precision
-						DWORD nQuality,				// output quality
-						DWORD nPitchAndFamily,		// pitch and family
+						DWORD bItalic,				//italic attribute option
+						DWORD bUnderline,			//underline attribute option
+						DWORD cStrikeOut,			//strikeout attribute option
+						DWORD nCharSet,				//character set identifier
+						DWORD nOutPrecision,		//output precision
+						DWORD nClipPrecision,		//clipping precision
+						DWORD nQuality,				//output quality
+						DWORD nPitchAndFamily,		//pitch and family
 #else
-						BYTE bItalic,				// italic attribute option
-						BYTE bUnderline,			// underline attribute option
-						BYTE cStrikeOut,			// strikeout attribute option
-						BYTE nCharSet,				// character set identifier
-						BYTE nOutPrecision,			// output precision
-						BYTE nClipPrecision,		// clipping precision
-						BYTE nQuality,				// output quality
-						BYTE nPitchAndFamily,		// pitch and family
+						BYTE bItalic,				//italic attribute option
+						BYTE bUnderline,			//underline attribute option
+						BYTE cStrikeOut,			//strikeout attribute option
+						BYTE nCharSet,				//character set identifier
+						BYTE nOutPrecision,			//output precision
+						BYTE nClipPrecision,		//clipping precision
+						BYTE nQuality,				//output quality
+						BYTE nPitchAndFamily,		//pitch and family
 
 #endif
-						LPCTSTR lpszFace           // typeface name
+						LPCTSTR lpszFace           //typeface name
 					)
 	{
 		HFONT obj = ::CreateFont(

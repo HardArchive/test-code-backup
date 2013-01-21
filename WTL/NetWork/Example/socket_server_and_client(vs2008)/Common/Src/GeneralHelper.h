@@ -68,14 +68,14 @@ Windows 95
 #pragma once
 
 #ifndef VC_EXTRALEAN
-	#define VC_EXTRALEAN						// 从 Windows 头中排除极少使用的资料
+	#define VC_EXTRALEAN						//从 Windows 头中排除极少使用的资料
 #endif
 
 #ifndef _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
-	#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS	// 某些 CString 构造函数将为显式的
+	#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS	//某些 CString 构造函数将为显式的
 #endif
 
-#if _MSC_VER >= 1400	// VC 8.0 以上版本
+#if _MSC_VER >= 1400	//VC 8.0 以上版本
 
 	#ifdef _DEBUG
 		#ifndef _SECURE_SCL
@@ -223,20 +223,20 @@ Windows 95
 		#define _AFX_ALL_WARNINGS
 	#endif
 
-	#include <afxwin.h>				// MFC core and standard components
-	#include <afxext.h>				// MFC extensions
-	#include <afxdisp.h>			// MFC Automation classes
+	#include <afxwin.h>				//MFC core and standard components
+	#include <afxext.h>				//MFC extensions
+	#include <afxdisp.h>			//MFC Automation classes
 
 	#ifndef _AFX_NO_OLE_SUPPORT
-		#include <afxdtctl.h>		// MFC support for Internet Explorer 4 Common Controls
+		#include <afxdtctl.h>		//MFC support for Internet Explorer 4 Common Controls
 	#endif
 
 	#ifndef _AFX_NO_AFXCMN_SUPPORT
-		#include <afxcmn.h>			// MFC support for Windows Common Controls
+		#include <afxcmn.h>			//MFC support for Windows Common Controls
 	#endif
 
 	#ifdef _RIBBONS_SUPPORT
-		#include <afxcontrolbars.h>	// MFC support for ribbons and control bars
+		#include <afxcontrolbars.h>	//MFC support for ribbons and control bars
 	#endif
 
 #endif

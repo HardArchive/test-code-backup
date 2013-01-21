@@ -1,5 +1,5 @@
 
-// Client.h : main header file for the PROJECT_NAME application
+//Client.h : main header file for the PROJECT_NAME application
 //
 
 #pragma once
@@ -8,11 +8,11 @@
 	#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
-#include "resource.h"		// main symbols
+#include "resource.h"		//main symbols
 
 
-// CClientApp:
-// See Client.cpp for the implementation of this class
+//CClientApp:
+//See Client.cpp for the implementation of this class
 //
 
 class CClientApp : public CWinApp
@@ -20,11 +20,11 @@ class CClientApp : public CWinApp
 public:
 	CClientApp();
 
-// Overrides
+//Overrides
 public:
 	virtual BOOL InitInstance();
 
-// Implementation
+//Implementation
 
 	DECLARE_MESSAGE_MAP()
 };

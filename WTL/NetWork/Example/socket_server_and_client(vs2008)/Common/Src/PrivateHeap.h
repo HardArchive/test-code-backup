@@ -24,16 +24,16 @@ Examples:
 				buff.ReAlloc(40 * sizeof(TCHAR));
 				size = buff.Size();
 				std::cout << (TCHAR*)buff << '\n';
-				// OR
-				// ASSERT(g_hpPrivate.IsValid());
-				// TCHAR* pch	= (TCHAR*)g_hpPrivate.Alloc(32 * sizeof(TCHAR));
-				// lstrcpy(pch, _T("失败乃成功之母"));
-				// DWORD size = g_hpPrivate.Size(pch);
-				// g_hpPrivate.ReAlloc(pch, 40 * sizeof(TCHAR));
-				// size = g_hpPrivate.Size(pch);
-				// std::cout << pch << '\n';
-				// g_hpPrivate.Free(pch);
-				// 
+				//OR
+				//ASSERT(g_hpPrivate.IsValid());
+				//TCHAR* pch	= (TCHAR*)g_hpPrivate.Alloc(32 * sizeof(TCHAR));
+				//lstrcpy(pch, _T("失败乃成功之母"));
+				//DWORD size = g_hpPrivate.Size(pch);
+				//g_hpPrivate.ReAlloc(pch, 40 * sizeof(TCHAR));
+				//size = g_hpPrivate.Size(pch);
+				//std::cout << pch << '\n';
+				//g_hpPrivate.Free(pch);
+				//
 				return 0;
 			}
 
@@ -148,7 +148,7 @@ public:
 	//3）通过将空闲内存块标记为“已分配”分配新内存块；
 	//4）将新内存块添加给内存块链接表；
 	//注意，在堆中分配的内存块只能是固定的内存块，不想GlobalAlloc函数一样可以分配可移动的内存块。
-	// m_heap用于标识分配的内存块来自的堆栈的句柄，size参数用于设定从堆栈中分配的内存块的字节数
+	//m_heap用于标识分配的内存块来自的堆栈的句柄，size参数用于设定从堆栈中分配的内存块的字节数
 	//从私有堆heap中分配内存块  options 以下标识的组合：HEAP_NO_SERIALIZE HEAP_GENERATE_EXCEPTIONS HEAP_ZERO_MEMORY
 	PVOID Alloc(DWORD size, EnAllocOptions options = AO_DEFAULT)
 		{return ::HeapAlloc(m_heap, options, size);}
