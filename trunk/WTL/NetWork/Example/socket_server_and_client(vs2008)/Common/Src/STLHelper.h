@@ -526,7 +526,7 @@ private:
 /*                       字符串比较 hash 函数                           */
 /************************************************************************/
 template<class T, bool uncase = true, size_t bk_size = 4, size_t min_bks = 8>
-// T -> TCHAR* / CString
+//T -> TCHAR* / CString
 struct STR_HASH_FUNCTION
 {
 	enum
@@ -589,7 +589,7 @@ struct bool_comp_func
 };
 
 template<class T>
-// T -> (signed / unsigned) short / int / long / __int64
+//T -> (signed / unsigned) short / int / long / __int64
 struct integer_comp_func
 {
 	bool operator() (T v1, T v2) const
@@ -632,7 +632,7 @@ struct double_comp_func
 };
 
 template<class T, bool CASE = false>
-// T -> (unsigned) char / wchar_t
+//T -> (unsigned) char / wchar_t
 struct character_comp_func
 {
 	bool operator() (T v1, T v2) const
@@ -655,7 +655,7 @@ typedef character_comp_func<unsigned char, false>	uchar_ucase_comp_func;
 typedef character_comp_func<wchar_t, false>			wchar_ucase_comp_func;
 
 template<class T, bool CASE = false>
-// T -> TCHAR* / CString
+//T -> TCHAR* / CString
 struct str_comp_func
 {
 	//比较函数。
@@ -696,7 +696,7 @@ typedef bool_sort_func<true>	bool_asc_sort_func;
 typedef bool_sort_func<false>	bool_desc_sort_func;
 
 template<class T, bool ASC = true>
-// T -> (signed / unsigned) short / int / long / __int64
+//T -> (signed / unsigned) short / int / long / __int64
 struct integer_sort_func
 {
 	bool operator() (T v1, T v2) const
@@ -761,7 +761,7 @@ typedef double_sort_func<true>		double_asc_sort_func;
 typedef double_sort_func<false>		double_desc_sort_func;
 
 template<class T, bool ASC = true, bool CASE = false>
-// T -> (unsigned) char / wchar_t
+//T -> (unsigned) char / wchar_t
 struct character_sort_func
 {
 	bool operator() (T v1, T v2) const
@@ -794,7 +794,7 @@ typedef character_sort_func<unsigned char, false, false>	uchar_desc_ucase_sort_f
 typedef character_sort_func<wchar_t, false, false>			wchar_desc_ucase_sort_func;
 
 template<class T, bool ASC = true, bool CASE = false>
-// T -> TCHAR* / CString
+//T -> TCHAR* / CString
 struct str_sort_func
 {
 	bool operator() (const T& v1, const T& v2) const

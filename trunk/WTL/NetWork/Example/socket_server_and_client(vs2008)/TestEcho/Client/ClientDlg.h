@@ -1,5 +1,5 @@
 
-// ClientDlg.h : header file
+//ClientDlg.h : header file
 //
 
 #pragma once
@@ -8,25 +8,25 @@
 #include "../Global/helper.h"
 
 
-// CClientDlg dialog
+//CClientDlg dialog
 class CClientDlg : public CDialogEx, public IClientSocketListener
 {
-// Construction
+//Construction
 public:
-	CClientDlg(CWnd* pParent = NULL);	// standard constructor
+	CClientDlg(CWnd* pParent = NULL);	//standard constructor
 
-// Dialog Data
+//Dialog Data
 	enum { IDD = IDD_CLIENT_DIALOG };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);	//DDX/DDV support
 
 
-// Implementation
+//Implementation
 protected:
 	HICON m_hIcon;
 
-	// Generated message map functions
+	//Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();

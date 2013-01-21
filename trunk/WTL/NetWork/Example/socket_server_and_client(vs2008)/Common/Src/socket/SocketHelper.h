@@ -33,26 +33,29 @@ private:
 	int		m_iResult;
 };
 
+
 enum EnSocketState
 {
-	SS_STARTING	= 0,
-	SS_STARTED	= 1,
-	SS_STOPING	= 2,
-	SS_STOPED	= 3,
+	SS_STARTING	= 0,  //即将开始
+	SS_STARTED	= 1,  //已经开始
+	SS_STOPING	= 2,  //即将停止
+	SS_STOPED	= 3,  //已经停止
 };
-
+//操作类型
 enum EnSocketOperation
 {
-	SO_UNKNOWN	= 0,
-	SO_ACCEPT	= 1,
-	SO_CONNECT	= 2,
-	SO_SEND		= 3,
-	SO_RECEIVE	= 4,
+	SO_UNKNOWN	= 0,   //未知
+	SO_ACCEPT	= 1,   //接收到连接请求
+	SO_CONNECT	= 2,   //连接
+	SO_SEND		= 3,   //发送数据
+	SO_RECEIVE	= 4,   //接收到数据
 };
 
+//监听器基接口
 class ISocketListener
 {
 public:
+	//返回值类型
 	enum EnHandleResult
 	{
 		HR_OK		= 0,
@@ -61,21 +64,27 @@ public:
 	};
 
 public:
+	//已发出数据通知
 	virtual EnHandleResult OnSend(DWORD dwConnectionID, const BYTE* pData, int iLength)					= 0;
+	//已接收数据通知
 	virtual EnHandleResult OnReceive(DWORD dwConnectionID, const BYTE* pData, int iLength)				= 0;
+	//关闭连接通知
 	virtual EnHandleResult OnClose(DWORD dwConnectionID)												= 0;
+	//通信错误通知
 	virtual EnHandleResult OnError(DWORD dwConnectionID, EnSocketOperation enOperation, int iErrorCode)	= 0;
 
 public:
 	virtual ~ISocketListener() {}
 };
 
-
+//监听器接口
 //IServerSocketListener 接口提供组件通知方法，由上层应用实现
 class IServerSocketListener : public ISocketListener
 {
 public:
+	//接收连接通知
 	virtual EnHandleResult OnAccept(DWORD dwConnectionID)	= 0;
+	//服务关闭通知
 	virtual EnHandleResult OnServerShutdown()				= 0;
 };
 
@@ -85,10 +94,12 @@ public:
 	virtual EnHandleResult OnConnect(DWORD dwConnectionID)	= 0;
 };
 
+//操作接口
 //ISocketServer 接口提供组件操作方法，由上层应用直接调用
 class ISocketServer
 {
 public:
+	//错误码
 	enum En_ISS_Error
 	{
 		ISS_OK						= 0,
@@ -104,19 +115,27 @@ public:
 	};
 
 public:
+	//启动通信
 	virtual BOOL Start	(LPCTSTR pszBindAddress, USHORT usPort)								= 0;
+	//关闭通信
 	virtual BOOL Stop	()																	= 0;
+	//发送数据
 	virtual BOOL Send	(DWORD dwConnID, const BYTE* pBuffer, int iLen)						= 0;
+	//是否已启动
 	virtual BOOL HasStarted				()													= 0;
+	
 	virtual EnSocketState GetSocketState()													= 0;
+	//获取错误码
 	virtual En_ISS_Error GetLastError	()													= 0;
+	//获取错误描述
 	virtual LPCTSTR		GetLastErrorDesc()													= 0;
+	//获取客户端的地址信息
 	virtual BOOL GetConnectionAddress(DWORD dwConnID, CString& strAddress, USHORT& usPort)	= 0;
 
 public:
 	virtual ~ISocketServer() {}
 };
-
+//ISocketServer 接口智能指针
 typedef auto_ptr<ISocketServer>	ISocketServerPtr;
 
 class ISocketClient
@@ -152,29 +171,29 @@ typedef auto_ptr<ISocketClient>	ISocketClientPtr;
 
 struct TBufferObjBase
 {
-	OVERLAPPED			ov;           //WSAOVERLAPPED
-	WSABUF				buff;
-	EnSocketOperation	operation;
+	OVERLAPPED			ov;           //WSAOVERLAPPED 异步 Overlapped
+	WSABUF				buff;         //数据缓冲 buffer
+	EnSocketOperation	operation;    //操作类型
 };
 
 //内存缓冲区
 struct TBufferObj : public TBufferObjBase
 {
-	SOCKET	client;
+	SOCKET	client;    //Client Socket
 };
 //内存缓冲区表
 typedef list<TBufferObj*>	TBufferObjPtrList;   
 
 struct TSocketObjBase
 {
-	SOCKET	socket;
+	SOCKET	socket;     //Client Socket
 };
 //Socket 相关的结构体
 struct TSocketObj : public TSocketObjBase
 {
-	SOCKADDR_IN		clientAddr;
-	DWORD			connID;
-	CCriSec2		crisec;
+	SOCKADDR_IN		clientAddr;   //Socket 地址
+	DWORD			connID;       //Connection ID
+	CCriSec2		crisec;       //Critical Session
 };
 //套接字相关结构表
 typedef list<TSocketObj*>					TSocketObjPtrList;
@@ -203,6 +222,6 @@ int SSO_SendBuffSize		(SOCKET sock, int size);
 int SSO_ReuseAddress		(SOCKET sock, BOOL bReuse = TRUE);
 
 int ManualCloseSocket		(SOCKET sock, BOOL bGraceful = TRUE, BOOL bReuseAddress = FALSE);
-int PostAccept				(LPFN_ACCEPTEX pfnAcceptEx, SOCKET soListen, SOCKET soClient, TBufferObj* pBufferObj);
-int PostSend				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);
-int PostReceive				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);
+int PostAccept				(LPFN_ACCEPTEX pfnAcceptEx, SOCKET soListen, SOCKET soClient, TBufferObj* pBufferObj); //接受连接
+int PostSend				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);   //发送数据
+int PostReceive				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);   //接收数据

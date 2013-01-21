@@ -430,7 +430,7 @@ BOOL SplitStr(LPCTSTR pszSrc, vector<CString>& vtItem, LPCTSTR pszSepectors, LPC
 			strItem = strSrc;
 		else if(iPos1 != -1 && (iPos1 < iPos2 || iPos2 == -1))
 			strItem = strSrc.Left(iPos1);
-		else	// (iPos1 > iPos2 || iPos1 == -1)
+		else	//(iPos1 > iPos2 || iPos1 == -1)
 		{
 			TCHAR tc	= strSrc[iPos2];
 			iPos3		= strSrc.Find(tc, iPos2 + 1);
@@ -545,20 +545,20 @@ BOOL RunProcess(LPCTSTR szFileName, LPCTSTR cmdline/* = NULL*/, BOOL bHide /* = 
 	PROCESS_INFORMATION pi;
 	ZeroMemory(&pi, sizeof(pi));
 
-	// Start the child process
+	//Start the child process
 	CString strCmd(cmdline);
 	LPTSTR pszcmd = (LPTSTR)(LPCTSTR)strCmd;
 
 	BOOL bRet = CreateProcess(
 								process_name,
-								pszcmd,					// Command line. 
-								NULL,					// Process handle not inheritable. 
-								NULL,					// Thread handle not inheritable. 
-								FALSE,					// Set handle inheritance to FALSE. 
-								dwCreationFlags,		// No creation flags. 
-								NULL,					// Use parent's environment block. 
-								(LPTSTR)process_dir,	// Use parent's starting directory. 
-								&si,					// Pointer to STARTUPINFO structure.
+								pszcmd,					//Command line. 
+								NULL,					//Process handle not inheritable. 
+								NULL,					//Thread handle not inheritable. 
+								FALSE,					//Set handle inheritance to FALSE. 
+								dwCreationFlags,		//No creation flags. 
+								NULL,					//Use parent's environment block. 
+								(LPTSTR)process_dir,	//Use parent's starting directory. 
+								&si,					//Pointer to STARTUPINFO structure.
 								&pi
 							);
 

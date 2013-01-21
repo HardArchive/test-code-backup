@@ -91,7 +91,7 @@ BOOL CSocketClient::CreateClientSocket()
 		if(m_dwKeepAliveTimes > 0 && m_dwKeepAliveInterval > 0)
 			VERIFY(::SSO_KeepAliveVals(m_soClient, TRUE, m_dwKeepAliveTimes, m_dwKeepAliveInterval) == 0);
 
-		// VERIFY(::SSO_NoDelay(m_soClient, TRUE) == 0);
+		//VERIFY(::SSO_NoDelay(m_soClient, TRUE) == 0);
 #endif
 
 		m_evSocket	= ::WSACreateEvent();

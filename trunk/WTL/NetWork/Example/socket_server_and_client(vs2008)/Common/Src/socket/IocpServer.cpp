@@ -404,7 +404,7 @@ TBufferObj*	CIocpServer::CreateBufferObj()
 {
 	TBufferObj*	pBufferObj	= (TBufferObj*)m_hpPrivate.Alloc(sizeof(TBufferObj), CPrivateHeap::AO_ZERO_MEMORY);
 	ASSERT(pBufferObj);
-	pBufferObj->buff.buf	= (char*)m_hpPrivate.Alloc(m_dwIocpBufferSize, CPrivateHeap::AO_ZERO_MEMORY);
+	pBufferObj->buff.buf	= (char*)m_hpPrivate.Alloc(m_dwIocpBufferSize, CPrivateHeap::AO_ZERO_MEMORY);  //指向数据缓冲区
 	ASSERT(pBufferObj->buff.buf);
 
 	return pBufferObj;
@@ -508,8 +508,21 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 	while(TRUE)
 	{
 		HANDLE handles[]	= {*(pServer->m_psemAccept), pServer->m_evtAccept};
+		//等候单个对象或所有一系列对象发出信号，或等候指定的超时时间过去（溢出）。如返回条件已经满足，则立即返回
 		DWORD dwResult		= ::WaitForMultipleObjectsEx(2, handles, FALSE, INFINITE, FALSE);
+		//第三个参数__in BOOL bWaitAll,如bWaitAll设为TRUE，则下述任何一个常数都标志着成功
+		//WAIT_ABANDONED_0：所有对象都发出消息，而且其中有一个或多个属于互斥体（一旦拥有它们的进程中止，就会发出信号）
+		//WAIT_TIMEOUT：对象保持未发信号的状态，但规定的等待超时时间已经超过
+		//WAIT_OBJECT_0：所有对象都发出信号
+		//WAIT_IO_COMPLETION：（仅适用于WaitForMultipleObjectsEx）由于一个I/O完成操作已作好准备执行，所以造成了函数的返回
+		//返回WAIT_FAILED则表示函数执行失败，会设置GetLastError
+		//
+		//如bWaitAll为FALSE，那么返回结果相似，
+		// 只是可能还会返回相对于WAIT_ABANDONED_0 或 WAIT_OBJECT_0的一个正偏移量，指出哪个对象是被抛弃还是发出信号。
+		// 例如，WAIT_OBJECT_0 + 5的返回结果意味着列表中的第5个对象发出了信号
+		
 
+		
 		/*
 		if(dwResult == WAIT_OBJECT_0)
 		{
@@ -522,12 +535,13 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 		}
 		*/
 
+		//WAIT_OBJECT_0所有对象都发出信号
 		if(dwResult == WAIT_OBJECT_0)
 		{
 			TBufferObj* pBufferObj	= pServer->GetFreeBufferObj();
 			SOCKET soClient			= pServer->GetAcceptSocket();
 
-			//投递一个接收
+			//投递一个连接接收SO_ACCEPT
 			VERIFY(::PostAccept(pServer->m_pfnAcceptEx, pServer->m_soListen, soClient, pBufferObj) == NO_ERROR);
 
 			/*
@@ -543,7 +557,7 @@ UINT WINAPI CIocpServer::AcceptThreadProc(LPVOID pv)
 			*/
 		}
 		else if(dwResult == WAIT_OBJECT_0 + 1)
-		{
+		{//第一个参数发出了信号
 			pServer->ReleaseAcceptSockets();
 
 			TRACE1("---------------> Accept Thread 0x%08X stoped <---------------\n", ::GetCurrentThreadId());
@@ -649,7 +663,7 @@ UINT WINAPI CIocpServer::WorkerThreadProc(LPVOID pv)
 			if(pServer->HasStarted())
 			{
 				SOCKET sock	= pBufferObj->operation != SO_ACCEPT ? pSocketObj->socket : (SOCKET)pSocketObj;
-				result		= ::WSAGetOverlappedResult(sock, &pBufferObj->ov, &dwBytes, FALSE, &dwFlag);
+				result		= ::WSAGetOverlappedResult(sock, &pBufferObj->ov, &dwBytes, FALSE, &dwFlag);  //返回指定套接口上一个重叠操作的结果
 
 				//投递失败
 				if (!result)
@@ -753,12 +767,13 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 		ASSERT(result == 0);
 	}
 
-	// result = ::SSO_NoDelay(pSocketObj->socket, TRUE);
-	// ASSERT(result == 0);
+	//result = ::SSO_NoDelay(pSocketObj->socket, TRUE);
+	//ASSERT(result == 0);
 
 	VERIFY(::CreateIoCompletionPort((HANDLE)pSocketObj->socket, m_hCompletePort, (ULONG_PTR)pSocketObj, 0));
 
 	FireAccept(pSocketObj->connID);
+	//接受连接成功后 投递一个接收
 	DoReceive(pSocketObj, pBufferObj);
 }
 

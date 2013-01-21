@@ -1,5 +1,5 @@
 
-// ServerDlg.h : header file
+//ServerDlg.h : header file
 //
 
 #pragma once
@@ -8,25 +8,25 @@
 #include "../../Common/Src/socket/IocpServer.h"
 #include "../Global/helper.h"
 
-// CServerDlg dialog
+//CServerDlg dialog
 class CServerDlg : public CDialogEx, public IServerSocketListener
 {
-// Construction
+//Construction
 public:
-	CServerDlg(CWnd* pParent = NULL);	// standard constructor
+	CServerDlg(CWnd* pParent = NULL);	//standard constructor
 
-// Dialog Data
+//Dialog Data
 	enum { IDD = IDD_SERVER_DIALOG };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);	//DDX/DDV support
 
 
-// Implementation
+//Implementation
 protected:
 	HICON m_hIcon;
 
-	// Generated message map functions
+	//Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();

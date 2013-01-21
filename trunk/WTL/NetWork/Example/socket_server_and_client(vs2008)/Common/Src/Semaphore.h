@@ -6,7 +6,8 @@ class CSEM
 public:
 	CSEM(LONG lMaximumCount, LONG lInitialCount = 0, LPCTSTR lpName = NULL, LPSECURITY_ATTRIBUTES pSecurity = NULL)
 	{
-		m_hsem = ::CreateSemaphore(pSecurity, lInitialCount, lMaximumCount, lpName); //创建一个新的信号量
+		//创建一个不允许继承(pSecurity ==0)初始计数为lInitialCount最大计数lMaximumCount名称为lpName的信号量
+		m_hsem = ::CreateSemaphore(pSecurity, lInitialCount, lMaximumCount, lpName); 
 		ASSERT(IsValid());
 	}
 
