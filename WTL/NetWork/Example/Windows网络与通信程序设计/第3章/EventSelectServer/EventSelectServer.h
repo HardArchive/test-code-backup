@@ -127,7 +127,7 @@ void RebuildArray(PTHREAD_OBJ pThread)
 
 /////////////////////////////////////////////////////////////////////
 
-// 向一个线程的套节字列表中插入一个套节字 最多插入64个socket
+// 向一个线程的套节字列表结构中插入一个套节字 最多插入64个socket 如果已经插入了64个则失败
 BOOL InsertSocketObj(PTHREAD_OBJ pThread, PSOCKET_OBJ pSocket)
 {
 	BOOL bRet = FALSE;
@@ -166,7 +166,8 @@ void AssignToFreeThread(PSOCKET_OBJ pSocket)
 	PTHREAD_OBJ pThread = g_pThreadList;  //指向线程对象列表表头
 	// 试图插入到现存线程
 	while(pThread != NULL)
-	{//插入线程对象列表表头
+	{ 
+		//InsertSocketObj插入线程对象列表pThread表尾  如果已经pThread超过64个则返回失败  
 		if(InsertSocketObj(pThread, pSocket))
 			break;
 		pThread = pThread->pNext;
