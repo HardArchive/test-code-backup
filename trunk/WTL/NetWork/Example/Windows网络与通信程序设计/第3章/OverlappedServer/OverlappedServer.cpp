@@ -34,9 +34,9 @@ typedef struct _BUFFER_OBJ
 	_BUFFER_OBJ *pNext;
 } BUFFER_OBJ, *PBUFFER_OBJ;
 
-HANDLE g_events[WSA_MAXIMUM_WAIT_EVENTS];	// I/O事件句柄数组
+HANDLE g_events[WSA_MAXIMUM_WAIT_EVENTS];	// I/O事件句柄数组  64 第0个为本地监听事件句柄
 int g_nBufferCount;							// 上数组中有效句柄数量
-PBUFFER_OBJ g_pBufferHead, g_pBufferTail;	// 记录缓冲区对象组成的表的地址
+PBUFFER_OBJ g_pBufferHead, g_pBufferTail;	// 记录缓冲区对象组成的链表表头地址
 
 //获取扩展函数指针
 PVOID GetExtensionFuncPtr(SOCKET sock)
@@ -151,6 +151,7 @@ PBUFFER_OBJ FindBufferObj(HANDLE hEvent)
 	return pBuffer;
 }
 
+//重建缓冲区链表与IO事件对象句柄的对应关系
 void RebuildArray()
 {
 	PBUFFER_OBJ pBuffer = g_pBufferHead;
@@ -162,7 +163,7 @@ void RebuildArray()
 	}
 }
 
-//投递一个连接
+//投递一个接受连接请求
 BOOL PostAccept(PBUFFER_OBJ pBuffer)
 {
 	PSOCKET_OBJ pSocket = pBuffer->pSocket;
@@ -244,10 +245,9 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 	PSOCKET_OBJ pSocket = pBuffer->pSocket; // 从BUFFER_OBJ对象中提取SOCKET_OBJ对象指针，为的是方便引用
 	pSocket->nOutstandingOps --;
 	
-
-	// 获取重叠操作结果
-	DWORD dwTrans;
-	DWORD dwFlags;
+	DWORD dwTrans;   //用于取得实际传输字节的数量
+	DWORD dwFlags;   //用于取得完成状态
+	// 获取重叠操作结果 true 重叠操作成功  false 套接字上有错误发生
 	BOOL bRet = ::WSAGetOverlappedResult(pSocket->s, &pBuffer->ol, &dwTrans, FALSE, &dwFlags);
 	if(!bRet)
 	{
@@ -274,7 +274,7 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 			// 为新客户创建一个SOCKET_OBJ对象
 			PSOCKET_OBJ pClient = GetSocketObj(pBuffer->sAccept);
 
-			// 为发送数据创建一个BUFFER_OBJ对象，这个对象会在套节字出错或者关闭时释放
+			// 为收发数据创建一个BUFFER_OBJ对象，这个对象会在套节字出错或者关闭时释放
 			PBUFFER_OBJ pSend = GetBufferObj(pClient, BUFFER_SIZE);	
 			if(pSend == NULL)
 			{
@@ -303,7 +303,6 @@ BOOL HandleIO(PBUFFER_OBJ pBuffer)
 			printf("Remote Accepted client:%s:%d\n", inet_ntoa(RemoteSockAddr.sin_addr), ntohs(RemoteSockAddr.sin_port));
 
 			RebuildArray();		
-
 			
 			// 将数据复制到发送缓冲区
 			pSend->nLen = dwTrans;
@@ -431,7 +430,7 @@ void main()
 	// 创建用来重新建立g_events数组的事件对象
 	g_events[0] = ::WSACreateEvent();
 
-	// 在此可以投递多个接受I/O请求
+	// 在此可以投递多个接受I/O请求  投递5个接受连接请求
 	for(int i=0; i<5; i++)
 	{
 		PostAccept(GetBufferObj(pListen, BUFFER_SIZE));
