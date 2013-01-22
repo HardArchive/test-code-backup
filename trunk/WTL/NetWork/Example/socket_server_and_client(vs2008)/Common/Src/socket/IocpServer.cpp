@@ -739,6 +739,7 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 	SOCKADDR* pLocalSockAddr;
 	SOCKADDR* pRemoteSockAddr;
 
+	//将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户
 	m_pfnGetAcceptExSockaddrs
 		(
 		pBufferObj->buff.buf,
@@ -754,7 +755,8 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 	TSocketObj* pSocketObj	= GetFreeSocketObj();
 	pSocketObj->socket		= pBufferObj->client;
 	pSocketObj->connID		= ::InterlockedIncrement((LONG*)&m_dwConnID);
-	memcpy(&pSocketObj->clientAddr, pRemoteSockAddr, sizeof(SOCKADDR_IN));
+	//InterlockedIncrement 对m_dwConnID加1 在对m_dwConnID访问的时候其他线程不能访问这个变量
+	memcpy(&pSocketObj->clientAddr, pRemoteSockAddr, sizeof(SOCKADDR_IN));  //远程机器的地址
 	AddClientSocketObj(pSocketObj->connID, pSocketObj);
 
 	int result = 0;
@@ -772,7 +774,7 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 
 	VERIFY(::CreateIoCompletionPort((HANDLE)pSocketObj->socket, m_hCompletePort, (ULONG_PTR)pSocketObj, 0));
 
-	FireAccept(pSocketObj->connID);
+	FireAccept(pSocketObj->connID);  //打印连接
 	//接受连接成功后 投递一个接收
 	DoReceive(pSocketObj, pBufferObj);
 }

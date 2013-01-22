@@ -61,7 +61,7 @@ public:
 public:/* ISocketServer 接口方法实现 */
 	virtual BOOL Start	(LPCTSTR pszBindAddress, USHORT usPort);
 	virtual BOOL Stop	();
-	virtual BOOL Send	(DWORD dwConnID, const BYTE* pBuffer, int iLen);
+	virtual BOOL Send	(DWORD dwConnID, const BYTE* pBuffer, int iLen);  //发送数据 连接ID 内容 长度
 	virtual BOOL			HasStarted		()	{return m_enState == SS_STARTED;}
 	virtual EnSocketState	GetSocketState	()	{return m_enState;}
 	virtual En_ISS_Error	GetLastError	()	{return m_enLastError;}
@@ -97,13 +97,14 @@ private:
 	TBufferObj*	GetFreeBufferObj(int iLen = 0);  //取到空闲buffer
 	TSocketObj*	GetFreeSocketObj();
 	void		AddFreeBufferObj(TBufferObj* pBufferObj);
+	//将dwConnID对应的套接字加入空闲缓冲池队列
 	void		AddFreeSocketObj(DWORD dwConnID, BOOL bClose = TRUE, BOOL bGraceful = TRUE, BOOL bReuseAddress = FALSE);
 	TBufferObj*	CreateBufferObj();              //创建空闲buffer
 	TSocketObj*	CreateSocketObj();
 	void		DeleteBufferObj(TBufferObj* pBufferObj);
 	void		DeleteSocketObj(TSocketObj* pSocketObj);
 
-	void		AddClientSocketObj(DWORD dwConnID, TSocketObj* pSocketObj);
+	void		AddClientSocketObj(DWORD dwConnID, TSocketObj* pSocketObj); //将Connection ID 和TSocketObj添加到m_mpClientSocket表中
 	TSocketObj* FindSocketObj(DWORD dwConnID);
 
 private:
@@ -115,25 +116,27 @@ private:
 	//工作线程的数量可以根据实际情况之行设置（通常建议为：CPU Core Number * 2 + 2）
 	static UINT WINAPI WorkerThreadProc(LPVOID pv);   //IOCP工作线程
 
-	void HandleIo		(TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwBytes, DWORD dwErrorCode);
-	void HandleAccept	(SOCKET soListen, TBufferObj* pBufferObj);
-	void HandleSend		(TSocketObj* pSocketObj, TBufferObj* pBufferObj);
-	void HandleReceive	(TSocketObj* pSocketObj, TBufferObj* pBufferObj);
+	void HandleIo		(TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwBytes, DWORD dwErrorCode); //IO处理
+	void HandleAccept	(SOCKET soListen, TBufferObj* pBufferObj);        //接受连接处理
+	void HandleSend		(TSocketObj* pSocketObj, TBufferObj* pBufferObj); //发送数据处理
+	void HandleReceive	(TSocketObj* pSocketObj, TBufferObj* pBufferObj); //接收数据处理
 
 	int DoSend		(TSocketObj* pSocketObj, TBufferObj* pBufferObj);     //投递一个发送
 	int DoReceive	(TSocketObj* pSocketObj, TBufferObj* pBufferObj);     //投递一个接收
 
 private:
 	SOCKET	GetAcceptSocket(); //创建并取到客户端接受连接套接字
-	BOOL	DeleteAcceptSocket(SOCKET socket, BOOL bCloseSocket = FALSE);
+	 //将接受连接的socket从等待接受连接的socket集合m_setAccept中删掉
+	BOOL	DeleteAcceptSocket(SOCKET socket, BOOL bCloseSocket = FALSE); 
 	void	ReleaseAcceptSockets();
 
 private:
 	CInitSocket					m_wsSocket;
 	//接受连接函数指针
-	LPFN_ACCEPTEX				m_pfnAcceptEx;          //AcceptEx函数指针       
-	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;    //GetAcceptExSockaddrs函数指针用来取得接收socket的IP端口
+	LPFN_ACCEPTEX				m_pfnAcceptEx;          //AcceptEx函数指针  
 	//GetAcceptExSockaddrs是专门为AcceptEx函数准备的，它将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户。
+	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;    //GetAcceptExSockaddrs函数指针用来取得接收socket的IP端口
+	
 private:
 	IServerSocketListener*	m_psoListener;  //监听器指针
 
@@ -147,9 +150,9 @@ private:
 	HANDLE			m_hAcceptThread;    //Accept 线程句柄
 	vector<HANDLE>	m_vtWorkerThreads;  //工作线程句柄集合
 
-	TBufferObjPtrList	m_lsFreeBuffer;    //TBufferObj 缓冲池队列
-	TSocketObjPtrList	m_lsFreeSocket;    //TSocketObj 缓冲池队列
-	TSocketObjPtrMap	m_mpClientSocket;  //Connection ID 映射
+	TBufferObjPtrList	m_lsFreeBuffer;    //TBufferObj 缓冲池空闲队列
+	TSocketObjPtrList	m_lsFreeSocket;    //TSocketObj 缓冲池空闲队列
+	TSocketObjPtrMap	m_mpClientSocket;  //Connection ID 到TSocketObj的 映射
 
 	CCriSec				m_csFreeBuffer;
 	CCriSec				m_csFreeSocket;
@@ -159,7 +162,7 @@ private:
 
 	smart_simple_ptr<CSEM>	m_psemAccept;  //单实体智能指针-接收信号量
 	CCriSec					m_csAccept;
-	ulong_set				m_setAccept;   //客户端套接字集合
+	ulong_set				m_setAccept;   //客户端套接字集合 等待连接套接字集合
 
 	CPrivateHeap			m_hpPrivate;   // 缓冲池私有堆
 
