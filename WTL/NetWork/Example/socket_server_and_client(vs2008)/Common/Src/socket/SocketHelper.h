@@ -197,7 +197,7 @@ struct TSocketObj : public TSocketObjBase
 };
 //套接字相关结构表
 typedef list<TSocketObj*>					TSocketObjPtrList;
-typedef hash_map<DWORD, TSocketObj*>		TSocketObjPtrMap;
+typedef hash_map<DWORD, TSocketObj*>		TSocketObjPtrMap;   //Connection ID 到TSocketObj的
 typedef TSocketObjPtrMap::iterator			TSocketObjPtrMapI;
 typedef TSocketObjPtrMap::const_iterator	TSocketObjPtrMapCI;
 
@@ -223,5 +223,5 @@ int SSO_ReuseAddress		(SOCKET sock, BOOL bReuse = TRUE);
 
 int ManualCloseSocket		(SOCKET sock, BOOL bGraceful = TRUE, BOOL bReuseAddress = FALSE);
 int PostAccept				(LPFN_ACCEPTEX pfnAcceptEx, SOCKET soListen, SOCKET soClient, TBufferObj* pBufferObj); //接受连接
-int PostSend				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);   //发送数据
+int PostSend				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);   //投递 发送数据
 int PostReceive				(TSocketObj* pSocketObj, TBufferObj* pBufferObj);   //接收数据

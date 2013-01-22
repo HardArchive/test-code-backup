@@ -49,6 +49,7 @@ void LogClientSendFail(int iSequence, int iSocketIndex, DWORD code, LPCTSTR lpsz
 void LogSendFail(DWORD dwConnectionID, DWORD code, LPCTSTR lpszDesc);
 void LogOnConnect(DWORD dwConnectionID);
 void LogMsg(const CString& msg);
+
 void PostOnSend(DWORD dwConnectionID, const BYTE* pData, int iLength);
 void PostOnReceive(DWORD dwConnectionID, const BYTE* pData, int iLength);
 void PostOnClose(DWORD dwConnectionID);
