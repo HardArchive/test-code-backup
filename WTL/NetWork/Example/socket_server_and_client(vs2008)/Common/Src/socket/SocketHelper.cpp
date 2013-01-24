@@ -123,7 +123,7 @@ LPFN_TRANSMITFILE Get_TransmitFile_FuncPtr(SOCKET sock)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//当 AcceptEx函数完成操作并且SO_UPDATE_ACCEPT_CONTEXT选项在被接受的socket中被设置时, socket相关的本地地址（local address ）可以使用getsockname函数获
 int SSO_UpdateAcceptContext(SOCKET soClient, SOCKET soBind)
 {
 	return setsockopt(soClient, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (CHAR*)&soBind, sizeof(SOCKET));
@@ -147,6 +147,8 @@ int SSO_DontLinger(SOCKET sock, BOOL bDont)
 int SSO_Linger(SOCKET sock, USHORT l_onoff, USHORT l_linger)
 {
 	linger ln = {l_onoff, l_linger};
+	//此选项指定函数close对面向连接的协议如何操作（如TCP）。
+	// 内核缺省close操作是立即返回，如果有数据残留在套接口缓冲区中则系统将试着将这些数据发送给对方。
 	return setsockopt(sock, SOL_SOCKET, SO_LINGER, (CHAR*)&ln, sizeof(linger));
 }
 

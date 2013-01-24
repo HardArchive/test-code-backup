@@ -96,8 +96,6 @@ BOOL SplitStr(LPCTSTR pszSrc, vector<CString>& vtItem, LPCTSTR pszSepectors = NU
 CString ExtractFileName(LPCTSTR lpszFullFileName);
 //提取文件路径
 CString ExtractPath(LPCTSTR lpszFullFileName);
-//提取文件路径
-CString ExtractPath(LPCTSTR lpszFullFileName);
 //提取当前模块路径
 CString ExtractModulePath(HMODULE hModule = NULL);
 

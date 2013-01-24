@@ -15,7 +15,10 @@ public:
 	{
 		LPWSADATA lpTemp = lpWSAData;
 		if(!lpTemp)
+		{
+			//_alloca在栈(stack)上申请空间,用完马上就释放.
 			lpTemp	= (LPWSADATA)_alloca(sizeof(WSADATA));
+		}
 
 		m_iResult	= ::WSAStartup(MAKEWORD(minorVersion, majorVersion), lpTemp);
 	}
