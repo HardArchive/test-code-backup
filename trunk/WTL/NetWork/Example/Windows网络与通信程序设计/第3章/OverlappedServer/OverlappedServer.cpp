@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <windows.h>
 
-CInitSock theSock;
+CInitSocket clsInitSock;
 LPFN_GETACCEPTEXSOCKADDRS g_pfnGetAcceptExSockaddrs = NULL; //获取连接addr
 #define BUFFER_SIZE 1024
 
