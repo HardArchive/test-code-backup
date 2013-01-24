@@ -1,24 +1,35 @@
 //////////////////////////////////////////////////////////
 // initsock.h文件
-
+#include <malloc.h>
 #include <winsock2.h>
 #pragma comment(lib, "WS2_32")	// 链接到WS2_32.lib
 
-class CInitSock		
+class CInitSocket
 {
 public:
-	CInitSock(BYTE minorVer = 2, BYTE majorVer = 2)
+	CInitSocket(LPWSADATA lpWSAData = NULL, BYTE minorVersion = 2, BYTE majorVersion = 2)
 	{
-		// 初始化WS2_32.dll
-		WSADATA wsaData;
-		WORD sockVersion = MAKEWORD(minorVer, majorVer);
-		if(::WSAStartup(sockVersion, &wsaData) != 0)
+		m_iResult = 0;
+		LPWSADATA lpTemp = lpWSAData;
+		if(!lpTemp)
 		{
-			exit(0);
+			lpTemp	= (LPWSADATA)_alloca(sizeof(WSADATA));
+		}
+
+		m_iResult	= ::WSAStartup(MAKEWORD(minorVersion, majorVersion), lpTemp);
+	}
+
+	~CInitSocket()
+	{
+		if(IsValid())
+		{
+			::WSACleanup();
 		}
 	}
-	~CInitSock()
-	{	
-		::WSACleanup();	
-	}
+
+	int		GetResult()	{return m_iResult;}
+	BOOL	IsValid()	{return m_iResult == 0;}
+
+private:
+	int		m_iResult;
 };
