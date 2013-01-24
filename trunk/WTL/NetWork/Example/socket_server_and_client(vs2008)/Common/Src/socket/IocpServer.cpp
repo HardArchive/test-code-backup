@@ -760,6 +760,7 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 	AddClientSocketObj(pSocketObj->connID, pSocketObj);
 
 	int result = 0;
+
 	result = ::SSO_UpdateAcceptContext(pSocketObj->socket, soListen);
 	ASSERT(result == 0);
 
@@ -787,6 +788,7 @@ void CIocpServer::HandleSend(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 
 void CIocpServer::HandleReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 {
+	//打印接收数据
 	if(FireReceive(pSocketObj->connID, (BYTE*)pBufferObj->buff.buf, pBufferObj->buff.len) != ISocketListener::HR_ERROR)
 		DoReceive(pSocketObj, pBufferObj);
 	else
