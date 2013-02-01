@@ -80,6 +80,11 @@ int GetConfigNum()
 	return GetIniNum(_T("SERVERNUM"), _T("Num"));
 }
 
+int GetConfigVerify()
+{
+	return GetIniNum(_T("CONFIG"), _T("IsVerity"));
+}
+
 //从Config.ini文件中获取反查服务器和正则表达式
 bool GetConfig(LOOKUPCONFIG& stuLookUpConfig, int iNum)
 {
@@ -207,6 +212,7 @@ int IpLook()
 {
 	int iNum = 0;
 	int iRet = 0;
+	bool bIsVerify = false;
 	TCHAR tszIP[32] = {0};
 	char szDomain[128] = {0};  //域名最大长度为72字符
 	vector<string> strVecDomain;
@@ -219,6 +225,10 @@ int IpLook()
 		Sleep(1000);
 		return -1;
 	}
+	printf("IP地址:%s\r\n", tszIP);
+
+	iNum = GetConfigVerify();
+	if (1 == iNum) bIsVerify = true;
 	iNum = GetConfigNum();       //取到反查服务器数量
 
 	for (int i=0; i<iNum; i++)
@@ -231,28 +241,45 @@ int IpLook()
 			Sleep(1000);
 			return -2;
 		}
+
+		printf("\r\n#######反查规则#######\r\n");
+		printf("Url:%s; \r\nRegex:%s\r\n", stuLookUpConfig.szUrl, stuLookUpConfig.szRegex);
+		printf("#######反查规则#######\r\n\r\n");
+
 		SetUrlRegexA(stuLookUpConfig.szUrl, stuLookUpConfig.szRegex);
 		if (!StartIpLookupA(tszIP))
 		{
 			printf("开始反查出错\r\n");
 		}
 
-
-		iRet = GetLookupDomainTotalNum();
+		printf("取得域名总数:%d;\r\n", GetLookupDomainTotalNum());
 		//将反查出的域名添加至向量
 		for (int j=0; j<GetLookupDomainTotalNum(); j++)
 		{
 			if (GetLookupDomainA(szDomain, j)>0)
 			{				
 				strVecDomain.push_back(string(szDomain));
+				printf("编号:%3d; 域名：%s\r\n", j, szDomain);
 			}
-			iRet = DNSVerify(szDomain, tszIP);	
-			//printf("较验结果:%d - ", iRet);
+
 			ZeroMemory(szDomain, sizeof(szDomain));
+		}
+
+		if (bIsVerify)
+		{
+			printf("\r\n#######域名较验#######\r\n");
+			vector<string>::iterator intiter;
+			for(intiter = strVecDomain.begin(); intiter!=strVecDomain.end(); intiter++)
+			{
+				strcpy(szDomain, intiter->c_str());
+				iRet = DNSVerify(szDomain, tszIP);	
+				printf("较验结果:%d - ", iRet);
+				ZeroMemory(szDomain, sizeof(szDomain));
+			}
+
 		}
 		printf("Over\r\n");
 	}
 
 	printf("All Over\r\n");
-
 }

@@ -20,7 +20,8 @@ int GetConfigNum();
 bool GetConfig(LOOKUPCONFIG& stuLookUpConfig, int iNum);
 //获取需反查的IP
 bool GetIpLookIP(TCHAR* ptszIP);
-
+//获取较验设置
+int GetConfigVerify();
 
 int DNSVerify(char* pszDomain, char* pszIp);  //IP域名较验
 
