@@ -6,9 +6,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int iRet = IpLook();
 
-	int iRet1 = DNSVerify("117.135.133.82", "117.135.133.74");
+	int iRet = IpLook();
 
 	getchar();
 
