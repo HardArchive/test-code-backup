@@ -237,6 +237,8 @@ int IpLook()
 			printf("开始反查出错\r\n");
 		}
 
+
+		iRet = GetLookupDomainTotalNum();
 		//将反查出的域名添加至向量
 		for (int j=0; j<GetLookupDomainTotalNum(); j++)
 		{
