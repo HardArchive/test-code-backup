@@ -1,0 +1,31 @@
+Changes to the sample project:
+
+CMainFrame::OnCreate()
+CMainFrame - Added handlers for Tray menu items.
+stdafx.h
+SystemTray.cpp/h - I marked my changes/additions with "(md)".
+SystemDrayDemo.cpp - I let the frame get displayed so you can use the new Tray
+  menu.
+BalloonDlg.cpp/h - A dialog used by the Tray/Show Balloon command.
+
+
+The new methods in CSystemTray are:
+
+CSystemTray() - Added parameters for the balloon tooltip.
+CreateEx() - Like Create() but has extra parameters for the balloon tooltip.
+  On NT 4 and 9x, it just calls Create().
+ShowBalloon() - Pops up a balloon tooltip over the tray icon (Win 2K only).
+HideIcon() - On Win 2K, the icon is hidden (using the API) instead of deleted.
+ShowIcon() - On Win 2K, the icon is unhidden.  It will reappear in the position
+  it was in prior to the HideIcon().
+HideIcon() and ShowIcon() have a BOOL parameter that's used only by
+  MoveToRight() to force the icon to be deleted and re-added on Win 2K.  This
+  parameter shouldn't be formally documented, since the caller should still
+  call just "HideIcon()" and "ShowIcon()".
+
+
+Bug fixes in CSystemTray:
+
+I added a few AfxIsValidString() calls to validate LPCTSTR parameters.
+I also used lstrcpyn() to copy strings into the NOTIFYICONDATA
+struct to guard against overrunning the char arrays.
