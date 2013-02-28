@@ -124,7 +124,7 @@ public:
 	virtual BOOL Stop	()																	= 0;
 	//发送数据
 	virtual BOOL Send	(DWORD dwConnID, const BYTE* pBuffer, int iLen)						= 0;
-	//是否已启动
+	//监听器是否已启动
 	virtual BOOL HasStarted				()													= 0;
 	
 	virtual EnSocketState GetSocketState()													= 0;
