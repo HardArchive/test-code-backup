@@ -13,6 +13,54 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
+// 非特定语言 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 187, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
+    CTEXT           "NetWorkServer Application v1.0\n\n(c) Copyright 2012",IDC_STATIC,25,57,78,32
+    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
+    GROUPBOX        "",IDC_STATIC,7,7,115,88
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 非特定语言 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
 // 中文(中华人民共和国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
@@ -26,17 +74,25 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 // Dialog
 //
 
-IDD_MAINDLG DIALOGEX 0, 0, 528, 315
+IDD_MAINDLG DIALOGEX 0, 0, 529, 365
 STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
-CAPTION "NetWorkServer"
+CAPTION "IOCP通讯组件服务器端演示程序"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,192,294,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,389,294,50,14
-    PUSHBUTTON      "&About...",ID_APP_ABOUT,471,294,50,14
-    PUSHBUTTON      "?????",IDC_BUTTON1,7,291,50,17
-    GROUPBOX        "主机列表",IDC_STATIC,7,21,514,256
-    CONTROL         "",IDC_LIST2,"SysListView32",LVS_SORTDESCENDING | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,35,514,217
+    PUSHBUTTON      "OK",IDOK,477,341,48,16,BS_CENTER | BS_VCENTER
+    DEFPUSHBUTTON   "发送消息",IDC_BUTTON_SEND,375,341,48,16,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "&About...",ID_APP_ABOUT,426,341,48,16,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "打开服务器",IDC_BUTTON_START,273,341,48,16,BS_CENTER | BS_VCENTER
+    GROUPBOX        "",IDC_STATIC,3,0,523,361
+    CONTROL         "",IDC_LIST_CLIENT,"SysListView32",LVS_REPORT | LVS_SORTDESCENDING | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,6,8,192,349
+    EDITTEXT        IDC_EDIT_SEND,203,237,320,100,ES_MULTILINE | ES_AUTOVSCROLL
+    CONTROL         "",IDC_LIST_MESSAGE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,203,8,320,223
+    GROUPBOX        "",IDC_STATIC,3,0,198,361
+    GROUPBOX        "",IDC_STATIC,200,0,326,234
+    GROUPBOX        "",IDC_STATIC,200,230,326,130
+    EDITTEXT        IDC_EDIT_PORT,231,343,36,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "端口：",IDC_STATIC,205,341,19,16,SS_CENTERIMAGE
+    PUSHBUTTON      "关闭服务器",IDC_BUTTON_CLOSE,324,341,48,16,BS_CENTER | BS_VCENTER
 END
 
 
@@ -50,14 +106,18 @@ GUIDELINES DESIGNINFO
 BEGIN
     IDD_MAINDLG, DIALOG
     BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 521
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 308
+        BOTTOMMARGIN, 363
     END
 END
 #endif    // APSTUDIO_INVOKED
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "XPStyle.manifest"
 #endif    // 中文(中华人民共和国) resources
 /////////////////////////////////////////////////////////////////////////////
 
@@ -104,42 +164,6 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\NetWorkServer.ico"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
-IDD_ABOUTBOX DIALOG  0, 0, 187, 102
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About"
-FONT 8, "MS Sans Serif"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
-    CTEXT           "NetWorkServer Application v1.0\n\n(c) Copyright 2012",IDC_STATIC,25,57,78,32
-    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
-    GROUPBOX        "",IDC_STATIC,7,7,115,88
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
-BEGIN
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 180
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 95
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
