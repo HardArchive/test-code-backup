@@ -2,7 +2,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 #include "AboutDlg.h"
-
+//#include "../common/com_module/socket/IocpServer.h"
+#include "../global/helper.h"
 #pragma once
 
 class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
@@ -33,7 +34,7 @@ public:
 		NOTIFY_HANDLER_EX(IDC_LIST_MESSAGE, NM_CLICK, OnListViewCtrlMessageSelected)
 		COMMAND_HANDLER(IDC_BUTTON_START, BN_CLICKED, OnBnClickedButtonStart)
 		COMMAND_HANDLER(IDC_BUTTON_SEND, BN_CLICKED, OnBnClickedButtonSend)
-		COMMAND_HANDLER(IDC_BUTTON_CLOSE, BN_CLICKED, OnBnClickedButtonClose)
+		COMMAND_HANDLER(IDC_BUTTON_STOP, BN_CLICKED, OnBnClickedButtonClose)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -89,6 +90,9 @@ public:
 		//	::SetWindowLong(hWndEdit, GWL_STYLE, dwNewStyle);
 		//}
 		//照理是这样弄的，但不知为何不起作用
+		
+		SetAppState(ST_STOPED);
+
 
 		
 		//还需要添加的功能 1 选择m_ListViewCtrlClient 然后就点发送时就自动发送至选择的ID处
@@ -160,6 +164,11 @@ public:
 		}
 		return 0;
 	}
+
+public:
+	void SetAppState(EnAppState state);
+private:
+	DWORD GetServerPort();
 public:
 	CListViewCtrl m_ListViewCtrlClient;
 	CListViewCtrl m_ListViewCtrlMessage;

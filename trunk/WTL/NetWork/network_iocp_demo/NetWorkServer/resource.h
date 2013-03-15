@@ -2,7 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by NetWorkServer.rc
 //
-#define IDC_BUTTON_CLOSE                3
+#define IDC_BUTTON_STOP                3
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDD_MAINDLG                     129
