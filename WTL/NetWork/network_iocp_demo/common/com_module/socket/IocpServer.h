@@ -52,11 +52,6 @@ public:
 		Reset();
 	}
 
-	virtual ~CIocpServer()
-	{
-		if(HasStarted())
-			Stop();
-	}
 
 public:/* ISocketServer 接口方法实现 */
 	virtual BOOL Start	(LPCTSTR pszBindAddress, USHORT usPort);

@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "FuncHelper.h"
 #include "WaitFor.h"
-
+#include <ShellAPI.h>
+//#pragma comment(lib, "SHELLAPI")
 #ifndef _WIN32_WCE
 	#define CloseToolhelp32Snapshot(h)	CloseHandle(h)
 
