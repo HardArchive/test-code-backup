@@ -479,14 +479,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\common\com_module\InitCOM.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\common\com_module\InitCOM.h"
-					>
-				</File>
-				<File
 					RelativePath="..\common\com_module\PrivateHeap.h"
 					>
 				</File>
@@ -508,10 +500,6 @@
 				</File>
 				<File
 					RelativePath="..\common\com_module\WaitFor.h"
-					>
-				</File>
-				<File
-					RelativePath="..\common\com_module\Win32Helper.h"
 					>
 				</File>
 				<Filter
@@ -545,6 +533,14 @@
 			</File>
 			<File
 				RelativePath="..\global\helper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IOCPServerHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\IOCPServerHelper.h"
 				>
 			</File>
 		</Filter>

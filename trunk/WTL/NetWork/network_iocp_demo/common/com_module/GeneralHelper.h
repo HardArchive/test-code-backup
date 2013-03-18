@@ -262,7 +262,7 @@ Windows 95
 #include "STLHelper.h"
 //#include "Win32Helper.h"
 #include "PrivateHeap.h"
-#include "bufferptr.h"
+//#include "bufferptr.h"
 
 #if defined (_DEBUG) && defined (_DETECT_MEMORY_LEAK)
 	#if defined (_WIN32_WCE)
