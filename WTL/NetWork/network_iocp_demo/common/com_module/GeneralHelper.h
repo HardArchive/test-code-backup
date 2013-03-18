@@ -260,7 +260,7 @@ Windows 95
 #include "Semaphore.h"
 #include "CriticalSection.h"
 #include "STLHelper.h"
-#include "Win32Helper.h"
+//#include "Win32Helper.h"
 #include "PrivateHeap.h"
 #include "bufferptr.h"
 
