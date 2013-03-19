@@ -248,7 +248,7 @@ int TestRegUtil()
 {
 	TCHAR tszTem1[MAX_PATH] = {0};
 	TCHAR tszTem2[MAX_PATH] = {_T("in, out ,retval")};
-	QNA::CRegUtil clsRegUtil;
+	RG::CRegUtil clsRegUtil;
 	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ, (PVOID)tszTem1);
 
 

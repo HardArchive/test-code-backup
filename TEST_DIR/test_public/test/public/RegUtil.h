@@ -3,7 +3,7 @@
 * 1、 Class      ： CRegUtil
 * 2、 Version    ： 1.0
 * 3、 Description： 注册表操作辅助类
-* 4、 Author     ： QNA (http://www.9cpp.com/)
+* 4、 Author     ： RG (http://www.9cpp.com/)
 * 5、 Created    ： 2012-9-7 11:01:50
 * 6、 History    ： 
 * 7、 Remark     ： 
@@ -11,7 +11,7 @@
 #ifndef __REG_UNTIL_H__
 #define __REG_UNTIL_H__
 #include <assert.h>
-namespace QNA
+namespace RG
 {
 	class CRegUtil
 	{
@@ -52,30 +52,30 @@ namespace QNA
 			BOOL bCreate,        
 			__out HKEY* phKey)
 		{
-			DWORD result = ERROR_SUCCESS;
+			DWORD dwResult = ERROR_SUCCESS;
 
 			if (hHive == NULL)
 			{
 				return ERROR_INVALID_PARAMETER;
 			}
 
-			result = RegOpenKeyEx(
+			dwResult = RegOpenKeyEx(
 				hHive,
 				ptszRegKey,
 				0 /* 保留，设为0  */,
 				KEY_ALL_ACCESS | KEY_WOW64_64KEY,
 				phKey);
 
-			if (result != ERROR_SUCCESS)
+			if (dwResult != ERROR_SUCCESS)
 			{
 				if (bCreate == FALSE)
 				{
-					goto cleanup;
+					goto cleanup_open;
 				}
 				else
 				{
 					// 尝试创建的键
-					result = RegCreateKeyEx(
+					dwResult = RegCreateKeyEx(
 						hHive, 
 						ptszRegKey, 
 						0, 
@@ -86,15 +86,15 @@ namespace QNA
 						phKey, 
 						NULL);
 
-					if (result != ERROR_SUCCESS)
+					if (dwResult != ERROR_SUCCESS)
 					{
-						goto cleanup;
+						goto cleanup_open;
 					}
 				}
 			}
 
-cleanup:
-			return result;
+cleanup_open:
+			return dwResult;
 		}
 
 		//获取一个注册表项或值的数据，默认主键HKEY_LOCAL_MACHINE
@@ -126,14 +126,20 @@ cleanup:
 			__deref_out PVOID pData)
 		{    
 			HKEY hKey = NULL;
-			DWORD dwResult = 0;
+			DWORD dwResult = ERROR_SUCCESS;
 			DWORD dwValueSize = 0;       //数据的长度
 
-			if (ptszRegKey == NULL ||ptszValueName == NULL)	return -1;
+			if (ptszRegKey == NULL ||ptszValueName == NULL)
+			{				
+				goto cleanup_getvalue;
+			}
 
 			//成功打开键取值
 			dwResult = OpenRegKey(hHive, ptszRegKey, FALSE, &hKey);
-			if( dwResult != ERROR_SUCCESS ) return -2;			
+			if( dwResult != ERROR_SUCCESS )	
+			{
+				goto cleanup_getvalue;
+			}
 
 			//查询的数据类型和 BufferSize。
 			dwResult = RegQueryValueEx(
@@ -144,7 +150,10 @@ cleanup:
 				NULL,
 				&dwValueSize
 				);
-			if( dwResult != ERROR_SUCCESS ) return -3;
+			if( dwResult != ERROR_SUCCESS )
+			{
+				goto cleanup_getvalue;
+			}
 
 			//当缓冲区指向NULL时 返回 数据长度
 			if (pData == NULL) return dwValueSize;
@@ -158,9 +167,18 @@ cleanup:
 				(LPBYTE)(pData),
 				&dwValueSize);
 
-			if (dwResult != ERROR_SUCCESS) return -4;
+			if (dwResult != ERROR_SUCCESS)
+			{
+				goto cleanup_getvalue;
+			}
+			
+cleanup_getvalue:
 
-			return 0;        
+			if (hKey != NULL)
+			{
+				RegCloseKey(hKey);  
+			}
+			return dwResult;     
 		}
 
 		//设置键值 ，默认主键HKEY_LOCAL_MACHINE
@@ -201,7 +219,7 @@ cleanup:
 			//
 
 		{
-			DWORD result = ERROR_SUCCESS;
+			DWORD dwResult = ERROR_SUCCESS;
 			HKEY hKey = NULL;	 	 		// handle to the reg key
 			HKEY hSubKey = NULL;	 	 		// handle to the reg key   
 
@@ -212,32 +230,31 @@ cleanup:
 			}
 
 			// Try to open or create the registry key
-
-			result = OpenRegKey(
+			dwResult = OpenRegKey(
 				hHive,
 				ptszKey,
 				TRUE,
 				&hKey);
 
 
-			if ((result != ERROR_SUCCESS) || (hKey == NULL))
+			if ((dwResult != ERROR_SUCCESS) || (hKey == NULL))
 			{
-				goto cleanup;                    
+				goto cleanup_setvalue;                    
 			}
 
 			if (ptszSubKey != NULL)
 			{
 				// Need to open this key as well
-				result = OpenRegKey(
+				dwResult = OpenRegKey(
 					hKey,
 					ptszSubKey,
 					TRUE,
 					&hSubKey);
 
 
-				if ((result != ERROR_SUCCESS) || (hSubKey == NULL))
+				if ((dwResult != ERROR_SUCCESS) || (hSubKey == NULL))
 				{
-					goto cleanup;
+					goto cleanup_setvalue;
 				}
 			}
 
@@ -254,8 +271,7 @@ cleanup:
 					cbData);
 			}
 
-cleanup:
-
+cleanup_setvalue:
 			if (hKey != NULL)
 			{
 				RegCloseKey(hKey);  
@@ -266,9 +282,7 @@ cleanup:
 				RegCloseKey(hSubKey);
 			}
 
-
-			return result;
-
+			return dwResult;
 		}
 
 		//DWORD
@@ -293,7 +307,7 @@ cleanup:
 		//	//
 
 		//{
-		//	DWORD result = ERROR_SUCCESS;
+		//	DWORD dwResult = ERROR_SUCCESS;
 
 		//	if (hHive == NULL || ptszSubKey == NULL)
 		//	{
@@ -303,12 +317,12 @@ cleanup:
 		//	if (ptszSubKey != NULL)
 		//	{
 		//		// delete the registry key.
-		//		result = SHDeleteKey(
+		//		dwResult = SHDeleteKey(
 		//			hHive, 
 		//			ptszSubKey);
 		//	}
 
-		//	return result;
+		//	return dwResult;
 		//}
 
 
