@@ -34,10 +34,11 @@ ISocketListener::EnHandleResult CIOCPServerHelper::OnReceive(DWORD dwConnectionI
 {
 	::PostOnReceive(dwConnectionID, pData, iLength);
 
-	if(m_Server.Send(dwConnectionID, pData, iLength))
-		return ISocketListener::HR_OK;
-	else
-		return ISocketListener::HR_ERROR;
+	//if(m_Server.Send(dwConnectionID, pData, iLength))
+	//	return ISocketListener::HR_OK;
+	//else
+	//	return ISocketListener::HR_ERROR;
+	return ISocketListener::HR_OK;
 }
 
 ISocketListener::EnHandleResult CIOCPServerHelper::OnClose(DWORD dwConnectionID)

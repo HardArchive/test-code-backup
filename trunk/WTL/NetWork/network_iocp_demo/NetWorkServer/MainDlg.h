@@ -11,6 +11,7 @@ class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
 public:
 	enum { IDD = IDD_MAINDLG };
 
+	CMainDlg::~CMainDlg();
 	virtual BOOL PreTranslateMessage(MSG* pMsg)
 	{
 		return CWindow::IsDialogMessage(pMsg);
@@ -31,10 +32,14 @@ public:
 		COMMAND_ID_HANDLER(IDOK, OnOK)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCancel)
 		NOTIFY_HANDLER_EX(IDC_LIST_MESSAGE, NM_CLICK, OnListViewCtrlMessageSelected)
+		//NOTIFY_HANDLER_EX(IDC_LIST_CLIENT, NM_CLICK, OnListViewCtrlClientSelected)
 		COMMAND_HANDLER(IDC_BUTTON_START, BN_CLICKED, OnBnClickedButtonStart)
 		COMMAND_HANDLER(IDC_BUTTON_SEND, BN_CLICKED, OnBnClickedButtonSend)
 		COMMAND_HANDLER(IDC_BUTTON_STOP, BN_CLICKED, OnBnClickedButtonClose)
 		MESSAGE_HANDLER(USER_INFO_MSG, OnUserInfoMsg)
+		COMMAND_HANDLER(IDC_BUTTON_CLOSE_LINK, BN_CLICKED, OnBnClickedButtonCloseLink)
+		COMMAND_HANDLER(IDC_BUTTON_CLEAR, BN_CLICKED, OnBnClickedButtonClear)
+		COMMAND_HANDLER(IDC_CHECK_SHOW, BN_CLICKED, OnBnClickedCheckShow)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -60,6 +65,17 @@ public:
 private:
 	DWORD GetServerPort();
 	void ShowLogMsg(info_msg* msg);	
+
+private:
+	void EtvOnSend(info_msg* msg);
+	void EtvOnRecvice(info_msg* msg);
+	void EtvOnClose(info_msg* msg);
+	void EtvOnError(info_msg* msg);
+	void EtvOnAccept(info_msg* msg);
+	void EtvOnConnect(info_msg* msg);
+	void EtvOnShutdown(info_msg* msg);
+	void EtvENDTEST(info_msg* msg);
+
 public:
 	CListViewCtrl m_ListViewCtrlClient;
 	CListViewCtrl m_ListViewCtrlMessage;
@@ -67,4 +83,7 @@ public:
 
 	CIOCPServerHelper m_clsIOCPServerHelper;
 
+	LRESULT OnBnClickedButtonCloseLink(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedButtonClear(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedCheckShow(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };

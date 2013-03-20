@@ -404,9 +404,10 @@ TBufferObj*	CIocpServer::CreateBufferObj()
 {
 	TBufferObj*	pBufferObj	= (TBufferObj*)m_hpPrivate.Alloc(sizeof(TBufferObj), CPrivateHeap::AO_ZERO_MEMORY);
 	ASSERT(pBufferObj);
+	memset(pBufferObj, 0, sizeof(TBufferObj));
 	pBufferObj->buff.buf	= (char*)m_hpPrivate.Alloc(m_dwIocpBufferSize, CPrivateHeap::AO_ZERO_MEMORY);  //指向数据缓冲区
 	ASSERT(pBufferObj->buff.buf);
-
+	memset(pBufferObj->buff.buf, 0, m_dwIocpBufferSize);
 	return pBufferObj;
 }
 
@@ -788,7 +789,7 @@ void CIocpServer::HandleSend(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 
 void CIocpServer::HandleReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 {
-	//打印接收数据
+	//处理接收数据 处理完成后重新投递
 	if(FireReceive(pSocketObj->connID, (BYTE*)pBufferObj->buff.buf, pBufferObj->buff.len) != ISocketListener::HR_ERROR)
 		DoReceive(pSocketObj, pBufferObj);
 	else
@@ -803,6 +804,7 @@ void CIocpServer::HandleReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 int CIocpServer::DoReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 {
 	pBufferObj->buff.len = m_dwIocpBufferSize;
+	pBufferObj->ResetBuf();
 	int result = ::PostReceive(pSocketObj, pBufferObj);
 	if(result != NO_ERROR)
 	{
