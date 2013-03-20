@@ -177,6 +177,24 @@ struct TBufferObjBase
 	OVERLAPPED			ov;           //WSAOVERLAPPED 异步 Overlapped
 	WSABUF				buff;         //数据缓冲 buffer
 	EnSocketOperation	operation;    //操作类型
+
+	TBufferObjBase()
+	{
+		memset(this, 0, sizeof(TBufferObjBase));
+	}
+
+	~TBufferObjBase()
+	{
+		ResetBuf();
+		memset(this, 0, sizeof(TBufferObjBase));
+	}
+
+	inline void ResetBuf()
+	{
+		if (!buff.buf) return;
+		memset(buff.buf, 0, buff.len);
+		buff.len = 0;
+	}
 };
 
 //内存缓冲区
@@ -197,6 +215,23 @@ struct TSocketObj : public TSocketObjBase
 	SOCKADDR_IN		clientAddr;   //Socket 地址
 	DWORD			connID;       //Connection ID
 	CCriSec2		crisec;       //Critical Session
+	DWORD           dwTime;       //本次通信时间
+
+	inline void SetCurrentTime()
+	{
+		dwTime = ::GetTickCount();
+	}
+
+	// 是否超时 30秒超时
+	inline bool IsTimeout()
+	{
+		return (GetTickCount() - dwTime)>60*1000;
+	}
+	//重置
+	inline void Reset()
+	{
+		memset(this, 0, sizeof(TSocketObj));
+	}
 };
 //套接字相关结构表
 typedef list<TSocketObj*>					TSocketObjPtrList;
