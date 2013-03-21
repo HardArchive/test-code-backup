@@ -74,4 +74,6 @@ private:
 	VectorWrapper<vector<CSocketClient*>, PtrSet_Cleaner<vector<CSocketClient*>>> m_vtClients;
 
 	EnAppState m_enState;
+public:
+	afx_msg void OnBnClickedTest();
 };

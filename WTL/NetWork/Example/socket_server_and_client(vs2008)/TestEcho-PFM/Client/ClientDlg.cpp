@@ -44,6 +44,7 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_START, &CClientDlg::OnBnClickedStart)
 	ON_BN_CLICKED(IDC_STOP, &CClientDlg::OnBnClickedStop)
 	ON_MESSAGE(USER_INFO_MSG, OnUserInfoMsg)
+	ON_BN_CLICKED(IDC_TEST, &CClientDlg::OnBnClickedTest)
 END_MESSAGE_MAP()
 
 
@@ -371,4 +372,19 @@ ISocketListener::EnHandleResult CClientDlg::OnConnect(DWORD dwConnectionID)
 	::LogOnConnect(dwConnectionID);
 
 	return ISocketListener::HR_OK;
+}
+
+void CClientDlg::OnBnClickedTest()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	
+	int iCount = 50000000;
+	for (int i=0; i<iCount; i++)
+	{
+		OnBnClickedStart();
+		while(!m_Stop.IsWindowEnabled())	Sleep(1000);
+		OnBnClickedStop();
+		Sleep(4000);
+	}
+
 }

@@ -368,7 +368,7 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="Server.rc"
+			Value="Client.rc"
 		/>
 	</Globals>
 </VisualStudioProject>
