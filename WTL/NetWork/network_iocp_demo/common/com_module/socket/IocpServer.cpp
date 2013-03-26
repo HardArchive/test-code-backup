@@ -804,7 +804,7 @@ void CIocpServer::HandleReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 int CIocpServer::DoReceive(TSocketObj* pSocketObj, TBufferObj* pBufferObj)
 {
 	pBufferObj->buff.len = m_dwIocpBufferSize;
-	pBufferObj->ResetBuf();
+	//pBufferObj->ResetBuf();
 	int result = ::PostReceive(pSocketObj, pBufferObj);
 	if(result != NO_ERROR)
 	{
