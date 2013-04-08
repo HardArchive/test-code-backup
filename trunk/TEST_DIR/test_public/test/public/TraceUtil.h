@@ -4,7 +4,7 @@
 * 2、 Version    ： 1.6
 * 3、 Description： 在Debug版本下显示的TRACE，UNICODE和多字节版本通用
 *				    使用时注意要加名称空间QNA(这是为了避免在和MFC的TRACE发生冲突)
-* 4、 Author     ： QNA (http://www.9cpp.com/)
+* 4、 Author     ： RG (http://www.9cpp.com/)
 * 5、 Created    ： 2012-2-8 13:55:26
 * 6、 History    ： 1、2011-12-20 13:54使在Debug下支持用TRACEA、TRACEW版本， 但在release下不起作用
 *					2、2012-09-07 15.17使在release下有限支持TRACE(ANSI、UNICODE)
@@ -82,7 +82,7 @@
 #endif
 #endif
 
-namespace QNA
+namespace RG
 {
 //如果没有定义USES_RELEASE_TRACE则执行空函数
 	inline void TRACE(TCHAR* ptszEnter, ...)
