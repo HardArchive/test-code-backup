@@ -343,7 +343,7 @@ void menu3()
 }
 
 //这个日期有问  2月分会算出30天来 待改
-void main()
+void main1()
 {  
 	datetime a(0,0,0,0,0,0),b(0,0,0,0,0,0); 
 	int year,month,day,hour,minute,second,i;
