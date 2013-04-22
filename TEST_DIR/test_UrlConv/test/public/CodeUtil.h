@@ -34,6 +34,9 @@ public:
 	BOOL IsUnicode(const char* pBuffer,int cb/*,LPBOOL lpbBOM,LPBOOL lpbReverse*/);
 	string UrlToGb2312(string strInUrl);                   //Url编码转化为标准Gb2312可显示编码
 
+	PBYTE StringToHex(char* pInString, const int nLen, const PBYTE pbtOutput, const int nMaxLen);
+	char *HexToString(char* pszOut, const int nMaxLen, const PBYTE pbtInput, const int nLen);
+
 private:
 	void Gb2312ToUnicode(WCHAR* pOut,char *gbBuffer);
 	void UTF_8ToUnicode(WCHAR* pOut,char *pText);

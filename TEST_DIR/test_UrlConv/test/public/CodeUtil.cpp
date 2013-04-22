@@ -443,3 +443,36 @@ BOOL CCodeUtil::IsUnicode(const char* pBuffer,int cb/*,LPBOOL lpbBOM,LPBOOL lpbR
 	else
 		return FALSE;
 }
+
+
+//16进制字符串转换成ASCII数据(HEX)
+PBYTE CCodeUtil::StringToHex(char* pInString, const int nLen, const PBYTE pbtOutput, const int nMaxLen)
+{
+	int iLen = 0;
+	char szTem[2] = {0};
+	while(iLen<nLen)
+	{
+		szTem[0] = pInString[iLen];
+		szTem[1] = pInString[iLen+1];
+
+		pbtOutput[iLen/2] = StrToBin(szTem);
+		iLen += 2;
+	}
+
+	return pbtOutput;
+}
+
+//ASCII数据转换成16进制字符串
+char* CCodeUtil::HexToString(char* pszOut, const int nMaxLen, const PBYTE pbtInput, const int nLen)
+{
+	const char* chHexList = "0123456789ABCDEF";
+	int nIndex = 0;
+	for (int i=0, j=0;i<nLen;i++, j+=2)
+	{
+		nIndex = (pbtInput[i] & 0xf);
+		pszOut[i*2+1] = chHexList[nIndex];
+		nIndex = ((pbtInput[i]>>4) & 0xf);
+		pszOut[i*2] = chHexList[nIndex];
+	}
+	return pszOut;
+}
