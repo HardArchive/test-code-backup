@@ -222,11 +222,19 @@ int CheckSimplified()
 //	return strRet;
 //}
 #include <Windows.h>
-//#include "public/CodeUtil.h"
+////////#include "public/CodeUtil.h"
 #include "public/QNA_CodeUtil.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	//////////CCodeUtil clsCodeUtil;
+	//////////char szTem[512] = {0};
+	//////////char szTem2[128] = {0};
+	//////////strcpy(szTem2, "你好！！！！阿毛！！！！！");
+	//////////clsCodeUtil.HexToString(szTem, 512, (PBYTE)szTem2, strlen(szTem2));
+
+	//////////memset(szTem2, 0, 128);
+	//////////clsCodeUtil.StringToHex(szTem, strlen(szTem), (PBYTE)szTem2, 128);
 
 	UINT iRet = GetACP(); //获取当前系统的编码方式
 
