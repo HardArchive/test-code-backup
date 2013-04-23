@@ -1,0 +1,491 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\CheckProtocol.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\CheckProtocol.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 CheckProtocol"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "CheckProtocol，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2012",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_CHECKPROTOCOL_DIALOG DIALOGEX 0, 0, 249, 143
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "协议测试程序"
+MENU IDR_MENU1
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_ADD_WEBRULE DIALOGEX 0, 0, 516, 302
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加WEB包规则"
+FONT 9, "Microsoft Sans Serif", 700, 0, 0x0
+BEGIN
+    LTEXT           "ItemName:",IDC_STATIC,29,203,37,8
+    EDITTEXT        IDC_EDIT_WEB_ITEMNAME,83,203,85,14,ES_AUTOHSCROLL
+    LTEXT           "URL:",IDC_STATIC,29,266,37,8
+    EDITTEXT        IDC_EDIT_WEB_URL,82,262,408,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_WEB_OK_BUTTON_NAME,405,222,85,14,ES_AUTOHSCROLL
+    LTEXT           "ItemName:",IDC_STATIC,29,203,37,8
+    EDITTEXT        IDC_EDIT_WEB_PASSWORD_KEY,240,222,85,14,ES_AUTOHSCROLL
+    LTEXT           "UserNameKey:",IDC_STATIC,29,222,50,8
+    EDITTEXT        IDC_EDIT_WEB_USERNAME,240,203,85,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_WEB_PASSWORD,405,203,85,14,ES_AUTOHSCROLL
+    LTEXT           "PassWordKey:",IDC_STATIC,183,222,48,8
+    LTEXT           "Password:",IDC_STATIC,343,203,36,8
+    LTEXT           "UserName:",IDC_STATIC,183,203,40,8
+    LTEXT           "OKButtonName:",IDC_STATIC,343,222,52,8
+    EDITTEXT        IDC_EDIT_WEB_USERNAME_KEY,83,222,85,14,ES_AUTOHSCROLL
+    LTEXT           "SendContent:",IDC_STATIC,183,241,46,8
+    LTEXT           "OperateItem:",IDC_STATIC,29,241,45,8
+    EDITTEXT        IDC_EDIT_WEB_SEND_CONTENT,240,241,85,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_WEB_SENDKEY,405,241,85,14,ES_AUTOHSCROLL
+    LTEXT           "SendKey:",IDC_STATIC,343,241,31,8
+    PUSHBUTTON      "添   加",IDC_BUTTON_WEB_ADD,27,280,80,14
+    PUSHBUTTON      "退  出",IDC_BUTTON_WEB_QUIT,411,280,80,14
+    CONTROL         "",IDC_LIST_WEB,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,19,502,178
+    COMBOBOX        IDC_COMBO_WEB_OPERATEITEM,83,241,85,13,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "WEB规则表",IDC_STATIC,249,5,38,8
+    PUSHBUTTON      "删    除",IDC_BUTTON_WEB_DELETE,155,280,80,14
+    PUSHBUTTON      "修    改",IDC_BUTTON_WEB_MODIFY,283,280,80,14
+END
+
+IDD_DIALOG_ADD_PACKRULE DIALOGEX 0, 0, 466, 238
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加数据包检索规则"
+FONT 10, "Microsoft Sans Serif", 700, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_LIST_PACK_RULE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,6,12,454,137
+    LTEXT           "数据包规则列表",IDC_STATIC,194,0,59,8,0,WS_EX_ACCEPTFILES
+    LTEXT           "ItemName:",IDC_STATIC,15,153,36,8
+    EDITTEXT        IDC_EDIT_PACK_ITEMNAME,56,153,76,12,ES_AUTOHSCROLL
+    LTEXT           "PackHeadName:",IDC_STATIC,15,204,58,8
+    EDITTEXT        IDC_EDIT_PACK_PACKHEAD,76,202,355,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PACK_ENDPASSWORD,377,170,76,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PACK_PASSWORD_KEY,215,170,76,12,ES_AUTOHSCROLL
+    LTEXT           "UserEndNameKeyName:",IDC_STATIC,298,153,78,8
+    EDITTEXT        IDC_EDIT_PACK_USERNAME,215,153,76,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PACK_ENDUSERNAME,377,153,76,12,ES_AUTOHSCROLL
+    LTEXT           "PassWordKeyName:",IDC_STATIC,142,170,67,11
+    LTEXT           "UserNameKeyName:",IDC_STATIC,143,153,70,8
+    LTEXT           "HostName:",IDC_STATIC,15,170,37,8
+    LTEXT           "EndPassWordKey:",IDC_STATIC,298,170,60,8
+    EDITTEXT        IDC_EDIT_PACK_HOSTNAME,56,170,76,12,ES_AUTOHSCROLL
+    LTEXT           "EndSendContentKey:",IDC_STATIC,298,187,74,8
+    LTEXT           "SendContentKeyName:",IDC_STATIC,141,187,72,10
+    EDITTEXT        IDC_EDIT_PACK_SENDKEY,215,187,76,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PACK_ENDSEND,377,187,76,12,ES_AUTOHSCROLL
+    LTEXT           "CodeType:",IDC_STATIC,15,187,36,8
+    PUSHBUTTON      "添   加",IDC_BUTTON_ADD,15,218,75,12
+    COMBOBOX        IDC_COMBO_CODETYPE,56,185,76,30,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "退   出",IDC_BUTTON_QUIT,375,218,75,12
+    PUSHBUTTON      "删   除",IDC_BUTTON_DELETE,135,218,75,12
+    PUSHBUTTON      "修   改",IDC_BUTTON_MODIFY,255,218,75,12
+END
+
+IDD_DIALOG_LOGINTEST DIALOGEX 0, 0, 510, 268
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "登录测试平台"
+FONT 9, "Microsoft Sans Serif", 700, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "测   试",ID_BUTTON_TEST,286,246,39,16
+    PUSHBUTTON      "退  出",IDCANCEL,454,246,39,16
+    PUSHBUTTON      "详细信息",ID_BUTTON_PACKINFO,398,246,39,16
+    LTEXT           "登录状态列表",IDC_STATIC,110,4,43,12
+    CONTROL         "",IDC_LIST_LOGINSTAT,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,25,266,237
+    DEFPUSHBUTTON   "确       认     设      置",ID_BUTTONG_SET,317,220,148,15
+    GROUPBOX        "网络设置",IDC_STATIC,288,30,208,45
+    COMBOBOX        IDC_COMBO_SETADAPTER,352,42,135,13,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "网卡选择：",IDC_STATIC,295,44,43,9
+    LTEXT           "抓包过滤条件：",IDC_STATIC,295,58,55,10
+    EDITTEXT        IDC_EDIT1,352,56,135,12,ES_AUTOHSCROLL
+    GROUPBOX        "Web参数设置",IDC_STATIC,290,78,206,47
+    LTEXT           "页面是否可见：",IDC_STATIC,295,92,55,14
+    LTEXT           "最大最小显示：",IDC_STATIC,295,111,58,10
+    CONTROL         "Radio3",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | WS_GROUP,355,92,64,9
+    CONTROL         "Radio3",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,426,92,64,9
+    CONTROL         "Radio5",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | WS_GROUP,355,111,69,9
+    CONTROL         "Radio5",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,427,110,66,9
+    GROUPBOX        "抓包方式：",IDC_STATIC,290,132,205,35
+    CONTROL         "在线包分析",IDC_RADIO_ONLINE_CAPTURE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,355,140,63,9
+    CONTROL         "离线包分析",IDC_RADIO_OFFLINE_CAPTURE,"Button",BS_AUTORADIOBUTTON,426,140,65,9
+    GROUPBOX        "设置信息",IDC_STATIC,283,17,221,193
+    PUSHBUTTON      "停   止",ID_BUTTON_STOP,342,246,39,16
+    PUSHBUTTON      "全   选",IDC_BUTTON_SELECT,7,15,32,10
+    CONTROL         "不抓包",IDC_CHECK_NOPACK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,176,15,36,10
+    CONTROL         "不打网页",IDC_CHECK_NOWEB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,15,42,10
+    CONTROL         "不匹配",IDC_CHECK_NOMATCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,238,15,36,10
+    CONTROL         " 清理IE临时文件",IDC_CHECK_CLEAR_INTERNET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,426,185,63,10
+    GROUPBOX        "清理信息(注意：测试发帖时不要清除IE信息)",IDC_STATIC,290,173,204,28
+    CONTROL         " 清除Cookie",IDC_CHECK_CLEAR_COOKIE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,356,185,56,10
+    PUSHBUTTON      "切换到Web规则显示",IDC_BUTTON_SHOW_CAPTUREMODE,41,15,70,10
+    CONTROL         "离线包文件夹分析",IDC_RADIO_OFFLINE_CAPTUREFILE,"Button",BS_AUTORADIOBUTTON,355,154,68,10
+END
+
+IDD_DIALOG_CAPTURE_PACKINFO DIALOGEX 0, 0, 522, 260
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "捕获数据包中的详细信息"
+FONT 8, "Microsoft Sans Serif", 700, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "保          存",ID_BUTTON_SAVE,29,238,110,17
+    PUSHBUTTON      "退            出",IDCANCEL,380,238,110,17
+    LTEXT           "捕获数据包详细列表",IDC_STATIC,227,7,65,8
+    CONTROL         "",IDC_LIST_PACK_INFO,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,20,506,208
+    PUSHBUTTON      "刷            新",IDC_BUTTON_REFRESH,202,238,110,17
+END
+
+IDD_DIALOG_FIND_PACKRUEL DIALOGEX 0, 0, 389, 289
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "查找包规则"
+FONT 9, "Microsoft Sans Serif", 700, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "开   始   抓   包",IDC_BUTTON_FINDDLG_STARTCAPTURE,15,268,50,14
+    PUSHBUTTON      "停      止",IDC_BUTTON_FINDDLG_STOP,76,268,50,14
+    CONTROL         "",IDC_LIST_FINDDLG_CAPTURE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,19,375,154
+    LTEXT           "按规则查找的包列表",IDC_STATIC,154,8,63,10
+    LTEXT           "用户名：",IDC_STATIC,15,230,27,8
+    LTEXT           "密码：",IDC_STATIC,211,230,26,8
+    LTEXT           "发送内容：",IDC_STATIC,15,249,34,8
+    PUSHBUTTON      "过   滤  捕   获",IDC_BUTTON_FINDDLG_FILTER,137,268,50,14
+    EDITTEXT        IDC_EDIT_FINDDLG_USERNAME,64,228,118,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FINDDLG_PASSWORD,235,229,140,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FINDDLG_SENDCONTENT,64,248,311,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "退      出",IDC_BUTTON_FINDDLG_QUITE,320,268,50,14
+    LTEXT           "设置网卡信息：",IDC_STATIC,20,190,47,8
+    COMBOBOX        IDC_COMBO_SET_ADAPTER,67,190,95,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "抓包设置",IDC_STATIC,16,179,360,44
+    LTEXT           "抓包类型：",IDC_STATIC,21,207,40,8
+    CONTROL         "在线分析包",IDC_RADIO_FIND_ONLINE_PACK,"Button",BS_AUTORADIOBUTTON,68,207,45,10
+    CONTROL         "离线包分析",IDC_RADIO_OFFLINE_PACK,"Button",BS_AUTORADIOBUTTON,119,207,44,10
+    LTEXT           "设置包规则长度：",IDC_STATIC,171,207,52,8
+    EDITTEXT        IDC_EDIT_FIND_PACKRULELEN,225,205,46,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "保      存",IDC_BUTTON_FINDDLG_SAVE,198,268,50,14
+    EDITTEXT        IDC_EDIT_FILTER_HEAD_LEN,225,188,46,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "设置包头长度：",IDC_STATIC,172,190,51,8
+    LTEXT           "过滤包的个数：",IDC_STATIC,276,206,51,8
+    EDITTEXT        IDC_EDIT_FILTER_NUM,326,205,46,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "清     理",IDC_BUTTON_CLEAR,259,268,50,14
+    LTEXT           "分包捕获个数：",IDC_STATIC,276,190,50,8
+    EDITTEXT        IDC_EDIT_SUBCONTRACTING_NUM,326,188,46,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_DOWNLOAD DIALOGEX 0, 0, 316, 202
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "下载协议文档"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "退    出",IDCANCEL,218,181,75,14
+    CONTROL         "",IDC_TREE_SHOW_DOWNLOAD_PATH,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_NOTOOLTIPS | TVS_NOHSCROLL | WS_BORDER | WS_TABSTOP,7,7,302,126
+    LTEXT           "下载状态：",IDC_STATIC,28,166,41,12
+    CONTROL         "",IDC_PROGRESS_DOWNLOAD_STATE,"msctls_progress32",WS_BORDER,71,163,211,14
+    PUSHBUTTON      "下载保存",IDC_BUTTON_DOWNLOAD_SAVE,27,181,75,14
+    CTEXT           "下载信息",IDC_STATIC_SHOW_MSG,30,138,253,20
+END
+
+IDD_DIALOG_UPDATA_DOWNLOAD DIALOGEX 0, 0, 160, 66
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "UpdataDownload"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "升     级",ID_BUTTON_UPDATA,19,45,50,14
+    PUSHBUTTON      "退     出",IDCANCEL,92,45,50,14
+    LTEXT           "",IDC_STATIC_SERVER_ID,22,26,120,8
+    LTEXT           "",IDC_STATIC_CLIENT_ID,22,9,120,8
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 193, 116
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "VOICE"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "取     消",IDCANCEL,116,95,50,14
+    COMBOBOX        IDC_COMBO1,65,15,114,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "类型：",IDC_STATIC,20,17,32,8
+    LTEXT           "端口：",IDC_STATIC,20,38,25,8
+    EDITTEXT        IDC_EDIT_VOICE_PORT,65,35,113,14,ES_AUTOHSCROLL
+    LTEXT           "离线包位置：",IDC_STATIC,20,57,49,8
+    LTEXT           "保存位置：",IDC_STATIC,19,73,41,8
+    PUSHBUTTON      "解     析",IDC_BUTTON2,33,95,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "CheckProtocol.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "CheckProtocol.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_CHECKPROTOCOL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 242
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 136
+    END
+
+    IDD_DIALOG_ADD_WEBRULE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 509
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 294
+    END
+
+    IDD_DIALOG_ADD_PACKRULE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 460
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 230
+    END
+
+    IDD_DIALOG_LOGINTEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 504
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 262
+    END
+
+    IDD_DIALOG_CAPTURE_PACKINFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 513
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 255
+    END
+
+    IDD_DIALOG_FIND_PACKRUEL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 382
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 282
+    END
+
+    IDD_DIALOG_DOWNLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    IDD_DIALOG_UPDATA_DOWNLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 186
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 109
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "添 加"
+    BEGIN
+        MENUITEM "WebFile添加",                   IDR_MENU_WEBFILE
+        MENUITEM "PackFile添加",                  IDR_MENU_PACKFILE
+    END
+    POPUP "测 试"
+    BEGIN
+        MENUITEM "登录测试",                        IDR_MENU_LOGIN_TEST
+        MENUITEM "发帖&回帖测试",                     IDR_MENU_SEND_TEST
+        MENUITEM "检索包规则",                       IDR_MENU_FIND_PACP
+        MENUITEM "下载协议文档",                      ID_MENU_DOWNLOAD
+        MENUITEM "语音截获信息",                      ID_MENU_VOICE
+    END
+    POPUP "帮  助"
+    BEGIN
+        MENUITEM "下载更新",                        ID_MENU_UPDATA_DOWNLOAD
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP2             BITMAP                  "res\\bitmap2.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 CheckProtocol(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\CheckProtocol.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
