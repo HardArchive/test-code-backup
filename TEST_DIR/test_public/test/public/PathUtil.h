@@ -11,19 +11,20 @@
 #ifndef __PATH_UTIL_H_
 #define __PATH_UTIL_H_
 #include <Windows.h>
-
-namespace QNA
+#include <ShlObj.h>
+namespace RG
 {
 	class CPathUtil
 	{
 	public:
-		virtual bool TraversalDoWork(const TCHAR* ptInFilePath)
+		virtual bool TraversalDoWork(const PTCHAR ptInFilePath)
 		{
-			//doSomethine			
+			//doSomethine		
+			return true;
 		}
 
 		//遍历目录
-		int DirectoryTraversal(const TCHAR* ptInPath, const TCHAR* ptInFileTpye)
+		int DirectoryTraversal(const PTCHAR ptInPath, const PTCHAR ptInFileTpye)
 		{
 			HANDLE hFind = NULL;
 			WIN32_FIND_DATA stuWFD = {0};	
@@ -38,7 +39,7 @@ namespace QNA
 				if (!CreateMultipleDirectory(ptInPath))
 					return -2;				
 			}
-			_stprintf(tszFindFilter, _T("%s\\*.cpp"), ptInPath);    //查找文件类型
+			_stprintf_s(tszFindFilter, MAX_PATH, _T("%s\\*%s"), ptInPath, ptInFileTpye);    //查找文件类型
 
 			if ((hFind = FindFirstFile(tszFindFilter, &stuWFD)) == INVALID_HANDLE_VALUE)
 			{
@@ -51,7 +52,7 @@ namespace QNA
 				if(_tcscmp(stuWFD.cFileName, _T(".")) == 0 || _tcscmp(stuWFD.cFileName, _T("..")) == 0)
 					continue;
 				ZeroMemory(tszFullPath, sizeof(tszFullPath));
-				_stprintf(tszFullPath, _T("%s\\%s"), ptInPath, stuWFD.cFileName);  //得到文件(夹)完整路径
+				_stprintf_s(tszFullPath, MAX_PATH, _T("%s\\%s"), ptInPath, stuWFD.cFileName);  //得到文件(夹)完整路径
 
 				//如果找到的是目录，则进入此目录进行递归
 				if(stuWFD.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) 
@@ -80,7 +81,7 @@ namespace QNA
 
 		//删除文件夹
 		//检查当前目录需要的文件夹是否存在,如果不存在返回false，存在返回true
-		bool ChickDirExist(const TCHAR* ptInPath)
+		bool ChickDirExist(const PTCHAR ptInPath)
 		{
 			if (!ptInPath || _tcsclen(ptInPath)<2)	return false;
 
@@ -90,10 +91,10 @@ namespace QNA
 		}
 
 		//创建多级目录，成功返回true， 失败返回false
-		bool CreateMultipleDirectory(const TCHAR* ptInPath)
+		bool CreateMultipleDirectory(const PTCHAR ptInPath)
 		{
 			int iLen = 0;    
-			TCHAR* ptTemp = NULL;		
+			PTCHAR ptTemp = NULL;		
 			TCHAR tszPath[MAX_PATH] = {0};
 			TCHAR tszTemPath[MAX_PATH] = {0};
 			_tcscpy_s(tszPath, ptInPath);         //存放要创建的目录字符串
@@ -135,9 +136,9 @@ namespace QNA
 		}
 
 		//获取当前程序所在目录 成功返回true，失败返回false
-		bool GetExePath(TCHAR* ptInPath)
+		bool GetExePath(PTCHAR ptInPath)
 		{
-			TCHAR* ptTem = NULL;
+			PTCHAR ptTem = NULL;
 			TCHAR tszTemp[MAX_PATH] = {0};
 			//获取当前目录  //这里是获取当前进程文件的完整路径 
 			if (!GetModuleFileName(NULL, tszTemp, MAX_PATH) && ptInPath)
@@ -149,7 +150,7 @@ namespace QNA
 		}
 
 		//获取指定文件长度（单位：字节） 
-		DWORD GetFileLen(const TCHAR* ptInFilePath)
+		DWORD GetFileLen(const PTCHAR ptInFilePath)
 		{
 			//第一种方法
 			DWORD dwFileLen = 0;	
@@ -173,8 +174,60 @@ namespace QNA
 
 			return dwFileLen;
 		}
+
+		//目录选择对话框 hwndOwner 主窗口句柄, nIDDlgItem 编辑框ID  
+		bool GetSelectDirDlg(HWND hwndOwner, int nIDDlgItem, PTCHAR ptszTitle = _T("选择路径"))
+		{
+			BROWSEINFO stuBI;
+			TCHAR tszPathName[MAX_PATH] = {0};
+			TCHAR tszPath[MAX_PATH] = {0}; //选择的目录
+			ZeroMemory(&stuBI, sizeof(BROWSEINFO));
+
+			stuBI.hwndOwner = hwndOwner;
+			stuBI.pszDisplayName = tszPathName;
+			stuBI.lpszTitle = ptszTitle;
+			stuBI.ulFlags = 0x0040 ;
+
+			LPITEMIDLIST idl = SHBrowseForFolder(&stuBI);
+			if(idl == NULL) return false;
+			SHGetPathFromIDList(idl, tszPath);
+			SetDlgItemText(hwndOwner, nIDDlgItem, tszPath);
+			return true;
+		}
+
+		//保存或打开 文件对话框 hwndOwner 主窗口句柄, nIDDlgItem 编辑框ID, bIsOpen true打开 false保存
+		//eg ptszFilter _T("网页文件(*.html)\0*.html\0;网页文件(*.htm)\0*.htm\0;All Files(*.*)\0*.*\0")
+		bool GetFileDlg(HWND hwndOwner, int nIDDlgItem, 
+			const bool bIsOpen = false,
+			const PTCHAR  ptszFilter =_T("All Files(*.*)\0*.*\0"),
+			const PTCHAR ptszTitle = _T("选择文件路径"))
+		{
+			TCHAR tszFilePath[MAX_PATH] = {0};
+
+			OPENFILENAME ofn = {0};       
+			TCHAR tszFile[MAX_PATH] = {0};       
+			ZeroMemory(&ofn, sizeof(ofn));
+			ofn.lStructSize = sizeof(ofn);
+			ofn.hwndOwner = hwndOwner;
+			ofn.lpstrFile = tszFile;
+			ofn.lpstrFile[0] = ' ';
+			ofn.nMaxFile = sizeof(tszFile);
+			ofn.lpstrFilter = ptszFilter;
+			ofn.nFilterIndex = 1;
+			ofn.lpstrTitle = ptszTitle;
+
+			if (bIsOpen)
+			{
+				if (false == GetOpenFileName(&ofn)) return false;
+			}
+			else
+			{
+				if (false == GetSaveFileName(&ofn))	return false;
+			}
+			SetDlgItemText(hwndOwner, nIDDlgItem, ofn.lpstrFile);
+		}
 		//获取桌面路径
-		bool GetDesktopPath(TCHAR* ptOutDestopPath)
+		bool GetDesktopPath(PTCHAR ptOutDestopPath)
 		{
 			// Get the directory for Windows Desktop. This is
 			// stored in the Registry under HKEY_CURRENT_USER\Software\
