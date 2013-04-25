@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataRecv", "DataRecv\DataRecv.vcproj", "{32A63DAF-DB81-4623-93C0-C85D0C6F1FE7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataSend", "DataSend\DataSend.vcproj", "{3857F986-FDDE-4860-9DDD-A01048541731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32A63DAF-DB81-4623-93C0-C85D0C6F1FE7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{32A63DAF-DB81-4623-93C0-C85D0C6F1FE7}.Debug|Win32.Build.0 = Debug|Win32
+		{32A63DAF-DB81-4623-93C0-C85D0C6F1FE7}.Release|Win32.ActiveCfg = Release|Win32
+		{32A63DAF-DB81-4623-93C0-C85D0C6F1FE7}.Release|Win32.Build.0 = Release|Win32
+		{3857F986-FDDE-4860-9DDD-A01048541731}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3857F986-FDDE-4860-9DDD-A01048541731}.Debug|Win32.Build.0 = Debug|Win32
+		{3857F986-FDDE-4860-9DDD-A01048541731}.Release|Win32.ActiveCfg = Release|Win32
+		{3857F986-FDDE-4860-9DDD-A01048541731}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
