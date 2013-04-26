@@ -12,35 +12,48 @@
 #define __PATH_UTIL_H_
 #include <Windows.h>
 #include <ShlObj.h>
+#include <Shlwapi.h>
+#pragma  comment(lib,"Shlwapi.lib")  
 namespace RG
 {
 	class CPathUtil
 	{
 	public:
-		//删除文件夹
-		//检查当前目录需要的文件夹是否存在,如果不存在返回false，存在返回true
-		bool ChickDirExist(const PTCHAR ptInPath)
+		//确定一个文件或目录的文件系统对象的路径是否是有效的。
+		//检查当前目录需或文件是否存在,如果不存在返回false，存在返回true
+		// 如果该文件存在返回TRUE，否则返回false
+		bool CheckFileExists(const TCHAR* ptInPath)
 		{
-			if (!ptInPath || _tcsclen(ptInPath)<2)	return false;
-
-			//检验路径是否存在	如果不存在则创建
-			if (GetFileAttributes(ptInPath) != FILE_ATTRIBUTE_DIRECTORY)	return false;
-			return true;
+			return (bool)::PathFileExists(ptInPath);
 		}
 
+		//检查指定的目录是否存在. 若找到该目录返回 FILE_ATTRIBUTE_DIRECTORY	若未找到 返回FALSE.
+		bool CheckDirExist(const TCHAR* ptInPath)
+		{
+			return (bool)::PathIsDirectory(ptInPath);
+		}
+
+
 		//创建多级目录，成功返回true， 失败返回false
-		bool CreateMultipleDirectory(const PTCHAR ptInPath)
+		bool CreateMultipleDirectory(const TCHAR* ptInPath, bool bIsFilePath = false)
 		{
 			int iLen = 0;    
 			PTCHAR ptTemp = NULL;		
-			TCHAR tszPath[MAX_PATH] = {0};
-			TCHAR tszTemPath[MAX_PATH] = {0};
+			TCHAR tszPath[MAX_PATH*4] = {0};
+			TCHAR tszTemPath[MAX_PATH*4] = {0};
 			_tcscpy_s(tszPath, ptInPath);         //存放要创建的目录字符串
 
 			//检查参数是否正确
 			if (!tszPath || _tcsclen(tszPath)<4)
 				return false;
 
+			if (bIsFilePath)
+			{
+				ptTemp = _tcsrchr(tszPath, _T('\\'));  //从尾部查找字符
+				iLen = _tcsclen(ptTemp);
+				_tcsncpy_s(tszTemPath, tszPath, _tcsclen(tszPath)-iLen); //得到父目录路径
+				_tcsncpy_s(tszPath, tszTemPath, _tcsclen(tszTemPath));
+			}
 			//在这里去掉尾部为'\\'的字符
 			if (_T('\\') == tszPath[_tcsclen(tszPath)-1])
 			{
@@ -52,9 +65,10 @@ namespace RG
 			_tcsncpy_s(tszTemPath, tszPath, _tcsclen(tszPath)-iLen); //得到父目录路径
 
 			//检验父级路径是否存在  		
-			if (ChickDirExist(tszTemPath))
-			{   //如果存在则创建子目录
-				if (!CreateDirectory(tszPath, NULL))
+			if (PathIsDirectory(tszTemPath))
+			{    //检验子级路径是否存在
+				if (PathIsDirectory(tszPath)) return true;
+				if (!::CreateDirectory(tszPath, NULL))
 				{	//创建文件夹失败
 					::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
 					return false;

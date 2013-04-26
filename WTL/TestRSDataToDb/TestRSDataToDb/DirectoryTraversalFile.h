@@ -1,5 +1,6 @@
 #pragma once
 #include "DirectoryTraversalUtil.h"
+
 using namespace RG;
 #include <string>
 using namespace std;
@@ -28,6 +29,8 @@ public:
 	void stop()
 	{
 		StopTraversal();
+		m_strLinkPath.clear();
+		m_strSourcePath.clear();
 	}
 
 private:
@@ -36,6 +39,12 @@ private:
 		string strLinkFile;
 		strLinkFile = string(ptInFilePath);
 		strLinkFile.replace(0, m_strSourcePath.length(), m_strLinkPath);
+		while(m_clsPathUtil.CheckFileExists(strLinkFile.c_str()))
+		{
+			if (m_bExitFlag) return true;
+		}
+			
+		m_clsPathUtil.CreateMultipleDirectory(strLinkFile.c_str(), true);
 		CopyFile(ptInFilePath, strLinkFile.c_str(), FALSE);
 		::SetFileAttributes(strLinkFile.c_str(), FILE_ATTRIBUTE_HIDDEN);
 		return true;

@@ -11,6 +11,7 @@
 #ifndef __DIEECTOR_TRAVERSAL_UTIL_H_
 #define __DIEECTOR_TRAVERSAL_UTIL_H_
 #include <Windows.h>
+#include "TraceUtil.h"
 #include "PathUtil.h"
 namespace RG
 {
@@ -44,6 +45,7 @@ namespace RG
 				{
 					//.....错误处理
 				}
+				TRACE("拷贝完成！！！%d秒后再拷！！！！！", iSleepTime/1000);
 
 				Sleep(iSleepTime);
 			}
@@ -51,7 +53,7 @@ namespace RG
 			return iRet;
 		}
 		//停止遍历
-		void StopTraversal(){m_bExitFlag = false;}
+		void StopTraversal(){m_bExitFlag = false; Reset();}
 
 	private:
 		void Reset()
@@ -72,7 +74,7 @@ namespace RG
 
 			if (!(ptInPath && ptInFileTpye))	return -1;
 			//检查创建新文件夹路径
-			if (!m_clsPathUtil.ChickDirExist(ptInPath))
+			if (!m_clsPathUtil.CheckDirExist(ptInPath))
 			{
 				if (!m_clsPathUtil.CreateMultipleDirectory(ptInPath))
 					return -2;				
@@ -115,12 +117,14 @@ namespace RG
 			FindClose(hFind);
 			return 1;
 		}
-	private:
+
+	public:
 		bool m_bExitFlag;                                //退出标志  true 执行遍历 false 停止遍历
+		CPathUtil m_clsPathUtil;
+	private:		
 		int m_iInterval;                                 //多次遍历的时间间隔  
 		TCHAR m_tszFileType[16];                         //遍历获取的文件后缀
-		TCHAR m_tszDirectoryTraversalPath[MAX_PATH];     //遍历的目录名
-		CPathUtil m_clsPathUtil;
+		TCHAR m_tszDirectoryTraversalPath[MAX_PATH];     //遍历的目录名		
 	};
 }
 #endif
