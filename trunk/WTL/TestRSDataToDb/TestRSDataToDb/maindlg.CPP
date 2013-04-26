@@ -19,7 +19,7 @@ LRESULT CMainDlg::OnBnClickedButtonSelectLink(WORD /*wNotifyCode*/, WORD /*wID*/
 	return 0;
 }
 
-LRESULT CMainDlg::OnBnClickedButtonStart(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+LRESULT CMainDlg::OnBnClickedButtonStart(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl */, BOOL& /*bHandled*/)
 {
 	// TODO: 在此添加控件通知处理程序代码
 	int iInterval = GetDlgItemInt(IDC_EDIT_INTERVAL);
@@ -34,7 +34,8 @@ LRESULT CMainDlg::OnBnClickedButtonStart(WORD /*wNotifyCode*/, WORD /*wID*/, HWN
 		return 0;
 	}
 
-	m_clsHandleFile.Start(tszSourcePath, tszLinkPath, iInterval);
+	m_pclsHandleFile = new CHandleFile;
+	m_pclsHandleFile->Start(tszSourcePath, tszLinkPath, iInterval);
 	
 
 	return 0;
@@ -44,8 +45,9 @@ LRESULT CMainDlg::OnBnClickedButtonStop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND
 {
 	// TODO: 在此添加控件通知处理程序代码
 
-	m_clsHandleFile.Stop();
-	Sleep(100);
+	m_pclsHandleFile->Stop();
+	Sleep(1000);
+	delete m_pclsHandleFile;
 	::MessageBox(NULL, _T("已经停止！！！！"), _T("Stop"), MB_OK);
 	return 0;
 }

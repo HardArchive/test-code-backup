@@ -105,5 +105,5 @@ public:
 	LRESULT OnBnClickedButtonStop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 private:
-	CHandleFile m_clsHandleFile;
+	CHandleFile* m_pclsHandleFile;
 };
