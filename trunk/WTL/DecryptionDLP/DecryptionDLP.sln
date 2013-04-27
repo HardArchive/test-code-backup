@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DecryptionDLP", "DecryptionDLP\DecryptionDLP.vcproj", "{342D8C23-AC5B-4039-BBCA-6EABE66E9186}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CreakDLP", "CreakDLP\CreakDLP.vcproj", "{69C93237-123C-4586-8D55-F46195C69AB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{342D8C23-AC5B-4039-BBCA-6EABE66E9186}.Debug|Win32.ActiveCfg = Debug|Win32
+		{342D8C23-AC5B-4039-BBCA-6EABE66E9186}.Debug|Win32.Build.0 = Debug|Win32
+		{342D8C23-AC5B-4039-BBCA-6EABE66E9186}.Release|Win32.ActiveCfg = Release|Win32
+		{342D8C23-AC5B-4039-BBCA-6EABE66E9186}.Release|Win32.Build.0 = Release|Win32
+		{69C93237-123C-4586-8D55-F46195C69AB1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{69C93237-123C-4586-8D55-F46195C69AB1}.Debug|Win32.Build.0 = Debug|Win32
+		{69C93237-123C-4586-8D55-F46195C69AB1}.Release|Win32.ActiveCfg = Release|Win32
+		{69C93237-123C-4586-8D55-F46195C69AB1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
