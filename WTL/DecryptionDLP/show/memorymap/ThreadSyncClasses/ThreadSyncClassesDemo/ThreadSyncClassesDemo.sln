@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadSyncClassesDemo", "ThreadSyncClassesDemo\ThreadSyncClassesDemo.vcxproj", "{FD7519E2-7A7E-4A27-AE3C-97ED9A903863}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD7519E2-7A7E-4A27-AE3C-97ED9A903863}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD7519E2-7A7E-4A27-AE3C-97ED9A903863}.Debug|Win32.Build.0 = Debug|Win32
+		{FD7519E2-7A7E-4A27-AE3C-97ED9A903863}.Release|Win32.ActiveCfg = Release|Win32
+		{FD7519E2-7A7E-4A27-AE3C-97ED9A903863}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

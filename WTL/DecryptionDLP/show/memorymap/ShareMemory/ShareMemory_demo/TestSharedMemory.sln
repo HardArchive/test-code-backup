@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProcessWriter", "ProcessWriter\ProcessWriter.vcproj", "{BEECBDAD-4A83-4AF5-9FF0-1B80BD5C4CD7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProcessReader", "ProcessReader\ProcessReader.vcproj", "{35962406-5033-4FD0-8A25-AE8C1D3B55CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEECBDAD-4A83-4AF5-9FF0-1B80BD5C4CD7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BEECBDAD-4A83-4AF5-9FF0-1B80BD5C4CD7}.Debug|Win32.Build.0 = Debug|Win32
+		{BEECBDAD-4A83-4AF5-9FF0-1B80BD5C4CD7}.Release|Win32.ActiveCfg = Release|Win32
+		{BEECBDAD-4A83-4AF5-9FF0-1B80BD5C4CD7}.Release|Win32.Build.0 = Release|Win32
+		{35962406-5033-4FD0-8A25-AE8C1D3B55CB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{35962406-5033-4FD0-8A25-AE8C1D3B55CB}.Debug|Win32.Build.0 = Debug|Win32
+		{35962406-5033-4FD0-8A25-AE8C1D3B55CB}.Release|Win32.ActiveCfg = Release|Win32
+		{35962406-5033-4FD0-8A25-AE8C1D3B55CB}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testsharemutex", "testsharemutex\testsharemutex.vcproj", "{A9629200-5B9C-4203-A295-78EC63753367}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DED38A59-CA2D-424B-8305-81BD3238F791} = {DED38A59-CA2D-424B-8305-81BD3238F791}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stklib", "stklib\stklib.vcproj", "{DED38A59-CA2D-424B-8305-81BD3238F791}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A9629200-5B9C-4203-A295-78EC63753367}.Debug.ActiveCfg = Debug|Win32
+		{A9629200-5B9C-4203-A295-78EC63753367}.Debug.Build.0 = Debug|Win32
+		{A9629200-5B9C-4203-A295-78EC63753367}.Release.ActiveCfg = Release|Win32
+		{A9629200-5B9C-4203-A295-78EC63753367}.Release.Build.0 = Release|Win32
+		{DED38A59-CA2D-424B-8305-81BD3238F791}.Debug.ActiveCfg = Debug|Win32
+		{DED38A59-CA2D-424B-8305-81BD3238F791}.Debug.Build.0 = Debug|Win32
+		{DED38A59-CA2D-424B-8305-81BD3238F791}.Release.ActiveCfg = Release|Win32
+		{DED38A59-CA2D-424B-8305-81BD3238F791}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

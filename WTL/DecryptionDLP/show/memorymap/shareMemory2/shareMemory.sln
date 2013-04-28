@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ipc_client", "ipc_client\ipc_client.vcproj", "{E0E1579C-DAD6-4C57-A7AB-E7CAC9E12757}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ipc_server", "ipc_server\ipc_server.vcproj", "{E261783E-3EC0-4463-A068-B90B975D7823}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0E1579C-DAD6-4C57-A7AB-E7CAC9E12757}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0E1579C-DAD6-4C57-A7AB-E7CAC9E12757}.Debug|Win32.Build.0 = Debug|Win32
+		{E0E1579C-DAD6-4C57-A7AB-E7CAC9E12757}.Release|Win32.ActiveCfg = Release|Win32
+		{E0E1579C-DAD6-4C57-A7AB-E7CAC9E12757}.Release|Win32.Build.0 = Release|Win32
+		{E261783E-3EC0-4463-A068-B90B975D7823}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E261783E-3EC0-4463-A068-B90B975D7823}.Debug|Win32.Build.0 = Debug|Win32
+		{E261783E-3EC0-4463-A068-B90B975D7823}.Release|Win32.ActiveCfg = Release|Win32
+		{E261783E-3EC0-4463-A068-B90B975D7823}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
