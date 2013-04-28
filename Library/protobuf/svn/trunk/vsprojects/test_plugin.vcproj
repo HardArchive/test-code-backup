@@ -21,6 +21,7 @@
 			OutputDirectory="Debug"
 			IntermediateDirectory="Debug"
 			ConfigurationType="1"
+			UseOfMFC="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -49,7 +50,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;_VARIADIC_MAX=10;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -67,6 +68,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				IgnoreDefaultLibraryNames="libcmtd.lib;msvcprtd.lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -178,11 +180,11 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			>
 			<File
-				RelativePath="..\src\google\protobuf\compiler\mock_code_generator.h"
+				RelativePath="..\src\google\protobuf\testing\file.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\google\protobuf\testing\file.h"
+				RelativePath="..\src\google\protobuf\compiler\mock_code_generator.h"
 				>
 			</File>
 		</Filter>
@@ -191,7 +193,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			>
 			<File
-				RelativePath="..\src\google\protobuf\compiler\test_plugin.cc"
+				RelativePath="..\src\google\protobuf\testing\file.cc"
 				>
 			</File>
 			<File
@@ -199,7 +201,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\google\protobuf\testing\file.cc"
+				RelativePath="..\src\google\protobuf\compiler\test_plugin.cc"
 				>
 			</File>
 		</Filter>
