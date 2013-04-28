@@ -1,7 +1,7 @@
 // MainDlg.h : interface of the CMainDlg class
 //
 /////////////////////////////////////////////////////////////////////////////
-
+#include "DecryptDLP.h"
 #pragma once
 
 class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
@@ -54,6 +54,7 @@ public:
 		pLoop->AddIdleHandler(this);
 
 		UIAddChildWindowContainer(m_hWnd);
+		DecryptDLP();
 
 		return TRUE;
 	}
