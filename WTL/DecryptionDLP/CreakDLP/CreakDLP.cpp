@@ -27,17 +27,31 @@
 ////}
 
 
+
+UINT WINAPI RemoteControlThread(LPVOID lpvoid)
+{
+	SendFile();
+	return 1;
+}
 //打开文件取出文件内容并发送出去
 CREAKDLP_API void SendFile()
 //extern "C" __declspec(dllexport) void SendFile()
 {
-	CEvt clsEventSend(false, false, _T("Global\\IPC_event_send"));
-	CEvt clsEventRecv(false, false, _T("Global\\IPC_event_recv"));	
+	//::MessageBox(NULL, "DLL已经加载", "SendFile", MB_OK);
+	//_asm int 3;
+	CEvt clsEventDll(true, false, _T("Global\\IPC_event_dll"));
+	CEvt clsEventExe(true, false, _T("Global\\IPC_event_exe"));	
 	RG::CShareMemory clsShareMemory;
-	clsShareMemory.Open(tstring(_T("Global\\IPC_SHARE")), 0, tstring(_T("D:\\RSCloudClient.h")));
-	//注意，先wait再setEvent，与client端的程序相反
-	WaitForSingleObject(clsEventRecv.GetHandle(), INFINITE);
-
+//_asm int 3;
+	clsShareMemory.Open(_T("Global\\IPC_SHARE"), 0, _T("F:\\DLP\\RSCloudClient.h"));
+	
 	Sleep(5000);
+	
+	clsEventDll.Set();
+	clsEventExe.Wait();
+	::MessageBox(NULL, "DLL文件已经读取完毕", "SendFile", MB_OK);
+	RG::TRACE(_T("文件已经读取完毕"));
+
+	
 	clsShareMemory.Close();
 }

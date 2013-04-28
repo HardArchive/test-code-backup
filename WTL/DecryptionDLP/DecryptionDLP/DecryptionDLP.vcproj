@@ -21,7 +21,7 @@
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)"
 			ConfigurationType="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -266,7 +266,23 @@
 				>
 			</File>
 			<File
+				RelativePath="..\common\file.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\common\file.h"
+				>
+			</File>
+			<File
 				RelativePath="..\common\FixMemory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\common\Injector.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\common\Injector.h"
 				>
 			</File>
 			<File
