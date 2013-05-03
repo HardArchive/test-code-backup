@@ -111,10 +111,10 @@ bool DecryptDLP()
 	clsEventDll.Wait();
 
 	RG::CShareMemory clsShareMemory;
-	
+	DWORD dwFileSize = 1643;
 
-	clsShareMemory.Open(_T("Global\\IPC_SHARE"));
-	DWORD dwFileSize = clsShareMemory.GetFileMapLen();
+	clsShareMemory.Open(_T("Global\\IPC_SHARE"), dwFileSize);
+	
 	RG::CFile clsFile;         //文件打开句柄
 	clsFile.Open(_T("F:\\DLP\\12345.h"), _T("wb"));
 	clsFile.Write((PBYTE)clsShareMemory.GetBasePoint(), dwFileSize);
