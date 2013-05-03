@@ -277,6 +277,14 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="global"
+			>
+			<File
+				RelativePath="..\global\comm_protocol.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>

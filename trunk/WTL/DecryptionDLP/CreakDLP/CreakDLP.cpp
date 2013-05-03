@@ -45,13 +45,12 @@ CREAKDLP_API void SendFile()
 //_asm int 3;
 	clsShareMemory.Open(_T("Global\\IPC_SHARE"), 0, _T("F:\\DLP\\RSCloudClient.h"));
 	
-	Sleep(5000);
+	//Sleep(5000);
 	
 	clsEventDll.Set();
 	clsEventExe.Wait();
-	::MessageBox(NULL, "DLL文件已经读取完毕", "SendFile", MB_OK);
-	RG::TRACE(_T("文件已经读取完毕"));
-
+	//::MessageBox(NULL, "DLL文件已经读取完毕", "SendFile", MB_OK);
 	
+	RG::TRACE(_T("文件已经读取完毕"));	
 	clsShareMemory.Close();
 }

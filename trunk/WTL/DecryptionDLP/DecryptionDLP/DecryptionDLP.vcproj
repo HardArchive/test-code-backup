@@ -294,6 +294,14 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="global"
+			>
+			<File
+				RelativePath="..\global\comm_protocol.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
