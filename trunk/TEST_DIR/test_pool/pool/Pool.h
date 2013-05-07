@@ -223,6 +223,7 @@ private:
 *					   对象的链表指针错误，无现无法预料的结果。
 *					2. 此内存池对象使用了私有堆CPrivateHeap申请内存 有助于提高应用程序性能
 ****************************************************************************************************/
+#include "com_module/PrivateHeap.h"
 #include <vector>
 using namespace std;
 template <class _T>
@@ -230,30 +231,33 @@ class TPool
 {
 public:
 	// 构造函数
-	TPool(){m_pVec.clear();}
+	TPool(){InitializeCriticalSection(&m_lock);m_pVec.clear();}
 	// 析构函数
-	~TPool(){Reset();}
+	~TPool(){Reset();DeleteCriticalSection(&m_lock);}
 
 public:
-	// 在池上创建一个对象
-	_T* New(void)
-	{
-		m_pVec.push_back(m_clsPrivateHeap.Alloc(sizeof(_T), CPrivateHeap::AO_ZERO_MEMORY));
-		return (_T*)m_pVec.back();
-	}
+	//// 在池上创建一个对象
+	//_T* New(void)
+	//{
+	//	m_pVec.push_back(m_clsPrivateHeap.Alloc(sizeof(_T)));
+	//	return (_T*)m_pVec.back();
+	//}
 
 	// 在池上创建iCount个对象
-	_T* New(int iCount)
+	_T* New(int iCount = 1)
 	{
-		m_pVec.push_back(m_clsPrivateHeap.Alloc(iCount*sizeof(_T), CPrivateHeap::AO_GENERATE_EXCEPTIONS));
+		EnterCriticalSection(&m_lock);
+		m_pVec.push_back(m_clsPrivateHeap.Alloc(iCount*sizeof(_T), CPrivateHeap::AO_ZEROMEMORY_GENERATEEXCEPTIONS));
+		LeaveCriticalSection(&m_lock);
 		return (_T*)m_pVec.back();
 	}
 
 	// 把对象归还到池
 	int Delete(_T* pItem)
 	{
+		EnterCriticalSection(&m_lock);
 		bool bRet = true;
-		vector<PVOID>::iterator intiter;    //将intiter声明为int类型的向量容器迭代器
+		vector<PVOID>::iterator intiter;    //将intiter声明为int类型的向量容器迭代器		
 		for(intiter = m_pVec.begin(); intiter!=m_pVec.end(); intiter++)
 		{
 			if ((PVOID)pItem == *intiter)
@@ -263,13 +267,16 @@ public:
 				break;
 			}
 		}
+		LeaveCriticalSection(&m_lock);
 		return bRet;
 	}
 
 	//合并池中的空闲内存块并释放不在使用中的内存页面
 	DWORD Comapct()
 	{
+		EnterCriticalSection(&m_lock);
 		return m_clsPrivateHeap.Comapct();
+		LeaveCriticalSection(&m_lock);
 	}
 
 	//释放池内所有对象
@@ -277,15 +284,18 @@ public:
 	{
 		return Reset();
 	}
-	
+
 private:
 	//释放池内所有对象
 	bool Reset()
 	{
+		EnterCriticalSection(&m_lock);
 		m_pVec.clear();
 		return m_clsPrivateHeap.Distory();
+		LeaveCriticalSection(&m_lock);
 	}
 private:
 	vector<PVOID> m_pVec;      //指针向量
+	CRITICAL_SECTION m_lock;
 	CPrivateHeap m_clsPrivateHeap;   
 };
