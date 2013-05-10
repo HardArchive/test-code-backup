@@ -43,7 +43,11 @@ CREAKDLP_API void SendFile()
 	CEvt clsEventExe(true, false, _T("Global\\IPC_event_exe"));	
 	RG::CShareMemory clsShareMemory;
 //_asm int 3;
-	clsShareMemory.Open(_T("Global\\IPC_SHARE"), 0, _T("F:\\DLP\\RSCloudClient.h"));
+	if (!clsShareMemory.Create(_T("Global\\IPC_SHARE"), 0, _T("F:\\DLP\\RSCloudClient.h")))
+	{
+		::MessageBox(NULL, "打开映射文件失败！！！", "SendFile", MB_OK);
+		return;
+	}
 	
 	//Sleep(5000);
 	
