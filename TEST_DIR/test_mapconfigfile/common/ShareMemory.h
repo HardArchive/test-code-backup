@@ -10,7 +10,7 @@
 ****************************************************************************************************/
 #ifndef __SHARE_MENORY_H__
 #define __SHARE_MENORY_H__
-#include "GeneralHelper.h"
+//#include "GeneralHelper.h"
 
 namespace RG
 {
@@ -22,7 +22,7 @@ namespace RG
 	* 4、 Author     ： RG (http://www.9cpp.com/)
 	* 5、 Created    ： 2013-4-27 15:15:39
 	* 6、 History    ： 
-	* 7、 Remark     ： 
+	* 7、 Remark     ： //case GENERIC_EXECUTE: 这里暂时不考虑
 	****************************************************************************************************/
 	class CMapFile
 	{
@@ -40,6 +40,18 @@ namespace RG
 		}
 
 	public:
+		//检查文件是否存在
+		BOOL CheckFileExists(LPCTSTR lpFileName)
+		{
+			DWORD dwAttr = 0;
+			UINT iPrevErrMode = 0;
+			if (!lpFileName) return false;
+
+			iPrevErrMode = ::SetErrorMode(SEM_FAILCRITICALERRORS);
+			dwAttr = ::GetFileAttributes(lpFileName);
+			::SetErrorMode(iPrevErrMode);
+			return dwAttr == INVALID_FILE_ATTRIBUTES ? false : true;
+		}
 		//取得映射到内存的文件句柄
 		HANDLE GetMapFileHandle(){return m_hFile;}
 
@@ -52,28 +64,35 @@ namespace RG
 			{
 				m_hFile = CreateMapFile(lpFileName, dwDesiredAccess);
 			}
-				dwFileSize = ::GetFileSize(m_hFile, NULL);
+			//创建映射文件失败
+			if (INVALID_HANDLE_VALUE == m_hFile) 
+				return dwFileSize;
+			
+			dwFileSize = ::GetFileSize(m_hFile, NULL);
 			return dwFileSize;
 		}
 
-		//打开需映射的文件 成功返回 文件句柄
+		//创建或打开需映射的文件 成功返回 文件句柄
 		HANDLE CreateMapFile(LPCTSTR lpFileName = NULL,      //映射文件名
 			DWORD dwDesiredAccess = GENERIC_READ)            //默认访问方式的可读
 		{
 			Close();
 			if (NULL == lpFileName) return m_hFile;
+			if (!CheckFileExists(lpFileName)) return m_hFile;            //文件不存在
+
 			DWORD dwShareMode = 0;      //空闲变量利用
-			DWORD dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL;  //默认属性
+			DWORD dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL;          //默认属性
 			switch(dwDesiredAccess)
 			{
-			case GENERIC_READ:                                          //可以从文件中读取数据
+			case GENERIC_READ:                                           //可以从文件中读取数据
 				dwShareMode = FILE_SHARE_READ;
-				dwFlagsAndAttributes = FILE_FLAG_SEQUENTIAL_SCAN;       //针对连续访问对文件缓冲进行优化
+				dwFlagsAndAttributes = FILE_FLAG_SEQUENTIAL_SCAN;        //针对连续访问对文件缓冲进行优化
 				break;
 			case GENERIC_WRITE:                                          //可以将数据写入文件
 				dwShareMode = FILE_SHARE_WRITE;break;
 			case GENERIC_READ|GENERIC_WRITE:                             //可以从文件中读取数据,也可以将数据写入文件
 				dwShareMode = FILE_SHARE_READ|FILE_SHARE_WRITE;break;
+			//case GENERIC_EXECUTE: 这里暂时不考虑
 			}
 
 			m_hFile = ::CreateFile(lpFileName, dwDesiredAccess, dwShareMode, NULL, OPEN_EXISTING, dwFlagsAndAttributes, NULL);
@@ -86,12 +105,12 @@ namespace RG
 			return m_hFile;
 		}
 
-		//关闭打开文件 把文件句柄置为INVALID_HANDLE_VALUE
+		//关闭文件 把文件句柄置为INVALID_HANDLE_VALUE
 		void Close()
 		{
 			if (INVALID_HANDLE_VALUE != m_hFile)
 			{
-				CloseHandle(m_hFile);
+				::CloseHandle(m_hFile);
 				m_hFile = INVALID_HANDLE_VALUE;;
 			}
 		}
@@ -114,16 +133,16 @@ namespace RG
 	public:
 		CShareMemory()
 		{
-			m_hMapping = NULL;
-			m_dwMapBufLen = 0;
+			m_hMapping = NULL;			
 			m_lpBaseAddress = NULL;
+			m_dwMapBufLen = INVALID_FILE_SIZE;
 		}
 		~CShareMemory(){Close();}
 
-
 	public:
-		bool Open(LPCTSTR lpMapName = NULL, DWORD dwBufSize = 0, LPCTSTR lpFileName = NULL, DWORD dwDesiredAccess = GENERIC_READ)
+		bool Create(LPCTSTR lpMapName = NULL, DWORD dwBufSize = 0, LPCTSTR lpFileName = NULL, DWORD dwDesiredAccess = GENERIC_READ)
 		{
+			Close();
 			//PAGE_READONLY 以只读方式打开映射
 			//PAGE_READWRITE 以可读、可写方式打开映射
 			//PAGE_WRITECOPY 为写操作留下备份
@@ -133,28 +152,76 @@ namespace RG
 			//SEC_RESERVE 为没有分配实际内存的一个小节保留虚拟内存空间
 			//创建一个命名的文件映射对象
 			m_dwMapBufLen = dwBufSize?dwBufSize:m_clsMapFile.GetMapFileSize(lpFileName);
-			if (!(m_hMapping = CreateFileMapping(
+
+			m_hMapping = ::CreateFileMapping(
 				m_clsMapFile.CreateMapFile(lpFileName, dwDesiredAccess),   //物理文件句柄
 				NULL,                                                      //安全设置 NULL使用默认的安全配置
 				PAGE_READONLY | SEC_COMMIT,                                //保护设置
 				0,                                                         //高位文件大小 32位机为0
 				dwBufSize,                                                 //低位文件大小
-				lpMapName)))                                               //共享内存名称
+				lpMapName);                                  			   //共享内存名称
+
+			if (NULL == m_hMapping)                                              
 			{
-				::MessageBox(NULL, _T("创建一个命名的文件映射对象对象失败！！！！！"), _T("Error"), MB_OK);
+				//::MessageBox(NULL, _T("创建一个命名的文件映射对象对象失败！！！！！"), _T("Error"), MB_OK);
 				DWORD dwError = GetLastError();
 				Close();
 				return false;
 			}
 
+			DWORD dwMapViewDesiredAccess = FILE_MAP_READ;
+			switch(dwDesiredAccess)
+			{
+			case GENERIC_READ:                                           //可以从文件中读取数据
+				dwMapViewDesiredAccess = FILE_MAP_READ;break;
+			case GENERIC_WRITE:                                          //可以将数据写入文件
+				dwMapViewDesiredAccess = FILE_MAP_WRITE;;break;
+			case GENERIC_READ|GENERIC_WRITE:                             //可以从文件中读取数据,也可以将数据写入文件
+				dwMapViewDesiredAccess = FILE_MAP_ALL_ACCESS;break;
+			//case GENERIC_EXECUTE: 这里暂时不考虑
+			}
+
 			// Map view of file into baseointer.
 			//函数将此文件映射对象的视图映射进地址	空间，同时得到此映射视图的首址。###阿毛###这个就是我保存数据的地址了
-			if (!(m_lpBaseAddress = MapViewOfFile(m_hMapping, FILE_MAP_READ, 0, 0, 0)))
+			if (!(m_lpBaseAddress = ::MapViewOfFile(m_hMapping, dwMapViewDesiredAccess, 0, 0, 0)))
 			{
-				::MessageBox(NULL, _T("View failed."), _T("Error"), MB_OK);
+				//::MessageBox(NULL, _T("View failed."), _T("Error"), MB_OK);
 				Close();
 				return false;
 			}
+			return true;
+		}
+
+		//打开一个已经创建的内存映射对象 
+		//dwDesiredAccess
+		//FILE_MAP_ALL_ACCESS Includes all access rights to a file mapping object except FILE_MAP_EXECUTE
+		//FILE_MAP_COPY       Copy-on-write access.
+		//FILE_MAP_EXECUTE    Execute access. 
+		//FILE_MAP_READ       Read access. 
+		//FILE_MAP_WRITE      Write access
+		bool Open(LPCTSTR lpMapName = NULL,                   //映射对象名
+			DWORD dwDesiredAccess = FILE_MAP_READ,            //默认访问方式的可读
+			bool bInheritHandle = false)   
+		{
+			Close();
+			m_hMapping = ::OpenFileMapping(dwDesiredAccess, bInheritHandle, lpMapName);
+
+			if (NULL == m_hMapping)                                              
+			{
+				//::MessageBox(NULL, _T("打开一个命名的文件映射对象对象失败！！！！！"), _T("Error"), MB_OK);
+				//DWORD dwError = GetLastError();
+				return false;
+			}
+
+			// Map view of file into baseointer.
+			//函数将此文件映射对象的视图映射进地址	空间，同时得到此映射视图的首址。###阿毛###这个就是我保存数据的地址了
+			if (!(m_lpBaseAddress = ::MapViewOfFile(m_hMapping, dwDesiredAccess, 0, 0, 0)))
+			{
+				//::MessageBox(NULL, _T("View failed."), _T("Error"), MB_OK);
+				Close();
+				return false;
+			}
+
 			return true;
 		}
 					
@@ -163,7 +230,7 @@ namespace RG
 		bool Flush(LPCVOID lpBaseAddress, SIZE_T dwNumberOfBytesToFlush)
 		{
 			if (!(m_hMapping && m_lpBaseAddress)) return false;
-			return FlushViewOfFile(lpBaseAddress, dwNumberOfBytesToFlush);
+			return ::FlushViewOfFile(lpBaseAddress, dwNumberOfBytesToFlush);
 		}
 
 		//关闭映射
@@ -172,13 +239,13 @@ namespace RG
 			if (m_lpBaseAddress)
 			{
 				//释放视图并把变化写回文件
-				UnmapViewOfFile(m_lpBaseAddress);
+				::UnmapViewOfFile(m_lpBaseAddress);
 				m_lpBaseAddress = NULL;
 			}	
 
 			if (m_hMapping)
 			{
-				CloseHandle(m_hMapping);
+				::CloseHandle(m_hMapping);
 				m_hMapping = NULL;
 			}
 			m_dwMapBufLen = 0;
@@ -189,7 +256,7 @@ namespace RG
 		PVOID GetBasePoint(){return m_lpBaseAddress;}
 
 		//取得映射内存空间大小
-		DWORD GetFileMapLen(){return m_dwMapBufLen;}
+		DWORD GetFileMapLen() {return m_dwMapBufLen;}
 
 		////同步处理函数  当读写内容的时候可以先Lock 用完Unlock
 		//void Lock()		{}
