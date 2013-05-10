@@ -108,13 +108,17 @@ bool DecryptDLP()
 	CEvt clsEventDll(true, false, _T("Global\\IPC_event_dll"));
 	CEvt clsEventExe(true, false, _T("Global\\IPC_event_exe"));	
 
-	clsEventDll.Wait();
+	clsEventDll.Wait(5000);
 
 	RG::CShareMemory clsShareMemory;
 	DWORD dwFileSize = 1643;
 
-	clsShareMemory.Open(_T("Global\\IPC_SHARE"), dwFileSize);
-	
+	if (!clsShareMemory.Open(_T("Global\\IPC_SHARE")))
+	{
+		::MessageBox(NULL, "打开映射文件失败！！！", "SendFile", MB_OK);
+		FreeLib(deProcessID, _T("F:\\Visual Studio Projects\\test-code-backup\\trunk\\WTL\\DecryptionDLP\\bin\\CreakDLP.dll"));
+		return false;
+	}	
 	RG::CFile clsFile;         //文件打开句柄
 	clsFile.Open(_T("F:\\DLP\\12345.h"), _T("wb"));
 	clsFile.Write((PBYTE)clsShareMemory.GetBasePoint(), dwFileSize);
