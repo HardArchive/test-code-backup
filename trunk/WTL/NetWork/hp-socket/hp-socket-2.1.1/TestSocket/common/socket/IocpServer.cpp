@@ -64,15 +64,22 @@ BOOL CIocpServer::Start(LPCTSTR pszBindAddress, USHORT usPort)
 	if(!CheckParams() || !CheckStarting())
 		return FALSE;
 
+	//创建监听套接字开始监听端口
 	if(CreateListenSocket(pszBindAddress, usPort))
+	{
+
 		if(CreateCompletePort())
+		{
 			if(CreateWorkerThreads())
+			{
 				if(StartAcceptThread())
 				{
 					m_enState = SS_STARTED;
 					return TRUE;
 				}
-
+			}
+		}
+	}
 	Stop();
 
 	return FALSE;
@@ -806,6 +813,7 @@ void CIocpServer::HandleAccept(SOCKET soListen, TBufferObj* pBufferObj)
 	int result = ::SSO_UpdateAcceptContext(socket, soListen);
 	ASSERT(result == 0);
 
+	//启用TCP编程里的SO_KEEPALIVE 机制 用于异常掉线检测 
 	if(m_dwKeepAliveTimes > 0 && m_dwKeepAliveInterval > 0)
 	{
 		result = ::SSO_KeepAliveVals(socket, TRUE, m_dwKeepAliveTimes, m_dwKeepAliveInterval);
