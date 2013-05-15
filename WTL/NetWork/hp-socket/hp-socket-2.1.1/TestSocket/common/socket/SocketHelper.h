@@ -48,7 +48,10 @@ public:
 	{
 		LPWSADATA lpTemp = lpWSAData;
 		if(!lpTemp)
+		{
+			//_alloca在栈(stack)上申请空间,用完马上就释放.
 			lpTemp	= (LPWSADATA)_alloca(sizeof(WSADATA));
+		}
 
 		m_iResult	= ::WSAStartup(MAKEWORD(minorVersion, majorVersion), lpTemp);
 	}
@@ -591,7 +594,7 @@ int SSO_NoDelay				(SOCKET sock, BOOL bNoDelay = TRUE);
 int SSO_DontLinger			(SOCKET sock, BOOL bDont = TRUE);
 int SSO_Linger				(SOCKET sock, USHORT l_onoff, USHORT l_linger);
 int SSO_KeepAlive			(SOCKET sock, BOOL bKeepAlive = TRUE);
-int SSO_KeepAliveVals		(SOCKET sock, u_long onoff, u_long time, u_long interval);
+int SSO_KeepAliveVals		(SOCKET sock, u_long onoff, u_long time, u_long interval);  //保活机制 值设置
 int SSO_RecvBuffSize		(SOCKET sock, int size);
 int SSO_SendBuffSize		(SOCKET sock, int size);
 int SSO_ReuseAddress		(SOCKET sock, BOOL bReuse = TRUE);

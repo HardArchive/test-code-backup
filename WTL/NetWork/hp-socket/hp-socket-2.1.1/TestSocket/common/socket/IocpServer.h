@@ -34,17 +34,17 @@
 class CIocpServer : public ISocketServer
 {
 public:
-	static const DWORD DEFAULT_WORKER_THREAD_COUNT;
-	static const DWORD DEFAULT_ACCEPT_SOCKET_COUNT;
-	static const DWORD DEFAULT_SOCKET_BUFFER_SIZE;
-	static const DWORD DEFAULT_SOCKET_LISTEN_QUEUE;
-	static const DWORD DEFAULT_FREE_SOCKETOBJ_POOL;
-	static const DWORD DEFAULT_FREE_BUFFEROBJ_POOL;
-	static const DWORD DEFAULT_FREE_SOCKETOBJ_HOLD;
-	static const DWORD DEFAULT_FREE_BUFFEROBJ_HOLD;
-	static const DWORD DEFALUT_KEEPALIVE_TIMES;
-	static const DWORD DEFALUT_KEEPALIVE_INTERVAL;
-	static const DWORD DEFAULT_MAX_SHUTDOWN_WAIT_TIME;
+	static const DWORD DEFAULT_WORKER_THREAD_COUNT;                        //工作线程数量::GetCpuCount() * 2 + 2;
+	static const DWORD DEFAULT_ACCEPT_SOCKET_COUNT;                        // 2 * DEFAULT_WORKER_THREAD_COUNT
+	static const DWORD DEFAULT_SOCKET_BUFFER_SIZE;                         // 4 * 1024 - sizeof(TBufferObj)
+	static const DWORD DEFAULT_SOCKET_LISTEN_QUEUE;                        // 30
+	static const DWORD DEFAULT_FREE_SOCKETOBJ_POOL;                        // 100
+	static const DWORD DEFAULT_FREE_BUFFEROBJ_POOL;                        // 200
+	static const DWORD DEFAULT_FREE_SOCKETOBJ_HOLD;                        // 300
+	static const DWORD DEFAULT_FREE_BUFFEROBJ_HOLD;                        // 600
+	static const DWORD DEFALUT_KEEPALIVE_TIMES;                            // 3
+	static const DWORD DEFALUT_KEEPALIVE_INTERVAL;                         // 10 * 1000
+	static const DWORD DEFAULT_MAX_SHUTDOWN_WAIT_TIME;                     // 5 * 1000
 
 public:
 	CIocpServer(IServerSocketListener* pListener)
@@ -121,16 +121,16 @@ private:
 	void SetLastError(En_ISS_Error code, LPCTSTR func, int ec);
 
 private:
-	BOOL CheckParams();
+	BOOL CheckParams();                                                    //参数检查
 	BOOL CheckStarting();
 	BOOL CheckStoping();
-	BOOL CreateListenSocket(LPCTSTR pszBindAddress, USHORT usPort);
-	BOOL CreateCompletePort();
-	BOOL CreateWorkerThreads();
-	BOOL StartAcceptThread();
+	BOOL CreateListenSocket(LPCTSTR pszBindAddress, USHORT usPort);        //创建监听套接字开始监听端口
+	BOOL CreateCompletePort();                                             //创建完成端口
+	BOOL CreateWorkerThreads();                                            //创建工作线程
+	BOOL StartAcceptThread();                                              //创建接收连接线程
 
 	void CloseListenSocket();
-	void WaitForAcceptThreadEnd();
+	void WaitForAcceptThreadEnd();                                         //设置m_evtAccept事件 ，退出接收线程
 	void DisconnectClientSocket();
 	void WaitForClientSocketClose();
 	void ReleaseClientSocket();
@@ -144,82 +144,91 @@ private:
 
 	void Reset();
 
-	TBufferObj*	GetFreeBufferObj(int iLen = 0);
-	TSocketObj*	GetFreeSocketObj();
+	/* TBufferObj 和 TSocketObj 缓冲池系列方法 */
+	TBufferObj*	GetFreeBufferObj(int iLen = 0);                             //取到空闲buffer 用于存储收发数据TBufferObj
+	TSocketObj*	GetFreeSocketObj();                                         //取到空闲buffer 用于存储连接套接字TSocketObj
 	void		AddFreeBufferObj(TBufferObj* pBufferObj);
 	void		AddFreeSocketObj(DWORD dwConnID);
-	TBufferObj*	CreateBufferObj();
-	TSocketObj*	CreateSocketObj();
+	TBufferObj*	CreateBufferObj();                                          
+	TSocketObj*	CreateSocketObj();                                          
 	void		DeleteBufferObj(TBufferObj* pBufferObj);
 	void		DeleteSocketObj(TSocketObj* pSocketObj);
 
-	void		AddClientSocketObj(DWORD dwConnID, TSocketObj* pSocketObj);
+	void		AddClientSocketObj(DWORD dwConnID, TSocketObj* pSocketObj);//将Connection ID 和TSocketObj添加到m_mpClientSocket表中
 	TSocketObj* FindSocketObj(DWORD dwConnID);
 	void		CloseSocketObj(TSocketObj* pSocketObj, int iShutdownFlag = SD_SEND);
 
 private:
-	static UINT WINAPI AcceptThreadProc(LPVOID pv);
-	static UINT WINAPI WorkerThreadProc(LPVOID pv);
+	//使用 AcceptEx() 接收客户端连接请求并创建 Client Socket 的线程，
+	//将其独立出来，实现为单独的线程将使组件的模块划分更清晰，更重要的是避免与业务逻辑和通信处理的相互影响
+	static UINT WINAPI AcceptThreadProc(LPVOID pv);                        //接收连接线程
+	//使用 GetQueuedCompletionStatus() 监听网络事件并处理网络交互的多个线程，
+	//工作线程处理完网络事件后会向上层应用发送 OnAccept/OnSend/OnReceive 等组件通知。
+	//工作线程的数量可以根据实际情况之行设置（通常建议为：CPU Core Number * 2 + 2）
+	static UINT WINAPI WorkerThreadProc(LPVOID pv);                        //IOCP工作线程
 
-	void HandleIo		(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwBytes, DWORD dwErrorCode);
-	void HandleError	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwErrorCode);
-	void HandleAccept	(SOCKET soListen, TBufferObj* pBufferObj);
-	void HandleSend		(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);
-	void HandleReceive	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);
-
-	int DoSend		(DWORD dwConnID, TSocketObj* pSocketObj, const BYTE* pBuffer, int iLen);
-	int DoReceive	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);
+	void HandleIo		(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwBytes, DWORD dwErrorCode); //IO处理
+	void HandleError	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj, DWORD dwErrorCode);                //错误连接处理
+	void HandleAccept	(SOCKET soListen, TBufferObj* pBufferObj);                                                          //接受连接处理
+	void HandleSend		(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);                                   //发送数据处理
+	void HandleReceive	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);                                   //接收数据处理
+ 
+	int DoSend		(DWORD dwConnID, TSocketObj* pSocketObj, const BYTE* pBuffer, int iLen);                                //投递一个发送
+	int DoReceive	(DWORD dwConnID, TSocketObj* pSocketObj, TBufferObj* pBufferObj);                                       //投递一个接收
 
 private:
-	SOCKET	GetAcceptSocket();
-	BOOL	DeleteAcceptSocket(SOCKET socket, BOOL bCloseSocket = FALSE);
+	SOCKET	GetAcceptSocket();                                             //创建并取到客户端接受连接套接字
+	BOOL	DeleteAcceptSocket(SOCKET socket, BOOL bCloseSocket = FALSE);  //将接受连接的socket从等待接受连接的socket集合m_setAccept中删掉
 	void	ReleaseAcceptSockets();
 
 private:
 	CInitSocket					m_wsSocket;
-	LPFN_ACCEPTEX				m_pfnAcceptEx;
-	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;
+	//接受连接函数指针
+	LPFN_ACCEPTEX				m_pfnAcceptEx;                             //AcceptEx函数指针  
+	//GetAcceptExSockaddrs是专门为AcceptEx函数准备的，它将AcceptEx接受的第一块数据中的本地和远程机器的地址返回给用户
+	LPFN_GETACCEPTEXSOCKADDRS	m_pfnGetAcceptExSockaddrs;                 //GetAcceptExSockaddrs函数指针用来取得接收socket的IP端口
 
 private:
-	IServerSocketListener*	m_psoListener;
+	IServerSocketListener*	m_psoListener;                                 //监听器指针
 
-	volatile EnServiceState	m_enState;
-	volatile DWORD			m_dwConnID;
+	volatile EnServiceState	m_enState;                                     //通信组件状态标识
+	volatile DWORD			m_dwConnID;                                    //Connection ID 当前值
 
 	En_ISS_Error	m_enLastError;
 
-	SOCKET			m_soListen;
-	HANDLE			m_hCompletePort;
-	HANDLE			m_hAcceptThread;
-	vector<HANDLE>	m_vtWorkerThreads;
+	SOCKET			m_soListen;                                            //监听套接字
+	HANDLE			m_hCompletePort;                                       //完成端口句柄
+	HANDLE			m_hAcceptThread;                                       //Accept 线程句柄
+	vector<HANDLE>	m_vtWorkerThreads;                                     //工作线程句柄集合
 
-	TBufferObjPtrList	m_lsFreeBuffer;
-	TSocketObjPtrList	m_lsFreeSocket;
-	TSocketObjPtrMap	m_mpClientSocket;
+	TBufferObjPtrList	m_lsFreeBuffer;                                    //TBufferObj 缓冲池空闲队列
+	TSocketObjPtrList	m_lsFreeSocket;                                    //TSocketObj 缓冲池空闲队列
+	TSocketObjPtrMap	m_mpClientSocket;                                  //Connection ID 到TSocketObj的 映射
 
+	//临界区处理类
 	CCriSec				m_csFreeBuffer;
 	CCriSec				m_csFreeSocket;
 	CCriSec				m_csClientSocket;
 
-	CEvt				m_evtAccept;
+	CEvt				m_evtAccept;                                       //事件内核对象昝类-接收连接事件
 
-	smart_simple_ptr<CSEM>	m_psemAccept;
+	smart_simple_ptr<CSEM>	m_psemAccept;                                  //单实体智能指针-接收信号量
 	CCriSec					m_csAccept;
-	ulong_ptr_set			m_setAccept;
+	ulong_ptr_set			m_setAccept;                                   //客户端套接字集合 等待连接套接字集合
 
-	CPrivateHeap			m_phSocket;
-	CPrivateHeap			m_phBuffer;
+	CPrivateHeap			m_phSocket;                                    //
+	CPrivateHeap			m_phBuffer;                                    //缓冲池私有堆
 
 private:
-	DWORD m_dwWorkerThreadCount;
-	DWORD m_dwAcceptSocketCount;
-	DWORD m_dwSocketBufferSize;
-	DWORD m_dwSocketListenQueue;
-	DWORD m_dwFreeSocketObjPool;
-	DWORD m_dwFreeBufferObjPool;
-	DWORD m_dwFreeSocketObjHold;
-	DWORD m_dwFreeBufferObjHold;
-	DWORD m_dwKeepAliveTimes;
-	DWORD m_dwKeepAliveInterval;
-	DWORD m_dwMaxShutdownWaitTime;
+	DWORD m_dwWorkerThreadCount;    //工作线程数量  CPU Core Number * 2 + 2
+	DWORD m_dwAcceptSocketCount;    //默认并发 AcceptEx 调用次数
+	DWORD m_dwSocketBufferSize;     //TBufferObj 数据缓冲区大小
+	DWORD m_dwSocketListenQueue;    //指定内核为此套接口排队的最大连接个数 此处为30
+	DWORD m_dwFreeSocketObjPool;    //空闲TSocketObj 对象池 的对象数量？？
+	DWORD m_dwFreeBufferObjPool;    //空闲TBufferObj 缓冲池数量？？
+	DWORD m_dwFreeSocketObjHold;    //
+	DWORD m_dwFreeBufferObjHold;    //
+	DWORD m_dwKeepAliveTimes;       //第一次开始发送的时间（单位毫秒）此值为3
+	DWORD m_dwKeepAliveInterval;    //TCP连接处于畅通时候的探测频率  每次检测的间隔 （单位毫秒） 值 10 * 1000
+	DWORD m_dwMaxShutdownWaitTime;  //最大停止等待时间 5 * 1000
 };
