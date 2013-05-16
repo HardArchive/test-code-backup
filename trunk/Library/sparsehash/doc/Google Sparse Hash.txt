@@ -1,0 +1,80 @@
+Google Sparse Hash
+Google Sparsehash 包
+实现背景：
+该包由2种类型和HashTable实现组成。
+Sparse 设计的实现过程中考虑的是空间优先；dense 设计上考虑的是时间优先。设计的注重点不一样，所以实现也不一样。为了和通用的STL相适应，每一种实现提供了hash-map和Hash-set2种封装方式。
+
+
+
+在使用Hash_map和Hash_set的过程中是不需要安装STL库的，google提供了整个的实现过程。Google在实现的过程中大量使用了模板和泛型编程。
+
+实现特点：
+1。这个库提供了内存中Hash tables的一种实现，同时提供了持久化存储的能力。实现上尽可能快，可移植和小。 实现这些目标使用了Knuth在<<计算机程序设计艺术 第三卷>>中提到的 内部探测散列算法（具体Hash函数的实现可以参考http://burtleburtle.net/bob/hash/evahash 和 http://burtleburtle.net/bob/c/lookup2.c）。与开放链Hash算法不同，它不需要指向每个元素的指针项，在实践中仍然达到了常数级的查找时间。
+2.为了节省空间，在插入Hash table的过程中，无论是Key还是data使用Union方式：如果Key或data很小，就直接存储，否则就存取一个指针。
+为了便于存取Key和data,可以使用2个宏 KEY_PTR和PTR_KEY在参数和指针实际所指的数据之间转换比如：
+
+     char key[] = "ab", *key2;
+      HTItem *bck; HashTable *ht;
+      HashInsert(ht, PTR_KEY(ht, key), 0);
+      bck = HashFind(ht, PTR_KEY(ht, "ab"));
+      key2 = KEY_PTR(ht, bck->key);
+
+主要接口：
+这个Hash table的实现支持的主要接口如下：
+
+
+1. HashTable *AllocateHashTable(int cchKey, int fSaveKeys)
+
+   功能：分配一个Hashtable的结构并且返回它
+参数：    cchKey: 为正数时候，表明每个Key是固定长度的；为0表明Key是一个以\0结束的固定长度的字符串。
+       fSaveKey: 通过是需要调用者分配Key的空间，如果设置为1，会Copy一个Key。
+
+2.     ClearHashTable(HashTable *ht)
+功能：移除 hashtable的所有元素；
+
+3.   void FreeHashTable(HashTable *ht)
+功能： 释放 hashtable使用的内存
+
+4.    HTItem *HashFind(HashTable *ht, ulong key)
+         功能：查询Hashtable,找到返回该元素，否则为空；
+5.     HTItem *HashFindLast(HashTable *ht)
+     功能：返回最后查找过的的元素
+6     HTItem *HashFindOrInsert(HashTable *ht, ulong key, ulong dataInsert)
+           功能：查找指定的Key的元素，不在就插入。 
+
+7.   HTItem *HashFindOrInsertItem(HashTable *ht, HTItem *pItem)
+          功能：插入一个Key/data对，是否覆盖已经存在的元素由 SAMEKEY_OVERWRITE标记设定。
+
+9     HTItem *HashInsert(HashTable *ht, ulong key, ulong data)
+             功能： -- 插入 key/data as an HTItem.
+10    int HashDelete(HashTable *ht, ulong key)
+          功能：   -- 移除一个制定Key的元素，成功返回1，否则不存在返回0
+11     int HashDeleteLast(HashTable *ht)
+       功能： -- 删除最近查询过的元素.
+
+12     HTItem *HashFirstBucket(HashTable *ht)
+             功能-- 用来遍历hashtable的桶， 遍历过程中不要做插入和删除操作；
+13    HTItem *HashNextBucket(HashTable *ht)
+                  -- RETURNS NULL at the end of iterating.
+
+14     int HashSetDeltaGoalSize(HashTable *ht, int delta)
+                  功能：一次性批量插入数据；
+
+15    void HashSave(FILE *fp, HashTable *ht, int (*dataWrite)(FILE *, char *))
+                 
+          功能:将整个Hash表的内容保存在文件中。如果数据域是一个指针或者复杂的数据结构，需要传递一个函数指针将文件指针作为参数，此时可以写入你想写入的东西，函数返回写入的字节数。如果数据域是整数，不需要传函数指针。
+        
+16    static HashTable *HashDoLoad(FILE *fp, char * (*dataRead)(FILE *, int),
+        HashTable *ht)
+
+          功能： --装入Hash表. 他需要一个函数来读取一个文件的结构和结构的大小。功能与 HashSave对应。
+17     HashTable *HashLoadKeys(FILE *fp, char * (*dataRead)(FILE *, int))
+               功能：        -- 与 HashLoad(),不同 只有必要的时候才从磁盘Load相应的数据.这种方法可以节省内存 。
+注意：在装入数据的时候不应该插入和删除数据。
+
+
+功能扩展：
+
+这个HashTable实现没有使用共享内存的方式，我们可以对AllocateHashTable进行简单改写使用共享内存的方式；另外这个Hashtable没有提供自动淘汰节点的功能，可以增加LRU，对访问节点的计数和时间统计，在无法继续插入新的节点时候触发淘汰操作。 
+官方网站1：http://goog-sparsehash.sourceforge.net/
+官方网站2：http://code.google.com/p/google-sparsehash/
