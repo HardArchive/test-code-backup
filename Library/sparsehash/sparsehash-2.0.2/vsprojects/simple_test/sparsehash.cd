@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="google::libc_allocator_with_realloc&lt;T&gt;" Collapsed="true">
+    <Position X="106.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAgAAAEAAAAAAABIAAAEAAAAIAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\libc_allocator_with_realloc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="google::libc_allocator_with_realloc&lt;void&gt;" Collapsed="true">
+    <Position X="108.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\libc_allocator_with_realloc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="google::sparse_hashtable&lt;Value, Key, HashFcn, ExtractKey, SetKey, EqualKey, Alloc&gt;" Collapsed="true">
+    <Position X="110.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEEoUAACGCrAAQBSBIgMoUEWBkCBABgECw0QQgIMAuI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\sparsehashtable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="google::dense_hashtable&lt;Value, Key, HashFcn, ExtractKey, SetKey, EqualKey, Alloc&gt;" Collapsed="true">
+    <Position X="105" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IUEoUDAiGCLACUBCDIgM4QEWBkCBABgECw2QQgIsA2I=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\densehashtable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="google::is_integral&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;bool&gt;" Collapsed="true">
+    <Position X="17" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;char&gt;" Collapsed="true">
+    <Position X="46.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;unsigned char&gt;" Collapsed="true">
+    <Position X="55.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;signed char&gt;" Collapsed="true">
+    <Position X="62" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;__wchar_t&gt;" Collapsed="true">
+    <Position X="73.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;short&gt;" Collapsed="true">
+    <Position X="80" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;unsigned short&gt;" Collapsed="true">
+    <Position X="84.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;int&gt;" Collapsed="true">
+    <Position X="93.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;unsigned int&gt;" Collapsed="true">
+    <Position X="98" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;long&gt;" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;unsigned long&gt;" Collapsed="true">
+    <Position X="19.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;long long&gt;" Collapsed="true">
+    <Position X="48.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;unsigned long long&gt;" Collapsed="true">
+    <Position X="57.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;const T&gt;" Collapsed="true">
+    <Position X="3.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;volatile T&gt;" Collapsed="true">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_integral&lt;const volatile T&gt;" Collapsed="true">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;T&gt;" Collapsed="true">
+    <Position X="89" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;float&gt;" Collapsed="true">
+    <Position X="95.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;double&gt;" Collapsed="true">
+    <Position X="100.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;long double&gt;" Collapsed="true">
+    <Position X="12.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;const T&gt;" Collapsed="true">
+    <Position X="86.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;volatile T&gt;" Collapsed="true">
+    <Position X="89" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_floating_point&lt;const volatile T&gt;" Collapsed="true">
+    <Position X="91.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pointer&lt;T&gt;" Collapsed="true">
+    <Position X="66.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pointer&lt;T*&gt;" Collapsed="true">
+    <Position X="75.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pointer&lt;const T&gt;" Collapsed="true">
+    <Position X="64.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pointer&lt;volatile T&gt;" Collapsed="true">
+    <Position X="66.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pointer&lt;const volatile T&gt;" Collapsed="true">
+    <Position X="68.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_reference&lt;T&gt;" Collapsed="true">
+    <Position X="102.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_reference&lt;T&amp;&gt;" Collapsed="true">
+    <Position X="14.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pod&lt;T&gt;" Collapsed="true">
+    <Position X="31.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pod&lt;const T&gt;" Collapsed="true">
+    <Position X="21.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pod&lt;volatile T&gt;">
+    <Position X="26" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_pod&lt;const volatile T&gt;" Collapsed="true">
+    <Position X="28.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_constructor&lt;T&gt;" Collapsed="true">
+    <Position X="36.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_constructor&lt;std::pair&lt;T, U&gt;&gt;" Collapsed="true">
+    <Position X="82.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_constructor&lt;A[N]&gt;" Collapsed="true">
+    <Position X="35" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_constructor&lt;const T&gt;" Collapsed="true">
+    <Position X="37.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_copy&lt;T&gt;" Collapsed="true">
+    <Position X="40.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_copy&lt;A[N]&gt;" Collapsed="true">
+    <Position X="39.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_copy&lt;const T&gt;" Collapsed="true">
+    <Position X="41.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_assign&lt;T&gt;">
+    <Position X="23.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_assign&lt;A[N]&gt;" Collapsed="true">
+    <Position X="23.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_destructor&lt;T&gt;" Collapsed="true">
+    <Position X="31.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_destructor&lt;A[N]&gt;" Collapsed="true">
+    <Position X="30.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::has_trivial_destructor&lt;const T&gt;" Collapsed="true">
+    <Position X="32.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_const&lt;T&gt;" Collapsed="true">
+    <Position X="110.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_const&lt;T const&gt;" Collapsed="true">
+    <Position X="112" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_volatile&lt;T&gt;" Collapsed="true">
+    <Position X="110.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_volatile&lt;T volatile&gt;" Collapsed="true">
+    <Position X="112" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_cv&lt;T&gt;" Collapsed="true">
+    <Position X="105" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_reference&lt;T&gt;" Collapsed="true">
+    <Position X="106.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_reference&lt;T&amp;&gt;" Collapsed="true">
+    <Position X="108.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::add_reference&lt;T&gt;" Collapsed="true">
+    <Position X="105" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::add_reference&lt;T&amp;&gt;" Collapsed="true">
+    <Position X="106.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_pointer&lt;T&gt;" Collapsed="true">
+    <Position X="112" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_pointer&lt;T*&gt;" Collapsed="true">
+    <Position X="110.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_pointer&lt;T*&gt;" Collapsed="true">
+    <Position X="108.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_pointer&lt;T*&gt;" Collapsed="true">
+    <Position X="105" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::remove_pointer&lt;T*&gt;" Collapsed="true">
+    <Position X="106.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_same&lt;T, U&gt;" Collapsed="true">
+    <Position X="44" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::is_same&lt;T, T&gt;" Collapsed="true">
+    <Position X="50.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\type_traits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::sparse_hashtable_iterator&lt;V, K, HF, ExK, SetK, EqK, A&gt;" Collapsed="true">
+    <Position X="108.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAIAAgIIAAAAAAAABAAAAEAAAAAiA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\sparsehashtable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::sparse_hashtable_const_iterator&lt;V, K, HF, ExK, SetK, EqK, A&gt;" Collapsed="true">
+    <Position X="105" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAIAAIAAgIIAAAAAAAABAAAAEAAAAAiA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\sparsehashtable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::sparse_hashtable_destructive_iterator&lt;V, K, HF, ExK, SetK, EqK, A&gt;" Collapsed="true">
+    <Position X="106.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAIAAgIICAAAAAAABAAAAEAAAAAiA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\sparsehashtable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::dense_hashtable_iterator&lt;V, K, HF, ExK, SetK, EqK, A&gt;" Collapsed="true">
+    <Position X="112" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAQAAAAAIAAAIIAAAAAAAABACAAEAAAAAiA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\densehashtable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::dense_hashtable_const_iterator&lt;V, K, HF, ExK, SetK, EqK, A&gt;" Collapsed="true">
+    <Position X="110.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAIAAAIIAAAAAAAABCCAAEAAAAAiA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\sparsehash\internal\densehashtable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::big_" Collapsed="true">
+    <Position X="108.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::identity_&lt;T&gt;" Collapsed="true">
+    <Position X="105" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::integral_constant&lt;T, v&gt;">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="google::integral_constant&lt;T, v&gt;::value_type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="google::integral_constant&lt;T, v&gt;::type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::if_&lt;cond, A, B&gt;" Collapsed="true">
+    <Position X="106.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::if_&lt;false, A, B&gt;" Collapsed="true">
+    <Position X="108.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::type_equals_&lt;A, B&gt;" Collapsed="true">
+    <Position X="53" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::type_equals_&lt;A, A&gt;" Collapsed="true">
+    <Position X="59.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::and_&lt;A, B&gt;" Collapsed="true">
+    <Position X="71" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="google::or_&lt;A, B&gt;" Collapsed="true">
+    <Position X="77.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="google::small_" Collapsed="true">
+    <Position X="105" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="google::true_type" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="google::false_type" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="google::true_" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="google::false_" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\visual studio projects\test-code-backup\trunk\library\sparsehash\sparsehash-2.0.2\src\sparsehash\template_util.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>

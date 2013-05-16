@@ -1,0 +1,1257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="`anonymous-namespace'::ValueSerializer" Collapsed="true">
+    <Position X="189" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::HashtableTest&lt;HashtableType&gt;">
+    <Position X="86.75" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACEEAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::HashtableIntTest&lt;HashtableType&gt;" Collapsed="true">
+    <Position X="14.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::HashtableStringTest&lt;HashtableType&gt;" Collapsed="true">
+    <Position X="31.75" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::HashtableCharStarTest&lt;HashtableType&gt;" Collapsed="true">
+    <Position X="35.75" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::HashtableAllTest&lt;HashtableType&gt;" Collapsed="true">
+    <Position X="106.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::StringIO" Collapsed="true">
+    <Position X="180.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableCommonTest_HashMunging" Collapsed="true">
+    <Position X="182" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_Typedefs" Collapsed="true">
+    <Position X="185.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_Typedefs&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="11" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_NormalIterators" Collapsed="true">
+    <Position X="178.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_NormalIterators&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="123.75" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_ModifyViaIterator" Collapsed="true">
+    <Position X="183.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ConstIterators" Collapsed="true">
+    <Position X="187.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ConstIterators&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="157.5" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_LocalIterators" Collapsed="true">
+    <Position X="190.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ConstLocalIterators" Collapsed="true">
+    <Position X="189" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ConstLocalIterators&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="59.25" Y="5.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Iterating&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="69.75" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Iterating" Collapsed="true">
+    <Position X="187.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_Constructors" Collapsed="true">
+    <Position X="176.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_Constructors&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_OperatorEquals&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="109" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_OperatorEquals" Collapsed="true">
+    <Position X="180.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Clear" Collapsed="true">
+    <Position X="183.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Clear&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="138.75" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ClearNoResize&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="147.75" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ClearNoResize" Collapsed="true">
+    <Position X="185.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Swap" Collapsed="true">
+    <Position X="190.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Swap&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="39.5" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Size&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="55" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Size" Collapsed="true">
+    <Position X="189" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_MaxSizeAndMaxBucketCount" Collapsed="true">
+    <Position X="182" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Empty" Collapsed="true">
+    <Position X="176.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Empty&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="94.5" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_BucketCount&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="104.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_BucketCount" Collapsed="true">
+    <Position X="180.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_BucketAndBucketSize" Collapsed="true">
+    <Position X="178.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_BucketAndBucketSize&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="128.75" Y="5.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_LoadFactor&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="143" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_LoadFactor" Collapsed="true">
+    <Position X="189" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ResizeAndRehash" Collapsed="true">
+    <Position X="183.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ResizeAndRehash&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="167.25" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_FindAndCountAndEqualRange&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="43.75" Y="5.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_FindAndCountAndEqualRange" Collapsed="true">
+    <Position X="183.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_BracketInsert" Collapsed="true">
+    <Position X="190.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_BracketInsert&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="74.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_InsertValue&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="85.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_InsertValue" Collapsed="true">
+    <Position X="185.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_InsertRange" Collapsed="true">
+    <Position X="178.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_InsertRange&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="15.5" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_InsertValueToMap" Collapsed="true">
+    <Position X="178.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableStringTest_EmptyKey&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="31" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableStringTest_EmptyKey" Collapsed="true">
+    <Position X="187.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_DeletedKey" Collapsed="true">
+    <Position X="190.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_DeletedKey&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="162.5" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Erase&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="172.25" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Erase" Collapsed="true">
+    <Position X="180.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_EraseDoesNotResize" Collapsed="true">
+    <Position X="182" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_EraseDoesNotResize&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="64.5" Y="5.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Equals" Collapsed="true">
+    <Position X="178.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Equals&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="90" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_IntIO" Collapsed="true">
+    <Position X="180.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_StringIO" Collapsed="true">
+    <Position X="189" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_Serialization" Collapsed="true">
+    <Position X="187.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_Serialization&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="119" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_NopointerSerialization&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="20.25" Y="5.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_NopointerSerialization" Collapsed="true">
+    <Position X="180.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_SerializingToString" Collapsed="true">
+    <Position X="182" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_SerializingToString&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="25.75" Y="5.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableIntTest_SerializingToStringStream&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableIntTest_SerializingToStringStream" Collapsed="true">
+    <Position X="183.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_MetadataSerializationAndEndianness" Collapsed="true">
+    <Position X="176.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_MetadataSerializationAndEndianness&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="79" Y="5.75" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_BracketOperatorCrashing" Collapsed="true">
+    <Position X="176.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_BracketOperatorCrashing&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="98.75" Y="5.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_LocalIterators&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="114" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::DenseIntMap&lt;T&gt;" Collapsed="true">
+    <Position X="176.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::DenseStringSet" Collapsed="true">
+    <Position X="178.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ResizeHysteresis" Collapsed="true">
+    <Position X="185.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ResizeHysteresis&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="152.5" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_ConstKey" Collapsed="true">
+    <Position X="176.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ResizeActuallyResizes" Collapsed="true">
+    <Position X="182" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ResizeActuallyResizes&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="49.5" Y="5.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_SimpleDataTypeOptimizations" Collapsed="true">
+    <Position X="187.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableTest_NestedHashtables" Collapsed="true">
+    <Position X="185.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableDeathTest_ResizeOverflow" Collapsed="true">
+    <Position X="189" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableDeathTest_InsertSizeTypeOverflow" Collapsed="true">
+    <Position X="185.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableDeathTest_InsertMaxSizeOverflow" Collapsed="true">
+    <Position X="183.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableDeathTest_ResizeSizeTypeOverflow" Collapsed="true">
+    <Position X="190.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_HashtableDeathTest_ResizeDeltaOverflow" Collapsed="true">
+    <Position X="187.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_typed_HashtableAllTest_ClassSizes" Collapsed="true">
+    <Position X="182" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::TEST_onetype_HashtableAllTest_ClassSizes&lt;TypeParam&gt;" Collapsed="true">
+    <Position X="134" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="google::testing::Test" Collapsed="true">
+    <Position X="87.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\testutil.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="`anonymous-namespace'::ValueType" Collapsed="true">
+    <Position X="190.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgEAAQABAAEAAAAAAIAAAAAAEgA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::SetKey&lt;KeyAndValueT, KeyToValue&gt;" Collapsed="true">
+    <Position X="189" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Hasher" Collapsed="true">
+    <Position X="180.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAABAAAAAAAgAAAAAAAAIAAAAAAEAAAAAAAAAAAgA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Alloc&lt;T, SizeT, MAX_SIZE&gt;" Collapsed="true">
+    <Position X="176.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAFAAAAAQABIAAAEgAAAIAAAAAAAAAAAAAAiI=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Negation&lt;Value&gt;" Collapsed="true">
+    <Position X="185.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Capital" Collapsed="true">
+    <Position X="178.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Identity" Collapsed="true">
+    <Position X="182" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Memmove" Collapsed="true">
+    <Position X="183.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAIAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::NoMemmove" Collapsed="true">
+    <Position X="187.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAIAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="`anonymous-namespace'::IntHashtables" Collapsed="true">
+    <Position X="180.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::StringHashtables" Collapsed="true">
+    <Position X="182" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::CharStarHashtables" Collapsed="true">
+    <Position X="178.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::AllHashtables" Collapsed="true">
+    <Position X="176.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type4" Collapsed="true">
+    <Position X="185.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type5" Collapsed="true">
+    <Position X="187.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type6" Collapsed="true">
+    <Position X="189" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type7" Collapsed="true">
+    <Position X="190.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type8" Collapsed="true">
+    <Position X="176.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type9" Collapsed="true">
+    <Position X="178.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type10" Collapsed="true">
+    <Position X="182" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type11" Collapsed="true">
+    <Position X="183.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type12" Collapsed="true">
+    <Position X="185.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type13" Collapsed="true">
+    <Position X="187.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type14" Collapsed="true">
+    <Position X="189" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type15" Collapsed="true">
+    <Position X="190.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type16" Collapsed="true">
+    <Position X="176.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type17" Collapsed="true">
+    <Position X="178.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type18" Collapsed="true">
+    <Position X="180.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type1" Collapsed="true">
+    <Position X="180.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type2" Collapsed="true">
+    <Position X="182" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type3" Collapsed="true">
+    <Position X="183.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type4" Collapsed="true">
+    <Position X="185.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type5" Collapsed="true">
+    <Position X="187.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type6" Collapsed="true">
+    <Position X="189" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type7" Collapsed="true">
+    <Position X="190.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type8" Collapsed="true">
+    <Position X="176.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type9" Collapsed="true">
+    <Position X="178.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type10" Collapsed="true">
+    <Position X="182" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type11" Collapsed="true">
+    <Position X="183.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type12" Collapsed="true">
+    <Position X="185.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type13" Collapsed="true">
+    <Position X="187.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type14" Collapsed="true">
+    <Position X="189" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type15" Collapsed="true">
+    <Position X="190.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type16" Collapsed="true">
+    <Position X="176.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type17" Collapsed="true">
+    <Position X="178.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableStringTest_type18" Collapsed="true">
+    <Position X="180.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type1" Collapsed="true">
+    <Position X="180.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type2" Collapsed="true">
+    <Position X="182" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type3" Collapsed="true">
+    <Position X="183.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type4" Collapsed="true">
+    <Position X="185.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type5" Collapsed="true">
+    <Position X="187.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type6" Collapsed="true">
+    <Position X="189" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type7" Collapsed="true">
+    <Position X="190.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type8" Collapsed="true">
+    <Position X="176.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type9" Collapsed="true">
+    <Position X="178.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type10" Collapsed="true">
+    <Position X="182" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type11" Collapsed="true">
+    <Position X="183.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type12" Collapsed="true">
+    <Position X="185.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type13" Collapsed="true">
+    <Position X="187.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type14" Collapsed="true">
+    <Position X="189" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type15" Collapsed="true">
+    <Position X="190.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type16" Collapsed="true">
+    <Position X="176.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type17" Collapsed="true">
+    <Position X="178.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableCharStarTest_type18" Collapsed="true">
+    <Position X="180.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type1" Collapsed="true">
+    <Position X="180.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type2" Collapsed="true">
+    <Position X="182" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type3" Collapsed="true">
+    <Position X="183.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type4" Collapsed="true">
+    <Position X="185.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type5" Collapsed="true">
+    <Position X="187.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type6" Collapsed="true">
+    <Position X="189" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type7" Collapsed="true">
+    <Position X="190.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type8" Collapsed="true">
+    <Position X="176.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type9" Collapsed="true">
+    <Position X="178.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type10" Collapsed="true">
+    <Position X="182" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type11" Collapsed="true">
+    <Position X="183.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type12" Collapsed="true">
+    <Position X="185.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type13" Collapsed="true">
+    <Position X="187.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type14" Collapsed="true">
+    <Position X="189" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type15" Collapsed="true">
+    <Position X="190.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type16" Collapsed="true">
+    <Position X="176.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type17" Collapsed="true">
+    <Position X="178.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableAllTest_type18" Collapsed="true">
+    <Position X="180.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type3" Collapsed="true">
+    <Position X="183.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type2" Collapsed="true">
+    <Position X="182" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::HashtableIntTest_type1" Collapsed="true">
+    <Position X="180.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>f:\Visual Studio Projects\test-code-backup\trunk\Library\sparsehash\sparsehash-2.0.2\src\hashtable_test.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>
