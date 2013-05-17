@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcproj", "{C89598DC-0A21-4393-A271-9E7F3D41DB96}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test1", "test\test.vcproj", "{C89598DC-0A21-4393-A271-9E7F3D41DB96}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_SetUnhandledExceptionFilter", "test_SetUnhandledExceptionFilter\test_SetUnhandledExceptionFilter.vcproj", "{8862A585-ADF8-4009-B13C-46AEF65FDD3D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_effminidumpe", "test_effminidumpe\test_effminidumpe.vcproj", "{4EABEECC-547B-4381-B84F-83E17E46799C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,14 @@ Global
 		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Debug|Win32.Build.0 = Debug|Win32
 		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.ActiveCfg = Release|Win32
 		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.Build.0 = Release|Win32
+		{8862A585-ADF8-4009-B13C-46AEF65FDD3D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8862A585-ADF8-4009-B13C-46AEF65FDD3D}.Debug|Win32.Build.0 = Debug|Win32
+		{8862A585-ADF8-4009-B13C-46AEF65FDD3D}.Release|Win32.ActiveCfg = Release|Win32
+		{8862A585-ADF8-4009-B13C-46AEF65FDD3D}.Release|Win32.Build.0 = Release|Win32
+		{4EABEECC-547B-4381-B84F-83E17E46799C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4EABEECC-547B-4381-B84F-83E17E46799C}.Debug|Win32.Build.0 = Debug|Win32
+		{4EABEECC-547B-4381-B84F-83E17E46799C}.Release|Win32.ActiveCfg = Release|Win32
+		{4EABEECC-547B-4381-B84F-83E17E46799C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,7 +44,7 @@ public:
 	}
 };
 
-void f()
+void f1()
 {
 	Stack<string> ss(10);
 	try
@@ -63,9 +63,9 @@ void f()
 	}
 }
 
-int main(int argc, char *argv[])
+int main1(int argc, char *argv[])
 {
-	f();
+	f1();
 	system("PAUSE");
 	return EXIT_SUCCESS;
 }

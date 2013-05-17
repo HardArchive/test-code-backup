@@ -1,4 +1,5 @@
 //Version 3:
+#include "stdafx.h"
 #include <cstdlib>
 #include <iostream>
 
