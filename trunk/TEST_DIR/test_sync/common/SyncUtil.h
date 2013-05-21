@@ -46,9 +46,9 @@ namespace RG
 		CLockObj& m_lock;
 	};
 	
-	typedef CLocalLock<CCriSec>		g_clsCriSecLock;       //栈临界区锁
-	typedef CLocalLock<CCriSec2>	g_clsCriSecLock2;      //堆临界区锁
-	typedef CLocalLock<CMTX>		g_clsMutexLock;        //互斥量锁
+	typedef CLocalLock<SYNC::CCriSec>	g_clsCriSecLock;       //栈临界区锁
+	typedef CLocalLock<SYNC::CCriSec2>	g_clsCriSecLock2;      //堆临界区锁
+	typedef CLocalLock<SYNC::CMTX>		g_clsMutexLock;        //互斥量锁
 	 
 }
 #endif /*__SYNC_UTIL_H__*/
