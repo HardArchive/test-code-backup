@@ -37,7 +37,7 @@ namespace RG
 	
 
 	//锁模版类 在函数体内部使用 创建时锁定 完毕时释放
-	template<class CLockObj> class CLocalLock
+	template<class CLockObj> class CLocalLock: public CLockObj
 	{
 	public:
 		CLocalLock(CLockObj& obj) : m_lock(obj) {m_lock.Lock();}
@@ -45,10 +45,30 @@ namespace RG
 	private:
 		CLockObj& m_lock;
 	};
-	
-	typedef CLocalLock<SYNC::CCriSec>	g_clsCriSecLock;       //栈临界区锁
-	typedef CLocalLock<SYNC::CCriSec2>	g_clsCriSecLock2;      //堆临界区锁
-	typedef CLocalLock<SYNC::CMTX>		g_clsMutexLock;        //互斥量锁
+	//
+	//typedef CLocalLock<SYNC::CCriSec>	g_clsCriSecLock;       //栈临界区锁
+	//typedef CLocalLock<SYNC::CCriSec2>	g_clsCriSecLock2;      //堆临界区锁
+	//typedef CLocalLock<SYNC::CMTX>		g_clsMutexLock;        //互斥量锁
+
+	template<class CObject> class CObjectLock
+	{
+	public:
+		CObjectLock(CObject pObject):m_pObject(pObject){}
+		~CObjectLock(){}
+
+		void Lock(){m_clsCriSec.Lock();}
+		void UnLock(){m_clsCriSec.Unlock();}
+		CObject* GetObject(){return &m_pObject}
+	private:
+		CObjectLock(const CObjectLock& ObjectLock);
+		CObjectLock operator = (const CObjectLock& ObjectLock);
+
+	public:
+		CObject m_pObject;
+	private:
+		SYNC::CCriSec m_clsCriSec;
+	};
+	typedef CObjectLock<map<string, DWORD>>	mapLockBarcodeID;        
 	 
 }
 #endif /*__SYNC_UTIL_H__*/
