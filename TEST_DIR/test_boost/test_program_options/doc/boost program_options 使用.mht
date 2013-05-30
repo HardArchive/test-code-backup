@@ -1,0 +1,4742 @@
+From: <ÓÉ Windows Internet Explorer 8 ±£´æ>
+Subject: =?gb2312?B?Ym9vc3Q6OnByb2dyYW1fb3B0aW9ucyDKudPDIC0gwt7L98q10enK0g==?=
+Date: Thu, 30 May 2013 13:27:42 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CE5D39.766D32B0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/a/201109/14993.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML =
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>boost::program_option=
+s =CA=B9=D3=C3 - =C2=DE=CB=F7=CA=B5=D1=E9=CA=D2</TITLE>
+<META content=3D"text/html; charset=3Dgb2312" http-equiv=3DContent-Type>
+<META name=3Dkeywords content=3Dboost>
+<META name=3Ddescription=20
+content=3D=B4=D3=C3=FC=C1=EE=D0=D0=CC=E1=C8=A1=B3=CC=D0=F2=D4=CB=D0=D0=CA=
+=B1=D1=A1=CF=EE=B5=C4=B7=BD=B7=A8=D3=D0=BA=DC=B6=E0=A1=A3=C4=E3=BF=C9=D2=D4=
+=D7=D4=BC=BA=B1=E0=D0=B4=CF=E0=B6=D4=D3=A6=B5=C4=CD=EA=D5=FB=B5=C4=BD=E2=CE=
+=F6=BA=AF=CA=FD=A3=AC=BB=F2=D0=ED=C4=E3=D3=D0=B7=E1=B8=BB=B5=C4C=D3=EF=D1=
+=D4=B1=E0=B3=CC=BE=AD=D1=E9=A3=AC=CA=EC=D6=AAgetopt()=BA=AF=CA=FD=B5=C4=D3=
+=C3=B7=A8=A3=AC=D3=D6=BB=F2=D0=ED=CA=B9=D3=C3Python=B5=C4=C4=E3=D2=D1=BE=AD=
+=D4=DA=CA=B9=D3=C3optparse=BF=E2=C0=B4=BC=F2=BB=AF=D5=E2=D2=BB=B9=A4=D7=F7=
+=A1=A3><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.rosoo.net/templets/style/dedecms.css" media=3Dscreen>
+<SCRIPT type=3Dtext/javascript =
+src=3D"http://www.rosoo.net/js/rs_top.js"></SCRIPT>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript=20
+src=3D"http://www.rosoo.net/include/dedeajax2.js"></SCRIPT>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript>=0A=
+<!--=0A=
+function CheckLogin(){=0A=
+	  var taget_obj =3D document.getElementById('_ajax_feedback');=0A=
+	  myajax =3D new DedeAjax(taget_obj,false,false,'','','');=0A=
+	  myajax.SendGet2("http://www.rosoo.net/member/ajax_feedback.php");=0A=
+	  DedeXHTTP =3D null;=0A=
+}=0A=
+function postBadGood(ftype,fid)=0A=
+{=0A=
+	var taget_obj =3D document.getElementById(ftype+fid);=0A=
+	var saveid =3D GetCookie('badgoodid');=0A=
+	if(saveid !=3D null)=0A=
+	{=0A=
+		var saveids =3D saveid.split(',');=0A=
+		var hasid =3D false;=0A=
+		saveid =3D '';=0A=
+		j =3D 1;=0A=
+		for(i=3Dsaveids.length-1;i>=3D0;i--)=0A=
+		{=0A=
+			if(saveids[i]=3D=3Dfid && hasid) continue;=0A=
+			else {=0A=
+				if(saveids[i]=3D=3Dfid && !hasid) hasid =3D true;=0A=
+				saveid +=3D (saveid=3D=3D'' ? saveids[i] : ','+saveids[i]);=0A=
+				j++;=0A=
+				if(j=3D=3D10 && hasid) break;=0A=
+				if(j=3D=3D9 && !hasid) break;=0A=
+			}=0A=
+		}=0A=
+		if(hasid) { =
+alert('=C4=FA=B8=D5=B2=C5=D2=D1=B1=ED=BE=F6=B9=FD=C1=CB=E0=B8=A3=A1'); =
+return false;}=0A=
+		else saveid +=3D ','+fid;=0A=
+		SetCookie('badgoodid',saveid,1);=0A=
+	}=0A=
+	else=0A=
+	{=0A=
+		SetCookie('badgoodid',fid,1);=0A=
+	}=0A=
+	myajax =3D new DedeAjax(taget_obj,false,false,'','','');=0A=
+	=
+myajax.SendGet2("http://www.rosoo.net/plus/feedback.php?aid=3D"+fid+"&act=
+ion=3D"+ftype+"&fid=3D"+fid);=0A=
+}=0A=
+function postDigg(ftype,aid)=0A=
+{=0A=
+	var taget_obj =3D document.getElementById('newdigg');=0A=
+	var saveid =3D GetCookie('diggid');=0A=
+	if(saveid !=3D null)=0A=
+	{=0A=
+		var saveids =3D saveid.split(',');=0A=
+		var hasid =3D false;=0A=
+		saveid =3D '';=0A=
+		j =3D 1;=0A=
+		for(i=3Dsaveids.length-1;i>=3D0;i--)=0A=
+		{=0A=
+			if(saveids[i]=3D=3Daid && hasid) continue;=0A=
+			else {=0A=
+				if(saveids[i]=3D=3Daid && !hasid) hasid =3D true;=0A=
+				saveid +=3D (saveid=3D=3D'' ? saveids[i] : ','+saveids[i]);=0A=
+				j++;=0A=
+				if(j=3D=3D20 && hasid) break;=0A=
+				if(j=3D=3D19 && !hasid) break;=0A=
+			}=0A=
+		}=0A=
+		if(hasid) { =
+alert("=C4=FA=D2=D1=BE=AD=B6=A5=B9=FD=B8=C3=CC=FB=A3=AC=C7=EB=B2=BB=D2=AA=
+=D6=D8=B8=B4=B6=A5=CC=FB =A3=A1"); return; }=0A=
+		else saveid +=3D ','+aid;=0A=
+		SetCookie('diggid',saveid,1);=0A=
+	}=0A=
+	else=0A=
+	{=0A=
+		SetCookie('diggid',aid,1);=0A=
+	}=0A=
+	myajax =3D new DedeAjax(taget_obj,false,false,'','','');=0A=
+	var url =3D =
+"http://www.rosoo.net/plus/digg_ajax.php?action=3D"+ftype+"&id=3D"+aid;=0A=
+	myajax.SendGet2(url);=0A=
+}=0A=
+function getDigg(aid)=0A=
+{=0A=
+	var taget_obj =3D document.getElementById('newdigg');=0A=
+	myajax =3D new DedeAjax(taget_obj,false,false,'','','');=0A=
+	myajax.SendGet2("http://www.rosoo.net/plus/digg_ajax.php?id=3D"+aid);=0A=
+	DedeXHTTP =3D null;=0A=
+}=0A=
+-->=0A=
+</SCRIPT>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.19403"></HEAD>
+<BODY class=3Darticleview>
+<DIV align=3Dcenter>
+<SCRIPT type=3Dtext/javascript charset=3Dgb2312=20
+src=3D"http://www.rosoo.net/js/page_head.js"></SCRIPT>
+</DIV>
+<DIV class=3Dheader>
+<DIV class=3D"top w960 center">
+<DIV class=3Dtitle>
+<H1><A href=3D"http://www.rosoo.net/">=C2=DE=CB=F7=CA=B5=D1=E9=CA=D2</A> =
+</H1></DIV>
+<DIV class=3Dbanner>
+<SCRIPT src=3D"http://www.rosoo.net/ad/js_ad_728x90_100.js"></SCRIPT>
+</DIV></DIV><!-- //top --><!-- //=B2=CB=B5=A5 -->
+<DIV class=3D"module blue mT10 wrapper w963">
+<DIV class=3Dtop>
+<DIV class=3Dt_l></DIV>
+<DIV class=3Dt_r></DIV><!-- =
+//=C8=E7=B9=FB=B2=BB=CA=B9=D3=C3currentstyle=A3=AC=BF=C9=D2=D4=D4=DAchann=
+el=B1=EA=C7=A9=BC=D3=C8=EB cacheid=3D'channeltoplist' =
+=CA=F4=D0=D4=CC=E1=C9=FD=D0=D4=C4=DC -->
+<DIV id=3DnavMenu>
+<UL>
+  <LI><A href=3D"http://www.rosoo.net/">=D6=F7=D2=B3</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_strm.html"=20
+  rel=3Ddropmenu1>=C1=F7=C3=BD=CC=E5=BF=AA=B7=A2</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_106_1.html"=20
+  rel=3Ddropmenu106>=D2=F4=CA=D3=C6=B5=BC=BC=CA=F5</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_em.html"=20
+  rel=3Ddropmenu33>=C7=B6=C8=EB=CA=BD=BF=AA=B7=A2</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_kb.html" =
+rel=3Ddropmenu7>=BB=F9=B4=A1=BC=BC=CA=F5</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_dev.html"=20
+  rel=3Ddropmenu13>=D4=D3=CF=EE=BC=BC=CA=F5</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_mgr.html"=20
+  rel=3Ddropmenu101>=B9=DC=C0=ED=D1=A7=D4=BA</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_it.html"=20
+rel=3Ddropmenu95>=86=AA=E0=C2IT</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/index_pro.html"=20
+rel=3Ddropmenu8>=B4=F3=D4=D3=BB=E2</A></LI></UL></DIV>
+<DIV class=3Dsearch>
+<FORM name=3Dformsearch action=3Dhttp://www.rosoo.net/plus/search.php>
+<DIV class=3Dform>
+<H4>=CB=D1=CB=F7</H4><INPUT value=3D0 type=3Dhidden name=3Dkwtype> =
+<INPUT id=3Dsearch-keyword=20
+class=3Dsearch-keyword type=3Dtext name=3Dkeyword> <SELECT =
+id=3Dsearch-option=20
+class=3Dsearch-option name=3Dsearchtype> <OPTION selected=20
+  value=3Dtitlekeyword>=D6=C7=C4=DC=C4=A3=BA=FD=CB=D1=CB=F7</OPTION> =
+<OPTION=20
+value=3Dtitle>=BD=F6=CB=D1=CB=F7=B1=EA=CC=E2</OPTION></SELECT><BUTTON =
+class=3Dsearch-submit=20
+type=3Dsubmit>=CB=D1=CB=F7</BUTTON> </DIV></FORM>
+<DIV class=3Dtags>
+<H4>=C8=C8=C3=C5=B1=EA=C7=A9</H4>
+<UL>
+  <LI>=A1=A1<A=20
+  =
+href=3D"http://www.rosoo.net/plus/search.php?keyword=3D%CA%D3%C6%B5%BC%E0=
+%BF%D8%BC%BC%CA%F5">=CA=D3=C6=B5=BC=E0=BF=D8=BC=BC=CA=F5</A>=20
+  =A1=A1<A =
+href=3D"http://www.rosoo.net/plus/search.php?keyword=3Dffmpeg+ce">ffmpeg =
+
+  ce</A> =A1=A1<A =
+href=3D"http://www.rosoo.net/plus/search.php?keyword=3D264">264</A> =
+=A1=A1<A=20
+  =
+href=3D"http://www.rosoo.net/plus/search.php?keyword=3Dffmpeg">ffmpeg</A>=
+ =A1=A1<A=20
+  href=3D"http://www.rosoo.net/plus/search.php?keyword=3D+"> =
+</A>=A1=A1<A=20
+  =
+href=3D"http://www.rosoo.net/plus/search.php?keyword=3D+.264+%C2%EB%C1%F7=
+%B7%D6%CE%F6">=20
+  .264 =C2=EB=C1=F7=B7=D6=CE=F6</A> </LI></UL></DIV></DIV><!-- //search =
+--></DIV></DIV></DIV><!-- //header --><!-- /header -->
+<DIV class=3D"channel-nav w960 center clear">
+<DIV class=3Dsonnav><SPAN><A class=3Dthisclass=20
+href=3D"http://www.rosoo.net/a/list_100_1.html">C/CPP=D7=A8=CC=E2</A></SP=
+AN> <SPAN><A=20
+href=3D"http://www.rosoo.net/a/list_52_1.html">=B8=DF=D0=D4=C4=DC=B7=FE=CE=
+=F1=C6=F7</A></SPAN> <SPAN><A=20
+href=3D"http://www.rosoo.net/a/list_49_1.html">Linux=BF=AA=B7=A2=D7=A8=CC=
+=E2</A></SPAN> <SPAN><A=20
+href=3D"http://www.rosoo.net/a/list_19_1.html">=CA=FD=BE=DD=BF=E2=BF=AA=B7=
+=A2</A></SPAN> <SPAN><A=20
+href=3D"http://www.rosoo.net/a/list_40_1.html">UML,RUP,SCM</A></SPAN> =
+<SPAN><A=20
+href=3D"http://www.rosoo.net/a/list_39_1.html">Soft.Eng</A></SPAN> =
+</DIV><SPAN=20
+class=3Dback><A =
+href=3D"http://www.rosoo.net/">=B7=B5=BB=D8=CA=D7=D2=B3</A> =
+</SPAN></DIV><!-- /channel-nav -->
+<DIV class=3D"w960 center clear mt1">
+<DIV class=3Dpleft>
+<DIV class=3Dplace><STRONG>=B5=B1=C7=B0=CE=BB=D6=C3:</STRONG> <A=20
+href=3D"http://www.rosoo.net/">=D6=F7=D2=B3</A>&gt;<A=20
+href=3D"http://www.rosoo.net/a/index_kb.html">=BB=F9=B4=A1=BC=BC=CA=F5</A=
+>&gt;<A=20
+href=3D"http://www.rosoo.net/a/list_100_1.html">C/CPP=D7=A8=CC=E2</A>&gt;=
+</DIV><!-- /place -->
+<DIV class=3Dviewbox>
+<DIV class=3Dtitle>
+<H2>boost::program_options =CA=B9=D3=C3</H2></DIV><!-- /title -->
+<DIV class=3Dinfo>
+<TABLE width=3D"100%" align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD align=3Dleft>jackyhwei =B7=A2=B2=BC=D3=DA 2011-09-14 22:25 =
+<SMALL>=B5=E3=BB=F7:</SMALL>
+      <SCRIPT language=3Djavascript type=3Dtext/javascript=20
+      =
+src=3D"http://www.rosoo.net/plus/count.php?view=3Dyes&amp;aid=3D14993&amp=
+;mid=3D11927"></SCRIPT>
+      =B4=CE&nbsp; </TD>
+    <TD align=3Dright>
+      <SCRIPT src=3D"http://www.rosoo.net/js/sc/sc.js"></SCRIPT>
+      =C0=B4=D7=D4=A3=BAitlanger.blog.chinaunix.net =
+</TD></TR></TBODY></TABLE></DIV><!-- /info -->
+<DIV=20
+class=3Dintro>=B4=D3=C3=FC=C1=EE=D0=D0=CC=E1=C8=A1=B3=CC=D0=F2=D4=CB=D0=D0=
+=CA=B1=D1=A1=CF=EE=B5=C4=B7=BD=B7=A8=D3=D0=BA=DC=B6=E0=A1=A3=C4=E3=BF=C9=D2=
+=D4=D7=D4=BC=BA=B1=E0=D0=B4=CF=E0=B6=D4=D3=A6=B5=C4=CD=EA=D5=FB=B5=C4=BD=E2=
+=CE=F6=BA=AF=CA=FD=A3=AC=BB=F2=D0=ED=C4=E3=D3=D0=B7=E1=B8=BB=B5=C4C=D3=EF=
+=D1=D4=B1=E0=B3=CC=BE=AD=D1=E9=A3=AC=CA=EC=D6=AAgetopt()=BA=AF=CA=FD=B5=C4=
+=D3=C3=B7=A8=A3=AC=D3=D6=BB=F2=D0=ED=CA=B9=D3=C3Python=B5=C4=C4=E3=D2=D1=BE=
+=AD=D4=DA=CA=B9=D3=C3optparse=BF=E2=C0=B4=BC=F2=BB=AF=D5=E2=D2=BB=B9=A4=D7=
+=F7=A1=A3</DIV><!-- content -->
+<DIV onselectstart=3D"return false;" class=3Dcontent =
+unselectable=3D"on">
+<DIV><B>TAG: </B><A=20
+href=3D"http://www.rosoo.net/tags.php?/boost/">boost</A>&nbsp;&nbsp;</DIV=
+>
+<TABLE width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <SCRIPT type=3Dtext/javascript=20
+      src=3D"http://www.rosoo.net/ad/js_ad_468x15_100.js"></SCRIPT>
+      <BR>
+      =
+<P>=B4=D3=C3=FC=C1=EE=D0=D0=CC=E1=C8=A1=B3=CC=D0=F2=D4=CB=D0=D0=CA=B1=D1=A1=
+=CF=EE=B5=C4=B7=BD=B7=A8=D3=D0=BA=DC=B6=E0=A1=A3=C4=E3=BF=C9=D2=D4=D7=D4=BC=
+=BA=B1=E0=D0=B4=CF=E0=B6=D4=D3=A6=B5=C4=CD=EA=D5=FB=B5=C4=BD=E2=CE=F6=BA=AF=
+=CA=FD=A3=AC=BB=F2=D0=ED=C4=E3=D3=D0=B7=E1=B8=BB=B5=C4<A=20
+      href=3D"http://www.rosoo.net/a/list_100_1.html"=20
+      =
+target=3D_blank><U>C=D3=EF=D1=D4</U></A>=B1=E0=B3=CC=BE=AD=D1=E9=A3=AC=CA=
+=EC=D6=AAgetopt()=BA=AF=CA=FD=B5=C4=D3=C3=B7=A8=A3=AC=D3=D6=BB=F2=D0=ED=CA=
+=B9=D3=C3Python=B5=C4=C4=E3=D2=D1=BE=AD=D4=DA=CA=B9=D3=C3optparse=BF=E2=C0=
+=B4=BC=F2=BB=AF=D5=E2=D2=BB=B9=A4=D7=F7=A1=A3<BR><BR>program_options=20
+      =
+=CC=E1=B9=A9=B3=CC=D0=F2=D4=B1=D2=BB=D6=D6=B7=BD=B1=E3=B5=C4=C3=FC=C1=EE=D0=
+=D0=BA=CD=C5=E4=D6=C3=CE=C4=BC=FE=BD=F8=D0=D0=B3=CC=D0=F2=D1=A1=CF=EE=C9=E8=
+=D6=C3=B5=C4=B7=BD=B7=A8=A1=A3=CA=B9=D3=C3program_options=BF=E2=B6=F8=B2=BB=
+=CA=C7=C4=E3=D7=D4=BC=BA=B6=AF=CA=D6=D0=B4=CF=E0=B9=D8=B5=C4=BD=E2=CE=F6=B4=
+=FA=C2=EB=A3=AC=D2=F2=CE=AA=CB=FC=B8=FC=BC=F2=B5=A5=A3=AC=C9=F9=C3=F7=B3=CC=
+=D0=F2=D1=A1=CF=EE=B5=C4=D3=EF=B7=A8=BC=F2=BD=E0=A3=AC=B2=A2=C7=D2=BF=E2=D7=
+=D4=C9=ED=D2=B2=B7=C7=B3=A3=D0=A1=A1=A3=BD=AB=D1=A1=CF=EE=D6=B5=D7=AA=BB=BB=
+=CE=AA=CA=CA=BA=CF=B5=C4=C0=E0=D0=CD=D6=B5=B5=C4=B9=A4=D7=F7=D2=B2=B6=BC=C4=
+=DC=D7=D4=B6=AF=CD=EA=B3=C9=A1=A3=BF=E2=D3=D0=D7=C5=CD=EA=B1=B8=B5=C4=B4=ED=
+=CE=F3=BC=EC=B2=E9=BB=FA=D6=C6=A3=AC=C8=E7=B9=FB=D7=D4=BC=BA=CA=D6=D0=B4=BD=
+=E2=CE=F6=B4=FA=C2=EB=CA=B1=A3=AC=BE=CD=BF=C9=C4=DC=BB=E1=B4=ED=B9=FD=B6=D4=
+=D2=BB=D0=A9=B3=F6=B4=ED=C7=E9=BF=F6=B5=C4=BC=EC=B2=E9=C1=CB=A1=A3=D7=EE=BA=
+=F3=A3=AC=D1=A1=CF=EE=D6=B5=B2=BB=BD=F6=C4=DC=B4=D3=C3=FC=C1=EE=D0=D0=BB=F1=
+=C8=A1=A3=AC=D2=B2=C4=DC=B4=D3=C5=E4=D6=C3=CE=C4=BC=FE=A3=AC=C9=F5=D6=C1=D3=
+=DA=BB=B7=BE=B3=B1=E4=C1=BF=D6=D0=CC=E1=C8=A1=A3=AC=B6=F8=D5=E2=D0=A9=D1=A1=
+=D4=F1=B2=BB=BB=E1=D4=F6=BC=D3=C3=F7=CF=D4=B5=C4=B9=A4=D7=F7=C1=BF=A1=A3<=
+BR><BR><SPAN=20
+      style=3D"COLOR: rgb(0,0,255)"><STRONG>1. =
+=CA=D7=CF=C8=BF=B4=D2=BB=B8=F6=BC=F2=B5=A5=B5=C4=B3=CC=D0=F2=B0=C9=A3=BA<=
+/STRONG></SPAN></P><PRE><OL class=3Ddp-cpp><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;string&gt;</SPAN><SPAN>&nbsp;</SPA=
+N></SPAN></LI><LI><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;iostream&gt;</SPAN><SPAN>&nbsp;</S=
+PAN></SPAN></LI><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;boost/program_options.hpp&gt;</SPA=
+N><SPAN>&nbsp;</SPAN></SPAN></LI><LI><SPAN><SPAN =
+class=3Dkeyword>using</SPAN><SPAN>&nbsp;</SPAN><SPAN =
+class=3Dkeyword>namespace</SPAN><SPAN>&nbsp;std;&nbsp;</SPAN></SPAN></LI>=
+<LI class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;main&nbsp;(</SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;ac,&nbsp;</SPAN><SPAN =
+class=3Ddatatypes>char</SPAN><SPAN>*&nbsp;av[])&nbsp;</SPAN></SPAN></LI><=
+LI =
+class=3Dalt><SPAN>{&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;bo=
+ost::program_options::options_description&nbsp;options(<SPAN =
+class=3Dstring>"command&nbsp;line&nbsp;options"</SPAN><SPAN>);&nbsp;</SPA=
+N></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;options.add_options()&nbsp;(<SP=
+AN class=3Dstring>"help"</SPAN><SPAN>,&nbsp;</SPAN><SPAN =
+class=3Dstring>"Use&nbsp;-h&nbsp;or&nbsp;--help&nbsp;to&nbsp;list&nbsp;al=
+l&nbsp;arguments"</SPAN><SPAN>)&nbsp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>,&nbsp;boost::program_options::value&lt=
+;string&gt;(),&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<=
+SPAN =
+class=3Dstring>"Provide&nbsp;input&nbsp;file&nbsp;name"</SPAN><SPAN>);&nb=
+sp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;boost::program_op=
+tions::variables_map&nbsp;vmap;&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;boost::program_options::store(&=
+nbsp;</SPAN></LI><LI><SPAN>boost::program_options::parse_command_line(ac,=
+&nbsp;av,&nbsp;options),&nbsp;vmap);&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;boost::program_options::notify(=
+vmap);&nbsp;</SPAN></LI><LI><SPAN>&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"help"</SPAN><SPAN>))&nbsp;{&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&n=
+bsp;options&nbsp;&lt;&lt;&nbsp;endl;&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI><SPAN>&n=
+bsp;</SPAN></LI><LI class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"file"</SPAN><SPAN>)){&nbsp;</SPAN></SPAN></LI><LI><SPAN>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;<SPAN =
+class=3Dstring>"Your&nbsp;input&nbsp;file:&nbsp;"</SPAN><SPAN>&nbsp;&lt;&=
+lt;&nbsp;vmap[</SPAN><SPAN =
+class=3Dstring>"file"</SPAN><SPAN>].as&lt;string&gt;()&nbsp;&lt;&lt;&nbsp=
+;</SPAN><SPAN =
+class=3Dstring>"\n"</SPAN><SPAN>;&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI><SPAN>&n=
+bsp;</SPAN></LI><LI class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>return</SPAN><SPAN>&nbsp;0;&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>}&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN><SPAN =
+class=3Dcomment>//compile:&nbsp;g++&nbsp;boost_test.cpp&nbsp;-o&nbsp;boos=
+t_test&nbsp;-lboost_program_options</SPAN><SPAN>&nbsp;</SPAN></SPAN></LI>=
+</OL></PRE>
+      =
+<P>=B3=CC=D0=F2=B5=C4=B9=A4=D7=F7=B7=BD=CA=BD=C8=E7=CF=C2=A3=BA<BR>&nbsp;=
+&nbsp;&nbsp; options_description=20
+      =
+=C0=E0=C9=F9=C3=F7=CB=F9=D3=D0=B5=C4=D3=D0=D0=A7=C3=FC=C1=EE=D0=D0=D1=A1=CF=
+=EE=A1=A3<BR>&nbsp;&nbsp;&nbsp; =CA=B9=D3=C3=B7=BD=B7=A8=20
+      =
+add_options=A3=AC=C4=FA=BF=C9=D2=D4=D7=A2=B2=E1=C3=FC=C1=EE=BA=CD=B8=FA=D4=
+=DA=C3=FC=C1=EE=BA=F3=C3=E6=B5=C4=B2=CE=CA=FD=C0=E0=D0=CD=A1=A3=D4=DA=B4=CB=
+=C0=FD=D6=D0=A3=AChelp =
+=D1=A1=CF=EE=B2=BB=D0=E8=D2=AA=C8=CE=BA=CE=B2=CE=CA=FD=A3=AC=B5=AB=CA=C7 =
+file=20
+      =
+=D1=A1=CF=EE=D0=E8=D2=AA=D2=BB=B8=F6=D7=D6=B7=FB=B4=AE=B2=CE=CA=FD=A1=A3<=
+BR>&nbsp;&nbsp;&nbsp; variables_map=20
+      =
+=C0=E0=D4=DA=D4=CB=D0=D0=CA=B1=B4=E6=B4=A2=C3=FC=C1=EE=D0=D0=D1=A1=CF=EE=BC=
+=B0=C6=E4=B2=CE=CA=FD=A1=A3<BR>&nbsp;&nbsp;&nbsp; Boost =B5=C4 =
+parse_command_line =BA=AF=CA=FD=BD=E2=CE=F6=20
+      argc =BA=CD argv =B2=CE=CA=FD=A1=A3store =BA=CD notify =
+=B7=BD=B7=A8=B0=EF=D6=FA=B4=E6=B4=A2 vmap =
+=B6=D4=CF=F3=D6=D0=B5=C4=CA=FD=BE=DD=A1=A3<BR>&nbsp;&nbsp;&nbsp;=20
+      =
+vmap.count()=D3=C3=D3=DA=BC=EC=B2=E2=CA=E4=C8=EB=B5=C4=CA=C7=C4=C4=B8=F6=C3=
+=FC=C1=EE=D0=D0=B2=CE=CA=FD=A3=AC=B2=A2=B2=C9=C8=A1=CA=CA=B5=B1=B5=C4=B6=AF=
+=D7=F7<BR><BR><SPAN=20
+      style=3D"COLOR: rgb(0,0,255)"><STRONG>2.=20
+      =
+=CC=E1=B9=A9=B6=E0=B8=F6=B2=CE=CA=FD=BA=CD=CB=F5=D0=B4=B5=C4=C3=FC=C1=EE=D1=
+=A1=CF=EE</STRONG></SPAN><BR><BR>=C3=FC=C1=EE=D0=D0=B4=A6=C0=ED=CD=A8=B3=A3=
+=CD=AC=CA=B1=D0=E8=D2=AA=CD=AC=D2=BB=B8=F6=C3=FC=C1=EE=D1=A1=CF=EE=B5=C4=B6=
+=CC=C3=FB=B3=C6=BA=CD=B3=A4=C3=FB=B3=C6=A1=A3=B4=CB=CD=E2=A3=AC=C4=FA=CD=A8=
+=B3=A3=B1=D8=D0=EB=B6=E0=B4=CE=CA=B9=D3=C3=C4=B3=B8=F6=D1=A1=CF=EE=A3=AC=D2=
+=D4=B1=E3=CA=D5=BC=AF=B8=C3=D1=A1=CF=EE=B5=C4=CB=F9=D3=D0=B2=CE=CA=FD=A1=A3=
+=C0=FD=C8=E7=A3=AC=C4=FA=BF=C9=C4=DC=CF=A3=CD=FB=CA=B9=D3=C3=20
+      -h =BA=CD --help =
+=C0=B4=B4=F2=D3=A1=BF=C9=D3=C3=B5=C4=C3=FC=C1=EE=A3=BA</P><PRE><OL =
+class=3Ddp-cpp><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;string&gt;</SPAN><SPAN>&nbsp;</SPA=
+N></SPAN></LI><LI><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;iostream&gt;</SPAN><SPAN>&nbsp;</S=
+PAN></SPAN></LI><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;boost/program_options.hpp&gt;</SPA=
+N><SPAN>&nbsp;</SPAN></SPAN></LI><LI><SPAN><SPAN =
+class=3Dkeyword>using</SPAN><SPAN>&nbsp;</SPAN><SPAN =
+class=3Dkeyword>namespace</SPAN><SPAN>&nbsp;std;&nbsp;</SPAN></SPAN></LI>=
+<LI class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;main&nbsp;(</SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;ac,&nbsp;</SPAN><SPAN =
+class=3Ddatatypes>char</SPAN><SPAN>*&nbsp;av[])&nbsp;</SPAN></SPAN></LI><=
+LI =
+class=3Dalt><SPAN>{&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;boost::program=
+_options::options_description&nbsp;options(<SPAN =
+class=3Dstring>"command&nbsp;line&nbsp;options"</SPAN><SPAN>);&nbsp;</SPA=
+N></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;options.add_options()&nbsp;(<SPAN =
+class=3Dstring>"help,h"</SPAN><SPAN>,&nbsp;</SPAN><SPAN =
+class=3Dstring>"Use&nbsp;-h&nbsp;or&nbsp;--help&nbsp;to&nbsp;list&nbsp;al=
+l&nbsp;arguments"</SPAN><SPAN>)&nbsp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>,&nbsp;boost::program_options::value&lt=
+;vector&lt;string&gt;&nbsp;&gt;(&nbsp;),&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dstring>"Provide&nbsp;input&nbsp;file&nbsp;name"</SPAN><SPAN>);&nb=
+sp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&nbsp;boost::program_options::varia=
+bles_map&nbsp;vmap;&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;boost::program_options::store(&nbsp;</SPAN>=
+</LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boost::program_options=
+::parse_command_line(ac,&nbsp;av,&nbsp;options),&nbsp;vmap);&nbsp;</SPAN>=
+</LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;boost::program_options::notify(vmap);&nbsp;=
+</SPAN></LI><LI><SPAN>&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"help"</SPAN><SPAN>))&nbsp;{&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;options&=
+nbsp;&lt;&lt;&nbsp;endl;&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI><SPAN>&nbsp;</SPAN><=
+/LI><LI class=3Dalt><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"file"</SPAN><SPAN>))&nbsp;{&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;string&gt;&nbsp;ifiles=
+(vmap[<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>].as&lt;&nbsp;vector&lt;string&gt;&nbsp=
+;&gt;&nbsp;());&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;string&gt=
+;::iterator&nbsp;vI;&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;<SPAN =
+class=3Dstring>"Number&nbsp;of&nbsp;input&nbsp;files:&nbsp;"</SPAN><SPAN>=
+&nbsp;&lt;&lt;&nbsp;ifiles.size()&nbsp;&lt;&lt;&nbsp;endl;&nbsp;</SPAN></=
+SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&=
+nbsp;<SPAN =
+class=3Dstring>"Input&nbsp;file&nbsp;list:&nbsp;"</SPAN><SPAN>&nbsp;&lt;&=
+lt;&nbsp;endl;&nbsp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>for</SPAN><SPAN>(vI&nbsp;=3D&nbsp;ifiles.begin();&nbsp;vI=
+&nbsp;!=3D&nbsp;ifiles.end();&nbsp;++vI)&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;cout&nbsp;&lt;&lt;&nbsp;<SPAN =
+class=3Dstring>"\t"</SPAN><SPAN>&nbsp;&lt;&lt;&nbsp;*vI&nbsp;&lt;&lt;&nbs=
+p;endl;&nbsp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&nbsp;}&nbsp;<SPAN =
+class=3Dkeyword>else</SPAN><SPAN>&nbsp;{&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&=
+nbsp;<SPAN =
+class=3Dstring>"No&nbsp;file&nbsp;specified\n"</SPAN><SPAN>;&nbsp;</SPAN>=
+</SPAN></LI><LI><SPAN>&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>return</SPAN><SPAN>&nbsp;0;&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>}&nbsp;</SPAN></LI></OL></PRE>
+      <P>=D4=DA=CA=B9=D3=C3 add_options =
+=C0=B4=CC=ED=BC=D3=C3=FC=C1=EE=D1=A1=CF=EE=CA=B1=A3=AC=BD=CF=B3=A4=BA=CD=BD=
+=CF=B6=CC=B5=C4=D1=A1=CF=EE=D6=AE=BC=E4=CA=B9=D3=C3=B6=BA=BA=C5=BD=F8=D0=D0=
+=B7=D6=B8=F4=A1=A3=C7=EB=D7=A2=D2=E2=A3=AC=BD=CF=B3=A4=B5=C4=D1=A1=CF=EE =
+(help) =B1=D8=D0=EB=D4=DA=BD=CF=B6=CC=B5=C4=D1=A1=CF=EE=20
+      (h) =
+=D6=AE=C7=B0=A3=AC=B4=FA=C2=EB=B2=C5=C4=DC=D5=FD=B3=A3=B9=A4=D7=F7=A1=A3=D3=
+=EB=CA=B9=D3=C3=B5=A5=B8=F6=D7=D6=B7=FB=B4=AE=B2=BB=CD=AC=A3=ACfile =
+=D1=A1=CF=EE=CF=D6=D4=DA=CA=C7=CA=B9=D3=C3=D2=BB=B8=F6=D7=D6=B7=FB=B4=AE=CF=
+=F2=C1=BF=C0=B4=B6=A8=D2=E5=B5=C4=A1=A3=C8=E7=B9=FB=D6=B8=B6=A8=C1=CB =
+--file=20
+      =
+=D1=A1=CF=EE=B6=E0=B4=CE=A3=AC=D4=F2=BB=E1=BD=AB=CB=F9=D3=D0=CA=D5=BC=AF=B5=
+=BD=B5=C4file=C3=FC=C1=EE=D1=A1=CF=EE=B2=CE=CA=FD=B4=E6=B4=A2=D4=DA=B9=D8=
+=C1=AA=B5=C4vector&lt;string&gt;=D6=D0=A1=A3=CF=C2=C3=E6=CA=C7=CA=B9=D3=C3=
+=B2=BB=CD=AC=B5=C4=B2=CE=CA=FD=C0=B4=B6=E0=B4=CE=D6=B8=B6=A8 --h =BA=CD=20
+      --file =
+=CB=F9=BB=F1=B5=C3=B5=C4=CA=E4=B3=F6=A3=BA<BR><BR>&nbsp;./a.out =
+-h<BR>command line options:<BR>&nbsp;=20
+      -h [ --help ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Use =
+-h or=20
+      --help to list all arguments<BR>&nbsp; --file=20
+      =
+arg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+      Provide input file name<BR><BR>No file specified<BR><BR>./a.out =
+--file abc=20
+      --file pqr<BR>Number of input files: 2<BR>Input file=20
+      list:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+      abc<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pqr<BR><BR><SPAN =
+
+      style=3D"COLOR: rgb(0,0,255)"><STRONG>3.=20
+      =
+=BD=E2=CE=F6=CE=BB=D6=C3=D1=A1=CF=EE</STRONG></SPAN><BR><BR>=CF=C2=C3=E6=B5=
+=C4=B3=CC=D0=F2=A3=AC=B5=DA=D2=BB=B8=F6=B2=CE=CA=FD=D7=AA=BB=BB=CE=AA =
+--file=3D&lt;first=20
+      =
+parameter&gt;=A3=AC=B5=DA=B6=FE=B8=F6=B2=CE=CA=FD=D7=AA=BB=BB=CE=AA =
+--do-file=3D&lt;second parameter&gt;=A1=A3</P><PRE><OL =
+class=3Ddp-cpp><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;string&gt;</SPAN><SPAN>&nbsp;</SPA=
+N></SPAN></LI><LI><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;iostream&gt;</SPAN><SPAN>&nbsp;</S=
+PAN></SPAN></LI><LI class=3Dalt><SPAN><SPAN =
+class=3Dpreprocessor>#include&nbsp;&lt;boost/program_options.hpp&gt;</SPA=
+N><SPAN>&nbsp;</SPAN></SPAN></LI><LI><SPAN><SPAN =
+class=3Dkeyword>using</SPAN><SPAN>&nbsp;</SPAN><SPAN =
+class=3Dkeyword>namespace</SPAN><SPAN>&nbsp;std;&nbsp;</SPAN></SPAN></LI>=
+<LI class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;main&nbsp;(</SPAN><SPAN =
+class=3Ddatatypes>int</SPAN><SPAN>&nbsp;ac,&nbsp;</SPAN><SPAN =
+class=3Ddatatypes>char</SPAN><SPAN>*&nbsp;av[])&nbsp;</SPAN></SPAN></LI><=
+LI =
+class=3Dalt><SPAN>{&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;boost::program=
+_options::options_description&nbsp;options(<SPAN =
+class=3Dstring>"command&nbsp;line&nbsp;options"</SPAN><SPAN>);&nbsp;</SPA=
+N></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;options.add_options()&nbsp;(<SPAN =
+class=3Dstring>"help,h"</SPAN><SPAN>,&nbsp;</SPAN><SPAN =
+class=3Dstring>"Use&nbsp;-h&nbsp;or&nbsp;--help&nbsp;to&nbsp;list&nbsp;al=
+l&nbsp;arguments"</SPAN><SPAN>)&nbsp;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>,&nbsp;boost::program_options::value&lt=
+;string&gt;(),&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dstring>"Provide&nbsp;input&nbsp;file&nbsp;name"</SPAN><SPAN>)&nbs=
+p;</SPAN></SPAN></LI><LI><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<SPAN =
+class=3Dstring>"do-file"</SPAN><SPAN>,&nbsp;boost::program_options::value=
+&lt;string&gt;(),&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;<SPAN =
+class=3Dstring>"Specify&nbsp;commands&nbsp;file"</SPAN><SPAN>);&nbsp;</SP=
+AN></SPAN></LI><LI><SPAN>&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;boost::program_options::variables_map&nbsp;=
+vmap;&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;boost::program_options::posi=
+tional_options_description&nbsp;poptd;&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;poptd.add(<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>,&nbsp;1);&nbsp;</SPAN></SPAN></LI><LI>=
+<SPAN>&nbsp;&nbsp;poptd.add(<SPAN =
+class=3Dstring>"do-file"</SPAN><SPAN>,&nbsp;2);&nbsp;</SPAN></SPAN></LI><=
+LI =
+class=3Dalt><SPAN>&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&nbsp;boost::program_=
+options::store(&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boost::program_opti=
+ons::command_line_parser(ac,&nbsp;av).&nbsp;</SPAN></LI><LI><SPAN>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options(options).positional(poptd).run(),&nb=
+sp;vmap);&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;boost::program_options::notify(vmap);&nbsp;=
+</SPAN></LI><LI><SPAN>&nbsp;</SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"file"</SPAN><SPAN>))&nbsp;{&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;<SPAN =
+class=3Dstring>"file:&nbsp;"</SPAN><SPAN>&nbsp;&lt;&lt;&nbsp;vmap[</SPAN>=
+<SPAN =
+class=3Dstring>"file"</SPAN><SPAN>].as&lt;string&gt;&nbsp;(&nbsp;)&nbsp;&=
+lt;&lt;&nbsp;endl;&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI><SPAN>&nbsp;</SPAN><=
+/LI><LI class=3Dalt><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>if</SPAN><SPAN>&nbsp;(vmap.count(</SPAN><SPAN =
+class=3Dstring>"do-file"</SPAN><SPAN>))&nbsp;{&nbsp;</SPAN></SPAN></LI><L=
+I><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;<SPAN =
+class=3Dstring>"do-file:&nbsp;"</SPAN><SPAN>&nbsp;&lt;&lt;&nbsp;vmap[</SP=
+AN><SPAN =
+class=3Dstring>"do-file"</SPAN><SPAN>].as&lt;string&gt;&nbsp;(&nbsp;)&nbs=
+p;&lt;&lt;&nbsp;endl;&nbsp;</SPAN></SPAN></LI><LI =
+class=3Dalt><SPAN>&nbsp;&nbsp;}&nbsp;</SPAN></LI><LI><SPAN>&nbsp;</SPAN><=
+/LI><LI class=3Dalt><SPAN>&nbsp;&nbsp;<SPAN =
+class=3Dkeyword>return</SPAN><SPAN>&nbsp;0;&nbsp;</SPAN></SPAN></LI><LI><=
+SPAN>}&nbsp;</SPAN></LI></OL></PRE>
+      <P>=CF=C2=C3=E6=CA=C7=CA=E4=B3=F6=C4=DA=C8=DD=A3=BA<BR><BR>./a.out =
+file1 dofile1<BR>file: file1<BR>do-file:=20
+      dofile1<BR><BR>=B3=CC=D0=F2=D2=FD=C8=EB=C1=CB=D0=C2=B5=C4=C0=E0 =
+positional_options_description=A1=A3=B8=C3=C0=E0=B5=C4 add=20
+      =B7=BD=B7=A8=A3=A8add("command option", N)=A3=A9=BD=AB=CE=BB=D6=C3 =
+N =
+=B4=A6=B5=C4=CA=E4=C8=EB=B2=CE=CA=FD=D3=EB=C3=FC=C1=EE=D0=D0=D1=A1=CF=EE =
+"command option"=20
+      =CF=E0=B9=D8=C1=AA=A1=A3=D2=F2=B4=CB=A3=AC./a.out file1 =
+=D4=DA=C4=DA=B2=BF=BD=E2=CE=F6=CE=AA ./a.out&nbsp; =
+--file=3Dfile1=A1=A3=C1=ED=D2=BB=B8=F6=C7=F8=B1=F0=D4=DA=D3=DA=B5=F7=D3=C3=
+=20
+      program_options::store =
+=B7=BD=B7=A8=B5=C4=B7=BD=CA=BD=A1=A3=D3=EB=CA=B9=D3=C3 =
+parse_command_line =C0=FD=B3=CC=B2=BB=CD=AC=A3=ACBoost =
+=BF=E2=D2=AA=C7=F3=C4=FA=BD=AB=20
+      command_line_parser =C0=FD=B3=CC=D3=EB store =
+=B7=BD=B7=A8=BD=E1=BA=CF=D4=DA=D2=BB=C6=F0=CA=B9=D3=C3=A1=A3<BR><BR>=C7=EB=
+=D7=A2=D2=E2=A3=AC=C8=D4=C8=BB=BF=C9=D2=D4=CA=B9=D3=C3 --file =BA=CD=20
+      --do-file =
+=D1=A1=CF=EE=C0=B4=B5=F7=D3=C3=B8=C3=B3=CC=D0=F2=A1=A3=D7=EE=BA=F3=A3=AC=C8=
+=F4=D2=AA=BD=AB=CB=F9=D3=D0=B5=C4=CA=E4=C8=EB=B2=CE=CA=FD=D3=EB=CD=AC=D2=BB=
+=B8=F6=C3=FC=C1=EE=D0=D0=D1=A1=CF=EE=CF=E0=B9=D8=C1=AA=A3=AC=C4=FA=D0=E8=D2=
+=AA=CA=B9=D3=C3=D6=B5-1 =
+=BD=AB=B8=C3=C3=FC=C1=EE=D0=D0=D1=A1=CF=EE=CC=ED=BC=D3=B5=BD=20
+      positional_options_description=20
+      =
+=B6=D4=CF=F3=A1=A3=CF=C2=C3=E6=CA=C7=B4=FA=C2=EB=A3=BA<BR><BR>=A1=AD<BR>b=
+oost::program_options::positional_options_description=20
+      poptd;<BR>poptd.add("file", -1);<BR>...</P>(itlanger)=20
+      <DIV class=3Ddede_pages></DIV></TD></TR></TBODY></TABLE></DIV><!-- =
+/content -->
+<DIV=20
+style=3D"TEXT-ALIGN: left; BORDER-LEFT: #cfc 10px solid; PADDING-BOTTOM: =
+3px; LINE-HEIGHT: 22px; MARGIN: 20px 0px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 0px; BACKGROUND: #efe; COLOR: #666; FONT-SIZE: 10pt; =
+PADDING-TOP: =
+3px">=B1=BE=D5=BE=CE=C4=D5=C2=B3=FD=D7=A2=C3=F7=D7=AA=D4=D8=CD=E2=A3=AC=BE=
+=F9=CE=AA=B1=BE=D5=BE=D4=AD=B4=B4=BB=F2=B1=E0=D2=EB=BB=B6=D3=AD=C8=CE=BA=CE=
+=D0=CE=CA=BD=B5=C4=D7=AA=D4=D8=A3=AC=B5=AB=C7=EB=CE=F1=B1=D8=D7=A2=C3=F7=B3=
+=F6=B4=A6=A3=AC=D7=F0=D6=D8=CB=FB=C8=CB=C0=CD=B6=AF=A3=AC=CD=AC=D1=A7=CF=B0=
+=B9=B2=B3=C9=B3=A4=A1=A3=D7=AA=D4=D8=C7=EB=D7=A2=C3=F7=A3=BA=CE=C4=D5=C2=D7=
+=AA=D4=D8=D7=D4=A3=BA<STRONG>=C2=DE=CB=F7=CA=B5=D1=E9=CA=D2</STRONG>=20
+[<A=20
+href=3D"http://www.rosoo.net/a/201109/14993.html">http://www.rosoo.net/a/=
+201109/14993.html</A>]<BR></DIV>
+<DIV>
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.rosoo.net/ad/js_ad_468x15_101.js"></SCRIPT>
+</DIV><!-- //=B6=A5=B2=C8 -->
+<DIV id=3Dnewdigg class=3Dnewdigg>
+<DIV class=3D"diggbox digg_good"=20
+onmousemove=3D"this.style.backgroundPosition=3D'left bottom';"=20
+onmouseout=3D"this.style.backgroundPosition=3D'left top';"=20
+onclick=3D"javascript:postDigg('good',14993)">
+<DIV class=3Ddigg_act>=B6=A5=D2=BB=CF=C2</DIV>
+<DIV class=3Ddigg_num>(0)</DIV>
+<DIV class=3Ddigg_percent>
+<DIV class=3Ddigg_percent_bar><SPAN style=3D"WIDTH: 0%"></SPAN></DIV>
+<DIV class=3Ddigg_percent_num>0%</DIV></DIV></DIV>
+<DIV class=3D"diggbox digg_bad"=20
+onmousemove=3D"this.style.backgroundPosition=3D'right bottom';"=20
+onmouseout=3D"this.style.backgroundPosition=3D'right top';"=20
+onclick=3D"javascript:postDigg('bad',14993)">
+<DIV class=3Ddigg_act>=B2=C8=D2=BB=CF=C2</DIV>
+<DIV class=3Ddigg_num>(0)</DIV>
+<DIV class=3Ddigg_percent>
+<DIV class=3Ddigg_percent_bar><SPAN style=3D"WIDTH: 0%"></SPAN></DIV>
+<DIV class=3Ddigg_percent_num>0%</DIV></DIV></DIV></DIV>
+<SCRIPT language=3Djavascript =
+type=3Dtext/javascript>getDigg(14993);</SCRIPT>
+<!-- //=B6=A5=B2=C8=B2=BF=B7=DD=B5=C4=D4=B4=C2=EB=BD=E1=CA=F8 -->
+<DIV =
+class=3Dboxoff><STRONG>------=B7=D6=B8=F4=CF=DF--------------------------=
+--</STRONG> </DIV>
+<DIV class=3Dhandle>
+<DIV class=3Dcontext>
+<UL>
+  <LI>=C9=CF=D2=BB=C6=AA=A3=BA<A =
+href=3D"http://www.rosoo.net/a/201109/14979.html">=CF=B8=CB=B5 #pragma=20
+  pack(n)</A> </LI>
+  <LI>=CF=C2=D2=BB=C6=AA=A3=BA<A =
+href=3D"http://www.rosoo.net/a/201109/15004.html">Crash=CE=CA=CC=E2=B6=A8=
+=CE=BB=B9=A4=BE=DF=D6=B8=C4=CF</A>=20
+  </LI></UL></DIV><!-- /context -->
+<DIV class=3Dactbox>
+<UL>
+  <LI id=3Dact-fav><A =
+href=3D"http://www.rosoo.net/plus/stow.php?aid=3D14993"=20
+  target=3D_blank>=CA=D5=B2=D8</A></LI>
+  <LI id=3Dact-err><A=20
+  =
+href=3D"http://www.rosoo.net/plus/erraddsave.php?aid=3D14993&amp;title=3D=
+boost::program_options =CA=B9=D3=C3"=20
+  target=3D_blank>=CC=F4=B4=ED</A></LI>
+  <LI id=3Dact-pus><A =
+href=3D"http://www.rosoo.net/plus/recommend.php?aid=3D14993"=20
+  target=3D_blank>=CD=C6=BC=F6</A></LI>
+  <LI id=3Dact-pnt><A onclick=3Dwindow.print();=20
+  =
+href=3D"http://www.rosoo.net/a/201109/14993.html#">=B4=F2=D3=A1</A></LI><=
+/UL></DIV><!-- /actbox --></DIV><!-- /handle --><!--related archives-->
+<DIV class=3Dmt1>
+<DL class=3Dtbox>
+  <DT><STRONG>=CF=E0=B9=D8=CE=C4=D5=C2</STRONG> </DT>
+  <DD>
+  <UL class=3D"c1 ico2">
+    <TABLE border=3D0 cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+      <TBODY>
+      <TR>
+        <TD width=3D"50%">
+          <LI><A=20
+          =
+href=3D"http://www.rosoo.net/a/201210/16339.html">=D2=D4boost::function=BA=
+=CDboost:bind=C8=A1=B4=FA=D0=E9=BA=AF=CA=FD</A></LI></TD>
+        <TD width=3D"50%">
+          <LI><A=20
+          =
+href=3D"http://www.rosoo.net/a/201203/15884.html">=CA=B9=D3=C3BOOST=CA=B5=
+=CF=D6=BC=F2=B5=A5=B5=C4HTTP=CD=F8=D2=B3=CF=C2=D4=D8</A></LI></TD></TR>
+      <TR>
+        <TD width=3D"50%">
+          <LI><A =
+href=3D"http://www.rosoo.net/a/201201/15604.html">boost::asio=D1=A7=CF=B0=
+ -=20
+          buffer=C6=AA</A></LI></TD>
+        <TD width=3D"50%">
+          <LI><A =
+href=3D"http://www.rosoo.net/a/201201/15602.html">boost::asio=D1=A7=CF=B0=
+ -=20
+          timer=C6=AA</A></LI></TD></TR>
+      <TR>
+        <TD width=3D"50%">
+          <LI><A =
+href=3D"http://www.rosoo.net/a/201103/11087.html">=B2=C9=D3=C3boost=20
+          property_tree =
+=BF=EC=CB=D9=B5=C4=B4=E6=C8=A1=C8=ED=BC=FE=C5=E4=D6=C3</A></LI></TD>
+        <TD width=3D"50%">
+          <LI><A=20
+          =
+href=3D"http://www.rosoo.net/a/201103/11077.html">boost::serialization=D1=
+=A7=CF=B0=B1=CA=BC=C7=20
+          </A></LI></TD></TR>
+      <TR>
+        <TD width=3D"50%">
+          <LI><A=20
+          =
+href=3D"http://www.rosoo.net/a/201103/11058.html">Boost.Range=A3=BA=CA=D4=
+=D3=C3Range=20
+          Adaptors </A></LI></TD>
+        <TD width=3D"50%">
+          <LI><A href=3D"http://www.rosoo.net/a/201012/10624.html">BOOST =
+=CF=DF=B3=CC=CD=EA=C8=AB=B9=A5=C2=D4 -=20
+          =BD=E1=CA=F8=D3=EF</A></LI></TD></TR>
+      <TR>
+        <TD width=3D"50%">
+          <LI><A href=3D"http://www.rosoo.net/a/201012/10623.html">BOOST =
+=CF=DF=B3=CC=CD=EA=C8=AB=B9=A5=C2=D4 -=20
+          =C0=A9=D5=B9 - =CA=C2=CE=F1=CF=DF=B3=CC</A></LI></TD>
+        <TD width=3D"50%">
+          <LI><A href=3D"http://www.rosoo.net/a/201012/10591.html">boost =
+
+          =
+intrusive_ptr=D4=B4=B4=FA=C2=EB=B7=D6=CE=F6=BA=CD=D7=A2=D2=E2=CA=C2=CF=EE=
+</A></LI></TD></TR></TBODY></TABLE></UL></DD></DL></DIV><!--related =
+archives--></DIV><!-- /viewbox --><!-- //AJAX=C6=C0=C2=DB=C7=F8 --><!-- =
+//=D6=F7=C4=A3=B0=E5=B1=D8=D0=EB=D2=AA=D2=FD=C8=EB/include/dedeajax2.js =
+--><A=20
+name=3Dpostform></A>
+<DIV class=3Dmt1>
+<DL class=3Dtbox>
+  <DT><STRONG>=B7=A2=B1=ED=C6=C0=C2=DB</STRONG> <SPAN =
+class=3Dmore></SPAN></DT>
+  <DD>
+  <DIV class=3Ddede_comment_post>
+  <FORM method=3Dpost name=3Dfeedback action=3D#><INPUT value=3Dsend =
+type=3Dhidden=20
+  name=3Ddopost> <INPUT value=3Dcomments type=3Dhidden name=3Dcomtype> =
+<INPUT=20
+  value=3D14993 type=3Dhidden name=3Daid> <INPUT id=3Dfeedbackfid =
+value=3D0 type=3Dhidden=20
+  name=3Dfid>=20
+  <DIV =
+class=3Ddcmp-title><SMALL>=C7=EB=D7=D4=BE=F5=D7=F1=CA=D8=BB=A5=C1=AA=CD=F8=
+=CF=E0=B9=D8=B5=C4=D5=FE=B2=DF=B7=A8=B9=E6=A3=AC=D1=CF=BD=FB=B7=A2=B2=BC=C9=
+=AB=C7=E9=A1=A2=B1=A9=C1=A6=A1=A2=B7=B4=B6=AF=B5=C4=D1=D4=C2=DB=A1=A3</SM=
+ALL> </DIV><!-- /dcmp-title -->
+  <DIV class=3Ddcmp-stand><STRONG>=C6=C0=BC=DB:</STRONG> <INPUT =
+id=3Ddcmp-stand-neu=20
+  value=3Dfeedback CHECKED type=3Dradio name=3Dfeedbacktype><LABEL=20
+  for=3Ddcmp-stand-neu><IMG=20
+  =
+src=3D"http://www.rosoo.net/templets/default/images/cmt-neu.gif">=D6=D0=C1=
+=A2</LABEL>=20
+  <INPUT id=3Ddcmp-stand-good value=3Dgood type=3Dradio =
+name=3Dfeedbacktype><LABEL=20
+  for=3Ddcmp-stand-good><IMG=20
+  =
+src=3D"http://www.rosoo.net/templets/default/images/cmt-good.gif">=BA=C3=C6=
+=C0</LABEL>=20
+  <INPUT id=3Ddcmp-stand-bad value=3Dbad type=3Dradio =
+name=3Dfeedbacktype><LABEL=20
+  for=3Ddcmp-stand-bad><IMG=20
+  =
+src=3D"http://www.rosoo.net/templets/default/images/cmt-bad.gif">=B2=EE=C6=
+=C0</LABEL>=20
+  </DIV><!-- /dcmp-stand -->
+  <DIV class=3Dclr></DIV>
+  <DIV class=3Ddcmp-mood><STRONG>=B1=ED=C7=E9:</STRONG>=20
+  <UL>
+    <LI><INPUT value=3D1 CHECKED type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-1.gif">=
+</LI>
+    <LI><INPUT value=3D2 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-2.gif">=
+</LI>
+    <LI><INPUT value=3D3 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-3.gif">=
+</LI>
+    <LI><INPUT value=3D4 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-4.gif">=
+</LI>
+    <LI><INPUT value=3D5 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-5.gif">=
+</LI>
+    <LI><INPUT value=3D6 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-6.gif">=
+</LI>
+    <LI><INPUT value=3D7 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-7.gif">=
+</LI>
+    <LI><INPUT value=3D8 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-8.gif">=
+</LI>
+    <LI><INPUT value=3D9 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-9.gif">=
+</LI>
+    <LI><INPUT value=3D10 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-10.gif"=
+></LI>
+    <LI><INPUT value=3D11 type=3Dradio name=3Dface><IMG=20
+    =
+src=3D"http://www.rosoo.net/templets/default/images/mood/ico-mood-11.gif"=
+></LI></UL></DIV><!-- /dcmp-mood -->
+  <DIV class=3Ddcmp-content><TEXTAREA class=3Dipt-txt rows=3D5 cols=3D60 =
+name=3Dmsg></TEXTAREA>=20
+  </DIV><!-- /dcmp-content -->
+  <DIV class=3Ddcmp-post><!--=CE=B4=B5=C7=C2=BD-->
+  <DIV id=3D_ajax_feedback =
+class=3Ddcmp-userinfo>=D3=C3=BB=A7=C3=FB:<INPUT=20
+  style=3D"TEXT-TRANSFORM: uppercase" class=3Dipt-txt size=3D16 =
+type=3Dtext=20
+  name=3Dusername> =D1=E9=D6=A4=C2=EB:<INPUT style=3D"TEXT-TRANSFORM: =
+uppercase" class=3Dipt-txt=20
+  size=3D4 type=3Dtext name=3Dvalidate><IMG style=3D"CURSOR: pointer" =
+id=3Dvalidateimg=20
+  title=3D=B5=E3=BB=F7=CE=D2=B8=FC=BB=BB=CD=BC=C6=AC =
+onclick=3D"this.src=3Dthis.src+'?'" =
+alt=3D=B5=E3=BB=F7=CE=D2=B8=FC=BB=BB=CD=BC=C6=AC=20
+  src=3D"http://www.rosoo.net/include/vdimgck.php"> <INPUT =
+id=3Ddcmp-submit-guest=20
+  type=3Dcheckbox name=3Dnotuser><LABEL =
+for=3Ddcmp-submit-guest>=C4=E4=C3=FB? </LABEL></DIV>
+  <SCRIPT language=3Djavascript =
+type=3Dtext/javascript>CheckLogin();</SCRIPT>
+
+  <DIV class=3Ddcmp-submit><BUTTON onclick=3DPostComment() =
+type=3Dbutton>=B7=A2=B1=ED=C6=C0=C2=DB</BUTTON>=20
+  </DIV></DIV></FORM></DIV></DD></DL></DIV><!-- =
+//=C6=C0=C2=DB=B1=ED=B5=A5=C7=F8=BD=E1=CA=F8 --><!-- =
+//=C6=C0=C2=DB=C4=DA=C8=DD=C7=F8 --><A=20
+name=3Dcommettop></A>
+<DIV class=3Dmt1>
+<DL class=3Dtbox>
+  <DT><STRONG>=D7=EE=D0=C2=C6=C0=C2=DB</STRONG> <SPAN class=3Dmore><A=20
+  =
+href=3D"http://www.rosoo.net/plus/feedback.php?aid=3D14993">=BD=F8=C8=EB=CF=
+=EA=CF=B8=C6=C0=C2=DB=D2=B3&gt;&gt;</A></SPAN>=20
+  </DT><!-- =
+//=D5=E2=C1=BD=B8=F6ID=B5=C4=C7=F8=BF=E9=B1=D8=D0=EB=B4=E6=D4=DA=A3=AC=B7=
+=F1=D4=F2JS=BB=E1=B3=F6=B4=ED -->
+  <DD id=3DcommetcontentNew></DD>
+  <DD id=3Dcommetcontent></DD></DL></DIV><!--=0A=
+//=D3=C9=D3=DA=C6=C0=C2=DB=D4=D8=C8=EB=CA=B1=CA=B9=D3=C3=D2=EC=B2=BD=B4=AB=
+=CA=E4=A3=AC=D2=F2=B4=CB=B1=D8=D0=EB=D4=DA=D7=EE=BA=F3=D2=BB=B2=BD=BC=D3=D4=
+=D8=A3=A8DIGG=BA=CD=C6=C0=C2=DB=BF=F2=D0=EB=B7=C5=D4=DA=C6=C0=C2=DB=C4=DA=
+=C8=DD=C7=B0=C3=E6=A3=A9=0A=
+//=C8=E7=B9=FB=D2=BB=B6=A8=D0=E8=D2=AA=CC=E1=C7=B0=B5=C4=B0=D1myajax.Send=
+Get=B8=C4=CE=AAmyajax.SendGet2=A3=AC=B5=AB=BF=C9=C4=DC=BB=E1=D2=FD=C6=F0=D2=
+=B3=C3=E6=D7=E8=D6=CD=0A=
+-->
+<SCRIPT language=3Djavascript>=0A=
+function LoadCommets(page)=0A=
+{=0A=
+		var taget_obj =3D document.getElementById('commetcontent');=0A=
+		var waithtml =3D "<div style=3D'line-height:50px'><img =
+src=3D'/images/loadinglit.gif' =
+/>=C6=C0=C2=DB=BC=D3=D4=D8=D6=D0...</div>";=0A=
+		var myajax =3D new DedeAjax(taget_obj, true, true, '', 'x', waithtml);=0A=
+		=
+myajax.SendGet2("/plus/feedback_ajax.php?dopost=3Dgetlist&aid=3D14993&pag=
+e=3D"+page);=0A=
+		DedeXHTTP =3D null;=0A=
+}=0A=
+function PostComment()=0A=
+{=0A=
+		var f =3D document.feedback;=0A=
+		var nface =3D '6';=0A=
+		var nfeedbacktype =3D 'feedback';=0A=
+		var nvalidate =3D '';=0A=
+		var nnotuser =3D '';=0A=
+		var nusername =3D '';=0A=
+		var npwd =3D '';=0A=
+		var taget_obj =3D $DE('commetcontentNew');=0A=
+		var waithtml =3D "<div style=3D'line-height:30px'><img =
+src=3D'/images/loadinglit.gif' =
+/>=D5=FD=D4=DA=B7=A2=CB=CD=D6=D0...</div>";=0A=
+		if(f.msg.value=3D=3D'')=0A=
+		{=0A=
+			alert("=C6=C0=C2=DB=C4=DA=C8=DD=B2=BB=C4=DC=CE=AA=BF=D5=A3=A1");=0A=
+			return;=0A=
+		}=0A=
+		if(f.validate)=0A=
+		{=0A=
+			if(f.validate.value=3D=3D'') {=0A=
+				alert("=C7=EB=CC=EE=D0=B4=D1=E9=D6=A4=C2=EB=A3=A1");=0A=
+				return;=0A=
+			}=0A=
+			else {=0A=
+				nvalidate =3D f.validate.value;=0A=
+			}=0A=
+		}=0A=
+		if(f.msg.value.length > 500)=0A=
+		{=0A=
+			=
+alert("=C4=E3=B5=C4=C6=C0=C2=DB=CA=C7=B2=BB=CA=C7=CC=AB=B3=A4=C1=CB=A3=BF=
+=C7=EB=CC=EE=D0=B4500=D7=D6=D2=D4=C4=DA=B5=C4=C6=C0=C2=DB=A1=A3");=0A=
+			return;=0A=
+		}=0A=
+		if(f.feedbacktype) {=0A=
+			for(var i=3D0; i < f.feedbacktype.length; i++)=0A=
+				if(f.feedbacktype[i].checked) nfeedbacktype =3D =
+f.feedbacktype[i].value;=0A=
+		}=0A=
+		if(f.face) {=0A=
+			for(var j=3D0; j < f.face.length; j++)=0A=
+				if(f.face[j].checked) nface =3D f.face[j].value;=0A=
+		}=0A=
+		if(f.notuser.checked) nnotuser =3D '1';=0A=
+		if(f.username) nusername =3D f.username.value;=0A=
+		if(f.pwd) npwd =3D f.pwd.value;=0A=
+		=0A=
+		var myajax =3D new DedeAjax(taget_obj, false, true, '', '', waithtml);=0A=
+		myajax.sendlang =3D 'gb2312';=0A=
+		myajax.AddKeyN('dopost', 'send');=0A=
+		myajax.AddKeyN('aid', '14993');=0A=
+		myajax.AddKeyN('fid', f.fid.value);=0A=
+		myajax.AddKeyN('face', nface);=0A=
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);=0A=
+		myajax.AddKeyN('validate', nvalidate);=0A=
+		myajax.AddKeyN('notuser', nnotuser);=0A=
+		myajax.AddKeyN('username', nusername);=0A=
+		myajax.AddKeyN('pwd', npwd);=0A=
+		myajax.AddKeyN('msg', f.msg.value);=0A=
+		myajax.SendPost2('/plus/feedback_ajax.php');=0A=
+		f.msg.value =3D '';=0A=
+		f.fid.value =3D 0;=0A=
+		if(f.validate)=0A=
+		{=0A=
+			if($DE('validateimg')) $DE('validateimg').src =3D =
+"/include/vdimgck.php?"+f.validate.value;=0A=
+			f.validate.value =3D '';=0A=
+		}=0A=
+}=0A=
+function quoteCommet(fid)=0A=
+{=0A=
+	document.feedback.fid.value =3D fid;=0A=
+}=0A=
+LoadCommets(1);=0A=
+</SCRIPT>
+<!-- //=C6=C0=C2=DB=C4=DA=C8=DD=C7=F8=BD=E1=CA=F8 --></DIV><!-- =
+//=D7=F3=B1=DF=C4=DA=C8=DD=BD=E1=CA=F8 --><!-- =
+//=D3=D2=B1=DF=C4=DA=C8=DD=BF=AA=CA=BC -->
+<DIV class=3Dpright>
+<DIV class=3D"commend mt1">
+<DL class=3D"tbox light">
+  <DT class=3Dlight><STRONG>=CD=C6=BC=F6=C4=DA=C8=DD</STRONG></DT>
+  <DD class=3Dlight>
+  <UL class=3Dd4>
+    <LI><A=20
+    =
+href=3D"http://www.rosoo.net/a/201210/16339.html">=D2=D4boost::function=BA=
+=CDboost:bind=C8=A1=B4=FA=D0=E9=BA=AF=CA=FD</A>=20
+
+    =
+<P>=D5=E2=CA=C7=D2=BB=C6=AA=B1=C8=BD=CF=C7=E9=D0=F7=BB=AF=B5=C4blog=A3=AC=
+=D6=D0=D0=C4=CB=BC=CF=EB=CA=C7=A1=B0=BC=CC=B3=D0=BE=CD=CF=F1=D2=BB=CC=F5=D4=
+=F4=B4=AC=A3=AC=C9=CF=C8=A5=BE=CD=CF=C2=B2=BB=C0=B4=C1=CB=A1=B1=A3=AC=B6=F8=
+=BD=E8=D6=FA...</P></LI>
+    <LI><A =
+href=3D"http://www.rosoo.net/a/201208/16197.html">C++=B5=C4=BF=D3=D5=E6=B5=
+=C4=B6=E0=C2=F0=A3=BF</A>=20
+    =
+<P>=CF=C8=CB=B5=C3=F7=D2=BB=CF=C2=A3=AC=CE=D2=B2=BB=CF=A3=CD=FB=B1=BE=CE=C4=
+=B1=E4=B3=C9=D3=EF=D1=D4=D5=F9=C2=DB=CC=F9=A1=A3=CF=A3=CD=FB=CF=C2=C3=E6=B5=
+=C4=CE=C4=D5=C2=C4=DC=C8=C3=CE=D2=C3=C7=BF=CD=B9=DB=C0=ED=D0=D4=B5=D8=C1=CB=
+=BD=E2C++...</P></LI>
+    <LI><A =
+href=3D"http://www.rosoo.net/a/201205/15995.html">C=D3=EF=D1=D4=B3=CC=D0=F2=
+=B5=F7=D3=C3C++=BF=E2=BA=AF=CA=FD=B7=BD=B7=A8</A>=20
+    <P>C=D3=EF=D1=D4=B3=CC=D0=F2=B5=F7=D3=C3C++ =
+=BF=E2=BA=AF=CA=FD=B7=BD=B7=A8=A3=AC=B9=D8=BC=FC=CA=C7=BA=AF=CA=FD=C3=FB=D7=
+=D6=BD=E2=CE=F6=CE=CA=CC=E2=A1=A3 =
+=C6=E4=CA=B5=CA=B5=CF=D6=C6=F0=C0=B4=B2=BB=CA=C7=BA=DC=C4=D1=A1=A3=CA=B9=D3=
+=C3...</P></LI>
+    <LI><A =
+href=3D"http://www.rosoo.net/a/201205/15982.html">=D2=BB=B8=F6debug=B5=C4=
+trace=C4=A3=BF=E9</A>=20
+    =
+<P>=D0=B4=B3=CC=D0=F2=B5=C4=B9=FD=B3=CC=D6=D0=A3=ACdebug=CA=C7=B2=BB=BF=C9=
+=B1=DC=C3=E2=B5=C4=A3=ACprintf=BF=C9=D2=D4=CB=B5=CA=C7=D7=EE=B3=A3=D3=C3=B5=
+=C4debug=B7=BD=B7=A8=A3=A8=B5=B1=C8=BB=BB=B9=D3=D0=C6=E4=CB=FC...</P></LI=
+>
+    <LI><A href=3D"http://www.rosoo.net/a/201204/15916.html">Qt=20
+    =
+5=A3=BAJavaScript=B3=C9=CE=AA=D3=A6=D3=C3=BF=AA=B7=A2=D2=BB=B5=C8=B9=AB=C3=
+=F1</A>=20
+    =
+<P>Qt=BF=AA=B7=A2=B9=A4=BE=DF=B0=FC=D5=FD=D4=DA=B4=F3=D0=DE=A3=AC=CB=FC=B8=
+=D5=B8=D5=B7=A2=B2=BC=C1=CBQt 5 =
+Alpha=A3=AC=D5=FD=CA=BD=B0=E6=D4=A4=BC=C6=BD=AB=D4=DA=BD=F1=C4=EA=CD=ED=D0=
+=A9=CA=B1=BA=F2=B7=A2=B2=BC=A1=A3 Q...</P></LI>
+    <LI><A href=3D"http://www.rosoo.net/a/201203/15893.html">Const =
+=D6=D8=D4=D8=BD=E2=CE=F6</A>=20
+    =
+<P>=D7=DC=BD=E1=A3=BA1.const=D6=D8=D4=D8=D6=F7=D2=AA=CA=C7=CD=A8=B9=FD=C4=
+=DC=B7=F1=B6=D4=B4=AB=C8=EB=B5=C4=B2=CE=CA=FD=BD=F8=D0=D0=D0=DE=B8=C4=CE=AA=
+=C5=D0=B6=CF=B5=C4=A1=A32.const=B2=CE=CA=FD=D6=D8=D4=D8=BA=CDco...</P></L=
+I></UL></DD></DL></DIV><!-- /commend -->
+<DIV class=3D"hot mt1">
+<SCRIPT language=3Djavascript=20
+src=3D"http://www.rosoo.net/ad/js_ad_250x250_100.js"></SCRIPT>
+</DIV>
+<DIV class=3D"hot mt1">
+<DL class=3D"tbox light">
+  <DT class=3Dlight><STRONG>=C8=C8=B5=E3=C4=DA=C8=DD</STRONG></DT>
+  <DD class=3Dlight>
+  <UL class=3D"c1 ico2">
+    <LI><A href=3D"http://www.rosoo.net/a/200206/946.html">Visual C++=20
+    =B1=E0=B3=CC=B7=E7=B8=F1=CA=D8=D4=F2</A></LI>
+    <LI><A href=3D"http://www.rosoo.net/a/200708/6767.html">Run-Time =
+Check Failure=20
+    #2 - St</A></LI>
+    <LI><A=20
+    =
+href=3D"http://www.rosoo.net/a/201006/9574.html">=BA=DC=BA=C3=B5=C4c++=BA=
+=CDPython=BB=EC=BA=CF=B1=E0=B3=CC=CE=C4=D5=C2</A></LI>
+    <LI><A href=3D"http://www.rosoo.net/a/200111/944.html">C++ Coding =
+Rules under=20
+    Win32</A></LI>
+    <LI><A=20
+    =
+href=3D"http://www.rosoo.net/a/200912/8080.html">C++=CE=C4=BC=FE=B2=D9=D7=
+=F7=CF=EA=BD=E2=A3=A8ifstream=A1=A2ofs</A></LI>
+    <LI><A href=3D"http://www.rosoo.net/a/200912/8077.html">LINK:fatal =
+error=20
+    LNK1104: cann</A></LI>
+    <LI><A =
+href=3D"http://www.rosoo.net/a/201102/10900.html">=A1=BEQT=BC=BC=CA=F5=D3=
+=A6=D3=C3=A1=BF2D=BB=E6=CD=BC</A></LI>
+    <LI><A=20
+    =
+href=3D"http://www.rosoo.net/a/200810/7153.html">=BD=CC=C4=E3=D4=DAVS2005=
+=CF=C2=D0=B4MakeFile</A></LI>
+    <LI><A href=3D"http://www.rosoo.net/a/200708/6781.html">boost =
+=C4=DA=B4=E6=B3=D8Pool=20
+    (=D7=AA)</A></LI>
+    <LI><A=20
+  =
+href=3D"http://www.rosoo.net/a/200612/6447.html">fwrite=BA=AF=CA=FD=B5=C4=
+=CE=CA=CC=E2=A3=BF</A></LI></UL></DD></DL></DIV></DIV><!-- /pright =
+--></DIV><!-- =
+//=B6=FE=BC=B6=D7=D3=C0=E0=CF=C2=C0=AD=B2=CB=B5=A5=A3=AC=BF=BC=C2=C7SEO=D4=
+=AD=D2=F2=B7=C5=D6=C3=D3=DA=B5=D7=B2=BF  -->
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.rosoo.net/images/js/dropdown.js"></SCRIPT>
+
+<UL id=3Ddropmenu1 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_44_1.html">=D2=B5=BD=E7=B6=AF=CC=AC</=
+A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_51_1.html">=C1=F7=C3=BD=CC=E5=BF=AA=B7=
+=A2</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_46_1.html">=B9=E6=B7=B6=BC=B0=D0=AD=D2=
+=E9</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_48_1.html">=BC=BC=CA=F5=B7=BD=B0=B8</=
+A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_107_1.html">=D3=A6=D3=C3=B7=BD=B0=B8<=
+/A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_50_1.html">=B4=F3=D4=D3=BB=E2</A></LI=
+></UL>
+<UL id=3Ddropmenu106 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_53_1.html">=D2=F4=CA=D3=C6=B5=B1=E0=BD=
+=E2=C2=EB</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_45_1.html">=D2=F4=CA=D3=C6=B5=B2=A5=B7=
+=C5</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_47_1.html">=CA=D3=C6=B5=B4=A6=C0=ED</=
+A></LI></UL>
+<UL id=3Ddropmenu33 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_34_1.html">=B9=CC=BC=FE=C7=FD=B6=AF=BF=
+=AA=B7=A2</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_37_1.html">Android</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_35_1.html">Windows =
+CE</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_97_1.html">Apple=C6=BD=CC=A8=BF=AA=B7=
+=A2</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_36_1.html">Symbian =
+OS</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_38_1.html">=CA=D6=BB=FA=D3=A6=D3=C3=D7=
+=DB=BA=CF</A></LI></UL>
+<UL id=3Ddropmenu7 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_100_1.html">C/CPP=D7=A8=CC=E2</A></LI=
+>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_52_1.html">=B8=DF=D0=D4=C4=DC=B7=FE=CE=
+=F1=C6=F7</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_49_1.html">Linux=BF=AA=B7=A2=D7=A8=CC=
+=E2</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_19_1.html">=CA=FD=BE=DD=BF=E2=BF=AA=B7=
+=A2</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_40_1.html">UML,RUP,SCM</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_39_1.html">Soft.Eng</A></LI></UL>
+<UL id=3Ddropmenu13 class=3DdropMenu>
+  <LI><A href=3D"http://www.rosoo.net/a/list_17_1.html">VC(MFC)</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_20_1.html">JAVA</A></LI>
+  <LI><A href=3D"http://www.rosoo.net/a/list_16_1.html">Web</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_14_1.html">.NET(C#)</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_42_1.html">=B0=B2=D7=B0=D6=C6=D7=F7</=
+A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_15_1.html">PC=B3=A3=CA=B6</A></LI></U=
+L>
+<UL id=3Ddropmenu101 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_70_1.html">=A1=BA=BE=AD=C0=ED=C8=CB=CA=
+=D6=B2=E1=A1=BB</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_61_1.html">=A1=BA=B9=DC=C0=ED=BC=B0=BC=
+=A8=D0=A7=A1=BB</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_63_1.html">=A1=BA=B2=FA=C6=B7=D3=EB=D3=
+=AA=CF=FA=A1=BB</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_65_1.html">=A1=BA=B9=E6=D5=C2/=BA=CF=CD=
+=AC=A1=BB</A></LI></UL>
+<UL id=3Ddropmenu95 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_28_1.html">IT=BE=C9=CE=C5</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_29_1.html">=B9=DB=B2=EC=D3=EB=C6=C0=BC=
+=DB</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_31_1.html">IT=B9=FD=C0=B4=C8=CB</A></=
+LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_32_1.html">=D6=B0=B3=A1+=D6=B0=D2=B5<=
+/A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_41_1.html">=BC=DC=B9=B9=D3=EB=CB=BC=C2=
+=B7</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_43_1.html">=86=AA=E0=C2IT</A></LI></U=
+L>
+<UL id=3Ddropmenu8 class=3DdropMenu>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_21_1.html">=C8=ED=D3=B2=BD=E2=BE=F6=B7=
+=BD=B0=B8</A></LI>
+  <LI><A =
+href=3D"http://rg4.net/">=CA=B5=D1=E9=CA=D2=D0=A1=D7=F7=C6=B7</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_22_1.html">=D2=F4=CA=D3=C6=B5=B9=A4=BE=
+=DF=B0=FC</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_103_1.html">=B9=A4=BE=DF=C8=ED=BC=FE<=
+/A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_102_1.html">=C6=E4=CB=FB=D4=D3=CF=EE<=
+/A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_24_1.html">=D3=CE=CF=B7=D0=DE=B8=C4=C6=
+=F7</A></LI>
+  <LI><A =
+href=3D"http://www.rosoo.net/a/list_27_1.html">=BC=AA=CB=FB=C6=D7</A></LI=
+></UL>
+<SCRIPT =
+type=3Dtext/javascript>cssdropdown.startchrome("navMenu")</SCRIPT>
+<!-- //=B5=D7=B2=BF=C4=A3=B0=E5 --><BR><!--PAGE BOTTOM START-->
+<DIV class=3D"footer w960 center mt1 clear">
+<TABLE style=3D"BORDER-COLLAPSE: collapse" border=3D1 cellSpacing=3D0=20
+borderColor=3D#b5cfff cellPadding=3D0 width=3D938 align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD colSpan=3D2>
+      <SCRIPT language=3Djavascript=20
+      src=3D"http://www.rosoo.net/js/catalog.js"></SCRIPT>
+    </TD></TR></TBODY></TABLE>
+<TABLE width=3D938 align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle>
+      <SCRIPT =
+src=3D"http://www.rosoo.net/ad/js_ad_728x90_101.js"></SCRIPT>
+    </TD></TR>
+  <TR align=3Dmiddle>
+    <TD><BR>
+      <SCRIPT =
+src=3D"http://www.rosoo.net/js/some.rights.reserved.js"></SCRIPT>
+      <BR>
+      <SCRIPT type=3Dtext/javascript=20
+      src=3D"http://www.rosoo.net/js/stat.php?type=3D0"></SCRIPT>
+    </TD></TR></TBODY></TABLE><BR></DIV><!--PAGE BOTTOM END--><!-- =
+/footer -->
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.rosoo.net/js/rs_bottom.js"></SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/cmt-neu.gif
+
+R0lGODlhDQANAJEAAHtTAP/uy+7IhP///yH5BAEHAAMALAAAAAANAA0AAAIrnA95axAOWIMvLorv
+21CHD1oJIAjjF5HCU5adupLgM60zetmzhei0NFIYCgA7
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/cmt-good.gif
+
+R0lGODlhDQANAJEAAHtTAPTVnf/////uyyH5BAEHAAIALAAAAAANAA0AAAIqlAV5axAP2HFQohei
+pDn5iQ0iplGi912ByJ7NM6Cp2brqiYJrrTWyYigAADs=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/cmt-bad.gif
+
+R0lGODlhDQANAJEAAHtSAPXWnv/////vzCH5BAEHAAIALAAAAAANAA0AAAIolICJZhAxogTMwaFo
+e7Jri2Uf10XjJW7k8ASnmzFHq8kVbd9PnSd5AQA7
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-1.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-2.gif
+
+R0lGODlhGAAYAPf/AP/7mv7nT//+0P/tV//aOf/pT//SLv/XNP/+x//mSP/5iP/9uP/0bf7ePtKM
+Gv/3eP/3d//cOv/KJf/iQv7FIf/8sv/PKv/MJ//2dNKOH/+7FOOWCv+2D/20EP/4e/7hRf/gQu7W
+dv3dQ+7Vb/vUONqNC//LKe7MQu7FN/TCLv+8FP+3Ef/6lvGsEuumFvCjCtedMeafEP3fRdKOItWO
+Ec6EDv+4Efi3G/myE+SYCrhfAMp7EP/vWoczAP/xX/bm0NfRzOi0Mf/lR//FH3wtANfSzf/qUP/w
+Xf/LJv/DHf/sU//GIP/7lf/VMf/AGv/RLf/pTfv6+tzX0+Pf3P/SLf/oTF0jAP/dPd3Y1Orn5NKP
+Kf/rUP/ePP/AGf/dPP/rU8urmdKNHP+5Ev/DHP+5E//UMf/GIdKMGf/ePf/89eXDau+zMNKPLdix
+a713FPjKX8t9CPXBS/fIW+fe0P79/P3XOcmphriESf+6E/bGWfe8N+7CUtLFuP38/P/+/PfKZ+bi
+3/CwH+24S9KPJv//1/jbmv/899/a1tjTzq5wLO7TZdKLGPPesMivltiVFbd7MruRZfzPNPvhpfDu
+7NKWM+G/jNeeOMeCFrFzK/Ty8erj3KxtJfvLMPrNN9eaI9ecKtmYIf346/nEJfry5/fGKvW3KfbE
+L8iQPsCXZ/bYmeGgIeWmJvHIWN7Z1ffBRb1/LvuvDO7Wg8KKPujl4vzw1u65Nt2cGN2cH+CfJM2s
+g+3HU6hdCfW5M+ro5enIkbNvGuTg3dylRP/xYP/oTcuJGs2JH/zlr//bOdmkQsyLIqdgEKpjE7SA
+R7eCRcWebfncnPOpDbmIU/jGMPnGMK5mD8J8FNnUz86ACPOxF//3e+aqH//RLv7JJfSnC//gQf/C
+Hf/HIPjHMf/wXP/1bf/9sv2yDP/xXf/3fP7dPv2xC//2c//QK/mzFPSnDPi4Gv/HIf7JJv/uV//p
+TPOxGO7JPf/ZOeaqIP/qUf/CHP64E/65Ev65E+7DM//UMP///////yH/C05FVFNDQVBFMi4wAwEA
+AAAh+QQFDwD/ACwAAAAAGAAYAAAI/wD/CRxIsKDBgwgTKkxj7I2rUrzi/HlGS+FASXo6ifjgDV2d
+SNJYMVJoSM60AFCGpUwwIUI/TrX2IPSTJ9yXHvGO+DgSz0gPLk24BdJ1sJCpAj2EjYPgAcI4Hzcj
+PKGAS03BUGtk9AizY8YIAEwUZdjhoMcBJDeQzSGYKsXWH/5+aFlAbhDcH4t6WBjjok2UgYJIFNjh
+r/AOAQgIG76ybQg7SrMGrroChTAYIjsICbCMGY2BJfmISRmo6kqVMD+IWGGDWEtqK2fQUBki5lKR
+gbeOJTjxqZilWHRDwMjgCcUxC0lsVAMyENSBCVt8qFPABKwCDMK2TDjbpYMb5gKDkbmKIESJj3EP
+zjmFKkTqOw3dXt0W6EtbGS5CjOTc2VOIlyZIOMFBCc5gMdAoyYhCgA5BBKEDgw4yeME3ZLzwCB+9
+EFSJLUjw8CAPHuoAog5JaJAONagc8tdAdJziiBkgUmEAiEiA4wQesFxzRxFZHCQLDfOYMMQSQ3zT
+hQoc5LBMNEBMkVAuv9QQQwtidADNBnAk0og1gFikiR3NYLKLMpswAwkQrWRikUB9TDIFFkAgIgUw
+Pa5pZ0EBAQAh+QQFDwD/ACwDAAMAEgASAAAIhQD/CRwoEEQDgggH9vhXpUCVgU0SCuxx75+5gVsE
+loGHsIcSHwKzPfgnTMm/Y1QI9qAnsSVDlwTXJYGJ0MuTfzhoJtSHRuc/LzQrSByzQqCRfxgS+jgq
+0InAYwQheBhoUqAZFQKbXBE4QNw/rwK5/JOAsB7NmQTJwsTjUyc2gjM1tCXjMiAAIfkEBQ8A/wAs
+AwADABIAEgAACJAA/wkcKNAbwYMEAwgcNrAHQoHSvjg8InDAPyE9mnA7WMAhgwcDfVx0SFAGyYEs
+Bp7h59CdwJMPBR6zgC+mzX/s/jH85++mwH3/5Pn8x2XbUIRJbAzdMrBLuX8R/n0hCJKggSUa2tkr
+4+XflngUKQ4sg+QgAZ9jDpa1OUYDwiUCnwy8YKbL0CECnag4+k+MzYAAOw==
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-3.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-4.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-5.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-6.gif
+
+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
+DIAEH1QO6ihCAQEAOw==
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-7.gif
+
+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
+CDhGFBAAOw==
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-8.gif
+
+R0lGODlhGAAYAPf/AOu4NP/8u//9svGgE93Y1P/qYeKZLP/SLcidcf/+yP/6/f+Eif/lfv/fRf/w
+Xf+7WtuYF//OK+y9Wf/cNfDBW//0bf/0fapjEf3dQf/6g/zVOsuFHf/5if7GIf/7m/jKXv+UXLaC
+R/+cg8h3Kv/ePf/Ii//Aiua0Rv/6dfnkt//3Zf/hQvzNMs6CC//uYPz36//89vnHM//oTfmpUP/m
+SPy7G8KJOv/5ff/LJuXh3vnbm//uUf/hPf+TdP/xVf+6FP/XM/W5M//liNjSzf7lTf/dOP/bOv3g
+Sv+fdv/qUf/yW//NS//8rP+qdf/bXP2wDf/pSP/cYv/CHf62EP+Kk/+jb//bav+uff7aPf/3bf++
+Sv/eS//2hfXJNf/3d//9pP/beP+vgv/4sv/uTeSXCvHAOOrn5P/2m//5lf+Zi//8oO3Ifv/SS/bH
+Wv/lQf/7j/+0cv/VlvuuDP/QMP/uV/+Vgf/ObP/Gbv/xdv+tif/jYv/8lffROf/lSP/unf/iTP+l
+efraQ//6oP/UL/+9Jv/kUf/zbv7hR//NOf/FH/+Nb96qRvW9JP/pRf/yc//sSv/OYv/SNP/AGv+w
+R//3cP+0HfKqEPeTOv+fPt+IH/+/k9WOEeafEP/HLf+0Pf+oPv/RVct9CP/srv/3af/1if/obv/V
+a//aQf+Zf/+vJv/9/rNdB+Pf3Pv6+t6PN+7r6fzw1v++ZOXZztqWSNSaN+W/e/fBRfXBS8R8PbFz
+K+mhMffKZ//EYP/+/Ond0bmIU6xtJa5wLPTy8bp7NcimfNGrd9mwffTWlvW3Kcqxl/6US//UQcan
+hPvhpfzlr7NvGs2JJeWlKP+pYfDu7PjGPruRZf38/NfOxZdCAuDb16hdCf+Hcf/Kf//0W//imf+d
+le+1IP+lMP/CTf+kdP/VXP+3b/+/P/+Ahv+/bvrAIP+hhv+ljf/8ke6xHv/wk//mYPveRfXGM//3
+pf/NVuumFv/lc//Sm/jclf+1Kf/to/nPWf/5pPbNOP+Qfp1JBP///yH/C05FVFNDQVBFMi4wAwEA
+AAAh+QQFCgD/ACwAAAAAGAAYAAAI/wD/CRxIsKDBgwgTKoTh7IMtZEFu7dIBS+HAZtQ0YMCwgoSG
+SPEopFjY5sihPjJS0lhRxAgLABIQ9mpDBMoOOg5y0klCg8eECF1iGtQRCIq/o5S8eKngYMdRfzgA
+rCn4oswKf91GofD3Zk+GLP52NOLhL92iFwSP8fHnQ4U/Dv6+CNjjT4UPf26g0qtF8AQGf0r83WDn
+L0ACNf7AjsmLYwotgtEa+HPh6KiABAmY+KPk4KiGTjU2DFRlgA05f2AYuJNXmAncd05ALfGHb4Mq
+gQoMPGhy5am/fUzUcCnlWxqmEQpwu5JWh0qaPCWEnEHDAY8VdE1Q9VOkDDnuWTOqiMMQEYYbAwte
+DLlwEqtKD0UgLuFK/k+VMV1aHvCCFKWACwc7bbGEFpN8Ek4mCNwmkC/QxIDIMlv8QURKfaxgRCSd
+EFLJAMPIQlArxUAQyRxAGEHCiUYAcQAOUvzwxAUItFKQGTZAEAEOERxwwCqrNNCBJD/I0UIIZhyU
+jQ2bMCJFIomsgk0DP0xBxgW/sJJQNsQ80wInljTQgCVkhBJMMjlY9Mo1zISQizYXABNCNQQIY5FA
+1kzDCgFDDEFADkXO6adBAQEAIfkEBQoA/wAsAwADABIAEQAACIEA/wkcGGigwYMIDRpJKJDGPx8M
+I0qc+IbDRIF7PPj7cpAHEH/tGhj08MWfAIQT/NVYIRCPQH8B/nE06C/CSyv/hPgRkyBBSUMC52nx
+lOpfOX8C7YkKIMCDBaT/kPQAIRBVGnXrNHkb6OjfHSQLzm0biErdxbNoG54tkrYtwg4SAwIAIfkE
+BQoA/wAsBAAEABEADgAACGwA/wn8R2Ngn4EIB0JJyLChw4cD2WWAKPDNHocTGPpLOErgxn/pPHLx
+8MVfAIFZ/CU5hMWflH+m/vmbGeDkP0d6Zvoz9w+OunUm4uQTI5BLvTtwmlQRWIcKlW8J8fSsk1CE
+iIQVKGrdCtGI1oAAIfkEBQoA/wAsAwAEABIAEAAACKEA//37QIQGFIEIi5DQUAahQBn+IipxCCWi
+Pz4C78Hzt6ObCn8oBCrx98hNEX8IOY68kcEfh3/+JvojAcTfCX4HQaL8p8ZDBpiPdoLDIkNghi8C
+AwjYQ+nfoxUCa5wqVECgIH8BEgTw4EVgA38RaiyBZAehmAQJBKDBg1CcJ4FNRPzT9E9UAJ6kEI7r
+gbCfw7+AAwseTLjwvz6GEys2nIhwQAAh+QQFCgD/ACwDAAMAEAAOAAAIbgD/CRw4EANBgvoO/qPx
+jwePg/4U/tsRcaCOQFB8DKQk0MGOgwYrDuTAUWSXf/5UHFSDUuPAR/6y+PMgUMA/Dv6U+HNTRKA/
+Q/9oDnyT89+hgaZEEnSk9J+6PCYIChJop9zAOhKzat3KdSvDgwEBACH5BAUKAP8ALAMAAwAQAA8A
+AAhrAP8JHIhBIImBCP+1OXKIRsIiRlgAGPinTxI6CJP0ITEIRxeBNHYoGZXwHxQeQEqqRMhvpYcb
+CTH4U0Ip4Rd/WRA28OfCUUIm/ig5GMiGnL+STDgcTXglTEI1XEol7LeyqtWrWAXKuDona0AAIfkE
+BQoA/wAsAwAFABIADQAACH4A/wkc6GCgwX/xDEIRWMGLl4P/BnUYuMLfQA4Ds1j8V2SQQD7+fAxk
+J3CPPxUQGwj0d8OfGoEv//kbszGdQX+CmPgLcLMBFn9SBoJh4G6nwXdOQPkzd9OfPz9i/gla6bTK
+wDr/0uQpAREdoDoLIEIsILasWbFEBPY5G+nswYAAOw==
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-9.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-10.gif
+
+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
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/templets/default/images/mood/ico-mood-11.gif
+
+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
+xxSysUKkgyJmQAA7
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://www.rosoo.net/include/vdimgck.php
+
+/9j/4AAQSkZJRgABAQAAAQABAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcg
+SlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMP
+FB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEc
+ITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgA
+GABEAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMC
+BAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYn
+KCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeY
+mZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5
++v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwAB
+AgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpD
+REVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ip
+qrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMR
+AD8A9S8SeJr/AEbWbbTdM0o393eo0kaF/LUbR83J68Y6Unh7xFe6rLfaXqFj9g1Cx2FogDIpVuUI
+YfTuPTrzWT8QY7o+JPDUtjeizufPlgFwDvMe9Bn5Tx0Brb0LQrfQmmkN415eXZDXN3PdEvIwHHQc
+ADOB+tYJyc2un/AOuUaSop21a873v91rDNT8c6FpOora32qxwXSgFozaynCsM9Rkeh6//X2rW+S5
+Vbi2uElgnUSJIkLMrdsjn6f56+UrZavrnjLxW+lHSwjsLSWS9djtGMfJjqfl5yDXoHh3Sk0Dw3Y6
+cLhJWtgdzeeRkliWwOw+Y4x+vcpzlJu60CvRp04Kz97S6+V/kZ1740nt9QvdLs9E1C/NiVEklvBk
+Lkbl6tn8x271tWniCDUtFi1qzdpYCjMF8hg3HBXrjORjr26+vDafba7qHifxM+kava6fDJeiKSVw
+0j5VcfL2PBPX9K7XQ9ItdE0VNKilV44wcu9ycuW5YnjHJJ4/ySnKTeuwV4UoRSW+n5a3+fY52/8A
+iBcp4IsPE+n28QjvJ4g8dxGxCIZNjHII56e39e1DyGFog33Dhf3D8Y5H9Ov614i89qnwE1TSp7mF
+LjT7uSBY2uMPuW43ABfXmvaLeXdHDJIyB3jG8G5bg4zz6dT/AJ67HIaNvIZYg5Oc9PkK/wA6KrQ3
+UEAZHkUfMSMMX4Pv9c/55oouBX1fR7fVprRrlLhvsdwtxD5bIBvAI5zyRz0qb98Yf+XgvGf9jqP1
+5H169+5RRZDcm1ZmZo+gwaFPeXFo96x1C4aeZpGjOWbnjAxjPr69fXVAkDvGRPhvmx+759f8+/5l
+FJJLRDlJyd2Zul6NHpMd81t9raS5u3upd7If3hxnHcDA9+vetImQOkgM+G+XP7vn0/z7/mUUJJaI
+UpOTuzAn8EeHrrxA2rXGipJflhJ5rKnLDuV+6T05xmt398Yf+XgvGf8AY6j9eR9evfuUUxFmOJJU
+3yJvPYyBScfh2ooopgf/2Q==
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/a/201109/layout.css
+
+.tbox {
+	BORDER-BOTTOM: #dff2f5 1px solid; MARGIN: 0px 0px 8px; BACKGROUND: =
+url(images/fl-bg.gif) repeat-x 0px 0px; OVERFLOW: hidden
+}
+.tbox DT {
+	BORDER-BOTTOM: #dff2f5 1px solid; BORDER-LEFT: #dff2f5 1px solid; =
+HEIGHT: 25px; CLEAR: both; OVERFLOW: hidden; BORDER-TOP: #dff2f5 1px =
+solid; BORDER-RIGHT: #dff2f5 1px solid
+}
+.tbox DD {
+	BORDER-LEFT: #dff2f5 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; =
+PADDING-RIGHT: 4px; OVERFLOW: hidden; BORDER-RIGHT: #dff2f5 1px solid; =
+PADDING-TOP: 4px
+}
+.tbox DT STRONG {
+	LINE-HEIGHT: 25px; PADDING-LEFT: 22px; PADDING-RIGHT: 4px; DISPLAY: =
+block; BACKGROUND: url(images/fbico.gif) no-repeat 5px 6px; FLOAT: left; =
+LETTER-SPACING: 1px; HEIGHT: 26px; COLOR: #397cbe
+}
+.tbox DT STRONG A {
+	COLOR: #397cbe
+}
+.tbox DT STRONG A:hover {
+	COLOR: #4c94f6; TEXT-DECORATION: none
+}
+.tbox DT SPAN.more {
+	POSITION: relative; LINE-HEIGHT: 26px; PADDING-RIGHT: 8px; FLOAT: =
+right; COLOR: #397cbe
+}
+.tbox DT SPAN.more A {
+	COLOR: #397cbe; TEXT-DECORATION: none
+}
+.tbox DT SPAN.more A:hover {
+	COLOR: #333
+}
+.tbox DT SPAN.label {
+	PADDING-RIGHT: 1px; FLOAT: right; HEIGHT: 24px; OVERFLOW: hidden; =
+PADDING-TOP: 2px
+}
+.tbox DT SPAN.label A {
+	BORDER-LEFT: #bfe0f9 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 23px; =
+PADDING-LEFT: 8px; PADDING-RIGHT: 7px; DISPLAY: block; FLOAT: left; =
+LETTER-SPACING: 1px; HEIGHT: 25px; COLOR: #666; OVERFLOW: hidden; =
+TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+.tbox DT SPAN.label A:hover {
+	COLOR: #360
+}
+.tbox DT SPAN.label A.thisclass {
+	BACKGROUND: #fff; COLOR: #333; BORDER-TOP: #bfe0f9 3px solid
+}
+.light {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: none =
+transparent scroll repeat 0% 0%; BORDER-TOP: medium none; BORDER-RIGHT: =
+medium none
+}
+.light DT {
+	BORDER-BOTTOM: #bfe0f9 1px solid; BORDER-LEFT: #bfe0f9 1px solid; =
+BACKGROUND: url(images/fr-bg2.gif) repeat-x 0px 0px; HEIGHT: 25px; =
+CLEAR: both; OVERFLOW: hidden; BORDER-TOP: #bfe0f9 1px solid; =
+BORDER-RIGHT: #bfe0f9 1px solid
+}
+.light DD {
+	BORDER-BOTTOM: #bfe0f9 1px solid; BORDER-LEFT: #bfe0f9 1px solid; =
+PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; OVERFLOW: =
+hidden; BORDER-RIGHT: #bfe0f9 1px solid; PADDING-TOP: 4px
+}
+DT.light STRONG {
+	BACKGROUND: url(images/fbico2.gif) no-repeat 5px 5px
+}
+.c1 {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: =
+right; PADDING-TOP: 4px
+}
+.c1 LI {
+	LINE-HEIGHT: 27px; PADDING-LEFT: 16px; BACKGROUND: =
+url(images/ico-2.gif) no-repeat 7px 11px; HEIGHT: 27px; OVERFLOW: hidden
+}
+.c1 A {
+=09
+}
+.c2 {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: =
+0px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 4px
+}
+.c2 LI {
+	LINE-HEIGHT: 27px; PADDING-LEFT: 16px; WIDTH: 44%; BACKGROUND: =
+url(images/ico-2.gif) no-repeat 7px 11px; FLOAT: left; HEIGHT: 27px; =
+OVERFLOW: hidden; MARGIN-RIGHT: 1%
+}
+.d1 {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+PADDING-TOP: 4px
+}
+.d1 LI {
+	LINE-HEIGHT: 27px; HEIGHT: 27px; OVERFLOW: hidden
+}
+.d1 LI SPAN {
+	FLOAT: left; COLOR: #777; MARGIN-RIGHT: 5px
+}
+.d1 LI A {
+=09
+}
+.d2 {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+PADDING-TOP: 4px
+}
+.d2 LI {
+	LINE-HEIGHT: 27px; HEIGHT: 27px; OVERFLOW: hidden
+}
+.d2 LI SPAN {
+	PADDING-RIGHT: 10px; FLOAT: right; COLOR: #777; MARGIN-LEFT: 10px
+}
+.d2 LI A {
+	OVERFLOW: hidden
+}
+.d4 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+PADDING-TOP: 0px
+}
+.d4 LI {
+	BORDER-BOTTOM: #dcebd7 1px dashed; PADDING-BOTTOM: 4px; PADDING-LEFT: =
+8px; PADDING-RIGHT: 8px; HEIGHT: 60px; OVERFLOW: hidden; PADDING-TOP: =
+4px
+}
+.d4 LI A {
+	LINE-HEIGHT: 23px; TEXT-INDENT: 14px; DISPLAY: block; BACKGROUND: =
+url(images/ico-3.gif) no-repeat 4px 9px; OVERFLOW: hidden
+}
+.d4 LI P {
+	LINE-HEIGHT: 17px; HEIGHT: 33px; COLOR: #888; OVERFLOW: hidden
+}
+.d5 {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 8px; =
+PADDING-RIGHT: 8px; PADDING-TOP: 8px
+}
+.d5 LI {
+	LINE-HEIGHT: 41px; PADDING-LEFT: 16px; BACKGROUND: =
+url(images/ico-2.gif) no-repeat 2px 17px; HEIGHT: 41px
+}
+.d5 LI A {
+	FONT-SIZE: 14px
+}
+.d5 LI SPAN {
+	COLOR: #777; MARGIN-LEFT: 10px
+}
+.e1 {
+	PADDING-BOTTOM: 8px; WIDTH: 100%; CLEAR: both; OVERFLOW: hidden; =
+PADDING-TOP: 10px
+}
+.e1 LI {
+	TEXT-ALIGN: center; PADDING-LEFT: 12px; WIDTH: 126px; FLOAT: left; =
+OVERFLOW: hidden
+}
+.e1 LI A {
+	DISPLAY: block
+}
+.e1 LI A:hover IMG {
+	BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; =
+PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999 1px solid; BORDER-RIGHT: #999 1px solid; PADDING-TOP: 2px
+}
+.e1 LI A IMG {
+	BORDER-BOTTOM: #e3e3e3 1px solid; BORDER-LEFT: #e3e3e3 1px solid; =
+PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 120px; PADDING-RIGHT: =
+2px; DISPLAY: block; HEIGHT: 90px; BORDER-TOP: #e3e3e3 1px solid; =
+BORDER-RIGHT: #e3e3e3 1px solid; PADDING-TOP: 2px
+}
+.e1 LI A SPAN {
+	LINE-HEIGHT: 17px; DISPLAY: block; PADDING-TOP: 6px
+}
+.e1 LI SPAN {
+=09
+}
+.e2 {
+=09
+}
+.e2 LI {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 12px; PADDING-LEFT: 0px; =
+WIDTH: 100%; PADDING-RIGHT: 0px; CLEAR: both; OVERFLOW: hidden; =
+PADDING-TOP: 12px
+}
+.e2 LI A.preview {
+	WIDTH: 84px; DISPLAY: inline; MARGIN-BOTTOM: 3px; FLOAT: left; =
+MARGIN-LEFT: 10px; MARGIN-RIGHT: 7px
+}
+.e2 LI A.preview IMG {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; =
+PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; WIDTH: 80px; PADDING-RIGHT: 1px; =
+DISPLAY: block; BORDER-TOP: #eee 1px solid; BORDER-RIGHT: #eee 1px =
+solid; PADDING-TOP: 1px
+}
+.e2 LI A.preview:hover IMG {
+	BORDER-BOTTOM: #aaa 1px solid; BORDER-LEFT: #aaa 1px solid; BORDER-TOP: =
+#aaa 1px solid; BORDER-RIGHT: #aaa 1px solid
+}
+.e2 LI A.title {
+	LINE-HEIGHT: 25px; MARGIN-LEFT: 2px; FONT-SIZE: 14px; OVERFLOW: hidden; =
+FONT-WEIGHT: bold
+}
+.e2 SPAN.info {
+	LINE-HEIGHT: 23px; PADDING-LEFT: 12px; DISPLAY: block; COLOR: #555
+}
+.e2 SPAN.info SMALL {
+	COLOR: #aaa; MARGIN-LEFT: 3px; FONT-SIZE: 12px
+}
+.e2 SPAN.info A {
+	COLOR: #690
+}
+.e2 P.intro {
+	LINE-HEIGHT: 20px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; COLOR: =
+#776955; MARGIN-LEFT: 5px
+}
+.e3 {
+	CLEAR: both; OVERFLOW: hidden
+}
+.e3 LI {
+	BORDER-BOTTOM: #dcebd7 1px dashed; PADDING-BOTTOM: 6px; PADDING-LEFT: =
+6px; PADDING-RIGHT: 6px; HEIGHT: 50px; OVERFLOW: hidden; PADDING-TOP: =
+6px
+}
+.e3 LI A.preview {
+	WIDTH: 58px; DISPLAY: block; FLOAT: left; HEIGHT: 48px; OVERFLOW: =
+hidden; MARGIN-RIGHT: 6px
+}
+.e3 LI A.preview IMG {
+	WIDTH: 58px; HEIGHT: 48px
+}
+.e3 LI A.title {
+	LINE-HEIGHT: 21px; DISPLAY: block; HEIGHT: 21px; OVERFLOW: hidden
+}
+.e3 LI .intro {
+	LINE-HEIGHT: 23px; DISPLAY: block; FLOAT: left; COLOR: #777
+}
+.e5 {
+	LINE-HEIGHT: 0px; PADDING-LEFT: 8px; WIDTH: 112px; FLOAT: left; =
+FONT-SIZE: 0px
+}
+.e5 LI {
+	WIDTH: 104px; DISPLAY: block; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+.e6 {
+	PADDING-LEFT: 6px; HEIGHT: 81px; CLEAR: both; OVERFLOW: hidden
+}
+.e6 LI {
+	WIDTH: 104px; PADDING-RIGHT: 8px; DISPLAY: block; FLOAT: left; =
+OVERFLOW: hidden; PADDING-TOP: 8px
+}
+.e5 LI A {
+	BORDER-BOTTOM: #676767 1px solid; BORDER-LEFT: #676767 1px solid; =
+WIDTH: 102px; DISPLAY: block; HEIGHT: 70px; OVERFLOW: hidden; =
+BORDER-TOP: #676767 1px solid; BORDER-RIGHT: #676767 1px solid
+}
+.e6 LI A {
+	BORDER-BOTTOM: #676767 1px solid; BORDER-LEFT: #676767 1px solid; =
+WIDTH: 102px; DISPLAY: block; HEIGHT: 70px; OVERFLOW: hidden; =
+BORDER-TOP: #676767 1px solid; BORDER-RIGHT: #676767 1px solid
+}
+.e5 LI A IMG {
+	WIDTH: 102px; DISPLAY: block; HEIGHT: 70px
+}
+.e6 LI A IMG {
+	WIDTH: 102px; DISPLAY: block; HEIGHT: 70px
+}
+.e5 LI A:hover {
+	BORDER-BOTTOM: #333 1px solid; BORDER-LEFT: #333 1px solid; BORDER-TOP: =
+#333 1px solid; BORDER-RIGHT: #333 1px solid
+}
+.e6 LI A:hover {
+	BORDER-BOTTOM: #333 1px solid; BORDER-LEFT: #333 1px solid; BORDER-TOP: =
+#333 1px solid; BORDER-RIGHT: #333 1px solid
+}
+.e7 {
+	CLEAR: both; OVERFLOW: hidden
+}
+.e7 LI {
+	PADDING-LEFT: 11px; WIDTH: 60px; FLOAT: left; HEIGHT: 86px; OVERFLOW: =
+hidden
+}
+.e7 LI A {
+	TEXT-ALIGN: center; MARGIN: 0px auto; DISPLAY: block
+}
+.e7 LI A IMG {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; =
+PADDING-BOTTOM: 2px; MARGIN: 0px auto 6px; PADDING-LEFT: 2px; WIDTH: =
+52px; PADDING-RIGHT: 2px; DISPLAY: block; HEIGHT: 52px; BORDER-TOP: #ddd =
+1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 2px
+}
+.e7 LI A:hover IMG {
+	BORDER-BOTTOM: #aaa 1px solid; BORDER-LEFT: #aaa 1px solid; BORDER-TOP: =
+#aaa 1px solid; BORDER-RIGHT: #aaa 1px solid
+}
+.e8 {
+	MARGIN-TOP: 16px; WIDTH: 100%; MARGIN-LEFT: 12px; CLEAR: both; =
+OVERFLOW: hidden
+}
+.e8 LI {
+	TEXT-ALIGN: center; WIDTH: 168px; DISPLAY: block; FLOAT: left; HEIGHT: =
+184px; OVERFLOW: hidden; MARGIN-RIGHT: 8px
+}
+.e8 LI .pic {
+	TEXT-ALIGN: left; WIDTH: 160px; DISPLAY: block; BACKGROUND: =
+url(images/picbox-listbg.gif) no-repeat; HEIGHT: 120px; OVERFLOW: hidden
+}
+.e8 LI .pic IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MARGIN-TOP: 3px; =
+WIDTH: 152px; DISPLAY: block; HEIGHT: 112px; MARGIN-LEFT: 3px; =
+BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.e8 LI .title {
+	LINE-HEIGHT: 31px; DISPLAY: block; HEIGHT: 31px; OVERFLOW: hidden; =
+FONT-WEIGHT: bold
+}
+.e8 LI .date {
+	COLOR: #666
+}
+.e8 LI .date SMALL {
+	LINE-HEIGHT: 17px; COLOR: #999; FONT-SIZE: 12px
+}
+.e9 {
+	WIDTH: 100%; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 4px
+}
+.e9 LI {
+	TEXT-ALIGN: center; WIDTH: 106px; DISPLAY: inline; FLOAT: left; HEIGHT: =
+110px; MARGIN-LEFT: 6px; OVERFLOW: hidden
+}
+.e9 LI A {
+	COLOR: #777
+}
+.e9 LI A IMG {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; =
+PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; WIDTH: 102px; PADDING-RIGHT: =
+1px; DISPLAY: block; HEIGHT: 76px; BORDER-TOP: #ddd 1px solid; =
+BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 1px
+}
+.e9 LI A SPAN.title {
+	LINE-HEIGHT: 29px; DISPLAY: block; HEIGHT: 29px; OVERFLOW: hidden
+}
+.f1 {
+	BACKGROUND: url(images/number-range.gif) no-repeat 5px 5px; OVERFLOW: =
+hidden
+}
+.f1 LI {
+	BORDER-BOTTOM: #dcebd7 1px dashed; PADDING-BOTTOM: 4px; PADDING-LEFT: =
+38px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 38px; OVERFLOW: =
+hidden; PADDING-TOP: 3px
+}
+.f1 LI A {
+	LINE-HEIGHT: 21px; DISPLAY: block; HEIGHT: 21px; OVERFLOW: hidden
+}
+.f1 LI SPAN {
+	LINE-HEIGHT: 15px; COLOR: #666666; MARGIN-LEFT: 5px
+}
+.f1 LI SPAN SMALL {
+	COLOR: #999; FONT-SIZE: 12px
+}
+.f1 LI SPAN A {
+	LINE-HEIGHT: 15px; DISPLAY: inline; COLOR: #690
+}
+.f2 {
+	OVERFLOW: hidden
+}
+.f2 LI {
+	BORDER-BOTTOM: #dcebd7 1px dashed; PADDING-BOTTOM: 0px; PADDING-LEFT: =
+8px; PADDING-RIGHT: 8px; HEIGHT: 73px; CLEAR: both; OVERFLOW: hidden; =
+PADDING-TOP: 0px
+}
+.f2 SMALL {
+	LINE-HEIGHT: 21px; DISPLAY: block; HEIGHT: 21px; COLOR: #999; =
+FONT-SIZE: 12px; OVERFLOW: hidden; PADDING-TOP: 6px
+}
+.f2 SMALL A.username {
+	COLOR: #666
+}
+.f2 P {
+	LINE-HEIGHT: 21px; TEXT-INDENT: 17px; BACKGROUND: =
+url(images/ico-comment-quote.gif) no-repeat 0px 4px; HEIGHT: 42px; =
+COLOR: #888; OVERFLOW: hidden
+}
+.f4 {
+=09
+}
+.f4 LI {
+	MARGIN: 10px 12px 2px 8px; WIDTH: 94px; DISPLAY: block; FLOAT: left; =
+HEIGHT: 37px; OVERFLOW: hidden
+}
+.f4 LI A {
+	BORDER-BOTTOM: #fff 3px solid; BORDER-LEFT: #fff 3px solid; WIDTH: =
+88px; FLOAT: left; HEIGHT: 31px; OVERFLOW: hidden; BORDER-TOP: #fff 3px =
+solid; BORDER-RIGHT: #fff 3px solid
+}
+.f4 LI A:hover {
+	BORDER-BOTTOM: #eee 3px solid; BORDER-LEFT: #eee 3px solid; BORDER-TOP: =
+#eee 3px solid; BORDER-RIGHT: #eee 3px solid
+}
+.f5 {
+	PADDING-BOTTOM: 10px; WIDTH: 100%; CLEAR: both; OVERFLOW: hidden
+}
+.f5 LI {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 14px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FLOAT: left; PADDING-TOP: 8px
+}
+.f5 LI A {
+	FLOAT: left; COLOR: #666666
+}
+.f6 {
+	PADDING-BOTTOM: 10px; WIDTH: 100%; CLEAR: both; OVERFLOW: hidden
+}
+.f6 LI {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 14px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FLOAT: left; PADDING-TOP: 8px
+}
+.f6 LI A {
+	FLOAT: left; COLOR: #666666
+}
+.ico1 LI {
+	PADDING-LEFT: 16px; BACKGROUND: url(images/ico-1.gif) no-repeat 7px =
+11px
+}
+.ico2 LI {
+	PADDING-LEFT: 16px; BACKGROUND: url(images/ico-2.gif) no-repeat 6px =
+11px
+}
+.ico3 LI {
+	PADDING-LEFT: 16px; BACKGROUND: url(images/ico-3.gif) no-repeat 7px =
+11px
+}
+LI.dotline {
+	BORDER-BOTTOM: #cde0fa 1px dashed; LINE-HEIGHT: 26px; HEIGHT: 26px
+}
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/a/201109/page.css
+
+.pleft {
+	WIDTH: 712px; FLOAT: left; OVERFLOW: hidden
+}
+.pleft .place {
+	BORDER-BOTTOM: #e0ecf3 1px solid; LINE-HEIGHT: 24px; TEXT-INDENT: 12px; =
+WIDTH: 712px; BACKGROUND: #f2fcfe; HEIGHT: 24px; COLOR: #ccc; OVERFLOW: =
+hidden; BORDER-TOP: #e0ecf3 1px solid
+}
+.pleft .place STRONG {
+	LETTER-SPACING: 1px; COLOR: #397cbe; FONT-WEIGHT: normal
+}
+.pleft .place A {
+	MARGIN: 0px 2px; COLOR: #397cbe
+}
+.pleft .place A:hover {
+	COLOR: #469cf2; TEXT-DECORATION: none
+}
+.pleft .place SMALL {
+	WIDTH: 8px; DISPLAY: inline-block; BACKGROUND: url(images/ico-3.gif) =
+no-repeat 2px 8px; HEIGHT: 20px; FONT-SIZE: 0px; VERTICAL-ALIGN: middle; =
+OVERFLOW: hidden
+}
+.pright {
+	WIDTH: 240px; FLOAT: right; OVERFLOW: hidden
+}
+.dede_pages {
+=09
+}
+.dede_pages UL {
+	PADDING-BOTTOM: 12px; PADDING-LEFT: 16px; PADDING-RIGHT: 0px; FLOAT: =
+left; PADDING-TOP: 12px
+}
+.dede_pages UL LI {
+	LINE-HEIGHT: 17px; LIST-STYLE-TYPE: none; FONT-FAMILY: Tahoma; FLOAT: =
+left; LIST-STYLE-IMAGE: none; MARGIN-RIGHT: 6px
+}
+.dede_pages UL LI A {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 4px; =
+PADDING-RIGHT: 4px; FLOAT: left; COLOR: #555; PADDING-TOP: 2px
+}
+.dede_pages UL LI A:hover {
+	BORDER-BOTTOM: #690 2px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 4px; =
+PADDING-RIGHT: 4px; COLOR: #690; TEXT-DECORATION: none; PADDING-TOP: 2px
+}
+.dede_pages UL LI.thisclass A {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; COLOR: #f63; FONT-WEIGHT: =
+bold; LIST-STYLE-IMAGE: none; PADDING-TOP: 2px
+}
+.pagebox UL LI.thisclass A:hover {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; COLOR: #f63; FONT-WEIGHT: =
+bold; LIST-STYLE-IMAGE: none; PADDING-TOP: 2px
+}
+.dede_pages .pageinfo {
+	PADDING-BOTTOM: 12px; LINE-HEIGHT: 21px; PADDING-LEFT: 16px; =
+PADDING-RIGHT: 10px; COLOR: #999; PADDING-TOP: 12px
+}
+.dede_pages .pageinfo STRONG {
+	MARGIN: 0px 2px; COLOR: #555; FONT-WEIGHT: normal
+}
+.index .bignews {
+	BORDER-BOTTOM: #dff2f5 1px solid; BORDER-LEFT: #dff2f5 1px solid; =
+WIDTH: 424px; BACKGROUND: url(images/headbg-top.gif) repeat-x; FLOAT: =
+right; HEIGHT: 400px; OVERFLOW: hidden; BORDER-TOP: #dff2f5 1px solid; =
+BORDER-RIGHT: #dff2f5 1px solid
+}
+.index .bignews A {
+	COLOR: #555
+}
+.index .bignews .onenews {
+	BORDER-BOTTOM: #ebebeb 1px dashed; PADDING-BOTTOM: 7px; MARGIN: 0px =
+3px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; PADDING-TOP: 7px
+}
+.index .bignews .onenews H2 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px; DISPLAY: block; HEIGHT: 32px
+}
+.index .bignews .onenews H2 A {
+	FONT-SIZE: 16px
+}
+.index .bignews .onenews P {
+	LINE-HEIGHT: 19px; COLOR: #666
+}
+.index .bignews DIV.newarticle {
+	BACKGROUND: url(images/new-article.gif) no-repeat 8px 3px; HEIGHT: =
+24px; COLOR: #fff; FONT-SIZE: 0px
+}
+.index .bignews DIV.d1 {
+	PADDING-BOTTOM: 6px; PADDING-LEFT: 10px; WIDTH: 406px; PADDING-RIGHT: =
+10px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 6px
+}
+.index .bignews DIV.d1arc {
+	LINE-HEIGHT: 24px; WIDTH: 190px; FLOAT: left; HEIGHT: 24px; OVERFLOW: =
+hidden; MARGIN-RIGHT: 12px
+}
+.index .bignews DIV.d1arc A {
+=09
+}
+.index .bignews UL.c2 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; WIDTH: 416px; PADDING-RIGHT: =
+4px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.index .bignews UL.c2 A {
+	FONT-SIZE: 13px
+}
+.index .flashnews {
+	WIDTH: 280px; FLOAT: left; HEIGHT: 192px; OVERFLOW: hidden
+}
+.index .latestnews {
+	MARGIN-TOP: 8px; WIDTH: 280px; FLOAT: left; HEIGHT: 200px
+}
+.index .latestnews DL DD {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+PADDING-TOP: 2px
+}
+.index .latestnews UL A {
+	COLOR: #555
+}
+.index .picnews {
+	MARGIN-TOP: 10px; WIDTH: 712px; FLOAT: left; CLEAR: both; OVERFLOW: =
+hidden
+}
+.index .listbox {
+	WIDTH: 720px; FLOAT: left; CLEAR: both; OVERFLOW: hidden
+}
+.index .listbox DL {
+	MARGIN-TOP: 8px; WIDTH: 352px; FLOAT: left; MARGIN-RIGHT: 8px
+}
+.index .listbox UL A {
+	COLOR: #666
+}
+.index .usercenter .tbox DD {
+	DISPLAY: none; HEIGHT: 370px
+}
+.index .usercenter .tbox DD#loading {
+	TEXT-ALIGN: center; LINE-HEIGHT: 200px; DISPLAY: block; LETTER-SPACING: =
+2px; COLOR: #999999
+}
+.index .userlogin {
+	PADDING-TOP: 10px
+}
+.index .userlogin .fb {
+	HEIGHT: 37px
+}
+.index .userlogin .fb SPAN {
+	TEXT-ALIGN: right; WIDTH: 60px; PADDING-RIGHT: 6px; FLOAT: left; COLOR: =
+#888
+}
+.index .userlogin .fb IMG {
+	MARGIN-LEFT: 5px; VERTICAL-ALIGN: middle
+}
+.index .userlogin .submit {
+	TEXT-ALIGN: center; PADDING-TOP: 3px
+}
+.index .userlogin .submit A {
+	COLOR: #030; MARGIN-LEFT: 7px
+}
+.index .userinfo {
+=09
+}
+.index .userinfo .welcome {
+	BORDER-BOTTOM: #eee 1px solid; LINE-HEIGHT: 23px; TEXT-INDENT: 10px; =
+MARGIN: 12px auto; WIDTH: 220px; BACKGROUND: #f9f9f9; HEIGHT: 24px; =
+COLOR: #666; BORDER-TOP: #eee 1px solid
+}
+.index .userinfo .welcome STRONG {
+	COLOR: #f60; FONT-WEIGHT: bold
+}
+.index .userinfo .userface {
+	PADDING-LEFT: 16px; WIDTH: 60px; FLOAT: left; HEIGHT: 64px; OVERFLOW: =
+hidden; PADDING-TOP: 2px
+}
+.index .userinfo .userface A {
+	TEXT-ALIGN: center; MARGIN: 0px auto; DISPLAY: block
+}
+.index .userinfo .userface A IMG {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; =
+PADDING-BOTTOM: 2px; MARGIN: 0px auto 6px; PADDING-LEFT: 2px; WIDTH: =
+52px; PADDING-RIGHT: 2px; DISPLAY: block; HEIGHT: 52px; BORDER-TOP: #ddd =
+1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 2px
+}
+.index .userinfo .mylink {
+	WIDTH: 144px; FLOAT: left; OVERFLOW: hidden
+}
+.index .userinfo .mylink UL {
+=09
+}
+.index .userinfo .mylink UL LI {
+	LINE-HEIGHT: 21px; TEXT-INDENT: 12px; WIDTH: 72px; FLOAT: left
+}
+.index .userinfo .mylink UL LI A {
+	COLOR: #555
+}
+.index .userinfo .uclink {
+	TEXT-ALIGN: center; LINE-HEIGHT: 31px; HEIGHT: 31px; COLOR: #ddd; =
+CLEAR: both; OVERFLOW: hidden
+}
+.index .userinfo .uclink A {
+	MARGIN: 0px 2px; COLOR: #690
+}
+.index .latestlogin {
+	PADDING-TOP: 16px
+}
+.index .latestlogin STRONG {
+	Z-INDEX: 5; POSITION: relative; LINE-HEIGHT: 21px; PADDING-LEFT: 6px; =
+WIDTH: 102px; DISPLAY: block; BACKGROUND: #fff; LETTER-SPACING: 1px; =
+COLOR: #555
+}
+.index .latestlogin UL {
+	Z-INDEX: 3; MARGIN: -12px auto 0px; WIDTH: 224px; BORDER-TOP: #c5ddbc =
+1px solid; PADDING-TOP: 20px
+}
+.index .commend DL DD {
+	PADDING-TOP: 0px
+}
+.index .hot DL DD {
+	PADDING-TOP: 0px
+}
+.index .hot DL DD .c1 LI {
+	WIDTH: 210px; OVERFLOW: hidden
+}
+.index .vote DL DD STRONG {
+	BORDER-BOTTOM: #daedf8 1px solid; LINE-HEIGHT: 27px; MARGIN: 0px 4px; =
+PADDING-LEFT: 8px; DISPLAY: block; LETTER-SPACING: 1px; COLOR: #397cbe
+}
+.index .vote DL DD .fb {
+	PADDING-LEFT: 10px; HEIGHT: 21px; COLOR: #555; PADDING-TOP: 10px
+}
+.index .vote DL DD .fb INPUT {
+	MARGIN-RIGHT: 4px
+}
+.index .vote DL DD .submit {
+	TEXT-ALIGN: center; HEIGHT: 35px; PADDING-TOP: 8px
+}
+.index .vote DL DD .submit BUTTON {
+	MARGIN-RIGHT: 10px
+}
+.index .vote DL DD .submit A {
+	COLOR: #003300
+}
+.channel .flashnews {
+	WIDTH: 280px; BACKGROUND: #f00; FLOAT: left; HEIGHT: 192px; OVERFLOW: =
+hidden
+}
+.channel .topcommand {
+	WIDTH: 424px; FLOAT: right; OVERFLOW: hidden
+}
+.channel .topcommand DL DD {
+	HEIGHT: 162px
+}
+.channel .topcommand A {
+	COLOR: #666
+}
+.channel .topcommand .onenews {
+	BORDER-BOTTOM: #ebebeb 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: =
+12px; PADDING-RIGHT: 12px; PADDING-TOP: 3px
+}
+.channel .topcommand .onenews H2 {
+	LINE-HEIGHT: 25px; DISPLAY: block; HEIGHT: 28px
+}
+.channel .topcommand .onenews H2 A {
+	FONT-SIZE: 16px
+}
+.channel .topcommand .onenews P {
+	LINE-HEIGHT: 19px; COLOR: #666
+}
+.channel .picnews {
+	MARGIN-TOP: 8px; WIDTH: 712px; FLOAT: left; CLEAR: both; OVERFLOW: =
+hidden
+}
+.channel .listbox {
+	WIDTH: 720px; FLOAT: left; CLEAR: both; OVERFLOW: hidden
+}
+.channel .listbox DL {
+	MARGIN-TOP: 8px; WIDTH: 352px; FLOAT: left; MARGIN-RIGHT: 8px
+}
+.channel .listbox UL A {
+	COLOR: #666
+}
+.viewbox {
+	PADDING-BOTTOM: 8px; WIDTH: 712px; OVERFLOW: hidden
+}
+.viewbox .title {
+	TEXT-ALIGN: center; LINE-HEIGHT: 56px; HEIGHT: 56px; OVERFLOW: hidden; =
+PADDING-TOP: 10px
+}
+.viewbox .title H2 {
+	COLOR: #369; FONT-SIZE: 24px
+}
+.viewbox .info {
+	TEXT-ALIGN: center; LINE-HEIGHT: 17px; HEIGHT: 24px; COLOR: #666; =
+OVERFLOW: hidden
+}
+.viewbox .info SMALL {
+	COLOR: #999; MARGIN-LEFT: 8px; FONT-SIZE: 12px; MARGIN-RIGHT: 3px
+}
+.viewbox .info A {
+	COLOR: #690
+}
+.viewbox .intro {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; =
+PADDING-BOTTOM: 8px; LINE-HEIGHT: 25px; MARGIN-TOP: 8px; PADDING-LEFT: =
+16px; PADDING-RIGHT: 16px; BACKGROUND: #fafdfe; COLOR: #555; FONT-SIZE: =
+14px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; =
+PADDING-TOP: 8px
+}
+.viewbox .infolist {
+	WIDTH: 368px; FLOAT: left
+}
+.viewbox .infolist SMALL {
+	TEXT-ALIGN: right; LINE-HEIGHT: 31px; WIDTH: 100px; DISPLAY: block; =
+FLOAT: left; HEIGHT: 31px; COLOR: #999; CLEAR: left; FONT-SIZE: 12px; =
+OVERFLOW: hidden
+}
+.viewbox .infolist SPAN {
+	LINE-HEIGHT: 30px; WIDTH: 200px; FLOAT: left; HEIGHT: 31px; OVERFLOW: =
+hidden
+}
+.viewbox .picview {
+	WIDTH: 320px; PADDING-RIGHT: 24px; FLOAT: right; PADDING-TOP: 16px
+}
+.viewbox .labeltitle {
+	MARGIN: 0px auto; BACKGROUND: url(images/view-labeltitle-bg.gif) =
+repeat-x left 10px; HEIGHT: 23px; CLEAR: both; OVERFLOW: hidden; =
+PADDING-TOP: 10px
+}
+.viewbox .labeltitle STRONG {
+	TEXT-ALIGN: center; LINE-HEIGHT: 23px; WIDTH: 80px; DISPLAY: block; =
+BACKGROUND: url(images/view-labeltitle-bg.gif) no-repeat left -44px; =
+FLOAT: left; LETTER-SPACING: 1px; HEIGHT: 23px; COLOR: #fff; OVERFLOW: =
+hidden
+}
+.viewbox .content {
+	PADDING-BOTTOM: 4px; LINE-HEIGHT: 25px; PADDING-LEFT: 4px; =
+PADDING-RIGHT: 4px; COLOR: #333; FONT-SIZE: 14px; PADDING-TOP: 4px
+}
+.viewbox .dede_pages {
+	TEXT-ALIGN: center; WIDTH: 700px; FLOAT: none; OVERFLOW: hidden
+}
+.viewbox .dede_pages UL {
+	TEXT-ALIGN: center; MARGIN: 0px auto; WHITE-SPACE: nowrap; FLOAT: none; =
+CLEAR: both; OVERFLOW: hidden
+}
+.viewbox .dede_pages UL LI {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; DISPLAY: inline; FLOAT: =
+none; COLOR: #f63; FONT-WEIGHT: bold; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 2px
+}
+.viewbox .dede_pages LI {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; DISPLAY: inline; FLOAT: =
+none; COLOR: #f63; FONT-WEIGHT: bold; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 2px
+}
+.viewbox .dede_pages UL LI A {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; DISPLAY: inline; FLOAT: =
+none; COLOR: #f63; FONT-WEIGHT: bold; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 2px
+}
+.viewbox .dede_pages LI A {
+	BORDER-BOTTOM: #f63 2px solid; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: =
+none; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; DISPLAY: inline; FLOAT: =
+none; COLOR: #f63; FONT-WEIGHT: bold; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 2px
+}
+.viewbox .boxoff {
+	MARGIN: 4px auto; BACKGROUND: url(images/boxoff.gif) repeat-x left =
+15px; HEIGHT: 10px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.viewbox .boxoff STRONG {
+	LINE-HEIGHT: 100px; WIDTH: 8px; DISPLAY: block; BACKGROUND: =
+url(images/boxoff.gif) no-repeat right -10px; FLOAT: left; HEIGHT: 10px; =
+FONT-SIZE: 0px; OVERFLOW: hidden
+}
+.viewbox .newdigg {
+	MARGIN: 8px auto; PADDING-LEFT: 8px; WIDTH: 406px; HEIGHT: 51px; CLEAR: =
+both; OVERFLOW: hidden
+}
+.viewbox .diggbox {
+	WIDTH: 195px; FLOAT: left; HEIGHT: 51px; OVERFLOW: hidden; CURSOR: =
+pointer; MARGIN-RIGHT: 8px
+}
+.viewbox .diggbox .digg_act {
+	LINE-HEIGHT: 31px; TEXT-INDENT: 32px; FLOAT: left; HEIGHT: 29px; =
+FONT-SIZE: 14px; OVERFLOW: hidden; FONT-WEIGHT: bold
+}
+.viewbox .diggbox .digg_num {
+	LINE-HEIGHT: 29px; TEXT-INDENT: 5px; FLOAT: left
+}
+.viewbox .diggbox .digg_percent {
+	PADDING-LEFT: 10px; WIDTH: 180px; CLEAR: both; OVERFLOW: hidden
+}
+.viewbox .diggbox .digg_percent .digg_percent_bar {
+	MARGIN-TOP: 3px; WIDTH: 100px; BACKGROUND: #e8e8e8; FLOAT: left; =
+HEIGHT: 7px; OVERFLOW: hidden; BORDER-RIGHT: #ccc 1px solid
+}
+.viewbox .diggbox .digg_percent .digg_percent_num {
+	PADDING-LEFT: 10px; FLOAT: left; FONT-SIZE: 10px
+}
+.viewbox .diggbox .digg_percent .digg_percent_bar SPAN {
+	DISPLAY: block; BACKGROUND: #000; HEIGHT: 5px; OVERFLOW: hidden
+}
+.viewbox .newdigg .digg_good {
+	BACKGROUND: url(images/newdigg-bg.png) no-repeat left top
+}
+.viewbox .newdigg .digg_bad {
+	BACKGROUND: url(images/newdigg-bg.png) no-repeat right top
+}
+.viewbox .newdigg .digg_good .digg_act {
+	COLOR: #c30
+}
+.viewbox .newdigg .digg_good .digg_num {
+	COLOR: #c63
+}
+.viewbox .newdigg .digg_bad .digg_act {
+	COLOR: #36c
+}
+.viewbox .newdigg .digg_bad .digg_num {
+	COLOR: #39c
+}
+.viewbox .newdigg .digg_good .digg_percent .digg_percent_bar SPAN {
+	BORDER-BOTTOM: #e37f24 1px solid; BORDER-LEFT: #e37f24 1px solid; =
+BACKGROUND: #ffc535; BORDER-TOP: #e37f24 1px solid; BORDER-RIGHT: =
+#e37f24 1px solid
+}
+.viewbox .newdigg .digg_bad .digg_percent .digg_percent_bar SPAN {
+	BORDER-BOTTOM: #689acc 1px solid; BORDER-LEFT: #689acc 1px solid; =
+BACKGROUND: #94c0e4; BORDER-TOP: #689acc 1px solid; BORDER-RIGHT: =
+#689acc 1px solid
+}
+.viewbox .handle {
+	HEIGHT: 59px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 12px
+}
+.viewbox .handle .digg {
+	WIDTH: 59px; BACKGROUND: url(images/digg-bg.gif) no-repeat; FLOAT: =
+left; HEIGHT: 59px; MARGIN-RIGHT: 12px
+}
+.viewbox .handle .digg .digg_num {
+	TEXT-ALIGN: center; LINE-HEIGHT: 34px; WIDTH: 56px; HEIGHT: 34px; =
+COLOR: #6b9169; FONT-SIZE: 20px; OVERFLOW: hidden
+}
+.viewbox .handle .digg .digg_act {
+	LINE-HEIGHT: 23px; WIDTH: 56px; HEIGHT: 22px; OVERFLOW: hidden
+}
+.viewbox .handle .digg .digg_act A {
+	FLOAT: left; COLOR: #666; MARGIN-LEFT: 11px
+}
+.viewbox .handle .context {
+	FLOAT: left
+}
+.viewbox .handle .context UL LI {
+	LINE-HEIGHT: 29px; COLOR: #888
+}
+.viewbox .actbox {
+	TEXT-ALIGN: center; WIDTH: 260px; PADDING-RIGHT: 10px; FLOAT: right; =
+PADDING-TOP: 20px
+}
+.viewbox .actbox UL LI {
+	BACKGROUND-IMAGE: url(images/actbox-ico.gif); PADDING-LEFT: 22px; =
+DISPLAY: inline; BACKGROUND-REPEAT: no-repeat; MARGIN-RIGHT: 10px
+}
+.viewbox .actbox UL LI A {
+	COLOR: #666
+}
+.viewbox .actbox UL LI#act-fav {
+	BACKGROUND-POSITION: 4px 0px
+}
+.viewbox .actbox UL LI#act-err {
+	BACKGROUND-POSITION: 4px -37px
+}
+.viewbox .actbox UL LI#act-pus {
+	BACKGROUND-POSITION: 4px -73px
+}
+.viewbox .actbox UL LI#act-pnt {
+	BACKGROUND-POSITION: 4px -109px
+}
+.viewbox .downurllist {
+	WIDTH: 100%; CLEAR: both; OVERFLOW: hidden
+}
+.viewbox .downurllist LI {
+	MARGIN-TOP: 10px; PADDING-RIGHT: 4px; BACKGROUND: =
+url(images/downurl-bg.gif) no-repeat right top; FLOAT: left; HEIGHT: =
+27px; OVERFLOW: hidden; MARGIN-RIGHT: 10px
+}
+.viewbox .downurllist LI A {
+	LINE-HEIGHT: 27px; TEXT-INDENT: 30px; PADDING-RIGHT: 5px; DISPLAY: =
+block; BACKGROUND: url(images/downurl-bg.gif) no-repeat left top; FLOAT: =
+left; HEIGHT: 27px; COLOR: #555; FONT-SIZE: 12px
+}
+.viewbox .downurllist LI A:hover {
+	COLOR: #f63; TEXT-DECORATION: none
+}
+.viewbox .picbox {
+	TEXT-ALIGN: center; LINE-HEIGHT: 31px; WIDTH: 100%; FONT-SIZE: 14px; =
+OVERFLOW: hidden; PADDING-TOP: 10px
+}
+.viewbox .picbox IMG {
+	MARGIN: 16px auto 6px; DISPLAY: block
+}
+.viewbox .picbox UL.e8 {
+	LINE-HEIGHT: normal; FONT-SIZE: 12px
+}
+.viewbox .picbox UL.e8 LI .pic {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; BACKGROUND: =
+none transparent scroll repeat 0% 0%; OVERFLOW: hidden; BORDER-TOP: #eee =
+1px solid; BORDER-RIGHT: #eee 1px solid
+}
+.viewbox .picbox UL.e8 IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MARGIN: 3px; =
+BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.viewbox .picbox UL.e8 LI .title {
+	PADDING-TOP: 0px
+}
+.specialpic {
+	WIDTH: 200px; FLOAT: left; OVERFLOW: hidden; MARGIN-RIGHT: 20px; =
+PADDING-TOP: 10px
+}
+.specialpic IMG {
+	WIDTH: 200px; DISPLAY: block
+}
+.speciallist {
+	WIDTH: 720px; OVERFLOW: hidden
+}
+.speciallist DL.tbox {
+	MARGIN-TOP: 8px; WIDTH: 352px; FLOAT: left; MARGIN-RIGHT: 8px
+}
+.storypic {
+	WIDTH: 160px; FLOAT: left; OVERFLOW: hidden; MARGIN-RIGHT: 20px; =
+PADDING-TOP: 10px
+}
+.storypic IMG {
+	WIDTH: 160px; DISPLAY: block
+}
+.infos_userinfo {
+	WIDTH: 240px; OVERFLOW: hidden
+}
+.infos_userinfo DD {
+	PADDING-BOTTOM: 12px; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; =
+BACKGROUND: #fff; OVERFLOW: hidden; PADDING-TOP: 12px
+}
+.infos_userinfo DD .userface {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; =
+PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; WIDTH: 52px; PADDING-RIGHT: 1px; =
+FLOAT: left; HEIGHT: 52px; OVERFLOW: hidden; BORDER-TOP: #ddd 1px solid; =
+MARGIN-RIGHT: 8px; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 1px
+}
+.infos_userinfo DD .userface IMG {
+	WIDTH: 52px; DISPLAY: block; HEIGHT: 52px; OVERFLOW: hidden
+}
+.infos_userinfo DD .username {
+	LINE-HEIGHT: 19px; DISPLAY: block; HEIGHT: 19px; COLOR: #f60; OVERFLOW: =
+hidden; FONT-WEIGHT: bold
+}
+.infos_userinfo DD .useract {
+	PADDING-LEFT: 4px; WIDTH: 140px; FLOAT: left; HEIGHT: 44px; OVERFLOW: =
+hidden
+}
+.infos_userinfo DD .useract-pm {
+	LINE-HEIGHT: 19px; WIDTH: 70px; FLOAT: left; HEIGHT: 19px; OVERFLOW: =
+hidden
+}
+.infos_userinfo DD .useract-af {
+	LINE-HEIGHT: 19px; WIDTH: 70px; FLOAT: left; HEIGHT: 19px; OVERFLOW: =
+hidden
+}
+.infos_userinfo DD .useract-vi {
+	LINE-HEIGHT: 19px; DISPLAY: block; HEIGHT: 19px; COLOR: #666; CLEAR: =
+both; OVERFLOW: hidden
+}
+.infos_userinfo DD .userinfo-sp {
+	LINE-HEIGHT: 25px; PADDING-LEFT: 10px; DISPLAY: block; HEIGHT: 25px; =
+CLEAR: both
+}
+.infos_userinfo DD .userinfo-sp SMALL {
+	COLOR: #aaa; FONT-SIZE: 12px; MARGIN-RIGHT: 5px
+}
+.infos_search DD {
+	PADDING-BOTTOM: 12px; PADDING-LEFT: 8px; PADDING-RIGHT: 4px; =
+PADDING-TOP: 4px
+}
+.infos_search DD SELECT {
+	MARGIN-TOP: 8px; MARGIN-LEFT: 4px
+}
+.infos_search DD INPUT {
+	MARGIN-TOP: 8px; MARGIN-LEFT: 4px
+}
+.infos_search DD BUTTON {
+	MARGIN-TOP: 8px; MARGIN-LEFT: 4px
+}
+.infos_search DD SELECT {
+	FONT-SIZE: 14px
+}
+.tags_list DD {
+	PADDING-BOTTOM: 4px; LINE-HEIGHT: 220%; PADDING-LEFT: 12px; =
+PADDING-RIGHT: 12px; PADDING-TOP: 4px
+}
+.tags_list DD A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 10px
+}
+.tagc1 {
+	COLOR: #666; FONT-SIZE: 12px
+}
+.tagc2 {
+	COLOR: #555; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.sp-title {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 4px; PADDING-LEFT: 12px; =
+PADDING-RIGHT: 12px; MARGIN-BOTTOM: 8px; BACKGROUND: #fafafa; COLOR: =
+#888; BORDER-TOP: #eee 1px solid; PADDING-TOP: 4px
+}
+.sp-title H2 {
+	LINE-HEIGHT: 27px; FONT-SIZE: 16px
+}
+.sp-title H2 A {
+	MARGIN-LEFT: 6px
+}
+.sp-title .more {
+	LINE-HEIGHT: 27px; MARGIN: -27px 0px; FLOAT: right
+}
+.linkbox {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 8px; =
+PADDING-RIGHT: 8px; PADDING-TOP: 10px
+}
+.linkbox H3 {
+	COLOR: #693; FONT-SIZE: 14px
+}
+.linkbox H3 A {
+	COLOR: #693; FONT-SIZE: 14px
+}
+.buycar {
+=09
+}
+.buycar H2 {
+	LINE-HEIGHT: 31px; COLOR: #f60; FONT-SIZE: 14px
+}
+.buycar .flow {
+	BORDER-LEFT: #dee79e 1px solid; WIDTH: 100%; MARGIN-BOTTOM: 16px; =
+BORDER-TOP: #dee79e 1px solid; BORDER-RIGHT: #dee79e 1px solid
+}
+.buycar .flow TD {
+	BORDER-BOTTOM: #eff3cf 1px solid; TEXT-ALIGN: center; LINE-HEIGHT: =
+19px; BACKGROUND: #f8faeb; LETTER-SPACING: 3px; HEIGHT: 23px; COLOR: =
+#888; OVERFLOW: hidden; BORDER-TOP: #fff 3px solid; BORDER-RIGHT: =
+#eff3cf 1px solid
+}
+.buycar .flow TD.thisclass {
+	BORDER-BOTTOM: #fff 1px solid; BACKGROUND: #fff; COLOR: #333; =
+BORDER-TOP: #f8faeb 3px solid; FONT-WEIGHT: bold
+}
+.flinkbox {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+PADDING-TOP: 4px
+}
+.formbox {
+	MARGIN: 0px auto; WIDTH: 90%
+}
+.formbox .fb {
+	MARGIN: 0px auto; WIDTH: 100%; CLEAR: both; OVERFLOW: hidden; =
+PADDING-TOP: 10px
+}
+.formbox .fb .name {
+	TEXT-ALIGN: right; LINE-HEIGHT: 31px; WIDTH: 180px; PADDING-RIGHT: =
+10px; DISPLAY: block; FLOAT: left; HEIGHT: 31px; COLOR: #666; FONT-SIZE: =
+14px
+}
+.formbox .fb .value {
+	FLOAT: left
+}
+.formbox .fb .value IMG {
+	VERTICAL-ALIGN: middle
+}
+.dede_comment {
+	PADDING-BOTTOM: 6px
+}
+.dede_comment .decmt-box {
+	BORDER-BOTTOM: #e5e5e5 1px solid; PADDING-BOTTOM: 8px; MARGIN: 0px =
+auto; PADDING-LEFT: 5px; WIDTH: 98%; PADDING-RIGHT: 5px; CLEAR: both; =
+OVERFLOW: hidden; PADDING-TOP: 6px
+}
+.dede_comment .decmt-box .decmt-title {
+	LINE-HEIGHT: 19px; FONT-FAMILY: Tahoma; COLOR: #999
+}
+.dede_comment .decmt-box .decmt-title SPAN {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 2px
+}
+.dede_comment .decmt-box .decmt-title .moodico {
+	WIDTH: 18px; DISPLAY: inline-block; HEIGHT: 18px
+}
+.dede_comment .decmt-box .decmt-title .username {
+	COLOR: #669
+}
+.dede_comment .decmt-box .decmt-title .username A {
+	COLOR: #669
+}
+.dede_comment .decmt-box .decmt-title .username A:hover {
+	COLOR: #690; TEXT-DECORATION: none
+}
+.dede_comment .decmt-box .decmt-title .ip {
+	COLOR: #669; FONT-SIZE: 11px
+}
+.dede_comment .decmt-box .decmt-title .date {
+	COLOR: #555; FONT-SIZE: 11px
+}
+.dede_comment .decmt-box .decmt-act {
+	POSITION: relative; MARGIN-TOP: -18px; PADDING-RIGHT: 10px; FLOAT: =
+right; COLOR: #999; CLEAR: both
+}
+.dede_comment .decmt-box .decmt-act SPAN {
+	MARGIN-RIGHT: 7px
+}
+.dede_comment .decmt-box .decmt-act SPAN A {
+	COLOR: #888
+}
+.dede_comment .decmt-box .decmt-content {
+	LINE-HEIGHT: 21px; MARGIN: 2px auto 0px; WIDTH: 99%; COLOR: #555; =
+CLEAR: both
+}
+.dede_comment .decmt-box .decmt-content IMG {
+	VERTICAL-ALIGN: middle
+}
+.dede_comment .decmt-box .decmt-box {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; MARGIN: 6px =
+auto; BACKGROUND: #ffe; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc =
+1px solid
+}
+.dede_comment .decmt-box .decmt-box .decmt-title {
+	TEXT-INDENT: 4px
+}
+.dede_comment .decmt-box .decmt-box .decmt-content {
+	COLOR: #555
+}
+.nocomment {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; COLOR: =
+#666; PADDING-TOP: 10px
+}
+.dede_comment_post {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+PADDING-TOP: 5px
+}
+.dcmp-title {
+	LINE-HEIGHT: 25px
+}
+.dcmp-title STRONG {
+	COLOR: #444; FONT-WEIGHT: normal
+}
+.dcmp-title SMALL {
+	COLOR: #999999; FONT-SIZE: 12px
+}
+.dcmp-stand {
+	POSITION: relative; MARGIN-TOP: -18px; PADDING-RIGHT: 10px; FLOAT: =
+right; COLOR: #999; CLEAR: both
+}
+.dcmp-stand STRONG {
+	COLOR: #444; FONT-WEIGHT: normal
+}
+.dcmp-stand INPUT {
+	MARGIN-RIGHT: 2px
+}
+.dcmp-stand IMG {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 2px
+}
+.dcmp-content {
+	PADDING-TOP: 8px
+}
+.dcmp-content TEXTAREA {
+	WIDTH: 96%; HEIGHT: 60px
+}
+.dcmp-mood {
+	WIDTH: 80%; HEIGHT: 25px; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: =
+12px
+}
+.dcmp-mood STRONG {
+	LINE-HEIGHT: 25px; FLOAT: left; COLOR: #444; FONT-WEIGHT: normal
+}
+.dcmp-mood UL {
+	FLOAT: left
+}
+.dcmp-mood UL LI {
+	FLOAT: left; MARGIN-RIGHT: 8px
+}
+.dcmp-mood UL LI INPUT {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 4px
+}
+.dcmp-mood UL LI IMG {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 4px
+}
+.dcmp-post {
+	HEIGHT: 35px; COLOR: #444; CLEAR: both; OVERFLOW: hidden
+}
+.dcmp-post .dcmp-userinfo {
+	FLOAT: left; MARGIN-RIGHT: 6px
+}
+.dcmp-post .dcmp-userinfo INPUT {
+	PADDING-RIGHT: 0px; HEIGHT: 13px
+}
+.dcmp-post .dcmp-userinfo INPUT {
+	MARGIN: 5px; VERTICAL-ALIGN: middle
+}
+.dcmp-post .dcmp-userinfo IMG {
+	MARGIN: 5px; VERTICAL-ALIGN: middle
+}
+.dcmp-post .dcmp-submit {
+	FLOAT: left; PADDING-TOP: 6px
+}
+.dcmp-post .dcmp-submit INPUT {
+	VERTICAL-ALIGN: middle
+}
+.dcmp-post .dcmp-submit BUTTON {
+	VERTICAL-ALIGN: middle
+}
+.dcmp-post .dcmp-submit BUTTON {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; LINE-HEIGHT: =
+25px; WIDTH: 70px; BACKGROUND: url(images/btn-bg2.gif) no-repeat; =
+LETTER-SPACING: 1px; HEIGHT: 25px; COLOR: #444; MARGIN-LEFT: 5px; =
+OVERFLOW: hidden; BORDER-TOP: medium none; CURSOR: pointer; =
+BORDER-RIGHT: medium none
+}
+PRE {
+	MARGIN: 0px 0px 1em; WIDTH: 99%; FONT-FAMILY: "Courier New" , =
+Monospace; BACKGROUND: #f7f7f7; FONT-SIZE: 12px; OVERFLOW: auto
+}
+PRE OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; WORD-WRAP: break-word; PADDING-TOP: 0px; whitewhite-space: normal
+}
+PRE OL LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; WORD-WRAP: break-word; PADDING-TOP: 0px; whitewhite-space: normal
+}
+PRE OL LI SPAN {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; WORD-WRAP: break-word; PADDING-TOP: 0px; whitewhite-space: normal
+}
+PRE A {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: =
+none transparent scroll repeat 0% 0%; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+PRE A:hover {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: =
+none transparent scroll repeat 0% 0%; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+PRE OL {
+	BORDER-LEFT: #146b00 3px solid; PADDING-BOTTOM: 5px; LIST-STYLE-TYPE: =
+decimal; MARGIN: 0px 0px 1px 3em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+BACKGROUND: #f7f7f7; COLOR: #5c5c5c; PADDING-TOP: 5px
+}
+PRE OL LI {
+	LIST-STYLE-POSITION: outside !important; PADDING-BOTTOM: 0px =
+!important; LINE-HEIGHT: 1.3em; LIST-STYLE-TYPE: decimal-leading-zero; =
+MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px =
+!important; COLOR: #5c5c5c; PADDING-TOP: 0px !important
+}
+PRE OL LI.alt {
+	COLOR: inherit
+}
+PRE OL LI SPAN {
+	BACKGROUND-COLOR: inherit; COLOR: black
+}
+PRE .comment {
+	BACKGROUND-COLOR: inherit; COLOR: #008200
+}
+PRE .comments {
+	BACKGROUND-COLOR: inherit; COLOR: #008200
+}
+PRE .string {
+	BACKGROUND-COLOR: inherit; COLOR: blue
+}
+PRE .keyword {
+	BACKGROUND-COLOR: inherit; COLOR: #069; FONT-WEIGHT: bold
+}
+PRE .preprocessor {
+	BACKGROUND-COLOR: inherit; COLOR: gray
+}
+PRE .dp-xml .cdata {
+	COLOR: #ff1493
+}
+PRE .dp-xml .tag {
+	COLOR: #069; FONT-WEIGHT: bold
+}
+PRE .dp-xml .tag-name {
+	COLOR: #069; FONT-WEIGHT: bold
+}
+PRE .dp-xml .attribute {
+	COLOR: red
+}
+PRE .dp-xml .attribute-value {
+	COLOR: blue
+}
+PRE .dp-sql .func {
+	COLOR: #ff1493
+}
+PRE .dp-sql .op {
+	COLOR: #808080
+}
+PRE .dp-rb .symbol {
+	COLOR: #a70
+}
+PRE .dp-rb .variable {
+	COLOR: #a70; FONT-WEIGHT: bold
+}
+PRE .dp-py .builtins {
+	COLOR: #ff1493
+}
+PRE .dp-py .magicmethods {
+	COLOR: #808080
+}
+PRE .dp-py .exceptions {
+	COLOR: brown
+}
+PRE .dp-py .types {
+	FONT-STYLE: italic; COLOR: brown
+}
+PRE .dp-py .commonlibs {
+	FONT-STYLE: italic; COLOR: #8a2be2
+}
+PRE .dp-j .annotation {
+	COLOR: #646464
+}
+PRE .dp-j .number {
+	COLOR: #c00000
+}
+PRE .dp-delphi .number {
+	COLOR: blue
+}
+PRE .dp-delphi .directive {
+	COLOR: #008284
+}
+PRE .dp-delphi .vars {
+	COLOR: #000
+}
+PRE .dp-css .value {
+	COLOR: black
+}
+PRE .dp-css .important {
+	COLOR: red
+}
+PRE .dp-c .vars {
+	COLOR: #d00
+}
+PRE .dp-cpp .datatypes {
+	COLOR: #2e8b57; FONT-WEIGHT: bold
+}
+#commetpages {
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px
+}
+#commetpages A {
+	BORDER-BOTTOM: #64b1df 1px solid; BORDER-LEFT: #64b1df 1px solid; =
+PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-TOP: =
+#64b1df 1px solid; BORDER-RIGHT: #64b1df 1px solid; PADDING-TOP: 0px
+}
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/templets/style/dedecms.css
+
+@import url( layout.css );
+@import url( page.css );
+* {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+HTML {
+	BACKGROUND: #fff
+}
+BODY {
+	FONT: 12px Verdana, Arial, Tahoma
+}
+IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: =
+medium none; BORDER-RIGHT: medium none
+}
+A {
+	COLOR: #256eb1; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #f33; TEXT-DECORATION: underline
+}
+INPUT {
+	FONT: 12px Verdana, Arial, Tahoma; VERTICAL-ALIGN: middle
+}
+SELECT {
+	FONT: 12px Verdana, Arial, Tahoma; VERTICAL-ALIGN: middle
+}
+BUTTON {
+	FONT: 12px Verdana, Arial, Tahoma; VERTICAL-ALIGN: middle
+}
+.center {
+	MARGIN: 0px auto
+}
+.w960 {
+	WIDTH: 960px
+}
+.pright .infos_userinfo {
+	MARGIN-BOTTOM: 0px
+}
+.mt1 {
+	MARGIN-TOP: 8px
+}
+.pright .mt1 {
+	MARGIN-TOP: 0px
+}
+.mt2 {
+	MARGIN-TOP: 16px
+}
+.clear {
+	OVERFLOW: hidden
+}
+.fs-12 {
+	FONT-SIZE: 12px
+}
+.fc-f60 {
+	COLOR: #f60
+}
+.fc-f90 {
+	COLOR: #f90
+}
+.ipt-txt {
+	BORDER-BOTTOM: #bbb 1px solid; BORDER-LEFT: #666 1px solid; =
+PADDING-BOTTOM: 4px; LINE-HEIGHT: 15px; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; FONT-SIZE: 12px; BORDER-TOP: #666 1px solid; =
+MARGIN-RIGHT: 2px; BORDER-RIGHT: #bbb 1px solid; PADDING-TOP: 4px
+}
+.btn-1 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; LINE-HEIGHT: =
+25px; WIDTH: 56px; BACKGROUND: url(images/btn-bg1.gif) no-repeat; =
+LETTER-SPACING: 1px; HEIGHT: 23px; COLOR: #2f592e; OVERFLOW: hidden; =
+BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.btn-2 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; LINE-HEIGHT: =
+25px; WIDTH: 70px; BACKGROUND: url(images/btn-bg2.gif) no-repeat left =
+top; HEIGHT: 25px; COLOR: #444; OVERFLOW: hidden; BORDER-TOP: medium =
+none; MARGIN-RIGHT: 2px; BORDER-RIGHT: medium none
+}
+.header {
+	MARGIN: auto; WIDTH: 960px; OVERFLOW: hidden; PADDING-TOP: 2px
+}
+.header .search {
+	MARGIN-TOP: 5px
+}
+.header A {
+	COLOR: #777
+}
+.header A:hover {
+	COLOR: #390; TEXT-DECORATION: none
+}
+.header .top {
+	CLEAR: both; OVERFLOW: hidden
+}
+.header .title {
+	PADDING-LEFT: 2px; FLOAT: left
+}
+.header .title H1 A {
+	TEXT-INDENT: -200px; WIDTH: 200px; DISPLAY: block; BACKGROUND: =
+url(images/top-logo.gif) no-repeat center center; HEIGHT: 85px; =
+FONT-SIZE: 0px; OVERFLOW: hidden
+}
+.header .banner {
+	WIDTH: 728px; FLOAT: left; HEIGHT: 90px; MARGIN-LEFT: 25px; OVERFLOW: =
+hidden
+}
+.header .banner IMG {
+	WIDTH: 728px; DISPLAY: block; HEIGHT: 90px
+}
+.header .rlink {
+	WIDTH: 72px; FLOAT: left; HEIGHT: 52px; MARGIN-LEFT: 32px; OVERFLOW: =
+hidden; PADDING-TOP: 4px
+}
+.header .welcome {
+	MARGIN-TOP: 20px; PADDING-RIGHT: 10px; FLOAT: right; COLOR: #999
+}
+.header .welcome A {
+	MARGIN: 0px 3px
+}
+.header .nav {
+=09
+}
+.module {
+	OVERFLOW: hidden
+}
+.module .mid {
+	OVERFLOW: hidden
+}
+.module .top .t_l {
+	FLOAT: left; OVERFLOW: hidden
+}
+.module .bottom .b_l {
+	FLOAT: left; OVERFLOW: hidden
+}
+.module .top .t_r {
+	FLOAT: right; OVERFLOW: hidden
+}
+.module .bottom .b_r {
+	FLOAT: right; OVERFLOW: hidden
+}
+.module .top EM {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: left; MARGIN-LEFT: =
+5px; FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+.module .top EM A:link {
+	FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+.module .top EM A:visited {
+	FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+.module .top SPAN {
+	FLOAT: right
+}
+.module .top STRONG {
+	FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal; MARGIN-RIGHT: 4px
+}
+.module .mid .m_l {
+	OVERFLOW: hidden
+}
+.module .mid .m_r {
+	OVERFLOW: hidden
+}
+.module .mid .content {
+	HEIGHT: 100%; MARGIN-LEFT: 8px; CLEAR: both; OVERFLOW: hidden; =
+MARGIN-RIGHT: 8px; PADDING-TOP: 8px
+}
+.module .top {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.module .top .t_l {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.module .top .t_r {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.module .bottom {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.module .bottom .b_l {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.module .bottom .b_r {
+	BACKGROUND-IMAGE: url(images/header_bg.png)
+}
+.blue .top {
+	BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 0px -87px; HEIGHT: =
+77px
+}
+.blue .top .t_l {
+	WIDTH: 7px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: -13px =
+0px; HEIGHT: 77px
+}
+.blue .top .t_r {
+	WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px =
+0px; HEIGHT: 77px
+}
+.w963 {
+	MARGIN-TOP: 8px; WIDTH: 963px; MARGIN-BOTTOM: 0px
+}
+#navMenu {
+	WIDTH: 940px; OVERFLOW: hidden
+}
+#navMenu LI {
+	BACKGROUND-IMAGE: url(images/header_interval.png); LINE-HEIGHT: 34px; =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; FLOAT: =
+left; HEIGHT: 34px; MARGIN-LEFT: -2px
+}
+#navMenu LI A {
+	PADDING-LEFT: 1em; PADDING-RIGHT: 1em; DISPLAY: block; COLOR: #fff; =
+MARGIN-LEFT: 2px; FONT-SIZE: 14px
+}
+#navMenu LI A:hover {
+	BACKGROUND-IMAGE: url(images/header_hover.png); BACKGROUND-REPEAT: =
+no-repeat; BACKGROUND-POSITION: center top; TEXT-DECORATION: none
+}
+#navMenu LI.hover A {
+	BACKGROUND-IMAGE: url(images/header_hover.png); BACKGROUND-REPEAT: =
+no-repeat; BACKGROUND-POSITION: center top; TEXT-DECORATION: none
+}
+.dropMenu {
+	Z-INDEX: 100; BORDER-BOTTOM: #93e1eb 1px solid; POSITION: absolute; =
+FILTER: progid:DXImageTransform.Microsoft.Shadow(color=3D#CACACA, =
+direction=3D135, strength=3D4); BORDER-LEFT: #93e1eb 1px solid; =
+PADDING-BOTTOM: 6px; MARGIN-TOP: -1px; WIDTH: 120px; BACKGROUND: =
+url(images/mmenubg.gif); VISIBILITY: hidden; BORDER-TOP: #3ca2dc 0px =
+solid; TOP: 0px; BORDER-RIGHT: #93e1eb 1px solid; PADDING-TOP: 6px
+}
+.dropMenu LI {
+	MARGIN-TOP: 2px; PADDING-LEFT: 6px; MARGIN-BOTTOM: 4px
+}
+.dropMenu A {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 1.2em; WIDTH: auto; PADDING-RIGHT: =
+0px; DISPLAY: block; COLOR: black; PADDING-TOP: 2px
+}
+* HTML .dropMenu A {
+	WIDTH: 100%
+}
+.dropMenu A:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+.search-keyword {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-LEFT: 56px; WIDTH: 160px; =
+BACKGROUND: url(images/search-bg.gif) no-repeat; HEIGHT: 19px; =
+BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 5px
+}
+.search-submit {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 68px; BACKGROUND: =
+url(images/search-bt.gif) no-repeat; HEIGHT: 22px; COLOR: #fafafa; =
+FONT-SIZE: 0px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
+}
+.search-option {
+	HEIGHT: 22px; MARGIN-LEFT: 3px; MARGIN-RIGHT: 3px
+}
+.w963 .search {
+	LINE-HEIGHT: 32px; PADDING-LEFT: 10px
+}
+.w963 .form H4 {
+	DISPLAY: none
+}
+.w963 .form {
+	FLOAT: left; MARGIN-RIGHT: 10px
+}
+.w963 .tags {
+	WIDTH: 500px; OVERFLOW: hidden
+}
+.w963 .tags H4 {
+	WIDTH: 66px; BACKGROUND: url(images/search-tags-title.gif) no-repeat =
+0px 6px; FLOAT: left; HEIGHT: 26px; COLOR: #fafafa; FONT-SIZE: 0px; =
+MARGIN-RIGHT: 6px
+}
+.w963 .tags LI {
+	FLOAT: left; MARGIN-RIGHT: 6px
+}
+.header .nav .end {
+=09
+}
+.channel-nav {
+	BORDER-BOTTOM: #d5ecfb 1px solid; BORDER-LEFT: #d5ecfb 1px solid; =
+MARGIN-TOP: 8px; PADDING-LEFT: 6px; WIDTH: 950px; BACKGROUND: =
+url(images/navbg.gif) repeat-x; OVERFLOW: hidden; BORDER-TOP: #d5ecfb =
+1px solid; BORDER-RIGHT: #d5ecfb 1px solid
+}
+.channel-nav .sonnav {
+	LINE-HEIGHT: 26px; WIDTH: 830px; FLOAT: left; PADDING-TOP: 2px
+}
+.channel-nav .sonnav SPAN {
+	PADDING-LEFT: 14px; BACKGROUND: url(images/dd2.gif) no-repeat 0px 1px; =
+OVERFLOW: hidden; MARGIN-RIGHT: 8px
+}
+.channel-nav .sonnav A {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.channel-nav .back {
+	LINE-HEIGHT: 21px; PADDING-LEFT: 20px; PADDING-RIGHT: 10px; DISPLAY: =
+block; BACKGROUND: url(images/ico-home.gif) no-repeat 4px 10px; FLOAT: =
+right; LETTER-SPACING: 2px; HEIGHT: 22px; PADDING-TOP: 6px
+}
+.channel-nav .back A {
+	COLOR: #397cbe
+}
+.channel-nav .back A:hover {
+	COLOR: #777; TEXT-DECORATION: none
+}
+.footer {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 10px; MARGIN: 8px auto auto; WIDTH: =
+960px; COLOR: #999; BORDER-TOP: #e5efd6 1px solid; PADDING-TOP: 10px
+}
+.footer .link {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 5px
+}
+.footer .link A {
+	MARGIN: 0px 5px; COLOR: #666666
+}
+.footer .powered {
+	LINE-HEIGHT: 25px; FONT-SIZE: 10px
+}
+.footer .powered STRONG {
+	COLOR: #690
+}
+.footer .powered STRONG SPAN {
+	COLOR: #f93
+}
+.footer .copyright {
+	LINE-HEIGHT: 23px; COLOR: #666666
+}
+#navMenu UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+#navMenu UL LI A:hover {
+	COLOR: #000
+}
+.content UL LI A:hover {
+	COLOR: #000
+}
+.content OL LI A:hover {
+	COLOR: #000
+}
+.flink UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+#jacky CODE word wrap PRE {
+	WORD-WRAP: break-word; WHITE-SPACE: pre-wrap
+}
+* HTML PRE {
+	WORD-WRAP: break-word; WHITE-SPACE: normal
+}
+BLOCKQUOTE {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 2px; TEXT-INDENT: 0px; =
+MARGIN: 0px; PADDING-LEFT: 2px; DISPLAY: inline-block; FONT: 12px/18px =
+normal "Courier New", sans-serif; BACKGROUND: =
+url(../../images/common/qz.gif) no-repeat right bottom; COLOR: gray; =
+BORDER-TOP: #ccc 1px solid; PADDING-TOP: 2px
+}
+BLOCKQUOTE P {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 50px; PADDING-RIGHT: 50px; =
+PADDING-TOP: 10px
+}
+BLOCKQUOTE P:first-child {
+	BACKGROUND: url(../../images/common/qa.gif) no-repeat left top
+}
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/rs_top.js
+
+var gaJsHost =3D (("https:" =3D=3D document.location.protocol) ? =
+"https://ssl." : "http://www.");=0A=
+document.write(unescape("%3Cscript src=3D'" + gaJsHost + =
+"google-analytics.com/ga.js' type=3D'text/javascript'%3E%3C/script%3E"));=0A=
+=0A=
+=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/include/dedeajax2.js
+
+<!--
+//xmlhttp=BA=CDxmldom=B6=D4=CF=F3
+var DedeXHTTP =3D null;
+var DedeXDOM =3D null;
+var DedeContainer =3D null;
+var DedeShowError =3D false;
+var DedeShowWait =3D false;
+var DedeErrCon =3D "";
+var DedeErrDisplay =3D "=CF=C2=D4=D8=CA=FD=BE=DD=CA=A7=B0=DC";
+var DedeWaitDisplay =3D "=D5=FD=D4=DA=CF=C2=D4=D8=CA=FD=BE=DD...";
+
+//=BB=F1=C8=A1=D6=B8=B6=A8ID=B5=C4=D4=AA=CB=D8
+
+function $DE(id) {
+    return document.getElementById(id);
+}
+
+//gcontainer =
+=CA=C7=B1=A3=B4=E6=CF=C2=D4=D8=CD=EA=B3=C9=B5=C4=C4=DA=C8=DD=B5=C4=C8=DD=C6=
+=F7
+//mShowError =CA=C7=B7=F1=CC=E1=CA=BE=B4=ED=CE=F3=D0=C5=CF=A2
+//DedeShowWait =CA=C7=B7=F1=CC=E1=CA=BE=B5=C8=B4=FD=D0=C5=CF=A2
+//mErrCon =
+=B7=FE=CE=F1=C6=F7=B7=B5=BB=D8=CA=B2=C3=B4=D7=D6=B7=FB=B4=AE=CA=D3=CE=AA=B4=
+=ED=CE=F3
+//mErrDisplay =
+=B7=A2=C9=FA=B4=ED=CE=F3=CA=B1=CF=D4=CA=BE=B5=C4=D0=C5=CF=A2
+//mWaitDisplay =B5=C8=B4=FD=CA=B1=CC=E1=CA=BE=D0=C5=CF=A2
+//=C4=AC=C8=CF=B5=F7=D3=C3 DedeAjax('divid',false,false,'','','')
+
+function =
+DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDisplay=
+)
+{
+
+    DedeContainer =3D gcontainer;
+    DedeShowError =3D mShowError;
+    DedeShowWait =3D mShowWait;
+    if(mErrCon!=3D"") DedeErrCon =3D mErrCon;
+    if(mErrDisplay!=3D"") DedeErrDisplay =3D mErrDisplay;
+    if(mErrDisplay=3D=3D"x") DedeErrDisplay =3D "";
+    if(mWaitDisplay!=3D"") DedeWaitDisplay =3D mWaitDisplay;
+
+
+    //post=BB=F2get=B7=A2=CB=CD=CA=FD=BE=DD=B5=C4=BC=FC=D6=B5=B6=D4
+    this.keys =3D Array();
+    this.values =3D Array();
+    this.keyCount =3D -1;
+    this.sendlang =3D 'gb2312';
+
+    //=C7=EB=C7=F3=CD=B7=C0=E0=D0=CD
+    this.rtype =3D 'text';
+
+    //=B3=F5=CA=BC=BB=AFxmlhttp
+    //IE6=A1=A2IE5
+    if(window.ActiveXObject) {
+        try { DedeXHTTP =3D new ActiveXObject("Msxml2.XMLHTTP");} catch =
+(e) { }
+        if (DedeXHTTP =3D=3D null) try { DedeXHTTP =3D new =
+ActiveXObject("Microsoft.XMLHTTP");} catch (e) { }
+    }
+    else {
+        DedeXHTTP =3D new XMLHttpRequest();
+    }
+
+    //=D4=F6=BC=D3=D2=BB=B8=F6POST=BB=F2GET=BC=FC=D6=B5=B6=D4
+    this.AddKeyN =3D function(skey,svalue) {
+        if(this.sendlang=3D=3D'utf-8') this.AddKeyUtf8(skey, svalue);
+        else this.AddKey(skey, svalue);
+    };
+   =20
+    this.AddKey =3D function(skey,svalue) {
+        this.keyCount++;
+        this.keys[this.keyCount] =3D skey;
+        svalue =3D svalue+'';
+        if(svalue !=3D '') svalue =3D svalue.replace(/\+/g,'$#$');
+        this.values[this.keyCount] =3D escape(svalue);
+    };
+
+    //=D4=F6=BC=D3=D2=BB=B8=F6POST=BB=F2GET=BC=FC=D6=B5=B6=D4
+    this.AddKeyUtf8 =3D function(skey,svalue) {
+        this.keyCount++;
+        this.keys[this.keyCount] =3D skey;
+        svalue =3D svalue+'';
+        if(svalue !=3D '') svalue =3D svalue.replace(/\+/g,'$#$');
+        this.values[this.keyCount] =3D encodeURI(svalue);
+    };
+
+    //=D4=F6=BC=D3=D2=BB=B8=F6Http=C7=EB=C7=F3=CD=B7=BC=FC=D6=B5=B6=D4
+    this.AddHead =3D function(skey,svalue) {
+        this.rkeyCount++;
+        this.rkeys[this.rkeyCount] =3D skey;
+        this.rvalues[this.rkeyCount] =3D svalue;
+    };
+
+    =
+//=C7=E5=B3=FD=B5=B1=C7=B0=B6=D4=CF=F3=B5=C4=B9=FE=CF=A3=B1=ED=B2=CE=CA=FD=
+
+    this.ClearSet =3D function() {
+        this.keyCount =3D -1;
+        this.keys =3D Array();
+        this.values =3D Array();
+        this.rkeyCount =3D -1;
+        this.rkeys =3D Array();
+        this.rvalues =3D Array();
+    };
+
+
+    DedeXHTTP.onreadystatechange =3D function() {
+        =
+//=D4=DAIE6=D6=D0=B2=BB=B9=DC=D7=E8=B6=CF=BB=F2=D2=EC=B2=BD=C4=A3=CA=BD=B6=
+=BC=BB=E1=D6=B4=D0=D0=D5=E2=B8=F6=CA=C2=BC=FE=B5=C4
+        if(DedeXHTTP.readyState =3D=3D 4){
+            if(DedeXHTTP.status =3D=3D 200)
+            {
+                if(DedeXHTTP.responseText!=3DDedeErrCon) {
+                    DedeContainer.innerHTML =3D DedeXHTTP.responseText;
+                }
+                else {
+                    if(DedeShowError) DedeContainer.innerHTML =3D =
+DedeErrDisplay;
+                }
+                DedeXHTTP =3D null;
+            }
+            else { if(DedeShowError) DedeContainer.innerHTML =3D =
+DedeErrDisplay; }
+        }
+        else { if(DedeShowWait) DedeContainer.innerHTML =3D =
+DedeWaitDisplay; }
+    };
+
+    //=BC=EC=B2=E2=D7=E8=B6=CF=C4=A3=CA=BD=B5=C4=D7=B4=CC=AC
+    this.BarrageStat =3D function() {
+        if(DedeXHTTP=3D=3Dnull) return;
+        if(typeof(DedeXHTTP.status)!=3Dundefined && DedeXHTTP.status =
+=3D=3D 200)
+        {
+            if(DedeXHTTP.responseText!=3DDedeErrCon) {
+                DedeContainer.innerHTML =3D DedeXHTTP.responseText;
+            }
+            else {
+                if(DedeShowError) DedeContainer.innerHTML =3D =
+DedeErrDisplay;
+            }
+        }
+    };
+
+    //=B7=A2=CB=CDhttp=C7=EB=C7=F3=CD=B7
+    this.SendHead =3D function()
+    {
+        =
+//=B7=A2=CB=CD=D3=C3=BB=A7=D7=D4=D0=D0=C9=E8=B6=A8=B5=C4=C7=EB=C7=F3=CD=B7=
+
+        if(this.rkeyCount!=3D-1)
+        {=20
+            for(var i =3D 0;i<=3Dthis.rkeyCount;i++)
+            {
+                =
+DedeXHTTP.setRequestHeader(this.rkeys[i],this.rvalues[i]);
+            }
+        }
+        =A1=A1if(this.rtype=3D=3D'binary'){
+        =
+=A1=A1DedeXHTTP.setRequestHeader("Content-Type","multipart/form-data");
+    }else{
+        =
+DedeXHTTP.setRequestHeader("Content-Type","application/x-www-form-urlenco=
+ded");
+    }
+};
+
+//=D3=C3Post=B7=BD=CA=BD=B7=A2=CB=CD=CA=FD=BE=DD
+this.SendPost =3D function(purl) {
+    var pdata =3D "";
+    var i=3D0;
+    this.state =3D 0;
+    DedeXHTTP.open("POST", purl, true);
+    this.SendHead();
+    //post=CA=FD=BE=DD
+    if(this.keyCount!=3D-1)
+    {
+        for(;i<=3Dthis.keyCount;i++)
+        {
+            if(pdata=3D=3D"") pdata =3D =
+this.keys[i]+'=3D'+this.values[i];
+            else pdata +=3D "&"+this.keys[i]+'=3D'+this.values[i];
+        }
+    }
+    DedeXHTTP.send(pdata);
+};
+
+//=D3=C3GET=B7=BD=CA=BD=B7=A2=CB=CD=CA=FD=BE=DD
+this.SendGet =3D function(purl) {
+    var gkey =3D "";
+    var i=3D0;
+    this.state =3D 0;
+    //get=B2=CE=CA=FD
+    if(this.keyCount!=3D-1)
+    {=20
+        for(;i<=3Dthis.keyCount;i++)
+        {
+            if(gkey=3D=3D"") gkey =3D this.keys[i]+'=3D'+this.values[i];
+            else gkey +=3D "&"+this.keys[i]+'=3D'+this.values[i];
+        }
+        if(purl.indexOf('?')=3D=3D-1) purl =3D purl + '?' + gkey;
+        else  purl =3D purl + '&' + gkey;
+    }
+    DedeXHTTP.open("GET", purl, true);
+    this.SendHead();
+    DedeXHTTP.send(null);
+};
+
+//=D3=C3GET=B7=BD=CA=BD=B7=A2=CB=CD=CA=FD=BE=DD=A3=AC=D7=E8=C8=FB=C4=A3=CA=
+=BD
+this.SendGet2 =3D function(purl) {
+    var gkey =3D "";
+    var i=3D0;
+    this.state =3D 0;
+    //get=B2=CE=CA=FD
+    if(this.keyCount!=3D-1)
+    {=20
+        for(;i<=3Dthis.keyCount;i++)
+        {
+            if(gkey=3D=3D"") gkey =3D this.keys[i]+'=3D'+this.values[i];
+            else gkey +=3D "&"+this.keys[i]+'=3D'+this.values[i];
+        }
+        if(purl.indexOf('?')=3D=3D-1) purl =3D purl + '?' + gkey;
+        else  purl =3D purl + '&' + gkey;
+    }
+    DedeXHTTP.open("GET", purl, false);
+    this.SendHead();
+    DedeXHTTP.send(null);
+    //firefox=D6=D0=D6=B1=BD=D3=BC=EC=B2=E2XHTTP=D7=B4=CC=AC
+    this.BarrageStat();
+};
+
+//=D3=C3Post=B7=BD=CA=BD=B7=A2=CB=CD=CA=FD=BE=DD
+this.SendPost2 =3D function(purl) {
+    var pdata =3D "";
+    var i=3D0;
+    this.state =3D 0;
+    DedeXHTTP.open("POST", purl, false);
+    this.SendHead();
+    //post=CA=FD=BE=DD
+    if(this.keyCount!=3D-1)
+    {
+        for(;i<=3Dthis.keyCount;i++)
+        {
+            if(pdata=3D=3D"") pdata =3D =
+this.keys[i]+'=3D'+this.values[i];
+            else pdata +=3D "&"+this.keys[i]+'=3D'+this.values[i];
+        }
+    }
+    DedeXHTTP.send(pdata);
+    //firefox=D6=D0=D6=B1=BD=D3=BC=EC=B2=E2XHTTP=D7=B4=CC=AC
+    this.BarrageStat();
+};
+
+
+} // End Class DedeAjax
+
+//=B3=F5=CA=BC=BB=AFxmldom
+function InitXDom() {
+    if(DedeXDOM!=3Dnull) return;
+    var obj =3D null;
+    // Gecko=A1=A2Mozilla=A1=A2Firefox
+    if (typeof(DOMParser) !=3D "undefined") {=20
+        var parser =3D new DOMParser();
+        obj =3D parser.parseFromString(xmlText, "text/xml");
+    }
+    // IE
+    else {=20
+        try { obj =3D new ActiveXObject("MSXML2.DOMDocument");} catch =
+(e) { }
+        if (obj =3D=3D null) try { obj =3D new =
+ActiveXObject("Microsoft.XMLDOM"); } catch (e) { }
+    }
+    DedeXDOM =3D obj;
+};
+
+
+
+//=B6=C1=D0=B4cookie=BA=AF=CA=FD
+function GetCookie(c_name)
+{
+    if (document.cookie.length > 0)
+    {
+        c_start =3D document.cookie.indexOf(c_name + "=3D")
+        if (c_start !=3D -1)
+        {
+            c_start =3D c_start + c_name.length + 1;
+            c_end   =3D document.cookie.indexOf(";",c_start);
+            if (c_end =3D=3D -1)
+            {
+                c_end =3D document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start,c_end));
+        }
+    }
+    return null
+}
+
+function SetCookie(c_name,value,expiredays)
+{
+    var exdate =3D new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    document.cookie =3D c_name + "=3D" +escape(value) + ((expiredays =
+=3D=3D null) ? "" : ";expires=3D" + exdate.toGMTString()); =
+//=CA=B9=C9=E8=D6=C3=B5=C4=D3=D0=D0=A7=CA=B1=BC=E4=D5=FD=C8=B7=A1=A3=D4=F6=
+=BC=D3toGMTString()
+}
+
+-->
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/page_head.js
+
+document.write("<table width=3D'960' border=3D'0'><tr><td>");=0A=
+document.write("<font =
+color=3D'red'><b>=D7=A8=D7=A2=D3=DA=D2=F4=CA=D3=C6=B5=B4=A6=C0=ED=BC=B0=C1=
+=F7=C3=BD=CC=E5=BF=AA=B7=A2=A3=A1</b></font></td><td align=3D'right'>");=0A=
+=0A=
+document.write("<table width=3D'480' align=3D'right' =
+border=3D'0'><tr><td>");=0A=
+document.write("<a href=3D'/tags.php'>TAG=B1=EA=C7=A9</a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a =
+href=3D'/data/sitemap.html'>=D5=BE=B5=E3=B5=D8=CD=BC</a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a href=3D'/data/rssmap.html'>RSS=B6=A9=D4=C4</a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a href=3D'/rss'><img src=3D'/images/rss.gif' =
+width=3D'41' height=3D'15' alt=3D'=C8=AB=D5=BERSS' border=3D'0'></a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a href=3D'http://rosoo.net/wap.php'><img =
+src=3D'/images/wap.gif' width=3D'41' height=3D'15' =
+alt=3D'WAP=E4=AF=C0=C0' border=3D'0'></a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a href=3D'http://bbs.rosoo.net' target=3D'_blank'><font =
+color=3D'red'><b>=C1=F7=C3=BD=CC=E5=C2=DB=CC=B3</b></font></a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a =
+href=3D'/About/about.html'>=B9=D8=D3=DA=B1=BE=D5=BE</a>");=0A=
+document.write("</td><td>");=0A=
+document.write("<a href=3D'/About/me.html'>=B9=D8=D3=DA=CE=D2</a>");=0A=
+document.write("</td></tr></table>");=0A=
+=0A=
+document.write("</td></tr></table>");=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/ad/js_ad_728x90_100.js
+
+/*=0A=
+var random_max =3D 3;=0A=
+var random_min =3D 1;=0A=
+var random_num =3D =
+parseInt(Math.random()*(random_max-random_min+1)+random_min); =0A=
+=0A=
+//if (random_num / 3 !=3D 0)=0A=
+//if (Math.floor(random_num / 2) =3D=3D Math.ceil(random_num / 2))=0A=
+//if (random_num !=3D 3)=0A=
+if (1)=0A=
+{=0A=
+	*/=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("google_ad_client =3D 'pub-3349738643245862';");=0A=
+	document.write("google_ad_slot =3D '7827398482';");=0A=
+	document.write("google_ad_width =3D 728;");=0A=
+	document.write("google_ad_height =3D 90;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script type=3D'text/javascript' =
+src=3D'http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>=
+");=0A=
+	/*=0A=
+}=0A=
+else=0A=
+{=0A=
+	document.open();=0A=
+	document.write("<embed allowscriptaccess=3D'always' =
+wmode=3D'transparent' quality=3D'high' name=3D'24660209' id=3D'view' =
+style=3D'' src=3D'http://rosoo.net/ad/rg4_670x90.swf' =
+type=3D'application/x-shockwave-flash' height=3D'90' width=3D'728'>");=0A=
+	document.write("</embed>");=0A=
+	document.close();=0A=
+)=0A=
+*/=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: 7bit
+Content-Location: http://www.rosoo.net/plus/count.php?view=yes&aid=14993&mid=11927
+
+document.write('749');
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/sc/sc.js
+
+document.writeln("<div id=3D'bdshare' class=3D'bdshare_b' =
+style=3D'float:right;line-height: 12px;'><img =
+src=3D'http://share.baidu.com/static/images/type-button-1.jpg' />");=0A=
+//document.writeln("  <a class=3D'shareCount'></a>");=0A=
+document.writeln("</div>");=0A=
+document.writeln("<script type=3D'text/javascript' id=3D'bdshare_js' =
+data=3D'type=3Dbutton&amp;uid=3D224472' ></script>");=0A=
+document.writeln("<script type=3D'text/javascript' =
+id=3D'bdshell_js'></script>");=0A=
+document.writeln("<script type=3D'text/javascript'>");=0A=
+document.writeln("  document.getElementById('bdshell_js').src =3D =
+'http://share.baidu.com/static/js/shell_v2.js?t=3D' + new =
+Date().getHours();");=0A=
+document.writeln("</script>");=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/ad/js_ad_468x15_100.js
+
+var ADcurrentURL=3Ddocument.location.href;=0A=
+var ADstag=3DADcurrentURL.indexOf('//')+1; =0A=
+ADcurrentURL=3DADcurrentURL.substring(ADstag+1,ADcurrentURL.length);=0A=
+ADstag=3DADcurrentURL.indexOf('/'); =0A=
+var ADdomain=3DADcurrentURL.substring(0,ADstag); =0A=
+if (ADdomain=3D=3D"roarsoft.net" || ADdomain =3D=3D "www.roarsoft.net")=0A=
+{=0A=
+	document.open();=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("alimama_pid=3D\"mm_10026851_117704_2064667\";");=0A=
+	document.write("alimama_titlecolor=3D\"0000FF\";");=0A=
+	document.write("alimama_descolor =3D\"000000\";");=0A=
+	document.write("alimama_bgcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_bordercolor=3D\"E6E6E6\";");=0A=
+	document.write("alimama_linkcolor=3D\"008000\";");=0A=
+	document.write("alimama_bottomcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_anglesize=3D\"0\";");=0A=
+	document.write("alimama_bgpic=3D\"0\";");=0A=
+	document.write("alimama_icon=3D\"0\";");=0A=
+	document.write("alimama_sizecode=3D\"12\";");=0A=
+	document.write("alimama_width=3D468;");=0A=
+	document.write("alimama_height=3D60;");=0A=
+	document.write("alimama_type=3D2;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script src=3D\"http://a.alimama.cn/inf.js\" =
+type=3Dtext/javascript></script>");=0A=
+	document.close();=0A=
+}=0A=
+else=0A=
+{=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("google_ad_client =3D 'pub-3349738643245862';");=0A=
+	document.write("google_ad_slot =3D '8382821229';");=0A=
+	document.write("google_ad_width =3D 468;");=0A=
+	document.write("google_ad_height =3D 15;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script type=3D'text/javascript' =
+src=3D'http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>=
+");=0A=
+}=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/ad/js_ad_468x15_101.js
+
+/*=0A=
+var ADcurrentURL=3Ddocument.location.href;=0A=
+var ADstag=3DADcurrentURL.indexOf('//')+1; =0A=
+ADcurrentURL=3DADcurrentURL.substring(ADstag+1,ADcurrentURL.length);=0A=
+ADstag=3DADcurrentURL.indexOf('/'); =0A=
+var ADdomain=3DADcurrentURL.substring(0,ADstag); =0A=
+if (ADdomain=3D=3D"roarsoft.net" || ADdomain =3D=3D "www.roarsoft.net")=0A=
+{=0A=
+	document.open();=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("alimama_pid=3D\"mm_10026851_117704_2064644\";");=0A=
+	document.write("alimama_titlecolor=3D\"0000FF\";");=0A=
+	document.write("alimama_descolor =3D\"000000\";");=0A=
+	document.write("alimama_bgcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_bordercolor=3D\"E6E6E6\";");=0A=
+	document.write("alimama_linkcolor=3D\"008000\";");=0A=
+	document.write("alimama_bottomcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_anglesize=3D\"0\";");=0A=
+	document.write("alimama_bgpic=3D\"0\";");=0A=
+	document.write("alimama_icon=3D\"0\";");=0A=
+	document.write("alimama_sizecode=3D\"12\";");=0A=
+	document.write("alimama_width=3D468;");=0A=
+	document.write("alimama_height=3D60;");=0A=
+	document.write("alimama_type=3D2;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script src=3D\"http://a.alimama.cn/inf.js\" =
+type=3Dtext/javascript></script>");=0A=
+	document.close();=0A=
+}=0A=
+else=0A=
+{=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("google_ad_client =3D 'pub-3349738643245862';");=0A=
+	document.write("google_ad_slot =3D '9020816839';");=0A=
+	document.write("google_ad_width =3D 468;");=0A=
+	document.write("google_ad_height =3D 15;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script type=3D'text/javascript' =
+src=3D'http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>=
+");=0A=
+}=0A=
+=0A=
+*/=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("var cpro_id =3D 'u936497';");=0A=
+	document.write("</script>");=0A=
+	document.write("<script src=3D'http://cpro.baidu.com/cpro/ui/c.js' =
+type=3D'text/javascript'></script>");=0A=
+=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/ad/js_ad_250x250_100.js
+
+/*=0A=
+var ADcurrentURL=3Ddocument.location.href;=0A=
+var ADstag=3DADcurrentURL.indexOf('//')+1; =0A=
+ADcurrentURL=3DADcurrentURL.substring(ADstag+1,ADcurrentURL.length);=0A=
+ADstag=3DADcurrentURL.indexOf('/'); =0A=
+var ADdomain=3DADcurrentURL.substring(0,ADstag); =0A=
+=0A=
+=0A=
+=0A=
+if (ADdomain=3D=3D"roarsoft.net" || ADdomain =3D=3D "www.roarsoft.net")=0A=
+{=0A=
+*/=0A=
+	document.open();=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("var cpro_id =3D 'u680168';");=0A=
+	document.write("</script>");=0A=
+	document.write("<script src=3D'http://cpro.baidu.com/cpro/ui/c.js' =
+type=3D'text/javascript'></script>");=0A=
+	document.close();=0A=
+/*=0A=
+}=0A=
+else=0A=
+{=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("google_ad_client =3D 'pub-3349738643245862';");=0A=
+	document.write("google_ad_slot =3D '8133459122';");=0A=
+	document.write("google_ad_width =3D 250;");=0A=
+	document.write("google_ad_height =3D 250;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script type=3D'text/javascript' =
+src=3D'http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>=
+");=0A=
+}=0A=
+*/=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/images/js/dropdown.js
+
+var cssdropdown=3D{
+disappeardelay: 250,=20
+disablemenuclick: false,=20
+enableswipe: 1,=20
+enableiframeshim: 1,=20
+dropmenuobj: null, ie: document.all, firefox: =
+document.getElementById&&!document.all, swipetimer: undefined, =
+bottomclip:0,
+
+getposOffset:function(what, offsettype){
+var totaloffset=3D(offsettype=3D=3D"left")? what.offsetLeft : =
+what.offsetTop;
+var parentEl=3Dwhat.offsetParent;
+while (parentEl!=3Dnull){
+totaloffset=3D(offsettype=3D=3D"left")? totaloffset+parentEl.offsetLeft =
+: totaloffset+parentEl.offsetTop;
+parentEl=3DparentEl.offsetParent;
+}
+return totaloffset;
+},
+
+swipeeffect:function(){
+if (this.bottomclip<parseInt(this.dropmenuobj.offsetHeight)){
+this.bottomclip+=3D10+(this.bottomclip/10)=20
+this.dropmenuobj.style.clip=3D"rect(0 auto "+this.bottomclip+"px 0)"
+}
+else
+return
+this.swipetimer=3DsetTimeout("cssdropdown.swipeeffect()", 10)
+},
+
+showhide:function(obj, e){
+if (this.ie || this.firefox)
+this.dropmenuobj.style.left=3Dthis.dropmenuobj.style.top=3D"-500px"
+if (e.type=3D=3D"click" && obj.visibility=3D=3Dhidden || =
+e.type=3D=3D"mouseover"){
+if (this.enableswipe=3D=3D1){
+if (typeof this.swipetimer!=3D"undefined")
+clearTimeout(this.swipetimer)
+obj.clip=3D"rect(0 auto 0 0)"=20
+this.bottomclip=3D0
+this.swipeeffect()
+}
+obj.visibility=3D"visible"
+}
+else if (e.type=3D=3D"click")
+obj.visibility=3D"hidden"
+},
+
+iecompattest:function(){
+return (document.compatMode && document.compatMode!=3D"BackCompat")? =
+document.documentElement : document.body
+},
+
+clearbrowseredge:function(obj, whichedge){
+var edgeoffset=3D0
+if (whichedge=3D=3D"rightedge"){
+var windowedge=3Dthis.ie && !window.opera? =
+this.iecompattest().scrollLeft+this.iecompattest().clientWidth-15 : =
+window.pageXOffset+window.innerWidth-15
+this.dropmenuobj.contentmeasure=3Dthis.dropmenuobj.offsetWidth
+if (windowedge-this.dropmenuobj.x < this.dropmenuobj.contentmeasure) =20
+edgeoffset=3Dthis.dropmenuobj.contentmeasure-obj.offsetWidth
+}
+else{
+var topedge=3Dthis.ie && !window.opera? this.iecompattest().scrollTop : =
+window.pageYOffset
+var windowedge=3Dthis.ie && !window.opera? =
+this.iecompattest().scrollTop+this.iecompattest().clientHeight-15 : =
+window.pageYOffset+window.innerHeight-18
+this.dropmenuobj.contentmeasure=3Dthis.dropmenuobj.offsetHeight
+if (windowedge-this.dropmenuobj.y < this.dropmenuobj.contentmeasure){=20
+edgeoffset=3Dthis.dropmenuobj.contentmeasure+obj.offsetHeight
+if ((this.dropmenuobj.y-topedge)<this.dropmenuobj.contentmeasure)=20
+edgeoffset=3Dthis.dropmenuobj.y+obj.offsetHeight-topedge
+}
+}
+return edgeoffset
+},
+
+dropit:function(obj, e, dropmenuID){
+if (this.dropmenuobj!=3Dnull)=20
+	this.dropmenuobj.style.visibility=3D"hidden"=20
+this.clearhidemenu()
+if (this.ie||this.firefox){
+obj.onmouseout=3Dfunction(){cssdropdown.delayhidemenu()}
+obj.onclick=3Dfunction(){return !cssdropdown.disablemenuclick}=20
+this.dropmenuobj=3Ddocument.getElementById(dropmenuID)
+if(!this.dropmenuobj) return;
+this.dropmenuobj.onmouseover=3Dfunction(){cssdropdown.clearhidemenu()}
+this.dropmenuobj.onmouseout=3Dfunction(e){cssdropdown.dynamichide(e)}
+this.dropmenuobj.onclick=3Dfunction(){cssdropdown.delayhidemenu()}
+this.showhide(this.dropmenuobj.style, e)
+this.dropmenuobj.x=3Dthis.getposOffset(obj, "left")
+this.dropmenuobj.y=3Dthis.getposOffset(obj, "top")
+this.dropmenuobj.style.left=3Dthis.dropmenuobj.x-this.clearbrowseredge(ob=
+j, "rightedge")+"px"
+this.dropmenuobj.style.top=3Dthis.dropmenuobj.y-this.clearbrowseredge(obj=
+, "bottomedge")+obj.offsetHeight+1+"px"
+this.positionshim()=20
+}
+},
+
+positionshim:function(){=20
+if (this.enableiframeshim && typeof this.shimobject!=3D"undefined"){
+if (this.dropmenuobj.style.visibility=3D=3D"visible"){
+this.shimobject.style.width=3Dthis.dropmenuobj.offsetWidth+"px"
+this.shimobject.style.height=3Dthis.dropmenuobj.offsetHeight+"px"
+this.shimobject.style.left=3Dthis.dropmenuobj.style.left
+this.shimobject.style.top=3Dthis.dropmenuobj.style.top
+}
+this.shimobject.style.display=3D(this.dropmenuobj.style.visibility=3D=3D"=
+visible")? "block" : "none"
+}
+},
+
+hideshim:function(){
+if (this.enableiframeshim && typeof this.shimobject!=3D"undefined")
+this.shimobject.style.display=3D'none'
+},
+
+contains_firefox:function(a, b) {
+while (b.parentNode)
+if ((b =3D b.parentNode) =3D=3D a)
+return true;
+return false;
+},
+
+dynamichide:function(e){
+var evtobj=3Dwindow.event? window.event : e
+if (this.ie&&!this.dropmenuobj.contains(evtobj.toElement))
+this.delayhidemenu()
+else if (this.firefox&&e.currentTarget!=3D evtobj.relatedTarget&& =
+!this.contains_firefox(evtobj.currentTarget, evtobj.relatedTarget))
+this.delayhidemenu()
+},
+
+delayhidemenu:function(){
+this.delayhide=3DsetTimeout("cssdropdown.dropmenuobj.style.visibility=3D'=
+hidden'; cssdropdown.hideshim()",this.disappeardelay)=20
+},
+
+clearhidemenu:function(){
+if (this.delayhide!=3D"undefined")
+clearTimeout(this.delayhide)
+},
+
+startchrome:function(){
+for (var ids=3D0; ids<arguments.length; ids++){
+var =
+menuitems=3Ddocument.getElementById(arguments[ids]).getElementsByTagName(=
+"a")
+for (var i=3D0; i<menuitems.length; i++){
+if (menuitems[i].getAttribute("rel")){
+var relvalue=3Dmenuitems[i].getAttribute("rel")
+menuitems[i].onmouseover=3Dfunction(e){
+var event=3Dtypeof e!=3D"undefined"? e : window.event
+cssdropdown.dropit(this,event,this.getAttribute("rel"))
+}
+}
+}
+}
+if (window.createPopup && !window.XmlHttpRequest){=20
+document.write('<IFRAME id=3D"iframeshim"  src=3D"" style=3D"display: =
+none; left: 0; top: 0; z-index: 90; position: absolute; filter: =
+progid:DXImageTransform.Microsoft.Alpha(style=3D0,opacity=3D0)" =
+frameBorder=3D"0" scrolling=3D"no"></IFRAME>')
+this.shimobject=3Ddocument.getElementById("iframeshim")=20
+}
+}
+
+}
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/catalog.js
+
+=0A=
+//document.write("<table align=3D'center' width=3D'950' border=3D'0' =
+cellspacing=3D'0' cellpadding=3D'0'  style=3D'border-top:#999999 1px =
+solid'>");=0A=
+//document.write("  <tr>");=0A=
+//document.write("    <td align=3D'center'></td>");=0A=
+//document.write("  </tr>");=0A=
+//document.write("</table>");=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/ad/js_ad_728x90_101.js
+
+var ADcurrentURL=3Ddocument.location.href;=0A=
+var ADstag=3DADcurrentURL.indexOf('//')+1; =0A=
+ADcurrentURL=3DADcurrentURL.substring(ADstag+1,ADcurrentURL.length);=0A=
+ADstag=3DADcurrentURL.indexOf('/'); =0A=
+var ADdomain=3DADcurrentURL.substring(0,ADstag); =0A=
+=0A=
+if (ADdomain=3D=3D"roarsoft.net" || ADdomain =3D=3D "www.roarsoft.net")=0A=
+{=0A=
+	document.open();=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("alimama_pid=3D\"mm_10026851_117704_122406\";");=0A=
+	document.write("alimama_titlecolor=3D\"0000FF\";");=0A=
+	document.write("alimama_descolor =3D\"000000\";");=0A=
+	document.write("alimama_bgcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_bordercolor=3D\"E6E6E6\";");=0A=
+	document.write("alimama_linkcolor=3D\"008000\";");=0A=
+	document.write("alimama_bottomcolor=3D\"FFFFFF\";");=0A=
+	document.write("alimama_anglesize=3D\"0\";");=0A=
+	document.write("alimama_bgpic=3D\"0\";");=0A=
+	document.write("alimama_icon=3D\"0\";");=0A=
+	document.write("alimama_sizecode=3D\"11\";");=0A=
+	document.write("alimama_width=3D760;");=0A=
+	document.write("alimama_height=3D90;");=0A=
+	document.write("alimama_type=3D2;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script src=3D\"http://a.alimama.cn/inf.js\" =
+type=3Dtext/javascript></script>");=0A=
+	document.close();	=0A=
+}else{=0A=
+	document.write("<script type=3D'text/javascript'>");=0A=
+	document.write("google_ad_client =3D 'pub-3349738643245862';");=0A=
+	document.write("google_ad_slot =3D '2360225121';");=0A=
+	document.write("google_ad_width =3D 728;");=0A=
+	document.write("google_ad_height =3D 90;");=0A=
+	document.write("</script>");=0A=
+	document.write("<script type=3D'text/javascript' =
+src=3D'http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>=
+");=0A=
+}=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/some.rights.reserved.js
+
+document.write("=B1=BE=D5=BE=CE=C4=D5=C2=B3=FD=D7=A2=C3=F7=D7=AA=D4=D8=CD=
+=E2=A3=AC=BE=F9=CE=AA=B1=BE=D5=BE=D4=AD=B4=B4=A1=A2=D5=FB=C0=ED=BB=F2=B1=E0=
+=D2=EB.=CB=F9=D3=D0=CE=C4=D5=C2=BB=B6=D3=AD=C8=CE");=0A=
+document.write("=BA=CE=D0=CE=CA=BD=B5=C4=D7=AA=D4=D8=A3=AC=B5=AB=C7=EB=D7=
+=A2=C3=F7=D7=F7=D5=DF=BC=B0=B3=F6=B4=A6=A3=AC=D7=F0=D6=D8=CB=FB=C8=CB=C0=CD=
+=B6=AF=B3=C9=B9=FB=A3=A1<br/>");=0A=
+document.write("=C8=F4=C4=FA=B6=D4=D7=AA=D4=D8=B5=C4=CE=C4=D5=C2=A3=A8=D7=
+=F7=D5=DF=A1=A2=C0=B4=D4=B4=A1=A2=B0=E6=C8=A8=A3=A9=D3=D0=C8=CE=BA=CE=D2=C9=
+=CE=CA=A3=AC=C7=EB=B8=E6");=0A=
+document.write("=D6=AA=A3=AC=D2=BB=B6=A8=BC=B4=CA=B1=B4=A6=C0=ED=A3=A8abu=
+se{at}rosoo.net=A3=A9=A1=A3<br/>");=0A=
+document.write("Some Rights Reserved 1998 - 2006  <a =
+href=3D'http://www.rosoo.net'><font face=3D'Verdana, Arial, Helvetica, =
+sans-serif' size=3D'1'><b>Rosoo<font =
+color=3D'#CC0000'>.Net</font></b></font></a><br/>");=0A=
+document.write("Except where otherwise noted, content on this site =
+is<br/>");=0A=
+document.write("licensed base <a =
+href=3D'http://creativecommons.org/licenses/by-nc-sa/1.0/deed.en'>a =
+Creative Commons Attribution 2.5 License</a>");=0A=
+document.write("<br/>");=0A=
+document.write("<br/>");=0A=
+document.write("=C1=F7=C3=BD=CC=E5=BF=AA=B7=A2 QQ=C8=BA1=A3=BA8655372");=0A=
+document.write("<br/>");=0A=
+document.write("=C1=F7=C3=BD=CC=E5=BF=AA=B7=A2 =
+QQ=C8=BA2=A3=BA117013601");=0A=
+=0A=
+function nocopy()=0A=
+{=0A=
+//document.selection.empty();=0A=
+//alert("nocopy");=0A=
+//return false;=0A=
+//    if (window.clipboardData) {=0A=
+  //      setTimeout(nocopy(){=0A=
+    //        var text =3D clipboardData.getData("text");=0A=
+      //      if (text && text.length > 300) {=0A=
+        //        text =3D text + =
+"\r\n\n=B1=BE=CE=C4=C0=B4=D7=D4=C2=DE=CB=F7=B9=A4=D7=F7=CA=D2=A3=AC=D7=AA=
+=D4=D8=C7=EB=B1=EA=C3=F7=B3=F6=B4=A6=A3=BA" + location.href;=0A=
+          //      clipboardData.setData("text", text);=0A=
+           // }=0A=
+//        }, 100);=0A=
+//    }=0A=
+}=0A=
+=0A=
+function returnfalse()=0A=
+{=0A=
+	return false;=0A=
+}=0A=
+=0A=
+//document.oncontextmenu=3Dreturnfalse;=0A=
+//document.ondragstart=3Dreturnfalse;=0A=
+//document.onselectstart =3Dreturnfalse;=0A=
+//document.onselect=3Dnocopy;=0A=
+document.oncopy=3Dnocopy;=0A=
+//document.onbeforecopy=3Dreturnfalse;=0A=
+//document.onmouseup=3Dnocopy;=0A=
+=0A=
+document.oncopy=3Dfunction(){=0A=
+	if (window.clipboardData) {=0A=
+		setTimeout(function() {=0A=
+			var text =3D clipboardData.getData("text");=0A=
+			if (text && text.length > 300) {=0A=
+				text =3D text + =
+"\r\n\n=B1=BE=CE=C4=C0=B4=D7=D4=C2=DE=CB=F7=B9=A4=D7=F7=CA=D2=A3=AC=D7=AA=
+=D4=D8=C7=EB=B1=EA=C3=F7=B3=F6=B4=A6=A3=BA" + location.href;=0A=
+				clipboardData.setData("text", text);=0A=
+			}=0A=
+		}, 100);=0A=
+	}=0A=
+}
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/stat.php?type=0
+
+try{=0A=
+var pageTracker =3D _gat._getTracker("UA-12017658-1");=0A=
+pageTracker._setDomainName(".rosoo.net");=0A=
+pageTracker._setAllowLinker(true);=0A=
+pageTracker._addOrganic("www.baidu", "word");=0A=
+pageTracker._addOrganic("hi.baidu", "word");=0A=
+pageTracker._addOrganic("google.cn", "as_q");=0A=
+pageTracker._addOrganic("www.soso", "w");=0A=
+pageTracker._addOrganic("www.sogou", "query");=0A=
+pageTracker._addOrganic("3721", "p");=0A=
+pageTracker._addOrganic("seek.3721", "name");=0A=
+pageTracker._addOrganic("yodao", "q");=0A=
+pageTracker._addOrganic("youdao", "q");=0A=
+pageTracker._addOrganic("114", "kw");=0A=
+pageTracker._addOrganic("coop.yahoo.com.cn", "keyword");=0A=
+pageTracker._addOrganic("bing.com", "q");=0A=
+=0A=
+pageTracker._initData();=0A=
+pageTracker._trackPageview();=0A=
+}=0A=
+catch(err) {}=0A=
+=0A=
+=0A=
+document.write('<br/>');document.write("<script language=3D'javascript' =
+src=3D'http://count23.51yes.com/click.aspx?id=3D234143291&logo=3D6'></scr=
+ipt>");=0A=
+document.write("<br />");=0A=
+var _bdhmProtocol =3D (("https:" =3D=3D document.location.protocol) ? " =
+https://" : " http://");=0A=
+document.write(unescape("%3Cscript src=3D'" + _bdhmProtocol + =
+"hm.baidu.com/h.js%3F5708006aeb39dd75ac1d51c303ea2817' =
+type=3D'text/javascript'%3E%3C/script%3E"));=0A=
+=0A=
+
+------=_NextPart_000_0000_01CE5D39.766D32B0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.rosoo.net/js/rs_bottom.js
+
+try{=0A=
+var pageTracker =3D _gat._getTracker("UA-12017658-1");=0A=
+pageTracker._setDomainName(".yidaba.com");=0A=
+pageTracker._setAllowLinker(true);=0A=
+pageTracker._addOrganic("www.baidu", "word");=0A=
+pageTracker._addOrganic("hi.baidu", "word");=0A=
+pageTracker._addOrganic("google.cn", "as_q");=0A=
+pageTracker._addOrganic("www.soso", "w");=0A=
+pageTracker._addOrganic("www.sogou", "query");=0A=
+pageTracker._addOrganic("3721", "p");=0A=
+pageTracker._addOrganic("seek.3721", "name");=0A=
+pageTracker._addOrganic("yodao", "q");=0A=
+pageTracker._addOrganic("youdao", "q");=0A=
+pageTracker._addOrganic("114", "kw");=0A=
+pageTracker._addOrganic("coop.yahoo.com.cn", "keyword");=0A=
+pageTracker._addOrganic("bing.com", "q");=0A=
+=0A=
+pageTracker._initData();=0A=
+pageTracker._trackPageview();=0A=
+}=0A=
+=0A=
+catch(err) {}
+------=_NextPart_000_0000_01CE5D39.766D32B0--
