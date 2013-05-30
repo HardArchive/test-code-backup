@@ -13,7 +13,7 @@
 #include <boost/program_options.hpp>
 using namespace std;
 
-int main (int ac, char* av[])
+int main4 (int ac, char* av[])
 {
 	std::string file1 = "1";
 	std::string file2= "1";
