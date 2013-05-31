@@ -1,0 +1,40 @@
+第五部分   结构化异常处理
+第23章   结束处理程序	565
+    23.1   通过例子理解结束处理程序	566
+    23.2   Funcenstein1	566
+    23.3   Funcenstein2	566
+    23.4   Funcenstein3	568
+    23.5   Funcfurter1	568
+    23.6   突击测验：FuncaDoodleDoo	569
+    23.7   Funcenstein4	570
+    23.8   Funcarama1	571
+    23.9   Funcarama2	572
+    23.10   Funcarama3	572
+    23.11   Funcarama4：最终的边界	573
+    23.12   关于finally块的说明	574
+    23.13   Funcfurter2	575
+    23.14   SEH结束处理示例程序	576
+第24章   异常处理程序和软件异常	578
+    24.1   通过例子理解异常过滤器和异常处理程序	578
+        24.1.1   Funcmeister1	578
+        24.1.2   Funcmeister2	579
+    24.2   EXCEPTION_EXECUTE_HANDLER	580
+        24.2.1   一些有用的例子	581
+        24.2.2   全局展开	583
+        24.2.3   暂停全局展开	585
+    24.3   EXCEPTION_CONTINUE_EXECUTION	586
+    24.4   EXCEPTION_CONTINUE_SEARCH	588
+    24.5   Get Exception Code 	589
+    24.6   Get Exception Information	592
+    24.7   软件异常	595
+第25章   未处理异常和C++异常	598
+    25.1   即时调试	600
+    25.2   关闭异常消息框	601
+        25.2.1   强制进程终止运行	601
+        25.2.2   包装一个线程函数	601
+        25.2.3   包装所有的线程函数	601
+        25.2.4   自动调用调试程序	602
+    25.3  程序员自己调用UnhandledExceptionFilter	602
+    25.4   UnhandledExceptionFilter函数的一些细节	603
+    25.5    异常与调试程序	604
+    25.6   C++异常与结构性异常的对比	618
