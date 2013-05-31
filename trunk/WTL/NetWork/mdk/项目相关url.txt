@@ -1,0 +1,5 @@
+项目相关url
+下载地址（使用github下载）：https://github.com/huoyu820125/Micro-Development-Kit
+为方便没有github的朋友，从V1.25版本开始，新增google下载地址：http://code.google.com/p/micro-development-kit/
+文档地址（wiki）：https://github.com/huoyu820125/Micro-Development-Kit/wiki
+OSChina博客：http://my.oschina.net/u/732357/blog
