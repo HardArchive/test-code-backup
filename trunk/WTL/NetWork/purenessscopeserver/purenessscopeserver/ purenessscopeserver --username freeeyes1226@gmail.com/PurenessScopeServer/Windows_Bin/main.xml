@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<ServerID id="1" desc="当前服务器的ID编号" />
+	<ServerName name="Freeeyes" desc="当前服务器的名称" />
+	<ServerVersion Version="0.90" desc="当前服务器版本" />
+	<TCPServerIP ip="127.0.0.1" port="10002" desc="监听TCP服务器的IP和端口，可以是多个" />
+	<!-- <TCPServerIP ip="127.0.0.1" port="10003" desc="监听TCP服务器的IP和端口，可以是多个，要用多个，只要多写几个这样的节点即可" /> -->
+	
+	<Console support="1" sip="127.0.0.1" sport="10010"  desc="维护端口是否开启，support为1是开启，0是关闭，后面对应IP和端口" />
+	<ConsoleKey Key="freeeyes" desc="维护端允许登录的Key值,可以是多个，key值中不能包含空格" />
+	<ConsoleKey Key="guest" desc="维护端允许登录的Key值,可以是多个，key值中不能包含空格" />
+	<!-- <ConsoleClient cip="127.0.0.1" desc="维护端口可以访问的对应的客户端IP地址，可以支持多个" /> -->
+	
+	<Message Msg_High_mark="64000" Msg_Low_mark="64000" Msg_Thread="1" Msg_MaxQueue="10000" desc="消息处理线程相关参数设置，" />
+	
+	<Module ModulePath="./" ModuleString="TcpTestd.dll" desc="模块加载配置相关参数，ModulePath是路径，ModuleString是模块名称，以逗号隔开"/>
+	
+	<RecvInfo RecvBuffSize="20480" RecvQueueTimeout="50" desc="接收客户端数据配置参数" />
+	<SendInfo SendQueueMax="100" SendThresHold="50" SendAliveTime="60" SendQueueTimeout="50" SendQueueCount="1" PutQueueTimeout = "100" desc="发送到客户端需要配置的参数" />
+	<ThreadInfo ThreadTimeout="30" ThreadTimeCheck="120" DisposeTimeout="40" PutQueueTimeout = "100" desc="工作线程相关参数" />
+	<ClientInfo HandlerCount="5000" MaxHandlerCount="10000" MaxConnectTime="60" CommandAccount="1" desc="客户端链接相关参数"/>
+	<ConnectValid ConnectValid="1" ConnectCount="50000"  ConnectPacketCount="1000000" ConnectRecvSize="10000000" ForbiddenTime="60" desc="链接有效性管理" />
+	<ConnectServer TimeInterval=500 TimeCheck=30 desc="框架连接其它远程服务器相关参数，TimeInterval是连接每个服务器之间的保护时间，单位是毫秒,TimeCheck单位是秒" />
+	
+	<!-- <UDPServerIP uip="127.0.0.1" uport="10003" desc="监听TCP服务器的IP和端口，可以是多个" /> -->
+</config>
