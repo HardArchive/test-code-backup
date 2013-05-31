@@ -1,0 +1,622 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0056)http://vicchina.51.net/research/other/seh/sehadvance.htm -->
+<HTML><HEAD><TITLE>对于结构化异常处理（SEH）的进一步探索</TITLE><!-- InstanceBegin template="/Templates/Common Article.dwt" codeOutsideHTMLIsLocked="false" --><!-- InstanceBeginEditable name="doctitle" --><!-- InstanceEndEditable -->
+<META content="text/html; charset=gb2312" http-equiv=Content-Type><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable --><LINK 
+rel=stylesheet type=text/css href="对于结构化异常处理（SEH）的进一步探索_files/common.css">
+<SCRIPT language=JavaScript type=text/JavaScript 
+src="对于结构化异常处理（SEH）的进一步探索_files/common.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.TitleText {
+	FONT-FAMILY: "Verdana", "黑体"; COLOR: #ffffff; FONT-SIZE: 20pt; FONT-WEIGHT: bold
+}
+.Code {
+	PADDING-LEFT: 20px; FONT-FAMILY: "Fixedsys"; COLOR: #ffffff; FONT-SIZE: 12pt
+}
+</STYLE>
+<!-- InstanceParam name="Associative Articles" type="boolean" value="true" -->
+<META name=GENERATOR content="MSHTML 8.00.6001.19403"></HEAD>
+<BODY>
+<DIV style="Z-INDEX: 1; POSITION: absolute; WIDTH: 100%; TOP: 0px; LEFT: 0px" 
+id=body>
+<TABLE border=0 cellSpacing=5 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE class=TitleText border=0 cellSpacing=0 cellPadding=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD><!-- InstanceBeginEditable name="Article Title" -->对于结构化异常处理（SEH）的进一步探索<!-- InstanceEndEditable --></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/keywords.gif" width=20 
+            height=20><B>本文关键字：<!-- InstanceBeginEditable name="Keywords" -->SEH, 
+            _except_handler3, Windows, 
+        VisualC<!-- InstanceEndEditable --></B></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><!-- InstanceBeginEditable name="Article Content" -->
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>写本文的起因</B> 
+            <BLOCKQUOTE>
+              <P>Matt Pietrek 关于结构化异常处理的文章 A Crash Course on the Depths of Win32 
+              Structured Exception Handling 
+              是一篇很棒的文章（在本文末的“相关文章”中有我整理过的中文版文章链接），对于我了解 Win32 
+              下的这种异常处理机制帮助很大。在仔细读完整篇文章、跟踪过相关代码的执行流程后，仍有意犹未尽的感觉。本文就是在读过这篇文章之后写的，具有一定“实验记录”的性质。所以强烈建议在阅读本文之前看一下 
+              Matt Pietrek 的文章。</P>
+              <P>在所有被编译器封装的异常处理行为中，最重要的恐怕就要数 _except_handler3 和 __local_unwind2 
+              函数了。在这两者之间，又数 _except_handler3 
+              尤为重要。因为这个函数是操作系统与编译器之间的接口，操作系统只能按照栈帧结构一个一个地调用 handler，而真正的 filter 
+              调用，以及同一个函数内的嵌套 __try 的处理都要依赖 _except_handler3 
+              来完成。因此，认真研究一下这个函数的实现，对于完全理解 VC 下的 SEH 
+        机制就显得十分必要。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>对 _except_handler3 伪码的勘误</B> 
+            <BLOCKQUOTE>
+              <P>Matt Pietrek 在他的文章中已经给出了 _except_handler3() 
+              的伪代码，但不知细心的人是否发现了伪码中的错误，当然，我并不是在计较那两个把“=”写成“==”的无聊笔误，而是另外一个小逻辑错误。让我们再仔细看一下文中给出的伪码：</P><PRE class=Code>001: <FONT color=#c0c0ff>int</FONT> <FONT color=#c0c0c0>__except_handler3</FONT>(
+002:     <FONT color=#c0c0ff>struct</FONT> _EXCEPTION_RECORD * pExceptionRecord,
+003:     <FONT color=#c0c0ff>struct</FONT> EXCEPTION_REGISTRATION * pRegistrationFrame,
+004:     <FONT color=#c0c0ff>struct</FONT> _CONTEXT *pContextRecord,
+005:     <FONT color=#c0c0ff>void</FONT> * pDispatcherContext )
+006: {
+007:     LONG filterFuncRet
+008:     LONG trylevel
+009:     EXCEPTION_POINTERS exceptPtrs
+010:     PSCOPETABLE pScopeTable
+011: 
+012:     CLD     <FONT color=#c0ffc0>// Clear the direction flag (make no assumptions!)</FONT>
+013: 
+014:     <FONT color=#c0ffc0>// if neither the EXCEPTION_UNWINDING nor EXCEPTION_EXIT_UNWIND bit</FONT>
+015:     <FONT color=#c0ffc0>// is set...  This is true the first time through the handler (the</FONT>
+016:     <FONT color=#c0ffc0>// non-unwinding case)</FONT>
+017: 
+018:     <FONT color=#c0c0ff>if</FONT> ( ! (pExceptionRecord-&gt;ExceptionFlags
+019:             &amp; (EXCEPTION_UNWINDING | EXCEPTION_EXIT_UNWIND)) )
+020:     {
+021:         <FONT color=#c0ffc0>// Build the EXCEPTION_POINTERS structure on the stack</FONT>
+022:         exceptPtrs.ExceptionRecord = pExceptionRecord;
+023:         exceptPtrs.ContextRecord = pContextRecord;
+024: 
+025:         <FONT color=#c0ffc0>// Put the pointer to the EXCEPTION_POINTERS 4 bytes below the</FONT>
+026:         <FONT color=#c0ffc0>// establisher frame.  See ASM code for GetExceptionInformation</FONT>
+027:         *(PDWORD)((PBYTE)pRegistrationFrame - <FONT color=#ffc0c0>4</FONT>) = &amp;exceptPtrs;
+028: 
+029:         <FONT color=#c0ffc0>// Get initial "trylevel" value</FONT>
+030:         trylevel = pRegistrationFrame-&gt;trylevel 
+031: 
+032:         <FONT color=#c0ffc0>// Get a pointer to the scopetable array</FONT>
+033:         scopeTable = pRegistrationFrame-&gt;scopetable;
+034: 
+035: search_for_handler: 
+036: 
+037:         <FONT color=#c0c0ff>if</FONT> ( pRegistrationFrame-&gt;trylevel != TRYLEVEL_NONE )
+038:         {
+039:             <FONT color=#c0c0ff>if</FONT> ( pRegistrationFrame-&gt;scopetable[trylevel].lpfnFilter )
+040:             {
+041:                 PUSH EBP                        <FONT color=#c0ffc0>// Save this frame EBP</FONT>
+042: 
+043:                 <FONT color=#c0ffc0>// !!!Very Important!!!  Switch to original EBP.  This is</FONT>
+044:                 <FONT color=#c0ffc0>// what allows all locals in the frame to have the same</FONT>
+045:                 <FONT color=#c0ffc0>// value as before the exception occurred.</FONT>
+046:                 EBP = &amp;pRegistrationFrame-&gt;_ebp 
+047: 
+048:                 <FONT color=#c0ffc0>// Call the filter function</FONT>
+049:                 filterFuncRet = scopetable[trylevel].<FONT color=#c0c0c0>lpfnFilter</FONT>();
+050: 
+051:                 POP EBP                         <FONT color=#c0ffc0>// Restore handler frame EBP</FONT>
+052: 
+053:                 <FONT color=#c0c0ff>if</FONT> ( filterFuncRet != EXCEPTION_CONTINUE_SEARCH )
+054:                 {
+055:                     <FONT color=#c0c0ff>if</FONT> ( filterFuncRet &lt; <FONT color=#ffc0c0>0</FONT> ) <FONT color=#c0ffc0>// EXCEPTION_CONTINUE_EXECUTION</FONT>
+056:                         <FONT color=#c0c0ff>return</FONT> ExceptionContinueExecution;
+057: 
+058:                     <FONT color=#c0ffc0>// If we get here, EXCEPTION_EXECUTE_HANDLER was specified</FONT>
+059:                     scopetable == pRegistrationFrame-&gt;scopetable
+060: 
+061:                     <FONT color=#c0ffc0>// Does the actual OS cleanup of registration frames</FONT>
+062:                     <FONT color=#c0ffc0>// Causes this function to recurse</FONT>
+063:                     <FONT color=#c0c0c0>__global_unwind2</FONT>( pRegistrationFrame );
+064: 
+065:                     <FONT color=#c0ffc0>// Once we get here, everything is all cleaned up, except</FONT>
+066:                     <FONT color=#c0ffc0>// for the last frame, where we'll continue execution</FONT>
+067:                     EBP = &amp;pRegistrationFrame-&gt;_ebp
+068:                     
+069:                     <FONT color=#c0c0c0>__local_unwind2</FONT>( pRegistrationFrame, trylevel );
+070: 
+071:                     <FONT color=#c0ffc0>// NLG == "non-local-goto" (setjmp/longjmp stuff)</FONT>
+072:                     <FONT color=#c0c0c0>__NLG_Notify</FONT>( <FONT color=#ffc0c0>1</FONT> );  <FONT color=#c0ffc0>// EAX == scopetable-&gt;lpfnHandler</FONT>
+073: 
+074:                     <FONT color=#c0ffc0>// Set the current trylevel to whatever SCOPETABLE entry</FONT>
+075:                     <FONT color=#c0ffc0>// was being used when a handler was found</FONT>
+076:                     pRegistrationFrame-&gt;trylevel = scopetable-&gt;previousTryLevel;
+077: 
+078:                     <FONT color=#c0ffc0>// Call the _except {} block.  Never returns.</FONT>
+079:                     pRegistrationFrame-&gt;scopetable[trylevel].<FONT color=#c0c0c0>lpfnHandler</FONT>();
+080:                 }
+081:             }
+082: 
+083:             scopeTable = pRegistrationFrame-&gt;scopetable;
+084:             trylevel = scopeTable-&gt;previousTryLevel
+085: 
+086:             <FONT color=#c0c0ff>goto</FONT> search_for_handler;
+087:         }
+088:         <FONT color=#c0c0ff>else</FONT>    <FONT color=#c0ffc0>// trylevel == TRYLEVEL_NONE</FONT>
+089:         {
+090:             retvalue == DISPOSITION_CONTINUE_SEARCH;
+091:         }
+092:     }
+093:     <FONT color=#c0c0ff>else</FONT>    <FONT color=#c0ffc0>// EXCEPTION_UNWINDING or EXCEPTION_EXIT_UNWIND flags are set</FONT>
+094:     {
+095:         PUSH EBP    <FONT color=#c0ffc0>// Save EBP</FONT>
+096:         EBP = pRegistrationFrame-&gt;_ebp  <FONT color=#c0ffc0>// Set EBP for __local_unwind2</FONT>
+097: 
+098:         <FONT color=#c0c0c0>__local_unwind2</FONT>( pRegistrationFrame, TRYLEVEL_NONE )
+099: 
+100:         POP EBP     <FONT color=#c0ffc0>// Restore EBP</FONT>
+101: 
+102:         retvalue == DISPOSITION_CONTINUE_SEARCH;
+103:     }
+104: }</PRE>
+              <P>注意第 37 行的 if 语句，对当前 pRegistrationFrame 中的 trylevel 进行了判定：</P>
+              <P class=Code><FONT color=#c0c0ff>if</FONT> ( 
+              pRegistrationFrame-&gt;trylevel != TRYLEVEL_NONE )</P>
+              <P>也就是说，如果已经没有 try 块了，就直接返回 
+              DISPOSITION_CONTINUE_SEARCH，然后操作系统会调用下一个栈帧的 
+              handler。但这里的判定写错了，显然应该是：</P>
+              <P class=Code><FONT color=#c0c0ff>if</FONT> ( trylevel != 
+              TRYLEVEL_NONE )</P>
+              <P>因为在没有 filter 或者 filter 不处理异常的情况下，第 84 行的赋值将会回溯到外层 __try 块的 
+              scopetable_entry 结构中：</P>
+              <P class=Code>trylevel = scopeTable-&gt;previousTryLevel</P>
+              <P>如果不进行这样的修改，就不难想象这个 handler 
+              会导致怎样的后果：异常发生后，pRegistrationFrame-&gt;trylevel 指示了异常发生的地方所处的 __try 
+              块在 scopetable 中的索引。如果这一层的 filter 没有处理这个异常，那么在这个 handler 中将会执行到第 86 
+              行，也就是说准备开始执行外层 __try 块的 filter。此时 pRegistrationFrame-&gt;trylevel 
+              的值并没有任何改变，也就是说，无论外层是否有 __try 块，第 37 行的判定一定可以再次通过，但由于 84 
+              行的赋值操作已经在上一个循环中更新了 trylevel 变量的值，trylevel 的值就有可能是 -1 
+              了（也就是说该帧内没有人处理这个异常），在这种情况下，第 39 行的判定一定会引发一个 Access Violation 异常，因为 
+              trylevel 作为数组下标是一个非法值。而且不难预见的是：除非该帧内没有一个 __try，或者某个 filter 
+              处理了异常，否则这个 handler 肯定是次次要在这里摔跟头的。并且，这个跟头摔的不算轻：这属于在一个异常 handler 
+              中引发了另一个异常（传说中的 double fault？），这个异常会被系统函数 
+              RtlpExecuteHandlerForException 安装的简易 handler 处理（Matt Pietrek 
+              在他的文章中提到过这一点，参看“Into the Inferno”一节），处理结果就是返回 
+              DISPOSITION_NESTED_EXCEPTION，然后给这个异常打上一个“异常嵌套了！！！”的标志（Matt Pietrek 
+              提供的伪码中写的却是 
+              EH_EXIT_UNWIND，虽然乍看上去他的伪码似乎更合理一些，但是却与实际情况不符，我将在后面提到这一点）。</P>
+              <P>另外，伪码中第 96 行似乎少了一个非常关键的取地址符“&amp;”，但我相信这是另一个笔误罢了，因为前面第 46 
+              行的赋值表达式是正确的。但是，我刚刚看到这里的时候却没有现在这么清楚，我曾经为判断这两种写法哪个是正确的、哪个是错误的而迷惑了一段时间。之后，在跟踪了 
+              VC 构造异常帧的代码后我终于意识到：46 行的那一句才是正确的。再后来，当我在跟踪 _except_handler3 
+              的代码时，无意间发现了 VC 内部真正的 _EH3_EXCEPTION_REGISTRATION 结构的定义才知道：CRT 源码文件 
+              EXSUP.INC 中的那个 _EXCEPTION_REGISTRATION 
+              结构的定义实在是太迷惑人了，尤其是那个“_ebp”成员；而另一个 EXCEPT.INC 文件中用汇编语言给出的 
+              __EXCEPTIONREGISTRATIONRECORD 定义更是胡扯。当然，这些问题一会儿再说，现在先回到 
+              _except_handler3。</P>
+              <P>我是个好奇心很强的人，发现了伪码中的错误以后不禁觉得有些兴奋（众人语：这什么人嘛！），并且想到了另一个问题：Matt 
+              Pietrek 
+              是怎么写出这些伪代码的？如果说这个错误是他不小心犯的，那么他有没有犯别的错误——他犯错误我管不着，但是如果我跟着学坏了，那岂不是很冤……所以，我决定自己去看看 
+              _except_handler3 的代码究竟是什么样子的。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>激动人心的旅程</B> 
+            <BLOCKQUOTE>
+              <P>我知道作出这个决定后肯定要经历一个痛苦的过程，但我仍然义无反顾地开了 VC，然后一头扎进机器语言的茫茫大雾中……</P>
+              <P>想看到 
+              _except_handler3，就要先抓住它；想抓住它，就要先引发一个异常。这个好办，几行程序就可以把它引出来：</P><PRE class=Code>1: __try {
+2:         <FONT color=#c0c0ff>int</FONT> *p = <FONT color=#ffc0c0>0</FONT>;
+3:         *p = <FONT color=#ffc0c0>0</FONT>;
+4: } <FONT color=#c0c0c0>__except</FONT>(EXCEPTION_EXECUTE_HANDLER) {
+5: }</PRE>
+              <P>在第 3 行设断点，然后切换到反汇编，就看到了这样的景象：</P><PRE class=Code>01: _try {
+02: <FONT color=#ffc0c0>00411</FONT>A4B  mov         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT> 
+03:         <FONT color=#c0c0ff>int</FONT> *p = <FONT color=#ffc0c0>0</FONT>;
+04: <FONT color=#ffc0c0>00411</FONT>A52  mov         dword ptr [p],<FONT color=#ffc0c0>0</FONT> 
+05:         *p = <FONT color=#ffc0c0>0</FONT>;
+06: <FONT color=#ffc0c0>00411</FONT>A59  mov         eax,dword ptr [p] 
+07: <FONT color=#ffc0c0>00411</FONT>A5C  mov         dword ptr [eax],<FONT color=#ffc0c0>0</FONT> 
+08: <FONT color=#ffc0c0>00411</FONT>A62  mov         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT>FFFFFFFFh 
+09: <FONT color=#ffc0c0>00411</FONT>A69  jmp         $L28580+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>Ah</FONT> (<FONT color=#ffc0c0>411</FONT>A7Bh) 
+10: } <FONT color=#c0c0c0>_except</FONT>(EXCEPTION_EXECUTE_HANDLER) {
+11: <FONT color=#ffc0c0>00411</FONT>A6B  mov         eax,<FONT color=#ffc0c0>1</FONT> 
+12: $L28581:
+13: <FONT color=#ffc0c0>00411</FONT>A70  ret              
+14: $L28580:
+15: <FONT color=#ffc0c0>00411</FONT>A71  mov         esp,dword ptr [ebp-<FONT color=#ffc0c0>18</FONT>h] 
+16: <FONT color=#ffc0c0>00411</FONT>A74  mov         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT>FFFFFFFFh 
+17: }</PRE>
+              <P>啊，在明白了大部分事情之后，一切显得都是那么的自然：第 2 行的指令不就是在设置那个“传说中的”trylevel 
+              么？呵呵，基址后的第一个 DWORD 就是，果然不错。AV 异常显然应该在第 7 行发生，step into 那一行，却发现：VC 
+              在输出窗口中显示有异常发生，然后直接停在了 15 行，也就是 handler 
+              代码开始的地方。这不是我想要的结果，因为据我所知，异常发生后，会产生一大堆系统调用，最后由 _except_handler3 
+              把控制权交回我写的 handler。换句话说，当进入我的 handler 代码时，这一切都已经结束了……</P>
+              <P>既然 VC 不愿意让我这么容易地看到 _except_handler3 的代码，那么我也就不得不耍点手段了，于是我盯上了 
+              11、13 行的 filter 指令。是的，这应该就是 filter 的代码，如果有人 CALL 到 11 行，那么这行指令会将 
+              eax 置为 1，然后在第 13 行返回，也就是返回 1，根据 EXCPT.H 中的宏定义，1 就是 
+              EXCEPTION_EXECUTE_HANDLER 的值，所以这正是我的 filter-expression 的行为，这就是我的 
+              filter 代码。那么，如果是 _except_handler3 调用了 filter，那么我在 filter 
+              返回之前中断，是不是就能跟回到我梦寐以求的 _except_handler3 中去了呢？是的，当我在第 13 行设断点、step 
+              over 之后，VC 终于老老实实地把我带回了 _except_handler3 家。</P>
+              <P>好在 _except_handler3 
+              的代码不多，更何况我之前已经看过了伪码，所以想弄懂这些指令在做什么并不是件很难的事。首先我意识到必须先弄到它的定义，否则看那一大堆相对于 
+              ebp 寄存器的偏移肯定不是件多么舒服的事。好在 Matt Pietrek 已经在他的文章中提到了，EXCPT.H 
+              中包含了这个函数定义：</P><PRE class=Code>1: EXCEPTION_DISPOSITION
+2: __cdecl <FONT color=#c0c0c0>_except_handler</FONT>(
+3:     <FONT color=#c0c0ff>struct</FONT> _EXCEPTION_RECORD *ExceptionRecord,
+4:     <FONT color=#c0c0ff>void</FONT> * EstablisherFrame,
+5:     <FONT color=#c0c0ff>struct</FONT> _CONTEXT *ContextRecord,
+6:     <FONT color=#c0c0ff>void</FONT> * DispatcherContext
+7: );</PRE>
+              <P>虽然这个定义中的函数名是 _except_handler 而非 _except_handler3，但估计也就是一个 Place 
+              Holder。因为我已经尝试过直接在代码中显示调用这个函数名了，但是 Link 
+              不上，所以名字不一样也无所谓了。根据这个定义，可以得出结论：这是一个 __cdecl 调用约定的函数，4 
+              个参数从右至左入栈，调用者负责清理堆栈。因此：指令中出现的 [ebp+8] 引用的是 
+              ExceptionRecord、[ebp+0Ch] 引用的是 EstablisherFrame、[ebp+10h] 引用的是 
+              ContextRecord、[ebp+14h] 引用的是 DispatcherContext，函数返回使用 ret 而非 
+              __stdcall 的函数常用的“ret N”。好了，有了这些信息，分析起来就容易多了：</P><PRE class=Code>001: _except_handler3:
+002: <FONT color=#ffc0c0>004141</FONT>A0  push        ebp
+003: <FONT color=#ffc0c0>004141</FONT>A1  mov         ebp,esp
+004:     ; <FONT color=#c0ffc0>// EXCEPTION_POINTERS exceptPtrs;</FONT>
+005: <FONT color=#ffc0c0>004141</FONT>A3  sub         esp,<FONT color=#ffc0c0>8</FONT>
+006: <FONT color=#ffc0c0>004141</FONT>A6  push        ebx
+007: <FONT color=#ffc0c0>004141</FONT>A7  push        esi
+008: <FONT color=#ffc0c0>004141</FONT>A8  push        edi
+009: <FONT color=#ffc0c0>004141</FONT>A9  push        ebp
+010: <FONT color=#ffc0c0>004141</FONT>AA  cld
+011:     ; <FONT color=#c0ffc0>// EstablisherFrame =&gt; ebx</FONT>
+012: <FONT color=#ffc0c0>004141</FONT>AB  mov         ebx,dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]
+013:     ; <FONT color=#c0ffc0>// ExceptionRecord =&gt; eax</FONT>
+014: <FONT color=#ffc0c0>004141</FONT>AE  mov         eax,dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>]
+015:     ; <FONT color=#c0ffc0>// if (ExceptionRecord-&gt;ExceptionFlags &amp; EXCEPTION_UNWIND_CONTEXT)</FONT>
+016:     ; <FONT color=#c0ffc0>//     goto _lh_unwinding;</FONT>
+017: <FONT color=#ffc0c0>004141</FONT>B1  test        dword ptr [eax+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>6</FONT>
+018: <FONT color=#ffc0c0>004141</FONT>B8  jne         <FONT color=#c0c0c0>_lh_unwinding</FONT> (<FONT color=#ffc0c0>414269</FONT>h)
+019:     ; <FONT color=#c0ffc0>// exceptPtrs.ExceptionRecord = ExceptionRecord</FONT>
+020: <FONT color=#ffc0c0>004141</FONT>BE  mov         dword ptr [ebp-<FONT color=#ffc0c0>8</FONT>],eax
+021:     ; <FONT color=#c0ffc0>// exceptPtrs.ContextRecord = ContextRecord;</FONT>
+022: <FONT color=#ffc0c0>004141</FONT>C1  mov         eax,dword ptr [ebp+<FONT color=#ffc0c0>10</FONT>h]
+023: <FONT color=#ffc0c0>004141</FONT>C4  mov         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],eax
+024:     ; <FONT color=#c0ffc0>// *(PDWORD)((PBYTE)EstablisherFrame - 4) = &amp;exceptPtrs</FONT>
+025: <FONT color=#ffc0c0>004141</FONT>C7  lea         eax,[ebp-<FONT color=#ffc0c0>8</FONT>]
+026: <FONT color=#ffc0c0>004141</FONT>CA  mov         dword ptr [ebx-<FONT color=#ffc0c0>4</FONT>],eax
+027:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;trylevel =&gt; esi</FONT>
+028: <FONT color=#ffc0c0>004141</FONT>CD  mov         esi,dword ptr [ebx+<FONT color=#ffc0c0>0</FONT>Ch]
+029:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;scopetable =&gt; edi</FONT>
+030: <FONT color=#ffc0c0>004141</FONT>D0  mov         edi,dword ptr [ebx+<FONT color=#ffc0c0>8</FONT>]
+031:     ; <FONT color=#c0ffc0>// if (_ValidateEH3RN(EstablisherFrame) == 0)</FONT>
+032:     ; <FONT color=#c0ffc0>//     goto _lh_abort;</FONT>
+033: <FONT color=#ffc0c0>004141</FONT>D3  push        ebx
+034: <FONT color=#ffc0c0>004141</FONT>D4  call        @ILT+<FONT color=#ffc0c0>775</FONT>(__ValidateEH3RN) (<FONT color=#ffc0c0>41130</FONT>Ch)
+035: <FONT color=#ffc0c0>004141</FONT>D9  add         esp,<FONT color=#ffc0c0>4</FONT>
+036: <FONT color=#ffc0c0>004141</FONT>DC  or          eax,eax
+037: <FONT color=#ffc0c0>004141</FONT>DE  je          <FONT color=#c0c0c0>_lh_abort</FONT> (<FONT color=#ffc0c0>41425</FONT>Bh)
+038: _lh_top:
+039:     ; <FONT color=#c0ffc0>// if (trylevel == TRYLEVEL_NONE)</FONT>
+040:     ; <FONT color=#c0ffc0>//     goto _lh_bagit;</FONT>
+041: <FONT color=#ffc0c0>004141</FONT>E0  cmp         esi,<FONT color=#ffc0c0>0</FONT>FFFFFFFFh
+042: <FONT color=#ffc0c0>004141</FONT>E3  je          <FONT color=#c0c0c0>_lh_bagit</FONT> (<FONT color=#ffc0c0>414262</FONT>h)
+043:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;scopetable[trylevel].lpfnFilter =&gt; eax</FONT>
+044: <FONT color=#ffc0c0>004141</FONT>E5  lea         ecx,[esi+esi*<FONT color=#ffc0c0>2</FONT>]
+045: <FONT color=#ffc0c0>004141</FONT>E8  mov         eax,dword ptr [edi+ecx*<FONT color=#ffc0c0>4</FONT>+<FONT color=#ffc0c0>4</FONT>]
+046:     ; <FONT color=#c0ffc0>// if (EstablisherFrame-&gt;scopetable[trylevel].lpfnFilter == NULL)</FONT>
+047:     ; <FONT color=#c0ffc0>//     goto _lh_continue;</FONT>
+048: <FONT color=#ffc0c0>004141</FONT>EC  or          eax,eax
+049: <FONT color=#ffc0c0>004141</FONT>EE  je          <FONT color=#c0c0c0>_lh_continue</FONT> (<FONT color=#ffc0c0>414249</FONT>h)
+050:     ; <FONT color=#c0ffc0>// PUSH EBP</FONT>
+051: <FONT color=#ffc0c0>004141</FONT>F0  push        esi
+052: <FONT color=#ffc0c0>004141</FONT>F1  push        ebp
+053:     ; <FONT color=#c0ffc0>// EBP = &amp;EstablisherFrame-&gt;_ebp</FONT>
+054: <FONT color=#ffc0c0>004141</FONT>F2  lea         ebp,[ebx+<FONT color=#ffc0c0>10</FONT>h]
+055:     ; <FONT color=#c0ffc0>// ret = EstablisherFrame-&gt;scopetable[trylevel].lpfnFilter();</FONT>
+056: <FONT color=#ffc0c0>004141</FONT>F5  xor         ebx,ebx
+057: <FONT color=#ffc0c0>004141</FONT>F7  xor         ecx,ecx
+058: <FONT color=#ffc0c0>004141</FONT>F9  xor         edx,edx
+059: <FONT color=#ffc0c0>004141</FONT>FB  xor         esi,esi
+060: <FONT color=#ffc0c0>004141</FONT>FD  xor         edi,edi
+061: <FONT color=#ffc0c0>004141</FONT>FF  call        eax
+062:     ; <FONT color=#c0ffc0>// POP EBP</FONT>
+063: <FONT color=#ffc0c0>00414201</FONT>  pop         ebp
+064: <FONT color=#ffc0c0>00414202</FONT>  pop         esi
+065:     ; <FONT color=#c0ffc0>// EstablisherFrame =&gt; ebx</FONT>
+066: <FONT color=#ffc0c0>00414203</FONT>  mov         ebx,dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]
+067:     ; <FONT color=#c0ffc0>// if (ret == EXCEPTION_CONTINUE_SEARCH)</FONT>
+068:     ; <FONT color=#c0ffc0>//     goto _lh_continue;</FONT>
+069:     ; <FONT color=#c0ffc0>// else if (ret &lt; 0)</FONT>
+070:     ; <FONT color=#c0ffc0>//     goto _lh_dismiss;</FONT>
+071: <FONT color=#ffc0c0>00414206</FONT>  or          eax,eax
+072: <FONT color=#ffc0c0>00414208</FONT>  je          <FONT color=#c0c0c0>_lh_continue</FONT> (<FONT color=#ffc0c0>414249</FONT>h)
+073: <FONT color=#ffc0c0>0041420</FONT>A  js          <FONT color=#c0c0c0>_lh_dismiss</FONT> (<FONT color=#ffc0c0>414254</FONT>h)
+074:     ; <FONT color=#c0ffc0>// __global_unwind2(EstablisherFrame);</FONT>
+075: <FONT color=#ffc0c0>0041420</FONT>C  mov         edi,dword ptr [ebx+<FONT color=#ffc0c0>8</FONT>]
+076: <FONT color=#ffc0c0>0041420</FONT>F  push        ebx
+077: <FONT color=#ffc0c0>00414210</FONT>  call        @ILT+<FONT color=#ffc0c0>700</FONT>(__global_unwind2) (<FONT color=#ffc0c0>4112</FONT>C1h)
+078: <FONT color=#ffc0c0>00414215</FONT>  add         esp,<FONT color=#ffc0c0>4</FONT>
+079:     ; <FONT color=#c0ffc0>// EBP = &amp;EstablisherFrame-&gt;_ebp</FONT>
+080: <FONT color=#ffc0c0>00414218</FONT>  lea         ebp,[ebx+<FONT color=#ffc0c0>10</FONT>h]
+081:     ; <FONT color=#c0ffc0>// __local_unwind2(EstablisherFrame, trylevel);</FONT>
+082: <FONT color=#ffc0c0>0041421</FONT>B  push        esi
+083: <FONT color=#ffc0c0>0041421</FONT>C  push        ebx
+084: <FONT color=#ffc0c0>0041421</FONT>D  call        @ILT+<FONT color=#ffc0c0>385</FONT>(__local_unwind2) (<FONT color=#ffc0c0>411186</FONT>h)
+085: <FONT color=#ffc0c0>00414222</FONT>  add         esp,<FONT color=#ffc0c0>8</FONT>
+086:     ; <FONT color=#c0ffc0>// __NLG_Notify(1);</FONT>
+087: <FONT color=#ffc0c0>00414225</FONT>  lea         ecx,[esi+esi*<FONT color=#ffc0c0>2</FONT>]
+088: <FONT color=#ffc0c0>00414228</FONT>  push        <FONT color=#ffc0c0>1</FONT>
+089: <FONT color=#ffc0c0>0041422</FONT>A  mov         eax,dword ptr [edi+ecx*<FONT color=#ffc0c0>4</FONT>+<FONT color=#ffc0c0>8</FONT>]
+090: <FONT color=#ffc0c0>0041422</FONT>E  call        @ILT+<FONT color=#ffc0c0>1045</FONT>(__NLG_Notify) (<FONT color=#ffc0c0>41141</FONT>Ah)
+091:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;trylevel =</FONT>
+092:     ; <FONT color=#c0ffc0>//     EstablisherFrame-&gt;scopetable[trylevel].previousTryLevel</FONT>
+093: <FONT color=#ffc0c0>00414233</FONT>  mov         eax,dword ptr [edi+ecx*<FONT color=#ffc0c0>4</FONT>]
+094: <FONT color=#ffc0c0>00414236</FONT>  mov         dword ptr [ebx+<FONT color=#ffc0c0>0</FONT>Ch],eax
+095:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;scopetable[trylevel].lpfnHandler();</FONT>
+096: <FONT color=#ffc0c0>00414239</FONT>  mov         eax,dword ptr [edi+ecx*<FONT color=#ffc0c0>4</FONT>+<FONT color=#ffc0c0>8</FONT>]
+097: <FONT color=#ffc0c0>0041423</FONT>D  xor         ebx,ebx
+098: <FONT color=#ffc0c0>0041423</FONT>F  xor         ecx,ecx
+099: <FONT color=#ffc0c0>00414241</FONT>  xor         edx,edx
+100: <FONT color=#ffc0c0>00414243</FONT>  xor         esi,esi
+101: <FONT color=#ffc0c0>00414245</FONT>  xor         edi,edi
+102: <FONT color=#ffc0c0>00414247</FONT>  call        eax
+103: _lh_continue:
+104:     ; <FONT color=#c0ffc0>// EstablisherFrame-&gt;scopetable[trylevel].previousTryLevel =&gt; esi</FONT>
+105: <FONT color=#ffc0c0>00414249</FONT>  mov         edi,dword ptr [ebx+<FONT color=#ffc0c0>8</FONT>]
+106: <FONT color=#ffc0c0>0041424</FONT>C  lea         ecx,[esi+esi*<FONT color=#ffc0c0>2</FONT>]
+107: <FONT color=#ffc0c0>0041424</FONT>F  mov         esi,dword ptr [edi+ecx*<FONT color=#ffc0c0>4</FONT>]
+108: <FONT color=#ffc0c0>00414252</FONT>  jmp         <FONT color=#c0c0c0>_lh_top</FONT> (<FONT color=#ffc0c0>4141</FONT>E0h)
+109: _lh_dismiss:
+110:     ; <FONT color=#c0ffc0>// return ExceptionContinueExecution;</FONT>
+111: <FONT color=#ffc0c0>00414254</FONT>  mov         eax,<FONT color=#ffc0c0>0</FONT>
+112: <FONT color=#ffc0c0>00414259</FONT>  jmp         <FONT color=#c0c0c0>_lh_return</FONT> (<FONT color=#ffc0c0>41427</FONT>Eh)
+113: _lh_abort:
+114:     ; <FONT color=#c0ffc0>// ExceptionRecord-&gt;ExceptionFlags |= EXCEPTION_STACK_INVALID;</FONT>
+115: <FONT color=#ffc0c0>0041425</FONT>B  mov         eax,dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>]
+116: <FONT color=#ffc0c0>0041425</FONT>E  or          dword ptr [eax+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>8</FONT>
+117: _lh_bagit:
+118:     ; <FONT color=#c0ffc0>// return ExceptionContinueSearch;</FONT>
+119: <FONT color=#ffc0c0>00414262</FONT>  mov         eax,<FONT color=#ffc0c0>1</FONT>
+120: <FONT color=#ffc0c0>00414267</FONT>  jmp         <FONT color=#c0c0c0>_lh_return</FONT> (<FONT color=#ffc0c0>41427</FONT>Eh)
+121: _lh_unwinding:
+122:     ; <FONT color=#c0ffc0>// PUSH EBP</FONT>
+123: <FONT color=#ffc0c0>00414269</FONT>  push        ebp
+124:     ; <FONT color=#c0ffc0>// EBP = &amp;EstablisherFrame-&gt;_ebp</FONT>
+125: <FONT color=#ffc0c0>0041426</FONT>A  lea         ebp,[ebx+<FONT color=#ffc0c0>10</FONT>h]
+126:     ; <FONT color=#c0ffc0>// __local_unwind2(EstablisherFrame, TRYLEVEL_NONE);</FONT>
+127: <FONT color=#ffc0c0>0041426</FONT>D  push        <FONT color=#ffc0c0>0</FONT>FFFFFFFFh
+128: <FONT color=#ffc0c0>0041426</FONT>F  push        ebx
+129: <FONT color=#ffc0c0>00414270</FONT>  call        @ILT+<FONT color=#ffc0c0>385</FONT>(__local_unwind2) (<FONT color=#ffc0c0>411186</FONT>h)
+130: <FONT color=#ffc0c0>00414275</FONT>  add         esp,<FONT color=#ffc0c0>8</FONT>
+131:     ; <FONT color=#c0ffc0>// POP EBP</FONT>
+132: <FONT color=#ffc0c0>00414278</FONT>  pop         ebp
+133:     ; <FONT color=#c0ffc0>// return ExceptionContinueSearch;</FONT>
+134: <FONT color=#ffc0c0>00414279</FONT>  mov         eax,<FONT color=#ffc0c0>1</FONT>
+135: _lh_return:
+136: <FONT color=#ffc0c0>0041427</FONT>E  pop         ebp
+137: <FONT color=#ffc0c0>0041427</FONT>F  pop         edi
+138: <FONT color=#ffc0c0>00414280</FONT>  pop         esi
+139: <FONT color=#ffc0c0>00414281</FONT>  pop         ebx
+140: <FONT color=#ffc0c0>00414282</FONT>  mov         esp,ebp
+141: <FONT color=#ffc0c0>00414284</FONT>  pop         ebp
+142: <FONT color=#ffc0c0>00414285</FONT>  ret</PRE>
+              <P>好了，我已经在指令前插入了 C 语句，现在 _except_handler3 
+              对于我来说已经没有任何神秘之处了。说点题外话：我发现如果把这些语句提取出来、组成伪码的话，与 Matt Pietrek 
+              的伪码将会非常的像，如果说代码结构方面有相似性也就罢了——毕竟牛人写出来的东西一般都很靠谱的，但是像变量的赋值顺序、指令流的走向、甚至 
+              CLD 指令这样的小地方都一样。不知道他是不是也是用跟踪反汇编的方法写出的那些伪代码？真想问问他本人……</P>
+              <P>不难发现，Matt Pietrek 没有在他的文章中提到第 31、32 行的代码（也就是反汇编第 33 至 37 
+              行间的指令），这段代码调用了另一个函数并检查返回值，如果返回 0，handler 的指令流就会跳转到 _lh_abort 
+              处：给异常打上一个“EXCEPTION_STACK_INVALID”的标志位（or 上了一个 8，也就是 EXSUP.INC 
+              中定义的 EXCEPTION_STACK_INVALID 的值）然后立即返回。根据这个函数符号名中“Validate”的含义、以及 
+              _except_handler3 发现其返回 0 
+              后神经质般的举动可以判断——这个函数执行的是对栈帧指针的合法性检查。这种检查可以说在整个异常处理过程中并不鲜见，Rtl 
+              函数里经常进行这样的检查，什么是否上下越界、是否 DWORD 
+              对齐什么的……在这里出现也并不稀奇。我也没有对这个函数做深入研究，只是跟进去看了一眼，但是却有了意外的发现。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>_EH3_EXCEPTION_REGISTRATION 结构的本来面目</B> 
+            <BLOCKQUOTE>
+              <P>到目前为止，VC 中的 EXCEPTION_REGISTRATION 出现了两个版本。一个是 EXSUP.INC 
+              中的定义，也就是 Matt Pietrek 使用的那个版本；另一个是我自己找到的 EXCEPT.INC 
+              中的版本，是这样定义的：</P><PRE class=Code>__EXCEPTIONREGISTRATIONRECORD struc
+        prev_structure          dd      ?
+        ExceptionHandler        dd      ?
+        ExceptionFilter         dd      ?
+        FilterFrame             dd      ?
+        PExceptionInfoPtrs      dd      ?
+__EXCEPTIONREGISTRATIONRECORD ends</PRE>
+              <P>可是我在前面说过，这个定义简直就是胡扯。因为，可以肯定的是：这个结构中的 ExceptionFilter 就是 
+              scopetable 指针，FilterFrame 就是当前的 trylevel。那么 PExceptionInfoPtrs 
+              是什么？从名字上判断，这个就是指向 EXCEPTION_POINTERS 结构的指针。这个指针应该在这个位置出现吗？NO，这明明就是 
+              _ebp 的位置嘛……所以我不知道这是一个在什么地方用到的结构。那么，在 EXSUP.INC 的注释中定义的 
+              _EXCEPTION_REGISTRATION 就没有问题吗？答案仍然是否定的：</P><PRE class=Code>; <FONT color=#c0c0ff>struct</FONT> _EXCEPTION_REGISTRATION {
+;     <FONT color=#c0c0ff>struct</FONT> _EXCEPTION_REGISTRATION *prev;
+;     <FONT color=#c0c0ff>void</FONT> (*handler)(PEXCEPTION_RECORD,
+;                     PEXCEPTION_REGISTRATION,
+;                     PCONTEXT,
+;                     PEXCEPTION_RECORD);
+;     <FONT color=#c0c0ff>struct</FONT> scopetable_entry *scopetable;
+;     <FONT color=#c0c0ff>int</FONT> trylevel;
+;     <FONT color=#c0c0ff>int</FONT> _ebp;
+;     PEXCEPTION_POINTERS xpointers;
+; };</PRE>
+              <P>如果说这个结构中的 _ebp 成员还勉强说得过去的话，那么 xpointers 
+              成员简直就是匪夷所思。因为据我所知，在堆栈中，_ebp 下存放的是 CALL 指令压入的返回地址，而不是什么 
+              PEXCEPTION_POINTERS。一下子怀疑这么多问题，即怀疑 CRT 
+              的汇编定义、又怀疑牛人的教导？是不是有点儿过分了……是的，我也觉得挺过分，但是我仍然坚持我的观点，因为我有事实替我说话。</P>
+              <P>在前面我提到过，我曾经跟踪了 VC 构造异常帧的代码，也就是在函数起始处由编译器自动生成的准备代码（Matt Pietrek 
+              所说的 prologue code），现在就回过头来仔细看看编译器到底在堆栈上干了些什么：</P><PRE class=Code>01: <FONT color=#ffc0c0>00411</FONT>A10  push        ebp
+02: <FONT color=#ffc0c0>00411</FONT>A11  mov         ebp,esp
+03: <FONT color=#ffc0c0>00411</FONT>A13  push        <FONT color=#ffc0c0>0</FONT>FFFFFFFFh
+04: <FONT color=#ffc0c0>00411</FONT>A15  push        <FONT color=#ffc0c0>424020</FONT>h
+05: <FONT color=#ffc0c0>00411</FONT>A1A  push        offset @ILT+<FONT color=#ffc0c0>365</FONT>(__except_handler3) (<FONT color=#ffc0c0>411172</FONT>h)
+06: <FONT color=#ffc0c0>00411</FONT>A1F  mov         eax,dword ptr fs:[<FONT color=#ffc0c0>00000000</FONT>h]
+07: <FONT color=#ffc0c0>00411</FONT>A25  push        eax
+08: <FONT color=#ffc0c0>00411</FONT>A26  mov         dword ptr fs:[<FONT color=#ffc0c0>0</FONT>],esp
+09: <FONT color=#ffc0c0>00411</FONT>A2D  add         esp,<FONT color=#ffc0c0>0</FONT>FFFFFF2Ch
+10: <FONT color=#ffc0c0>00411</FONT>A33  push        ebx
+11: <FONT color=#ffc0c0>00411</FONT>A34  push        esi
+12: <FONT color=#ffc0c0>00411</FONT>A35  push        edi
+13: <FONT color=#ffc0c0>00411</FONT>A36  lea         edi,[ebp-<FONT color=#ffc0c0>0</FONT>E4h]
+14: <FONT color=#ffc0c0>00411</FONT>A3C  mov         ecx,<FONT color=#ffc0c0>33</FONT>h
+15: <FONT color=#ffc0c0>00411</FONT>A41  mov         eax,<FONT color=#ffc0c0>0</FONT>CCCCCCCCh
+16: <FONT color=#ffc0c0>00411</FONT>A46  rep stos    dword ptr [edi]
+17: <FONT color=#ffc0c0>00411</FONT>A48  mov         dword ptr [ebp-<FONT color=#ffc0c0>18</FONT>h],esp</PRE>
+              <P>那么，当这段指令执行完毕后，堆栈应该是这个样子的：</P>
+              <TABLE class=MainText border=0 cellSpacing=2 cellPadding=3 
+              width=450 bgColor=#70a8bd>
+                <TBODY>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>00000000 →</TD>
+                  <TD colSpan=2 align=middle>低地址，栈顶</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b colSpan=3 align=middle>……</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>esp → </TD>
+                  <TD bgColor=#01658b align=middle>edi</TD>
+                  <TD align=left>12: push edi</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#01658b align=middle>esi</TD>
+                  <TD align=left>11: push esi</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#01658b align=middle>ebx</TD>
+                  <TD align=left>10: push ebx</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>ebp-0E4h →</TD>
+                  <TD bgColor=#01658b rowSpan=3 align=middle>……<BR>204 
+                    个字节全部填充为 0CCCCCCCCh<BR>…… </TD>
+                  <TD rowSpan=5 align=left>09: add esp,0FFFFFF2Ch</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>ebp-01Ch →</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>ebp-18h →</TD>
+                  <TD bgColor=#01658b align=middle>prologue code 执行完成后的 
+                esp</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#01658b align=middle>?</TD></TR>
+                <TR bgColor=#01658b>
+                  <TH bgColor=#01658b align=right>异常帧 →</TH>
+                  <TH bgColor=#003366 align=middle>之前的异常帧 FS:[0]</TH>
+                  <TD align=left>07: push fs:[0]</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#003366 align=middle>__except_handler3 的地址</TD>
+                  <TD align=left>05: push __except_handler3</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#003366 align=middle>424020h</TD>
+                  <TD align=left>04: push 424020h</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>ebp-4 →</TD>
+                  <TD bgColor=#003366 align=middle>0FFFFFFFFh</TD>
+                  <TD align=left>03: push 0FFFFFFFFh</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>ebp →</TD>
+                  <TD bgColor=#01658b align=middle>调用者的基址 ebp</TD>
+                  <TD align=left>01: push ebp</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>&nbsp;</TD>
+                  <TD bgColor=#01658b align=middle>CALL 指令压入的返回地址</TD>
+                  <TD align=left>&nbsp;</TD></TR>
+                <TR align=middle bgColor=#01658b>
+                  <TD bgColor=#01658b colSpan=3>……</TD></TR>
+                <TR bgColor=#01658b>
+                  <TD bgColor=#01658b align=right>FFFFFFFF →</TD>
+                  <TD colSpan=2 align=middle>高地址，栈底</TD></TR></TBODY></TABLE>
+              <P>表格的第一列是 DWORD 数据单元的地址，第二列是堆栈中的内容，第三列是影响到 esp 的指令。</P>
+              <P>根据先前的理解，第 7 条指令执行完成后，异常帧结构就已经在堆栈上构造完成了，并且当前的栈顶指针 esp 
+              所指的地址正是这个结构的首址，第 8 条指令就是将这个地址装入 FS:[0]，做为新的异常 handler 
+              链表的表头。那么，这个异常帧的结构此时就可以确定下来了。这时候再把上面提出的那两个异常帧结构套上去看看，怎么就觉得都不太对劲呢？第一个结构的 
+              PExceptionInfoPtrs 成员对应到了保存的 ebp 的位置上，而第二个结构的 xpointers 
+              成员所对应的数据就更离谱了——居然是返回地址？！</P>
+              <P>说一下表格中那个问号：为什么是问号呢？因为那个 DWORD 
+              没有经过初始化。那么，为什么不初始化它呢？因为目前不知道该用什么值初始化它，也没有必要初始化它。是什么东西这么邪呼？其实，这个 
+              DWORD 就是 _except_handler3 中的表达式 ((PBYTE)EstablisherFrame - 4) 
+              引用到的那个 DWORD，也就是 EXCEPTION_POINTERS 结构的地址。回想一下 _except_handler3 
+              的代码就可以意识到：EXCEPTION_POINTERS 结构是建立在 _except_handler3 
+              堆栈上的临时变量，换句话说，这个结构的地址也只有在 _except_handler3 
+              执行期间、也就是说有异常发生的时候才有意义。那么，目前我们显然拿这个 DWORD 没有办法，由它去吧。</P>
+              <P>至此，可以得出结论：PEXCEPTION_POINTERS 存放在异常帧地址前的那个 DWORD 
+              中，如果硬要把它“塞”到结构中，那也要放在 prev 
+              的前面，怎么也不可能到最后去。所以这两个结构定义一个都不对！挺疯狂的结论，不是吗？而且有一个值得注意的现象：Matt Pietrek 
+              在他的讲解中完整地引用了 EXSUP.INC 中的异常帧定义，却在他自己的 ShowSEHFrames 演示程序中也把这个成员从他的 
+              VC_EXCEPTION_REGISTRATION 
+              结构中“省略掉”了……我不是把自己的快乐建立在别人的痛苦之上的那一类人，所以与“找碴儿”相比，弄清问题的实质会带给我更多的快感。那么，VC 
+              内部真正的异常帧究竟是什么样儿的？如果可能的话，我甚至连结构中的变量名都想知道。我很幸运，我最终真的知道了——这就是我在跟踪 
+              _ValidateEH3RN 时的意外收获。</P>
+              <P>_ValidateEH3RN 在上面研究 _except_handler3 
+              的时候提到过，它是用来对异常帧进行合法性验证的，它需要且仅需要用一个参数调用，就是一个 VC 的异常帧指针。Matt Pietrek 
+              说的没错，CRT 中关于 SEH 的函数没有源代码可供参考。但幸运的是，Symbol 文件中的符号信息很充足，只要从 
+              _except_handler3 函数中 step into 到 
+              _ValidateEH3RN，就可以发现调式环境的“局部变量”窗口有了反应！首先出来的是一个 pRN 变量，有四个成员：</P>
+              <OL>
+                <LI>Next: 展开之后发现还是一个 *pRN 结构 
+                <LI>ExceptionHandler: 值域中写着“__except_handler3” 
+                <LI>ScopeTable: 指向一个结构，展开之后有三个成员 
+                <UL>
+                  <LI>EnclosingLevel: 值为 -1 
+                  <LI>FilterFunc: 把值敲入反汇编的“地址”窗口，可以定位到 filter 入口 
+                  <LI>HandlerFunc: 把值敲入反汇编的“地址”窗口，可以定位到 handler 入口 </LI></UL>
+                <LI>TryLevel: 值为 0 </LI></OL>
+              <P>呵呵，没错了，这个就是 VC 内部的异常帧结构了！再看看调用栈窗口，借了 _ValidateEH3RN 
+              的光，连结构名都看到了：_EH3_EXCEPTION_REGISTRATION！而且 ScopeTable 
+              的结构也可以看到了。不难发现这个结构中并没有那个“_ebp”成员：最后一个成员是 TryLevel。再回头看看 
+              _except_handler3 的反汇编，就会发现一个规律：所有对“_ebp”的引用（也就是 [ebx+10h]）全部都出现在 
+              lea 指令中，这说明什么呢？这说明，_ebp 成员存在的意义只是为了取它的地址！那么 _ebp 成员的值是什么呢？如果把带有 
+              _ebp 成员的 _EXCEPTION_REGISTRATION 结构套到上面的堆栈结构上就可以看出来：_ebp 
+              成员正好处于“调用者的基址 ebp”那个 DWORD 上。也就是说，_ebp 成员确实是 ebp 寄存器的值，但却是上一个函数的 
+              ebp，不是当前函数的。当前函数的 ebp 应该是这个 DWORD 
+              的地址，而不是它的值！所以我前面说过，这是一个很迷惑人的成员，伪码中的第二个笔误必须改正，否则就会在上层函数的 ebp 
+              上下文中执行当前函数的 Unwind 过程，那将是一个什么结果啊……</P>
+              <P>所以，目前 VC 中的异常帧结构中没有这个“_ebp”成员——显然没有必要，SEH 
+              中大量的递归调用、“non-local-goto”和堆栈 Unwind、已经够让人头昏脑胀的了，这个成员只能把事情搞得更离谱。想要的 
+              ebp 值紧接着当前 _EH3_EXCEPTION_REGISTRATION 结构的地址，只要 &amp;pRN[1] 
+              就可以取到了，实在没有必要为了取这个地址而强加上一个“_ebp”成员。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>暂时告一段落</B> 
+            <BLOCKQUOTE>
+              <P>写到这里，我似乎可以松口气了：Matt Pietrek 
+              的文章已经吃透了，_EH3_EXCEPTION_REGISTRATION 真正的结构也已经大白于天下了，VC 中的 SEH 
+              处理似乎已经没有什么神秘的了，唯一剩下还没有研究过的就是 Unwind 
+              过程。但这个过程完全封装在各个编译器厂商的内部实现中，与系统几乎没有关系，系统只负责发起 Unwind 调用，至于怎么 
+              Unwind，系统也不知道。所以，虽然现在还不了解 
+              Unwind，但它也已经是囊中之物了，只是目前还没有必要关心它。本着“师傅领进门、修行在个人”的精神，我又跟踪到 NTDLL.DLL 
+              中的 Rtl 函数中转了一圈，不仅看到了 NT 中异常帧的具体结构，而且又发现了 Matt Pietrek 
+              的伪码中与事实不符的地方——看上去这个地方涉及到嵌套异常处理甚至堆栈耗尽的问题……所以我打算单独写一篇文章好好分析一下这一部分。那么现在，我应该做的就是去洗个澡，然后舒舒服服地睡上一觉了。</P></BLOCKQUOTE></TD></TR></TBODY></TABLE><!-- InstanceEndEditable --></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="对于结构化异常处理（SEH）的进一步探索_files/webitem1.gif" width=16 
+            height=16><B>相关文章</B> 
+            <UL><!-- InstanceBeginRepeat name="Links" --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://vicchina.51.net/show_article.php?id=63" 
+              target=_blank>深入研究 Win32 结构化异常处理</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://vicchina.51.net/show_article.php?id=65" 
+              target=_blank>NT 中的异常帧结构和异常嵌套</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceEndRepeat --></LI></UL></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV><!-- InstanceEnd --></BODY></HTML>

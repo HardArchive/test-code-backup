@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://vicchina.51.net/research/other/seh/minidumps/intro.htm -->
+<HTML><HEAD><TITLE>使用 Minidumps 和 Visual Studio .NET 进行崩溃后调试</TITLE><!-- InstanceBegin template="/Templates/Common Article.dwt" codeOutsideHTMLIsLocked="false" --><!-- InstanceBeginEditable name="doctitle" --><!-- InstanceEndEditable -->
+<META content="text/html; charset=gb2312" http-equiv=Content-Type><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable --><LINK 
+rel=stylesheet type=text/css 
+href="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/common.css">
+<SCRIPT language=JavaScript type=text/JavaScript 
+src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/common.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.TitleText {
+	FONT-FAMILY: "Verdana", "黑体"; COLOR: #ffffff; FONT-SIZE: 20pt; FONT-WEIGHT: bold
+}
+.Code {
+	PADDING-LEFT: 20px; FONT-FAMILY: "Fixedsys"; COLOR: #ffffff; FONT-SIZE: 12pt
+}
+</STYLE>
+<!-- InstanceParam name="Associative Articles" type="boolean" value="true" -->
+<META name=GENERATOR content="MSHTML 8.00.6001.19403"></HEAD>
+<BODY>
+<DIV style="Z-INDEX: 1; POSITION: absolute; WIDTH: 100%; TOP: 0px; LEFT: 0px" 
+id=body>
+<TABLE border=0 cellSpacing=5 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE class=TitleText border=0 cellSpacing=0 cellPadding=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD><!-- InstanceBeginEditable name="Article Title" -->使用 Minidumps 
+            和 Visual Studio .NET 
+        进行崩溃后调试<!-- InstanceEndEditable --></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/keywords.gif" 
+            width=20 height=20><B>本文关键字：<!-- InstanceBeginEditable name="Keywords" -->Minidumps, 
+            Windows, SEH, VisualC, 
+        .NET<!-- InstanceEndEditable --></B></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><!-- InstanceBeginEditable name="Article Content" -->
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>摘要</B> 
+            <BLOCKQUOTE>
+              <P><B>本文讲述了 minidumps 是怎样工作的、当你的程序崩溃的时候应该如何生成它们、以及如何在 Visual 
+              Studio .NET 中将它们重新读入。</B></P>
+              <P>原文作者：Andy Pennell<BR>中文翻译：Victor<BR>原文链接：<A 
+              href="http://www.codeproject.com/debug/postmortemdebug_standalone1.asp" 
+              target=_blank>http://www.codeproject.com/debug/postmortemdebug_standalone1.asp</A></P>
+              <P>如果你的程序在客户的机器上崩溃了，那么你现在可以使用 minidumps 和 Microsoft Visual Studio 
+              .NET 调试器在事后进行调试。本文讲述了 minidumps 是怎样工作的、当你的程序崩溃的时候应该如何生成它们、以及如何在 
+              Visual Studio .NET 中将它们重新读入。微软的错误报告程序之所以能够改进 Windows 操作系统和诸如 
+              Visual Studio .NET 这样的应用程序的稳定性，其关键就在于 minidumps。本文也讲述了如何使用 
+              Microsoft 符号服务器自动地为系统组件查找符号。你在阅读本文前应该已经熟悉 Win32 和 C++ 
+            编程了。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>目录</B> 
+            <UL>
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s1">什么是 
+              Minidump？</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s2">创建一个 
+              Minidump</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s3">与 
+              Build 相关的问题</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s4">使用 
+              MiniDumpWriteDump 写一个 Minidump</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s5">使用 
+              Visual Studio .NET 读入一个 Minidump</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s6">微软是如何使用 
+              Minidumps 的</A> 
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s7">进一步改进</A> 
+
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s8">总结</A> 
+
+              <LI><A 
+              href="http://vicchina.51.net/research/other/seh/minidumps/intro.htm#s9"><FONT 
+              color=#ffcc66><B>附：版权及免责声明</B></FONT></A> </LI></UL></TD></TR>
+        <TR>
+          <TD><A name=s1></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>什么是 Minidump？</B> 
+            <BLOCKQUOTE>
+              <P>一个 minidump 
+              就是一个文件，它包括了崩溃的应用程序中最重要的部分。它在用户的机器上生成，然后用户就可以将其提交给开发人员。开发人员可以装入这个 
+              dump，以便查找崩溃的原因，并发布一个补丁。</P>
+              <P>从早期的 Windows NT 开始，Dr.Watson 程序就能够生成以 .dmp 为扩展名的崩溃 dump 
+              文件。但是它们却没有想像中那样有用，因为有两个问题：</P>
+              <OL>
+                <LI>它们太大了。一个应用程序的 dump 包含了整个进程空间中的每一个字节，所以即使是 Notepad 
+                这么简单的程序崩溃后也会产生几兆的 dump 文件，如果是 Word 这样的应用程序崩溃了的话，可能会产生上百兆的 dump 
+                文件。 
+                <LI>它们所包含的内容并不都是有用的。事实上，Dr.Watson 是一个 
+                just-in-time（JIT）调试器，但调试器很难得到一个已加载模块的完整路径。完整的调试器，例如 Visual 
+                Studio 调试器，为了获得这些路径进行了很多额外的工作，但是 Dr.Watson 却没有。这通常就会导致毫无意义的模块名，如 
+                MOD0000 等等。 </LI></OL>
+              <P>Minidumps 在设计时就使用了几个方法用来解决上述问题：</P>
+              <UL>
+                <LI>只有几个区域被保存下来，而不是整个进程空间。保存诸如 Kernel32.dll 
+                这样的模块简直毫无意义；只要给出了版本号，就可以很容易地从一张 Windows CD 
+                上拿到这个文件。默认情况下，程序的内存堆是不保存的；不需要调试一个崩溃比率高得令人乍舌的崩溃点。当然，如果你想的话，还是可以把堆保存下来的。 
+
+                <LI>Minidump 生成代码可以得到精确、完整的模块信息，包括它们的名字、路径、版本信息和内部时间戳。 
+                <LI>Minidump 生成代码还可以得到线程列表，包括它们的上下文（也就是寄存器集合）和堆栈中的内容。 
+                <LI>整个文件是压缩的，进一步减小了大小。在 Windows XP 上，一个 Notepad 的 minidump 大概在 
+                6K 左右，比上面提到的同一进程的崩溃 dump 小了将近 300 倍。 </LI></UL>
+              <P>注意：Windows XP 在计算机停止响应后也会生成一种内核态的 minidumps，但是本文讨论的是更常见的用户态 
+              minidumps。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s2></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>创建一个 Minidump</B> 
+            <BLOCKQUOTE>
+              <P>有三种方法可以创建一个 minidump：</P>
+              <UL>
+                <LI>在你自己的应用程序中添加代码，在遇到一个未捕获的异常时写 minidump。 
+                <LI>在 Visual Studio .NET 的集成开发环境中调试程序，单击“调试”菜单上的“将转储另存为”。 
+                <LI>什么也不做。 </LI></UL>
+              <P>方法一将在下文中详细讨论。</P>
+              <P>方法二仅适用于一个已经装了调试器的工作站，很有可能只在开发团队内才有用（例如：在另一个开发者或者测试人员的机器上）。如果你使用 
+              Visual Studio .NET 对崩溃进行调试，那么你就可以这么做了。你可以保存一个 Minidump 或者一个包含堆的 
+              Minidump。你不需要任何符号或者 PDB 文件就可以保存一个 dump 文件；但是在将它们重新读入时你需要。</P>
+              <P>方法三只在 Windows XP 下有效，如果程序遇到了一个未捕获的异常，并且没有启动 JIT 调试器，系统就会自动创建一个 
+              minidump。然后，这个 minidump 将直接提交给 
+            Microsoft，你就没有机会查找崩溃的原因了。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s3></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>与 Build 相关的问题</B> 
+            <BLOCKQUOTE>
+              <P>为了使你的程序在崩溃时创建 dumps，你必须配置你的生成选项使其生成完整的调试信息，特别是在生成最终版的时候。生成 PDB 
+              文件之后，你必须将你要发布给用户的每一个二进制文件及其对应的 PDB 文件进行归档；之后在调试那些用户提交的 minidumps 
+              时你将需要这些 PDB 文件。</P>
+              <P>此外，确保你的二进制文件中包含正确的版本信息。你所发布的每一个组件的每一个版本都应该有一个不同的版本号，以便你能够与 
+              minidump 
+              对应起来。版本字段（<I>二进制资源中的版本信息——译者注</I>）可以帮你匹配这两者。但调试器本身并不使用版本信息，它是基于 PE 
+              文件头内包含的内部时间戳来匹配二进制文件的。</P>
+              <P>输出时，为最终版生成调试信息会有一些小的影响。会生成一个 PDB 
+              文件，在生成所使用的机器上占用一些空间，而且最终生成的二进制文件会增大几百个字节以便在 PE 文件中记录调试目录下的 PDB 
+              文件名。你不应该向用户发布 PDB 文件；这会使你的程序更容易地被用户反向工程。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s4></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>使用 MiniDumpWriteDump 写一个 Minidump</B> 
+            <BLOCKQUOTE>
+              <P>用来保存一个 minidump 的关键 API 是 MiniDumpWriteDump，它从 DbgHelp.dll 
+              中导出，这是一个 Platform SDK 中可以再分发的 DLL。确保你使用的是 Windows XP 版本 
+              5.1.2600；更早期的 beta 和 release candidate 版中的这个 API 有问题，并且 Windows 
+              2000 中包含的 5.0.x 版中没有导出这个函数。如果你有比 5.0 更早的版本，那么它一定是来自于 System 
+              Debugger package（包括 WinDbg 等工具），并且它是不可再分发的。</P>
+              <P>在调用这个 API 之前，你需要用 SetUnhandledExceptionFilter API 
+              设置一个未捕获异常的处理器（<I>Unhandled Exception Handler，也就是 Top-level 
+              Exception Filter，最后一个异常过滤器——译者注</I>），以便能够捕获到崩溃点。这样就可以使这个 Filter 
+              函数在程序遇到未捕获的异常的时候被调用。在某些未捕获的异常中，比方说两次堆栈溢出（<I>double stack 
+              fault，即在处理 stack fault 的时候又发生了 stack 
+              fault——译者注</I>），操作系统会立即结束应用程序，既不会调用 filter、也不会启动 JIT 
+              调试器（<I>据查，网上资料说如果发生了 triple fault，CPU 将会关闭，到时候除了 Reset 
+              信号，就没有什么能救得了这台机器的了。所以可以认为 double fault 是非常严重的情况——译者注</I>）。</P>
+              <P>在你的 filter 函数中，你需要加载 DbgHelp.dll。这并不是调用 LoadLibrary 这么简单；在 
+              Windows 2000 系统中，你将会访问到 System32 目录下的那个不正确的版本。演示代码试着从 EXE 
+              文件所在的位置装入这个库。将正确版本的 DbgHelp.dll 放在 EXE 文件所在的目录下；否则的话，代码只好进行一次普通的 
+              LoadLibrary 调用，这也就使得程序只能在 Windows XP 下工作。</P>
+              <P>装入 DLL 后，它接着检查导出函数名；如果正确的话，它会用合适的名字创建一个文件，比方说用程序名加 .dmp 
+              后缀保存在临时目录中。这个文件句柄接着会传递给 API，并附上一些其它的信息，诸如进程 ID 和所需的 dump 
+              文件类型等。例子中使用的是 MiniDumpNormal。也许你想使用 MiniDumpWithDataSegs 
+              标志位，也就是相当于 Visual Studio 调试器中的“附带堆信息的小型转储”选项，这显然会使 dump 
+文件变得更大。</P>
+              <P>在 .dmp 文件创建完成后，程序会询问用户将其保存在什么位置。然后用户就可以通过 e-mail 或者使用 FTP 
+              将文件发送过来供你分析。</P>
+              <P>如果你想使用本文所提供的演示代码的话，就在你的工程中加入 mdump.h 和 mdump.cpp 文件，并声明一个全局的 
+              MiniDumper 对象。这个对象的构造函数需要一个参数，也就是 minidump 
+              文件的基础文件名。为了能够正常运行，你还需要把正确的 DbgHelp.dll 放在 EXE 所在的目录下。</P>
+              <P>不能使用调试器调试写 minidump 的那段代码（在演示代码中，也就是 
+              Minidumper::TopLevelFilter）。如果进程附加了一个调试器，那么未捕获异常的处理函数将永远不会被调用（<I>关于这一点，MSDN 
+              中关于结构化异常处理的文档说得很清楚：调试器有两次机会处理一个异常，一次是在异常刚刚发生时，也就是 VC6 
+              经常报出来的“First-chance exception”；还有一次是在执行了所有的 
+              filter，发现没有一个能够处理之后，通知调试器发生了一个“Second-chance 
+              exception”，此时调试器会中断程序并进入调试模式，因为绝大多数情况下这就属于未捕获的异常，是程序 
+              BUG，在非调试环境下是要崩溃的——译者注</I>）。如果你遇到了问题需要调试的话，你需要使用 MessageBox 
+              调试。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s5></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>使用 Visual Studio .NET 读入一个 Minidump</B> 
+            <BLOCKQUOTE>
+              <P>文章的这一部分使用了一个例子，在 Windows 2000 系统下手工创建了 Notepad 的一个 minidump，然后在 
+              Windows XP 系统下调试。</P>
+              <P>启动 Visual Studio 
+              .NET，单击“文件”菜单上的“打开解决方案”，在“文件类型”下拉列表框中选择“转储文件(*.dmp; 
+              *.mdmp)”（<I>555~~~为什么我在 Visual Studio .NET 2003 
+              中找不到这一项……不过还好，可以直接双击 .dmp 文件打开——译者注</I>），找到 minidump 
+              文件，然后点击“打开”创建一个缺省工程。</P>
+              <P>按 F5 在调试器中启动这个 
+              dump，这一步将为你开始调试提供一些信息。调试器将创建一个假的进程；在输出窗口中显示了很多模块加载的消息。此时调试器仅仅是在重建崩溃时的进程状态。在显示了一条 
+              EXE 
+              不包含调试信息的警告消息之后，调试器停在了用户崩溃的地方，诸如一个非法访问什么的。这时候如果你查看调用栈窗口，你会发现缺少符号和很多有用的信息。</P>
+              <TABLE class=MainText border=0 cellSpacing=5 cellPadding=0>
+                <TBODY>
+                <TR>
+                  <TH align=left>图 1：起初没有符号文件的堆栈窗口</TH></TR>
+                <TR>
+                  <TD><IMG 
+                    src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/figure1.jpg" 
+                    width=299 height=136></TD></TR></TBODY></TABLE>
+              <P>为了读取一个 minidump，你通常需要相关的二进制拷贝。为了找到正确的二进制文件，打开模块窗口。</P>
+              <TABLE class=MainText border=0 cellSpacing=5 cellPadding=0>
+                <TBODY>
+                <TR>
+                  <TH align=left>图 2：起初没有二进制文件的模块窗口</TH></TR>
+                <TR>
+                  <TD><IMG 
+                    src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/figure2.jpg" 
+                    width=575 height=217></TD></TR></TBODY></TABLE>
+              <P>图 2 展示了 Notepad 
+              的例子，并且说明了两个情况。首先，二进制所在的路径名前标上了一个星号，这表示这些是在用户机器上的模块路径，但是在本地却找不到对应的二进制文件。其次，在“Information”一列中全都写着“No 
+              matching binary 
+              found”。找到对应的二进制文件的关键是注意“Version”字段和文件名。在这个例子中，大多数系统文件的版本号都是 
+              2195，也就是 Windows 2000。虽然无法从这些信息上立即得知确切的 service pack (SP) 或者 
+              quality fix engineering (QFE)，但这些信息可以从微软的 DLL 帮助数据库中查询到：<A 
+              href="http://support.microsoft.com/servicedesks/fileversion/dllinfo.asp" 
+              target=_blank>http://support.microsoft.com/servicedesks/fileversion/dllinfo.asp</A>。</P>
+              <P>现在，你需要找到一张 Windows 操作系统的 CD 
+              或者已经安装了正确版本的机器，然后将所需要的文件复制到一个目录。通常情况下没有必要把进程中每个模块的二进制文件都找出来，但是找出那些在每个调用栈上的关键模块是很重要的。这通常包括操作系统的二进制文件（例如 
+              Kernel32.dll）和你自己的二进制模块（在这个例子中就是 Notepad.exe）。</P>
+              <P>在你找到这些二进制文件、并把它们拷贝到一个本地目录之后，单击“调试”菜单中的“停止调试”命令。然后在解决方案资源管理器中，右键单击工程图标，在快捷菜单上单击“属性”，你将看到“调试”属性页。在“命令参数”中填入“MODPATH”，跟上一个等号，然后输入二进制文件所在的位置，如果有多个位置，可以用分号分隔。在这个例子中，它是：</P>
+              <BLOCKQUOTE class=EnMain>MODPATH=m:\sysbits</BLOCKQUOTE>
+              <P>在设置好了路径之后，按 F5 重新装入 minidump，MODPATH 的值将通过命令行参数传递给调试器；在 Visual 
+              Studio .NET 的后续版本中应该会有更方便的方法设置这个参数，或许可以作为一个选项出现在属性对话框中。</P>
+              <P>尽管找到二进制文件并不太可能改善调用栈窗口的情况，但是它却能解决模块窗口中的问题，如图 3 所示：</P>
+              <TABLE class=MainText border=0 cellSpacing=5 cellPadding=0>
+                <TBODY>
+                <TR>
+                  <TH align=left>图 3：找到二进制文件后的模块窗口</TH></TR>
+                <TR>
+                  <TD><IMG 
+                    src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/figure3.jpg" 
+                    width=575 height=217></TD></TR></TBODY></TABLE>
+              <P>它现在显示的不再是“No matching binary found”，而是“Cannot find or open a 
+              required DBG 
+              file”（<I>我怎么觉得这个地方的英文语法应该用“nor”而不是“or”……呵呵，不管它了，反正微软程序中无伤大雅的语法错误已经不是第一次被发现了——译者注</I>）和“No 
+              symbols loaded”。前一条消息出现在那些使用 DBG 文件存储调试信息的系统 DLL 上，后一条消息则出现在使用 PDB 
+              文件的 DLL 上。找到对应的二进制文件并不能使你看到调用栈；你还需要找到它们对应的调试信息。</P>
+              <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 
+              width="100%">
+                <TBODY>
+                <TR>
+                  <TD><IMG align=absMiddle 
+                    src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+                    width=16 height=16><B>方法 A：坎坷之路</B> 
+                    <BLOCKQUOTE>
+                      <P>为了完整地分析一个 
+                      minidump，你需要找到所有的调试信息。但为了节省时间，你可以只找那些你需要的信息。本例中的调用栈列表包含了 
+                      User32.dll 和 Kernel32.dll，所以需要它们的调试信息。</P>
+                      <TABLE class=MainText border=0 cellSpacing=1 cellPadding=2 
+                      width=350 bgColor=#70a8bd>
+                        <TBODY>
+                        <TR align=left bgColor=#003366>
+                          <TH colSpan=2>对应的调试信息</TH></TR>
+                        <TR align=left bgColor=#003366>
+                          <TH width="40%">操作系统</TH>
+                          <TH width="60%">所需的文件</TH></TR>
+                        <TR bgColor=#01658b>
+                          <TD width="40%">Windows NT 4</TD>
+                          <TD width="60%">DBGs</TD></TR>
+                        <TR bgColor=#01658b>
+                          <TD width="40%">Windows 2000</TD>
+                          <TD width="60%">DBGs, PDBs</TD></TR>
+                        <TR bgColor=#01658b>
+                          <TD width="40%">Windows XP</TD>
+                          <TD width="60%">PDBs</TD></TR></TBODY></TABLE>
+                      <P>一个找系统符号的好地方在 <A 
+                      href="http://www.microsoft.com/ddk/debugging" 
+                      target=_blank>http://www.microsoft.com/ddk/debugging</A>，你也可以在 
+                      Windows NT Server 和 Windows 2000 Server 操作系统的 Support CD 
+                      上找到系统符号。在本例中，它们被拷贝到了二进制代码所在的位置。实际情况中你可能会遇到非微软发布的二进制模块，这时候你就需要它们的 
+                      PDB 文件了。同样在本例中，Notepad 的 DBG 和 PDB 
+                      文件也被拷贝了出来，因为它是我们使用的样本应用程序。</P>
+                      <P>在单击“调试”菜单上的“停止调试”命令后再按 F5 就会看到调用栈列表，如图 4 
+                      所示。你也许发现了，由于添加了新的二进制文件和调试信息，调用栈发生了变化。这就是我们要的结果；只有在具有调试信息的情况下才能准确地回溯一个调用栈，提供的信息越详细，你得到的堆栈就越精确，通常能够把那些原来没有显示出来的栈帧信息暴露出来。</P>
+                      <P>在本例中并没有崩溃。在实际情况中，这些信息应该已经能够帮助你查找出大概 70% 
+                      的崩溃原因。另外，本例中的调用栈列表是使用微软随系统组件提供的、经过删减的符号文件所生成的，所以没有行号信息。如果你使用自己生成的、完整的 
+                      PDB 文件，你可以看到一个更详尽的调用栈。</P>
+                      <TABLE class=MainText border=0 cellSpacing=5 
+cellPadding=0>
+                        <TBODY>
+                        <TR>
+                          <TH align=left>图 4：找到符号和二进制文件后的调用栈窗口</TH></TR>
+                        <TR>
+                          <TD><IMG 
+                            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/figure4.jpg" 
+                            width=320 height=137></TD></TR></TBODY></TABLE>
+                      <P><B>符号服务器</B></P>
+                      <P>如果你需要处理大量 minidumps，进行大范围调试，那么存储和访问所有的二进制文件以及 PDB/DBG 
+                      文件将变得很困难。Windows NT 
+                      中包含了一种叫做符号服务器的技术，起初只是用来存储符号文件的，后来扩展到也支持二进制文件的查找。Windows NT 
+                      调试器是第一个支持它的工具，但实际上 Visual Studio .NET 
+                      也支持它，虽然没有文档提及（<I>事实上，在 Visual Studio .NET 2003 的文档中和 MSDN 
+                      的 Knowledge Base (KB) 中都有讲到如何使用符号服务器，KB 中的 Q319037 和 
+                      Q311503 分别讲述了如何在 Visual Studio .NET 2002 和 Visual Studio 
+                      6.0 中使用符号服务器，甚至还包括了一个详细无比的、傻瓜式的教学视频。在 MSDN 
+                      中搜索关键字“symsrv.dll”可以找到这部分内容——译者注</I>）。关于符号服务器，可以参考 <A 
+                      href="http://www.microsoft.com/ddk/debugging/symbols.asp" 
+                      target=_blank>http://www.microsoft.com/ddk/debugging/symbols.asp</A>。</P></BLOCKQUOTE></TD></TR>
+                <TR>
+                  <TD><IMG align=absMiddle 
+                    src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+                    width=16 height=16><B>方法 B：康庄大道——使用符号服务器</B> 
+                    <BLOCKQUOTE>
+                      <P>首先，去 <A href="http://www.microsoft.com/ddk/debugging" 
+                      target=_blank>http://www.microsoft.com/ddk/debugging</A> 
+                      下载调试工具。你需要安装 Symsrv.dll 文件，你可以将它拷贝到 devenv.exe 
+                      所在的目录下，或者放到你的 System32 目录下，以便 Visual Studio .NET 
+                      可以访问到它。在复制了 Symsrv.dll 
+                      文件之后，你就可以安全地卸载调试工具了。你还需要创建一个本地目录，在本例中，创建了一个本地目录 
+                      C:\localstore。</P>
+                      <P>在工程属性对话框中的“调试”属性页上，填写“符号路径”：</P>
+                      <BLOCKQUOTE 
+                        class=EnMain>SRV*c:/localstore*http://msdl.microsoft.com/download/symbols</BLOCKQUOTE>
+                      <P>这个字符串会告诉调试器使用符号服务器来获取符号文件，并在本地创建一个符号服务器，用来存放符号文件。现在，当你在 
+                      minidump 工程中按下 F5 
+                      后，符号文件将从微软的网站上拷贝到本地服务器。在第一次下载后，之后的加载速度就会快很多，因为符号文件将从本地服务器中直接加载，不再需要通过 
+                      Web 下载了。</P>
+                      <P>在调试微软之外的程序时，你应该将方法 A 和方法 B 结合起来。用方法 A 
+                      获得系统组件的符号文件（<I>反了吧？好像应该用方法 B 吧……不过原文确实是“Use A to get the 
+                      system 
+                      components”——译者注</I>），然后附上你自己的符号文件路径，用分号将它们隔开，例如：</P>
+                      <BLOCKQUOTE 
+                        class=EnMain>c:\drop\build\myapp;SRV*c:\localstore*http://msdl.microsoft.com/download/symbols</BLOCKQUOTE>
+                      <P>由于符号服务器是 Visual Studio .NET 
+                      中的一个没有文档说明的特性，所以没有错误报告。如果表达式错误或者 Symsrv.dll 
+                      文件的位置不正确，符号文件就不能被加载，只能在模块窗口中显示“No symbols 
+                      loaded”的错误信息。你也可以使用符号服务器存储和下载二进制文件，但是 MODPATH 
+                      表达式需要使用“symsrv*symsrv.dll*”而不是“SRV*”（<I>MSDN 
+                      中对于“srv”的解释是：“This is shorthand for 
+                      symsrv*symsrv.dll.”——译者注</I>）。</P>
+                      <P>注意：微软的符号服务器不包含二进制文件，但是你自己创建的符号服务器却可以。</P>
+                      <P>符号服务器不仅仅是用来调试 minidumps 
+                      的，它提供了一种“在线”调试的方法。在使用符号服务器之前，别忘了正确地配置“调试”属性页上的“符号路径”选项。</P></BLOCKQUOTE></TD></TR></TBODY></TABLE></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s6></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>微软是如何使用 Minidumps 的</B> 
+            <BLOCKQUOTE>
+              <P>微软使用 minidumps 改进其程序的历史已经有一年多了（<I>本文发布于 2002 年 3 月 7 
+              日——译者注</I>）。Microsoft Internet Explorer 5.5 和 Microsoft Office XP 
+              是第一批与新版的 Dr.Watson 同时发布的产品。这个新版的 Dr.Watson 
+              可以在程序停止响应时捕获程序中未处理的异常，创建一个 
+            minidump，然后询问用户是否愿意将信息提交给微软。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s7></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>进一步改进</B> 
+            <BLOCKQUOTE>
+              <P>在服务器端，可以根据发生崩溃的组件和崩溃点对 minidumps 
+              进行分析和归类，这样就可以使产品组得到程序的崩溃频率、以及某个崩溃情况的发生频率，小组也可以得到崩溃时的 minidumps 
+              以便日后分析。在某些情况下，如果崩溃的原因已经完全查明，则用户可以被引导到一个网页，这个页面上有已知的、可以暂时避免这种崩溃的方法，或者一个解决该问题的补丁。在 
+              Internet Explorer 5.5 和 Office XP 
+              发布后，有很多其他产品组已经开始使用类似的技术收集崩溃信息了。它同时也是 Windows XP 的一个标准部分。</P>
+              <P>本文中讨论的例子主要是用来理解 minidumps 的，没有涉及到如何从用户机器上返回 dump 文件（<I>在 
+              CodeProject 还有一篇文章是专门讲这个处理过程的，也就是著名的 BT 客户端软件 BitComet 
+              所使用的崩溃信息报告程序 XCrashReport——译者注</I>）。在最简单的情况下，可以提示用户使用 e-mail 发送 
+              minidump 文件。但是要注意，这可能会带来隐私方面的问题，因为用户数据也许就存储在于堆栈中，对于一个包含完整堆信息的 
+              minidump 来说，则一定会有用户数据在其中，这一点要让用户清楚。微软的 Data Collection Policy 
+              中有一些额外的信息用来说明 minidumps 所包含的所有详细内容，它位于：<A 
+              href="http://watson.microsoft.com/dw/1033/dcp.asp" 
+              target=_blank>http://watson.microsoft.com/dw/1033/dcp.asp</A>。</P>
+              <P>另外，如果在一个 Windows 服务中遇到了未处理的异常，那么为它创建 minidumps 
+              将是另一个挑战。你需要处理桌面访问（例如，如果没有人在使用控制台，那么你就无法提示他们）以及安全上下文。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s8></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>总结</B> 
+            <BLOCKQUOTE>
+              <P>Minidumps 
+              是一种新技术，它使得程序在用户的机器上崩溃后也可以进行事后调试。向已有的程序中加入代码、使其在遇到未捕获的异常时自动创建 
+              minidumps 也是一件很容易的事。Visual Studio .NET 
+              可以很容易地载入它们，从而重现崩溃现场、使得开发人员可以调试程序。符号服务器可以很轻松地找到系统符号文件，帮助分析。<BR></P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><A name=s9></A><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem2.gif" 
+            width=16 height=16><FONT 
+            color=#ffcc66><B><U>附：版权及免责声明</U></B></FONT> 
+            <BLOCKQUOTE>
+              <P><FONT color=#ffcc66><B>本文的原文（英文）版权归原作者 Andy Pennell 所有。原作者并没有授权 
+              Victor 进行本文的中文翻译工作，所以本文并不是原文的中文版本。译者 Victor 
+              不对原文、译文及译文注释中可能出现的任何错误以及可能由其带来的任何损失（直接或间接）承担任何法律责任，包括但不限于技术错误、翻译错误、语法错误、拼写错误等。Victor 
+              保留本文的版权，但 Victor 允许其他个人或单位在不得到 Victor 
+              本人书面同意的情况下进行非商业目的且仅限于非商业目的的转载且仅限于在互联网上转载，但相应的转载说明中必须包括本文的原始出处、英文版作者名 
+              Andy Pennell、译者名 Victor 
+              以及原文链接。任何转载行为必须包含本版权及免责声明，否则因此而引起的一切纠纷由转载者负责。</B></FONT></P></BLOCKQUOTE></TD></TR></TBODY></TABLE><!-- InstanceEndEditable --></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle 
+            src="使用%20Minidumps%20和%20Visual%20Studio%20_NET%20进行崩溃后调试_files/webitem1.gif" 
+            width=16 height=16><B>相关文章</B> 
+            <UL><!-- InstanceBeginRepeat name="Links" --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://www.codeproject.com/debug/postmortemdebug_standalone1.asp" 
+              target=_blank>位于 CodeProject 上的原文（英文）</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://support.microsoft.com/servicedesks/fileversion/dllinfo.asp" 
+              target=_blank>微软的 DLL 帮助数据库</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://watson.microsoft.com/dw/1033/dcp.asp" 
+              target=_blank>微软的 Data Collection Policy</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://www.codeproject.com/debug/postmortemdebug_standalone1/mdump.zip" 
+              target=_blank>下载演示代码（链接到 CodeProject）</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceEndRepeat --></LI></UL></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV><!-- InstanceEnd --></BODY></HTML>

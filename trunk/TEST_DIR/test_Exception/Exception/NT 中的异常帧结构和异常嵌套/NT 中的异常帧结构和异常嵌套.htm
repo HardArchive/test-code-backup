@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://vicchina.51.net/research/other/seh/ntframe.htm -->
+<HTML><HEAD><TITLE>NT 中的异常帧结构和异常嵌套</TITLE><!-- InstanceBegin template="/Templates/Common Article.dwt" codeOutsideHTMLIsLocked="false" --><!-- InstanceBeginEditable name="doctitle" --><!-- InstanceEndEditable -->
+<META content="text/html; charset=gb2312" http-equiv=Content-Type><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable --><LINK 
+rel=stylesheet type=text/css href="NT%20中的异常帧结构和异常嵌套_files/common.css">
+<SCRIPT language=JavaScript type=text/JavaScript 
+src="NT%20中的异常帧结构和异常嵌套_files/common.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.TitleText {
+	FONT-FAMILY: "Verdana", "黑体"; COLOR: #ffffff; FONT-SIZE: 20pt; FONT-WEIGHT: bold
+}
+.Code {
+	PADDING-LEFT: 20px; FONT-FAMILY: "Fixedsys"; COLOR: #ffffff; FONT-SIZE: 12pt
+}
+</STYLE>
+<!-- InstanceParam name="Associative Articles" type="boolean" value="true" -->
+<META name=GENERATOR content="MSHTML 8.00.6001.19403"></HEAD>
+<BODY>
+<DIV style="Z-INDEX: 1; POSITION: absolute; WIDTH: 100%; TOP: 0px; LEFT: 0px" 
+id=body>
+<TABLE border=0 cellSpacing=5 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE class=TitleText border=0 cellSpacing=0 cellPadding=0 
+        width="100%"><TBODY>
+        <TR>
+          <TD><!-- InstanceBeginEditable name="Article Title" -->NT 
+            中的异常帧结构和异常嵌套<!-- InstanceEndEditable --></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/keywords.gif" 
+            width=20 height=20><B>本文关键字：<!-- InstanceBeginEditable name="Keywords" -->SEH, 
+            Windows, NT, EH_NESTED_CALL, 
+          VisualC<!-- InstanceEndEditable --></B></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><!-- InstanceBeginEditable name="Article Content" -->
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>冲动是魔鬼</B> 
+            <BLOCKQUOTE>
+              <P>本文是《对于结构化异常处理（SEH）的进一步探索》的姊妹篇。所以，如果不先看看那篇文章的话，本文八成会给人不知所云的感觉。但是，那篇文章也是基于 
+              Matt Pietrek 的 《深入研究 Win32 结构化异常处理》的，所以在那篇文章的开头也会强烈建议先看看 Matt 
+              Pietrek 的文章——那么我就在这里先打个招呼，免的首先翻到这篇文章的同志有可能会觉得我不厚道 :-p 
+              我本想写完那篇《对于结构化异常处理（SEH）的进一步探索》后就结束对 SEH 
+              的“理论学习”，开始试着写一些异常处理和崩溃点信息收集的代码。但老天爷偏偏又让我注意到了 Matt Pietrek 
+              给出的伪码中的另一个小细节。那就是，在 RtlDispatchException 的伪码中，有这么一段：</P><PRE class=Code><FONT color=#c0c0ff>if</FONT> ( <FONT color=#ffc0c0>0</FONT> == pRegistrationFrame )
+{
+    pExcptRec-&gt;ExceptionFlags &amp;= ~EH_NESTED_CALL;   <FONT color=#c0ffc0>// Turn off flag</FONT>
+}</PRE>
+              <P>这段代码要做的就是当条件满足的时候把 EH_NESTED_CALL 标志位从异常标志位中去掉，也就是在注释中写的“Turn 
+              off flag”。从伪码中看，这个条件就是“0 == 
+              pRegistrationFrame”——很奇怪的条件不是么？说它奇怪，是因为：如果异常链表的结尾是用空指针值表示的，那么这样判断似乎还有几分道理，而实际情况却是，异常链表的结尾是用 
+              -1 表示的。换句话说，pRegistrationFrame “从头到尾”就没有等于 0 的时候。我意识到大概 Matt 
+              Pietrek 又犯错误了，而且这个地方似乎涉及到系统在异常嵌套时的行为。于是我头脑一热，决定再次跟踪到 
+              RtlDispatchException 的机器码中去一探究竟。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>RtlDispatchException 完全攻略</B> 
+            <BLOCKQUOTE>
+              <P>关于我是如何看到 RtlDispatchException 
+              的反汇编的，我已经在《对于结构化异常处理（SEH）的进一步探索》一文中详细描述过了。进入 RtlDispatchException 
+              的方法与进入 _except_handler3 的方法无异，故这里不再赘述，直接切入正题。RtlDispatchException 
+              的代码并不比 _except_handler3 复杂，所以不费什么劲我就在反汇编指令中插入了伪码：</P><PRE class=Code>001: _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>:
+002: <FONT color=#ffc0c0>77</FONT>FACBB2  push        ebp
+003: <FONT color=#ffc0c0>77</FONT>FACBB3  mov         ebp,esp
+004:     ; <FONT color=#c0ffc0>// DWORD yetAnotherValue;     [ebp-4]</FONT>
+005:     ; <FONT color=#c0ffc0>// DWORD stackUserBase;       [ebp-8]</FONT>
+006:     ; <FONT color=#c0ffc0>// DWORD stackUserTop;        [ebp-0Ch]</FONT>
+007:     ; <FONT color=#c0ffc0>// DWORD dispatcherContext;   [ebp-10h]</FONT>
+008:     ; <FONT color=#c0ffc0>// EXCEPTION_RECORD localRec; [ebp-60h]</FONT>
+009: <FONT color=#ffc0c0>77</FONT>FACBB5  sub         esp,<FONT color=#ffc0c0>60</FONT>h
+010: <FONT color=#ffc0c0>77</FONT>FACBB8  push        ebx
+011: <FONT color=#ffc0c0>77</FONT>FACBB9  push        esi
+012:     ; <FONT color=#c0ffc0>// RtlpGetStackLimits(&amp;stackUserBase, &amp;stackUserTop);</FONT>
+013: <FONT color=#ffc0c0>77</FONT>FACBBA  lea         eax,[ebp-<FONT color=#ffc0c0>0</FONT>Ch]
+014: <FONT color=#ffc0c0>77</FONT>FACBBD  push        edi
+015: <FONT color=#ffc0c0>77</FONT>FACBBE  push        eax
+016: <FONT color=#ffc0c0>77</FONT>FACBBF  lea         eax,[ebp-<FONT color=#ffc0c0>8</FONT>]
+017: <FONT color=#ffc0c0>77</FONT>FACBC2  push        eax
+018: <FONT color=#ffc0c0>77</FONT>FACBC3  call        _RtlpGetStackLimits@<FONT color=#ffc0c0>8</FONT> (<FONT color=#ffc0c0>77</FONT>FBB3A0h)
+019:     ; <FONT color=#c0ffc0>// pRegistrationFrame = RtlpGetRegistrationHead();</FONT>
+020: <FONT color=#ffc0c0>77</FONT>FACBC8  call        _RtlpGetRegistrationHead@<FONT color=#ffc0c0>0</FONT> (<FONT color=#ffc0c0>77</FONT>FBB3BCh)
+021:     ; <FONT color=#c0ffc0>// yetAnotherValue = 0;</FONT>
+022: <FONT color=#ffc0c0>77</FONT>FACBCD  and         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT>
+023:     ; <FONT color=#c0ffc0>// while (pRegistrationFrame != -1) {</FONT>
+024: <FONT color=#ffc0c0>77</FONT>FACBD1  mov         ebx,eax
+025: <FONT color=#ffc0c0>77</FONT>FACBD3  cmp         ebx,<FONT color=#ffc0c0>0</FONT>FFFFFFFFh
+026: <FONT color=#ffc0c0>77</FONT>FACBD6  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F7h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA9h)
+027:     ; <FONT color=#c0ffc0>//     pExceptRec =&gt; esi</FONT>
+028: <FONT color=#ffc0c0>77</FONT>FACBDC  mov         esi,dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>]
+029:     ; <FONT color=#c0ffc0>//     if (pRegistrationFrame &lt; stackUserBase)</FONT>
+030:     ; <FONT color=#c0ffc0>//         goto _lh_bad_stack;</FONT>
+031: <FONT color=#ffc0c0>77</FONT>FACBDF  cmp         ebx,dword ptr [ebp-<FONT color=#ffc0c0>8</FONT>]
+032: <FONT color=#ffc0c0>77</FONT>FACBE2  lea         eax,[ebx+<FONT color=#ffc0c0>8</FONT>]
+033: <FONT color=#ffc0c0>77</FONT>FACBE5  jb          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F3h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA5h)
+034:     ; <FONT color=#c0ffc0>//     if (pRegistrationFrame &gt; stackUserTop)</FONT>
+035:     ; <FONT color=#c0ffc0>//         goto _lh_bad_stack;</FONT>
+036: <FONT color=#ffc0c0>77</FONT>FACBEB  cmp         eax,dword ptr [ebp-<FONT color=#ffc0c0>0</FONT>Ch]
+037: <FONT color=#ffc0c0>77</FONT>FACBEE  ja          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F3h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA5h)
+038:     ; <FONT color=#c0ffc0>//     if (pRegistrationFrame &amp; 3)</FONT>
+039:     ; <FONT color=#c0ffc0>//         goto _lh_bad_stack;</FONT>
+040: <FONT color=#ffc0c0>77</FONT>FACBF4  test        bl,<FONT color=#ffc0c0>3</FONT>
+041: <FONT color=#ffc0c0>77</FONT>FACBF7  jne         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F3h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA5h)
+042:     ; <FONT color=#c0ffc0>//     // Doesn't seem to do a whole heck of a lot.</FONT>
+043:     ; <FONT color=#c0ffc0>//     if (someProcessFlag)</FONT>
+044: <FONT color=#ffc0c0>77</FONT>FACBFD  test        byte ptr [_NtGlobalFlag+<FONT color=#ffc0c0>2</FONT> (<FONT color=#ffc0c0>77</FONT>FCFC32h)],<FONT color=#ffc0c0>80</FONT>h
+045: <FONT color=#ffc0c0>77</FONT>FACC04  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>65</FONT><FONT color=#c0c0c0>h</FONT> (<FONT color=#ffc0c0>77</FONT>FACC17h)
+046:     ; <FONT color=#c0ffc0>//         pExceptRec = RtlpLogExceptionHandler(pExcptRec, pContext, 0,</FONT>
+047:     ; <FONT color=#c0ffc0>//                                              pRegistrationFrame, 0x10);</FONT>
+048: <FONT color=#ffc0c0>77</FONT>FACC06  push        <FONT color=#ffc0c0>10</FONT>h
+049: <FONT color=#ffc0c0>77</FONT>FACC08  push        ebx
+050: <FONT color=#ffc0c0>77</FONT>FACC09  push        <FONT color=#ffc0c0>0</FONT>
+051: <FONT color=#ffc0c0>77</FONT>FACC0B  push        dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]
+052: <FONT color=#ffc0c0>77</FONT>FACC0E  push        esi
+053: <FONT color=#ffc0c0>77</FONT>FACC0F  call        _RtlpLogExceptionHandler@<FONT color=#ffc0c0>20</FONT> (<FONT color=#ffc0c0>77</FONT>FB4A40h)
+054: <FONT color=#ffc0c0>77</FONT>FACC14  mov         dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>],eax
+055:     ; <FONT color=#c0ffc0>//     retValue = RtlpExecuteHandlerForException(pExceptRec,</FONT>
+056:     ; <FONT color=#c0ffc0>//         pRegistrationFrame, pContext, &amp;dispatcherContext,</FONT>
+057:     ; <FONT color=#c0ffc0>//         pRegistrationFrame-&gt;handler);</FONT>
+058: <FONT color=#ffc0c0>77</FONT>FACC17  push        dword ptr [ebx+<FONT color=#ffc0c0>4</FONT>]
+059: <FONT color=#ffc0c0>77</FONT>FACC1A  lea         eax,[ebp-<FONT color=#ffc0c0>10</FONT>h]
+060: <FONT color=#ffc0c0>77</FONT>FACC1D  push        eax
+061: <FONT color=#ffc0c0>77</FONT>FACC1E  push        dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]
+062: <FONT color=#ffc0c0>77</FONT>FACC21  push        ebx
+063: <FONT color=#ffc0c0>77</FONT>FACC22  push        esi
+064: <FONT color=#ffc0c0>77</FONT>FACC23  call        _RtlpExecuteHandlerForException@<FONT color=#ffc0c0>20</FONT> (<FONT color=#ffc0c0>77</FONT>FBB23Ch)
+065:     ; <FONT color=#c0ffc0>//     // Doesn't seem to do a whole heck of a lot.</FONT>
+066:     ; <FONT color=#c0ffc0>//     if (someProcessFlag)</FONT>
+067: <FONT color=#ffc0c0>77</FONT>FACC28  test        byte ptr [_NtGlobalFlag+<FONT color=#ffc0c0>2</FONT> (<FONT color=#ffc0c0>77</FONT>FCFC32h)],<FONT color=#ffc0c0>80</FONT>h
+068: <FONT color=#ffc0c0>77</FONT>FACC2F  mov         edi,eax
+069: <FONT color=#ffc0c0>77</FONT>FACC31  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>8</FONT><FONT color=#c0c0c0>Ah</FONT> (<FONT color=#ffc0c0>77</FONT>FACC3Ch)
+070:     ; <FONT color=#c0ffc0>//         RtlpLogLastExceptionDisposition(pExceptRec, retValue);</FONT>
+071: <FONT color=#ffc0c0>77</FONT>FACC33  push        edi
+072: <FONT color=#ffc0c0>77</FONT>FACC34  push        dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>]
+073: <FONT color=#ffc0c0>77</FONT>FACC37  call        _RtlpLogLastExceptionDisposition@<FONT color=#ffc0c0>8</FONT> (<FONT color=#ffc0c0>77</FONT>FB4A46h)
+074:     ; <FONT color=#c0ffc0>//     if (yetAnotherValue == pRegistrationFrame) {</FONT>
+075: <FONT color=#ffc0c0>77</FONT>FACC3C  cmp         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],ebx
+076: <FONT color=#ffc0c0>77</FONT>FACC3F  jne         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>97</FONT><FONT color=#c0c0c0>h</FONT> (<FONT color=#ffc0c0>77</FONT>FACC49h)
+077:     ; <FONT color=#c0ffc0>//         pExceptRec-&gt;ExceptionFlags &amp;= ~EH_NESTED_CALL;</FONT>
+078: <FONT color=#ffc0c0>77</FONT>FACC41  and         dword ptr [esi+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT>FFFFFFEFh
+079:     ; <FONT color=#c0ffc0>//         yetAnotherValue = 0;</FONT>
+080: <FONT color=#ffc0c0>77</FONT>FACC45  and         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>0</FONT>
+081:     ; <FONT color=#c0ffc0>//     }</FONT>
+082:     ; <FONT color=#c0ffc0>//     if (retValue != DISPOSITION_DISMISS) {</FONT>
+083: <FONT color=#ffc0c0>77</FONT>FACC49  mov         eax,edi
+084: <FONT color=#ffc0c0>77</FONT>FACC4B  xor         ecx,ecx
+085: <FONT color=#ffc0c0>77</FONT>FACC4D  sub         eax,ecx
+086: <FONT color=#ffc0c0>77</FONT>FACC4F  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>BFh</FONT> (<FONT color=#ffc0c0>77</FONT>FACC71h)
+087:     ; <FONT color=#c0ffc0>//         if (retValue != DISPOSITION_CONTINUE_SEARCH) {</FONT>
+088: <FONT color=#ffc0c0>77</FONT>FACC51  dec         eax
+089: <FONT color=#ffc0c0>77</FONT>FACC52  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>E2h</FONT> (<FONT color=#ffc0c0>77</FONT>FACC94h)
+090:     ; <FONT color=#c0ffc0>//             if (retValue != DISPOSITION_NESTED_EXCEPTION) {</FONT>
+091: <FONT color=#ffc0c0>77</FONT>FACC54  dec         eax
+092: <FONT color=#ffc0c0>77</FONT>FACC55  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>AEh</FONT> (<FONT color=#ffc0c0>77</FONT>FACC60h)
+093:     ; <FONT color=#c0ffc0>//                 localRec.ExceptionCode = STATUS_INVALID_DISPOSITION;</FONT>
+094: <FONT color=#ffc0c0>77</FONT>FACC57  mov         dword ptr [ebp-<FONT color=#ffc0c0>60</FONT>h],<FONT color=#ffc0c0>0</FONT>C0000026h
+095:     ; <FONT color=#c0ffc0>//                 goto _lh_raise_exception;</FONT>
+096: <FONT color=#ffc0c0>77</FONT>FACC5E  jmp         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>CCh</FONT> (<FONT color=#ffc0c0>77</FONT>FACC7Eh)
+097:     ; <FONT color=#c0ffc0>//             } else { // retValue == DISPOSITION_NESTED_EXCEPTION</FONT>
+098:     ; <FONT color=#c0ffc0>//                 dispatcherContext =&gt; eax</FONT>
+099: <FONT color=#ffc0c0>77</FONT>FACC60  mov         eax,dword ptr [ebp-<FONT color=#ffc0c0>10</FONT>h]
+100:     ; <FONT color=#c0ffc0>//                 pExceptRec-&gt;ExceptionFlags |= EH_NESTED_CALL;</FONT>
+101: <FONT color=#ffc0c0>77</FONT>FACC63  or          dword ptr [esi+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>10</FONT>h
+102:     ; <FONT color=#c0ffc0>//                 if (dispatcherContext &gt; yetAnotherValue)</FONT>
+103: <FONT color=#ffc0c0>77</FONT>FACC67  cmp         eax,dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>]
+104: <FONT color=#ffc0c0>77</FONT>FACC6A  jbe         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>E2h</FONT> (<FONT color=#ffc0c0>77</FONT>FACC94h)
+105:     ; <FONT color=#c0ffc0>//                     yetAnotherValue = dispatcherContext;</FONT>
+106: <FONT color=#ffc0c0>77</FONT>FACC6C  mov         dword ptr [ebp-<FONT color=#ffc0c0>4</FONT>],eax
+107:     ; <FONT color=#c0ffc0>//             }</FONT>
+108:     ; <FONT color=#c0ffc0>//         }</FONT>
+109: <FONT color=#ffc0c0>77</FONT>FACC6F  jmp         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>E2h</FONT> (<FONT color=#ffc0c0>77</FONT>FACC94h)
+110:     ; <FONT color=#c0ffc0>//     } else { // retValue == DISPOSITION_DISMISS</FONT>
+111:     ; <FONT color=#c0ffc0>//         if (!(pExceptRec-&gt;ExceptionFlags &amp; EH_NONCONTINUABLE))</FONT>
+112:     ; <FONT color=#c0ffc0>//             goto _lh_continue_execution;</FONT>
+113: <FONT color=#ffc0c0>77</FONT>FACC71  test        byte ptr [esi+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>1</FONT>
+114: <FONT color=#ffc0c0>77</FONT>FACC75  je          _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>EFh</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA1h)
+115:     ; <FONT color=#c0ffc0>//         localRec.ExceptionCode = STATUS_NONCONTINUABLE_EXCEPTION;</FONT>
+116: <FONT color=#ffc0c0>77</FONT>FACC77  mov         dword ptr [ebp-<FONT color=#ffc0c0>60</FONT>h],<FONT color=#ffc0c0>0</FONT>C0000025h
+117: <FONT color=#ffc0c0>77</FONT>FACC7E  lea         eax,[ebp-<FONT color=#ffc0c0>60</FONT>h]
+118:     ; <FONT color=#c0ffc0>// _lh_raise_exception:</FONT>
+119:     ; <FONT color=#c0ffc0>//         localRec.ExceptionFlags = EH_NONCONTINUABLE;</FONT>
+120: <FONT color=#ffc0c0>77</FONT>FACC81  mov         dword ptr [ebp-<FONT color=#ffc0c0>5</FONT>Ch],<FONT color=#ffc0c0>1</FONT>
+121: <FONT color=#ffc0c0>77</FONT>FACC88  push        eax
+122:     ; <FONT color=#c0ffc0>//         localRec.ExceptionRecord = pExceptRec;</FONT>
+123: <FONT color=#ffc0c0>77</FONT>FACC89  mov         dword ptr [ebp-<FONT color=#ffc0c0>58</FONT>h],esi
+124:     ; <FONT color=#c0ffc0>//         localRec.NumberParameters = 0;</FONT>
+125: <FONT color=#ffc0c0>77</FONT>FACC8C  mov         dword ptr [ebp-<FONT color=#ffc0c0>50</FONT>h],ecx
+126:     ; <FONT color=#c0ffc0>//         RtlRaiseException(&amp;localRec);</FONT>
+127: <FONT color=#ffc0c0>77</FONT>FACC8F  call        _RtlRaiseException@<FONT color=#ffc0c0>4</FONT> (<FONT color=#ffc0c0>77</FONT>FAC4A0h)
+128:     ; <FONT color=#c0ffc0>//     }</FONT>
+129:     ; <FONT color=#c0ffc0>//     pRegistrationFrame = pRegistration-&gt;prev;</FONT>
+130: <FONT color=#ffc0c0>77</FONT>FACC94  mov         ebx,dword ptr [ebx]
+131:     ; <FONT color=#c0ffc0>// }</FONT>
+132: <FONT color=#ffc0c0>77</FONT>FACC96  cmp         ebx,<FONT color=#ffc0c0>0</FONT>FFFFFFFFh
+133: <FONT color=#ffc0c0>77</FONT>FACC99  jne         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>2</FONT><FONT color=#c0c0c0>Dh</FONT> (<FONT color=#ffc0c0>77</FONT>FACBDFh)
+134:     ; <FONT color=#c0ffc0>// return 0;</FONT>
+135: <FONT color=#ffc0c0>77</FONT>FACC9F  jmp         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F7h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCA9h)
+136:     ; <FONT color=#c0ffc0>// _lh_continue_execution:</FONT>
+137:     ; <FONT color=#c0ffc0>// return 1;</FONT>
+138: <FONT color=#ffc0c0>77</FONT>FACCA1  mov         al,<FONT color=#ffc0c0>1</FONT>
+139: <FONT color=#ffc0c0>77</FONT>FACCA3  jmp         _RtlDispatchException@<FONT color=#ffc0c0>8</FONT>+<FONT color=#ffc0c0>0</FONT><FONT color=#c0c0c0>F9h</FONT> (<FONT color=#ffc0c0>77</FONT>FACCABh)
+140:     ; <FONT color=#c0ffc0>// _lh_bad_stack:</FONT>
+141:     ; <FONT color=#c0ffc0>// pExceptRec-&gt;ExceptionFlags |= EH_STACK_INVALID;</FONT>
+142:     ; <FONT color=#c0ffc0>// return 0;</FONT>
+143: <FONT color=#ffc0c0>77</FONT>FACCA5  or          dword ptr [esi+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>8</FONT>
+144: <FONT color=#ffc0c0>77</FONT>FACCA9  xor         al,al
+145: <FONT color=#ffc0c0>77</FONT>FACCAB  pop         edi
+146: <FONT color=#ffc0c0>77</FONT>FACCAC  pop         esi
+147: <FONT color=#ffc0c0>77</FONT>FACCAD  pop         ebx
+148: <FONT color=#ffc0c0>77</FONT>FACCAE  leave
+149: <FONT color=#ffc0c0>77</FONT>FACCAF  ret         <FONT color=#ffc0c0>8</FONT></PRE>
+              <P>为了与 Matt Pietrek 
+              的伪码对比，我尽量去保留他伪码中的变量名和结构。但是为了不使伪码与反汇编指令偏离得太远，我改变了中间判断 
+              RtlpExecuteHandlerForException 返回值的逻辑结构，改变后的伪码与 Matt Pietrek 
+              给出的伪码在效果上是一样的。虽然看上去可能怪怪的，但是我的伪码更贴近机器指令的执行逻辑，基本上每一行伪码对应的反汇编指令都在伪码下面的几行了，很容易对比。可以发现，在我曾经提出过疑问的地方（74 
+              与 81 行之间），Matt Pietrek 的伪码确实有些不对头。这个地方真正的伪码应该是：</P><PRE class=Code><FONT color=#c0c0ff>if</FONT> (yetAnotherValue == pRegistrationFrame)
+{
+    pExceptRec-&gt;ExceptionFlags &amp;= ~EH_NESTED_CALL;
+    yetAnotherValue = <FONT color=#ffc0c0>0</FONT>;
+}</PRE>
+              <P>另外，在伪码的第 100 行，也就是反汇编指令第 101 行，我看到的是 or 上了一个 
+              EH_NESTED_CALL(10h)，而不是 Matt Pietrek 的伪码中所写的 
+              EH_EXIT_UNWIND(4)。这里说明一下：EXSUP.INC 中对异常标志位的定义只到了 
+              EXCEPTION_STACK_INVALID(8)，也就是伪码中的 EH_STACK_INVALID，我是怎么知道 
+              EH_NESTED_CALL 是 10h 呢？说实话，我也不知道，但我在 Matt Pietrek 的 MYSEH2.cpp 
+              中看到了他识别异常标志位的过程，其中 0x10 
+              对应的标志位名称就是“EH_NESTED_CALL”，况且根据这里的上下文判断，这个标志位 0x10 就应该是 
+              EH_NESTED_CALL。</P>
+              <P>看来一定有些事情 Matt Pietrek 没有在他的文章中提到（是的，这就是异常嵌套的情况）。Matt Pietrek 
+              只在他文章的最后提了一下在异常回调函数中又发生异常的情况是有可能的，说 ExecuteHandler 
+              在调用任何回调函数之前又在它自己的栈上建立了一个异常帧，因为“如果异常回调引起了另一个异常，操作系统需要知道此事件”。那么，如果这种情况出现了，操作系统是如何处理的呢？异常线程最后的归宿在哪里呢？所有这些问题的答案可以说都在 
+              ExecuteHandler 所建立的那个异常帧中，那个异常帧的结构确实像 Matt Pietrek 所说的“和我在 MYSEH 和 
+              MYSEH2 程序里使用的差不多”，但恰恰就是相差的那一点点才是 NT 异常帧结构中的关键。Matt Pietrek 在他给出的 
+              ExecuteHandler 的伪码中把这一点再一次“省略掉”了。但现在，我要把它揪出来。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>NT 中的异常帧结构</B> 
+            <BLOCKQUOTE>
+              <P>NT 中的异常帧是在 NTDLL.DLL 中的 ExecuteHandler 
+              函数中建立的。所以，如果我们想要了解这个异常帧的结构，就需要跟踪到这个函数中去。Matt Pietrek 
+              已经说过了，ExecuteHandler 有两个不同的前端（front end），在异常发生和 Unwind 阶段从不同的前端进入 
+              ExecuteHandler。异常发生时使用的前端是 
+              RtlpExecuteHandlerForException。在上面我们已经找到了 
+              RtlDispatchException，正是它调用了 
+              RtlpExecuteHandlerForException，所以不费什么劲就可以看到 ExecuteHandler 了：</P><PRE class=Code>01: _RtlpExecuteHandlerForException@<FONT color=#ffc0c0>20</FONT>:
+02: <FONT color=#ffc0c0>77</FONT>FBB23C  mov         edx,offset ExecuteHandler@<FONT color=#ffc0c0>20</FONT>+<FONT color=#ffc0c0>3</FONT><FONT color=#c0c0c0>Ah</FONT> (<FONT color=#ffc0c0>77</FONT>FBB286h)
+03: <FONT color=#ffc0c0>77</FONT>FBB241  jmp         ExecuteHandler@<FONT color=#ffc0c0>20</FONT> (<FONT color=#ffc0c0>77</FONT>FBB24Ch)
+04: <FONT color=#ffc0c0>77</FONT>FBB243  nop
+05: _RtlpExecuteHandlerForUnwind@<FONT color=#ffc0c0>20</FONT>:
+06: <FONT color=#ffc0c0>77</FONT>FBB244  mov         edx,offset ExecuteHandler@<FONT color=#ffc0c0>20</FONT>+<FONT color=#ffc0c0>61</FONT><FONT color=#c0c0c0>h</FONT> (<FONT color=#ffc0c0>77</FONT>FBB2ADh)
+07: <FONT color=#ffc0c0>77</FONT>FBB249  lea         ecx,[ecx]
+08: ExecuteHandler@<FONT color=#ffc0c0>20</FONT>:
+09: <FONT color=#ffc0c0>77</FONT>FBB24C  push        ebp
+10: <FONT color=#ffc0c0>77</FONT>FBB24D  mov         ebp,esp
+11: <FONT color=#ffc0c0>77</FONT>FBB24F  push        dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]    ; push [pExcptReg]
+12: <FONT color=#ffc0c0>77</FONT>FBB252  push        edx                    ; push [nthandler]
+13: <FONT color=#ffc0c0>77</FONT>FBB253  push        dword ptr fs:[<FONT color=#ffc0c0>0</FONT>]       ; push [prev]
+14: <FONT color=#ffc0c0>77</FONT>FBB25A  mov         dword ptr fs:[<FONT color=#ffc0c0>0</FONT>],esp
+15: <FONT color=#ffc0c0>77</FONT>FBB261  push        dword ptr [ebp+<FONT color=#ffc0c0>14</FONT>h]
+16: <FONT color=#ffc0c0>77</FONT>FBB264  push        dword ptr [ebp+<FONT color=#ffc0c0>10</FONT>h]
+17: <FONT color=#ffc0c0>77</FONT>FBB267  push        dword ptr [ebp+<FONT color=#ffc0c0>0</FONT>Ch]
+18: <FONT color=#ffc0c0>77</FONT>FBB26A  push        dword ptr [ebp+<FONT color=#ffc0c0>8</FONT>]
+19: <FONT color=#ffc0c0>77</FONT>FBB26D  mov         ecx,dword ptr [ebp+<FONT color=#ffc0c0>18</FONT>h]
+20: <FONT color=#ffc0c0>77</FONT>FBB270  call        ecx
+21: <FONT color=#ffc0c0>77</FONT>FBB272  mov         esp,dword ptr fs:[<FONT color=#ffc0c0>0</FONT>]
+22: <FONT color=#ffc0c0>77</FONT>FBB279  pop         dword ptr fs:[<FONT color=#ffc0c0>0</FONT>]
+23: <FONT color=#ffc0c0>77</FONT>FBB280  mov         esp,ebp
+24: <FONT color=#ffc0c0>77</FONT>FBB282  pop         ebp
+25: <FONT color=#ffc0c0>77</FONT>FBB283  ret         <FONT color=#ffc0c0>14</FONT>h
+26:     ; _nthandler_excpt@<FONT color=#ffc0c0>10</FONT>
+27:     ; <FONT color=#c0ffc0>// EXCEPTION_DISPOSITION __stdcall nthandler_excpt(</FONT>
+28:     ; <FONT color=#c0ffc0>//     PEXCEPTION_RECORD pExcptRec,</FONT>
+29:     ; <FONT color=#c0ffc0>//     NT_EXCEPTION_REGISTRATION *pExcptReg,</FONT>
+30:     ; <FONT color=#c0ffc0>//     PCONTEXT pContext,</FONT>
+31:     ; <FONT color=#c0ffc0>//     PDWORD pDispatcherContext)</FONT>
+32:     ; <FONT color=#c0ffc0>// {</FONT>
+33:     ; <FONT color=#c0ffc0>//     if (pExcptRec-&gt;ExceptionFlags &amp; EXCEPTION_UNWIND_CONTEXT)</FONT>
+34: <FONT color=#ffc0c0>77</FONT>FBB286  mov         ecx,dword ptr [esp+<FONT color=#ffc0c0>4</FONT>]
+35: <FONT color=#ffc0c0>77</FONT>FBB28A  test        dword ptr [ecx+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>6</FONT>
+36:     ; <FONT color=#c0ffc0>//         return ExceptionContinueSearch;</FONT>
+37: <FONT color=#ffc0c0>77</FONT>FBB291  mov         eax,<FONT color=#ffc0c0>1</FONT>
+38: <FONT color=#ffc0c0>77</FONT>FBB296  jne         ExecuteHandler@<FONT color=#ffc0c0>20</FONT>+<FONT color=#ffc0c0>5</FONT><FONT color=#c0c0c0>Eh</FONT> (<FONT color=#ffc0c0>77</FONT>FBB2AAh)
+39:     ; <FONT color=#c0ffc0>//     *pDispatcherContext = pExcptReg-&gt;_context;</FONT>
+40: <FONT color=#ffc0c0>77</FONT>FBB298  mov         ecx,dword ptr [esp+<FONT color=#ffc0c0>8</FONT>]
+41: <FONT color=#ffc0c0>77</FONT>FBB29C  mov         edx,dword ptr [esp+<FONT color=#ffc0c0>10</FONT>h]
+42: <FONT color=#ffc0c0>77</FONT>FBB2A0  mov         eax,dword ptr [ecx+<FONT color=#ffc0c0>8</FONT>]
+43: <FONT color=#ffc0c0>77</FONT>FBB2A3  mov         dword ptr [edx],eax
+44:     ; <FONT color=#c0ffc0>//     return ExceptionNestedException;</FONT>
+45: <FONT color=#ffc0c0>77</FONT>FBB2A5  mov         eax,<FONT color=#ffc0c0>2</FONT>
+46:     ; <FONT color=#c0ffc0>// }</FONT>
+47: <FONT color=#ffc0c0>77</FONT>FBB2AA  ret         <FONT color=#ffc0c0>10</FONT>h
+48:     ; _nthandler_unwind@<FONT color=#ffc0c0>10</FONT>
+49: <FONT color=#ffc0c0>77</FONT>FBB2AD  mov         ecx,dword ptr [esp+<FONT color=#ffc0c0>4</FONT>]
+50: <FONT color=#ffc0c0>77</FONT>FBB2B1  test        dword ptr [ecx+<FONT color=#ffc0c0>4</FONT>],<FONT color=#ffc0c0>6</FONT>
+51: <FONT color=#ffc0c0>77</FONT>FBB2B8  mov         eax,<FONT color=#ffc0c0>1</FONT>
+52: <FONT color=#ffc0c0>77</FONT>FBB2BD  je          ExecuteHandler@<FONT color=#ffc0c0>20</FONT>+<FONT color=#ffc0c0>85</FONT><FONT color=#c0c0c0>h</FONT> (<FONT color=#ffc0c0>77</FONT>FBB2D1h)
+53: <FONT color=#ffc0c0>77</FONT>FBB2BF  mov         ecx,dword ptr [esp+<FONT color=#ffc0c0>8</FONT>]
+54: <FONT color=#ffc0c0>77</FONT>FBB2C3  mov         edx,dword ptr [esp+<FONT color=#ffc0c0>10</FONT>h]
+55: <FONT color=#ffc0c0>77</FONT>FBB2C7  mov         eax,dword ptr [ecx+<FONT color=#ffc0c0>8</FONT>]
+56: <FONT color=#ffc0c0>77</FONT>FBB2CA  mov         dword ptr [edx],eax
+57: <FONT color=#ffc0c0>77</FONT>FBB2CC  mov         eax,<FONT color=#ffc0c0>3</FONT>
+58: <FONT color=#ffc0c0>77</FONT>FBB2D1  ret         <FONT color=#ffc0c0>10</FONT>h</PRE>
+              <P>这段代码其实包含了 5 个函数，其中三个已经有了 Symbol 
+              了，可以看到它们的名字：_RtlpExecuteHandlerForException@20、_RtlpExecuteHandlerForUnwind@20 
+              和 ExecuteHandler@20。另外两个就是 ExecuteHandler 在调用异常回调函数之前在栈上建立的 NT 
+              异常帧中的内部 handler，一个负责异常回调阶段的异常处理，我把它叫做 nthandler_excpt；另一个负责 Unwind 
+              阶段的异常处理，我把它叫做 nthandler_unwind。虽然没有 Symbol 
+              信息，但是它们的起始地址已经可以看到了。根据研究的重点，我仅写出了 nthandler_excpt 
+              的伪码（这段伪码已经不怎么“伪”了，直接称其为代码也不过分）。但这几个函数都非常简单，相信如果需要的话，其它函数的伪码也可以信手拈来。</P>
+              <P>先看看 ExecuteHandler 中安装异常帧的那几条指令，在构造“标准”异常帧结构的两条 push 指令之前还有一个 
+              push！是的，NT 的异常帧在继 prev、handler 域之后，还带有一个 DWORD！我把这个 DWORD 命名为 
+              _context（Matt Pietrek 在他的伪码中把这个成员也叫做 
+              scopetable。但我认为非常不合适：scopetable 是 VC 的东西，不是 NT 的，NT 可没有什么 TryLevel 
+              之类的概念），那么，NT 的异常帧结构体就可以描述为：</P><PRE class=Code><FONT color=#c0c0ff>typedef</FONT> <FONT color=#c0c0ff>struct</FONT> _NT_EXCEPTION_REGISTRATION
+{
+    <FONT color=#c0c0ff>struct</FONT> _NT_EXCEPTION_REGISTRATION *prev;
+    FARPROC handler;
+    DWORD _context;
+} NT_EXCEPTION_REGISTRATION, *PNT_EXCEPTION_REGISTRATION;</PRE>
+              <P>NT 要那个 _context 在它的异常帧中做什么呢？结合 nthandler_excpt 和 
+              RtlDispatchException 的伪码，我的结论是：为了正确地控制 EH_NESTED_CALL 
+            标志位。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>异常嵌套</B> 
+            <BLOCKQUOTE>
+              <P>什么是异常嵌套？简单的说，就是在处理一个异常的时候引发了另一个异常。为了更直观地重现一个异常嵌套的过程，我写了一个演示程序：</P><PRE class=Code>01: <FONT color=#c0c0ff>int</FONT> <FONT color=#c0c0c0>Filter</FONT>(PEXCEPTION_POINTERS pExcptPtrs, <FONT color=#c0c0ff>int</FONT> nLevel)
+02: {
+03:     <FONT color=#c0c0c0>printf</FONT>("In Filter %d...", nLevel);
+04:     <FONT color=#c0c0ff>if</FONT> (pExcptPtrs-&gt;ExceptionRecord-&gt;ExceptionFlags &amp; <FONT color=#ffc0c0>0x10</FONT>)
+05:         <FONT color=#c0c0c0>printf</FONT>("somebody messed up!!!");
+06:     <FONT color=#c0c0ff>else</FONT> {
+07:         <FONT color=#c0c0c0>printf</FONT>("seems to be OK.");
+08:         <FONT color=#c0c0ff>if</FONT> (nLevel == <FONT color=#ffc0c0>3</FONT> || nLevel == <FONT color=#ffc0c0>6</FONT>) {
+09:             <FONT color=#c0c0c0>printf</FONT>(" Now doing something bad...\n");
+10:             <FONT color=#c0c0ff>int</FONT> *p = <FONT color=#ffc0c0>0</FONT>;
+11:             *p = <FONT color=#ffc0c0>0</FONT>;
+12:         }
+13:     }
+14:     <FONT color=#c0c0c0>printf</FONT>("\n");
+15:     <FONT color=#c0c0ff>return</FONT> EXCEPTION_CONTINUE_SEARCH;
+16: }
+17: 
+18: <FONT color=#c0c0ff>void</FONT> <FONT color=#c0c0c0>Foo</FONT>(<FONT color=#c0c0ff>int</FONT> nLevel)
+19: {
+20:     __try {
+21:         <FONT color=#c0c0ff>if</FONT> (nLevel &gt; <FONT color=#ffc0c0>1</FONT>)
+22:             <FONT color=#c0c0c0>Foo</FONT>(nLevel - <FONT color=#ffc0c0>1</FONT>);
+23:         <FONT color=#c0c0ff>int</FONT> *p = <FONT color=#ffc0c0>0</FONT>;
+24:         *p = <FONT color=#ffc0c0>0</FONT>;
+25:     } <FONT color=#c0c0c0>__except</FONT>(<FONT color=#c0c0c0>Filter</FONT>(<FONT color=#c0c0c0>GetExceptionInformation</FONT>(), nLevel)) {
+26:     }
+27: }
+28: 
+29: <FONT color=#c0c0ff>int</FONT> <FONT color=#c0c0c0>_tmain</FONT>(<FONT color=#c0c0ff>int</FONT> argc, _TCHAR* argv[])
+30: {
+31:     __try {
+32:         <FONT color=#c0c0c0>Foo</FONT>(<FONT color=#ffc0c0>9</FONT>);
+33:     } <FONT color=#c0c0c0>__except</FONT>(EXCEPTION_EXECUTE_HANDLER) {
+34:     }
+35:     <FONT color=#c0c0ff>return</FONT> <FONT color=#ffc0c0>0</FONT>;
+36: }</PRE>
+              <P>为了使代码看上去不那么冗长，我用了递归，另外在 Filter 上也加了一个参数以便 Filter 
+              的行为可以有所不同。你可以把这段程序想像着展开：这个程序中包含了九个 FooN() 函数，Foo9 调用 Foo8、Foo8 调用 
+              Foo7……Foo2 调用 Foo1，在 Foo1 中导致一个 AV 异常；每个 FooN 中都安装了一个 FilterN，Foo9 
+              安装了 Filter9、Foo8 安装了 Filter8……Foo1 安装了 Filter1；其中，Filter3 和 
+              Filter6 是两个捣乱的家伙，它们会导致另外一个 AV 异常。这个程序的输出是这样的：</P>
+              <P class=Code>In Filter 1...seems to be OK.<BR>In Filter 2...seems 
+              to be OK.<BR>In Filter 3...seems to be OK. Now doing something 
+              bad...<BR>In Filter 1...somebody messed up!!!<BR>In Filter 
+              2...somebody messed up!!!<BR>In Filter 3...somebody messed 
+              up!!!<BR>In Filter 4...seems to be OK.<BR>In Filter 5...seems to 
+              be OK.<BR>In Filter 6...seems to be OK. Now doing something 
+              bad...<BR>In Filter 1...somebody messed up!!!<BR>In Filter 
+              2...somebody messed up!!!<BR>In Filter 3...somebody messed 
+              up!!!<BR>In Filter 4...somebody messed up!!!<BR>In Filter 
+              5...somebody messed up!!!<BR>In Filter 6...somebody messed 
+              up!!!<BR>In Filter 7...seems to be OK.<BR>In Filter 8...seems to 
+              be OK.<BR>In Filter 9...seems to be OK.</P>
+              <P>为什么会产生这样的输出呢？来分析一下程序的执行流程：当异常在 Foo1（也就是 Foo(1) 
+              的那次调用）中发生后，Filter1 首先被执行，这是个没有问题的 filter，它返回 
+              EXCEPTION_CONTINUE_SEARCH 表示不予处理，Filter2 也是这样的过程。当流程进入 Filter3 
+              这个捣蛋鬼时，它引发了另一个 AV 异常——嵌套发生了！于是系统又从当前异常回调链表的表头开始一个个地回调 handler，由于 
+              EH_NESTED_CALL(0x10) 标志位的指示，Filter 们不再进行任何操作就直接返回 
+              EXCEPTION_CONTINUE_SEARCH——包括 Filter3 这时候也老实下来了。当三个 Filter 
+              调用过去以后，由于我们已经跳出了 Filter3 所引起的嵌套块、EH_NESTED_CALL 标志位被清除了，所以 
+              Filter4、Filter5、Filter6 的报告又是正常的了。因为 Filter6 是另一位不良公民，所以同样的异常嵌套情况在 
+              Filter6 中又发生了一遍，但是一旦第二次出了 Filter6 之后，Filter7、Filter8、Filter9 
+              的报告就又是正常的了。</P>
+              <P>好险啊！EH_NESTED_CALL 标志位真是一根救命稻草！多亏这个标志位及时地为 Filter 指出了当前的嵌套情况，否则 
+              Filter3、Filter6 
+              不知道要错到什么时候（至于嵌套到最后是什么结果，我后面会提到，在这里先打个招呼——进程会死得相当惨）。我们看到的事实是：EH_NESTED_CALL 
+              标志位的逻辑控制得相当完美：该置的时候一定会置，不该置的时候也绝不会误报。对于写 filter 
+              的人来说，这个标志位是系统控制的，只要坐享其成就可以了。但本文的研究内容就是异常嵌套，所以现在还不是休息的时候。正相反，我们刚刚走上正轨。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>NT 异常帧中的伎俩</B> 
+            <BLOCKQUOTE>
+              <P>文章写到这里，我想已经有人能猜到我下面要说什么了。是的，我在上一节中制造了一个异常嵌套并提出了 EH_NESTED_CALL 
+              的重要性，在上一节的上一节中找到了 NT 异常帧结构中的 _context 成员，并且曾经埋下过一个伏笔：这个 _context 
+              成员就是为了正确地控制 EH_NESTED_CALL 标志位。那么它是如何控制 EH_NESTED_CALL 
+              标志位的呢？其实问题的答案已经全部包含在上面给出的伪码中了。</P>
+              <P>再次注意到 ExecuteHandler 的反汇编中那三条构造异常帧的 push 指令，第一条 push 指令压入的就是 
+              NT_EXCEPTION_REGISTRATION 结构的最后一个成员，也就是 _context 
+              成员的值。那么这条语句压入了一个什么值呢？是 [ebp+0Ch]，也就是第 2 个参数的值。在 Matt Pietrek 
+              的伪码中可以看到：ExecuteHandler 的第 2 个参数是异常帧指针，这也就是说：在执行任何 handler 之前，NT 
+              都会悄悄地构造一个 NT_EXCEPTION_REGISTRATION 结构所描述的异常帧并插入 TIB 
+              中的异常回调链（甚至在发生异常嵌套后、即将调用的是 nthandler_excpt 时也不例外——挺有趣的，但符合逻辑），这个 
+              NT_EXCEPTION_REGISTRATION 结构的 _context 成员的值就是将要回调的 handler 
+              所在的异常帧结构的地址。</P>
+              <P>如果 ExecuteHandler 所调用的异常回调 handler 
+              在执行的过程中又发生了异常（也就是发生了异常嵌套的话），系统并不会做什么特殊处理，它将仍然走 [Kernel] =&gt; 
+              KiUserExceptionDispatcher =&gt; RtlDispatchException =&gt; 
+              RtlpExecuteHandlerForException =&gt; ExecuteHandler 
+              的调用路径。只不过，这次将要被执行的异常回调将是 nthandler_excpt（还记得吗？在上一次进入 
+              ExecuteHandler 的时候安装的这个 NT 异常帧）。那么，如果不幸进入了 
+              nthandler_excpt，它会做些什么呢？ 伪码中的行为是：将 NT 异常帧中 _context 的值填入 
+              ExecuteHandler 的第 4 个参数 pDispatcherContext 所指向的 DWORD 中，然后返回 2，也就是 
+              ExceptionNestedException。返回到 ExecuteHandler 以后，它也不做什么别的事情，只是将刚刚安装的 
+              NT 异常帧卸载，然后携带 eax 中的值继续返回到 RtlDispatchException 中。与伪码中出现的情况一样，对 
+              EH_NESTED_CALL 标志位的控制也都在这个函数中完成。 
+              <P>ExecuteHandler 返回到 RtlDispatchException 之后（也就是 
+              RtlpExecuteHandlerForException 返回，伪码中第 55 
+              行的调用），RtlDispatchException 开始检查返回值。我们暂且先跳过 74 行和 81 行之间清空 
+              EH_NESTED_CALL 标志位的伪码，一会儿再看，现在指令流来到了第 99 行。这段代码首先给当前异常加上 
+              EH_NESTED_CALL 标志位，然后进行了一个比较判定 if (dispatcherContext &gt; 
+              yetAnotherValue)，若判定成功，则将本地变量 yetAnotherValue 的值置为 
+              dispatcherContext 的值。我们刚刚分析过：在异常嵌套发生后，nthandler_excpt 会被调用，它会在传入 
+              ExecuteHandler 的第 4 个参数 pDispatcherContext 所指向的 DWORD（也就是 
+              RtlDispatchException 中的局部变量 dispatcherContext）中填入 NT 异常帧结构中 
+              _context 结构的值。那么 _context 的值是多少呢？最绕人的地方就在这里了。但也并不难想清楚：刚才之所以能够进入 
+              nthandler_excpt，是因为向 RtlpExecuteHandlerForException 传入了一个 NT 
+              异常帧，这个异常帧的 handler 成员指向 nthandler_excpt 的地址。但别忘了：这个 NT 
+              异常帧却是在上一次发生异常之前注册的，因为本次注册的 NT 异常帧已经在 ExecuteHandler 
+              返回之前卸载了——本次的异常回调函数是 nthandler_excpt，它没有产生异常，ExecuteHandler 
+              是正常结束的。那么，上一次发生异常时在什么时候？别忘了我们现在的讨论所基于的“上下文”是异常嵌套，也就是说，上一次异常是在某个外部的异常回调函数（对于 
+              VC 编译出来的程序来说，就是 _except_handler3）中发生的异常。那么，根据 ExecuteHandler 
+              构造异常帧的方法——在构造每一个 NT 异常帧时都在 _context 域填上即将调用的 handler 所对应的异常帧的地址，这个 
+              _context 中的内容就是上一次调用 handler 前的异常帧地址（同样以 VC 编译出来的程序为例，就是一个 
+              _EH3_EXCEPTION_REGISTRATION 结构的地址）！</P>
+              <P>知道 _context 
+              的含义以后，我们就离真相大白不远了。现在想想这个问题，都会觉得已经有些眉目了：在每一次调用异常回调函数之前记住它们所处的异常帧的地址，这样，如果有哪个回调函数不老实、引发了异常嵌套，我们就知道是谁捣的鬼了。在发现了异常嵌套之后，仍然会从 
+              TIB 中的异常回调链表表头开始一个一个地调用 handler，但我们这次就可以知道了：在这个 _context 
+              所指向的异常帧之前（当然也要包括该帧，因为就是该帧在上一次回调过程中引发了异常嵌套）的帧都属于“嵌套调用”，需要有 
+              EH_NESTED_CALL 标志位指示它们的 handler——“情况特殊，请酌情处理”；如果上一次引发异常嵌套的帧（也就是 
+              _context 所指向的帧）在本次没有再引起嵌套并且返回了，那就说明嵌套调用过程结束了，从下一个 handler 
+              开始就是正常的回调了，此时应该清除 EH_NESTED_CALL 标志位了——此时再回头看看我在上一段暂时跳过的伪码 74 至 81 
+              行间的内容，它做的不正是这件事么？</P>
+              <P>至此，所有的问题似乎都有了令人满意的答案。但其实还有一个细节值得关注一下，而且这个细节虽小，却可以说是生死攸关，因为它直接影响到 
+              EH_NESTED_CALL 在逻辑上的正确性。在刚才的讨论中，我们已经提到过了，在发现 
+              RtlpExecuteHandlerForException 返回 ExceptionNestedException 
+              之后，RtlDispatchException 并没有简单地令 yetAnotherValue 等于 
+              dispatcherContext，而是先进行了一个判定：只有当 dispatcherContext 大于 
+              yetAnotherValue 时才会进行这个赋值操作。这又是为什么呢？</P>
+              <P>要得到这个问题的答案，我们首先要考虑一下：当异常嵌套发生后，TIB 
+              中的异常回调链表是什么样子的？仍然以我在上面提出来的演示程序为例，当 Filter3 制造了一个 AV 
+              异常之后，异常回调链表的表头将会是 nthandler_excpt，而非 _except_handler3，这种状况将一直持续到发生 
+              Unwind 或者 NtContinue 被调用之前（我就不说为什么了，再说就絮叨了）。但令人失望的是：直到运行到 
+              Filter6，仍然没有一个 handler 处理上一次由 _except_handler3 导致的异常，正相反，Filter6 
+              又引发了一个 AV 异常，于是我们有理由相信，回调链表现在成了这个样子：[NT_EXCEPTION_REGISTRATION] 
+              =&gt; [NT_EXCEPTION_REGISTRATION] =&gt; 
+              [_EH3_EXCEPTION_REGISTRATION] =&gt; [_EH3_EXCEPTION_REGISTRATION] 
+              =&gt; ...其中，表头的 NT_EXCEPTION_REGISTRATION 结构的 _context 域指向的是 
+              Filter6 所对应的异常帧的地址——因为它是在调用 Filter6 之前刚刚装上去的；同理，接下来第 2 个 
+              NT_EXCEPTION_REGISTRATION 结构的 _context 域指向的是 Filter3 
+              所对应的异常帧的地址。</P>
+              <P>很明显，在处理 Filter6 的 AV 异常时，系统将首先遍历到打头阵的那两个 
+              NT_EXCEPTION_REGISTRATION 结构，这将导致 nthandler_excpt 分别被调用两次，也就要返回两次 
+              ExceptionNestedException。现在我们先假设那句“if (dispatcherContext &gt; 
+              yetAnotherValue)”不存在，那会发生些什么呢？显然，每一次当 handler 返回 
+              ExceptionNestedException 后，RtlDispatchException 都会“傻呵呵地”用 handler 
+              填写的值无条件地覆盖 yetAnotherValue 的值。在我们这个例子中，回调链表中的第 2 项是最后一个 NT 
+              异常帧，也就是说 yetAnotherValue 的值最终将等于第 2 个 NT 异常帧中 _context 域的值，也就是 
+              Filter3 异常帧的地址。这就意味着：在接下来对各个 Filter 的顺序回调中，EH_NESTED_CALL 标志位将在对 
+              Filter3 的回调返回后被清除——可是这是我们想要的吗？显然不是，因为后面的 Filter4、Filter5 和 Filter6 
+              都不知道当前已经发生了嵌套，最严重的是：Filter6 没有发现 EH_NESTED_CALL 标志位，它会认为目前 
+              everything OK，于是重蹈覆辙，再次引发异常……</P>
+              <P>经过上面的分析，判定“if (dispatcherContext &gt; 
+              yetAnotherValue)”的含义我想也就明朗起来了：只有当 handler 
+              返回的异常帧地址高于当前记录的发生嵌套的最高的异常帧地址时，才会更新当前的嵌套异常帧地址——这是表达式字面上的意思。根据异常帧全部构造在堆栈上、高地址靠近栈底的特点，我们也不难说出它的逻辑意义：无论怎样嵌套，一定要保证在发生嵌套的最早注册的那一帧之后注册的所有 
+              handler 在再次回调时都要带有 EH_NESTED_CALL 
+              标志位（什么？有点像绕口令？上学的时候有没有学过划分句子成分？在这里复习一下吧……哈哈）。</P></BLOCKQUOTE></TD></TR>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>总结和思考</B> 
+            <BLOCKQUOTE>
+              <P>从以上的讨论中，我们大体可以认识到：异常嵌套是一种较严重的“异常”情况，所有注册的异常回调 handler 都应该对 
+              EH_NESTED_CALL 标志位引起足够的重视。另外，由于 pDispatcherContext 
+              实际上作为参数传递给了每一个被调用的 handler，所以对于检测到 EH_NESTED_CALL 标志位的 
+              handler，完全可以读取 *pDispatcherContext 的值（我们的分析可以肯定一点：这个变量建立在父函数 
+              RtlDispatchException 的堆栈上，不用担心“该内存不能为 
+              Read”哦……），然后与自己的异常帧地址（同样已经通过参数传给 handler 
+              了）进行比较，从而判断出自己究竟是本次异常嵌套的“罪魁祸首”还是“受害者”。但遗憾的是，我们没有在 VC 的内置异常回调函数 
+              _except_handler3 中看到相关的代码，而且 _except_handler3 在调用我们的 filter 时也没有把 
+              pDispatcherContext 传给我们，我们能做的仅剩下检测 EH_NESTED_CALL 
+              标志位了——好在大多数情况下有这样的检测就足够了。</P>
+              <P>好了，作为一个生存在用户模式下的程序员来说，我认为我分析到这里已经很对得起我自己了。在分析异常嵌套的过程中，我曾经发现一个现象：如果在一个 
+              handler 中不停地引发异常而不去检查 EH_NESTED_CALL 
+              标志位、然后悬崖勒马的话，最终的结果就是导致堆栈空间耗尽，在一个 EXCEPTION_STACK_OVERFLOW 
+              之后进程被终止——这也就是我前面说到的“死得很惨”。之所以说它惨，是因为进程在被这样终止的时候不会有任何提示信息：不会有崩溃对话框、不会有系统日志或者应用程序日志、不会有提示音……什么都没有，你的进程会突然蒸发掉。我想这大体上是因为在堆栈溢出后没有用 
+              _resetstkoflw 重建堆栈的 guard page 所导致的现象。事实上，即使调用了 _resetstkoflw 
+              也没有用，大概是因为这个时候 esp 还没有被重置，guard page 根本就没法建立——当然这只是我的猜测，我没有继续跟踪 
+              _resetstkoflw 的代码（虽然 CRT 源码中有这个函数完整的 C 
+              语言实现），我怕我的好奇心和发散性思维会再把我带入关于保护模式的无尽之海中……事实上我对 SEH 的研究就是因为看到了 
+              BitComet 软件使用一个叫做 XCrashReport 
+              程序进行崩溃信息的收集工作而开始的，当初也没有想到最后会走这么远……</P></BLOCKQUOTE></TD></TR></TBODY></TABLE><!-- InstanceEndEditable --></TD></TR>
+  <TR>
+    <TD>
+      <TABLE class=MainText border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><IMG align=absMiddle src="NT%20中的异常帧结构和异常嵌套_files/webitem1.gif" 
+            width=16 height=16><B>相关文章</B> 
+            <UL><!-- InstanceBeginRepeat name="Links" --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://vicchina.51.net/show_article.php?id=63" 
+              target=_blank>深入研究 Win32 结构化异常处理</A><!-- InstanceEndEditable --> <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+              <LI><!-- InstanceBeginEditable name="Link" --><A 
+              href="http://vicchina.51.net/show_article.php?id=64" 
+              target=_blank>对于结构化异常处理（SEH）的进一步探索</A><!-- InstanceEndEditable --> 
+<!-- InstanceEndRepeatEntry --><!-- InstanceEndRepeat --></LI></UL></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV><!-- InstanceEnd --></BODY></HTML>

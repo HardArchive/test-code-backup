@@ -1,0 +1,36 @@
+BODY {
+	SCROLLBAR-ARROW-COLOR: #f0ffff; SCROLLBAR-FACE-COLOR: #70a8bd; BACKGROUND-COLOR: #01658b; MARGIN-TOP: 0px; SCROLLBAR-DARKSHADOW-COLOR: #000000; SCROLLBAR-HIGHLIGHT-COLOR: #70a8bd; MARGIN-LEFT: 0px; SCROLLBAR-SHADOW-COLOR: #01658b; SCROLLBAR-TRACK-COLOR: #70a8bd; MARGIN-RIGHT: 0px; SCROLLBAR-3DLIGHT-COLOR: #ffffff
+}
+.MainText {
+	LINE-HEIGHT: 12pt; FONT-FAMILY: "宋体", "新宋体"; COLOR: #ffffff; FONT-SIZE: 9pt
+}
+.EnMain {
+	FONT-FAMILY: "Courier New", "Courier", "mono"; COLOR: #ffffff; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #66ccff; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ffcc66; TEXT-DECORATION: none
+}
+.PanelBorder {
+	BORDER-BOTTOM: #70a8bd 1px solid; BORDER-LEFT: #70a8bd 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #70a8bd 1px solid; PADDING-TOP: 0px
+}
+.HotArea {
+	CURSOR: pointer
+}
+.PageIndicator {
+	FONT-FAMILY: "Webdings"; COLOR: #ffffff; FONT-SIZE: 9pt
+}
+.Button {
+	BORDER-BOTTOM: #70a8bd 2px outset; BORDER-LEFT: #70a8bd 2px outset; BACKGROUND-COLOR: #01658b; FONT-FAMILY: "宋体", "新宋体"; COLOR: #ffffff; FONT-SIZE: 9pt; VERTICAL-ALIGN: middle; BORDER-TOP: #70a8bd 2px outset; BORDER-RIGHT: #70a8bd 2px outset
+}
+.InsetLook {
+	BORDER-BOTTOM: #70a8bd 2px inset; BORDER-LEFT: #70a8bd 2px inset; BACKGROUND-COLOR: #01658b; FONT-FAMILY: "宋体", "新宋体"; COLOR: #ffffff; FONT-SIZE: 9pt; VERTICAL-ALIGN: middle; BORDER-TOP: #70a8bd 2px inset; BORDER-RIGHT: #70a8bd 2px inset
+}
+FORM {
+	MARGIN: 0px
+}
