@@ -18,7 +18,7 @@ using namespace std;
 LONG WINAPI ExpFilter1(struct _EXCEPTION_POINTERS *pExp)
 {
 	char szExec[256];
-	c:\dbgtools\ntsd.exe -p %ld -e %ld -g -c ".dump c:\dumps\jit.dmp;q" 
+	//c:\dbgtools\ntsd.exe -p %ld -e %ld -g -c ".dump c:\dumps\jit.dmp;q" 
 	sprintf(szExec, "ntsd -c \".dump /f 123.dmp;q\" -p %d", 
 		::GetCurrentProcessId());
 
@@ -31,17 +31,37 @@ LONG WINAPI ExpFilter1(struct _EXCEPTION_POINTERS *pExp)
 
 #include <DbgHelp.h>
 #pragma comment(lib, "Dbghelp.lib")
+#include <Shlwapi.h>
+#include "helper.h"
+#define CURRENTTIME2 COleDateTime::GetCurrentTime().Format("%Y-%m-%d %H:%M:%S")
+#include <string>
+#include <sstream> 
+#include <ATLComTime.h>
+using namespace std;
+string GetFileName()
+{
+	TCHAR tszTem[MAX_PATH] = {0};
+	if (!GetExePath(tszTem)) return false;
+	string strFileName;
+	stringstream strStream;  
+	strStream <<string(tszTem)<<CURRENTTIME2<<".bmp";  
+	strFileName = strStream.str(); 
+	return strFileName;	
+}
 //用Dbghelp.dll提供的MiniDumpWriteDump函数取得程序的DMP
 LONG WINAPI ExpFilter2(struct _EXCEPTION_POINTERS *pExp)
 {
+	TCHAR tszPath[MAX_PATH] = {0};
+	
 	HANDLE hFile = ::CreateFile(
-		_T("123.dmp"), 
+		_T("tes.dmp"), 
 		GENERIC_WRITE, 
 		0, 
 		NULL, 
 		CREATE_ALWAYS, 
 		FILE_ATTRIBUTE_NORMAL, 
 		NULL);
+
 	if(INVALID_HANDLE_VALUE != hFile)
 	{
 		MINIDUMP_EXCEPTION_INFORMATION einfo;
@@ -49,18 +69,17 @@ LONG WINAPI ExpFilter2(struct _EXCEPTION_POINTERS *pExp)
 		einfo.ExceptionPointers	= pExp;
 		//einfo.ClientPointers	= FALSE;
 		einfo.ClientPointers	= true;
-		MINIDUMP_TYPE mdt       = (MINIDUMP_TYPE)(MiniDumpWithPrivateReadWriteMemory | 
-			MiniDumpWithDataSegs | 
-			MiniDumpWithHandleData |
-			MiniDumpWithFullMemoryInfo | 
-			MiniDumpWithThreadInfo | 
-			MiniDumpWithUnloadedModules ); 
-		WriteDump
+		//MINIDUMP_TYPE mdt       = (MINIDUMP_TYPE)(MiniDumpWithPrivateReadWriteMemory | 
+		//	MiniDumpWithDataSegs | 
+		//	MiniDumpWithHandleData |
+		//	MiniDumpWithFullMemoryInfo | 
+		//	MiniDumpWithThreadInfo | 
+		//	MiniDumpWithUnloadedModules ); 
 		::MiniDumpWriteDump(
 			::GetCurrentProcess(), 
 			::GetCurrentProcessId(), 
 			hFile, 
-			mdt, //MiniDumpWithFullMemory
+			/*mdt,*/ MiniDumpWithFullMemory,
 			&einfo, 
 			NULL, 
 			NULL);
