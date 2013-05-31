@@ -1,0 +1,81 @@
+PacketParse DLL工程说明书
+
+设计初衷：
+在设计PurenessScopeServer的时候，发现因为每个数据解析都是不同的，不同的加密，不同的数据格式。。
+如果把解析代码写死在框架里面，则非常不易扩展。
+于是想是否可以把数据解析的部分拆分出来，单独做成一个DLL插件提供给框架。
+这样开发者就不用去阅读框架繁复的代码，专注于自己逻辑的实现。
+
+于是开始想，解析一个数据包，至少需要两个元素，一个是数据包长，一个是数据包体。
+先解析出这两部分，至于其它，应该是逻辑线程去做的事情。
+进一步想，如果我能在这个类里面分出包头和包体，并提供给逻辑处理模块。是否会更简洁呢？
+因为作为逻辑，理论上应该完全不用关注数据的加解密，只需要关心的数据的顺序和正确性。
+
+于是开发了这个DLL，希望给开发者带来方便。
+有不完善的地方，请联系我，大家多多讨论。为设计一套好的服务器框架引擎而努力。
+
+类说明如下：
+#ifdef WIN32
+class PACKETPARSE_EXPORTS CPacketParse
+#else
+class CPacketParse
+#endif 
+{
+public:
+  //类的构造函数
+	CPacketParse(void);
+	//类的析构函数
+	~CPacketParse(void);
+
+  //类的初始化，你可以在这里放这个类初始化的时候，需要干的事情
+	void Init();
+
+  //得到数据包头的长度，返回一个uint32位的无符号整形
+	uint32 GetPacketHeadLen();   
+	//得到数据包体的长度，返回一个uint32位的无符号整形
+	uint32 GetPacketDataLen();
+	//得到当前数据包的命令标识符，这里是一个uint16类型的数据，这里的CommandID会根据逻辑DLL（详细请看逻辑DLL说明书）注册的CommandID来决定，这个数据包应该给哪个DLL去处理。
+	uint16 GetPacketCommandID();
+
+  //得到当前数据是否为头，这个方法主要用于框架内使用，用来切割数据使用的。
+	bool GetIsHead();
+
+  //得到数据包头的二进制数据串
+	ACE_Message_Block* GetMessageHead();
+	//得到数据包体的二进制数据串
+	ACE_Message_Block* GetMessageBody();
+	//将完整数据包头写入进二进制串，这个方法由框架调用，一般不用自己写
+	bool SetMessageHead(ACE_Message_Block* pmbHead);
+	//将完成数据包体写入二进制串，这个方法由框架调用，一般不用自己写
+	bool SetMessageBody(ACE_Message_Block* pmbBody);
+
+  //这里主要是分析包头的长度，给定一个数据块，分析出包头中包含数据包的长度信息。用于框架中对数据包的切分，这里需要你自己实现一下。
+	bool SetPacketHead(char* pData, uint32 u4Len);
+	//这里主要是分析数据包体，关键是想找到CommandID这个信息，其他的部分不再解析。用于框架决定这个数据包应该交给哪个注册在该框架下的DLL去处理。这里要自己实现一下
+	bool SetPacketData(char* pData, uint32 u4Len);
+
+	//拼接返回给客户端的数据包，这里的pData是一个二进制指针，u4Len指的是这个指针的数据长度，pMbData是将要把这个二进制串放入的发送结构体。这里需要自己实现一下
+	bool MakePacket(const char* pData, uint32 u4Len, ACE_Message_Block* pMbData);
+	//输入u4DataLen发送数据包的长度，返回整个数据包的长度。用于框架内部使用，
+	uint32 MakePacketLength(uint32 u4DataLen);
+
+  //当数据包解析完成了，框架会自动调用这个方法，去释放内存，这个一般不用自己去写。
+	void Close();
+
+private:
+  //数据包头的长度
+	uint32 m_u4PacketHead;
+	//数据包体的长度
+	uint32 m_u4PacketData;
+	//数据包的CommandID
+	uint16 m_u4PacketCommandID;
+	//是否是头部分的数据体，框架使用，这个基本不用改什么。
+	bool   m_blIsHead;
+
+	ACE_Message_Block* m_pmbHead;   //包头部分数据体
+	ACE_Message_Block* m_pmbBody;   //包体部分数据体
+
+};
+
+详细使用，请参照PacketParse的工程，里面有一个我现在框架使用的简单例子，你可以按照这个架子去改成你需要的样子。
+当然，这个版本肯定需要不断完善，如果觉得有些不足，可以联系我或者阅读和修改我的框架代码，也可以在论坛上留言。

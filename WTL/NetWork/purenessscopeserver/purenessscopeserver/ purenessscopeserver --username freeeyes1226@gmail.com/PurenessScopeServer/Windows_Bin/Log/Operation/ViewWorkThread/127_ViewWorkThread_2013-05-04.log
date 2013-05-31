@@ -1,0 +1,2 @@
+2013-05-04 16:27:0478,[CMessageService::handle_timeout] pThreadInfo = [0] State = [0] Time = [2013-05-04 16:27:03] PacketCount = [0] LastCommand = [0x0] PacketTime = [0] CurrPacketCount = [0] QueueCount = [0] BuffPacketUsed = [0] BuffPacketFree = [5000].
+2013-05-04 16:28:5182,[CMessageService::handle_timeout] pThreadInfo = [0] State = [0] Time = [2013-05-04 16:28:50] PacketCount = [0] LastCommand = [0x0] PacketTime = [0] CurrPacketCount = [0] QueueCount = [0] BuffPacketUsed = [0] BuffPacketFree = [5000].

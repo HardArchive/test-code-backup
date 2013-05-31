@@ -1,0 +1,2 @@
+2013-05-17 13:20:4861,Connection from [127.0.0.1:7563] DisposeTime = 0.
+2013-05-17 13:20:4861,Close Connection from [127.0.0.1:7563] RecvSize = 14, RecvCount = 1, SendSize = 14, SendCount = 1, RecvQueueCount=0, RecvQueueTimeCost=0ns, SendQueueTimeCost=0ns.
