@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_libiconv", "test_libiconv\test_libiconv.vcproj", "{DC6C67E3-0B75-48FE-AC38-39499F7370B2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv", "libiconv\libiconv.vcproj", "{F6D5C659-570B-4C3A-8CF9-3AA88826726B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC6C67E3-0B75-48FE-AC38-39499F7370B2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DC6C67E3-0B75-48FE-AC38-39499F7370B2}.Debug|Win32.Build.0 = Debug|Win32
+		{DC6C67E3-0B75-48FE-AC38-39499F7370B2}.Release|Win32.ActiveCfg = Release|Win32
+		{DC6C67E3-0B75-48FE-AC38-39499F7370B2}.Release|Win32.Build.0 = Release|Win32
+		{F6D5C659-570B-4C3A-8CF9-3AA88826726B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F6D5C659-570B-4C3A-8CF9-3AA88826726B}.Debug|Win32.Build.0 = Debug|Win32
+		{F6D5C659-570B-4C3A-8CF9-3AA88826726B}.Release|Win32.ActiveCfg = Release|Win32
+		{F6D5C659-570B-4C3A-8CF9-3AA88826726B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

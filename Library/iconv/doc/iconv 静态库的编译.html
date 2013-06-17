@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>iconv 静态库的编译 - 丰盛辉煌 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common.css?id=20120912"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="http://common.cnblogs.com/Skins/leaves/style.css?id=20120912"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common2.css"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/css/shStyle.css"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/fishseewater/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/fishseewater/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/fishseewater/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'fishseewater';
+</script>
+<script src="http://common.cnblogs.com/blog/script/common.js?id=20120912" type="text/javascript"></script> 
+<script src="http://common.cnblogs.com/script/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://common.cnblogs.com/script/syntaxHighlighter.js"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div align="center" id="centerbody">
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/fishseewater/">丰盛辉煌</a>
+		<div id="headersubtitle">
+		人生目标: 健康, 幸福, 丰盛, 辉煌!
+		</div>
+	</div>
+</div>
+
+</div>
+
+<div id="mytopmenu">   
+	
+	    <div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/fishseewater/">首页</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/fishseewater/admin/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_NewArticleLink" class="menu" href="/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e4%b8%b0%e7%9b%9b%e8%be%89%e7%85%8c">联系</a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/fishseewater/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/fishseewater/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>&nbsp;&nbsp;&nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/fishseewater/admin/EditPosts.aspx">管理</a>
+</div>
+		
+<!--done-->
+<div class="blogStats">posts - 20,&nbsp;
+comments - 9,&nbsp;
+trackbacks - 0
+
+</div>
+	
+</div>
+
+<div id=main>
+<div id="centercontent">
+	
+	
+<!--done-->
+<div class = "post">
+	<div class = "postTitle">
+		<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/fishseewater/archive/2010/10/05/1844469.html">iconv 静态库的编译</a>
+	</div>
+	<div id="cnblogs_post_body"><p><span style="font-size: 12pt;">关键字：VS2008&nbsp; 编译　iconv&nbsp; windows</span></p>
+<p><span style="font-size: 18pt;">小巧的开源编码转换库，不用多说了吧～：）</span></p>
+<p><span style="font-size: 18pt;">一、</span>首先准备文件：</p>
+<p>&nbsp;&nbsp; 1. 下载 Iconv 库,目前最新为 1.31 <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz">http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz</a> <br />&nbsp;&nbsp;&nbsp; 2. 去 www.d2school.com 下载iconvpp</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; （这个不是必须的，但其提供了C++的封装，使用起来很方便，感谢nanyu老师）。 </p>
+<p>&nbsp;</p>
+<p>libiconv-1.13.1.tar.gz 解压到 <strong>zipDir <br /></strong>创建 解决方案目录<strong> ProjectDir</strong></p>
+<p>&nbsp;</p>
+<p>zipDir：IConv的打包文件解压目录 <br />ProcjectDir ： 工程编译主目录</p>
+<p><span style="font-size: 18pt;">二、</span>合并文件 <br />&nbsp;&nbsp;&nbsp; 1. 复制 iconvpp.cpp 到 ProjectDir <br />&nbsp;&nbsp;&nbsp; 2. 复制 ZipDir/Lib/下的所有文件到 ProjectDir/_IConv/ (包括子文件夹) <br />&nbsp;&nbsp;&nbsp; 3. 复制 ZipDir/Include/IConv.h.in 到 ProjectDir/_IConv/IConv.h <br />&nbsp;&nbsp;&nbsp; 4. 复制 ZipDir/scrLib/localcharset.h 到 ProjectDir/_IConv/ <br />&nbsp;&nbsp;&nbsp; 5. 复制 ZipDir/libcharset/lib/localcharset.c 到 ProjectDir/_IConv <br />&nbsp;&nbsp;&nbsp; 6. 改名 ProjectDir/_IConv/Config.h.in -&gt; config.h </p>
+<p>以下是批处理</p>
+<blockquote>
+<p>@echo 将所有文件复制到这个目录下 ：_IConv <br />pause <br />md _IConv</p>
+<p>copy lib\*&nbsp; _IConv\ <br />copy include\IConv.h.in&nbsp; _IConv\IConv.h <br />copy srcLib\localcharset.h&nbsp; _IConv\ <br />copy libcharset\lib\localcharset.c&nbsp; _IConv\ <br />ren&nbsp; _IConv\Config.h.in Config.h</p>
+<p>@echo 目录文件生成成功。 <br />pause</p>
+</blockquote>
+<p>OK 以上完成了全部文件的准备（在_<span style="color: #0000ff;">IConv</span>下）。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt;"><strong><span style="font-family: Arial;">三</span></strong>、</span>下面用VS2008建工程~: <br />1.&nbsp; 建一个Win32 工程，工程名称为IconvLib ,钩选&ldquo;创建解决方案目录&rdquo;，选择"静态链接库", 不选&ldquo;预编译头&rdquo;，完成。</p>
+<p>2. 将 _<span style="color: #0000ff;">IConv 目录 </span>复制过来。</p>
+<p>3. 将 iconvpp 中的 include 与 src 复制过来。</p>
+<p>目录结构如下：</p>
+<blockquote>
+<p><span style="font-family: 新宋体; font-size: 10pt;">─ProjectDir <br />&nbsp;&nbsp;&nbsp; ├─IconvLIB <br />&nbsp;&nbsp;&nbsp; ├─iconvpp <br />&nbsp;&nbsp;&nbsp; │&nbsp; ├─include <br />&nbsp;&nbsp;&nbsp; │&nbsp; │&nbsp; └─iconvpp <br />&nbsp;&nbsp;&nbsp; │&nbsp; └─src <br />&nbsp;&nbsp;&nbsp; └─_IConv</span> </p>
+</blockquote>
+<p><br />4. 添加现有项,将 iconvpp.cpp , iconv.c ,localcharset.c 添加到工程中.</p>
+<p>5. 工程属性-&gt;C/C++ &ndash;&gt;附加包含目录：../_iconv;../iconvpp/include; <br />6. 工程属性-&gt;C/C++ -&gt;代码生成-&gt;运行时库-&gt;多线程调试(/MTd)</p>
+<p>这时如果编译会有一堆错误，下面我们来修改一些位置。&nbsp; </p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt;">四、</span>修改文件内容: <br /><span style="font-size: 12pt;">1</span>. IConv.h : <br />&nbsp;&nbsp;&nbsp; </p>
+<blockquote>
+<p>1).删除掉所有的 @ 符号 (14处) <br />2).修改25行： extern DLL_VARIABLE int _libiconv_version; </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 为&nbsp; extern /*DLL_VARIABLE*/ int _libiconv_version;&nbsp; <br />3).修改83行：extern size_t iconv (iconv_t cd, ICONV_CONST char* * inbuf, size_t *inbytesleft, char* * outbuf, size_t *outbytesleft);&nbsp; </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 为 extern size_t iconv (iconv_t cd, <span style="color: #ff0000;">const</span> char* * inbuf, size_t *inbytesleft, char* * outbuf, size_t *outbytesleft);</p>
+</blockquote>
+<p><span style="font-size: 12pt;">2</span>. localcharset.c:&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<blockquote>
+<p>注释掉76行:&nbsp; # include "configmake.h"</p>
+</blockquote>
+<p>OK 文件修改完成，这时候编译，就可以通过了~。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt;">五、</span>测试</p>
+<p>新建一个控制台工程。</p>
+<p>设置工程属性头文件包含：_iconv和 iconvpp/include 两个目录。</p>
+<p>链接 debug/IconvLIB.lib</p>
+<p>运行时库-&gt;多线程调试(/MTd)</p>
+<blockquote>
+<p>#include "iconvpp\iconvpp.h"</p>
+</blockquote>
+<blockquote>
+<p>using namespace Iconvpp; <br />using namespace std;</p>
+</blockquote>
+<blockquote>
+<p>int _tmain(int argc, _TCHAR* argv[]) <br />{ <br />&nbsp;&nbsp;&nbsp; string str; <br />&nbsp;&nbsp;&nbsp; str= Utf8Convert::from_wstring(L"This is a test string~"); <br />&nbsp;&nbsp;&nbsp; printf("%s",str.c_str()); <br />&nbsp;&nbsp;&nbsp; return 0; <br />}</p>
+</blockquote>
+<p>最终目录结构如下：</p>
+<blockquote>
+<p><span style="font-family: 新宋体; font-size: 10pt;">─ProjectDir </span></p>
+<p><span style="font-family: 新宋体; font-size: 10pt;">　</span><span style="font-family: 新宋体; font-size: 10pt;">├─Debug<br />　├─ExeTest<br />　│&nbsp; └─Debug<br />　├─IconvLIB<br />　│&nbsp; └─Debug<br />　├─iconvpp<br />　│&nbsp; ├─include<br />　│&nbsp; │&nbsp; └─iconvpp<br />　│&nbsp; └─src<br />　└─_IConv</span></p>
+</blockquote>
+<p><span style="font-size: 18pt;">六、</span> 结束</p></div><div id="MySignature"></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 76632;
+var cb_entryId = 1844469;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "052f7665-6acf-df11-ac81-842b2b196315";
+var cb_entryCreatedDate = '2010/10/5 23:10:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+	<div class = "postDesc">posted on <span id="post-date">2010-10-05 23:10</span> <a href='http://www.cnblogs.com/fishseewater/'>丰盛辉煌</a> 阅读(1569) 评论(<span id="post-comment-count">0</span>)  <a href ="http://www.cnblogs.com/fishseewater/admin/EditPosts.aspx?postid=1844469" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(1844469);return false;">收藏</a></div>
+</div>
+<img src ="http://www.cnblogs.com/fishseewater/aggbug/1844469.html?type=1&amp;webview=1" width="1" height="1" alt=""/>
+
+<div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox"><a href="http://q.cnblogs.com/" target="_blank">程序员问答社区，解决您的技术难题</a></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+	<div id="footer">
+
+<!--done-->
+<div class="footer">
+	
+	Copyright &copy;2012 丰盛辉煌 Powered by: <a href="http://www.cnblogs.com">博客园</a> 模板提供：<a href="http://blog.hjenglish.com">沪江博客</a><br>
+</div>
+</div>
+</div>
+
+<div id="leftcontent">
+	
+		<DIV id="leftcontentcontainer">
+			<div id="blog-calendar-block" style="display:none"><div id="blog-calendar"></div>
+</div><br>
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news"></div>
+</div>
+
+			<div id="blog-sidecolumn"></div></DIV>
+	
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="http://common.cnblogs.com/script/google-analytics.js"></script>
+</body>
+</html>
