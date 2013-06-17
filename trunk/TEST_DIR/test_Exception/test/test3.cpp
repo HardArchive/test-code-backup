@@ -4,7 +4,7 @@
 
 #pragma comment(lib, "DbgHelp.lib")
 
-void CreateMiniDump( LPEXCEPTION_POINTERS lpExceptionInfo) {
+void CreateMiniDump3( LPEXCEPTION_POINTERS lpExceptionInfo) {
 	// Open a file
 	HANDLE hFile = CreateFile(_T("MiniDump.dmp"), GENERIC_READ | GENERIC_WRITE,
 		0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -36,13 +36,13 @@ void CreateMiniDump( LPEXCEPTION_POINTERS lpExceptionInfo) {
 }
 
 
-int _tmain(int argc, _TCHAR* argv[])
+int _tmain3(int argc, _TCHAR* argv[])
 {
 	__try {
 		int * p = NULL;
 		*p = 20;
 	}
-	__except(CreateMiniDump(GetExceptionInformation()), EXCEPTION_EXECUTE_HANDLER) {
+	__except(CreateMiniDump3(GetExceptionInformation()), EXCEPTION_EXECUTE_HANDLER) {
 	}
 
 	return 0;

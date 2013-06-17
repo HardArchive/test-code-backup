@@ -107,7 +107,7 @@ int main()
 {	
 	cout << "begin !" << endl;
 
-	StartUnhandledExceptionFilter();
+	//StartUnhandledExceptionFilter();
 
 	int i = 0;
 	i = i / i;
