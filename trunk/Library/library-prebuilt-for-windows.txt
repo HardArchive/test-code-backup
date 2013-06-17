@@ -1,0 +1,21 @@
+http://code.google.com/p/library-prebuilt-for-windows/
+
+first blood: http://slowyang.pixnet.net/blog/post/32104743 double kill: http://thenextweb.com/asia/2013/05/28/taiwan-proposes-china-style-block-on-overseas-internet-services-that-infringe-copyright/
+
+build by (Pingtung, Taiwan, Asia) 's person
+
+detail: http://damody.pixnet.net/blog/post/29835522
+
+just prebuilt, Code license as same as original code. update on 2013/5/18
+
+vc11 only has x64 version
+
+vc11up2 => msvc-11.0 update 2 version
+
+so many open source library can't easily to build, I think we need library's prebuilt.
+
+Now, just for VS2010 and VS2008. Each library have auto_link_XXX.hpp, Just include this header, you don't need set any "Linker Input"(library Dependency) on visual studio library. And name-style like boost auto_link.hpp
+
+build setting:
+
+as possible as enable function. UNICODE /Zi debug info vc11up2 MT, MTd, MD, MDd
