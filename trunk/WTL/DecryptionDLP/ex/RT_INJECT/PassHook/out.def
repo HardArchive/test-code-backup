@@ -1,0 +1,13 @@
+LIBRARY PassHook
+DESCRIPTION 'Sample DLL'
+
+EXPORTS
+	GetParentFromHwnd	@1
+	InitHook			@2
+	ReleaseHook			@3
+	GetPassText			@4
+	GetWindowFromPoint  @5
+	DrawBorder			@6
+
+SECTIONS
+	ALLDATA SHARED

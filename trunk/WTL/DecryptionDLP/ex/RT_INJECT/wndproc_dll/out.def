@@ -1,0 +1,6 @@
+LIBRARY wndproc_dll
+DESCRIPTION 'Sample DLL'
+
+EXPORTS
+	RC_InitBtnA	@1
+	RC_WndProcA @2

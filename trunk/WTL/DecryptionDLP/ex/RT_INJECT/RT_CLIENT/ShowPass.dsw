@@ -1,0 +1,74 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "PassHook"=..\PassHook\PassHook.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Rt_Ctrl"=..\Rt_Ctrl\Rt_Ctrl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name wndproc_dll
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ShowPass"=.\ShowPass.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name PassHook
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Rt_Ctrl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "wndproc_dll"=..\wndproc_dll\wndproc_dll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
