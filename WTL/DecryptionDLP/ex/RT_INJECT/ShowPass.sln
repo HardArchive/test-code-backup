@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PassHook", "PassHook\PassHook.vcproj", "{303CF42C-DEA3-4362-BA68-B3DF9D6135CC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShowPass", "RT_CLIENT\ShowPass.vcproj", "{7EA0A29C-0B3E-44CD-9E52-8E351EB0448B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rt_Ctrl", "Rt_Ctrl\Rt_Ctrl.vcproj", "{CA9B0CE2-DFB8-432A-B9BF-5C43070CC43B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wndproc_dll", "wndproc_dll\wndproc_dll.vcproj", "{2A91CF13-0414-41CD-B77C-7119A92C648C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{303CF42C-DEA3-4362-BA68-B3DF9D6135CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{303CF42C-DEA3-4362-BA68-B3DF9D6135CC}.Debug|Win32.Build.0 = Debug|Win32
+		{303CF42C-DEA3-4362-BA68-B3DF9D6135CC}.Release|Win32.ActiveCfg = Release|Win32
+		{303CF42C-DEA3-4362-BA68-B3DF9D6135CC}.Release|Win32.Build.0 = Release|Win32
+		{7EA0A29C-0B3E-44CD-9E52-8E351EB0448B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7EA0A29C-0B3E-44CD-9E52-8E351EB0448B}.Debug|Win32.Build.0 = Debug|Win32
+		{7EA0A29C-0B3E-44CD-9E52-8E351EB0448B}.Release|Win32.ActiveCfg = Release|Win32
+		{7EA0A29C-0B3E-44CD-9E52-8E351EB0448B}.Release|Win32.Build.0 = Release|Win32
+		{CA9B0CE2-DFB8-432A-B9BF-5C43070CC43B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CA9B0CE2-DFB8-432A-B9BF-5C43070CC43B}.Debug|Win32.Build.0 = Debug|Win32
+		{CA9B0CE2-DFB8-432A-B9BF-5C43070CC43B}.Release|Win32.ActiveCfg = Release|Win32
+		{CA9B0CE2-DFB8-432A-B9BF-5C43070CC43B}.Release|Win32.Build.0 = Release|Win32
+		{2A91CF13-0414-41CD-B77C-7119A92C648C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2A91CF13-0414-41CD-B77C-7119A92C648C}.Debug|Win32.Build.0 = Debug|Win32
+		{2A91CF13-0414-41CD-B77C-7119A92C648C}.Release|Win32.ActiveCfg = Release|Win32
+		{2A91CF13-0414-41CD-B77C-7119A92C648C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
