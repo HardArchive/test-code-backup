@@ -25,7 +25,7 @@
      return os;
  }
  
- int main(int argc, char*argv[])
+ int main5(int argc, char*argv[])
  {
      try
      {

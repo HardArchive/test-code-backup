@@ -14,7 +14,7 @@
 #include <boost/program_options.hpp>
 using namespace std;
 
-int main1 (int ac, char *av[])
+int main (int ac, char *av[])
 {
     // options_description 类声明所有的有效命令行选项
     boost::program_options::options_description options("command line options");
