@@ -8,7 +8,7 @@
 //{
 //	return 0;
 //}
-
+#include <Windows.h>
 #include <boost/foreach.hpp>
 #include <boost/program_options.hpp>
 using namespace boost::program_options;
@@ -18,7 +18,7 @@ int print_vm(const options_description &opts, const variables_map &vm)
 {
     if (vm.size() == 0)
     {
-        cout << opts << endl;
+        //cout << opts << endl;
         return 0;
     }
 
@@ -30,7 +30,10 @@ int print_vm(const options_description &opts, const variables_map &vm)
     }
 
     //输出查找文件名，因为有缺省值，故总存在
-    cout << "find opt: " << vm["filename"].as<string>() << endl;
+    if (vm.count("filename"))
+    {
+		cout << "find opt: " << vm["filename"].as<string>() << endl;
+    }    
 
     if (vm.count("dir"))
     {
@@ -47,10 +50,20 @@ int print_vm(const options_description &opts, const variables_map &vm)
         cout << "depth opt: " << vm["depth"].as<int>() << endl;
     }
 
+	if (vm.count("input"))
+	{
+		string strInput;
+		char szInput[MAX_PATH] = {0};
+		cout << "Please Input Something!" << endl << "input:";
+		cin>>szInput;
+		cout << endl;
+		cout << "You Input: "<< szInput << endl;
+	}
+
     return 1;
 }
 
-int main0(int argc, char *argv[]) // 需要命令行参数
+int main(int argc, char *argv[]) // 需要命令行参数
 {
     string filename;
     options_description opts("Mysql performance options"); //增加两个程序选项
@@ -58,7 +71,8 @@ int main0(int argc, char *argv[]) // 需要命令行参数
     ("help,h", "help message")
     ("filename,f", value<string>(&filename)->default_value("text"), "to find a file")
     ("dir,D", value<vector<string> >()->multitoken(), "search dir")
-    ("depth,d", value<int>()->implicit_value(5), "search depth");
+    ("depth,d", value<int>()->implicit_value(5), "search depth")
+	("input,i", "Input Command!");
 
     variables_map vm; // 选项存储map容器
     store(parse_command_line(argc, argv, opts), vm); //解析参数并存储到vm中
