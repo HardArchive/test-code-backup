@@ -1521,8 +1521,10 @@ int main(int argc, char **argv) {
   // The non-recommended way:
   FLAGS_changed_bool2 = true;
 
+  //用来设定usage说明
   SetUsageMessage(usage_message.c_str());
   SetVersionString("test_version");
+  //参数定义和注册函数均完成后，调用ParseCommandLineFlags函数开始解析命令行。
   ParseCommandLineFlags(&argc, &argv, true);
   MakeTmpdir(&FLAGS_test_tmpdir);
 
