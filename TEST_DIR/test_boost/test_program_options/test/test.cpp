@@ -66,7 +66,7 @@ int print_vm(const options_description &opts, const variables_map &vm)
 int main(int argc, char *argv[]) // 需要命令行参数
 {
     string filename;
-    options_description opts("Mysql performance options"); //增加两个程序选项
+    options_description opts("Mysql performance options"); //增加两个程序选项 声明所有的有效命令行选项。
     opts.add_options()
     ("help,h", "help message")
     ("filename,f", value<string>(&filename)->default_value("text"), "to find a file")
