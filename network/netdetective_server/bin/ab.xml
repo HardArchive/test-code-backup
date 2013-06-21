@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <code>1</code>
+  <description>入住</description>
+  <cardtype>1</cardtype>
+  <cardid>430121198706045731</cardid>
+  <name>张三</name>
+  <room>103</room>
+  <ip>192.168.0.1</ip>
+  <mac>00:00:00:00:00:00</mac>
+  <time>1970-01-01 08:00:00</time>
+</data>
