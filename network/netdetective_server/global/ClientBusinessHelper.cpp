@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "ClientBusinessHelper.h"
 #include "../global/ShareMemory.h"
-bool g_bIsRujia = true;
+#include "iconv/IconvHelp.h"
+bool g_bIsRujia = false;
 
 CClientBusinessHelper::CClientBusinessHelper(TPool<DATAPACKET>* pobjRecvPacketPool, CIocpServer* pclsIocpServer, CLIENTBASEINFO& stuClientBaseInfo)
 	:m_pobjRecvPacketPool(pobjRecvPacketPool)
@@ -201,8 +202,7 @@ int CClientBusinessHelper::HandlePacket()
 
 	if (!GetUserStatusInfo(&stuUserStatusInfo))
 	{
-		m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_ERROR;
-		
+		m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_ERROR;		
 	}
 	else
 	{
@@ -218,16 +218,14 @@ int CClientBusinessHelper::HandlePacket()
 			stuUserStatusInfo.tszMAC,
 			stuUserStatusInfo.tszTime);
 		iRet = 1;
+		m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_OK;
 	}
 
-	//TCHAR tszXMLPath[MAX_PATH] = {0};
-	//_stprintf_s(tszXMLPath, MAX_PATH, "F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\%d_%s(%s).xml",
-	//	stuUserStatusInfo.emUserStatus, stuUserStatusInfo.tszUserName, stuUserStatusInfo.tszCardID);
-	//WriteXML(tszXMLPath, pbyTem, m_pstuDataPacket->pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
-
-
-	m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_OK;
-	if (g_bIsRujia)	m_pstuDataPacket->pstuDataHead->HtonlEx();
+	//到这里数据已经收取完成  需要作进一步处理
+	
+	//if (g_bIsRujia)	m_pstuDataPacket->pstuDataHead->HtonlEx();
+	m_pstuDataPacket->pstuDataHead->dwPacketLen = sizeof(DATAHEAD);
+	TRACE(_T("回复数据包；流水号:%d;返回值:%d\r\n"), m_pstuDataPacket->pstuDataHead->dwSerialNo, m_pstuDataPacket->pstuDataHead->dwReturn);
 	Send(m_pstuDataPacket->szbyData, sizeof(DATAHEAD));
 
 	return iRet;
@@ -236,9 +234,23 @@ int CClientBusinessHelper::HandlePacket()
 bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusInfo)
 {
 	if(!pstuOutUserStatusInfo) return false;
+
+	int iXmlUtf8Len = m_pstuDataPacket->pstuDataHead->dwPacketLen - sizeof(DATAHEAD);
 	PBYTE pbyTem = m_pstuDataPacket->szbyData+sizeof(DATAHEAD);
+
+	//申请XML缓冲区
+	int iXmlLen = (int)ceil((double)(iXmlUtf8Len*2+16)/(double)sizeof(DATAPACKET));
+	char* pXmlTem = (char*)m_pobjRecvPacketPool->New(iXmlLen);
+	if (!pXmlTem) return false;
+	iXmlLen = iXmlLen*sizeof(DATAPACKET);
+	memset(pXmlTem, 0, iXmlLen);
+
+	//转换格式为UTF-8
+	iXmlLen = RG::Convert("UTF-8", "GBK", pXmlTem, iXmlLen, (char*)pbyTem, iXmlUtf8Len);
+
+	//XML解析
 	pugi::xml_document doc;
-	doc.load((char*)pbyTem);
+	doc.load((char*)pXmlTem);
 	pugi::xml_node xml_Node_Data = doc.child("data");
 
 	std::string strCode = xml_Node_Data.child("code").first_child().value();
@@ -250,7 +262,6 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	std::string strIP = xml_Node_Data.child("ip").first_child().value();
 	std::string strMAC = xml_Node_Data.child("mac").first_child().value();
 	std::string strTime = xml_Node_Data.child("time").first_child().value();
-	//int iRoom = atoi(xml_Node_Data.child("room").first_child().value());
 
 
 	pstuOutUserStatusInfo->emUserStatus = (USER_STATUS)atoi(xml_Node_Data.child("code").first_child().value());
@@ -285,12 +296,25 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	strcpy_s(pstuOutUserStatusInfo->tszMAC, 32*sizeof(TCHAR), strMAC.c_str());
 	strcpy_s(pstuOutUserStatusInfo->tszTime, 32*sizeof(TCHAR), strTime.c_str());
 
+
+	//保存文件
+	TCHAR tszTem[MAX_PATH] = {0};
 	TCHAR tszXMLPath[MAX_PATH] = {0};
-	_stprintf_s(tszXMLPath, MAX_PATH, "F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\%d_%s(%s).xml",
-		pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
-	doc.save_file(tszXMLPath);
-	_stprintf_s(tszXMLPath, MAX_PATH, "F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\%d_(%s).xml",
-		pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszCardID);
-	WriteXML(tszXMLPath, pbyTem, m_pstuDataPacket->pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
-	return true;
+	if (GetExePath(tszTem))
+	{
+		
+		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_%s(%s).xml", tszTem,
+			pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
+		doc.save_file(tszXMLPath);
+
+		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
+			pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszCardID);
+		WriteXML(tszXMLPath, (PBYTE)pXmlTem, iXmlLen);
+	}	
+
+	//释放空间
+	m_pobjRecvPacketPool->Delete((PDATAPACKET)pXmlTem);
+	pXmlTem = NULL;
+
+	return pstuOutUserStatusInfo->Check();
 }

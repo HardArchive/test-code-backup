@@ -158,5 +158,7 @@ void AddZeroIP(string strInIP, string& strOutIP);
 void MinusZeroIP(string strInIP, string& strOutIP);
 //IP值转成IP并加0
 string ValueToIPZero(const int& nValue);
+//获取当前程序所在目录 成功返回true，失败返回false
+bool GetExePath(TCHAR* ptInPath);
 //创建多级目录，成功返回true， 失败返回false
 bool CreateMultipleDirectory(const TCHAR* ptInPath, bool bIsFileName);

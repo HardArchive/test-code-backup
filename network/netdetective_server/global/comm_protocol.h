@@ -36,7 +36,7 @@ typedef struct DATA_HEADTAG
 	//检测数据头是否正常 包头正常返回true，否false
 	inline bool Check()
 	{
-		if (g_bIsRujia)	NtohlEx();
+		//if (g_bIsRujia)	NtohlEx();
 		if (dwPacketLen >50*1024*1024) return false;
 		return memcmp(this->szHeadFlag, PACKAGE_MARK, PACKAGE_MARK_LEN)?false: true;
 	}
@@ -46,21 +46,21 @@ typedef struct DATA_HEADTAG
 		memset(this, 0, sizeof(*this));
 	}
 
-	//把unsigned long类型从网络字节顺序转换到主机字节顺序
-	inline void NtohlEx()
-	{
-		dwSerialNo = ntohl(dwSerialNo); 
-		dwPacketLen = ntohl(dwPacketLen);
-		dwReturn = ntohl(dwReturn);
-	}
+	////把unsigned long类型从网络字节顺序转换到主机字节顺序
+	//inline void NtohlEx()
+	//{
+	//	dwSerialNo = ntohl(dwSerialNo); 
+	//	dwPacketLen = ntohl(dwPacketLen);
+	//	dwReturn = ntohl(dwReturn);
+	//}
 
-	//把unsigned long类型从主机字节顺序转换到网络字节顺序
-	inline void HtonlEx()
-	{
-		dwSerialNo = htonl(dwSerialNo); 
-		dwPacketLen = htonl(dwPacketLen);
-		dwReturn = htonl(dwReturn);
-	}
+	////把unsigned long类型从主机字节顺序转换到网络字节顺序
+	//inline void HtonlEx()
+	//{
+	//	dwSerialNo = htonl(dwSerialNo); 
+	//	dwPacketLen = htonl(dwPacketLen);
+	//	dwReturn = htonl(dwReturn);
+	//}
 }DATAHEAD, *PDATAHEAD;
 //const int MESSAGE_HEADER_LEN = sizeof(DATAHEAD);
 
@@ -214,6 +214,24 @@ typedef struct USER_STATUS_INFO
 	TCHAR tszMAC[32];                //MAC
 	//DATE dtTime;                     //时间
 	TCHAR tszTime[32];                 //时间
+
+	inline bool Check()
+	{
+		if (emUserStatus>ZQT || emUserStatus<GID) return false;
+		if (!(_tcslen(tszCardType) && _tcslen(tszCardID) && _tcslen(tszUserName) && _tcslen(tszIP) && _tcslen(tszMAC) && _tcslen(tszTime)))
+		{
+			return false;
+		}
+		if (!(!_tcscmp(tszCardType, _T("GID")) || !_tcscmp(tszCardType, _T("ID")) || !_tcscmp(tszCardType, _T("JID"))  || 
+			!_tcscmp(tszCardType, _T("JLZ")) || !_tcscmp(tszCardType, _T("JZ")) || !_tcscmp(tszCardType, _T("TXZ")) || 
+			!_tcscmp(tszCardType, _T("VSA"))  || !_tcscmp(tszCardType, _T("XZ")) || !_tcscmp(tszCardType, _T("ZQT"))))
+		{
+			return false;
+		}
+		if (iRoomID<0) return false;
+
+		return true;
+	}
 }USERSTATUSINFO, * PUSERSTATUSINFO;
 
 

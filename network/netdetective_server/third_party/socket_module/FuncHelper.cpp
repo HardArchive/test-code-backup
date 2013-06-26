@@ -1045,6 +1045,20 @@ void AddZeroIP(string strInIP, string& strOutIP)
 	strOutIP.append(strFront, 0, strFront.length());
 }
 
+//获取当前程序所在目录 成功返回true，失败返回false
+bool GetExePath(TCHAR* ptInPath)
+{
+	TCHAR* ptTem = NULL;
+	TCHAR tszTemp[MAX_PATH] = {0};
+	//获取当前目录  //这里是获取当前进程文件的完整路径 
+	if (!GetModuleFileName(NULL, tszTemp, MAX_PATH) && ptInPath)
+		return false; 
+
+	ptTem = _tcsrchr(tszTemp, _T('\\'));
+	memcpy(ptInPath, tszTemp, (_tcslen(tszTemp)-_tcslen(ptTem))*sizeof(TCHAR));
+	return true;
+}
+
 //字符串前面去零
 void StringFrontMinusZero(string& strIN)
 {

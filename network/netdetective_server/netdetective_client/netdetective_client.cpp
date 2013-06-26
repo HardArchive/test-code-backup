@@ -52,12 +52,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	pstuHead->dwPacketLen += sizeof(DATAHEAD);
 	int iSendLen = pstuHead->dwPacketLen;
-	pstuHead->HtonlEx();
+	//pstuHead->HtonlEx();
 	
 	clsClientHelper.Start("127.0.0.1", 6666);
 	Sleep(1000);
 
 	clsClientHelper.Send(szbySendBuf, iSendLen);
+
 
 
 	Sleep(1000*30);
