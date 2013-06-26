@@ -107,5 +107,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	char szOut2[260] = {0};
 	convert("UTF-8", "GBK", szOut2, 260, input2, len2);
 	printf("%s\n", szOut2);
+	scanf("%s", szOut);
 	return 0;
 }
