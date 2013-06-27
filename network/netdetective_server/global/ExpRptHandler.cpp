@@ -50,13 +50,13 @@ LONG WINAPI CExpRptHandler::ExpFilter(PEXCEPTION_POINTERS lpExceptionInfo)
 	mdei.ExceptionPointers	= lpExceptionInfo;
 	mdei.ClientPointers		= FALSE;
 
-	//mdt	= MiniDumpWithFullMemory; 
+	mdt	= MiniDumpWithFullMemory; 
 	//mdt       = MiniDumpNormal; 
-	mdt       = (MINIDUMP_TYPE)(MiniDumpWithFullMemory | 
-		MiniDumpWithFullMemoryInfo | 
-		MiniDumpWithHandleData | 
-		MiniDumpWithThreadInfo | 
-		MiniDumpWithUnloadedModules );
+	//mdt       = (MINIDUMP_TYPE)(MiniDumpWithFullMemory | 
+	//	MiniDumpWithFullMemoryInfo | 
+	//	MiniDumpWithHandleData | 
+	//	MiniDumpWithThreadInfo | 
+	//	MiniDumpWithUnloadedModules );
 
 	retv = MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(),
 		hFile, mdt, ( lpExceptionInfo != 0 ) ? &mdei : 0, 0, 0);
