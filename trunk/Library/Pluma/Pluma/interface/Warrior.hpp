@@ -4,7 +4,7 @@
 #include <Pluma/Pluma.hpp>
 
 /////////////////////////////////////////////////////////
-/// Warrior Interface
+/// Warrior Interface接口类 纯虚类 由插件继承实现
 /// That's the kind of objects that plugins will provide.
 /////////////////////////////////////////////////////////
 class Warrior{

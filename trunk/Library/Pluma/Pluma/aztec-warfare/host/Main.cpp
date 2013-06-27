@@ -4,14 +4,15 @@
 #include <iostream>
 
 
-int main(){
+int main()
+{
     pluma::Pluma pluma;
     pluma.acceptProviderType<WarriorProvider>();
 
     // Add a default warrior provider
     pluma.addProvider(new SimpleWarriorProvider() );
 
-    // Load libraries
+    // Load libraries ╪сть©Б
     pluma.loadFromFolder("plugins");
 
     // Get warrior providers into a vector
@@ -20,7 +21,8 @@ int main(){
 
     // Create a Warrior from each provider
     std::vector<WarriorProvider*>::iterator it;
-    for (it = providers.begin() ; it != providers.end() ; ++it){
+    for (it = providers.begin() ; it != providers.end() ; ++it)
+	{
         // Create a warrior
         Warrior* warrior = (*it)->create();
         // Display it's description

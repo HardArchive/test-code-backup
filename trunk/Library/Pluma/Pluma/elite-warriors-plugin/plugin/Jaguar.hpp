@@ -9,7 +9,7 @@
 class Jaguar: public Warrior{
 public:
     std::string getDescription(){
-        return "Jaguar Warrior: soldier of Tezcatlipoca";
+        return "Jaguar插件描述：这是一个测试插件!!!!!\r\n";
     }
 };
 
