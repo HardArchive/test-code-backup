@@ -5,6 +5,7 @@
 const int SIZE = 100; 
 const int MAX = 1000; 
 using namespace std; 
+
 //交换数据 
 void Swap(int &a, int &b) 
 { 
@@ -13,25 +14,29 @@ void Swap(int &a, int &b)
 	b = temp; 
 } 
 
-// 冒泡排序 
+// 冒泡排序 从最后一个数字 逐一从后往前从小到大交换
 void BubbleSort(int *arr, int size) 
 { 
-	int i, j; 
-	for(i=0;i<size-1;i++) 
-		for(j=size-1;j>i;j--) 
+	int i = 0, j = 0; 
+	for(i=0; i<size-1; i++) 
+	{
+		for(j=size-1; j>i; j--) 
+		{
 			if(arr[j] < arr[j-1]) 
 				Swap(arr[j], arr[j-1]); 
+		}
+	}
 } 
 
-//选择排序 
+//选择排序 类似于冒泡排序 但是只是通过寻找下标找最小值 效率比冒泡排序高
 void SelectionSort(int *arr, int size) 
 { 
-	int i, j, min; 
+	int i = 0, j = 0, min = 0; 
 	//找出从a[i]到a[size-1]的最小元素的位置 
-	for(i=0;i<size-1;i++) 
+	for(i=0; i<size-1; i++) 
 	{ 
 		min = i; 
-		for(j=i+1;j<size;j++) 
+		for(j=i+1; j<size; j++) 
 			if(arr[min] > arr[j]) 
 				min = j; 
 		//将a[i]与a[min]的数据交换 
@@ -42,8 +47,9 @@ void SelectionSort(int *arr, int size)
 //插入排序 
 void InsertSort(int *arr, int size) 
 { 
-	int fOut, loc, temp; 
-	for(fOut=1;fOut<size;fOut++) 
+	int fOut = 0, loc = 0, temp = 0; 
+	for(fOut=1; fOut<size; fOut++) 
+	{
 		if(arr[fOut] < arr[fOut-1]) 
 		{ 
 			temp = arr[fOut]; 
@@ -55,6 +61,8 @@ void InsertSort(int *arr, int size)
 			}while(loc>0 && arr[loc-1]>temp); 
 			arr[loc] = temp; 
 		} 
+	}
+
 } 
 
 //快速排序 
@@ -74,6 +82,7 @@ int Partition(int *arr, int first, int last)
 		swap(arr[first], arr[small]); 
 		return small; 
 } 
+
 void RecQuick(int *arr, int first, int last) 
 { 
 	int pivotLoc; 
@@ -84,10 +93,13 @@ void RecQuick(int *arr, int first, int last)
 		RecQuick(arr, pivotLoc+1, last); 
 	} 
 } 
+
+//快速排序
 void QuickSort(int *arr, int size) 
 { 
 	RecQuick(arr, 0, size-1); 
 } 
+
 //计数排序 
 void CountSort(int *arr, int size) 
 { 
@@ -106,6 +118,7 @@ void CountSort(int *arr, int size)
 		} 
 	} 
 } 
+
 //归并排序 
 void Merge(int *arr, int start, int mid, int end) 
 { 
@@ -138,6 +151,7 @@ void Merge(int *arr, int start, int mid, int end)
 		} 
 	} 
 } 
+
 void RecMerge(int *arr, int start, int end) 
 { 
 	int i; 
@@ -149,10 +163,13 @@ void RecMerge(int *arr, int start, int end)
 		Merge(arr, start, i, end); 
 	} 
 } 
+
+//归并排序
 void MergeSort(int *arr, int size) 
 { 
 	RecMerge(arr, 0, size-1); 
 } 
+
 //堆排序 
 void Heapify(int *arr, int low, int high) 
 { 
@@ -174,12 +191,15 @@ void Heapify(int *arr, int low, int high)
 	} 
 	arr[low] = temp; 
 } 
+
 void BuildHeap(int *arr, int size) 
 { 
 	int i; 
 	for(i=size/2-1;i>=0;i--) 
 		Heapify(arr, i, size-1); 
 } 
+
+//堆排序
 void HeapSort(int *arr, int size) 
 { 
 	int i;                  //lastOfOrder 
@@ -210,6 +230,7 @@ void ShellSort(int *arr, int size)
 		} 
 	} 
 } 
+
 //输出数组里的数据 
 void Print(int *arr, int size) 
 { 
@@ -227,22 +248,21 @@ void Print(int *arr, int size)
 //然后将其从小到大排序，并输出 
 int main() 
 { 
-	int arr[SIZE], i; 
+	int arr[SIZE] = {0}, i = 0; 
 	cout << "The array is: " << endl; 
 	srand((unsigned)time(0)); 
 	for(i=0;i<SIZE;i++) 
 		arr[i] = rand() % MAX; 
 	Print(arr, SIZE); 
 	//请选择其中一个排序算法，以运行该程序 
-	//BubbleSort(arr, SIZE); 
-	//SelectionSort(arr, SIZE); 
-	//CountSort(arr, SIZE); 
-	//InsertSort(arr, SIZE); 
-	//SelectionSort(arr, SIZE); 
-	//QuickSort(arr, SIZE); 
-	//MergeSort(arr, SIZE); 
-	//HeapSort(arr, SIZE); 
-	ShellSort(arr, SIZE); 
+	BubbleSort(arr, SIZE);      //冒泡排序 
+	SelectionSort(arr, SIZE);   //选择排序
+	CountSort(arr, SIZE);       //计数排序 
+	InsertSort(arr, SIZE);      //插入排序 
+	QuickSort(arr, SIZE);       //快速排序
+	MergeSort(arr, SIZE);       //归并排序
+	HeapSort(arr, SIZE);        //堆排序
+	ShellSort(arr, SIZE);       //希尔排序 
 	cout << "After sorting, the array is:" << endl; 
 	Print(arr, SIZE); 
 	return 0; 
