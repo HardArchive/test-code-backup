@@ -9,7 +9,7 @@
 class SimpleWarrior: public Warrior{
 public:
     std::string getDescription(){
-        return "Commoner: leaded by calpoleque";
+		return "Author:Create by Rg";
     }
 };
 

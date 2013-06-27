@@ -9,7 +9,7 @@
 class Eagle: public Warrior{
 public:
     std::string getDescription(){
-        return "Eagle Warrior: soldier of the sun";
+        return "Eagle插件描述：这是一个测试插件!!!!!\r\n";
     }
 };
 
