@@ -10,6 +10,7 @@
 class Warrior{
 public:
     virtual std::string getDescription() = 0;
+	virtual std::string GetVersion() = 0;
     // (...)
 };
 

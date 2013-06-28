@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pluma", "Pluma\Pluma.vcproj", "{E526848A-A7B7-4AA0-9447-AD6E31EAB908}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aztec-warfare", "aztec-warfare\aztec-warfare.vcproj", "{BE45270F-0A33-4A18-B274-1E106E0DE6C1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "elite-warriors-plugin", "elite-warriors-plugin\elite-warriors-plugin.vcproj", "{B58CF07F-CEB3-42E3-8C1F-67EA33249207}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +17,14 @@ Global
 		{E526848A-A7B7-4AA0-9447-AD6E31EAB908}.Debug|Win32.Build.0 = Debug|Win32
 		{E526848A-A7B7-4AA0-9447-AD6E31EAB908}.Release|Win32.ActiveCfg = Release|Win32
 		{E526848A-A7B7-4AA0-9447-AD6E31EAB908}.Release|Win32.Build.0 = Release|Win32
+		{BE45270F-0A33-4A18-B274-1E106E0DE6C1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE45270F-0A33-4A18-B274-1E106E0DE6C1}.Debug|Win32.Build.0 = Debug|Win32
+		{BE45270F-0A33-4A18-B274-1E106E0DE6C1}.Release|Win32.ActiveCfg = Release|Win32
+		{BE45270F-0A33-4A18-B274-1E106E0DE6C1}.Release|Win32.Build.0 = Release|Win32
+		{B58CF07F-CEB3-42E3-8C1F-67EA33249207}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B58CF07F-CEB3-42E3-8C1F-67EA33249207}.Debug|Win32.Build.0 = Debug|Win32
+		{B58CF07F-CEB3-42E3-8C1F-67EA33249207}.Release|Win32.ActiveCfg = Release|Win32
+		{B58CF07F-CEB3-42E3-8C1F-67EA33249207}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

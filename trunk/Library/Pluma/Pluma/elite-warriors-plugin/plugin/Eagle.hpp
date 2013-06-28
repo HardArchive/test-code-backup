@@ -11,6 +11,11 @@ public:
     std::string getDescription(){
         return "Eagle插件描述：这是一个测试插件!!!!!\r\n";
     }
+
+	std::string GetVersion()
+	{
+		return "Eagle:0.0.0.1";
+	}
 };
 
 /////////////////////////////////////////////////////////
