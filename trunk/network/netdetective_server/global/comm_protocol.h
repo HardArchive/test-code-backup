@@ -217,18 +217,29 @@ typedef struct USER_STATUS_INFO
 
 	inline bool Check()
 	{
-		if (emUserStatus>ZQT || emUserStatus<GID) return false;
+		if (emUserStatus>ZQT || emUserStatus<GID)
+		{
+			TRACE(_T("用户状态信息检查；用户状态出错;emUserStatus:%d\r\n"), emUserStatus);
+			return false;
+		}
 		if (!(_tcslen(tszCardType) && _tcslen(tszCardID) && _tcslen(tszUserName) && _tcslen(tszIP) && _tcslen(tszMAC) && _tcslen(tszTime)))
 		{
+			TRACE(_T("用户状态信息检查；数据长度出错;tszCardType:%d; tszCardID:%d; tszUserName:%d; tszIP:%d; tszMAC:%d; tszTime:%d;\r\n"),
+				_tcslen(tszCardType),  _tcslen(tszCardID), _tcslen(tszUserName), _tcslen(tszIP), _tcslen(tszMAC), _tcslen(tszTime));
 			return false;
 		}
 		if (!(!_tcscmp(tszCardType, _T("GID")) || !_tcscmp(tszCardType, _T("ID")) || !_tcscmp(tszCardType, _T("JID"))  || 
 			!_tcscmp(tszCardType, _T("JLZ")) || !_tcscmp(tszCardType, _T("JZ")) || !_tcscmp(tszCardType, _T("TXZ")) || 
 			!_tcscmp(tszCardType, _T("VSA"))  || !_tcscmp(tszCardType, _T("XZ")) || !_tcscmp(tszCardType, _T("ZQT"))))
 		{
+			TRACE(_T("用户状态信息检查；证件类型检查出错;tszCardType:%s\r\n"), tszCardType);
 			return false;
 		}
-		if (iRoomID<0) return false;
+		if (iRoomID<0) 
+		{
+			TRACE(_T("用户状态信息检查；房间号检查出错;iRoomID:%s\r\n"), iRoomID);
+			return false;
+		}
 
 		return true;
 	}
