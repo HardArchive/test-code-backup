@@ -11,6 +11,11 @@ public:
     std::string getDescription(){
 		return "Author:Create by Rg";
     }
+
+	std::string GetVersion()
+	{
+		return "SimpleWarrior:0.0.0.1";
+	}
 };
 
 /////////////////////////////////////////////////////////

@@ -11,6 +11,11 @@ public:
     std::string getDescription(){
         return "Jaguar插件描述：这是一个测试插件!!!!!\r\n";
     }
+
+	std::string GetVersion()
+	{
+		return "Jaguar:0.0.0.1";
+	}
 };
 
 
