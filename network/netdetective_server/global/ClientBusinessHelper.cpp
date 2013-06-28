@@ -233,7 +233,7 @@ int CClientBusinessHelper::HandlePacket()
 
 bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusInfo)
 {
-	if(!pstuOutUserStatusInfo) return false;
+	if(!pstuOutUserStatusInfo)	return false;
 
 	int iXmlUtf8Len = m_pstuDataPacket->pstuDataHead->dwPacketLen - sizeof(DATAHEAD);
 	PBYTE pbyTem = m_pstuDataPacket->szbyData+sizeof(DATAHEAD);
@@ -241,7 +241,11 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	//…Í«ÎXMLª∫≥Â«¯
 	int iXmlLen = (int)ceil((double)(iXmlUtf8Len*2+16)/(double)sizeof(DATAPACKET));
 	char* pXmlTem = (char*)m_pobjRecvPacketPool->New(iXmlLen);
-	if (!pXmlTem) return false;
+	if (!pXmlTem)
+	{
+		TRACE(_T("CClientBusinessHelper::GetUserStatusInfo;…Í«Îª∫≥Â«¯≥ˆ¥Ì\r\n"));
+		return false;
+	}
 	iXmlLen = iXmlLen*sizeof(DATAPACKET);
 	memset(pXmlTem, 0, iXmlLen);
 
@@ -303,13 +307,13 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	if (GetExePath(tszTem))
 	{
 		
-		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_%s(%s).xml", tszTem,
+		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\xml\\%d_%s(%s).xml", tszTem,
 			pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
 		doc.save_file(tszXMLPath);
 
-		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
-			pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszCardID);
-		WriteXML(tszXMLPath, (PBYTE)pXmlTem, iXmlLen);
+		//_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
+		//	pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszCardID);
+		//WriteXML(tszXMLPath, (PBYTE)pXmlTem, iXmlLen);
 	}	
 
 	// Õ∑≈ø’º‰
