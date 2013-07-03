@@ -7,13 +7,13 @@
 #include "../global/file.h"
 #include "../global/safestl.h"
 // 这是导出变量的一个示例
-TPCDATA_API int ntpcData=0;
-
-// 这是导出函数的一个示例。
-TPCDATA_API int fntpcData(void)
-{
-	return 42;
-}
+//TPCDATA_API int ntpcData=0;
+//
+//// 这是导出函数的一个示例。
+//TPCDATA_API int fntpcData(void)
+//{
+//	return 42;
+//}
 
 //// 这是已导出类的构造函数。
 //// 有关类定义的信息，请参阅 tpcData.h
@@ -63,7 +63,7 @@ TPCDATA_API int GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusInfo)
 	{
 		return iRet;
 	}
-
+//_asm int 3;
 	g_queueUserStatusInfo.Lock();
 	if (!g_queueUserStatusInfo.empty())
 	{
@@ -71,14 +71,15 @@ TPCDATA_API int GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusInfo)
 		{
 			memcpy(pstuOutUserStatusInfo, &(g_queueUserStatusInfo.front()), sizeof(USERSTATUSINFO));
 		}
-		catch (PUSERSTATUSINFO )
+		catch (PUSERSTATUSINFO)
 		{
-			TRACE("输入参数pstuOutUserStatusInfo异常；可能分配内存空间太小!!!\r\n");
+			TRACE(_T("输入参数pstuOutUserStatusInfo异常；可能分配内存空间太小!!!\r\n"));
 			g_queueUserStatusInfo.Unlock();
 			iRet = -2;
 			return iRet;
 		}
 		g_queueUserStatusInfo.pop();
+		iRet = 1;
 	}
 	else
 	{
@@ -87,5 +88,5 @@ TPCDATA_API int GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusInfo)
 	
 	g_queueUserStatusInfo.Unlock();
 
-	return 1;
+	return iRet;
 }

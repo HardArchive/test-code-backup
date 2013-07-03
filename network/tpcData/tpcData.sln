@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_tpcData", "test_tpcData\test_tpcData.vcproj", "{D2086FD0-38A1-4484-845C-6BD6B8BFAC1E}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tpcData", "tpcData\tpcData.vcproj", "{35DC514E-C560-4104-92AF-4BE27151D0DF}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2086FD0-38A1-4484-845C-6BD6B8BFAC1E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D2086FD0-38A1-4484-845C-6BD6B8BFAC1E}.Debug|Win32.Build.0 = Debug|Win32
+		{D2086FD0-38A1-4484-845C-6BD6B8BFAC1E}.Release|Win32.ActiveCfg = Release|Win32
+		{D2086FD0-38A1-4484-845C-6BD6B8BFAC1E}.Release|Win32.Build.0 = Release|Win32
 		{35DC514E-C560-4104-92AF-4BE27151D0DF}.Debug|Win32.ActiveCfg = Debug|Win32
 		{35DC514E-C560-4104-92AF-4BE27151D0DF}.Debug|Win32.Build.0 = Debug|Win32
 		{35DC514E-C560-4104-92AF-4BE27151D0DF}.Release|Win32.ActiveCfg = Release|Win32

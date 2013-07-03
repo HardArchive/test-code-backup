@@ -1,0 +1,10 @@
+LIBRARY	"tpcData"
+; tpcData.def : 声明 DLL 的模块参数。
+
+EXPORTS
+	Init @ 1
+	UnInit @ 2
+	GetUserStatusInfo @ 3
+
+
+; 此处可以是显式导出

@@ -41,12 +41,12 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;;&quot;$(SolutionDir)third_party/global&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)tpcData/third_party&quot;;&quot;$(SolutionDir)tpcData/third_party/socket_module&quot;;&quot;$(SolutionDir)tpcData/third_party/common&quot;;&quot;$(SolutionDir)tpcData/third_party/global&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;TPCDATA_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="1"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -63,7 +63,8 @@
 				Name="VCLinkerTool"
 				OutputFile="$(SolutionDir)bin\$(ProjectName).dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(SolutionDir)third_party\iconv"
+				AdditionalLibraryDirectories="$(SolutionDir)tpcData\third_party\iconv"
+				ModuleDefinitionFile="tpcData.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -95,7 +96,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)"
 			ConfigurationType="2"
-			CharacterSet="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -117,9 +118,9 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;;&quot;$(SolutionDir)third_party/global&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)tpcData/third_party&quot;;&quot;$(SolutionDir)tpcData/third_party/socket_module&quot;;&quot;$(SolutionDir)tpcData/third_party/common&quot;;&quot;$(SolutionDir)tpcData/third_party/global&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;TPCDATA_EXPORTS"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -138,6 +139,8 @@
 				Name="VCLinkerTool"
 				OutputFile="$(SolutionDir)bin\$(ProjectName).dll"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(SolutionDir)tpcData\third_party\iconv"
+				ModuleDefinitionFile="tpcData.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -172,42 +175,18 @@
 	<Files>
 		<Filter
 			Name="源文件"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\dllmain.cpp"
+				RelativePath=".\tpcData\dllmain.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						CompileAsManaged="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						CompileAsManaged="0"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\stdafx.cpp"
+				RelativePath=".\tpcData\stdafx.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tpcData\tpcData.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -216,28 +195,6 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\tpcData.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="头文件"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
-			>
-			<File
-				RelativePath=".\stdafx.h"
-				>
-			</File>
-			<File
-				RelativePath=".\targetver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tpcData.h"
-				>
 			</File>
 		</Filter>
 		<Filter
@@ -247,50 +204,66 @@
 			>
 		</Filter>
 		<Filter
+			Name="头文件"
+			>
+			<File
+				RelativePath=".\tpcData\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tpcData\targetver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tpcData\tpcData.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="global"
 			>
 			<File
-				RelativePath="..\global\ClientBusinessHelper.cpp"
+				RelativePath=".\global\ClientBusinessHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\global\ClientBusinessHelper.h"
+				RelativePath=".\global\ClientBusinessHelper.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\comm_protocol.h"
+				RelativePath=".\global\comm_protocol.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\ExpRptHandler.cpp"
+				RelativePath=".\global\ExpRptHandler.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\global\ExpRptHandler.h"
+				RelativePath=".\global\ExpRptHandler.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\file.cpp"
+				RelativePath=".\global\file.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\global\file.h"
+				RelativePath=".\global\file.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\IOCPServerHelper.cpp"
+				RelativePath=".\global\IOCPServerHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\global\IOCPServerHelper.h"
+				RelativePath=".\global\IOCPServerHelper.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\safestl.h"
+				RelativePath=".\global\safestl.h"
 				>
 			</File>
 			<File
-				RelativePath="..\global\TraceUtil.h"
+				RelativePath=".\global\TraceUtil.h"
 				>
 			</File>
 		</Filter>
@@ -298,62 +271,62 @@
 			Name="third_party"
 			>
 			<File
-				RelativePath="..\third_party\socket_module\bufferptr.h"
+				RelativePath=".\third_party\socket_module\bufferptr.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\CriticalSection.h"
+				RelativePath=".\third_party\socket_module\CriticalSection.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\Event.h"
+				RelativePath=".\third_party\socket_module\Event.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\FuncHelper.cpp"
+				RelativePath=".\third_party\socket_module\FuncHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\FuncHelper.h"
+				RelativePath=".\third_party\socket_module\FuncHelper.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\GeneralHelper.h"
+				RelativePath=".\third_party\socket_module\GeneralHelper.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\Pool.h"
+				RelativePath=".\third_party\socket_module\Pool.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\PrivateHeap.h"
+				RelativePath=".\third_party\socket_module\PrivateHeap.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\Semaphore.h"
+				RelativePath=".\third_party\socket_module\Semaphore.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\Singleton.h"
+				RelativePath=".\third_party\socket_module\Singleton.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\STLHelper.h"
+				RelativePath=".\third_party\socket_module\STLHelper.h"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\WaitFor.cpp"
+				RelativePath=".\third_party\socket_module\WaitFor.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\third_party\socket_module\WaitFor.h"
+				RelativePath=".\third_party\socket_module\WaitFor.h"
 				>
 			</File>
 			<Filter
 				Name="iconv"
 				>
 				<File
-					RelativePath="..\third_party\iconv\IconvHelp.h"
+					RelativePath=".\third_party\iconv\IconvHelp.h"
 					>
 				</File>
 			</Filter>
@@ -361,11 +334,11 @@
 				Name="pugixml"
 				>
 				<File
-					RelativePath="..\third_party\pugixml\pugiconfig.hpp"
+					RelativePath=".\third_party\pugixml\pugiconfig.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\third_party\pugixml\pugixml.cpp"
+					RelativePath=".\third_party\pugixml\pugixml.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -375,9 +348,17 @@
 							UsePrecompiledHeader="0"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\third_party\pugixml\pugixml.hpp"
+					RelativePath=".\third_party\pugixml\pugixml.hpp"
 					>
 				</File>
 			</Filter>
@@ -385,25 +366,29 @@
 				Name="socket_module"
 				>
 				<File
-					RelativePath="..\third_party\socket_module\socket\IocpServer.cpp"
+					RelativePath=".\third_party\socket_module\socket\IocpServer.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\third_party\socket_module\socket\IocpServer.h"
+					RelativePath=".\third_party\socket_module\socket\IocpServer.h"
 					>
 				</File>
 				<File
-					RelativePath="..\third_party\socket_module\socket\SocketHelper.cpp"
+					RelativePath=".\third_party\socket_module\socket\SocketHelper.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\third_party\socket_module\socket\SocketHelper.h"
+					RelativePath=".\third_party\socket_module\socket\SocketHelper.h"
 					>
 				</File>
 			</Filter>
 		</Filter>
 		<File
-			RelativePath=".\ReadMe.txt"
+			RelativePath=".\tpcData\ReadMe.txt"
+			>
+		</File>
+		<File
+			RelativePath=".\tpcData.def"
 			>
 		</File>
 	</Files>
