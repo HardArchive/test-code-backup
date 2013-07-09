@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
-  <code>3</code>
-  <description>上线</description>
+  <code>1</code>
+  <description>入住</description>
   <cardtype>GID</cardtype>
   <cardid>430121198706045731</cardid>
   <name>张三</name>
   <room>1003</room>
   <ip>192.168.0.1</ip>
   <mac>AC:D0:15:68:E2:03</mac>
-  <time>2013-07-08 16:46:32</time>
+  <time>2013-07-08 15:46:32</time>
 </data>

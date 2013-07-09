@@ -54,7 +54,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int iSendLen = pstuHead->dwPacketLen;
 	//pstuHead->HtonlEx();
 	
-	clsClientHelper.Start("127.0.0.1", 6666);
+	clsClientHelper.Start("192.168.30.14", 6666);
 	Sleep(1000);
 
 	clsClientHelper.Send(szbySendBuf, iSendLen);
