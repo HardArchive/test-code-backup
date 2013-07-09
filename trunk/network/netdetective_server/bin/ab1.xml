@@ -2,11 +2,11 @@
 <data>
   <code>1</code>
   <description>入住</description>
-  <cardtype>GID</cardtype>
+  <cardtype>ID</cardtype>
   <cardid>430121198706045731</cardid>
   <name>张三</name>
-  <room>1003</room>
-  <ip>192.168.0.1</ip>
-  <mac>AC:D0:15:68:E2:03</mac>
-  <time>2013-07-08 15:46:32</time>
+  <room>101</room>
+  <ip>192.168.30.14</ip>
+  <mac>00:1F:D0:C1:EF:75</mac>
+  <time>2013-07-06 15:46:32</time>
 </data>

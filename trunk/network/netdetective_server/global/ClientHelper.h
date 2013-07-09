@@ -39,4 +39,6 @@ private:
 
 private:
 	CSocketClient m_Client;
+public:
+	bool m_bRevcFlag;
 };

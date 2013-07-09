@@ -7,11 +7,11 @@
 
 #include "../global/ShareMemory.h"
 
-int GetXMLContecnt(PBYTE pOutBuf, int iMaxBufLen)
+int GetXMLContecnt(const TCHAR* ptXMLPath, PBYTE pOutBuf, int iMaxBufLen)
 {
 	int iXMLLen = 0;
 	RG::CShareMemory clsShareMemory;
-	if (!clsShareMemory.Create(_T("Global\\IPC_SHARE"), 0, "F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\ab.xml"))
+	if (!clsShareMemory.Create(_T("Global\\IPC_SHARE"), 0, ptXMLPath))
 	{
 		TRACE("打开XML文件失败！！！\r\n");
 		return iXMLLen;
@@ -38,31 +38,85 @@ void InitHead(PDATAHEAD pstuInHead)
 	memcpy(pstuInHead->szHeadFlag, PACKAGE_MARK, 4);
 }
 
+const TCHAR g_tszXMLPath[4][MAX_PATH] ={
+	_T("F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\ab1.xml"),
+	_T("F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\ab2.xml"),
+	_T("F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\ab3.xml"),
+	_T("F:\\Projects\\test-code-backup\\trunk\\network\\netdetective_server\\bin\\ab4.xml"),
+};
+
+void SendUserStatusInfo(int iSendType)
+{
+	int iSendLen = 0;
+	BYTE szbySendBuf[2048] = {0};
+	static DWORD dwSerialNo = 0;
+	CClientHelper clsClientHelper;
+	clsClientHelper.Start("116.228.54.106", 6666);
+	PDATAHEAD pstuHead = (PDATAHEAD)szbySendBuf;
+	InitHead(pstuHead);
+	pstuHead->dwSerialNo = dwSerialNo++;
+	pstuHead->dwPacketLen = GetXMLContecnt(g_tszXMLPath[iSendType-1], szbySendBuf+sizeof(DATAHEAD), 2048-sizeof(DATAHEAD));
+	pstuHead->dwPacketLen += sizeof(DATAHEAD);
+	iSendLen = pstuHead->dwPacketLen;
+	clsClientHelper.Send(szbySendBuf, iSendLen);
+	printf("发送数据成功，类型:%d!!!!!\r\n", iSendType);
+	int iTimeOut = 5;
+	while(true)
+	{
+		if (!iTimeOut)
+		{
+			printf("接收数据超时……\r\n");
+			Sleep(1000);
+			break;
+		}
+		if (clsClientHelper.m_bRevcFlag)
+		{
+			printf("接收完成!!!!!\r\n");
+			break;
+		}
+		printf("等侍接收数据……timeout:%d\r\n", iTimeOut--);
+		Sleep(1000);
+	}
+
+	clsClientHelper.Stop();
+}
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	CClientHelper clsClientHelper;
-
-	BYTE szbySendBuf[2048];
-	PDATAHEAD pstuHead = (PDATAHEAD)szbySendBuf;
-	InitHead(pstuHead);
-	pstuHead->dwSerialNo = 5;
-	pstuHead->dwPacketLen = GetXMLContecnt(szbySendBuf+sizeof(DATAHEAD), 2048-sizeof(DATAHEAD));
-
-	pstuHead->dwPacketLen += sizeof(DATAHEAD);
-	int iSendLen = pstuHead->dwPacketLen;
-	//pstuHead->HtonlEx();
-	
-	clsClientHelper.Start("192.168.30.14", 6666);
-	Sleep(1000);
-
-	clsClientHelper.Send(szbySendBuf, iSendLen);
 
 
+	bool bExitFlag = true;
+	int iInput = '0';
+	int iSendLen = 0;
 
-	Sleep(1000*30);
-	clsClientHelper.Stop();
+
+	while(bExitFlag)
+	{
+		printf("退出请输入0:\r\n");
+		printf("入住消息请输入1:\r\n");
+		printf("退房消息请输入2:\r\n");
+		printf("上线消息请输入3:\r\n");
+		printf("下线消息请输入4:\r\n");	
+		printf("请输入0-4之间的数字:");
+		scanf("%d", &iInput);
+		if (0==iInput)
+		{
+			bExitFlag = false;
+			printf("执行退出命令\r\n");
+			continue;
+		}
+		if (iInput<0 || iInput>4)
+		{
+			printf("请输入0-4之间的数字:");
+			Sleep(150);
+			system("cls");  //清屏
+			continue;
+		}
+		SendUserStatusInfo(iInput);
+		system("cls");  //清屏
+	}	
+
 	return 0;
 }
 
