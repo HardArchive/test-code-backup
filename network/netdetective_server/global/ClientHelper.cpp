@@ -5,11 +5,13 @@
 
 CClientHelper::CClientHelper(void):m_Client(this)
 {
+	m_bRevcFlag = false;
 }
 
 CClientHelper::~CClientHelper(void)
 {
 	//Reset();
+	m_bRevcFlag = false;
 }
 
 
@@ -42,18 +44,23 @@ ISocketListener::EnHandleResult CClientHelper::OnReceive(DWORD dwConnectionID, c
 	if (sizeof(PDATAHEAD)>iLength)
 	{
 		TRACE("Client Recive Len Is Error  Len:%d\r\n", iLength);
+		printf("Client Recive Len Is Error  Len:%d\r\n", iLength);
 		return ISocketListener::HR_OK;
 	}
 
 	if (TYPE_OK == pstuDataHead->dwReturn)
 	{
 		TRACE("Client Recive dwReturn Is OK!\r\n");
+		printf("Client Recive dwReturn Is OK!\r\n");
 	}
 	
 	if (TYPE_ERROR == pstuDataHead->dwReturn)
 	{
 		TRACE("Client Recive dwReturn Is Error\r\n");
+		printf("Client Recive dwReturn Is OK!\r\n");
 	}
+
+	m_bRevcFlag = true;
 	return ISocketListener::HR_OK;
 }
 

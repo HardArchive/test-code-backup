@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <code>4</code>
+  <description>下线</description>
+  <cardtype>ID</cardtype>
+  <cardid>430121198706045731</cardid>
+  <name>张三</name>
+  <room>101</room>
+  <ip>192.168.30.14</ip>
+  <mac>00:1F:D0:C1:EF:75</mac>
+  <time>2013-07-07 15:46:32</time>
+</data>
