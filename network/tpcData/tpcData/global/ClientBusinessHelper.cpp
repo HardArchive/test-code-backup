@@ -183,6 +183,29 @@ bool WriteXML(TCHAR* ptszInFileName, PBYTE pbyInBuf, int iBufLen)
 	clsFile.Close();
 	return true;
 }
+//转换证件类型
+string GetIDCode(const char* ptCardType)
+{
+	string strIDcode;
+	if (ptCardType)
+	{
+		if (!strcmp(ptCardType, "GID")) 	 strIDcode = "131";      //工作证
+		else if (!strcmp(ptCardType, "ID"))  strIDcode = "111";      //身份证
+		else if (!strcmp(ptCardType, "JID")) strIDcode = "233";      //军人证
+		else if (!strcmp(ptCardType, "JLZ")) strIDcode = "554";      //外国人居留证
+		else if (!strcmp(ptCardType, "JZ"))  strIDcode = "335";      //驾照
+		else if (!strcmp(ptCardType, "TXZ")) strIDcode = "337";      //通行证
+		else if (!strcmp(ptCardType, "VSA")) strIDcode = "414";      //护照
+		else if (!strcmp(ptCardType, "XZ"))  strIDcode = "990";      //回乡证
+		else if (!strcmp(ptCardType, "ZQT")) strIDcode = "990";      //其他证件
+	}
+
+	if (!strIDcode.length())
+	{
+		strIDcode = "990";
+	}
+	return strIDcode;
+}
 
 #include "../third_party/pugixml/pugixml.hpp"
 #include "../third_party/pugixml/pugiconfig.hpp"
@@ -199,7 +222,7 @@ int CClientBusinessHelper::HandlePacket()
 	
 	USERSTATUSINFO stuUserStatusInfo;
 	memset(&stuUserStatusInfo, 0, sizeof(USERSTATUSINFO));
-
+//_asm int 3;
 	if (!GetUserStatusInfo(&stuUserStatusInfo))
 	{
 		m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_ERROR;		
@@ -207,16 +230,17 @@ int CClientBusinessHelper::HandlePacket()
 	else
 	{
 		TRACE(_T("流水号:%d\r\n"), m_pstuDataPacket->pstuDataHead->dwSerialNo);
-		TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%d;ip:%s;mac:%s;time:%s\r\n"),
+		TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s-%f\r\n"),
 			stuUserStatusInfo.emUserStatus,
 			stuUserStatusInfo.tszDescription,
 			stuUserStatusInfo.tszCardType,
 			stuUserStatusInfo.tszCardID,
 			stuUserStatusInfo.tszUserName,
-			stuUserStatusInfo.iRoomID,
+			stuUserStatusInfo.tszRoomName,
 			stuUserStatusInfo.tszIP,
 			stuUserStatusInfo.tszMAC,
-			stuUserStatusInfo.tszTime);
+			DateTimeToString(stuUserStatusInfo.dtTime),
+			stuUserStatusInfo.dtTime);
 		iRet = 1;
 		m_pstuDataPacket->pstuDataHead->dwReturn = TYPE_OK;
 		g_queueUserStatusInfo.push(stuUserStatusInfo);
@@ -258,7 +282,7 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	doc.load((char*)pXmlTem);
 	pugi::xml_node xml_Node_Data = doc.child("data");
 
-	std::string strCode = xml_Node_Data.child("code").first_child().value();
+	std::string strTem = xml_Node_Data.child("code").first_child().value();
 	std::string strDescription = xml_Node_Data.child("description").first_child().value();
 	std::string strCardType = xml_Node_Data.child("cardtype").first_child().value();
 	std::string strcardid = xml_Node_Data.child("cardid").first_child().value();
@@ -268,39 +292,24 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	std::string strMAC = xml_Node_Data.child("mac").first_child().value();
 	std::string strTime = xml_Node_Data.child("time").first_child().value();
 
+	
+
 
 	pstuOutUserStatusInfo->emUserStatus = (USER_STATUS)atoi(xml_Node_Data.child("code").first_child().value());
 	strcpy_s(pstuOutUserStatusInfo->tszDescription, 128*sizeof(TCHAR), strDescription.c_str());
-
-	//switch(strCardType.c_str())
-	//{
-	//case "GID":   //工作证
-	//	pstuOutUserStatusInfo->emCardType = GID;break;
-	//case "ID":    //身份证
-	//	pstuOutUserStatusInfo->emCardType = ID;break;
-	//case "JID":   //军人证
-	//	pstuOutUserStatusInfo->emCardType = JID;break;
-	//case "JLZ":   //外国人居留证
-	//	pstuOutUserStatusInfo->emCardType = JLZ;break;
-	//case "JZ":    //驾照
-	//	pstuOutUserStatusInfo->emCardType = JZ;break;
-	//case "TXZ":   //通行证
-	//	pstuOutUserStatusInfo->emCardType = TXZ;break;
-	//case "VSA":   //护照
-	//	pstuOutUserStatusInfo->emCardType = VSA;break;
-	//case "XZ":    //回乡证
-	//	pstuOutUserStatusInfo->emCardType = XZ;break;
-	//case "ZQT":     //其他证件
-	//	pstuOutUserStatusInfo->emCardType = ZQT;break;
-	//}
+	//转换卡类型
+	strCardType = GetIDCode(strCardType.c_str()); 
 	strcpy_s(pstuOutUserStatusInfo->tszCardType, 8*sizeof(TCHAR), strCardType.c_str());
 	strcpy_s(pstuOutUserStatusInfo->tszCardID, 128*sizeof(TCHAR), strcardid.c_str());
 	strcpy_s(pstuOutUserStatusInfo->tszUserName, MAX_PATH*sizeof(TCHAR), strName.c_str());
-	pstuOutUserStatusInfo->iRoomID = atoi(xml_Node_Data.child("room").first_child().value());
-	strcpy_s(pstuOutUserStatusInfo->tszIP, 32*sizeof(TCHAR), strIP.c_str());
-	strcpy_s(pstuOutUserStatusInfo->tszMAC, 32*sizeof(TCHAR), strMAC.c_str());
-	strcpy_s(pstuOutUserStatusInfo->tszTime, 32*sizeof(TCHAR), strTime.c_str());
-
+	strcpy_s(pstuOutUserStatusInfo->tszRoomName, 8*sizeof(TCHAR), strRoom.c_str());
+	//IP补零
+	AddZeroIP(strIP, strTem);
+	strcpy_s(pstuOutUserStatusInfo->tszIP, 32*sizeof(TCHAR), strTem.c_str()); 
+	//MAC去分号
+	strcpy_s(pstuOutUserStatusInfo->tszMAC, 32*sizeof(TCHAR), GetMAC((char*)strMAC.c_str()).c_str());
+	//时间转为date
+	pstuOutUserStatusInfo->dtTime = string2date(strTime.c_str());
 
 	//保存文件
 	TCHAR tszTem[MAX_PATH] = {0};

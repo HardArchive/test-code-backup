@@ -147,6 +147,8 @@ BOOL GetRegistryValue(HKEY hRoot, LPCTSTR wcSubKey, LPCTSTR wcName, LPBYTE pValu
 //获取注册表项
 BOOL SetRegistryValue(HKEY hRoot, LPCTSTR wcSubKey, LPCTSTR wcName, LPBYTE pValue, DWORD dwSize, DWORD dwType);
 
+//字符串时间转为DATE
+DATE string2date(const char* ptInTime);
 /////////////////IP处理函数///////////////////
 //IP值转IP
 string ValueToIP(const int& nValue);
@@ -154,6 +156,8 @@ string ValueToIP(const int& nValue);
 int IPToValue(const string& strIP);
 //IP字符串加0  eg:192.168.30.107->192.168.030.107
 void AddZeroIP(string strInIP, string& strOutIP);
+//MAC地址去分号 eg:00:1F:D0:C1:EF:75->001FD0C1EF75
+string GetMAC(char* pInMac);   
 //IP字符串去0
 void MinusZeroIP(string strInIP, string& strOutIP);
 //IP值转成IP并加0
