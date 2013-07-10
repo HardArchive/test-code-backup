@@ -28,7 +28,7 @@ DWORD WINAPI WorkerThreadProc(LPVOID lpParam)
 		if (1 == iRet)
 		{
 			TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s\r\n"),
-				stuUserStatusInfo.emUserStatus,
+				stuUserStatusInfo.iUserStatus,
 				stuUserStatusInfo.tszDescription,
 				stuUserStatusInfo.tszCardType,
 				stuUserStatusInfo.tszCardID,
@@ -39,7 +39,7 @@ DWORD WINAPI WorkerThreadProc(LPVOID lpParam)
 				DateTimeToString(stuUserStatusInfo.dtTime));
 
 			printf("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s-%f\r\n",
-				stuUserStatusInfo.emUserStatus,
+				stuUserStatusInfo.iUserStatus,
 				stuUserStatusInfo.tszDescription,
 				stuUserStatusInfo.tszCardType,
 				stuUserStatusInfo.tszCardID,

@@ -163,29 +163,29 @@ public:
 }CLIENTBASEINFO, * PCLIENTBASEINFO;
 
 enum TransmissionProtocolType { Tcp, Udp };
-//用户状态
-enum USER_STATUS
-{
-	ErrorStatus,  //错误
-	CheckIn,      //入住
-	CheckOut,     //退房
-	OnLine,       //上线
-	OutLine       //下线
-};
-
-//证件类型
-enum CARD_TYPE
-{
-	GID,	//工作证
-	ID,		//身份证
-	JID,	//军人证
-	JLZ,	//外国人居留证
-	JZ,		//驾照
-	TXZ,	//通行证
-	VSA,	//护照
-	XZ,		//回乡证
-	ZQT		//其他证件
-};
+////用户状态
+//enum USER_STATUS
+//{
+//	ErrorStatus,  //错误
+//	CheckIn,      //入住
+//	CheckOut,     //退房
+//	OnLine,       //上线
+//	OutLine       //下线
+//};
+//
+////证件类型
+//enum CARD_TYPE
+//{
+//	GID,	//工作证
+//	ID,		//身份证
+//	JID,	//军人证
+//	JLZ,	//外国人居留证
+//	JZ,		//驾照
+//	TXZ,	//通行证
+//	VSA,	//护照
+//	XZ,		//回乡证
+//	ZQT		//其他证件
+//};
 ////证件类型
 //enum CARD_TYPE
 //{
@@ -203,7 +203,7 @@ enum CARD_TYPE
 //用户状态信息
 typedef struct USER_STATUS_INFO
 {
-	USER_STATUS emUserStatus;          //用户状态
+	int iUserStatus;                   //用户状态 1入住2退房3上线4下线
 	TCHAR tszDescription[128];         //状态描述
 	//CARD_TYPE emCardType;            //证件类型
 	TCHAR tszCardType[8];
@@ -217,9 +217,9 @@ typedef struct USER_STATUS_INFO
 
 	inline bool Check()
 	{
-		if (emUserStatus>ZQT || emUserStatus<GID)
+		if (iUserStatus>4 || iUserStatus<1)
 		{
-			TRACE(_T("用户状态信息检查；用户状态出错;emUserStatus:%d\r\n"), emUserStatus);
+			TRACE(_T("用户状态信息检查；用户状态出错;emUserStatus:%d\r\n"), iUserStatus);
 			return false;
 		}
 		//if (!(_tcslen(tszCardType) && _tcslen(tszCardID) && _tcslen(tszUserName) && _tcslen(tszIP) && _tcslen(tszMAC) && _tcslen(tszTime)))
