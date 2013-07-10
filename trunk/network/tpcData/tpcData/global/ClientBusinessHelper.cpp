@@ -231,7 +231,7 @@ int CClientBusinessHelper::HandlePacket()
 	{
 		TRACE(_T("流水号:%d\r\n"), m_pstuDataPacket->pstuDataHead->dwSerialNo);
 		TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s-%f\r\n"),
-			stuUserStatusInfo.emUserStatus,
+			stuUserStatusInfo.iUserStatus,
 			stuUserStatusInfo.tszDescription,
 			stuUserStatusInfo.tszCardType,
 			stuUserStatusInfo.tszCardID,
@@ -292,7 +292,7 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	std::string strMAC = xml_Node_Data.child("mac").first_child().value();
 	std::string strTime = xml_Node_Data.child("time").first_child().value();
 
-	pstuOutUserStatusInfo->emUserStatus = (USER_STATUS)atoi(xml_Node_Data.child("code").first_child().value());
+	pstuOutUserStatusInfo->iUserStatus = atoi(xml_Node_Data.child("code").first_child().value());
 	strcpy_s(pstuOutUserStatusInfo->tszDescription, 128*sizeof(TCHAR), strDescription.c_str());
 	//转换卡类型
 	strCardType = GetIDCode(strCardType.c_str()); 
@@ -316,7 +316,7 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	{
 		
 		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\xml\\%d_%s(%s).xml", tszTem,
-			pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
+			pstuOutUserStatusInfo->iUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
 		doc.save_file(tszXMLPath);
 
 		//_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
