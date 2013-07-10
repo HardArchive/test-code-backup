@@ -292,9 +292,6 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	std::string strMAC = xml_Node_Data.child("mac").first_child().value();
 	std::string strTime = xml_Node_Data.child("time").first_child().value();
 
-	
-
-
 	pstuOutUserStatusInfo->emUserStatus = (USER_STATUS)atoi(xml_Node_Data.child("code").first_child().value());
 	strcpy_s(pstuOutUserStatusInfo->tszDescription, 128*sizeof(TCHAR), strDescription.c_str());
 	//×ª»»¿¨ÀàÐÍ
@@ -303,6 +300,7 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	strcpy_s(pstuOutUserStatusInfo->tszCardID, 128*sizeof(TCHAR), strcardid.c_str());
 	strcpy_s(pstuOutUserStatusInfo->tszUserName, MAX_PATH*sizeof(TCHAR), strName.c_str());
 	strcpy_s(pstuOutUserStatusInfo->tszRoomName, 8*sizeof(TCHAR), strRoom.c_str());
+	strTem.clear();
 	//IP²¹Áã
 	AddZeroIP(strIP, strTem);
 	strcpy_s(pstuOutUserStatusInfo->tszIP, 32*sizeof(TCHAR), strTem.c_str()); 
