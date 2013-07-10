@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)netdetective_client&quot;;&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;;&quot;$(SolutionDir)third_party/global&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)netdetective_client&quot;;&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;;&quot;$(SolutionDir)third_party/pugixml&quot;;&quot;$(SolutionDir)third_party/global&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -116,7 +116,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)netdetective_client&quot;;&quot;$(SolutionDir)third_party&quot;;&quot;$(SolutionDir)third_party/socket_module&quot;;&quot;$(SolutionDir)third_party/common&quot;;&quot;$(SolutionDir)third_party/pugixml&quot;;&quot;$(SolutionDir)third_party/global&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -265,6 +265,30 @@
 				</File>
 				<File
 					RelativePath="..\third_party\socket_module\socket\SocketHelper.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="pugixml"
+				>
+				<File
+					RelativePath="..\third_party\pugixml\pugiconfig.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\third_party\pugixml\pugixml.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\third_party\pugixml\pugixml.hpp"
 					>
 				</File>
 			</Filter>

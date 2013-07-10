@@ -8,6 +8,8 @@ using namespace RG;
 #include "comm_protocol.h"
 #include "tpcData.h"
 #include "DelayLoadUtil.h"
+#include <ATLComTime.h>
+
 
 bool g_bExitFlag = false;
 typedef BOOL WINAPI QUEUEUSERWORKITEM(LPTHREAD_START_ROUTINE, PVOID Context, ULONG Flags);
@@ -25,27 +27,28 @@ DWORD WINAPI WorkerThreadProc(LPVOID lpParam)
 		int iRet = GetUserStatusInfo(&stuUserStatusInfo);
 		if (1 == iRet)
 		{
-			TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%d;ip:%s;mac:%s;time:%s\r\n"),
+			TRACE(_T("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s\r\n"),
 				stuUserStatusInfo.emUserStatus,
 				stuUserStatusInfo.tszDescription,
 				stuUserStatusInfo.tszCardType,
 				stuUserStatusInfo.tszCardID,
 				stuUserStatusInfo.tszUserName,
-				stuUserStatusInfo.iRoomID,
+				stuUserStatusInfo.tszRoomName,
 				stuUserStatusInfo.tszIP,
 				stuUserStatusInfo.tszMAC,
-				stuUserStatusInfo.tszTime);
+				DateTimeToString(stuUserStatusInfo.dtTime));
 
-			printf("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%d;ip:%s;mac:%s;time:%s\r\n",
+			printf("Code:%d;description:%s;cardtype:%s;cardid:%s;name:%s;room:%s;ip:%s;mac:%s;time:%s-%f\r\n",
 				stuUserStatusInfo.emUserStatus,
 				stuUserStatusInfo.tszDescription,
 				stuUserStatusInfo.tszCardType,
 				stuUserStatusInfo.tszCardID,
 				stuUserStatusInfo.tszUserName,
-				stuUserStatusInfo.iRoomID,
+				stuUserStatusInfo.tszRoomName,
 				stuUserStatusInfo.tszIP,
 				stuUserStatusInfo.tszMAC,
-				stuUserStatusInfo.tszTime);
+				DateTimeToString(stuUserStatusInfo.dtTime),
+				stuUserStatusInfo.dtTime);
 			Sleep(1000);
 		}
 	}

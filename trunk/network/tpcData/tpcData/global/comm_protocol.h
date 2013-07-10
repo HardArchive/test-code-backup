@@ -203,17 +203,17 @@ enum CARD_TYPE
 //用户状态信息
 typedef struct USER_STATUS_INFO
 {
-	USER_STATUS emUserStatus;        //用户状态
-	TCHAR tszDescription[128];       //状态描述
+	USER_STATUS emUserStatus;          //用户状态
+	TCHAR tszDescription[128];         //状态描述
 	//CARD_TYPE emCardType;            //证件类型
 	TCHAR tszCardType[8];
-	TCHAR tszCardID[128];                 //证件号码
-	TCHAR tszUserName[MAX_PATH];     //用户姓名
-	int iRoomID;                     //房间号
-	TCHAR tszIP[32];                 //IP
-	TCHAR tszMAC[32];                //MAC
-	//DATE dtTime;                     //时间
-	TCHAR tszTime[32];                 //时间
+	TCHAR tszCardID[128];              //证件号码
+	TCHAR tszUserName[MAX_PATH];       //用户姓名
+	TCHAR tszRoomName[8];              //房间号
+	TCHAR tszIP[32];                   //IP
+	TCHAR tszMAC[32];                  //MAC
+	DATE dtTime;                     //时间
+	//TCHAR tszTime[32];                 //时间
 
 	inline bool Check()
 	{

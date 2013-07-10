@@ -957,7 +957,16 @@ BOOL SetRegistryValue(HKEY hRoot, LPCTSTR wcSubKey, LPCTSTR wcName, LPBYTE pValu
 	return (result == ERROR_SUCCESS);
 }
 
-
+DATE string2date(const char* ptInTime)
+{
+	DATE dtRet = 0;
+	if (!ptInTime) return dtRet;
+	int iYear = 0, iMonth = 0, iDay = 0, iHour = 0, iMin = 0, iSec = 0;
+	sscanf_s(ptInTime, "%d-%d-%d %d:%d:%d", &iYear, &iMonth, &iDay, &iHour, &iMin, &iSec);
+	COleDateTime dtCurrent(iYear, iMonth, iDay, iHour, iMin, iSec);
+	dtRet = dtCurrent.m_dt;
+	return dtRet;
+}
 
 inline string ValueToIP(const int& nValue)
 {
@@ -1044,6 +1053,24 @@ void AddZeroIP(string strInIP, string& strOutIP)
 
 	strOutIP.append(strFront, 0, strFront.length());
 }
+
+string GetMAC(char* pInMac)
+{
+	char szMAC[32] = {0};
+	char* pTemp = pInMac;
+	char* pTemp2 = szMAC;
+	while (*pTemp)
+	{
+		if (':' != *pTemp)
+		{
+			*pTemp2 = *pTemp;
+			pTemp2++;
+		}		
+		pTemp++;		
+	}
+	return string(szMAC);
+}
+
 
 //获取当前程序所在目录 成功返回true，失败返回false
 bool GetExePath(TCHAR* ptInPath)

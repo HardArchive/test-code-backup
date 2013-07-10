@@ -7,9 +7,11 @@
 
 #include "../global/ShareMemory.h"
 #include "../third_party/socket_module/FuncHelper.h"
-
+#include "../third_party/pugixml/pugixml.hpp"
+#include "../third_party/pugixml/pugiconfig.hpp"
 typedef TCHAR* PTCHAR;
 
+//获取XML内容
 int GetXMLContecnt(const TCHAR* ptXMLPath, PBYTE pOutBuf, int iMaxBufLen)
 {
 	int iXMLLen = 0;
@@ -35,38 +37,40 @@ int GetXMLContecnt(const TCHAR* ptXMLPath, PBYTE pOutBuf, int iMaxBufLen)
 	return iXMLLen;
 }
 
+
 void InitHead(PDATAHEAD pstuInHead)
 {
 	pstuInHead->Reset();
 	memcpy(pstuInHead->szHeadFlag, PACKAGE_MARK, 4);
 }
 
-const TCHAR g_tszXMLPath[4][MAX_PATH] ={_T("ab1.xml"),	_T("ab2.xml"),	_T("ab3.xml"),	_T("ab4.xml")};
+const TCHAR g_tszXMLPath[5][MAX_PATH] ={_T("ab1.xml"),	_T("ab2.xml"),	_T("ab3.xml"),	_T("ab4.xml"), _T("config.xml")};
 
-////获取当前程序所在目录 成功返回true，失败返回false
-//bool GetExePath(PTCHAR ptInPath)
-//{
-//	PTCHAR ptTem = NULL;
-//	TCHAR tszTemp[MAX_PATH] = {0};
-//	//获取当前目录  //这里是获取当前进程文件的完整路径 
-//	if (!GetModuleFileName(NULL, tszTemp, MAX_PATH) && ptInPath)
-//		return false; 
-//
-//	ptTem = _tcsrchr(tszTemp, _T('\\'));
-//	memcpy(ptInPath, tszTemp, (_tcslen(tszTemp)-_tcslen(ptTem))*sizeof(TCHAR));
-//	return true;
-//}
 
+//获取XML路径 ptInPath当前路径 iType为XML类型
 PTCHAR GetXmlPath(PTCHAR ptInPath, int iType)
 {
 	if (GetExePath(ptInPath))
 	{
-		strcat(ptInPath, "\\");
+		strcat(ptInPath, "\\xml\\");
 		strcat(ptInPath, g_tszXMLPath[iType]);
 	}
 	return ptInPath;
 }
 
+string GetXMLConfig(char* pszInConfigType)
+{
+	string strConfig;
+	TCHAR tszTem[MAX_PATH] = {0};
+	pugi::xml_document doc;
+	if (!doc.load_file(GetXmlPath(tszTem, 4))) return strConfig;
+	pugi::xml_node xml_Node_Data = doc.child("server");
+	
+	strConfig = xml_Node_Data.child(pszInConfigType).first_child().value();
+	return strConfig;
+}
+
+//发送消息 参数为消息类型
 void SendUserStatusInfo(int iSendType)
 {
 	int iSendLen = 0;
@@ -74,7 +78,7 @@ void SendUserStatusInfo(int iSendType)
 	BYTE szbySendBuf[2048] = {0};
 	static DWORD dwSerialNo = 0;
 	CClientHelper clsClientHelper;
-	clsClientHelper.Start("116.228.54.106", 6666);
+	clsClientHelper.Start(GetXMLConfig("ip").c_str(), atoi(GetXMLConfig("port").c_str()));
 	PDATAHEAD pstuHead = (PDATAHEAD)szbySendBuf;
 	InitHead(pstuHead);
 	pstuHead->dwSerialNo = dwSerialNo++;
