@@ -315,8 +315,8 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 	if (GetExePath(tszTem))
 	{
 		
-		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\xml\\%d_%s(%s).xml", tszTem,
-			pstuOutUserStatusInfo->iUserStatus, pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->tszCardID);
+		_stprintf_s(tszXMLPath, MAX_PATH, "%s\\xml\\%s_%d(%s).xml", tszTem,
+			pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->iUserStatus, pstuOutUserStatusInfo->tszCardID);
 		doc.save_file(tszXMLPath);
 
 		//_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
