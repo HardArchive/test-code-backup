@@ -175,7 +175,7 @@ bool WriteXML(TCHAR* ptszInFileName, PBYTE pbyInBuf, int iBufLen)
 	RG::CFile clsFile;
 	if (!clsFile.Open(ptszInFileName, "wb"))
 	{
-		TRACE("^&^! OpenFile Open 打开文件:%s出错！！！\r\n", ptszInFileName);
+		//TRACE("^&^! OpenFile Open 打开文件:%s出错！！！\r\n", ptszInFileName);
 		return false;
 	}
 	int iFileLen = clsFile.Write(pbyInBuf, iBufLen);
@@ -319,8 +319,8 @@ bool CClientBusinessHelper::GetUserStatusInfo(PUSERSTATUSINFO pstuOutUserStatusI
 			pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->iUserStatus, pstuOutUserStatusInfo->tszCardID);
 		doc.save_file(tszXMLPath);
 
-		//_stprintf_s(tszXMLPath, MAX_PATH, "%s\\%d_(%s).xml", tszTem,
-		//	pstuOutUserStatusInfo->emUserStatus, pstuOutUserStatusInfo->tszCardID);
+		//_stprintf_s(tszXMLPath, MAX_PATH, "%s\\xml\\%s_%d(%s).xml", tszTem,
+		//	pstuOutUserStatusInfo->tszUserName, pstuOutUserStatusInfo->iUserStatus, pstuOutUserStatusInfo->tszCardID);
 		//WriteXML(tszXMLPath, (PBYTE)pXmlTem, iXmlLen);
 	}	
 
