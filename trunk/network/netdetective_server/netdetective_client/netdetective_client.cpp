@@ -86,13 +86,14 @@ void SendUserStatusInfo(int iSendType)
 	pstuHead->dwPacketLen += sizeof(DATAHEAD);
 	iSendLen = pstuHead->dwPacketLen;
 	clsClientHelper.Send(szbySendBuf, iSendLen);
-	printf("发送数据成功，类型:%d!!!!!\r\n", iSendType);
+	printf("发送数据成功，类型:%d!!!!!\r\n\n", iSendType);
+	printf("等侍接收数据……\r\n");
 	int iTimeOut = 5;
 	while(true)
 	{
 		if (!iTimeOut)
 		{
-			printf("接收数据超时……\r\n");
+			printf("\r\n接收数据超时!!!!!\r\n");
 			Sleep(1000);
 			break;
 		}
@@ -101,7 +102,7 @@ void SendUserStatusInfo(int iSendType)
 			printf("接收完成!!!!!\r\n");
 			break;
 		}
-		printf("等侍接收数据……timeout:%d\r\n", iTimeOut--);
+		printf("\r……timeout:%ds", iTimeOut--);
 		Sleep(1000);
 	}
 
@@ -127,6 +128,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		printf("下线消息请输入4:\r\n");	
 		printf("请输入0-4之间的数字:");
 		scanf("%d", &iInput);
+		//iInput = getchar()-48;
 		if (0==iInput)
 		{
 			bExitFlag = false;
