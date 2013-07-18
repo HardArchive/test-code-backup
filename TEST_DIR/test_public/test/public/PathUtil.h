@@ -12,6 +12,34 @@
 #define __PATH_UTIL_H_
 #include <Windows.h>
 #include <ShlObj.h>
+
+#define CPathUtil_Administrative_Tools 0x01                                //「开始」菜单\程序\管理工具
+#define CPathUtil_AppData              0x02                                //应用数据
+#define CPathUtil_Cache                0x03                                //缓存
+#define CPathUtil_CD_Burning           0x04                                //CD刻录
+#define CPathUtil_Cookies              0x05                                //Cookies
+#define CPathUtil_Desktop              0x06                                //Desktop
+#define CPathUtil_Favorites            0x07                                //Favorites
+#define CPathUtil_Fonts                0x08                                //Fonts
+#define CPathUtil_History              0x09                                //History
+#define CPathUtil_Local_AppData        0x0A                                //
+#define CPathUtil_Local_Settings       0x0B                                //
+#define CPathUtil_My_Music             0x0C                                //
+#define CPathUtil_My_Pictures          0x0D                                //
+#define CPathUtil_My_Video             0x0E                                //
+#define CPathUtil_NetHood              0x0F                                //
+#define CPathUtil_Personal             0x10                                //
+#define CPathUtil_PrintHood            0x11                                //
+#define CPathUtil_Programs             0x12                                //
+#define CPathUtil_Recent               0x13                                //
+#define CPathUtil_SendTo               0x14                                //
+#define CPathUtil_Start_Menu           0x15                                //「开始」菜单\程序
+#define CPathUtil_SendTo               0x16                                //「开始」菜单
+#define CPathUtil_Startup              0x17                                //「开始」菜单\程序\启动
+#define CPathUtil_Templates            0x18                                //模板
+//系统壁纸目录  
+//打印缓存目录
+//
 namespace RG
 {
 	class CPathUtil
@@ -79,7 +107,8 @@ namespace RG
 			return 1;
 		}
 
-		//删除文件夹
+		//****************************删除文件夹**************************************************************************
+		
 		//检查当前目录需要的文件夹是否存在,如果不存在返回false，存在返回true
 		bool ChickDirExist(const PTCHAR ptInPath)
 		{
@@ -118,7 +147,7 @@ namespace RG
 			{   //如果存在则创建子目录
 				if (!CreateDirectory(tszPath, NULL))
 				{	//创建文件夹失败
-					::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
+					//::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
 					return false;
 				}
 				SetFileAttributes(tszPath, FILE_ATTRIBUTE_NORMAL);	
