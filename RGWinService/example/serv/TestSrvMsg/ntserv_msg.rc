@@ -1,0 +1,6 @@
+LANGUAGE 0x12,0x1
+1 11 "msg_ko.bin"
+LANGUAGE 0x11,0x1
+1 11 "msg_ja.bin"
+LANGUAGE 0x9,0x1
+1 11 "msg_en.bin"
