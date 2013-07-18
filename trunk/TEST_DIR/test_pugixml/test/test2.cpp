@@ -44,10 +44,61 @@ void TestCreatXML()
 	doc.print(std::cout, "", pugi::format_raw);
 	std::cout << std::endl;
 
+	//******************************Rg添加*********************************************
+	pugi::xml_node node = doc.append_child("node");
+
+	// add description node with text child
+	pugi::xml_node descr = node.append_child("description");
+	descr.append_child(pugi::node_pcdata).set_value("Simple node");
+
+	// add param node before the description
+	pugi::xml_node param = node.insert_child_before("param", descr);
+
+	// add attributes to param node
+	param.append_attribute("name") = "version";
+	param.append_attribute("value") = 1.1;
+	param.insert_attribute_after("type", param.attribute("name")) = "float";
+	//]
+
+	doc.print(std::cout);
+	//******************************Rg添加*********************************************
+
 	// print a subtree to standard output (prints <call>hey</call>)
 	doc.child("foo").child("call").print(std::cout, "", pugi::format_raw);
 	std::cout << std::endl;
 	std::cout << "Saving result: " << doc.save_file("save_file_output.xml") << std::endl;
+}
+
+
+//创建XML文件
+bool TestCreateXML2()
+{
+	pugi::xml_document doc;
+	//添加指定类型的子节点。返回添加的节点，或空节点错误。 <?xml version="1.0" encoding="UTF-8"?>
+	pugi::xml_node decl = doc.prepend_child(pugi::node_declaration);
+	//添加属性指定的名称。返回添加的属性，或空属性错误。
+	decl.append_attribute("version") = "1.0";
+	decl.append_attribute("encoding") = "UTF-8";
+
+	//添加根结点
+	pugi::xml_node node = doc.append_child("node");
+	//根结点下添加子节点
+	pugi::xml_node descr = node.append_child("description");
+	//添加纯字符数据
+	descr.append_child(pugi::node_pcdata).set_value("Simple node");
+
+
+	//在节点descr之前插入节点
+	pugi::xml_node param = node.insert_child_before("param", descr);
+
+	//设置节点属性
+	param.append_attribute("name") = "version";
+	param.append_attribute("value") = 1.1;
+	//设置type属性在name属性之后
+	param.insert_attribute_after("type", param.attribute("name")) = "float";
+	//保存XML
+	doc.save_file("save_file_output2.xml");
+	return true;
 }
 
 int test_paramsxml()
@@ -118,7 +169,8 @@ int _tmain2(int argc, _TCHAR* argv[])
 { 
 	test_paramsxml();
 	int test_xpath();
-	//TestCreatXML();
+	TestCreatXML();
+	TestCreateXML2();
 	/*printf("#####testPrintxgconsoleXML Start\r\n");
 	testPrintxgconsoleXML();
 	printf("#####testPrintxgconsoleXML End\r\n\n");

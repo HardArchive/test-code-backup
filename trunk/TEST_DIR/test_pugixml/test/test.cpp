@@ -56,14 +56,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	//Modifying document data
-	//modify_base();
+	modify_base();
 	//modify_add();
 	//modify_remove();
 
 	//Saving document
 	//save_file();
 	//save_stream();
-	save_custom_writer();
+	//save_custom_writer();
 
 
 	getchar();
