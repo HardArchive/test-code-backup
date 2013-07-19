@@ -1,0 +1,369 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""res\\\\PSheets.exe.manifest""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_THECHEAT            BITMAP  DISCARDABLE     "res\\thecheat.bmp"
+IDB_STRONGBAD           BITMAP  DISCARDABLE     "res\\sb.bmp"
+IDB_ALYSON              BITMAP  DISCARDABLE     "res\\aly.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "&Options...",                 IDC_OPTIONS
+        MENUITEM "&Wizard...",                  IDC_OPTIONS_WIZARD
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About PSheets",              ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\PSheets.ico"
+IDI_TABICON             ICON    FIXED IMPURE    "res\\tabicon.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 187, 102
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "PSheets Application v1.0\n\n(c) Copyright 2003",
+                    IDC_STATIC,25,57,78,32
+    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,20,20
+    GROUPBOX        "",IDC_STATIC,7,7,115,88
+END
+
+IDD_BACKGROUND_OPTS DIALOG DISCARDABLE  0, 0, 138, 82
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Background"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Color:",IDC_STATIC,7,7,50,8
+    CONTROL         "&Blue",IDC_BLUE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    7,23,50,10
+    CONTROL         "&Orange",IDC_ORANGE,"Button",BS_AUTORADIOBUTTON,7,37,50,
+                    10
+    CONTROL         "&Gradient",IDC_GRADIENT,"Button",BS_AUTORADIOBUTTON,7,
+                    51,50,10
+    LTEXT           "Picture:",IDC_STATIC,70,7,61,8
+    CONTROL         "Aly&son",IDC_ALYSON,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,70,23,61,10
+    CONTROL         "&The Cheat",IDC_THECHEAT,"Button",BS_AUTORADIOBUTTON,70,
+                    37,61,10
+    CONTROL         "St&rong Bad",IDC_STRONGBAD,"Button",BS_AUTORADIOBUTTON,
+                    70,51,61,10
+    CONTROL         "&None",IDC_NONE,"Button",BS_AUTORADIOBUTTON,70,65,61,10
+END
+
+IDD_WIZARD_INTRO DIALOG DISCARDABLE  0, 0, 210, 154
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Welcome to the WTL Sample Wizard",IDC_PAGE_HEADER,7,7,
+                    196,24
+    LTEXT           "To begin, click Next.",IDC_STATIC,7,38,196,8
+END
+
+IDD_WIZARD_BKCOLOR DIALOG DISCARDABLE  0, 0, 210, 154
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Color:",IDC_STATIC,7,7,50,8
+    CONTROL         "&Blue",IDC_BLUE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    7,23,50,10
+    CONTROL         "&Orange",IDC_ORANGE,"Button",BS_AUTORADIOBUTTON,7,37,50,
+                    10
+    CONTROL         "&Gradient",IDC_GRADIENT,"Button",BS_AUTORADIOBUTTON,7,
+                    51,50,10
+    CONTROL         "&Check to generate a DDV failure",IDC_FAIL_DDV,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,7,81,137,10
+END
+
+IDD_WIZARD_BKPICTURE DIALOG DISCARDABLE  0, 0, 210, 154
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Picture:",IDC_STATIC,7,7,61,8
+    CONTROL         "Aly&son",IDC_ALYSON,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,7,23,61,10
+    CONTROL         "&The Cheat",IDC_THECHEAT,"Button",BS_AUTORADIOBUTTON,7,
+                    37,61,10
+    CONTROL         "St&rong Bad",IDC_STRONGBAD,"Button",BS_AUTORADIOBUTTON,
+                    7,51,61,10
+    CONTROL         "&None",IDC_NONE,"Button",BS_AUTORADIOBUTTON,7,65,61,10
+END
+
+IDD_WIZARD_FINISH DIALOG DISCARDABLE  0, 0, 210, 154
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Finishing the WTL Sample Wizard",IDC_PAGE_HEADER,7,7,
+                    196,24
+    LTEXT           "To close the wizard, click Finish.",IDC_STATIC,7,38,196,
+                    8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_BACKGROUND_OPTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 131
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_WIZARD_INTRO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_WIZARD_BKCOLOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_WIZARD_BKPICTURE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_WIZARD_FINISH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "test1 Module\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "TEST1\0"
+            VALUE "LegalCopyright", "Copyright 2003\0"
+            VALUE "OriginalFilename", "PSheets.exe\0"
+            VALUE "ProductName", "PSheets Module\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "PSheets"
+    IDS_WIZARD_TITLE        "PSheets Options Wizard"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle Toolbar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle Statusbar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_OPTIONS             "View PSheets options property sheet"
+    IDC_OPTIONS_WIZARD      "View PSheets configurator wizard"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+//CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\PSheets.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
