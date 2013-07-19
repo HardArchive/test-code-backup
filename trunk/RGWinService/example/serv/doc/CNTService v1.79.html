@@ -1,0 +1,1200 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>CNTService v1.79</title>
+<link rel="stylesheet" type="text/css" href="naughter.css">
+<style type="text/css">
+.style1 {
+	border-width: 0px;
+}
+</style>
+</head>
+
+<body>
+
+<h2 align="center">
+<a href="http://www.naughter.com/index.html">
+<img src="logo.gif" alt="Naughter Software Logo" class="style1" height="254" width="419"></a></h2>
+
+<h2><img src="serv.gif" alt="CNTService Logo" height="36" width="44"><a href="http://www.naughter.com/download/serv.zip">CNTService
+v1.79</a>  <i> A class framework for developing NT
+services in MFC</i></h2>
+
+<p>Classes includes:</p>
+
+<p><strong>CNTServiceCommandLineInfo</strong></p>
+
+<p>The CNTServiceCommandLineInfo class aids in parsing the command
+line at application start-up. It is based almost exactly upon the way that the CCommandLineInfo class in MFC works.</p>
+
+<p><strong>CNTEventLogSource</strong></p>
+
+<p>CNTEventLogSource provides a wrapper class for writing events to the
+NT event log. You could consider this as the server side to the Event log APIs.</p>
+
+<p><strong>CNTService</strong></p>
+
+<p>CNTService is the class which provides a C++ framework upon which
+you can develop your own MFC C++ based services. The class makes heavy use of virtual
+functions which your service class should override.</p>
+
+<p><strong>CNTScmService</strong></p>
+
+<p>CNTScmService is a class which encapsulates a service as returned
+from the Service Control Manager, in effect a SC_HANDLE. An instance of a CNTScmService is
+usually acquired by a call to CNTServiceControlManager::Open. Once retrieved the class
+allows you to control the service, change its configuration and query a service's state.</p>
+
+<p><strong>CNTServiceControlManager</strong></p>
+
+<p>CNTServiceControlManager is a class which encapsulates a connection
+to a Service Control Manager (SCM) on some machine. Functionality provided includes
+enumeration, database locking and service access.</p>
+
+<p><strong>CEventLogRecord</strong></p>
+
+<p>CEventLogRecord is a C++ wrapper class for the EVENTLOGRECORD
+structure as provided in the SDK. For anyone who has had to use this class using raw SDK
+calls, you will appreciate the easier access which the class provides.</p>
+
+<p><strong>CNTEventLog</strong></p>
+
+<p>CNTEventLog is a C++ wrapper class for accessing the NT Event Logs.
+You can consider this as the client side to the Event Log APIs.</p>
+
+<h2>Features 
+
+</h2>
+
+<ul>
+  <li>Simple and clean C++ interface using virtual
+    functions. </li>
+  <li>All the code is Unicode enabled and build configurations are
+    provided. </li>
+  <li>All code compiles cleanly at the highest warning level of 4. This is
+    the case with all of my other code on my web site aswell. </li>
+  <li>Build in persistence functions which provide
+    support similar to the build in MFC registry / ini functions. </li>
+  <li>A simple test service has been provided to
+    help you get started developing your own NT services. </li>
+  <li>Comprehensive documentation is provided for all the classes.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>The <a href="http://www.naughter.com/download/serv.zip">enclosed
+zip file</a> contains the
+classes source code and a sample NT service which beeps the speaker! (at least 
+if you are running a Pre Vista version of Windows. The reason you will hear 
+nothing on Vista or later is because of Session 0 service isolation. Anyway the 
+sample service is just that and your service will hopefully do something more 
+interesting!).</p>
+
+<p>&nbsp;</p>
+
+<h2>Copyright</h2>
+<ul>
+  <li>You are allowed to include the source code in
+    any product (commercial, shareware, freeware or otherwise) when your product
+    is released in binary form.</li>
+  <li>You are allowed to modify the source code in
+    any way you want except you cannot modify the copyright details at the top
+    of each module.</li>
+  <li>If you want to distribute source code with
+    your application, then you are only allowed to distribute versions released
+    by the author. This is to maintain a single distribution point for the
+    source code.</li>
+</ul>
+<p></p>
+
+<h2>Updates</h2>
+
+<p><strong>V1.0 (17 July 1998)</strong>
+
+</p><ul>
+  <li>Initial public release</li>
+</ul>
+
+<p><strong>24 August 1998</strong> 
+
+</p><ul>
+  <li>Minor update to the demo program (app.cpp)
+    to get rid of a compiler error.</li>
+</ul>
+
+<p><strong>V1.01 (17 May 1999)</strong>
+
+</p><ul>
+  <li>Addition of a number of ASSERTs statements to aid in
+    debugging.</li>
+  <li>Fixed a bug in CNTEventLogSource::Report as reported by
+    Marin Kunev</li>
+  <li>Fixed a compiler warning when compiled with VC 6.</li>
+</ul>
+
+<p><strong>V1.02 (5 September 1999)</strong>
+
+</p><ul>
+  <li>Addition of more ASSERT's statements to aid in
+    debugging.
+</li></ul>
+
+<p><strong>V1.03 (3 October 1999)</strong>
+</p><ul>
+  <li>Addition of GetProfileStringArray,
+    WriteProfileStringArray, GetProfileBinary and WriteProfileBinary methods to
+    the CNTService class.
+  </li><li>Renamed some module names.</li>
+</ul>
+
+<p><strong>V1.04 (5 October 1999)</strong>
+</p><ul>
+  <li>Fixed a problem compiling the mc file for release and
+    Unicode build configurations.</li>
+  <li>Fixed a level 4 warning when built using VC++ 6.</li>
+</ul>
+
+<p><strong>V1.05 (10 October 1999)</strong>
+</p><ul>
+  <li>Added support for the description field which services
+    can have on Windows 2000.</li>
+  <li>Added accessor functions for the service name, friendly
+    name and the description text.</li>
+</ul>
+<p><strong>V1.06 (24 January 2000)</strong>
+</p><ul>
+  <li>Modified the way the mc file is included into the
+    TestSrv.exe sample service. The mc file is now compiled into an intermediate
+    "ntserv_msg.rc" file which is "#included" into the final
+    rc file "testsrv.rc". This is done so that the "testsrc.rc"
+    file can be edited by the resource designer inside Visual C++. In previous
+    versions of CNTService, if your tried to edit the rc file (which was
+    generated by the MC command line compiler), you would end up corrupting the
+    file. If you are developing your own service using CNTService, then I would
+    suggest you take this approach. What you need to do is create a resource
+    script inside VC++, adding whatever resources you want to be in your
+    services resources (e.g. version info's, strings etc), then bring up the
+    resource includes dialog and modify the "Compile-Time directives"
+    to "#include "ntserv_msg.rc" or your version of rc file which
+    was generated by MC by compiling your .mc file. You should also check out
+    the project settings in the demo service provided with CNTService to see how
+    it handles compilation of the .mc file via a batch file (right mouse click
+    on "ntserv_msg.mc" and select settings).&nbsp;</li>
+</ul>
+<p><strong>V1.07 (10 April 2000)</strong>
+</p><ul>
+  <li>Fixed a bug with the calculation of buffer sizes when
+    compiled for UNICODE in CNTEventLogSource::SetStringArrayIntoRegistry&nbsp;</li>
+</ul>
+<p><strong>V1.1 (21 May 2000)</strong>
+</p><ul>
+  <li>Added 2 new overridden versions of
+    CNTEventLogSource::Report</li>
+  <li>Tweaked and set default parameters in
+    CNTService::ReportStatusToSCM following review of the book
+    "Professional NT Services"</li>
+  <li>Disallowed accepting any controls when the service is
+    currently processing the same control in ReportStatusToSCM</li>
+  <li>Change the ordering of parameters in ReportStatusToSCM.
+    You should review your code to ensure it is correct if you have existing
+    code</li>
+  <li>Class framework now by default uses a DLL of the same
+    name for the message file which the NT Event log will look to for mc string
+    entries. This means that you should review your code to ensure it is correct
+    if you have existing code</li>
+  <li>CNTEventLogSource::Report now does not bother
+    automatically creating a SID as this should be used for services which do
+    impersonation for clients</li>
+  <li>Changed the constructor of CNTEventLog which now takes
+    the values it needs for calling Register</li>
+  <li>CNTEventLog::Report methods are now no longer const
+    because of change above.</li>
+  <li>SCM database is now locked during installs and
+    uninstalls of the service</li>
+  <li>Now supports all the new functionality provided for
+    services under Windows 2000 while preserving binary compatability with NT
+    3.x and NT 4 services.</li>
+  <li>Framework now requires the presence of the January 2000
+    platform SDK or later. This is because of point above.</li>
+  <li>Changed the prototype of the existing
+    CNTScmService::QueryStatus function.&nbsp;</li>
+  <li>Made the typedefs for the enumeration functions private
+    to their respective classes instead of polluting the global name space</li>
+</ul>
+<p><strong>V1.11 (19 June 2000)</strong>
+</p><ul>
+  <li>Added an ASSERT to ReportStatusToSCM for status handle
+    == 0</li>
+  <li>Fixed a number of other logic problems in
+    ReportStatusToSCM</li>
+  <li>Removed an unnecessary ASSERT in
+    CNTEventLogSource::Report</li>
+  <li>Sample service app now uses sound card default sound
+    instead of PC speaker sound</li>
+</ul>
+<p><strong>V1.12 (21 June 2000)</strong>
+</p><ul>
+  <li>Minor change to a TRACE statement in
+    RegisterCtrlHandler</li>
+  <li>RegisterCtrlHandler is called automatically for you
+    now, no need to call it in your derived version of ServiceMain</li>
+  <li>Added a BOOL CNTEventLogSource::Report(WORD wType,
+    LPCTSTR lspszString) method</li>
+  <li>Fixed a bug where the sample service was not reporting
+    its shutdown status to the SCM correctly.</li>
+</ul>
+
+<p><strong>V1.13 (28 July 2000)</strong>
+
+</p><ul>
+  <li>Fixed a project settings bug which was causing the
+    following compiler error <i>"fatal error C1083: Cannot open include file: 'ntserv_msg.h': No such file or directory"</i>.
+    </li>
+</ul>
+<p><strong>V1.14 (21 December 2000)</strong>
+</p><ul>
+  <li>Fixed a bug in CNTService::Uninstall() which was
+    causing it to fail sometimes when the service was running.</li>
+  <li>Made all the member variables of the CNTService class
+    public but put them down below the "implementation" line ala the
+    way standard MFC classes are declared.</li>
+  <li>Added a new overridden version of
+    CNTEventLogSource::Report.</li>
+</ul>
+
+<p><strong>V1.15 (8 January 2001)</strong>
+
+</p><ul>
+  <li>Now includes copyright message in the source code and documentation.</li>
+  <li>CNTEventLogSource::Report now allows you to specify whether error codes should be
+    displayed in Hex or as decimal</li>
+  <li>Sample service sometimes did not display the stop event. This has been remedied by
+    reporting to the event log before we report to the SCM.</li>
+  <li>Framework has now been made independent of the need for the latest Platform SDK
+    header files. You can now compile the code in VC 5 without the Plaform SDK having to
+    be installed.</li>
+</ul>
+
+<p><strong>V1.16 (16 May 2001)</strong>
+
+</p><ul>
+  <li>Thread protected code to CNTEventLogSource::Report.</li>
+</ul>
+
+<p><strong>V1.17 (27 May 2001)</strong>
+
+</p><ul>
+  <li>Added methods to framework to support the new command line options
+ -start, -pause,                          -continue and -stop. Thanks to
+ Stefan Niemeyer for this great addition.</li>
+  <li>Fixed a small issue in the testing of the CEventLogSource class in app.cpp.</li>
+</ul>
+
+<p><strong>V1.18 (15 July 2001)</strong>
+
+</p><ul>
+  <li>Fixed a problem when calling CreateService with pathnames which contain embedded spaces.</li>
+</ul>
+
+<p><strong>V1.19 (18 July 2001)</strong>
+
+</p><ul>
+  <li>Minor update to the sample code demonstrating the class
+    framework.</li>
+  <li>Due to VC 6 shipping with a Winsvc.h (The main NT service header 
+file) which includes                          some but not all of the 
+defines which the class requires you need to define a few preprocessor  
+                        define to get the code to compile cleanly for 
+your particular setup.
+    Set the top of "ntserv.cpp" for the details.</li>
+</ul>
+
+<p><strong>V1.20 (9 August 2001)</strong>
+</p><ul>
+  <li>Updated SetStringArrayIntoRegistry and
+    GetStringArrayIntoRegistry to be consistent with my other class CHKLM v1.11.</li>
+</ul>
+
+<p><b>v1.21 (27 November 2001)</b></p>
+<ul>
+  <li>Fixed an issue where the class fails to read any key
+    that is readonly. This is a problem since Win2000 defaults access to HKLM
+    for "normal"&nbsp; users to readonly. Thanks to Hans-Georg Ulrich
+    for spotting this problem.</li>
+</ul>
+
+<p><b>v1.22 (27 August 2002)</b></p>
+
+<ul>
+  <li>Made more functions virtual to allow greater end user customisation.</li>
+  <li>All useful attributes in call to CreateService in 
+CNTService::Install can now be modifed without having                   
+       to derive a custom version of CNTService::Install in your derived
+ class.</li>
+  <li>A boolean value is now provided to enable / disable event log integration</li>
+</ul>
+
+<p><b>v1.23 (28 August 2002)</b></p>
+
+<ul>
+  <li>Reviewed all TRACE statements in the code for correctness</li>
+  <li>Added a parameter to CNTService::Install to allow the time to wait for the service to stop to be specified</li>
+  <li>Added a CString parameter to the CNTService::Install and Uninstall
+ methods to return a descriptive                          errors to 
+callers.</li>
+  <li>Addition of a new boolean variable to the CNTService
+    class&nbsp; to allow service to decide whether it                   
+       should use GUI or Console calls to display status messages</li>
+  <li>CNTService::ProcessShellCommand now displays error messages to the console or via a Message box when errors
+    occur in install, uninstalling, starting, stoping, resuming and pausing the service.</li>
+</ul>
+
+<p><b>v1.24 (20 September 2002)</b></p>
+<ul>
+  <li>Fixed an "issue" in calls to
+    ReportStatusToSCM which your service should be calling in your ServiceMain.
+    Specifically calling ReportStatusToSCM(SERVICE_STOPPED) looks like it
+    elicits the behaviour that the SCM forcefully terminates your worker thread.
+    This can cause issues when other code is executed after this call which uses
+    something which is allocated on the worker threads stack. To fix this
+    "issue" (I could not find any documentation on this behaviour) you
+    should remove the single call to ReportStatusToSCM which uses the values
+    "SERVICE_STOPPED" from the bottom of your service's ServiceMain
+    function. To force you to do this, I have changed the name of the function
+    "ReportStatusToSCM" to just "ReportStatus". This will
+    mean that the compiler will force you to examine each call to this function
+    and remove the one call as described above. The class framework now looks
+    after reporting that your service has stopped to the SCM. Thanks to
+    "Jim" for spotting this.</li>
+</ul>
+
+<p><b>v1.25 (20 November 2002)</b></p>
+
+<ul>
+  <li>Fixed 3 level 4 warnings when the code is compiled using VC.Net. Thanks to Ed Eichman for spotting this problem.</li>
+</ul>
+
+<p><b>v1.26 (12 March 2003)</b></p>
+
+<ul>
+  <li>Fixed a problem since user code can't call 
+  ReportStatus(SERVICE_STOPPED) there is no way to report startup or shutdown 
+  errors via dwWin32ExitCode or dwServiceSpecificExitCode. This has been 
+  resolved by adding a new protected function TerminateService to shut down the 
+  service in the event of a critical failure. This throws a private exception 
+  containing the exit codes which is caught by the framework in _ServiceMain (or 
+  the DebugService case of ProcessShellCommand). _ServiceMain then passes the 
+  codes on via _ReportStatus. Also since the dwWin32ExitCode and 
+  dwServiceSpecificExitCode arguments of ReportStatus can never be used these 
+  parameters have now been removed. Thanks to Jon Baggott for these 2 additions.</li>
+  <li>Performed some minor tidy ups in the inclusion of 
+  header files by the framework</li>
+</ul>
+
+<p><b>v1.27 (8 May 2003)</b></p>
+
+<ul>
+  <li>Update to the Install and Uninstall methods to return 
+  the value from GetLastError(). This is useful for client code as it can be 
+  reset before the functions return.</li>
+  <li>Command line now supports a /T: param which allows you 
+  to specify a timeout to use when doing an uninstall. This timeout is used to 
+  specify how long the code will wait if the service needs to be stopped.</li>
+  <li>Broke down all the classes into their own modules. This 
+  allows you to pull in only the classes you require, if you are not using the 
+  main class CNTService.</li>
+  <li>Removed all unnecessary TRACE statements throughout the 
+  framework as they sometimes reset the value as returned from GetLastError.</li>
+</ul>
+
+<p><b>v1.28 (17 May 2003)</b></p>
+
+<ul>
+  <li>Further tweaks to _ReportStatus to avoid intermittent 
+  crashes. See item 1 on 20-09-2002 for detailed info about the issue.</li>
+  <li>Removed some unnecessary calls to locking the critical 
+  section</li>
+</ul>
+
+<p><b>v1.29 (22 May 2003)</b></p>
+
+<ul>
+  <li>Updated the way the sample service's message dll 
+  projects integrates the creation of the mc file. For detailed information on 
+  how to integrate mc files into Visual Studio, please see the CodeProject 
+  article <a href="http://www.codeproject.com/useritems/MCTutorial.asp">http://www.codeproject.com/useritems/MCTutorial.asp</a>. Please note 
+  that I did not follow the suggested settings as exactly outlined in this 
+  article as the message file's header file needs to be included into the NT 
+  service exe at compile time.</li>
+</ul>
+
+<p><b>v1.30 (3 August 2003)</b></p>
+
+<ul>
+  <li>Improved the error handling and reporting in 
+  CNTService::SetServiceToStatus. Thanks to Jon Pawley for reporting this issue.</li>
+</ul>
+
+<p><b>v1.31 (15 August 2003)</b></p>
+
+<ul>
+  <li>Optimized the string copying in 
+  CEventLogRecord::CEventLogRecord(const EVENTLOGRECORD* pRecord). A bug was 
+  reported in this area by Jeroen Walter but it looks like this is a 
+  documentation bug in current versions of the MSDN. This structure was defined 
+  correctly in some early versions of the MSDN.</li>
+</ul>
+
+<p><b>v1.32 (8 September 2003)</b></p>
+
+<ul>
+  <li>Moved all the defines which the framework requires into 
+  a separate header file. Thanks to Dima Polyakov for pointing out a compilation 
+  problem which occurred when you did not have the platform SDK installed which 
+  necessitated this change.</li>
+  <li>Changed the ordering of the command line used to 
+  compile the MC file. This avoids a problem as reported by Rodrigo Oliveira 
+  Fernandez when using the framework in VC 7</li>
+  <li>Fixed a compilation error related to the use of the 
+  preprocessor define NTSERV_EXCLUDE_VC6_WINSVC_DEFINES</li>
+</ul>
+
+<p><b>v1.33 (4 October 2003)</b></p>
+
+<ul>
+  <li>Updated the custom build steps to compile the mc file. 
+  Now uses the VC macro "$(InputPath)" instead of "$(InputDir)\$(InputName).mc".</li>
+  <li>Removed a number of unreferenced variables level 4 
+  warnings when compiled with VC.Net 2003.</li>
+  <li>Provision of a specific workspace (Testsrv for Visual 
+  Studio.Net.dsw) which allows the sample service to be compiled cleanly out of 
+  the box with Visual Studio.Net 2000 or Visual Studio.Net 2003. The issue is 
+  that the format of various build macros such as $(InputDir) has changed from 
+  VC 6. Just select File -&gt; Open Project in VS.Net and select "Testsrv for 
+  Visual Studio.Net.dsw".</li>
+</ul>
+
+<p><b>v1.34 (5 October 2003)</b></p>
+
+<ul>
+  <li>Updated the Visual Studio.Net workspace to remove the 
+  "Without Platform SDK" configurations as they are not applicable.</li>
+</ul>
+
+<p><b>v1.35 (12 November 2003)</b></p>
+
+<ul>
+  <li>Now includes a unicode MC file thanks to Brodie 
+  Thiesfield. To use this file, simply copy ntserv_msgU.mc over the 
+  ntserv_msg.mc file in the TestSrvMsg and modify the custom build step for the 
+  mc file in the TestSrvMsg project to include a -u command line option. This 
+  file also includes a Japanese translation of the default service event log 
+  strings which the sample service uses.</li>
+</ul>
+
+<p><b>v1.36 (14 November 2003)</b></p>
+
+<ul>
+  <li>The location where the message dll for the service is 
+  located can now be tweaked at runtime by filling in the 
+  CNTService::m_sMessageDll variable. Thanks to Brodie Thiesfield for this 
+  update.</li>
+  <li>Reviewed all TRACE statements which use a CString 
+  parameter. Now explicitly casts the CString to a LPCTSTR. Thanks to Brodie 
+  Thiesfield for this update.</li>
+  <li>Added a new CNTService::m_LoggingDetail variable. This 
+  in combination with a new method called CNTService::Win32ErrorToString allows 
+  more flexible control over how errors are logging to the event log. Thanks to 
+  Brodie Thiesfield for suggesting this update.</li>
+  <li>command line arguments other than the "-debug" argument 
+  are passed through to ServiceMain() when running in debug mode. Thanks to 
+  Brodie Thiesfield for suggesting this update.</li>
+</ul>
+
+<p><b>v1.37 (19 November 2003)</b></p>
+
+<ul>
+  <li>Reworked the function Win32ErrorToString to include the 
+  string resource ID. Thanks to Brodie Thiesfield for suggesting this. 
+  </li>
+  <li>Fixed CNTS_MSG_SERVICE_FAIL_PAUSE, 
+  CNTS_MSG_SERVICE_FAIL_CONTINUE and CNTS_MSG_SERVICE_FAIL_STOP event log 
+  entries which were not using the new Win32ErrorToString method. Thanks to 
+  Brodie Thiesfield for reporting this.</li>
+  <li>Win32ErrorToString now includes a "bEventLog" 
+  parameter. When this is TRUE the function is being called to obtain the error 
+  which gets displayed in the event log, when FALSE, it is being used to display 
+  to the end user or the TRACE window</li>
+</ul>
+
+<p><b>v1.38 (23 November 2003)</b></p>
+
+<ul>
+  <li>Fixed a memory leak in CNTService::Debug when the 
+  service uses TerminateService to shutdown the service prematurely.</li>
+</ul>
+
+<p><b>v1.39 (26 November 2003)</b></p>
+
+<ul>
+  <li>Now supports a /silent command line option. Using this 
+  setting in combination with for example /install will ensure that the 
+  framework does not display any message boxes or console output when an error 
+  occurs. Thanks to Metrich Frederic for this addition.</li>
+  <li>Changed the return value from ProcessShellCommand from 
+  a BOOL to a DWORD. This value is now use to return an error code from the 
+  service exe when it exits. In combination with the /silent command line 
+  option, this allows third party programs such as installers control over the 
+  service instance via the exit code of the service. Again thanks to Metrich 
+  Frederic for this addition.</li>
+  <li>Updated the sample app provided with the framework to 
+  show how client services can return the Win32 error code as now returned by 
+  ProcessShellCommand.</li>
+</ul>
+
+<p><b>13 January 2004</b></p>
+
+<ul>
+  <li>Updated the declaration of the sample service's "m_bWantStop" 
+  variable to now be a variable. There is no change to the actual CNTService 
+  modules (bar copyright updates for the new year 2004) </li>
+</ul>
+
+<p><b>v1.40 (22 January 2004)</b></p>
+
+<ul>
+  <li>Fixed a bug in CNTScmService::EnumDependents and 
+  CNTServiceControlManager::EnumServices where enumeration would continue even 
+  when the the callback functions return FALSE. Thanks to Edward Livingston for 
+  spotting this.</li>
+</ul>
+
+<p><b>21 February 2004</b></p>
+
+<ul>
+  <li>The Unicode version of the mc file has now been updated 
+  to include Korean resources. Thanks to Brodie Thiesfield for this update.</li>
+</ul>
+
+<p><b>v1.41 (18 March 2004)</b></p>
+
+<ul>
+  <li>Fixed a bug in the CNTScmService::WaitForServiceStatus 
+  function which caused it to return TRUE even if the service failed to return 
+  the desired status (if pending status isn't the expected pending staus. 
+  </li>
+  <li>Also ensured that CNTScmService::WaitForServiceStatus 
+  does not wait past the requested timeout period. Thanks to Brodie Thiesfield 
+  for these bug reports and the fixes.</li>
+</ul>
+
+<p><b>v1.42 (9 April 2004)</b></p>
+
+<ul>
+  <li>Further work to CNTScmService::WaitForServiceStatus. It 
+  now ignores pending states. In addition it ignores wait hints since we are 
+  calling QueryServiceStatus as opposed to calling the ControlService function 
+  with the SERVICE_CONTROL_INTERROGATE control code. It also allows the polling 
+  interval to be specified by a 3rd optional parameter. Thanks to Edward 
+  Livingston and "yong" for reporting this&nbsp;problem. Please note that since 
+  the third parameter to this function means something different that 
+  previously, you should review all of your calls to WaitForServiceStatus to 
+  ensure it continues to operate correctly.</li>
+</ul>
+
+<p><b>v1.43 (12 April 2004)</b></p>
+
+<ul>
+  <li>Removed an unused variable in 
+  CNTScmService::WaitForServiceStatus. Thanks to Edward Livingston for reporting 
+  this issue.</li>
+</ul>
+
+<p><b>v1.44 (5 May 2004)</b></p>
+
+<ul>
+  <li>Fixed some warnings in CNTService::GetDependencies and 
+  CNTEventLogSource::SetStringArrayIntoRegistry when the code is compiled using 
+  the "Force conformance in For loop scope" VC compiler option (/Zc:forScope). 
+  Thanks to Alexey Kuznetsov for reporting this problem.</li>
+</ul>
+
+<p><b>v1.45 (20 June 2004)</b></p>
+
+<ul>
+  <li>Fixed a bug in CEventLogRecord::CEventLogRecord(const 
+  EVENTLOGRECORD*..) to do with the handling of inter string NULLs at the end of 
+  the record. Thanks to "yong" for reporting this problem.</li>
+  <li>Optimized the code in 
+  CEventLogRecord::CEventLogRecord(const EVENTLOGRECORD*..).</li>
+</ul>
+
+<p><b>v1.46 (20 June 2004)</b></p>
+
+<ul>
+  <li>Provided a new virtual implementation of 
+  CNTService::_ServiceMain. To achieve this the previous static _ServiceMain is 
+  now called "_SDKServiceMain". This allows your service code to completely 
+  customize the startup of your service. For example if you service does not 
+  require an active worker thread to do any work (e.g. it only ever responds to 
+  client requests thro the SCM using OnUserDefinedRequest), then you could 
+  implement your own version of _ServiceMain which does not call _ReportStatus(SERVICE_STOPPED... 
+  This would allow you to use RegisterWaitForSingleObject to implement your 
+  service clean up code. For more information on this type of service please 
+  consult the MSDN documentation on "RegisterWaitForSingleObject" and "ServiceMain". Thanks 
+  to Haug Leuschner for reporting this.</li>
+</ul>
+
+<p><b>v1.47 (24 June 2004)</b></p>
+
+<ul>
+  <li>Reissue of the last update as I forgot to declare _ServiceMain 
+  virtual Doh!</li>
+  <li>Also made the class CNTServiceTerminateException 
+  visiible in the global namespace. This is required if you implement your own _ServiceMain.</li>
+</ul>
+
+<p><b>v1.48 (15 October 2004)</b></p>
+
+<ul>
+  <li>Framework now automatically installs a console ctrl handler when 
+run in debug mode. This means that the framework will automatically     
+                     call your service's OnStop method when running in 
+debug mode if your service is built as a console app and you hit Ctrl+C 
+or Ctrl+Break or                          hit the close button in the 
+console window. This helps you to verify the shutdown code of your 
+service without having to run the code as                          a 
+service. Because the console ctrl handler is executed in a separate 
+thread to ServiceMain, this simulation mode calls your OnStop method    
+                      in a separate thread just like the SCM does. This 
+proves very helpful when you need to debug shutdown problems in your 
+service which are                          thread related.</li>
+  <li>Added a few checks to various header files to warn if various 
+header files have not already been included e.g. Afxmt.h. This helps 
+avoid                          simple compilation problems when the 
+framework is added to a new project initially.</li>
+  <li>Sample app now uses the InterlockedExchange functions instead of a
+ critical section to serialize access to variables used across multiple 
+                         threads. In addition the "m_bPaused" variable 
+of the sample app is now also marked as volatile</li>
+  <li>Fixed a double declaration of "dwTypesSupported" in CNTEventLogSource::Install. In
+    the process this fixes a level 4 warning which the                          code generated.</li>
+</ul>
+
+<p><b>v1.49 (18 October 2004)</b></p>
+
+<ul>
+  <li>Fixed a number of level 4 warnings in the framework when "Detect 64 bit portability issues" is enabled in Visual Studio .Net</li>
+</ul>
+
+<p><b>v1.50 (11 November 2004)</b></p>
+<ul>
+  <li>Fixed a futher 64 bit issue in
+    CNTEventLogSource::SetStringArrayIntoRegistry when compiled in Visual Studio
+    .Net.&nbsp;</li>
+  <li>Addition of a CNTSERVICE_EXT_CLASS preprocessor macro which
+    allows the classes to be easily added to an extension dll</li>
+</ul>
+
+<p><b>v1.51 (11 February 2005)</b></p>
+<ul>
+  <li>Addition of a virtual GetEventLogSourceName method which allows 
+the name of the event log source to be customized at runtime. Thanks to 
+                         Bara Cek for requesting this addition.</li>
+  <li>Updated the copyright details in all modules.</li>
+  <li>Addition of true Visual Studio .NET 2003 files for the sample service (Testsrv.sln and Testsrv.vcproj)</li>
+</ul>
+
+<p><b>v1.52 (26 March 2005)</b></p>
+<ul>
+  <li>Addition of a m_bProfileWriteFlush variable to the
+    CNTService class which dictates if the registry settings should be 
+commited immediately as                          oppossed to relying on 
+the lazy writer.</li>
+</ul>
+
+<p><b>v1.53 (21 April 2005)</b></p>
+<ul>
+  <li>CNTService::GetProfileInt and GetProfileString functions now 
+includes an optional DWORD output parameter which when provided allows 
+the value from
+    GetLastError to be returned to client code. This allows code to 
+distinguish between a default value which is returned because it is 
+actually                          stored as opposed to returning a 
+default value because some of the registry API's failed. Thanks to Tony 
+Ronan for reporting this issue.</li>
+</ul>
+
+<p><b>v1.54 (31 July 2005)</b></p>
+<ul>
+  <li>Provided an overriden version of CNTEventLogSource::Report which has 3 string parameters</li>
+  <li>CNTEventLogSource::GetStringArrayFromRegistry and 
+SetStringArrayIntoRegistry methods are now public as they are helpful to
+ have available                          externally.</li>
+</ul>
+
+<p><b>v1.55 (14 August 2005)</b></p>
+<ul>
+  <li>Fixed an issue where the SID and binary values was not being set 
+correctly in the overloaded CEventLogRecord constructor which takes     
+                     a EVENTLOGRECORD pointer. Thanks to Brian Lee for 
+reporting this issue. Also the arrays which this information is copied 
+into is now preallocated to                          improve 
+performance.</li>
+</ul>
+
+<p><b>v1.56 (11 January 2006)</b></p>
+<ul>
+	<li>The command line options which the service uses to start with can now be 
+	specified via a new /SCL command line option e.g. TestSrv.exe /install "/SCL:/Param1 
+	/SomeOtherParam:XYZ". This additional flexibility is controlled by BOOL 
+	CNTService::m_bAllowCommandLine which by default is FALSE.</li>
+	<li>Updated copyright details for all modules</li>
+	<li>The service display name string which the service 
+	uses for installing can now be specified via a new /SDN command line 
+option. 
+	This is achieved by supporting a new command line option e.g. 
+TestSrv.exe /install "/SDN:PJ's Second Test Service". This additional 
+flexibility is controlled by BOOL 
+	CNTService::m_bAllowDisplayNameChange which by default is
+	FALSE. </li>
+	<li>The description string which the service uses for 
+	installing can now be specified via a new /SD command line option. This is 
+	achieved by supporting a new command line option e.g. TestSrv.exe /install 
+	"/SD:Some description". This additional flexibility is 
+	controlled by BOOL CNTService::m_bAllowDescriptionChange which by default is 
+	FALSE.</li>
+	<li>The service name string which the service uses for 
+	installing can now be specified via a new /SN command line option. This is 
+	achieved by supporting a new command line option e.g. TestSrv.exe /install 
+	"/SN:PJSERVICE2".</li>
+	<li>Removed code which writes an event log entry when the 
+	service is being uninstalling. There is not much sense in logging an entry 
+	that you have uninstalled the service, when you are also uninstalling the 
+	event log source.</li>
+	<li>Removed the ANSI mc file. Instead now the mc file 
+	included in the zip file is the Unicode mc file as provided by Brodie 
+	Thiesfield (see the history list for v1.35).</li>
+	<li>Updated the documentation to use the same style as 
+	the web site.</li>
+	<li>When registering the service, the quoting of the path name to use for 
+	the service is now done in CNTService::ProcessShellCommand instead of 
+	CNTScmService::Create.</li>
+	<li>Optimized code in CNTServiceCommandLineInfo::CNTServiceCommandLineInfo.</li>
+	<li>Removed unnecessary CNTServiceCommandLineInfo destructor.</li>
+	<li>Removal of CNTService::GetEventLogSourceName method. Instead now you can 
+	call m_EventLogSource.SetSourceName() to customize this value.</li>
+	<li>Provision of CNTService::SetUseConsole and CNTService::GetUseConsole 
+	methods.</li>
+	<li>The default setting for CNTService::m_bUseConsole is now set depending 
+	on whether the standard _CONSOLE preprocessor define is declared</li>
+	<li>Removed the unnecessary critical section lock in the CNTService 
+	constructor</li>
+	<li>Provision of CNTService::SetControlsAccepted and 
+	CNTService::GetControlsAccepted methods.</li>
+	<li>Provision of a default CNTService constructor</li>
+	<li>Addition of a default constructor for CNTEventLogSource </li>
+	<li>Addition of CNTEventLogSource::SetServerName, 
+	CNTEventLogSource::GetServerName, CNTEventLogSource::SetSourceName and 
+	CNTEventLogSource::GetSourceName methods</li>
+	<li>Provision of CNTService::SetServiceName, 
+	CNTService::SetInstanceServiceName, CNTService::SetMasterServiceName, 
+	CNTService::GetInstanceServiceName, CNTService::GetMasterServiceName, 
+	CNTService::SetDisplayName, CNTService::SetMasterDisplayName, 
+CNTService::SetInstanceDisplayName, 
+	CNTService::GetMasterDisplayName, CNTService::GetInstanceDisplayName, 
+	CNTService::SetDescription, CNTService::SetMasterDescription, 
+	CNTService::SetInstanceDescription methods, 
+CNTService::GetMasterDescription 
+	and CNTService::GetInstanceDescription. Most of the work for this 
+release of the 
+	framework is to support a new concept of "instances" in CNTService. 
+Prior to 
+	this version of the CNTService framework, you could only ever install a
+ 
+	single copy of any one service on the one machine. Now with the 
+introduction 
+	of the /SDN, /SD and /SN command line options which are used during 
+install 
+	and uninstall you can register the service multiple times, using 
+different 
+	service names, display names and descriptions. The original values you 
+	construct your CNTService instance are called the master values and are
+ 
+	unmodified during the lifetime of all instances of your services. The 
+	"instance" values are modifiable (if you allow them to be so via 
+CNTService::m_bAllowNameChange, CNTService::m_bAllowDisplayNameChange 
+and 
+	CNTService::m_bAllowDescriptionChange) at runtime. When these values 
+are 
+	provided on the command line during registration, the command line 
+which the 
+	service is setup to use upon launch by the SCM is customized so that 
+these 
+	same command line options are passed to it. This allows the same 
+instance 
+	values to be available to the service when it is running as a service. 
+	Without this neat trick, there would be no easy way for the service to 
+	detect under which instance details it should run.</li>
+	<li>Addition of 2 new command line options namely "/App" or "/Application". These behave 
+	the same way as the existing "/Debug" command line option.</li>
+	<li>Addition of a DWORD* parameter to the 
+	CNTEventLogSource::GetStringArrayFromRegistry and 
+	CNTEventLogSource::SetStringArrayFromRegistry functions. This allow the 
+	details of the last error to be returned to client code.</li>
+	<li>Addition of generic versions of CNTService::WriteProfileString, 
+	CNTService::WriteProfileInt, CNTService::WriteProfileStringArray, 
+	CNTService::WriteProfileBinary, CNTService::GetProfileString, 
+	CNTService::GetProfileInt, CNTService::GetProfileStringArray and 
+	CNTService::GetProfileBinary. These implementations allow the service name 
+	to be specified as well as the Flushing setting which is hidden by the other 
+	implementations. The existing implementations of these functions now simply 
+	call these new implementations. Providing these implementations now allows 
+	client code to read and write the settings for any service (including other 
+	instances of the same service) without the need to create a new CNTService 
+	instance.</li>
+	<li>CNTServiceControlManager::EnumServices method now uses a void* parameter 
+	for its item data instead of a DWORD.</li>
+	<li>Addition of a CNTService::EnumerateInstances method which allows you to 
+	enumerate all the instances of a service which have been installed using the 
+	new master / instance additions to the framework in this version. This could 
+	prove useful where you are writing configuration type applets which 
+	configure the settings for all the instances of your installed service.</li>
+	<li>Addition of a new /U command line option which allows the user account 
+	which the service runs under to be configured.</li>
+	<li>Addition of a new /P command line option which allows the password which 
+	the service is to run with to be configured.</li>
+	<li>As a security precaution once the username and password strings have 
+	been used for installing, they are overwritten in memory.</li>
+</ul>
+
+<p><b>v1.57 (13 January 2006)</b></p>
+<ul>
+	<li>Addition of a new /AUTO command line option which allows you to specify 
+	that the service should be started automatically.</li>
+</ul>
+
+<p><b>v1.58 (27 April 2006)</b></p>
+<ul>
+	<li>Code now uses SecureZeroMemory when wiping out the username and password 
+	strings. This should further improve the security of these values when they 
+	are manipulated by the class framework.</li>
+</ul>
+
+<p><b>v1.59 (12 May 2006)</b></p>
+<ul>
+	<li>Minor update to ntservEventLogRecord.cpp module to remove now 
+	unnecessary include of AfxPriv.h. Thanks to Martin Richter for reporting 
+	this issue.</li>
+	<li>Also updated the usage instructions in this document to describe how you 
+	can use copy &amp; paste to speed up the job. Again thanks to Martin Richter for 
+	reporting this issue.</li>
+</ul>
+
+<p><b>v1.60 (18 May 2006)</b></p>
+<ul>
+	<li>Minor update to rename the local variable of type _NTSERV_SERVICCONTROLMANAGER_DATA 
+	which is used to hold function pointers. Thanks to Frederic Metrich for 
+	reporting this issue.</li>
+	<li>Minor update to rename the local variable of type _NTSERV_SCMSERVICE_DATA 
+	which is used to hold function pointers. Thanks to Frederic Metrich for 
+	reporting this issue.</li>
+</ul>
+
+<p><b>v1.61 (31 May 2006)</b></p>
+<ul>
+	<li>Updated the code to work correctly in VC 6 without the Platform SDK 
+	being installed. I personally have the Feb 2003 Platform SDK installed with 
+	VC 6 and this is how most of my code is primarily tested. It seems some of 
+	my recent updates to CNTService have broken compatibility with VC 6 on its 
+	own. Also renamed the define "NTSERV_DO_NEW_WINSVC_DEFINES" which is 
+	required when you are compiling the class framework on Visual C++ 6 without 
+	the Platform SDK to be "CNTSERVICE_MISSING_PLATFORMSDK". Please note that I 
+	would advise all developers to install the Platform SDK (February 2003 was 
+	the latest version which was compatible with VC 6), as I will probably drop 
+	support for VC 6 without the Platform SDK for CNTService in the future. It 
+	is becoming too much work to support the older Header files which were 
+	shipped with VC 6 and most of my other open source code is moving towards 
+	requiring the Platform SDK. Thanks to Matthias Miller for reporting this 
+	issue. The "NTSERV_EXCLUDE_VC6_WINSVC_DEFINES" define is now defunct and no 
+	longer used by the CNTService code.</li>
+</ul>
+
+<p><b>v1.62 (3 June 2006)</b></p>
+<ul>
+	<li>If CNTEventLogSource::Uninstall fails to remove the HKLM\System\CurrentControlSet\Services\EventLog\"Display 
+	Name" registry key, then it aborts before doing any other work. Thanks to 
+	Matthias Miller for reporting this issue.</li>
+	<li>Fixed a minor typo in CNTService::SetServiceToStatus. Thanks to Matthias 
+	Miller for reporting this issue.</li>
+</ul>
+
+<p><b>v1.63 (7 June 2006)</b></p>
+<ul>
+	<li>Removed three unreferrenced variables from 
+	CNTService::ProcessShellCommand. Thanks to Frederic Metrich for reporting 
+	this issue.</li>
+	<li>Minor update to the declaration of some functions in CNTService to using 
+	"WINAPI" in their function implementations. Thanks to Frederic Metrich for 
+	reporting this issue.</li>
+	<li>Updated the code in CNTService::Debug to exclude the "/debug", "-app", 
+	"/app", "-application" and "/application" command line options in addition 
+	to the "-debug" value. Again thanks to Frederic Metrich for reporting this 
+	issue.</li>
+	<li>Updated the sample service provided with the CNTService download to 
+	build as a console app instead of a Windows app. This allows you to check 
+	out the console handler support which CNTService includes.</li>
+</ul>
+
+<p><b>v1.64 (9 June 2006)</b></p>
+<ul>
+	<li>Made CNTService::Initialize non virtual. This change was made because it 
+	is called by the CNTService constructor and you cannot call virtual 
+	functions from a C++ class constructor (or destructor). For more info on 
+	this issue please see the online article at
+	<a href="http://www.artima.com/cppsource/nevercall.html">
+	http://www.artima.com/cppsource/nevercall.html</a> from the book "Effective 
+	C++" by Scott Meyers. Thanks to Frederic Metrich for spotting this issue. 
+	Because of this change you should examine your own code which uses 
+	CNTService::Initialize to make sure this change has no side effects on your 
+	code. </li>
+</ul>
+
+<p><b>v1.65 (13 June 2006)</b></p>
+<ul>
+	<li>Addition of a logname parameter to the CNTEventLogSource constructor to 
+	support user defined event logs instead of logging to the standard 
+	"Application" event log. Please note that the code added only enables the 
+	CNTService framework to use non "Application" event logs, but it does not 
+	contain code to create a custom event log. You will need to handle that in 
+	your application's install. Thanks to Jan Bartels for this addition.</li>
+	<li>Also optimized the construction of member variables in the 
+	CNTEventLogSource constructors</li>
+	<li>To allow customization in client projects, the resource id and message 
+	id values can now be customized through two new virtual functions, namely 
+	CNTService::MapResourceID and CNTService::MapMessageID. Thanks to Jan 
+	Bartels for this update.</li>
+	<li>CNTService::SetServiceToStatus now exposes the interval to wait as a 
+	parameter as well as the polling interval as a parameter. In addition the 
+	command line timeout interval is now passed to all calls to 
+	SetServiceToStatus in CNTService::ProcessShellCommand. The additional 
+	command line operations which are passed the timeout value include 
+	starting, stopping, pausing and continuing the service, in addition to 
+	uninstalling the service which when it was introduced in v1.27 was the only 
+	operation which got the timeout value.</li>
+	<li>Fixed a bug introduced in v1.64 where the sample service was updated to 
+	run as a console app. What I forgot to do when making this change was put in 
+	the call to AfxWinInit.</li>
+</ul>
+
+<p><b>v1.66 (24 June 2006)</b></p>
+<ul>
+	<li>Added a missing MapResourceID call in CNTService::Win32ErrorToString. 
+	</li>
+	<li>Updated the sample dsp and vcproj files to produce Unicode mc resources 
+	instead of ASCII.</li>
+	<li>Framework now accepts the command line /console to mean the same as 
+	/debug i.e. run the program as a normal (console) application without 
+	interacting with the Service Control Manager.</li>
+	<li>Updated code to compile cleanly using VC 2005.</li>
+	<li>Included info in ntservEventLogSource.cpp on how to find further info on 
+	the various registry values which are required to create user defined event 
+	logs.</li>
+</ul>
+
+<p><b>v1.67 (25 June 2006)</b></p>
+<ul>
+	<li>Combined the functionality of the _NTSERV_SERVICCONTROLMANAGER_DATA 
+	class into the main CNTServiceControlManager class.</li>
+	<li>Code now uses newer C++ style casts instead of C style casts.</li>
+	<li>Combined the functionality of the _NTSERV_SCMSERVICE_DATA class into the 
+	main CNTScmService class.</li>
+	<li>Made the item data parameter to CNTScmService::EnumDependents a void* 
+	instead of the current DWORD.</li>
+	<li>Optimized CEventLogRecord constructor</li>
+	<li>Combined the functionality of the _NTSERV_DATA class into the main 
+	CNTService class.</li>
+	<li>The class framework now requires the Platform SDK if compiled using VC 
+	6.</li>
+	<li>Fixed code which was not securely resetting the command line username 
+	and password strings after they were used</li>
+</ul>
+
+<p><b>v1.68 (2 July 2006)</b></p>
+<ul>
+	<li>Optimized and tidied up DllMain code in TestSrvMsg.cpp</li>
+	<li>All calls to m_EventLogSource.Report are now protected with "if (m_bRegisterEventLogSource)" 
+	check</li>
+	<li>Removed now unused Project configurations from the VC 6 workspace file.</li>
+</ul>
+
+<p><b>13 July 2006</b></p>
+<ul>
+	<li>Fixed a bug in the sample service's project files to remove references to the now 
+	defunct ntservDefines.h header file.</li>
+	<li>Fixed a bug in the VC 7.1+ project file to correct the linker entry 
+	point for the sample service included in the download. This fixes the 
+	"Warning: m_pMainWnd is NULL in CWinApp::Run - quitting application" trace 
+	message appearing when you attempt to run the sample service under the 
+	debugger.</li>
+</ul>
+
+<p><b>v1.69 (27 July 2006)</b></p>
+<ul>
+	<li>The static versions of the profile functions in CNTService have now been 
+	renamed to include the word "Service" in their method names. This fixes a 
+	compiler error when the code is used in VC 2005.</li>
+</ul>
+
+<p><b>v1.70 (1 August 2006)</b></p>
+<ul>
+	<li>Fix for two buffer size calculations using the new _tcscpy_s functions, 
+	one in CNTEventLogSource::SetStringArrayIntoRegistry and the other in 
+	CNTService::GetDependencies. Thanks to DmityShm on the codeproject forums 
+	for reporting this issue.</li>
+</ul>
+
+<p><b>v1.71 (21 September 2006)</b></p>
+<ul>
+	<li>Minor update to use %X instead of %x in various TRACE statements and 
+	CNTEventLogSource::Report calls.</li>
+</ul>
+
+<p><b>20 November 2006</b></p>
+<ul>
+	<li>Minor update to use console I/O in the sample app instead of a 
+	MessageBox in CMyService::ShowHelp.</li>
+	<li>Optimized the member variable construction in CMyService::CMyService.</li>
+</ul>
+
+<p><b>v1.72 (2 February 2007)</b></p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Optimized CNTEventLog constructor code.</li>
+	<li>Reworked CNTService::SetServiceToStatus to allow the last error value to 
+	be reported back to client code. Thanks to Matthias Miller for reporting 
+	this issue.</li>
+	<li>Optimized calls to Win32ErrorToString.</li>
+</ul>
+<p><b>v1.73 (22 March 2007)</b></p>
+<ul>
+	<li>CNTService::SetServiceToStatus and CNTService::Uninstall no longer 
+	specifies that it requires the SC_MANAGER_LOCK access right to connect to 
+	the SCM. This change helps to allow services to be started and stopped from 
+	Power User accounts. Thanks to Matthias Miller for reporting this 
+	issue.</li>
+	<li>CNTService::SetServiceToStatus no longer specifies the 
+	STANDARD_RIGHTS_REQUIRED access right when opening a service to control. 
+	This change helps to allow services to be started and stopped from Power 
+	User accounts. Thanks to Matthias Miller for reporting this issue.</li>
+</ul>
+<p><b>v1.74 (19 November 2007)</b></p>
+<ul>
+	<li>Minor update to display HRESULT's correctly.</li>
+</ul>
+<p><b>v1.75 (12 January 2008)</b></p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Provided a link to my blog in the html documentation with details on compiling 
+	with VC 6.</li>
+	<li>CNTService::Win32ErrorToString method has been reworked to now uses the 
+	FORMAT_MESSAGE_IGNORE_INSERTS flag. For more information please see Raymond 
+	Chen's blog at
+	<a href="http://blogs.msdn.com/oldnewthing/archive/2007/11/28/6564257.aspx">
+	http://blogs.msdn.com/oldnewthing/archive/2007/11/28/6564257.aspx</a>. 
+	Thanks to Alexey Kuznetsov for reporting this issue.</li>
+	<li>Updated the sample app to clean compile on VC 2008.</li>
+	<li>SecureEmptyString method is now defined as "FORCEINLINE".</li>
+</ul>
+<p><b>v1.76 (1 June 2008)</b></p>
+<ul>
+	<li>Code now compiles cleanly using Code Analysis (/analyze)</li>
+	<li>The code has now been updated to support VC 2005 or later only.</li>
+</ul>
+<p><b>v1.77 (1 August 2010)</b></p>
+<ul>
+	<li>Updated copyright details. </li>
+	<li>Updated the project settings to more modern default values. </li>
+	<li>Fixed a trailing "," in the definition of the "ELErrorLoggingDetail" enum
+	</li>
+	<li>Updated the sample app to compile cleanly on VC 2010 </li>
+	<li>Updated the test code in App.cpp to only use the necessary rights when connecting 
+	to the SCM or opening a specific service. This avoids Access denied errors on 
+	Windows Vista or later when UAC is enabled. Thanks to Jan Bartels for reporting 
+	this issue. </li>
+	<li>Added support for the following SERVICE_CONTROL_* defines: SERVICE_CONTROL_SESSIONCHANGE, 
+	SERVICE_CONTROL_PRESHUTDOWN, SERVICE_CONTROL_TIMECHANGE &amp; SERVICE_CONTROL_TRIGGEREVENT. 
+	These control values represent new functionality for services on Windows Vista 
+	and Windows 7 </li>
+	<li>Added a comment to a #include to tell users to recompile TestSrvMsg if they 
+	get a compile error for "ntserv_msg.h". Thanks to Paul Pignon for reporting 
+	this issue. </li>
+	<li>Updated code to compile correctly using _ATL_CSTRING_EXPLICIT_CONSTRUCTORS 
+	define </li>
+	<li>Fixed a minor issue in CNTService::Win32ErrorToString with the use of printf 
+	format identifiers </li>
+	<li>Reworked all the internal heap memory management code to use ATL::CHeapPtr
+	</li>
+	<li>Reworked all the internal registry management code to use ATL::CRegKey
+	</li>
+	<li>The CNTService::m_bRegisterEventLogSource value has been renamed to m_bEventLogSource. 
+	This is a breaking change and may require your service code to be updated if 
+	you reference this value from your code. </li>
+	<li>CNTService::Install has been refactored. Internally now this function calls 
+	InstallEventLogSource and InstallServiceConfiguration </li>
+	<li>Fixed a minor issue in CNTEventLogSource::Report with the use of printf 
+	format identifiers </li>
+	<li>CNTEventLogSource::Install method now supports CategoryCount, CategoryMessageFile 
+	and ParameterMessageFile settings for event sources</li>
+	<li>Included notes in documentation about using MSI in preference to "/install" 
+	/ "/uninstall"</li>
+	<li>Added support for NotifyServiceStatusChange</li>
+	<li>Added support for ControlServiceEx</li>
+	<li>Added support for SERVICE_CONFIG_DELAYED_AUTO_START_INFO </li>
+	<li>Added support for SERVICE_CONFIG_FAILURE_ACTIONS_FLAG </li>
+	<li>Added support for SERVICE_CONFIG_SERVICE_SID_INFO </li>
+	<li>Added support for SERVICE_CONFIG_REQUIRED_PRIVILEGES_INFO </li>
+	<li>Added support for SERVICE_CONFIG_PRESHUTDOWN_INFO </li>
+	<li>Added support for SERVICE_CONFIG_TRIGGER_INFO </li>
+	<li>Added support for SERVICE_CONFIG_PREFERRED_NODE </li>
+	<li>CEventLogRecord::m_TimeGenerated and CEventLogRecord::m_TimeWritten values 
+	are now simple DWORD values instead of CTime instances. </li>
+	<li>Added support for GetEventLogInformation </li>
+	<li>Carried out a thorough code review to ensure all functionality is correct 
+	and functional on the Windows 7 and later</li>
+</ul>
+<p><b>v1.78 (3 September 2010)</b></p>
+<ul>
+	<li>Fixed a bug in CNTService::GetServiceProfileString where it would 
+	incorrectly return FALSE.</li>
+	<li>Fixed a bug in CNTService::GetServiceProfileInt where it would 
+	incorrectly return FALSE.</li>
+</ul>
+<p><b>v1.79 (10 November 2012)</b></p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Updated sample service code to clean compile on VC 2012. </li>
+	<li>Reworked CNTScmService::WaitForServiceStatus method to avoid the need 
+	for calling GetTickCount.</li>
+	<li>Fixed a bug in CNTEventLogSource::GetStringArrayFromRegistry where it 
+	could not handle empty MULTI_SZ strings. Thanks to Rolf Schatten for 
+	reporting this bug.</li>
+	<li>CNTEventLogSource::Install now calls CRegKey::Create instead of CRegKey::Open 
+	when installing the HKLM\SYSTEM\CurrentControlSet\Services\EventLog\"LogName" 
+	registry key. This ensures that event log sources which are created with 
+	custom LogName's will be installed correctly. Thanks to Rolf Schatten for 
+	reporting this bug. </li>
+</ul>
+<p>&nbsp;</p>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8152404-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>

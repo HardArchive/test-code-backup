@@ -365,5 +365,5 @@ void CMyService::OnUserDefinedRequest(DWORD dwControl)
 
 void CMyService::ShowHelp()
 {
-	_tprintf(_T("A demo service which just beeps the speaker\nUsage: testsrv [ -install | -uninstall | -remove | -start | -pause | -continue | -stop | -help | -? ]\n"));
+	_tprintf(_T("A demo service which just beeps the speaker\nUsage: testsrv [ -install | -uninstall | -remove | -start | -pause | -continue | -stop | -help | -?  | -h ]\n"));
 }

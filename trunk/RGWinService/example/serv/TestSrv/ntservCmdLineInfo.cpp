@@ -90,7 +90,8 @@ void CNTServiceCommandLineInfo::ParseParam(LPCTSTR pszParam, BOOL bFlag, BOOL bL
              (_tcsicmp(pszParam, _T("application")) == 0) || (_tcsicmp(pszParam, _T("console")) == 0))
       m_nShellCommand = DebugService;
     else if ((_tcsicmp(pszParam, _T("help")) == 0) ||
-             (_tcsicmp(pszParam, _T("?")) == 0) )
+             (_tcsicmp(pszParam, _T("?")) == 0) ||
+			 (_tcsicmp(pszParam, _T("h")) == 0) )
       m_nShellCommand = ShowServiceHelp;
     else if (sParamUpper.Find(_T("T:")) == 0 && nParamLength > 2)
       m_dwTimeout = _ttoi(sParam.Right(nParamLength - 2));
