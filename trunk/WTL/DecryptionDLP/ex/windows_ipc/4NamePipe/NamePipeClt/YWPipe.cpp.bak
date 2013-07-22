@@ -1,0 +1,434 @@
+#include "StdAfx.h"
+#include ".\ywpipe.h"
+
+CYWPipe::CYWPipe(void)
+{
+	ErrorMessage="";
+	SerPipeName="";
+	CliPipeName="";
+	hSerPipe=NULL;
+	hCliPipe=NULL;
+	hSerWaitConEvent=NULL;
+	m_bSerThreadAlive=false;
+	m_bCliThreadAlive=false;
+}
+
+CYWPipe::~CYWPipe(void)
+{
+	Close();
+}
+
+BOOL CYWPipe::Close()
+{
+	m_bSerThreadAlive=false;
+	m_bCliThreadAlive=false;
+	SetEvent(hSerWaitConEvent);//若正在等待客户端连接，使之结束
+	Sleep(10);
+
+	if(hSerPipe!=NULL){CloseHandle(hSerPipe);hSerPipe=NULL;}
+	if(hCliPipe!=NULL){	CloseHandle(hCliPipe);hCliPipe=NULL;}
+	if(hSerWaitConEvent!=NULL) { CloseHandle(hSerWaitConEvent);hSerWaitConEvent=NULL;}
+
+	return 0;
+}
+
+bool CYWPipe::CreateSerPipe()
+{
+	HANDLE handle;
+	hSerWaitConEvent=CreateEvent(NULL,TRUE,FALSE,NULL);//初始化等待连接事件
+	if(hSerWaitConEvent==NULL) return false;
+
+	handle=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThrSer,(LPVOID)this,0,NULL);
+	if(handle==NULL) return false;
+	IsService=true;
+	return true;
+}
+bool CYWPipe::CreateCliPipe()
+{
+	HANDLE handle;
+	handle=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThrCli,(LPVOID)this,0,NULL);
+	if(handle==NULL) return false;
+	IsService=false;
+	return true;
+}
+DWORD CYWPipe::ThrSer(LPVOID pParam)
+{
+	CYWPipe *pMyPipe=(CYWPipe *)pParam;
+
+	pMyPipe->m_bSerThreadAlive=true;
+	pMyPipe->SerPipeName="\\\\.\\pipe\\YWNamedPipe1";
+	pMyPipe->hSerPipe=CreateNamedPipe(pMyPipe->SerPipeName.c_str (),
+		PIPE_ACCESS_DUPLEX | FILE_FLAG_OVERLAPPED,//允许重叠模式执行连接、读、写
+		0,1,BUFSIZE,BUFSIZE,1000,NULL);
+	if(INVALID_HANDLE_VALUE==pMyPipe->hSerPipe)
+	{
+		pMyPipe->ErrorMessage="Create Service Pipe Failed";
+		pMyPipe->hSerPipe=NULL;
+		return 0;
+	}
+	TRACE("Service pipe has been created!\n");
+	
+	OVERLAPPED ovlap;
+	ZeroMemory(&ovlap,sizeof(OVERLAPPED));
+	ovlap.hEvent=pMyPipe->hSerWaitConEvent;
+	if(!ConnectNamedPipe(pMyPipe->hSerPipe,&ovlap))//等待客户连接
+	{
+		if(ERROR_IO_PENDING!=GetLastError())
+		{
+			//MessageBox("等待客户端连接失败！");
+			pMyPipe->ErrorMessage="Wait Client Connect Failed";
+			CloseHandle(pMyPipe->hSerPipe);
+			pMyPipe->hSerPipe=NULL;
+			return 0;
+		}
+	}
+
+	DWORD timeout=100;
+	DWORD ret;
+	TRACE("Wait Client Connect......   ");
+	while(1)
+	{
+		ret=WaitForSingleObject(pMyPipe->hSerWaitConEvent,timeout);
+		if(ret==WAIT_FAILED)
+		{
+			pMyPipe->ErrorMessage="Wait Client Connect Failed";
+			TRACE("Wait Client Connect Failed!\n");
+			CloseHandle(pMyPipe->hSerPipe);
+			pMyPipe->hSerPipe=NULL;
+			return 0;
+		}
+		if(ret==WAIT_OBJECT_0)//客户端连接成功
+		{
+			if(!pMyPipe->m_bSerThreadAlive)//要求退出线程
+			{
+				CloseHandle(pMyPipe->hSerPipe);
+				pMyPipe->hSerPipe=NULL;
+				return 0;
+			}
+			TRACE("!Client Connect connect complete!\n");
+			break;
+		}
+		if(ret==WAIT_TIMEOUT)//等待连接超时
+		{
+			if(!pMyPipe->m_bSerThreadAlive)//要求退出线程
+			{
+				pMyPipe->ErrorMessage="Wait Client Connect Failed";
+				TRACE("Wait Client Connect Failed!\n");
+				CloseHandle(pMyPipe->hSerPipe);
+				pMyPipe->hSerPipe=NULL;
+				return 0;
+			}
+		}
+	}
+	
+	//成功连接进行下一步操作
+	TRACE("[%d]Service pipe Run!\n",pMyPipe->hSerPipe);
+	
+	char Buffer[BUFSIZE];
+
+	HANDLE hSerEventR;
+	hSerEventR=CreateEvent(NULL,FALSE,FALSE,NULL);
+
+	OVERLAPPED gOverlapped;
+	// set up overlapped structure fields
+	ZeroMemory(&gOverlapped,sizeof(OVERLAPPED));
+	gOverlapped.hEvent     = hSerEventR; 
+
+	timeout=1000;
+	ret=0;
+	
+	BOOL bResult=FALSE,fSuccess=FALSE;
+	DWORD nBytesRead=0;
+	while(1)
+	{
+		// attempt an asynchronous read operation
+		TRACE("Service::Wait Read......   ");
+		bResult = ReadFile(pMyPipe->hSerPipe, Buffer, BUFSIZE, &nBytesRead, &gOverlapped) ; 
+		while(1)
+		{
+			ret=WaitForSingleObject(hSerEventR,timeout);
+		
+			if(ret==WAIT_FAILED)
+			{
+				TRACE("Read Data Error!\n");
+				pMyPipe->m_bSerThreadAlive=false;
+				break;
+			}
+			if(ret==WAIT_OBJECT_0)
+			{
+				//OVERLAPPED
+				DWORD cbrett=0;
+				fSuccess = GetOverlappedResult( 
+					pMyPipe->hSerPipe,     // pipe handle 
+					&gOverlapped, // OVERLAPPED structure 
+					&cbrett,    // bytes transferred 
+					FALSE);    // does not wait 
+				if (!fSuccess) 
+				{
+					TRACE("********Client disconnect!********\n"); 
+					return 0;
+				}
+				if(cbrett==BUFSIZE)
+				{
+					TRACE("Read Data Success!\n");
+					TRACE("%s\n",Buffer);
+					ZeroMemory(Buffer,BUFSIZE);
+				}
+				else TRACE("Not data!\n");
+				break;
+			}
+			if(ret==WAIT_TIMEOUT)//等待连接超时
+			{
+				if(!pMyPipe->m_bSerThreadAlive)//要求退出线程
+				{
+					pMyPipe->ErrorMessage="Wait Client Connect Failed";
+					CloseHandle(pMyPipe->hSerPipe);
+					CloseHandle(hSerEventR);
+					pMyPipe->hSerPipe=NULL;
+					return 0;
+				}
+				static int bbb=0;
+				TRACE("Service:: [%d] Read data Time out!%d\n",pMyPipe->hSerPipe,bbb++);
+			}
+			if(!pMyPipe->m_bSerThreadAlive) {TRACE("end run!\n");break;}
+		}
+
+		if(!pMyPipe->m_bSerThreadAlive) {TRACE("end run!\n");break;}
+	}
+	TRACE("end run!\n");
+	return 0;
+}
+
+
+DWORD CYWPipe::ThrCli(LPVOID pParam)
+{
+	CYWPipe *pMyPipe=(CYWPipe *)pParam;
+
+	pMyPipe->m_bCliThreadAlive=true;
+	pMyPipe->CliPipeName="\\\\.\\pipe\\YWNamedPipe1";
+
+	while(1)
+	{
+		if(!WaitNamedPipe(pMyPipe->CliPipeName.c_str(),NMPWAIT_USE_DEFAULT_WAIT))
+		{
+			//MessageBox("当前没有可利用的命名管道实例！");
+			pMyPipe->ErrorMessage="Connect Service Failed";
+			if(!pMyPipe->m_bCliThreadAlive) return 0;
+		}
+		else break;
+		TRACE("Con't find Pipe! delay 1s \n");
+		if(!pMyPipe->m_bCliThreadAlive) return 0;//退出线程
+		Sleep(1000);//1秒后重连
+		if(!pMyPipe->m_bCliThreadAlive) return 0;//退出线程
+	}
+	TRACE("Existing Pipe!\n");
+	if(!pMyPipe->m_bCliThreadAlive) return 0;//退出线程
+	OVERLAPPED Olapped;
+	HANDLE hCliEvent;
+	hCliEvent=CreateEvent(NULL,TRUE,FALSE,NULL);
+	// set up overlapped structure fields
+	ZeroMemory(&Olapped,sizeof(OVERLAPPED));
+	Olapped.hEvent     = hCliEvent; 
+	while (1) 
+	{ 
+		pMyPipe->hCliPipe =CreateFile(pMyPipe->CliPipeName.c_str(),GENERIC_READ | GENERIC_WRITE,
+			0,NULL,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,NULL);
+
+		// Break if the pipe handle is valid. 
+
+		if (pMyPipe->hCliPipe != INVALID_HANDLE_VALUE) 
+			break; 
+		WaitForSingleObject(hCliEvent,0);
+		// Exit if an error other than ERROR_PIPE_BUSY occurs. 
+
+		if (GetLastError() != ERROR_PIPE_BUSY) 
+		{
+			TRACE("Client Could not open pipe"); 
+			pMyPipe->hCliPipe=NULL;
+			return 0;
+		}
+		if(!pMyPipe->m_bCliThreadAlive) return 0;//退出线程
+	}
+	CloseHandle(hCliEvent);
+	hCliEvent=NULL;
+	TRACE("Connect Service Successed!\n");
+	if(!pMyPipe->m_bCliThreadAlive) return 0;//退出线程
+
+	//成功连接进行下一步操作
+	char Buffer[BUFSIZE];
+
+	HANDLE hCliEventR;
+	hCliEventR=CreateEvent(NULL,FALSE,FALSE,NULL);
+
+	OVERLAPPED gOverlapped;
+	// set up overlapped structure fields
+	ZeroMemory(&gOverlapped,sizeof(OVERLAPPED));
+	gOverlapped.hEvent     = hCliEventR; 
+
+	DWORD timeout=1000;
+	DWORD ret=0;
+
+	BOOL bResult=FALSE,fSuccess=FALSE;
+	DWORD nBytesRead=0;
+	//while(1){;}
+	
+	while(1)
+	{
+		// attempt an asynchronous read operation
+		TRACE("Client::Wait Read......   ");
+		//pMyPipe->SendData (NULL,0);
+		bResult = ReadFile(pMyPipe->hCliPipe, Buffer, BUFSIZE, &nBytesRead, &gOverlapped) ; 
+		while(1)
+		{
+			//TRACE("bResult=%d,Wait Signal",bResult);
+			ret=WaitForSingleObject(hCliEventR,timeout);
+			
+			if(ret==WAIT_FAILED)
+			{
+				TRACE("Read Data Error!\n");
+				pMyPipe->m_bCliThreadAlive=false;
+				break;
+			}
+			if(ret==WAIT_OBJECT_0)
+			{
+				//OVERLAPPED
+				DWORD cbrett=0;
+				fSuccess = GetOverlappedResult( 
+					pMyPipe->hSerPipe,     // pipe handle 
+					&gOverlapped, // OVERLAPPED structure 
+					&cbrett,    // bytes transferred 
+					FALSE);    // does not wait 
+				if (!fSuccess) 
+				{
+					TRACE("********Service disconnect!********\n"); 
+					return 0;
+				}
+				if(cbrett==BUFSIZE)
+				{
+					static ccc=0;
+					TRACE("Read Data Success!\n");
+					TRACE("%s,%d\n",Buffer,ccc++);
+					ZeroMemory(Buffer,BUFSIZE);
+				}
+				else TRACE("Not data!\n");
+				break;
+			}
+			if(ret==WAIT_TIMEOUT)//等待连接超时
+			{
+				if(!pMyPipe->m_bCliThreadAlive)//要求退出线程
+				{
+					CloseHandle(pMyPipe->hCliPipe);
+					CloseHandle(hCliEventR);
+					pMyPipe->hCliPipe=NULL;
+					return 0;
+				}
+				static vvv=0;
+				TRACE("Client:: [%d] Read data Time out!%d\n",pMyPipe->hSerPipe,vvv++);
+			}
+			if(!pMyPipe->m_bCliThreadAlive) {TRACE("CliThr end run!\n");break;}
+		}
+
+		if(!pMyPipe->m_bCliThreadAlive) {TRACE("CliThr end run!\n");break;}
+	}
+	TRACE("CliThr end run!\n");
+
+	return 0;
+}
+
+BOOL CYWPipe::SendData(void * lpBuf, int nBufLen)
+{
+	DWORD dwWrite=0;
+	HANDLE hEvent;
+	hEvent=CreateEvent(NULL,FALSE,FALSE,NULL);
+	OVERLAPPED gOverlapped;
+	ZeroMemory(&gOverlapped,sizeof(OVERLAPPED));
+	gOverlapped.hEvent     = hEvent; 
+
+	BOOL  bResult=0,ret=0,fSuccess=FALSE;
+	DWORD timeout=1000;
+	if(IsService && hSerPipe!=NULL)//处理服务器端管道发送
+	{
+		TRACE("Service::Send data to Client Start!\n");
+		bResult=WriteFile(hSerPipe,lpBuf,nBufLen,&dwWrite,&gOverlapped);
+		if(bResult)
+		{
+			while(1)
+			{
+				ret=WaitForSingleObject(hEvent,timeout);
+
+				if(ret==WAIT_FAILED)
+				{
+					TRACE("Service::Send data error!\n");
+					break;
+				}
+				if(ret==WAIT_OBJECT_0)
+				{
+					DWORD cbrett=0;
+					fSuccess = GetOverlappedResult( 
+						hSerPipe,     // pipe handle 
+						&gOverlapped, // OVERLAPPED structure 
+						&cbrett,    // bytes transferred 
+						FALSE);    // does not wait 
+					if (!fSuccess) 
+					{
+						TRACE("Service::Client disconnect!\n"); 
+						return 0;
+					}
+					if(cbrett==nBufLen)
+					{
+						TRACE("Service::Send Data Success!\n");
+					}
+					else TRACE("Service::Send Data Failed!\n");
+					break;
+				}
+				if(ret==WAIT_TIMEOUT)//等待连接超时
+				{
+					TRACE("Service::[%d] Send data Time out!\n",hSerPipe);
+				}
+			}
+		}
+	}
+	if(!IsService && hCliPipe!=NULL)//客户端管道发送
+	{
+		TRACE("Client::Send data to Service Start!\n");
+		bResult=WriteFile(hCliPipe,lpBuf,nBufLen,&dwWrite,&gOverlapped);
+		if(bResult)
+		{
+			while(1)
+			{
+				ret=WaitForSingleObject(hEvent,timeout);
+
+				if(ret==WAIT_FAILED)
+				{
+					TRACE("CliSend::error!\n");
+					break;
+				}
+				if(ret==WAIT_OBJECT_0)
+				{
+					DWORD cbrett=0;
+					fSuccess = GetOverlappedResult( 
+						hCliPipe,     // pipe handle 
+						&gOverlapped, // OVERLAPPED structure 
+						&cbrett,    // bytes transferred 
+						FALSE);    // does not wait 
+					if (!fSuccess) 
+					{
+						TRACE("Client::Service disconnect!\n"); 
+						return 0;
+					}
+					if(cbrett==nBufLen)
+					{
+						TRACE("Client::Send Data Success!\n");
+					}
+					else TRACE("Client::Send Data Failed!\n");
+					break;
+				}
+				if(ret==WAIT_TIMEOUT)//等待连接超时
+				{
+					TRACE("Client::[%d] Send data Time out!\n",hCliPipe);
+				}
+			}
+		}
+	}
+	return TRUE;
+}

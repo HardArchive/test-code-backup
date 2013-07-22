@@ -1,0 +1,578 @@
+<html>
+
+<head>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<title>CNamedPipe v1.10</title>
+<link rel="stylesheet" type="text/css" href="./naughter.css">
+</head>
+
+<body>
+
+<h2 align="left"><img src="npipe.gif" width="40" height="40">CNamedPipe v1.10</h2>
+<p>Welcome to CNamedPipe, A freeware MFC class to encapsulate the Named Pipe <b>
+I</b>nter <b>P</b>rocess <b>C</b>ommunication mechanism as provided in Win32.</p>
+<p>&nbsp;</p>
+<table>
+	<tr>
+		<td><a href="#Copyright">Copyright</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Features">Features</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Usage">Usage</a></td>
+	</tr>
+	<tr>
+		<td><a href="#History">History</a></td>
+	</tr>
+	<tr>
+		<td><a href="#APIReference">API Reference</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Enhancements">Planned Enhancements</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Contact">Contacting the Author</a></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Copyright"></a>Copyright</h2>
+<ul>
+	<li>You are allowed to include the source code in any product (commercial, shareware, 
+	freeware or otherwise) when your product is released in binary form.</li>
+	<li>You are allowed to modify the source code in any way you want except you 
+	cannot modify the copyright details at the top of each module.</li>
+	<li>If you want to distribute source code with your application, then you are 
+	only allowed to distribute versions released by the author. This is to maintain 
+	a single distribution point for the source code.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Features"></a>Features </h2>
+<ul>
+	<li>Simple and clean C++ interface.</li>
+	<li>The one class supports both client and server side named pipes. Please bear 
+	in mind that only versions of Windows based on the NT kernel (i.e. NT, 2000, 
+	XP, 2003, Vista and 2008) and not Windows 9x support the server side to named 
+	pipes.</li>
+	<li>The classes are fully Unicode compliant and include Unicode built options 
+	in the workspace file.</li>
+	<li>All the rich functionality that can be accessed using the SDK calls is still 
+	available if you need it.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Usage"></a>Usage </h2>
+<ul>
+	<li>To use the class in your code simply include npipe.cpp in your project and 
+	#include npipe.h in which ever of your modules needs to make calls to the class.</li>
+	<li>Your code will need to include MFC either statically or dynamically.</li>
+	<li>To see the class in action, have a look at the void CTestpipeDlg::OnGettime() 
+	in testpipedlg.cpp to see how you create a client connection and main() in timesvr.cpp 
+	for server side connection.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="History"></a>History</h2>
+<p><strong>V1.0 (2 August 1998)</strong> </p>
+<ul>
+	<li>Initial public release.</li>
+</ul>
+<p><strong>V1.01 (21 February 2002)</strong> </p>
+<ul>
+	<li>Updated copyright message in source code and documentation</li>
+	<li>Fixed a bug in Close method where the handle value was not being reset to 
+	INVALID_HANDLE_VALUE.</li>
+	<li>Tidied up the TRACE code</li>
+	<li>Tidied up build configurations for sample apps</li>
+</ul>
+<p><strong>V1.02 (28 July 2002)</strong> </p>
+<ul>
+	<li>Updated sample server app to do Flush of the pipe before we disconnect the 
+	client. Thanks to &quot;Martin&quot; for spotting this problem.</li>
+</ul>
+<p><strong>V1.03 (9 November 2002)</strong> </p>
+<ul>
+	<li>ConnectClient now returns TRUE if the last error returns ERROR_PIPE_CONNECTED 
+	which indicates that a client is already connected before we make the call. 
+	Thanks to Metrich Frederic for reporting this.</li>
+</ul>
+<p><strong>V1.04 (5 March 2003)</strong> </p>
+<ul>
+	<li>Changed the class to use exceptions rather than SDK style return values.</li>
+</ul>
+<p><strong>V1.05 (12 November 2003)</strong> </p>
+<ul>
+	<li>Attach now includes an AutoClose parameter. This allows control over whether 
+	the pipe handle should be closed when the pipe object goes out of scope or CNamedPipe::Close 
+	is called. Thanks to Metrich Frederic for reporting this issue.</li>
+</ul>
+<p><strong>V1.06 (19 November 2003)</strong> </p>
+<ul>
+	<li>Fixed ASSERT&#39;s at the start of most CNamedPipe functions which verify that 
+	the pipe handle is valid. Thanks to Metrich Frederic for reporting this issue.</li>
+</ul>
+<p><strong>V1.07 (15 July 2006)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Renamed AfxThrowNamedPipeException to ThrowNamedPipeException and made it 
+	part of the CNamedPipe class.</li>
+	<li>CNamedPipe is no longer derived from CObject as it was not really required.</li>
+	<li>Optimized CNamedPipe constructor code.</li>
+	<li>Code now uses new C++ style casts rather than old style C casts where necessary.
+	</li>
+	<li>Optimized CNamedPipeException constructor code</li>
+	<li>Removed the unnecessary CNamedPipeException destructor</li>
+	<li>Removed some unreferenced variables in the sample app.</li>
+	<li>Updated the code to clean compile on VC 2005</li>
+	<li>Updated documentation to use the same style as the web site.</li>
+	<li>Addition of a CNAMEDPIPE_EXT_CLASS macro to allow the classes to be easily 
+	added to an extension dll.</li>
+</ul>
+<p><strong>V1.08 (29 November 2007)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Updated the sample apps to clean compile on VC 2005</li>
+	<li>Sample client app now defaults to &quot;.&quot; (meaning the current machine) as 
+	the server to connect to.</li>
+	<li>CNamedPipeException::GetErrorMessage now uses the 
+	FORMAT_MESSAGE_IGNORE_INSERTS flag. For more information please see Raymond 
+	Chen's blog at
+	<a href="http://blogs.msdn.com/oldnewthing/archive/2007/11/28/6564257.aspx">
+	http://blogs.msdn.com/oldnewthing/archive/2007/11/28/6564257.aspx</a>. 
+	Thanks to Alexey Kuznetsov for reporting this issue.</li>
+	<li>CAppSettingsException::GetErrorMessage now uses Checked::tcsncpy_s if 
+	compiled using VC 2005 or later.</li>
+	<li>Provision of new overloaded versions of the Peek, Write and Read 
+	methods which allows the dwBytesRead/dwBytesWritten parameters to be 
+	returned as an output parameter as opposed to the return value of the 
+	method. This helps resolve a situation where the underlying WriteFile / 
+	ReadFile call fails but some data has actually been written / read from the 
+	pipe. Thanks to Gintautas Kisonas for reporting this issue.</li>
+	<li>dwBytesRead, dwTotalBytesAvail and dwBytesLeftThisMessage parameters to 
+	Peek are now pointers rather than references. Thanks to Gintautas Kisonas 
+	for reporting this issue.</li>
+</ul>
+<p><strong>V1.09 (30 November 2007)</strong> </p>
+<ul>
+	<li>Updated the sample apps to clean compile on VC 2008</li>
+</ul>
+<p><strong>V1.10 (12 July 2008)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Updated sample app to clean compile on VC 2008</li>
+	<li>The code has now been updated to support VC 2005 or later only. </li>
+	<li>Code now compiles cleanly using Code Analysis (/analyze)</li>
+	<li>Removed the m_bAutoClose member variable and concept from class</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="APIReference"></a>API Reference</h2>
+<p>The API consists of the class CNamedPipe and its public member functions</p>
+<p><a href="#CNamedPipe">CNamedPipe<br>
+</a><a href="#~CNamedPipe">~CNamedPipe<br>
+</a><a href="#Create">Create</a><br>
+<a href="#Open">Open</a><br>
+<a href="#operator HANDLE">operator HANDLE</a><br>
+<a href="#Close">Close</a><br>
+<a href="#Attach">Attach</a><br>
+<a href="#Detach">Detach</a><br>
+<a href="#ConnectClient">ConnectClient</a><br>
+<a href="#DisconnectClient">DisconnectClient</a><br>
+<a href="#Flush">Flush</a><br>
+<a href="#Write">Write</a><br>
+<a href="#Read">Read</a><br>
+<a href="#Peek">Peek</a><br>
+<a href="#Transact">Transact</a><br>
+<a href="#IsOpen">IsOpen</a><br>
+<a href="#IsBlockingPipe">IsBlockingPipe</a><br>
+<a href="#IsClientPipe">IsClientPipe</a><br>
+<a href="#IsServerPipe">IsServerPipe</a><br>
+<a href="#IsMessagePipe">IsMessagePipe</a><br>
+<a href="#GetCurrentInstances">GetCurrentInstances</a><br>
+<a href="#GetMaxCollectionCount">GetMaxCollectionCount</a><br>
+<a href="#GetCollectionTimeout">GetCollectionTimeout</a><br>
+<a href="#GetOutboundBufferSize">GetOutboundBufferSize</a><br>
+<a href="#GetInboundBufferSize">GetInboundBufferSize</a><br>
+<a href="#GetClientUserName">GetClientUserName</a><br>
+<a href="#GetMaxInstances">GetMaxInstances</a><br>
+<a href="#SetMode">SetMode</a><br>
+<a href="#SetMaxCollectionCount">SetMaxCollectionCount</a><br>
+<a href="#SetCollectionTimeout">SetCollectionTimeout</a><br>
+<a href="#Call">Call</a><br>
+<a href="#ServerAvailable">ServerAvailable</a></p>
+<p>&nbsp;</p>
+<p><a name="CNamedPipe"></a><strong>CNamedPipe::CNamedPipe</strong></p>
+<p><strong>CNamedPipe();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard default constructor. Initialises the pipe handle to a default value.</p>
+<p><strong>See Also</strong></p>
+<p><a href="#~CNamedPipe">~CNamedPipe</a></p>
+<p>&nbsp;</p>
+<p><a name="~CNamedPipe"></a><strong>CNamedPipe::~CNamedPipe</strong></p>
+<p><strong>~CNamedPipe();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard default destructor. Will close any pipe handles which are still open</p>
+<p><strong>See Also</strong></p>
+<p><a href="#CNamedPipe">CNamedPipe</a></p>
+<p>&nbsp;</p>
+<p><a name="Create"></a><strong>CNamedPipe::Create</strong></p>
+<p><strong>void</strong><strong> Create(LPCTSTR </strong>lpszName<strong>, DWORD
+</strong>dwOpenMode<strong>, DWORD </strong>dwPipeMode<strong>, DWORD </strong>dwMaxInstances<strong>, 
+DWORD </strong>dwOutBufferSize<strong>, DWORD </strong>dwInBufferSize<strong>, DWORD
+</strong>dwDefaultTimeOut<strong>, LPSECURITY_ATTRIBUTES </strong>lpSecurityAttributes<strong> 
+= NULL);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>lpszName</em> Points to the null-terminated string that uniquely identifies 
+the pipe. It can include any character other than a backslash, including numbers 
+and special characters. The entire pipe name string can be up to 256 characters 
+long. Pipe names are not case sensitive. </p>
+<p><em>dwOpenMode</em> Specifies the pipe access mode, the overlapped mode, the 
+write-through mode, and the security access mode of the pipe handle. For more information 
+on this parameter see the MSDN documentation for CreateFile.</p>
+<p><em>dwPipeMode</em> Specifies the type, read, and wait modes of the pipe handle. 
+For more information on this parameter see the MSDN documentation for CreateFile.</p>
+<p><i>nMaxInstances</i> Specifies the maximum number of instances that can be created 
+for this pipe. The same number must be specified for all instances. Acceptable values 
+are in the range 1 through PIPE_UNLIMITED_INSTANCES. If this parameter is PIPE_UNLIMITED_INSTANCES, 
+the number of pipe instances that can be created is limited only by the availability 
+of system resources. </p>
+<p><i>nOutBufferSize</i> Specifies the number of bytes to reserve for the output 
+buffer. For a discussion on sizing named pipe buffers, see the following Remarks 
+section. </p>
+<p><i>nInBufferSize</i> Specifies the number of bytes to reserve for the input buffer. 
+For a discussion on sizing named pipe buffers, see the following Remarks section.
+</p>
+<p><i>nDefaultTimeOut</i> Specifies the default time-out value, in milliseconds, 
+if the <b>WaitNamedPipe</b> function specifies NMPWAIT_USE_DEFAULT_WAIT. Each instance 
+of a named pipe must specify the same value. </p>
+<p><i>lpSecurityAttributes</i> Pointer to a <b>SECURITY_ATTRIBUTES</b> structure 
+that specifies a security descriptor for the new named pipe and determines whether 
+child processes can inherit the returned handle. If <i>lpSecurityAttributes</i> 
+is NULL, the named pipe gets a default security descriptor and the handle cannot 
+be inherited. </p>
+<p><strong>Remarks</strong></p>
+<p>Creates a server side named pipe. Please note that currently Microsoft only provide 
+this functionality on Windows NT (workstation or Server) and not Windows 95 or Windows 
+98.</p>
+<p>&nbsp;</p>
+<p><a name="Open"></a><strong>CNamedPipe::Open</strong></p>
+<p><strong>void</strong><strong> Open(LPCTSTR </strong>lpszServerName<strong>, LPCTSTR
+</strong>lpszPipeName<strong>, DWORD </strong>dwDesiredAccess<strong>, DWORD
+</strong>dwShareMode<strong>, LPSECURITY_ATTRIBUTES </strong>lpSecurityAttributes<strong> 
+= NULL, DWORD </strong>dwFlagsAndAttributes<strong> = 0);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>lpszServerName</em><strong> </strong>Name of the machine where the server 
+side of the named pipe resides. It can be &quot;.&quot; to represent this machine.</p>
+<p><em>lpszPipeName</em> Name of the pipe to connect to</p>
+<p><em>dwDesiredAccess</em> Specifies the type of access to the pipe. An application 
+can obtain read access, write access, read-write access, or device query access. 
+For more information on this parameter see the MSDN documentation for CreateFile.</p>
+<p><i>dwShareMode</i> Set of bit flags that specifies how the object can be shared. 
+If <i>dwShareMode</i> is 0, the object cannot be shared. Subsequent open operations 
+on the object will fail, until the handle is closed. For more information on this 
+parameter see the MSDN documentation for CreateFile.</p>
+<p><i>lpSecurityAttributes</i> Pointer to a <b>SECURITY_ATTRIBUTES</b> structure 
+that determines whether the returned handle can be inherited by child processes. 
+If <i>lpSecurityAttributes</i> is NULL, the handle cannot be inherited. </p>
+<p><em>dwFlagsAndAttributes</em> Specifies the file attributes and flags for the 
+pipe. For more information on this parameter see the MSDN documentation for CreateFile.</p>
+<p><strong>Remarks</strong></p>
+<p>Opens a client side connection to a named pipe. Unlike the server side creation 
+of a named pipe, this function does not have any Win32 OS considerations.</p>
+<p>&nbsp;</p>
+<p><a name="operator HANDLE"></a><strong>CNamedPipe::operator HANDLE</strong></p>
+<p><strong>HANDLE operator HANDLE() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Returns the underlying HANDLE which this instance encapsulates or INVALID_HANDLE_VALUE 
+if this instance is not open.</p>
+<p>&nbsp;</p>
+<p><a name="Close"></a><strong>CNamedPipe::Close</strong></p>
+<p><strong>void Close();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Closes the pipe</p>
+<p>&nbsp;</p>
+<p><a name="Attach"></a><strong>CNamedPipe::Attach</strong></p>
+<p><strong>void Attach(HANDLE </strong>hPipe<strong>, BOOL bAutoClose = TRUE);</strong></p>
+<p><strong>Parameters</strong></p>
+<p>hPipe SDK handle of an existing pipe to attach to.</p>
+<p>bAutoClose TRUE if the pipe handle should be closed when the pipe object goes 
+out of scope or CNamedPipe::Close is called.</p>
+<p>&nbsp;</p>
+<p><a name="Detach"></a><strong>CNamedPipe::Detach</strong></p>
+<p><strong>HANDLE Detach();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The handle of the pipe which this instance was encapsulating.</p>
+<p><strong>Remarks</strong></p>
+<p>Detaches the C++ instance from the SDK pipe handle.</p>
+<p>&nbsp;</p>
+<p><a name="ConnectClient"></a><strong>CNamedPipe::ConnectClient</strong></p>
+<p><strong>void ConnectClient(LPOVERLAPPED </strong>lpOverlapped<strong> = NULL);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>lpOverlapped</em> pointer to an OVERLAPPED structure to use if this pipe 
+was opened in a overlapped mode.</p>
+<p><strong>Remarks</strong></p>
+<p>Call by a server side pipe to connect a client connection. In the sockets world 
+this corresponds very closely to an accept call.</p>
+<p>&nbsp;</p>
+<p><a name="DisconnectClient"></a><strong>CNamedPipe::DisconnectClient</strong></p>
+<p><strong>void DisconnectClient();</strong></p>
+<p><strong>Parameters</strong></p>
+<p>This is the corollary function to ConnectClient and for each call to ConnectClient 
+in your server side application there should be a corresponding call to DisconnectClient.</p>
+<p>&nbsp;</p>
+<p><a name="Flush"></a><strong>CNamedPipe::Flush</strong></p>
+<p><strong>void Flush();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Flushes any data which may be buffered in the pipe.</p>
+<p>&nbsp;</p>
+<p><a name="Write"></a><strong>CNamedPipe::Write</strong></p>
+<p><strong>DWORD</strong><strong> Write(LPCVOID </strong>lpBuffer<strong>, DWORD
+</strong>dwNumberOfBytesToWrite<strong>, LPOVERLAPPED </strong>lpOverlapped<strong> 
+= NULL);&nbsp;&nbsp;&nbsp; <br>
+void Write(LPCVOID </strong>lpBuffer<strong>, DWORD </strong>dwNumberOfBytesToWrite<strong>, 
+LPOVERLAPPED </strong>lpOverlapped<strong>, LPOVERLAPPED_COMPLETION_ROUTINE
+</strong>lpCompletionRoutine);<br>
+<b>void Write(LPCVOID</b> lpBuffer, <b>DWORD</b> dwNumberOfBytesToWrite, <b>DWORD&amp;</b> dwNumberOfBytesWritten, 
+<b>LPOVERLAPPED</b> lpOverlapped<b> = NULL);</b></p>
+<p><strong>Return Value</strong></p>
+<p>Number of bytes written. </p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to the buffer containing the data to be written to the 
+pipe.</p>
+<p><i>dwNumberOfBytesToWrite</i> Specifies the number of bytes to write to the pipe.</p>
+<p><i>lpOverlapped</i> Points to an <b>OVERLAPPED</b> structure. This structure 
+is required if the pipe was opened with FILE_FLAG_OVERLAPPED. </p>
+<p>lpCompletionRoutine Points to a completion routine to be called when the write 
+operation has been completed and the calling thread is in an alertable wait state.
+</p>
+<p><strong>Remarks</strong></p>
+<p>Performs a write to the named pipe. The first version can be used in a synchronous 
+or asynchronous manner where as the second version can&nbsp; be used in an asynchronous 
+manner only.</p>
+<p>&nbsp;</p>
+<p><a name="Read"></a><strong>CNamedPipe::Read</strong></p>
+<p><strong>DWORD Read(LPVOID </strong>lpBuffer<strong>, DWORD </strong>dwNumberOfBytesToRead<strong>, 
+LPOVERLAPPED </strong>lpOverlapped <strong>= NULL);<br>
+void Read(LPVOID </strong>lpBuffer<strong>, DWORD </strong>dwNumberOfBytesToRead<strong>, 
+LPOVERLAPPED </strong>lpOverlapped<strong>, LPOVERLAPPED_COMPLETION_ROUTINE
+</strong>lpCompletionRoutine);<br>
+<b>void Read(LPVOID</b> lpBuffer, <b>DWORD</b> dwNumberOfBytesToRead, <b>DWORD&amp;</b> dwNumberOfBytesRead, 
+<b>LPOVERLAPPED</b> lpOverlapped <b>= NULL);</b></p>
+<p><strong>Return Value</strong></p>
+<p>Number of bytes read. </p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to the buffer to receive the data to be read.</p>
+<p><i>dwNumberOfBytesToWrite</i> Specifies the number of bytes to read from the 
+pipe. </p>
+<p><i>lpOverlapped</i> Points to an <b>OVERLAPPED</b> structure. This structure 
+is required if the pipe was opened with FILE_FLAG_OVERLAPPED. </p>
+<p>lpCompletionRoutine Points to a completion routine to be called when the read 
+operation has been completed and the calling thread is in an alertable wait state.
+</p>
+<p><strong>Remarks</strong></p>
+<p>Performs a read from the named pipe. The first version can be used in a synchronous 
+or asynchronous manner where as the second version can be used in an asynchronous 
+manner only.</p>
+<p>&nbsp;</p>
+<p><a name="Peek"></a><strong>CNamedPipe::Peek</strong></p>
+<p><strong>DWORD Peek(LPVOID </strong>lpBuffer<strong>, DWORD </strong>dwBufferSize<strong>, 
+DWORD* </strong>lpdwTotalBytesAvail<strong>, DWORD* </strong>lpdwBytesLeftThisMessage<b>);</b><br>
+<b>void Peek(LPVOID</b> lpBuffer, <b>DWORD</b> dwBufferSize, <b>DWORD*</b> lpdwBytesRead, 
+<b>DWORD*</b> lpdwTotalBytesAvail, <b>DWORD*</b> lpdwBytesLeftThisMessage<b>)</b></p>
+<p><strong>Return Value</strong></p>
+<p>Number of bytes retrieved.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to a buffer that receives data read from the pipe. This 
+parameter can be NULL if no data is to be read. </p>
+<p><i>lpdwBufferSize</i> Specifies the size, in bytes, of the buffer specified by 
+the <i>lpBuffer </i>parameter. This parameter is ignored if <i>lpBuffer</i> is NULL.
+</p>
+<p><i>lpdwTotalBytesAvail</i> Pointer to a 32-bit variable that receives the total number of bytes 
+available to be read from the pipe.</p>
+<p><i>lpdwBytesLeftThisMessage</i> Pointer to a 32-bit variable that receives the number of bytes 
+remaining in this message. This parameter will be zero for byte-type named pipes</p>
+<p><strong>Remarks</strong></p>
+<p>Copies data from the pipe into a buffer without removing it from the pipe. It 
+also returns information about data in the pipe.</p>
+<p>&nbsp;</p>
+<p><a name="Transact"></a><strong>CNamedPipe::Transact</strong></p>
+<p><strong>void Transact(LPVOID </strong>lpInBuffer<strong>, DWORD </strong>dwInBufferSize<strong>, 
+LPVOID </strong>lpOutBuffer<strong>, DWORD </strong>dwOutBufferSize<strong>, DWORD&amp;
+</strong>dwBytesRead<strong>, LPOVERLAPPED </strong>lpOverlapped<strong> = NULL);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><i>lpInBuffer</i> Points to the buffer containing the data written to the pipe.
+</p>
+<p><i>dwInBufferSize</i> Specifies the size, in bytes, of the write buffer. </p>
+<p><i>lpOutBuffer</i> Points to the buffer that receives the data read from the 
+pipe. </p>
+<p><i>dwOutBufferSize</i> Specifies the size, in bytes, of the read buffer. </p>
+<p><i>dwBytesRead</i> variable that receives the number of bytes read from the pipe.
+</p>
+<p><i>lpOverlapped</i> Points to an <b>OVERLAPPED</b> structure. This structure 
+is required if the pipe was opened with FILE_FLAG_OVERLAPPED. </p>
+<p><strong>Remarks</strong></p>
+<p>Combines into a single network operation the functions that write a message to 
+and read a message from the specified named pipe. </p>
+<p>&nbsp;</p>
+<p><a name="IsOpen"></a><strong>CNamedPipe::IsOpen</strong></p>
+<p><strong>BOOL IsOpen() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the pipe is open otherwise FALSE.</p>
+<p>&nbsp;</p>
+<p><a name="IsBlockingPipe"></a><strong>CNamedPipe::IsBlockingPipe</strong></p>
+<p><strong>BOOL IsBlockingPipe() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Will be non zero if the pipe is set up in blocking mode otherwise FALSE.</p>
+<p><strong>Remarks</strong></p>
+<p>Determines whether the pipe has been setup from blocking mode.</p>
+<p>&nbsp;</p>
+<p><a name="IsClientPipe"></a><strong>CNamedPipe::IsClientPipe</strong></p>
+<p><strong>BOOL IsClientPipe() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Will be non zero if the pipe is a client connection otherwise FALSE.</p>
+<p><strong>Remarks</strong></p>
+<p>Determines whether the pipe is a client connection.</p>
+<p>&nbsp;</p>
+<p><a name="IsServerPipe"></a><strong>CNamedPipe::IsServerPipe</strong></p>
+<p><strong>BOOL IsServerPipe() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Will be non zero if the pipe is a server side pipe otherwise FALSE.</p>
+<p><strong>Remarks</strong></p>
+<p>Determines whether the pipe is a server side pipe.</p>
+<p>&nbsp;</p>
+<p><a name="IsMessagePipe"></a><strong>CNamedPipe::IsMessagePipe</strong></p>
+<p><strong>BOOL IsMessagePipe() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Will be non zero if the pipe is set up for message mode otherwise FALSE indicating 
+byte mode.</p>
+<p><strong>Remarks</strong></p>
+<p>Determines whether the pipe has been setup from message or byte mode.</p>
+<p>&nbsp;</p>
+<p><a name="GetCurrentInstances"></a><strong>CNamedPipe::GetCurrentInstances</strong></p>
+<p><strong>DWORD GetCurrentInstances() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The number of current pipe instances.</p>
+<p>&nbsp;</p>
+<p><a name="GetMaxCollectionCount"></a><strong>CNamedPipe::GetMaxCollectionCount</strong></p>
+<p><strong>DWORD GetMaxCollectionCount() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The maximum number of bytes to be collected on the client&#8217;s computer before transmission 
+to the server. </p>
+<p>&nbsp;</p>
+<p><a name="GetCollectionTimeout"></a><strong>CNamedPipe::GetCollectionTimeout</strong></p>
+<p><strong>DWORD GetCollectionTimeout() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The maximum time, in milliseconds, that can pass before a remote named pipe transfers 
+information over the network</p>
+<p>&nbsp;</p>
+<p><a name="GetOutboundBufferSize"></a><strong>CNamedPipe::GetOutboundBufferSize</strong></p>
+<p><strong>DWORD GetOutboundBufferSize() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The size, in bytes, of the buffer for outgoing data. </p>
+<p>&nbsp;</p>
+<p><a name="GetInboundBufferSize"></a><strong>CNamedPipe::GetInboundBufferSize</strong></p>
+<p><strong>DWORD GetInboundBufferSize() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The size, in bytes, of the buffer for incoming data.</p>
+<p>&nbsp;</p>
+<p><a name="GetClientUserName"></a><strong>CNamedPipe::GetClientUserName</strong></p>
+<p><strong>CString GetClientUserName() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The string containing the user name string of the client application</p>
+<p>&nbsp;</p>
+<p><a name="GetMaxInstances"></a><strong>CNamedPipe::GetMaxInstances</strong></p>
+<p><strong>DWORD GetMaxInstances() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The maximum number of pipe instances that can be created.</p>
+<p>&nbsp;</p>
+<p><a name="SetMode"></a><strong>CNamedPipe::SetMode</strong></p>
+<p><strong>void SetMode(BOOL </strong>bByteMode<strong>, BOOL </strong>bBlockingMode<strong>) 
+const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the function succeeds otherwise FALSE. To get extended error information 
+use GetLastError.</p>
+<p><strong>Parameters</strong></p>
+<p>bByteMode TRUE to set the pipe into byte mode, FALSE will set the pipe into message 
+mode</p>
+<p>bBlockingMode TRUE will cause all calls on the pipe which may take a long time 
+to block, FALSE will make the pipe calls behave asynchronously.</p>
+<p>&nbsp;</p>
+<p><a name="SetMaxCollectionCount"></a><strong>CNamedPipe::SetMaxCollectionCount</strong></p>
+<p><strong>void</strong><strong> SetMaxCollectionCount(DWORD </strong>dwCollectionCount<strong>) 
+const;</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>dwCollectionCount</em> The maximum number of bytes to be collected on the 
+client&#8217;s computer before transmission to the server. </p>
+<p><strong>Remarks</strong></p>
+<p>Changes the sending characteristics of the pipe.</p>
+<p>&nbsp;</p>
+<p><a name="SetCollectionTimeout"></a><strong>CNamedPipe::SetCollectionTimeout</strong></p>
+<p><strong>void SetCollectionTimeout(DWORD </strong>dwDataTimeout<strong>) const;</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>dwDataTimeout</em> The maximum time, in milliseconds, that can pass before 
+a remote named pipe transfers information over the network. </p>
+<p><strong>Remarks</strong></p>
+<p>Changes the sending characteristics of the pipe.</p>
+<p>&nbsp;</p>
+<p><a name="Call"></a><strong>CNamedPipe::Call</strong></p>
+<p><strong>static DWORD Call(LPCTSTR </strong>lpszServerName<strong>, LPCTSTR
+</strong>lpszPipeName<strong>, LPVOID </strong>lpInBuffer<strong>, DWORD
+</strong>dwInBufferSize<strong>, LPVOID </strong>lpOutBuffer<strong>, <br>
+DWORD </strong>dwOutBufferSize<strong>, DWORD </strong>dwTimeOut<strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>the number of bytes read from the pipe. </p>
+<p><strong>Parameters</strong></p>
+<p><em>lpszServerName</em><strong> </strong>Name of the machine where the server 
+side of the named pipe resides. It can be &quot;.&quot; to represent this machine.</p>
+<p><em>lpszPipeName</em> Name of the pipe to connect to.</p>
+<p><i>lpInBuffer</i> Points to the buffer containing the data written to the pipe.
+</p>
+<p><i>dwInBufferSize</i> Specifies the size, in bytes, of the write buffer. </p>
+<p><i>lpOutBuffer</i> Points to the buffer that receives the data read from the 
+pipe. </p>
+<p><i>dwOutBufferSize</i> Specifies the size, in bytes, of the read buffer. </p>
+<p><em>dwTimeOut</em> Specifies the default time-out value, in milliseconds.</p>
+<p><strong>Remarks</strong></p>
+<p>Calling this function which underneath the bonnet calls CallNamedPipe is equivalent 
+to calling the <b>CreateFile</b> (or <b>WaitNamedPipe</b>, if <b>CreateFile</b> 
+cannot open the pipe immediately), <b>TransactNamedPipe</b>, and <b>CloseHandle
+</b>functions</p>
+<p>&nbsp;</p>
+<p><a name="ServerAvailable"></a><strong>CNamedPipe::ServerAvailable</strong></p>
+<p><strong>static void ServerAvailable(LPCTSTR </strong>lpszServerName<strong>, 
+LPCTSTR </strong>lpszPipeName<strong>, DWORD </strong>dwTimeOut<strong>);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>lpszServerName</em><strong> </strong>Name of the machine where the server 
+side of the named pipe resides. It can be &quot;.&quot; to represent this machine.</p>
+<p><em>lpszPipeName</em> Name of the pipe to connect to.</p>
+<p><em>dwTimeout</em> Specifies the default time-out value, in milliseconds.</p>
+<p><strong>Remarks</strong></p>
+<p>Waits until either a time-out interval elapses or an instance of the specified 
+named pipe is available to be connected to </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Enhancements"></a>Planned Enhancements</h2>
+<ul>
+	<li>If you have any other suggested improvements, please let me know so that 
+	I can incorporate them into the next release.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Contact"></a>Contacting the Author</h2>
+<p>PJ Naughter<br>
+Email: <a href="mailto:pjna@naughter.com">pjna@naughter.com</a><br>
+Web: <a href="http://www.naughter.com">http://www.naughter.com</a><br>
+12 July 2008</p>
+
+</body>
+
+</html>
