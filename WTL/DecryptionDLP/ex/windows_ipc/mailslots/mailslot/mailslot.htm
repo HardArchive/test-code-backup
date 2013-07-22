@@ -1,0 +1,412 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>CServerMailslot &amp; CClientMailslot v1.15</title>
+<link rel="stylesheet" type="text/css" href="./naughter.css">
+</head>
+
+<body>
+
+<h2>CServerMailslot &amp; CClientMailslot v1.15</h2>
+<p>These 2 freeware MFC classes provides a clean C++ interface to the little known but quite 
+powerful Win32 IPC mechanism called mailslots. They are very similar to the more 
+common &quot;Named Pipe&quot; IPC mechanism. Unlike named pipes, mailslots use datagrams 
+and do not offer any form of integrated security like Named Pipes do. 
+A datagram is a small packet of information that the network sends along the wire. 
+Like a radio or television broadcast, a datagram offers no confirmation of receipt; 
+there is no way to guarantee that a datagram has been received.</p>
+<p>Mailslots can broadcast messages within a domain. If several processes in a domain 
+each create a mailslot using the same name, every message that is addressed to that 
+mailslot and sent to the domain is received by the participating processes. Because 
+one process can control both a server and client mailslot handle, applications can easily implement 
+a simple message-passing facility within a domain.</p>
+<p>Another advantage that mailslots have over named pipes is that the server mailslot
+<em>(the mailslot which can read) </em>can be created on Windows 9x. This is unlike 
+named pipes which can only be created server side on Windows NT, 2000, XP, 2003, Vista 
+&amp; 2008.</p>
+<p>The sample application contains a demonstration program called WinNotify. People 
+who have used the MS WinPopup utility will notice the <em>
+&quot;Striking similarity&quot;</em> with it :)</p>
+<p>&nbsp;</p>
+<table>
+	<tr>
+		<td><a href="#Features">Features</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Usage">Usage</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Copyright">Copyright</a></td>
+	</tr>
+	<tr>
+		<td><a href="#History">History</a></td>
+	</tr>
+	<tr>
+		<td><a href="#APIReference">API Reference</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Contact">Contacting the Author</a></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Features"></a>Features</h2>
+<ul>
+	<li>Simple and clean C++ interface.</li>
+	<li>The classes are fully Unicode compliant and include Unicode built options 
+	in the workspace file.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Usage"></a>Usage </h2>
+<ul>
+	<li>To use the class in your code simply include Mailslot.cpp in your project 
+	and #include Mailslot.h in which ever of your modules needs to make calls to 
+	the class.</li>
+	<li>Your code will need to include MFC either statically or dynamically.</li>
+	<li>To see the class in action, have a look at the module &quot;WinNotifyDoc.cpp/h&quot;.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><b><a name="Copyright"></a></b>Copyright</h2>
+<ul>
+	<li>You are allowed to include the source code in any product (commercial, shareware, 
+	freeware or otherwise) when your product is released in binary form.</li>
+	<li>You are allowed to modify the source code in any way you want except you 
+	cannot modify the copyright details at the top of each module.</li>
+	<li>If you want to distribute source code with your application, then you are 
+	only allowed to distribute versions released by the author. This is to maintain 
+	a single distribution point for the source code.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="History"></a>History</h2>
+<p><strong>V1.1 (26 July 1998)</strong> </p>
+<ul>
+	<li>Provision of Unicode build configurations</li>
+	<li>Updated make file to VC 5 format</li>
+	<li>Fixed a bug in CClientMailslot destructor</li>
+	<li>CServerMailslot::Close() &amp; CClientMailslot::Close() now work correctly when 
+	the mailslot is already closed </li>
+	<li>Fixed a level 4 warning in the CWinNotifyDoc in the demo program.</li>
+	<li>Complete documentation for the classes is now provided in the form of this 
+	file</li>
+	<li>Changed 2 functions which used a pointer parameter to now use a C++ reference 
+	instead.</li>
+</ul>
+<p><strong>V1.11 (26 July 2003)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Fixed issue in CClientMailslot::Open which was causing it to only allow 
+	one instance of the mailslot to be opened. Thanks to GdP Software for reporting 
+	this problem.</li>
+</ul>
+<p><strong>V1.12 (22 December 2006)</strong> </p>
+<ul>
+	<li>Updated copyright details</li>
+	<li>Updated the documentation to use the same style as the web site</li>
+	<li>Optimized CServerMailslot constructor code</li>
+	<li>Addition of a CMAILSLOT_EXT_CLASS preprocessor macro to allow the 
+	classes to be more easily added to an extension dll</li>
+	<li>Reviewed all TRACE statements for correctness</li>
+	<li>Optimized CClientMailslot constructor code</li>
+	<li>Updated the code to clean compile on VC 2005</li>
+	<li>Code now uses newer C++ style casts instead of C style casts.</li>
+	<li>Changed the default size of the FormView window in the sample ap to 
+	avoid scroll bars using default fonts.</li>
+</ul>
+<p><strong>V1.13 (23 December 2006)</strong> </p>
+<ul>
+	<li>Code now uses CString instead of raw TCHAR buffers in various functions</li>
+	<li>Classes now do not derive from CObject as it was not really required</li>
+</ul>
+<p><strong>V1.14 (8 September 2007)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Minor code tidy up.</li>
+</ul>
+<p><strong>V1.15 (7 September 2008)</strong> </p>
+<ul>
+	<li>Updated copyright details.</li>
+	<li>Code now compiles cleanly using Code Analysis (/analyze)</li>
+	<li>Updated code to compile correctly using _ATL_CSTRING_EXPLICIT_CONSTRUCTORS 
+	define</li>
+	<li>Updated sample app to clean compile on VC 2008</li>
+	<li>The code has now been updated to support VC 2005 or later only. </li>
+	<li>Removed VC 6 style AppWizard comments from the code.</li>
+	<li>Updated the sample app to improve on the error reporting.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="APIReference"></a>API Reference</h2>
+<p>The API consists of the 2 classes CServerMailslot and&nbsp;&nbsp; CClientMailslot 
+and their public members</p>
+<p>&nbsp;</p>
+<p><strong>Server Side</strong></p>
+<p><b><a href="#CServerMailslot">CServerMailslot::CServerMailslot</a><br>
+<a href="#~CServerMailSlot">CServerMailslot::~CServerMailslot</a><br>
+<a href="#serverOpen">CServerMailslot::Open</a><br>
+<a href="#serverClose">CServerMailslot::Close</a><br>
+<a href="#serverRead">CServerMailslot::Read</a><br>
+<a href="#MessageWaiting">CServerMailslot::MessageWaiting</a><br>
+<a href="#MessageCount">CServerMailslot::MessageCount</a><br>
+<a href="#SizeOfWaitingMessage">CServerMailslot::SizeOfWaitingMessage</a><br>
+<a href="#MaximumMessageSize">CServerMailslot::MaximumMessageSize</a><br>
+<a href="#SetReadTimeout">CServerMailslot::SetReadTimeout</a><br>
+<a href="#GetCreationTime">CServerMailslot::GetCreationTime</a><br>
+<a href="#GetLastAccessTime">CServerMailslot::GetLastAccessTime</a><br>
+<a href="#GetLastWriteTime">CServerMailslot::GetLastWriteTime</a><br>
+<a href="#serverIsOpen">CServerMailslot::IsOpen</a><br>
+<a href="#serverHandle">CServerMailslot::operator Handle</a></b></p>
+<p>&nbsp;</p>
+<p><strong>Client Side</strong></p>
+<p><b><a href="#CClientMailslot">CClientMailslot::CClientMailslot</a><br>
+<a href="#~CClientMailslot">CClientMailslot::~CClientMailslot</a><br>
+<a href="#clientOpen">CClientMailslot::Open</a><br>
+<a href="#clientClose">CClientMailslot::Close</a><br>
+<a href="#clientWrite">CClientMailslot::Write</a><br>
+<a href="#clientIsOpen">CClientMailslot::IsOpen</a><br>
+<a href="#clientHANDLE">CClientMailslot::operator Handle</a></b></p>
+<p>&nbsp;</p>
+<p><a name="CServerMailslot"></a><strong>CServerMailslot::CServerMailslot</strong></p>
+<p><strong>CServerMailslot();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard constructor which initializes member variables to a default value</p>
+<p><strong>See Also</strong></p>
+<p><a href="#~CServerMailSlot">CServerMailslot::~CServerMailslot</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="~CServerMailSlot"></a><strong>CServerMailslot::~CServerMailslot</strong></p>
+<p><strong>~CServerMailslot();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard destructor which closes the mailslot if open</p>
+<p><strong>See Also</strong></p>
+<p><a href="#CServerMailslot">CServerMailslot::CServerMailslot</a></p>
+<p>&nbsp;</p>
+<p><a name="serverOpen"></a><strong>CServerMailslot::Open</strong></p>
+<p><strong>BOOL CServerMailslot::Open(LPCTSTR </strong><em>lpszName</em><strong>, 
+DWORD </strong><em>dwMaxMessageSize</em><strong> = 0, DWORD </strong><em>dwReadTimeout</em><strong> 
+= 0, LPSECURITY_ATTRIBUTES </strong><em>lpSecurityAttributes</em><strong> = NULL);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot was successfully created otherwise FALSE. If the 
+call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpszName</i> Pointer to a null-terminated string specifying the name of the 
+mailslot.</p>
+<p><i>dwMaxMessageSize</i> Specifies the maximum size, in bytes, of a single message 
+that can be written to the mailslots. To specify that the message can be of any 
+size, set this value to zero. </p>
+<p><i>dwReadTimeout</i> Specifies the amount of time, in milliseconds, a read operation 
+can wait for a message to be written to the mailslot before a time-out occurs. The 
+following values have special meanings: </p>
+<table cellspacing="4" cols="2">
+	<tr valign="top">
+		<th align="left" width="46%">Value</th>
+		<th align="left" width="54%">Meaning</th>
+	</tr>
+	<tr valign="top">
+		<td width="46%">0</td>
+		<td width="54%">Returns immediately if no message is present. (The system 
+		does not treat an immediate return as an error.)</td>
+	</tr>
+	<tr valign="top">
+		<td width="46%">MAILSLOT_WAIT_FOREVER</td>
+		<td width="54%">Waits forever for a message.</td>
+	</tr>
+</table>
+<p>This time-out value applies to all subsequent read operations and all inherited 
+mailslot handles. </p>
+<p><i>lpSecurityAttributes</i> Pointer to a <b>SECURITY_ATTRIBUTES</b> structure 
+that determines whether the returned handle can be inherited by child processes. 
+If <i>lpSecurityAttributes</i> is NULL, the handle cannot be inherited. </p>
+<p><strong>Remarks</strong></p>
+<p>Creates a server side mailslot</p>
+<p>&nbsp;</p>
+<p><a name="serverClose"></a><strong>CServerMailslot::Close</strong></p>
+<p><strong>BOOL CServerMailslot::Close();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot was successfully closed otherwise FALSE. If the 
+call fails, you should use GetLastError to determine the reason.</p>
+<p>&nbsp;</p>
+<p><a name="serverRead"></a><strong>CServerMailslot::Read</strong></p>
+<p><strong>BOOL CServerMailslot::Read(LPVOID </strong><em>lpBuffer</em><strong>, 
+DWORD </strong><em>dwNumberOfBytesToRead</em><strong>, DWORD&amp; </strong><em>dwNumberOfBytesRead</em><strong>);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> pointer to buffer that receives data</p>
+<p><i>dwNumberOfBytesToRead</i> number of bytes to read</p>
+<p><i>dwNumberOfBytesRead</i> pointer to number of bytes read</p>
+<p><strong>Remarks</strong></p>
+<p>Allows data to be read from the mailslot</p>
+<p>&nbsp;</p>
+<p><a name="MessageWaiting"></a><strong>CServerMailslot::MessageWaiting</strong></p>
+<p><strong>BOOL CServerMailslot::MessageWaiting();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot was has a message waiting otherwise FALSE. If 
+the call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Remarks</strong></p>
+<p>Allows data to be read from the mailslot</p>
+<p>&nbsp;</p>
+<p><a name="MessageCount"></a><strong>CServerMailslot::MessageCount</strong></p>
+<p><strong>DWORD CServerMailslot::MessageCount();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The number of&nbsp; messages waiting in the mailslot.</p>
+<p><strong>Remarks</strong></p>
+<p>Allows the number of messages waiting in the mailslot to be determined</p>
+<p>&nbsp;</p>
+<p><a name="SizeOfWaitingMessage"></a><strong>CServerMailslot::SizeOfWaitingMessage</strong></p>
+<p><strong>DWORD CServerMailslot::SizeofWaitingMessage();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The size in bytes of the message waiting in the mailslot</p>
+<p><strong>Remarks</strong></p>
+<p>Allows the size of the next message in the mailslot to be determined</p>
+<p>&nbsp;</p>
+<p><a name="MaximumMessageSize"></a><strong>CServerMailslot::MaximumMessageSize</strong></p>
+<p><strong>DWORD CServerMailslot::MaximumMessageSize();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The maximum size of size in bytes of the message waiting in the mailslot</p>
+<p><strong>Remarks</strong></p>
+<p>Returns the maximum message size, in bytes, allowed for this mailslot. This value 
+can be greater than or equal to the value specified in the <a href="#serverOpen">
+<b>Open</b></a> function that created the mailslot.</p>
+<p>&nbsp;</p>
+<p><a name="SetReadTimeout"></a><strong>CServerMailslot::SetReadTimeout</strong></p>
+<p><strong>BOOL CServerMailslot::SetReadTimeout(DWORD dwReadTimeout);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot timeout was successfully changed otherwise FALSE. 
+If the call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>dwReadTimeout</i> Specifies the amount of time, in milliseconds, a read operation 
+can wait for a message to be written to the mailslot before a time-out occurs. The 
+following values have special meanings:</p>
+<table cellspacing="4" cols="2" width="1111">
+	<tr valign="top">
+		<th align="left" width="243">Value</th>
+		<th align="left" width="856">Meaning</th>
+	</tr>
+	<tr valign="top">
+		<td width="243">0</td>
+		<td width="856">Returns immediately if no message is present. (The system 
+		does not treat an immediate return as an error.)</td>
+	</tr>
+	<tr valign="top">
+		<td width="243">MAILSLOT_WAIT_FOREVER</td>
+		<td width="856">Waits forever for a message.</td>
+	</tr>
+</table>
+<p>This time-out value applies to all subsequent read operations and to all inherited 
+mailslot handles. </p>
+<p><strong>Remarks</strong></p>
+<p>The initial time-out value used by a mailslot for a read operation is typically 
+set by <a href="#serverOpen"><b>Open</b></a> when the mailslot is created. </p>
+<p>&nbsp;</p>
+<p><a name="GetCreationTime"></a><strong>CServerMailslot::GetCreationTime</strong></p>
+<p><strong>BOOL CServerMailslot::GetCreationTime(LPFILETIME </strong><em>lpCreationTime</em><strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot creation time was successfully retrieved otherwise 
+FALSE. If the call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpCreationTime </i>Pointer to a <b>FILETIME</b> structure to receive the date 
+and time the file was created. </p>
+<p>&nbsp;</p>
+<p><a name="GetLastAccessTime"></a><strong>CServerMailslot::GetLastAccessTime</strong></p>
+<p><strong>BOOL CServerMailslot::GetLastAccessTime(LPFILETIME </strong><em>lpLastAccessTime</em><strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot last access time was successfully retrieved otherwise 
+FALSE. If the call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpLastAccessTime </i>Pointer to a <b>FILETIME</b> structure to receive the 
+date and time the mailslot was last accessed.</p>
+<p>&nbsp;</p>
+<p><a name="GetLastWriteTime"></a><strong>CServerMailslot::GetLastWriteTime</strong></p>
+<p><strong>BOOL CServerMailslot::GetLastWriteTime(LPFILETIME </strong><em>lpLastWriteTime</em><strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot last write time was successfully retrieved otherwise 
+FALSE. If the call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpLastWriteTime </i>Pointer to a <b>FILETIME</b> structure to receive the 
+date and time the mailslot was last written to.</p>
+<p>&nbsp;</p>
+<p><a name="serverIsOpen"></a><strong>CServerMailslot::IsOpen</strong></p>
+<p><strong>BOOL CServerMailslot::IsOpen();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot is open otherwise FALSE.</p>
+<p>&nbsp;</p>
+<p><a name="serverHandle"></a><strong>CServerMailslot::operator HANDLE()</strong></p>
+<p><strong>HANDLE CServerMailslot::operator HANDLE();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The underlying handle which the class encapsulates.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="CClientMailslot"></a><strong>CClientMailslot::CClientMailslot</strong></p>
+<p><strong>CClientMailslot();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard constructor which initializes member variables to a default value</p>
+<p><strong>See Also</strong></p>
+<p><a href="#~CClientMailslot">CClientMailslot::~CClientMailslot</a></p>
+<p>&nbsp;</p>
+<p><a name="~CClientMailslot"></a><strong>CClientMailslot::~CClientMailslot</strong></p>
+<p><strong>~CClientMailslot();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard destructor which closes the mailslot if open</p>
+<p><strong>See Also</strong></p>
+<p><a href="#CClientMailslot">CClientMailslot::CClientMailslot</a></p>
+<p>&nbsp;</p>
+<p><a name="clientOpen"></a><strong>CClientMailslot::Open</strong></p>
+<p><strong>BOOL CClientMailslot::Open(LPCTSTR lpszComputerOrDomainName, LPCTSTR 
+lpszName, LPSECURITY_ATTRIBUTES lpSecurityAttributes = NULL);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot was successfully opened otherwise FALSE. If the 
+call fails, you should use GetLastError to determine the reason.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpszComputerOrDomainName</i> Name of the machine or domain on which the server 
+side of the mailslot resides</p>
+<p><i>lpszName</i> Name of the mailslot to open.</p>
+<p><i>lpSecurityAttributes</i> Pointer to a <b>SECURITY_ATTRIBUTES</b> structure 
+that determines whether the returned handle can be inherited by child processes. 
+If <i>lpSecurityAttributes</i> is NULL, the handle cannot be inherited. </p>
+<p><strong>Remarks</strong></p>
+<p>Opens the client connection to a mailslot on a specified machine</p>
+<p>&nbsp;</p>
+<p><a name="clientClose"></a><strong>CClientMailslot::Close</strong></p>
+<p><strong>BOOL CClientMailslot::Close();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot was successfully closed otherwise FALSE. If the 
+call fails, you should use GetLastError to determine the reason.</p>
+<p>&nbsp;</p>
+<p><a name="clientWrite"></a><strong>CClientMailslot::Write</strong></p>
+<p><strong>BOOL CClientMailslot::Write(LPVOID </strong><em>lpBuffer</em><strong>, 
+DWORD </strong><em>dwNumberOfBytesToWrite</em><strong>, DWORD&amp; </strong><em>dwNumberOfBytesWrite</em><strong>);</strong></p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> pointer to data that is to be written</p>
+<p><i>dwNumberOfBytesToWrite</i> number of bytes to write</p>
+<p><i>dwNumberOfBytesRead</i> pointer to number of bytes written</p>
+<p><strong>Remarks</strong></p>
+<p>Allows data to be written to the mailslot</p>
+<p>&nbsp;</p>
+<p><a name="clientIsOpen"></a><strong>CClientMailslot::IsOpen</strong></p>
+<p><strong>BOOL CClientMailslot::IsOpen();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>TRUE if the mailslot is open otherwise FALSE.</p>
+<p>&nbsp;</p>
+<p><a name="clientHANDLE"></a><strong>CClientMailslot::operator HANDLE()</strong></p>
+<p><strong>HANDLE CClientMailslot::operator HANDLE();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The underlying handle which the class encapsulates.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Contact"></a>Contacting the Author</h2>
+<p>PJ Naughter<br>
+Email: <a href="mailto:pjna@naughter.com">pjna@naughter.com</a><br>
+Web: <a href="http://www.naughter.com">http://www.naughter.com</a><br>
+7 September 2008</p>
+
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+This is a sample file which will get converted
+to either all Lowercase or Uppercase.

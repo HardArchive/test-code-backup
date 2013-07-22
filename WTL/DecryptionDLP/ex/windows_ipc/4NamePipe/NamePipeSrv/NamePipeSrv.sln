@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NamePipeSrv", "NamePipeSrv.vcproj", "{FEDC7A0A-08DB-401F-9665-FC0FD61F9ECD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{FEDC7A0A-08DB-401F-9665-FC0FD61F9ECD}.Debug.ActiveCfg = Debug|Win32
+		{FEDC7A0A-08DB-401F-9665-FC0FD61F9ECD}.Debug.Build.0 = Debug|Win32
+		{FEDC7A0A-08DB-401F-9665-FC0FD61F9ECD}.Release.ActiveCfg = Release|Win32
+		{FEDC7A0A-08DB-401F-9665-FC0FD61F9ECD}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

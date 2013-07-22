@@ -1,0 +1,248 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>CAnonymousPipe v1.02</title>
+<link rel="stylesheet" type="text/css" href="./naughter.css">
+</head>
+
+<body>
+
+<h2 align="left"><img src="apipe.gif" width="40" height="40">CAnonymousPipe 
+v1.02</h2>
+<p>Welcome to CAnonymousPipe, A freeware C++ class to encapsulate the anonymous 
+Pipe IPC method as provided in Win32.</p>
+<p>&nbsp;</p>
+<table>
+	<tr>
+		<td><a href="#Features">Features</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Copyright">Copyright</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Usage">Usage</a></td>
+	</tr>
+	<tr>
+		<td><a href="#History">History</a></td>
+	</tr>
+	<tr>
+		<td><a href="#APIReference">API Reference</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Enhancements">Planned Enhancements</a></td>
+	</tr>
+	<tr>
+		<td><a href="#Contact">Contacting the Author</a></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Features"></a>Features </h2>
+<ul>
+	<li>Simple and clean C++ interface.</li>
+	<li>The classes are fully Unicode compliant and include Unicode built options 
+	in the solution file.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><b><a name="Copyright"></a>Copyright</b></h2>
+<ul>
+	<li>You are allowed to include the source code in any product (commercial, 
+	shareware, freeware or otherwise) when your product is released in binary 
+	form. </li>
+	<li>You are allowed to modify the source code in any way you want except you 
+	cannot modify the copyright details at the top of each module. </li>
+	<li>If you want to distribute source code with your application, then you 
+	are only allowed to distribute versions released by the author. This is to 
+	maintain a single distribution point for the source code. </li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Usage"></a>Usage </h2>
+<ul>
+	<li>To use the class in your code simply include Apipe.cpp in your project and 
+	#include Apipe.h in which ever of your modules needs to make calls to the class.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="History"></a>History</h2>
+<p><strong>V1.0 (2 August 1998)</strong> </p>
+<ul>
+	<li>Initial public release.</li>
+</ul>
+<p><strong>V1.01 (29 December 2006)</strong> </p>
+<ul>
+	<li>Updated copyright details</li>
+	<li>Optimized CAnonymousPipe constructor code</li>
+	<li>Addition of a CANONYMOUSPIPE_EXT_CLASS preprocessor macro to allow the 
+	classes to be more easily added to an extension dll</li>
+	<li>Remove derivation from CObject as it was not really required</li>
+	<li>Updated the documentation to use the same style as the web site.</li>
+	<li>Addition of a GetWriteHandle and GetReadHandle methods to provide access 
+	to the low level handles which the class encapsulates.</li>
+	<li>Updated the code to clean compile on VC 2005</li>
+</ul>
+<p><b>v1.02 (2 September 2008)</b></p>
+<ul>
+	<li>Updated copyright details</li>
+	<li>Code now compiles cleanly using Code Analysis (/analyze)</li>
+	<li>Updated code to compile correctly using _ATL_CSTRING_EXPLICIT_CONSTRUCTORS 
+	define</li>
+	<li>Updated sample app to clean compile on VC 2008</li>
+	<li>The code has now been updated to support VC 2005 or later only. </li>
+	<li>Reworked some of the Peek parameters to be pointers rather than 
+	references.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="APIReference"></a>API Reference</h2>
+<p>The API consists of the class CAnonymousPipe and its public member functions</p>
+<p><b><a href="#CAnonymousPipe">CAnonymousPipe<br>
+</a><a href="#~CAnonymousPipe">~CAnonymousPipe<br>
+</a><a href="#Create">Create</a><br>
+<a href="#Close">Close</a><br>
+<a href="#Write">Write</a><br>
+<a href="#Read">Read</a><br>
+<a href="#Peek">Peek</a><br>
+<a href="#IsOpen">IsOpen</a></b><br>
+<b><a href="#GetWriteHandle">GetWriteHandle</a><br>
+<a href="#GetReadHandle">GetReadHandle</a></b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="CAnonymousPipe"></a><strong>CAnonymousPipe::CAnonymousPipe</strong></p>
+<p><strong>CAnonymousPipe();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard default constructor. Initialises the pipe handles to a default value.</p>
+<p><strong>See Also</strong></p>
+<p><a href="#~CAnonymousPipe">~CAnonymousPipe</a></p>
+<p>&nbsp;</p>
+<p><a name="~CAnonymousPipe"></a><strong>CAnonymousPipe::~CAnonymousPipe</strong></p>
+<p><strong>~CAnonymousPipe();</strong></p>
+<p><strong>Remarks</strong></p>
+<p>Standard default destructor. Will close any pipe handles which are still open</p>
+<p><strong>See Also</strong></p>
+<p><a href="#CAnonymousPipe">CAnonymousPipe</a></p>
+<p>&nbsp;</p>
+<p><a name="Create"></a><strong>CAnonymousPipe::Create</strong></p>
+<p><strong>BOOL Create(LPSECURITY_ATTRIBUTES </strong>lpPipeAttributes<strong> = 
+NULL, DWORD </strong>dwSize<strong> = 0);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non-Zero if the anonymous pipe was successfully created otherwise FALSE. Use 
+GetLastError to get extended error information.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpSecurityAttributes</i> Pointer to a <b>SECURITY_ATTRIBUTES</b> structure 
+that specifies a security descriptor for the new anonymous pipe and determines whether 
+child processes can inherit the returned handle. If <i>lpSecurityAttributes</i> 
+is NULL, the named pipe gets a default security descriptor and the handle cannot 
+be inherited. </p>
+<p><i>nSize</i> Specifies the buffer size for the pipe. The size is only a suggestion; 
+the system uses the value to calculate an appropriate buffering mechanism. If this 
+parameter is zero, the system uses the default buffer size. </p>
+<p><strong>Remarks</strong></p>
+<p>Creates an anonymous server side pipe. Unlike named pipes this function will 
+work on non NT platforms i.e Windows 9x</p>
+<p>&nbsp;</p>
+<p><a name="Close"></a><strong>CAnonymousPipe::Close</strong></p>
+<p><strong>BOOL Close();</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the anonymous pipe was closed otherwise FALSE. Use GetLastError to 
+get extended error information.</p>
+<p><strong>Remarks</strong></p>
+<p>Closes the pipe</p>
+<p>&nbsp;</p>
+<p><a name="Write"></a><strong>CAnonymousPipe::Write</strong></p>
+<p><strong>BOOL Write(LPCVOID </strong>lpBuffer<strong>, DWORD </strong>dwNumberOfBytesToWrite<strong>, 
+DWORD&amp; </strong>dwNumberOfBytesWritten<strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the write succeeded otherwise FALSE. To get extended error information 
+use GetLastError. </p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to the buffer containing the data to be written to the 
+pipe.</p>
+<p><i>dwNumberOfBytesToWrite</i> Specifies the number of bytes to write to the pipe.</p>
+<p><i>dwNumberOfBytesWritten</i> Points to the number of bytes written by this function 
+call. <b>Write</b> sets this value to zero before doing any work or error checking.
+</p>
+<p><strong>Remarks</strong></p>
+<p>Performs a write to the anonymous pipe in a synchronous manner.</p>
+<p>&nbsp;</p>
+<p><a name="Read"></a><strong>CAnonymousPipe::Read</strong></p>
+<p><strong>BOOL Read(LPVOID </strong>lpBuffer<strong>, DWORD </strong>dwNumberOfBytesToRead<strong>, 
+DWORD&amp; </strong>dwNumberOfBytesRead<strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the Read succeeded otherwise FALSE. To get extended error information 
+use GetLastError. </p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to the buffer to receive the data to be read.</p>
+<p><i>dwNumberOfBytesToWrite</i> Specifies the number of bytes to read from the 
+pipe. </p>
+<p><i>dwNumberOfBytesWritten</i> Points to the number of bytes read by this function 
+call. <b>Read</b> sets this value to zero before doing any work or error checking.
+</p>
+<p><strong>Remarks</strong></p>
+<p>Performs a read from the anonymous pipe in a synchronous manner.</p>
+<p>&nbsp;</p>
+<p><a name="Peek"></a><strong>CAnonymousPipe::Peek</strong></p>
+<p><strong>BOOL Peek(LPVOID </strong>lpBuffer<strong>, DWORD </strong>dwBufferSize<strong style="font-weight: 400">, 
+</strong><strong>DWORD*</strong><strong style="font-weight: 400"> lpdwBytesRead, </strong><strong>
+DWORD*</strong><strong style="font-weight: 400"> lpdwTotalBytesAvail, </strong><strong>
+DWORD*</strong><strong style="font-weight: 400"> lpdwBytesLeftThisMessage</strong><strong>);</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the function succeeds otherwise FALSE. To get extended error information 
+use GetLastError.</p>
+<p><strong>Parameters</strong></p>
+<p><i>lpBuffer</i> Points to a buffer that receives data read from the pipe. This 
+parameter can be NULL if no data is to be read. </p>
+<p><i>dwBufferSize</i> Specifies the size, in bytes, of the buffer specified by 
+the <i>lpBuffer </i>parameter. This parameter is ignored if <i>lpBuffer</i> is NULL.
+</p>
+<p><i>lpdwBytesRead</i> Pointer to a 32-bit variable that receives the number of bytes read from 
+the pipe.</p>
+<p><i>lpdwTotalBytesAvail</i> Pointer to a 32-bit variable that receives the total number of bytes 
+available to be read from the pipe.</p>
+<p><i>lpdwBytesLeftThisMessage</i> Pointer to a 32-bit variable that receives 
+the number of bytes remaining in this message.</p>
+<p><strong>Remarks</strong></p>
+<p>Copies data from the pipe into a buffer without removing it from the pipe. It 
+also returns information about data in the pipe.</p>
+<p>&nbsp;</p>
+<p><a name="IsOpen"></a><strong>CAnonymousPipe::IsOpen</strong></p>
+<p><strong>BOOL IsOpen() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>Non zero if the pipe is open otherwise FALSE.</p>
+<p>&nbsp;</p>
+<p><strong><a name="GetWriteHandle"></a>CAnonymousPipe::GetWriteHandle</strong></p>
+<p><strong>HANDLE GetWriteHandle() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The underlying write HANDLE which the class encapsulates.</p>
+<p>&nbsp;</p>
+<p><strong><a name="GetReadHandle"></a>CAnonymousPipe::GetReadHandle</strong></p>
+<p><strong>HANDLE GetReadHandle() const;</strong></p>
+<p><strong>Return Value</strong></p>
+<p>The underlying read HANDLE which the class encapsulates.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Enhancements"></a>Planned Enhancements</h2>
+<ul>
+	<li>If you have any other suggested improvements, please let me know so that 
+	I can incorporate them into the next release.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="Contact"></a>Contacting the Author</h2>
+<p>PJ Naughter<br>
+Email: <a href="mailto:pjna@naughter.com">pjna@naughter.com</a><br>
+Web: <a href="http://www.naughter.com">http://www.naughter.com</a><br>
+2 September 2008</p>
+
+</body>
+
+</html>

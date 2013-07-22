@@ -1,0 +1,237 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\IPCWorkshop.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\IPCWorkshop.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About IPCWorkshop"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "IPCWorkshop Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_IPCWORKSHOP_DIALOG DIALOGEX 0, 0, 320, 200
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "IPCWorkshop"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_GB_PROCESS,36,39,80,36,WS_GROUP
+    CONTROL         "&Server",IDC_RADIO_SERVER,"Button",BS_AUTORADIOBUTTON,
+                    42,47,37,10
+    CONTROL         "&Client",IDC_RADIO_CLIENT,"Button",BS_AUTORADIOBUTTON,
+                    42,60,33,10
+    GROUPBOX        "",IDC_GB_COMMUNICATION,35,85,80,46,WS_GROUP
+    CONTROL         "&Local",IDC_RADIO_LOCAL,"Button",BS_AUTORADIOBUTTON,43,
+                    92,33,10
+    CONTROL         "&IntraNet",IDC_RADIO_INTRANET,"Button",
+                    BS_AUTORADIOBUTTON,43,105,41,10
+    CONTROL         "Inter&Net",IDC_RADIO_INTERNET,"Button",
+                    BS_AUTORADIOBUTTON,43,117,41,10
+    EDITTEXT        IDC_EMPID,213,48,75,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NAME,213,64,75,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ADDRESS,213,80,75,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PHONE,213,96,75,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DOB,213,112,75,14,ES_AUTOHSCROLL
+    LTEXT           "Emp ID:",IDC_STATIC_EMPID,159,51,26,8
+    LTEXT           "Name:",IDC_STATIC_NAME,159,67,22,8
+    LTEXT           "Address:",IDC_STATIC_ADDRESS,159,83,28,8
+    LTEXT           "Phone:",IDC_STATIC_PHONE,159,99,24,8
+    LTEXT           "Date of Birth:",IDC_STATIC_DOB,159,115,42,8
+    GROUPBOX        "Data",IDC_GB_DATA,146,39,152,92
+    LTEXT           "Settings",IDC_SETTINGS,38,27,26,8
+    LTEXT           "InterProcess Communication",IDC_IPC_HEADING,116,13,90,8
+    LTEXT           "IPC :",IDC_STATIC_COMMMEDIUM,34,168,16,8
+    COMBOBOX        IDC_COMBO_IPCMECHANISMS,61,166,77,53,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Send",IDC_SEND,229,167,50,14
+    EDITTEXT        IDC_SERVER,214,139,72,15,ES_AUTOHSCROLL
+    LTEXT           "Server Name",IDC_STATIC_SERVER,158,141,42,8
+    LTEXT           "IP:",IDC_STATIC,37,144,10,8
+    EDITTEXT        IDC_IPADDRESS,61,141,72,15,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Connect",IDC_CONNECT,160,166,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "IPCWorkshop MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "IPCWorkshop\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "IPCWorkshop.EXE\0"
+            VALUE "ProductName", "IPCWorkshop Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_IPCWORKSHOP_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 312
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About IPCWorkshop..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\IPCWorkshop.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

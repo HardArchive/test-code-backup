@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TraceListener", "TraceListener.vcproj", "{E6C04EA8-CF9D-481A-BBAD-C3DF2C319BC2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TraceSender", "TraceSender\TraceSender.vcproj", "{24791348-1FF1-483C-98CA-AB6E70066644}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6C04EA8-CF9D-481A-BBAD-C3DF2C319BC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E6C04EA8-CF9D-481A-BBAD-C3DF2C319BC2}.Debug|Win32.Build.0 = Debug|Win32
+		{E6C04EA8-CF9D-481A-BBAD-C3DF2C319BC2}.Release|Win32.ActiveCfg = Release|Win32
+		{E6C04EA8-CF9D-481A-BBAD-C3DF2C319BC2}.Release|Win32.Build.0 = Release|Win32
+		{24791348-1FF1-483C-98CA-AB6E70066644}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24791348-1FF1-483C-98CA-AB6E70066644}.Debug|Win32.Build.0 = Debug|Win32
+		{24791348-1FF1-483C-98CA-AB6E70066644}.Release|Win32.ActiveCfg = Release|Win32
+		{24791348-1FF1-483C-98CA-AB6E70066644}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
