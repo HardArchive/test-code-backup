@@ -2,6 +2,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 #include "DecryptDLP.h"
+#include "NPipe.h"
 #pragma once
 
 class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
