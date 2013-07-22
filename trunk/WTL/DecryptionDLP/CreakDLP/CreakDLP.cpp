@@ -50,7 +50,7 @@ CREAKDLP_API void SendFile()
 	}
 	
 	//Sleep(5000);
-	
+	 
 	clsEventDll.Set();
 	clsEventExe.Wait();
 	//::MessageBox(NULL, "DLL文件已经读取完毕", "SendFile", MB_OK);

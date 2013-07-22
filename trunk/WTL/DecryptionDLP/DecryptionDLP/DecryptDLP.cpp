@@ -102,6 +102,11 @@ DWORD GetSpecifiedProcessId(tstring& tstrProcessName)
 bool DecryptDLP()
 {
 	DWORD deProcessID = GetSpecifiedProcessId(tstring(_T("calc.exe")));
+	if (!deProcessID)
+	{
+		::MessageBox(NULL, "未找到指定进程,可能进程未运行！！！", "提示", MB_OK);
+		return false;
+	}
 
 	LoadLib(deProcessID, _T("F:\\Visual Studio Projects\\test-code-backup\\trunk\\WTL\\DecryptionDLP\\bin\\CreakDLP.dll"));
 	
