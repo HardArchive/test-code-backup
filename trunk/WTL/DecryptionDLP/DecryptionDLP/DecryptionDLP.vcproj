@@ -192,10 +192,6 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
 			<File
-				RelativePath=".\DecryptDLP.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\DecryptionDLP.cpp"
 				>
 			</File>
@@ -226,10 +222,6 @@
 			>
 			<File
 				RelativePath=".\AboutDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DecryptDLP.h"
 				>
 			</File>
 			<File
@@ -303,6 +295,10 @@
 			>
 			<File
 				RelativePath="..\global\comm_protocol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DecryptDLP.h"
 				>
 			</File>
 		</Filter>
