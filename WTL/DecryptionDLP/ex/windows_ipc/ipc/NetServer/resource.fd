@@ -1,0 +1,9 @@
+!MS$FREEFORM
+! Microsoft Developer Studio generated include file.
+! Used by NetServer.rc
+!
+      integer, parameter :: IDD_NETSERVER_DIALOG            = 102
+      integer, parameter :: IDR_MAINFRAME                   = 128
+      integer, parameter :: IDC_TEXT_RECVSOCKETS            = 1000
+      integer, parameter :: IDC_TEXT_RECVPIPE               = 1001
+      integer, parameter :: IDC_TEXT_RECVMAILSLOTS          = 1002

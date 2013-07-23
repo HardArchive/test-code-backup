@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetClient", "NetClient\NetClient.vcproj", "{BAE3D81C-BB4E-484C-9725-2518A16030CE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetServer", "NetServer\NetServer.vcproj", "{147821CC-6651-4B37-85E8-30073D0DD7CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAE3D81C-BB4E-484C-9725-2518A16030CE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BAE3D81C-BB4E-484C-9725-2518A16030CE}.Debug|Win32.Build.0 = Debug|Win32
+		{BAE3D81C-BB4E-484C-9725-2518A16030CE}.Release|Win32.ActiveCfg = Release|Win32
+		{BAE3D81C-BB4E-484C-9725-2518A16030CE}.Release|Win32.Build.0 = Release|Win32
+		{147821CC-6651-4B37-85E8-30073D0DD7CE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{147821CC-6651-4B37-85E8-30073D0DD7CE}.Debug|Win32.Build.0 = Debug|Win32
+		{147821CC-6651-4B37-85E8-30073D0DD7CE}.Release|Win32.ActiveCfg = Release|Win32
+		{147821CC-6651-4B37-85E8-30073D0DD7CE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
