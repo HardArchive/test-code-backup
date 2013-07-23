@@ -1,0 +1,12 @@
+server
+
+CreateNamedPipe   创建一个命名管道。返回的句柄由管道的服务器端使用 如果存在同名管道，则创建那个管道的一个新实例
+ConnectNamedPipe  指示一台服务器等待下去，直至客户机同一个命名管道连接
+ReadFile
+WriteFile
+DisconnectNamedPipe 断开一个客户与一个命名管道的连接
+
+client
+WaitNamedPipe 由一个客户进程调用，等候一个管道变成可用状态（比如服务器已调用ConnectNamedPipe函数同一个客户连接）
+CreateFile
+WriteFile

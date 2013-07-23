@@ -1,0 +1,17 @@
+!MS$FREEFORM
+! Microsoft Developer Studio generated include file.
+! Used by NetClient.rc
+!
+      integer, parameter :: IDM_ABOUTBOX                    = 16
+      integer, parameter :: IDD_ABOUTBOX                    = 100
+      integer, parameter :: IDS_ABOUTBOX                    = 101
+      integer, parameter :: IDD_NETCLIENT_DIALOG            = 102
+      integer, parameter :: IDR_MAINFRAME                   = 128
+      integer, parameter :: IDC_SEND                        = 1000
+      integer, parameter :: IDC_SEND_PIPE                   = 1000
+      integer, parameter :: IDC_TEXT_CLIENT                 = 1001
+      integer, parameter :: IDC_TEXT_SOCKETS                = 1001
+      integer, parameter :: IDC_TEXT_PIPE                   = 1002
+      integer, parameter :: IDC_TEXT_MAILSLOTS              = 1003
+      integer, parameter :: IDC_SEND_SOCKETS                = 1004
+      integer, parameter :: IDC_SEND_MAILSLOTS              = 1005
