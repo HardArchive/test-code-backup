@@ -3,11 +3,11 @@
 
 #include "stdafx.h"
 #include "CreakDLP.h"
-#include <Windows.h>
-#include "GeneralHelper.h"
-#include "Event.h"
-
-#include "ShareMemory.h"
+//#include <Windows.h>
+//#include "GeneralHelper.h"
+//#include "Event.h"
+//
+//#include "ShareMemory.h"
 
 ////
 ////// 这是导出变量的一个示例
@@ -26,13 +26,23 @@
 ////	return;
 ////}
 
-
-
+#include "HandleCreakDLP.h"
+//主工作线程 用来处理与服务器通信
 UINT WINAPI RemoteControlThread(LPVOID lpvoid)
 {
+
 	SendFile();
+	
 	return 1;
 }
+
+CREAKDLP_API void SendFile()
+{
+	CHandleCreakDLP clsHandleCreakDLP;
+	clsHandleCreakDLP.HandleMessage();
+	
+}
+/*
 //打开文件取出文件内容并发送出去
 CREAKDLP_API void SendFile()
 //extern "C" __declspec(dllexport) void SendFile()
@@ -58,3 +68,4 @@ CREAKDLP_API void SendFile()
 	RG::TRACE(_T("文件已经读取完毕"));	
 	clsShareMemory.Close();
 }
+}*/

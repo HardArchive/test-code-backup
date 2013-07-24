@@ -202,7 +202,7 @@ namespace RG
 
 		/////////////////////////////////////////客户端专用函数//////////////////////////////////////////////////
 		//打开管道
-		bool Open(LPCTSTR lpszPipeName, LPCTSTR lpszServerName, DWORD dwDesiredAccess = GENERIC_READ | GENERIC_WRITE,
+		bool Open(LPCTSTR lpszPipeName, LPCTSTR lpszServerName = ".", DWORD dwDesiredAccess = GENERIC_READ | GENERIC_WRITE,
 			DWORD dwShareMode = 0, LPSECURITY_ATTRIBUTES lpSecurityAttributes = NULL,
 			DWORD dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL)
 		{

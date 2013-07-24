@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir)common"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)common&quot;;&quot;$(SolutionDir)global&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;CREAKDLP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -231,6 +231,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\HandleCreakDLP.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
@@ -253,6 +257,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\common\DirectoryTraversalUtil.h"
+				>
+			</File>
+			<File
 				RelativePath="..\common\Event.h"
 				>
 			</File>
@@ -262,6 +270,10 @@
 			</File>
 			<File
 				RelativePath="..\common\Mutex.h"
+				>
+			</File>
+			<File
+				RelativePath="..\common\safestl.h"
 				>
 			</File>
 			<File
