@@ -14,6 +14,11 @@
 #define PACKAGE_MARK                     "RS01"        //数据包标志
 #define PACKAGE_MARK_LEN                 4             //标记长度
 #define PROTOCOL_VERSION                 0x0001       //协议版本号
+#define RECVICE_DATA_MAX_LEN             1024         //接收数据最大长度1K
+//数据包类型
+#define TYPE_OK        0x01     //回复确认，表示已经接收或处理成功
+#define TYPE_ERROR     0x02     //回复确认，表示接收或处理失败
+
 //命令类型
 #define COMMAND_START                     0x01        //开始命令
 #define COMMAND_STOP                      0x02        //停止命令
@@ -29,9 +34,8 @@
 #define TYPE_PACKET_REPLAY_MEMSHARE       0xA4        //文件映射消息回复  只需将原包包头返回即可
 
 
-
 // 消息头 分发协议头
-typedef struct DATA_HEADTAG
+typedef struct DATA_HEAD_TAG
 {
 	char  szHeadFlag[4];    // 头标识 ‘RG01’
 	DWORD dwVersion;        // 版本号  0x0001
@@ -51,7 +55,7 @@ typedef struct DATA_HEADTAG
 		}
 		if (PROTOCOL_VERSION != dwVersion) return false;
 		if (wHeadLen != sizeof(DATAHEAD)) return false;
-		if (dwPacketLen >sizeof(DATAHEAD)+sizeof(MEMSHAREINFO)) return false;
+		//if (dwPacketLen >sizeof(DATAHEAD)+sizeof(MEMSHAREINFO)) return false;
 		return memcmp(this->szHeadFlag, PACKAGE_MARK, PACKAGE_MARK_LEN)?false: true;
 	}
 
@@ -63,24 +67,50 @@ typedef struct DATA_HEADTAG
 
 	inline void Init()
 	{
-		memset(this, 0, sizeof(*this));
+		Reset();
 		dwVersion = PROTOCOL_VERSION;
 		wHeadLen = sizeof(DATAHEAD);
 		memcmp(szHeadFlag, PACKAGE_MARK, PACKAGE_MARK_LEN);
 	}
 }DATAHEAD, *PDATAHEAD;
 
+//包数据
+typedef struct DATA_PACKET_TAG
+{
+	DWORD     dwBufLen;                        //szbyData实际长度
+	PDATAHEAD pstuDataHead;                    //数据头
+	BYTE      szbyData[RECVICE_DATA_MAX_LEN];  //用来存放包头和包身 最多只能存放一个包
+	DATA_PACKET_TAG()
+	{
+		Reset();
+	}
+
+	~DATA_PACKET_TAG()
+	{
+		Reset();
+	}
+
+	//重置数据包内容为0
+	inline void Reset()
+	{
+		memset(this, 0, sizeof(*this));	
+		memset(szbyData, 0, dwBufLen);	
+		pstuDataHead = (PDATAHEAD)szbyData;	
+		pstuDataHead->Init();
+		dwBufLen += sizeof(DATAHEAD);
+	}
+}DATAPACKET, *PDATAPACKET;
 //服务器发送消息
 
 //路径信息
-typedef struct PATH_INFO
+typedef struct PATH_INFO_TAG
 {
 	TCHAR tszSourcePath[MAX_PATH];        //源文件目录
 	//TCHAR tszTargetPath[MAX_PATH];        //目标目录	
 	//TCHAR tszControlEventName[MAX_PATH];  //控制事件名   
 }PATHINFO, *PPATHINFO;
 
-typedef struct COMMAND
+typedef struct COMMAND_TAG
 {
 	int iCommand;
 }COMMAND, *PCOMMAND;
@@ -89,7 +119,7 @@ typedef struct COMMAND
 //客户端发送消息
 
 //文件信息  注意当为目录信息时（只有tszFilePath有值其他都为0）
-typedef struct FILE_INFO
+typedef struct FILE_INFO_TAG
 {
 	PVOID pPoint;                   //指针地址
 	DWORD dwAddrLen;                //地址指向数据长度
@@ -103,6 +133,7 @@ typedef struct FILE_INFO
 		memset(this, 0, sizeof(FILEINFO));
 	}
 
+	//文件返回true 目录返回 false
 	inline bool IsFile()
 	{
 		return pPoint != NULL;
@@ -110,7 +141,7 @@ typedef struct FILE_INFO
 }FILEINFO, *PFILEINFO;
 
 //内存映射信息  当为目录时tszFileMapName tszEventName为空
-typedef struct MEM_SHARE_INFO
+typedef struct MEM_SHARE_INFO_TAG
 {
 	FILEINFO stuFileInfo;           //文件信息
 	TCHAR tszFileMapName[MAX_PATH]; //文件映射对象名

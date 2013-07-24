@@ -8,8 +8,8 @@
 * 6、 History    ： 
 * 7、 Remark     ： 
 ****************************************************************************************************/
-//#ifndef __PATH_UTIL_H_
-//#define __PATH_UTIL_H_
+#ifndef __PATH_UTIL_H_
+#define __PATH_UTIL_H_
 //#include <Windows.h>
 //#include <ShlObj.h>
 //
@@ -53,17 +53,25 @@ namespace RG
 	}
 
 	//创建多级目录，成功返回true， 失败返回false
-	inline bool CreateMultipleDirectory(const PTCHAR ptInPath)
+	inline bool CreateMultipleDirectory(const TCHAR* ptInPath, const DWORD dwFileAttributes = FILE_ATTRIBUTE_NORMAL,const bool bIsFilePath = false)
 	{
 		int iLen = 0;    
 		PTCHAR ptTemp = NULL;		
-		TCHAR tszPath[MAX_PATH] = {0};
-		TCHAR tszTemPath[MAX_PATH] = {0};
+		TCHAR tszPath[MAX_PATH*4] = {0};
+		TCHAR tszTemPath[MAX_PATH*4] = {0};
 		_tcscpy_s(tszPath, ptInPath);         //存放要创建的目录字符串
 
 		//检查参数是否正确
-		if (!tszPath || _tcsclen(tszPath)<4) return false;
+		if (!tszPath || _tcsclen(tszPath)<4)
+			return false;
 
+		if (bIsFilePath)
+		{
+			ptTemp = _tcsrchr(tszPath, _T('\\'));  //从尾部查找字符
+			iLen = _tcsclen(ptTemp);
+			_tcsncpy_s(tszTemPath, tszPath, _tcsclen(tszPath)-iLen); //得到父目录路径
+			_tcsncpy_s(tszPath, tszTemPath, _tcsclen(tszTemPath));
+		}
 		//在这里去掉尾部为'\\'的字符
 		if (_T('\\') == tszPath[_tcsclen(tszPath)-1])
 		{
@@ -75,14 +83,15 @@ namespace RG
 		_tcsncpy_s(tszTemPath, tszPath, _tcsclen(tszPath)-iLen); //得到父目录路径
 
 		//检验父级路径是否存在  		
-		if (ChickDirExist(tszTemPath))
-		{   //如果存在则创建子目录
-			if (!CreateDirectory(tszPath, NULL))
+		if (PathIsDirectory(tszTemPath))
+		{    //检验子级路径是否存在
+			if (PathIsDirectory(tszPath)) return true;
+			if (!::CreateDirectory(tszPath, NULL))
 			{	//创建文件夹失败
-				//::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
+				::MessageBox(NULL, tszPath, _T("创建文件夹失败!!!!!"), MB_OK);
 				return false;
 			}
-			SetFileAttributes(tszPath, FILE_ATTRIBUTE_NORMAL);	
+			SetFileAttributes(tszPath, dwFileAttributes);	
 			return true;		
 		}	
 		else
