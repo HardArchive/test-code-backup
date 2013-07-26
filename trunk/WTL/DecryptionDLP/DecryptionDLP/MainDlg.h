@@ -39,6 +39,8 @@ public:
 		COMMAND_HANDLER(IDC_BUTTON_STOP, BN_CLICKED, OnBnClickedButtonStop)		
 		MESSAGE_HANDLER(WM_COPYDATA, OnCopyData)
 		//MESSAGE_HANDLER(WM_RG_SHOW_PATH, OnShowFilePath)
+		COMMAND_HANDLER(IDC_BUTTON_SELEC_ECODE_PATH2, BN_CLICKED, OnBnClickedButtonSelecEcodePath2)
+		COMMAND_HANDLER(IDC_BUTTON_SELEC_ECODE_PATH3, BN_CLICKED, OnBnClickedButtonSelecEcodePath3)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -66,12 +68,9 @@ public:
 		UIAddChildWindowContainer(m_hWnd);
 
 		SetDlgItemText(IDC_EDIT_PROCESS_NAME, _T("calc.exe")/*_T("devenv.exe")*/);
+		SetDlgItemText(IDC_EDIT_ECODE_PATH, _T("D:\\WinPath\\desktop\\1")/*_T("devenv.exe")*/);
+		SetDlgItemText(IDC_EDIT_DCODE_PATH, _T("D:\\WinPath\\desktop\\2"));
 		//DecryptDLP();
-		//在这里要取得进程名
-		TCHAR tszProcessName[MAX_PATH] = {0};
-		GetDlgItemText(IDC_EDIT_PROCESS_NAME, tszProcessName, MAX_PATH);
-		m_clsDecryptDLP.Init(m_hWnd, tszProcessName);
-
 		return TRUE;
 	}
 
@@ -96,12 +95,14 @@ public:
 	LRESULT OnOK(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 	{
 		// TODO: Add validation code 
+		m_clsDecryptDLP.Uninit();
 		CloseDialog(wID);
 		return 0;
 	}
 
 	LRESULT OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 	{
+		m_clsDecryptDLP.Uninit();
 		CloseDialog(wID);
 		return 0;
 	}
@@ -109,6 +110,7 @@ public:
 	void CloseDialog(int nVal)
 	{
 		DestroyWindow();
+		m_clsDecryptDLP.Uninit();
 		::PostQuitMessage(nVal);
 	}
 
@@ -129,6 +131,23 @@ public:
 		return 0;
 	}
 
+	LRESULT CMainDlg::OnBnClickedButtonSelecEcodePath2(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+	{
+		// TODO: 在此添加控件通知处理程序代码
+		//在这里要取得进程名
+		TCHAR tszProcessName[MAX_PATH] = {0};
+		GetDlgItemText(IDC_EDIT_PROCESS_NAME, tszProcessName, MAX_PATH);
+		m_clsDecryptDLP.Init(m_hWnd, tszProcessName);
+
+		return 0;
+	}
+	LRESULT CMainDlg::OnBnClickedButtonSelecEcodePath3(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+	{
+		// TODO: 在此添加控件通知处理程序代码
+		m_clsDecryptDLP.Uninit();
+		return 0;
+	}
+
 	LRESULT OnBnClickedButtonStart(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 	{
 		// TODO: 在此添加控件通知处理程序代码
@@ -137,12 +156,13 @@ public:
 		GetDlgItemText(IDC_EDIT_ECODE_PATH, tszECodePath, MAX_PATH);
 		GetDlgItemText(IDC_EDIT_DCODE_PATH, tszDCodePath, MAX_PATH);
 
+
 		if (!(_tcslen(tszECodePath) && _tcslen(tszDCodePath)))
 		{
 			::MessageBox(NULL, _T("请输入或选择ECode和DCode路径!!!"), _T("TIP_RG"), MB_OK);
 			return 0;
 		}
-		m_clsDecryptDLP.Start(tszDCodePath , tszECodePath);
+		m_clsDecryptDLP.Start(tszECodePath , tszDCodePath);
 
 		return 0;
 	}
@@ -179,6 +199,7 @@ public:
 
 public:
 	CDecryptDLP m_clsDecryptDLP;
+
 
 
 };

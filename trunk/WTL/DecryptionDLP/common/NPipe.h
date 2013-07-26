@@ -149,7 +149,7 @@ namespace RG
 		7、 Created       ： 2013-7-23 13:47:40
 		8、 Remark        ： 此函数由服务器调用
 		****************************************************************************************************/
-		bool Create(LPCTSTR lpszName, DWORD dwOpenMode = PIPE_ACCESS_DUPLEX, DWORD dwPipeMode = PIPE_TYPE_BYTE | PIPE_READMODE_BYTE , 
+		bool Create(LPCTSTR lpszName, DWORD dwOpenMode = PIPE_ACCESS_DUPLEX | FILE_FLAG_WRITE_THROUGH, DWORD dwPipeMode = PIPE_TYPE_BYTE | PIPE_READMODE_BYTE , 
 			DWORD dwMaxInstances = 1, DWORD dwOutBufferSize = 0, DWORD dwInBufferSize = 0, DWORD dwDefaultTimeOut = 1000, 
 			LPSECURITY_ATTRIBUTES lpSecurityAttributes = NULL)
 		{

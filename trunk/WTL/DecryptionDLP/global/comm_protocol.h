@@ -121,22 +121,26 @@ typedef struct COMMAND_TAG
 //文件信息  注意当为目录信息时（只有tszFilePath有值其他都为0）
 typedef struct FILE_INFO_TAG
 {
-	PVOID pPoint;                   //指针地址
-	DWORD dwAddrLen;                //地址指向数据长度
+	//PVOID pPoint;                   //指针地址
+	bool bIsFile;                     //是否为文件  true为文件
+	DWORD dwAddrLen;                  //地址指向数据长度
 	//DWORD dwFileLen;                //文件长度
 	DWORD dwFileAttributes;         
 	//TCHAR tszFileName[MAX_PATH];    //文件名
-	TCHAR tszFilePath[MAX_PATH];    //文件路径 包括文件名的子目录路径 eg:(PATH工程目录)\DecryptionDLP\DecryptionDLP.vcproj
+	TCHAR tszFilePath[MAX_PATH];      //文件路径 包括文件名的子目录路径 eg:(PATH工程目录)\DecryptionDLP\DecryptionDLP.vcproj
 
 	inline void Reset()
 	{
-		memset(this, 0, sizeof(FILEINFO));
+		bIsFile = false;
+		dwAddrLen = 0;
+		dwFileAttributes = 0;
+		memset(tszFilePath, 0, sizeof(TCHAR)*MAX_PATH);
 	}
 
 	//文件返回true 目录返回 false
 	inline bool IsFile()
 	{
-		return pPoint != NULL;
+		return bIsFile;
 	}
 }FILEINFO, *PFILEINFO;
 
@@ -146,6 +150,13 @@ typedef struct MEM_SHARE_INFO_TAG
 	FILEINFO stuFileInfo;           //文件信息
 	TCHAR tszFileMapName[MAX_PATH]; //文件映射对象名
 	TCHAR tszEventName[MAX_PATH];   //等待事件 文件处理完毕将事件设为有信号 DLL线程则执行清理工作
+
+	inline void Reset()
+	{
+		stuFileInfo.Reset();
+		memset(tszFileMapName, 0, sizeof(TCHAR)*MAX_PATH);
+		memset(tszEventName, 0, sizeof(TCHAR)*MAX_PATH);
+	}
 }MEMSHAREINFO, *PMEMSHAREINFO;
 
 

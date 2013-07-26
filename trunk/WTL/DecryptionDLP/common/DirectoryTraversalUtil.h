@@ -24,12 +24,12 @@ namespace RG
 
 	public:
 		//文件处理函数
-		virtual bool TraversalDoWork(const PTCHAR ptInFilePath) = 0;  //处理文件
+		virtual bool TraversalFileDoWork(const PTCHAR ptInFilePath) = 0;  //处理文件
 		//文件夹处理函数
 		virtual bool TraversalFolderDoWork(const PTCHAR ptInFilePath) = 0;  //处理文件夹
 
 		//初始化函数 ptInPath 遍历的目录名 ptInFileTpye 遍历获取的文件后缀 iInterval 遍历的时间间隔
-		void Init(const PTCHAR ptInPath, const PTCHAR ptInFileTpye, const int iInterval = 0)
+		void Init(const PTCHAR ptInPath, const PTCHAR ptInFileTpye = _T(".*"), const int iInterval = 0)
 		{
 			m_iInterval = iInterval;
 			_tcscpy_s(m_tszFileType, 16, ptInFileTpye);
@@ -54,7 +54,7 @@ namespace RG
 
 				//时间间隔为零时只遍历一次
 				if (!m_iInterval)	break;
-				TRACE("拷贝完成！！！%d秒后再拷！！！！！", iSleepTime/1000);
+				//TRACE("拷贝完成！！！%d秒后再拷！！！！！", iSleepTime/1000);
 
 				Sleep(iSleepTime);
 			}
@@ -87,7 +87,7 @@ namespace RG
 			//检查创建新文件夹路径			
 			if (!RG::ChickDirExist(ptInPath))
 			{
-				if (!RG::CreateMultipleDirectory(ptInPath))
+				//if (!RG::CreateMultipleDirectory(ptInPath))
 					return -2;				
 			}
 
@@ -109,7 +109,13 @@ namespace RG
 
 				//如果找到的是目录，则进入此目录进行递归
 				if(stuWFD.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) 
-				{	
+				{	//处理目录
+					if (!TraversalFolderDoWork(tszFullPath))
+					{
+						FindClose(hFind);
+						return -5;
+					}
+
 					if (1 != DirectoryTraversal(tszFullPath, ptInFileTpye))
 					{
 						FindClose(hFind);
@@ -117,8 +123,8 @@ namespace RG
 					}
 				}
 				else 
-				{//找到的是文件
-					if (!TraversalDoWork(tszFullPath))
+				{    //找到的是文件
+					if (!TraversalFileDoWork(tszFullPath))
 					{
 						FindClose(hFind);
 						return -5;

