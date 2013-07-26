@@ -8,7 +8,7 @@
 #include <windows.h>
 
 CInitSocket clsInitSock;
-LPFN_GETACCEPTEXSOCKADDRS g_pfnGetAcceptExSockaddrs = NULL; //获取连接addr
+LPFN_GETACCEPTEXSOCKADDRS g_pfnGetAcceptExSockaddrs = NULL; //AcceptEx  获取连接addr
 #define BUFFER_SIZE 1024
 
 typedef struct _SOCKET_OBJ
@@ -18,6 +18,7 @@ typedef struct _SOCKET_OBJ
 	LPFN_ACCEPTEX lpfnAcceptEx;		// 扩展函数AcceptEx的指针（仅对监听套节字而言）
 } SOCKET_OBJ, *PSOCKET_OBJ;
 
+//记录缓冲区对象组成的链表
 typedef struct _BUFFER_OBJ
 {	
 	OVERLAPPED ol;			// 重叠结构
@@ -177,10 +178,10 @@ BOOL PostAccept(PBUFFER_OBJ pBuffer)
 
 		// 投递此重叠I/O  
 		DWORD dwBytes;
-		pBuffer->sAccept = ::WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);  //创建socket
+		pBuffer->sAccept = ::WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);  //创建接受连接socket
 		//开始接收
 		BOOL b = pSocket->lpfnAcceptEx(pSocket->s,   //监听套接字
-			pBuffer->sAccept,   //接收套接字
+			pBuffer->sAccept,   //接受连接套接字
 			pBuffer->buff, 
 			BUFFER_SIZE - ((sizeof(sockaddr_in) + 16) * 2), //buf大小
 			sizeof(sockaddr_in) + 16,  //缓冲区中为本地地址预留的长度，必须比最大专址长度多16
