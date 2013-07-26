@@ -176,6 +176,7 @@ private:
 	//发送数据
 	DWORD SendData(const int iMessageType, const PBYTE pbyInDateBuf = NULL, const int iBufLen = 0, const DWORD dwSerialNo = 0, const DWORD dwReturn = 0)
 	{
+		DWORD dwRet = 0;
 		DATAPACKET stuPacket;
 		stuPacket.pstuDataHead->dwPacketType = iMessageType;
 		stuPacket.pstuDataHead->dwSerialNo = dwSerialNo;
@@ -189,7 +190,9 @@ private:
 
 		stuPacket.pstuDataHead->dwPacketLen = stuPacket.dwBufLen;
 
-		return m_clsNamePipe.Write(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
+		dwRet = m_clsNamePipe.Write(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
+		m_clsNamePipe.Flush();
+		return dwRet;
 	}
 
 	//解密文件 
