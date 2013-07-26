@@ -296,6 +296,14 @@
 				RelativePath="..\global\comm_protocol.h"
 				>
 			</File>
+			<File
+				RelativePath="..\global\DirectoryTraversalFile.h"
+				>
+			</File>
+			<File
+				RelativePath="..\global\SocketClientHelper.h"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"

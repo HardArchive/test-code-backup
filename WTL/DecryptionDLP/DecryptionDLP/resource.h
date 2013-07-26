@@ -13,6 +13,8 @@
 #define IDC_BUTTON_START                1005
 #define IDC_BUTTON_STOP                 1006
 #define IDC_EDIT_PROCESS_NAME           1007
+#define IDC_BUTTON_SELEC_ECODE_PATH2    1008
+#define IDC_BUTTON_SELEC_ECODE_PATH3    1009
 
 // Next default values for new objects
 // 

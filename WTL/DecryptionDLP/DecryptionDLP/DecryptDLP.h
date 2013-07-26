@@ -20,7 +20,7 @@
 #include "NPipe.h"
 #include <TlHelp32.h>
 #include "comm_protocol.h"
-
+#include "SocketServerHelper.h"
 class CDecryptDLP
 {
 public:
@@ -32,12 +32,14 @@ public:
 	~CDecryptDLP(void)
 	{
 		Reset();
+		m_clsSocketServerHelper.Close();
 	}
 
 	int Init(HWND hWnd,TCHAR* ptInProcessName)
 	{
 		m_hWnd = hWnd;
-		m_clsNamePipe.Create(_T("RG_DecryptDLP"));
+		//m_clsNamePipe.Create(_T("RG_DecryptDLP"));
+		m_clsSocketServerHelper.Open();
 		//注入DLL
 		m_dwProcessID = GetSpecifiedProcessId(tstring(ptInProcessName));
 		if (!m_dwProcessID)
@@ -57,7 +59,7 @@ public:
 
 	void Uninit()
 	{
-		m_clsNamePipe.Close();
+		m_clsSocketServerHelper.Close();
 		FreeLib(m_dwProcessID, GetDllPath(m_tszDllPath));
 		ShowMessage(_T("dll已经卸载，程序准备退出！！！"));
 	}
@@ -66,27 +68,38 @@ public:
 	bool Start(PTCHAR ptInPath, PTCHAR ptInSavePath)
 	{
 		bool bRet = false;
+		if (!m_clsSocketServerHelper.CheckClientStatus())
+		{
+			::MessageBox(NULL, _T("客户端未连接"), _T("消息提示"), MB_OK);
+			return false;
+		}
 		if (m_bExitFlag)
 		{
 			::MessageBox(NULL, _T("解密已经开始请停止再开始"), _T("消息提示"), MB_OK);
 			return false;
 		}
+		m_bExitFlag = true;
+		QueueUserWorkItem((LPTHREAD_START_ROUTINE)WorkerThreadProc, (LPVOID)this, WT_EXECUTELONGFUNCTION);
+
+		ShowMessage(_T("工作线程已经启动，准备解密代码文件！！！"));
+
 		bRet = SendPath(ptInPath)>0?true:false;
 		_tcscpy_s(m_tszSavePath, MAX_PATH, ptInSavePath);
 		if (!bRet) return false;
-		m_bExitFlag = true;
-		QueueUserWorkItem((LPTHREAD_START_ROUTINE)WorkerThreadProc, (LPVOID)this, WT_EXECUTELONGFUNCTION);
-		ShowMessage(_T("工作线程已经启动，准备解密代码文件！！！"));
+
 		return SendCommand(COMMAND_START)>0?true:false;
 	}
 
 	bool Stop()
 	{
 		bool bRet = false;
-		m_bExitFlag = false;
 		bRet = SendCommand(COMMAND_STOP)>0?true:false;
+		Sleep(200);
+		m_bExitFlag = false;
+
 		ShowMessage(_T("工作线程已经停止，代码解密开始停止！！！"));
 		Reset();
+		m_clsSocketServerHelper.Close();
 		return bRet;
 	}
 
@@ -104,6 +117,7 @@ public:
 	static UINT WINAPI WorkerThreadProc( LPVOID lpThreadParameter)
 	{
 		CDecryptDLP* pclsDecryptDLP = (CDecryptDLP*)lpThreadParameter;
+		pclsDecryptDLP->m_clsSocketServerHelper.Accept();
 		while(pclsDecryptDLP->m_bExitFlag)
 		{
 			pclsDecryptDLP->Recv();
@@ -147,19 +161,22 @@ private:
 		stuDataPacket.Reset();
 		stuDataPacket.pstuDataHead->Reset();
 
-		int iReadLen = m_clsNamePipe.Read(stuDataPacket.pstuDataHead, sizeof(DATAHEAD));
-		if (!iReadLen) return iReadLen;
-		iReadLen = m_clsNamePipe.Read(stuDataPacket.szbyData+sizeof(DATAHEAD), stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
-		if (!iReadLen) return iReadLen;
+		
+		int iReadLen = m_clsSocketServerHelper.Recv((PBYTE)stuDataPacket.pstuDataHead, sizeof(DATAHEAD));
+		//::MessageBox(NULL, (char*)stuDataPacket.pstuDataHead, "sf", MB_OK);
+		if (1 != iReadLen) return iReadLen;
 
 		//处理文件映射信息
 		if (TYPE_PACKET_MEMSHARE == stuDataPacket.pstuDataHead->dwPacketType)
 		{
+			iReadLen =  m_clsSocketServerHelper.Recv(stuDataPacket.szbyData+sizeof(DATAHEAD), stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
+			if (1 != iReadLen) return iReadLen;
 
-			if (sizeof(MEMSHAREINFO) == iReadLen)
+			//if (sizeof(MEMSHAREINFO) == iReadLen)
 			{
 				MEMSHAREINFO stuMemShareInfo;
-				memcpy(&stuMemShareInfo, stuDataPacket.szbyData+sizeof(DATAHEAD), iReadLen);
+				stuMemShareInfo.Reset();
+				memcpy(&stuMemShareInfo, stuDataPacket.szbyData+sizeof(DATAHEAD), stuDataPacket.pstuDataHead->dwPacketLen-sizeof(DATAHEAD));
 				DWORD dwReturn = DecryptDLP(stuMemShareInfo)?TYPE_OK:TYPE_ERROR;
 				//处理完成回复数据
 				SendReplay(stuDataPacket.pstuDataHead->dwSerialNo, dwReturn);
@@ -169,6 +186,7 @@ private:
 		//命令包回复数据
 		if (TYPE_PACKET_REPLAY_COMMAND == stuDataPacket.pstuDataHead->dwPacketType)
 		{
+			//::MessageBox(NULL, _T("收到命令消息回复"), _T("消息提示"), MB_OK);
 		}
 		return iReadLen;
 	}
@@ -181,7 +199,7 @@ private:
 		stuPacket.pstuDataHead->dwPacketType = iMessageType;
 		stuPacket.pstuDataHead->dwSerialNo = dwSerialNo;
 		stuPacket.pstuDataHead->dwReturn = dwReturn;
-
+		
 		if (iBufLen)
 		{
 			memcpy(stuPacket.szbyData+stuPacket.dwBufLen, pbyInDateBuf, iBufLen);
@@ -190,8 +208,7 @@ private:
 
 		stuPacket.pstuDataHead->dwPacketLen = stuPacket.dwBufLen;
 
-		dwRet = m_clsNamePipe.Write(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
-		m_clsNamePipe.Flush();
+		dwRet =  m_clsSocketServerHelper.Send(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
 		return dwRet;
 	}
 
@@ -202,12 +219,14 @@ private:
 		//目录 处理
 		if (!stuInMemShareInfo.stuFileInfo.IsFile())
 		{
+			TCHAR tszFilePath[MAX_PATH] = {0};		
+			_stprintf_s(tszFilePath, MAX_PATH, "%s%s", m_tszSavePath, stuInMemShareInfo.stuFileInfo.tszFilePath);
 			//路径 目录属性
-			return RG::CreateMultipleDirectory(stuInMemShareInfo.stuFileInfo.tszFilePath, stuInMemShareInfo.stuFileInfo.dwFileAttributes);
+			return RG::CreateMultipleDirectory(tszFilePath, stuInMemShareInfo.stuFileInfo.dwFileAttributes);
 		}
 
 		//文件处理
-		CEvt clsEvent(true, false, stuInMemShareInfo.tszEventName);	
+		//CEvt clsEvent(true, false, stuInMemShareInfo.tszEventName);	
 		RG::CShareMemory clsShareMemory;
 
 		if (!clsShareMemory.Open(stuInMemShareInfo.tszFileMapName))
@@ -216,7 +235,8 @@ private:
 			return bRet;
 		}	
 		bRet = SaveFile(stuInMemShareInfo.stuFileInfo.tszFilePath, (PBYTE)clsShareMemory.GetBasePoint(), stuInMemShareInfo.stuFileInfo.dwAddrLen, stuInMemShareInfo.stuFileInfo.dwFileAttributes);
-		clsEvent.Set();
+		clsShareMemory.Close();
+		//clsEvent.Set();
 		return bRet;
 	}
 
@@ -226,6 +246,8 @@ private:
 		TCHAR tszFilePath[MAX_PATH] = {0};		
 		_stprintf_s(tszFilePath, MAX_PATH, "%s%s", m_tszSavePath, ptInFilePath);
 		//这里要发送消息 给主对话框  用以显示文件名
+		RG::TRACE(_T("收到文件信息保存文件:%s\r\n"), tszFilePath);
+		ShowMessage(tszFilePath);
 
 		RG::CFile clsFile;         //文件打开句柄
 		clsFile.Open(tszFilePath, _T("wb"));
@@ -284,14 +306,14 @@ private:
 	{
 		m_hWnd = NULL;
 		m_dwProcessID = 0;
-		m_bExitFlag = false;
-		m_clsNamePipe.Close();
+		m_bExitFlag = false;		
 		memset(m_tszDllPath, 0, MAX_PATH*sizeof(TCHAR));
 		memset(m_tszSavePath, 0, MAX_PATH*sizeof(TCHAR));
 	}
 
 private:
-	RG::CNamedPipe m_clsNamePipe;
+	//RG::CNamedPipe m_clsNamePipe;
+	CSocketServerHelper m_clsSocketServerHelper;
 	TCHAR          m_tszDllPath[MAX_PATH];
 	TCHAR          m_tszSavePath[MAX_PATH];
 	DWORD          m_dwProcessID;             //需注入进程ID

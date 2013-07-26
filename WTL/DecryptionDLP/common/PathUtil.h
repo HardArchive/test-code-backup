@@ -10,8 +10,10 @@
 ****************************************************************************************************/
 #ifndef __PATH_UTIL_H_
 #define __PATH_UTIL_H_
-//#include <Windows.h>
-//#include <ShlObj.h>
+#include <Windows.h>
+#include <ShlObj.h>
+#include <Shlwapi.h>
+#include <CommDlg.h>
 //
 //#define CPathUtil_Administrative_Tools 0x01                                //「开始」菜单\程序\管理工具
 //#define CPathUtil_AppData              0x02                                //应用数据

@@ -163,8 +163,9 @@ namespace RG
 
 			if (NULL == m_hMapping)                                              
 			{
-				::MessageBox(NULL, _T("创建一个命名的文件映射对象对象失败！！！！！"), _T("Error"), MB_OK);
+				_asm int 3;
 				DWORD dwError = GetLastError();
+				::MessageBox(NULL, _T("创建一个命名的文件映射对象对象失败！！！！！"), _T("Error"), MB_OK);				
 				Close();
 				return false;
 			}
@@ -184,7 +185,7 @@ namespace RG
 			// Map view of file into baseointer.
 			//函数将此文件映射对象的视图映射进地址	空间，同时得到此映射视图的首址。###阿毛###这个就是我保存数据的地址了
 			if (!(m_lpBaseAddress = ::MapViewOfFile(m_hMapping, dwMapViewDesiredAccess, 0, 0, 0)))
-			{
+			{				
 				::MessageBox(NULL, _T("View failed."), _T("Error"), MB_OK);
 				Close();
 				return false;
