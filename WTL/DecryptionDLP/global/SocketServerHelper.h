@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Socket.h"
-
+#include "TraceUtil.h"
+using namespace RG;
 
 class CSocketServerHelper
 {
@@ -28,6 +29,7 @@ public:
 		if (!m_clsSocket.Listen(5))
 		{
 			printf(" 服务端进入监听模式失败\r\n"/*, GetLastError*/);
+			TRACE(_T("Server - 服务端进入监听模式失败\r\n"));
 			return false;
 		}
 		return true;
@@ -39,8 +41,11 @@ public:
 		if(INVALID_SOCKET == m_SocketClient)
 		{
 			printf("Failed accept()\r\n");
+			TRACE(_T("Server - Failed accept()\r\n"));
 			return false;
 		}
+
+		TRACE(_T("Server - 服务端接收连接成功!!!\r\n"));
 		return true;
 	}
 

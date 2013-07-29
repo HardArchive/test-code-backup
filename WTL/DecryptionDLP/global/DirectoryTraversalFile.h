@@ -68,6 +68,7 @@ public:
 				*pstuMemShareInfo = m_queueMemShareInfo.front();
 				m_queueMemShareInfo.pop();
 				m_queueMemShareInfo.Unlock();	
+				TRACE(_T("Client - GetMemShareInfo取得共享文件信息成功！！！\r\n"));
 				return true;
 			}	
 			m_queueMemShareInfo.Unlock();	

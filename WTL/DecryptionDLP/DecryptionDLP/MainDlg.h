@@ -67,7 +67,7 @@ public:
 
 		UIAddChildWindowContainer(m_hWnd);
 
-		SetDlgItemText(IDC_EDIT_PROCESS_NAME, _T("calc.exe")/*_T("devenv.exe")*/);
+		SetDlgItemText(IDC_EDIT_PROCESS_NAME, /*_T("calc.exe")*/_T("devenv.exe"));
 		SetDlgItemText(IDC_EDIT_ECODE_PATH, _T("D:\\WinPath\\desktop\\1")/*_T("devenv.exe")*/);
 		SetDlgItemText(IDC_EDIT_DCODE_PATH, _T("D:\\WinPath\\desktop\\2"));
 		//DecryptDLP();
