@@ -37,15 +37,17 @@ public:
 
 	bool HandleMessage()
 	{
-		::MessageBox(NULL, "DLL已经加载", "SendFile", MB_OK);
+		//::MessageBox(NULL, "DLL已经加载", "SendFile", MB_OK);
+		TRACE(_T("Client - DLL已经加载\r\n"));
 		QueueUserWorkItem((LPTHREAD_START_ROUTINE)SendMessageProc, (LPVOID)this, WT_EXECUTELONGFUNCTION);
 		m_bExitFlag = true;
 		while(m_bExitFlag)
 		{
 			Recv();			
-			Sleep(1000);
+			Sleep(100);
 		}
 
+		TRACE(_T("Client - HandleMessage 线程执行完毕!!!\r\n"));
 		return true;		
 	}
 	//两个线程 一个遍历目录
@@ -59,11 +61,17 @@ private:
 		while(pclsHandleCreakDLP->m_bExitFlag)
 		{
 			if (pclsHandleCreakDLP->m_clsSocketClientHelper.CheckConnect())
-			{
+			{				
 				pclsHandleCreakDLP->SendMemSharePacket();
 			}		
+			else
+			{
+				TRACE(_T("Client - 连接服务器连接失败2！！！\r\n"));
+			}
 			Sleep(100);
 		}
+
+		TRACE(_T("Client - SendMessageProc 线程执行完毕!!!\r\n"));
 		return 1;
 	}
 
@@ -185,7 +193,7 @@ private:
 		
 		if (m_clsDirTraversal.GetMemShareInfo(&stuMemShareInfo))
 		{
-			//_asm int 3;
+			TRACE(_T("Client - 发送文件映射信息！！！\r\n"));
 			bRet = SendData(TYPE_PACKET_MEMSHARE, (PBYTE)&stuMemShareInfo, sizeof(MEMSHAREINFO));
 		}	
 		return bRet;

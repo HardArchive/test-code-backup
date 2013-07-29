@@ -32,6 +32,7 @@ public:
 	~CDecryptDLP(void)
 	{
 		Reset();
+		m_dwProcessID = 0;
 		m_clsSocketServerHelper.Close();
 	}
 
@@ -40,6 +41,7 @@ public:
 		m_hWnd = hWnd;
 		//m_clsNamePipe.Create(_T("RG_DecryptDLP"));
 		m_clsSocketServerHelper.Open();
+
 		//注入DLL
 		m_dwProcessID = GetSpecifiedProcessId(tstring(ptInProcessName));
 		if (!m_dwProcessID)
@@ -59,8 +61,13 @@ public:
 
 	void Uninit()
 	{
+		Stop();
+		Sleep(100);
 		m_clsSocketServerHelper.Close();
-		FreeLib(m_dwProcessID, GetDllPath(m_tszDllPath));
+		if (!FreeLib(m_dwProcessID, GetDllPath(m_tszDllPath)))
+		{
+			TRACE(_T("Server - DLL卸载失败,ID:%d;Path:%s!!!\r\n"), m_dwProcessID, m_tszDllPath);
+		}
 		ShowMessage(_T("dll已经卸载，程序准备退出！！！"));
 	}
 
@@ -68,20 +75,18 @@ public:
 	bool Start(PTCHAR ptInPath, PTCHAR ptInSavePath)
 	{
 		bool bRet = false;
-		if (!m_clsSocketServerHelper.CheckClientStatus())
-		{
-			::MessageBox(NULL, _T("客户端未连接"), _T("消息提示"), MB_OK);
-			return false;
-		}
+
 		if (m_bExitFlag)
 		{
 			::MessageBox(NULL, _T("解密已经开始请停止再开始"), _T("消息提示"), MB_OK);
 			return false;
 		}
+
 		m_bExitFlag = true;
 		QueueUserWorkItem((LPTHREAD_START_ROUTINE)WorkerThreadProc, (LPVOID)this, WT_EXECUTELONGFUNCTION);
 
 		ShowMessage(_T("工作线程已经启动，准备解密代码文件！！！"));
+		Sleep(1000);
 
 		bRet = SendPath(ptInPath)>0?true:false;
 		_tcscpy_s(m_tszSavePath, MAX_PATH, ptInSavePath);
@@ -93,7 +98,11 @@ public:
 	bool Stop()
 	{
 		bool bRet = false;
-		bRet = SendCommand(COMMAND_STOP)>0?true:false;
+		if (m_clsSocketServerHelper.CheckClientStatus())
+		{
+			bRet = SendCommand(COMMAND_STOP)>0?true:false;
+		}
+		
 		Sleep(200);
 		m_bExitFlag = false;
 
@@ -117,7 +126,13 @@ public:
 	static UINT WINAPI WorkerThreadProc( LPVOID lpThreadParameter)
 	{
 		CDecryptDLP* pclsDecryptDLP = (CDecryptDLP*)lpThreadParameter;
-		pclsDecryptDLP->m_clsSocketServerHelper.Accept();
+
+		while (pclsDecryptDLP->m_bExitFlag)
+		{
+			if (pclsDecryptDLP->m_clsSocketServerHelper.Accept())
+				break;
+		}
+		TRACE(_T("Server - 客户端连接成功，开始接收数据!\r\n"));
 		while(pclsDecryptDLP->m_bExitFlag)
 		{
 			pclsDecryptDLP->Recv();
@@ -207,6 +222,12 @@ private:
 		}
 
 		stuPacket.pstuDataHead->dwPacketLen = stuPacket.dwBufLen;
+
+		if (!m_clsSocketServerHelper.CheckClientStatus())
+		{
+			::MessageBox(NULL, _T("客户端未连接"), _T("消息提示"), MB_OK);
+			return 0;
+		}
 
 		dwRet =  m_clsSocketServerHelper.Send(stuPacket.szbyData, stuPacket.pstuDataHead->dwPacketLen);
 		return dwRet;
@@ -305,7 +326,7 @@ private:
 	void Reset()
 	{
 		m_hWnd = NULL;
-		m_dwProcessID = 0;
+		//m_dwProcessID = 0;
 		m_bExitFlag = false;		
 		memset(m_tszDllPath, 0, MAX_PATH*sizeof(TCHAR));
 		memset(m_tszSavePath, 0, MAX_PATH*sizeof(TCHAR));
