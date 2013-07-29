@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 数据1 -->
+  <data>
+    <code>1(2,3,4)</code>
+    <description>入住(退房，上线，下线)</description>
+    <cardtype>证件类型编号</cardtype>
+    <cardid>证件号码</cardid>
+    <name>客人名称</name>
+    <room>房间号</room>
+    <ip>IP地址（192.168.0.1）</ip>
+    <mac>MAC地址 （00:00:00:00:00:00）</mac>
+    <time>1970-01-01 08:00:00</time>
+  </data>
+  <!-- 数据2 -->
+  <data>
+    <code>1(2,3,4)</code>
+    <description>入住(退房，上线，下线)</description>
+    <cardtype>证件类型编号</cardtype>
+    <cardid>证件号码</cardid>
+    <name>客人名称</name>
+    <room>房间号</room>
+    <ip>IP地址（192.168.0.1）</ip>
+    <mac>MAC地址 （00:00:00:00:00:00）</mac>
+    <time>1970-01-01 08:00:00</time>
+  </data>
+</root>

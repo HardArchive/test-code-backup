@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--    1.  & ==> &amp;    2. < ==> &lt;   3. > ==> &gt;    4. ' ==> &apos;     5.  " ==> &quot;     -->
+<root>
+  <!-- 服务类型 -->
+  <servicestype>
+    <type name="Http" value="1" description="" />
+    <type name="Ftp" value="2" description="" />
+    <type name="Smtp" value="3" description="" />
+    <type name="Pop" value="4" description="" />
+    <type name="WebMail" value="6" description="" />
+    <type name="Telnet" value="7" description="" />
+    <type name="Mail" value="9" description="" />
+    <type name="SearchKeyWrod" value="13" description="搜索" />
+    <type name="Msn" value="1001" description="" />
+    <type name="Oicq" value="1002" description="" />
+    <type name="Icq" value="1003" description="" />
+    <type name="YahooMsg" value="1004" description="" />
+    <type name="Uc" value="1006" description="" />
+    <type name="Fetion" value="1020" description="" />
+    <type name="WangWang" value="1021" description="淘宝旺旺" />
+    <type name="OurGame" value="2001" description="联众游戏" />
+    <type name="ChinaGame" value="2002" description="中国在线游戏" />
+    <type name="Game" value="2004" description="边锋" />
+    <type name="MoshouShijie" value="" description="魔兽世界" />
+    <type name="ReXueJiangHu" value="" description="热血江湖" />
+    <type name="ChuanqiShijie" value="" description="传奇世界" />
+    <type name="A3Game" value="" description="A3" />
+    <type name="FaeryStoryGame" value="2153" description="仙境传说(RO)" />
+    <type name="WanMei" value="2182" description="完美" />
+  </servicestype>
+
+  <!--baidu标记类型-->
+  <FindInfo>
+     <!--是否需要延伸查找(即在第二个包查找)  1是  0否-->
+    <IsExtendFind>0</IsExtendFind>
+    <!--服务类型,与enum ApplicationProtocolType相对应-->
+    <ServicesType>3014</ServicesType>
+    <!--域名 当类型为非http协议时为空 最长度为128位-->
+    <Host>Host: www.baidu.com</Host>
+    <!--包头标记  最长度为64位-->    
+    <PacketHeadTag>GET /cache/user/html/jump.html?</PacketHeadTag>
+    <!--查找标志链表 此表不限长度-->
+    <MarkFind>
+      <!--codetype编码类型 URL GB1212 UTF_8 UNICODE 因为有的数据前后标记不一样 markstart开始标记 markend结束标记 savetype(数据保存类型)-->
+      <MFRK codetype ="1" markstart ="username=" markend = "amp" savetype="1"/>
+    </MarkFind>
+  </FindInfo>
+
+
+  <!--BBSMaopu 帐号密码-->
+  <FindInfo>
+    <IsExtendFind>1</IsExtendFind>
+    <ServicesType>3045</ServicesType>
+    <Host>Host: login.hi.mop.com</Host>
+    <PacketHeadTag>/Login.do HTTP/1.1\r\n</PacketHeadTag>
+    <MarkFind>
+      <MFRK codetype ="2" markstart ="nickname=" markend = "amp" savetype="1"/> 
+      <MFRK codetype ="2" markstart ="password=" markend = "amp" savetype="1"/>
+    </MarkFind>
+  </FindInfo>
+
+  
+  <!--配置-->
+  <config>
+    <Settings isshanghai="true"/>>    
+  </config>
+</root>
