@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--    1.  & ==> &amp;    2. < ==> &lt;   3. > ==> &gt;    4. ' ==> &apos;     5.  " ==> &quot;     -->
+<!--/*Encoding type encodingtype编码类型 可以相互组合 与即可*/
+#define ENCT_URL             0x0001          //URL编码
+#define ENCT_GB1212          0x0002          //GB1212编码
+#define ENCT_UTF_8           0x0008          //UTF_8编码
+#define ENCT_UNICODE         0x0020          //UNICODE编码
+-->
+<root>
+   <!--baidu标记类型-->
+  <FindInfo>
+     <!--是否需要延伸查找(即在第二个包查找)  1是  0否-->
+    <IsExtendFind>0</IsExtendFind>
+    <!--FindType;                //查找类型   默认0 帐号 eg;首页，1回帖 2发贴 -1搜索引擎-->
+    <FindType>0</FindType>
+    <!--服务类型,与enum ApplicationProtocolType相对应-->
+    <ServicesType>3014</ServicesType>
+    <!--域名 当类型为非http协议时为空 最长度为128位-->
+    <Host>Host: www.baidu.com</Host>
+    <!--包头标记  最长度为64位-->    
+    <PacketHeadTag>GET /cache/user/html/jump.html?</PacketHeadTag>
+    <!--查找标志链表 此表不限长度-->
+    <MarkFind>
+      <!--codetype编码类型 packetnum 内容在第几个包 是否需要组包 因为有的数据前后标记不一样 markstart开始标记 markend结束标记 savetype(数据保存类型)-->
+      <MARK encodingtype ="1" packetnum ="0" markstart ="username=" markend = "amp" savetype="1"/>
+    </MarkFind>
+  </FindInfo>
+
+
+  <!--BBSMaopu 帐号密码-->
+  <FindInfo>
+    <IsExtendFind>1</IsExtendFind>
+    <FindType>0</FindType>
+    <ServicesType>3045</ServicesType>
+    <Host>Host: login.hi.mop.com</Host>
+    <PacketHeadTag>/Login.do HTTP/1.1\r\n</PacketHeadTag>
+    <MarkFind>
+      <MFRK encodingtype ="2" markstart ="nickname=" markend = "amp" savetype="1"/> 
+      <MFRK encodingtype ="2" markstart ="password=" markend = "amp" savetype="1"/>
+    </MarkFind>
+  </FindInfo>
+  
+  <!--配置-->
+  <config>
+    <Settings isshanghai="true"/>>    
+  </config>
+</root>
