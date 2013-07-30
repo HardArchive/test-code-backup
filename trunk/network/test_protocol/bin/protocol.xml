@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--    1.  & ==> &amp;    2. < ==> &lt;   3. > ==> &gt;    4. ' ==> &apos;     5.  " ==> &quot;     -->
+<!--/*Encoding type encodingtype编码类型 可以相互组合 与即可*/
+#define ENCT_URL             0x0001          //URL编码
+#define ENCT_GB1212          0x0002          //GB1212编码
+#define ENCT_UTF_8           0x0008          //UTF_8编码
+#define ENCT_UNICODE         0x0020          //UNICODE编码
+-->
+<root>
+  <ServicesFind>
+    <!--BBSMaopu-->
+    <ServicesType>3045</ServicesType>
+    <FindInfo>
+      <!-- 帐号密码-->
+      <IsExtendFind>1</IsExtendFind>
+      <FindType>0</FindType>
+      <Host>Host: login.hi.mop.com</Host>
+      <PacketHeadTag>/Login.do HTTP/1.1\r\n</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="nickname=" markend = "amp" savetype="1"/>
+        <MARK encodingtype ="2" packetnum="0" markstart ="password=" markend = "amp" savetype="1"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--baidu -->
+    <ServicesType>3014</ServicesType>   
+    <FindInfo>
+      <!--帐号密码-->
+      <IsExtendFind>0</IsExtendFind>
+      <FindType>0</FindType>
+      <Host>Host: www.baidu.com</Host>
+      <PacketHeadTag>GET /cache/user/html/jump.html?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="username=" markend = "amp" savetype="1"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+  
+  <!--配置-->
+  <config>
+    <Settings isshanghai="true"/>>    
+  </config>
+</root>
