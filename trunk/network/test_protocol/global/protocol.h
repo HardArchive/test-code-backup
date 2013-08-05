@@ -17,10 +17,10 @@
 
 enum SAVE_TYPE_TAG
 {
-	KeyWord1,          //保存类型tCompanyLog  sKeyWord1
-	sKeyWord1,         //保存数据库tCompanyLog  sKeyWord2
-	sMemoChar,         //保存数据库tCompanyLog  sMemoChar
-	File               //保存文件
+	sKeyWord1 = 1,         //保存类型tCompanyLog  sKeyWord1
+	sKeyWord2 = 2,         //保存数据库tCompanyLog  sKeyWord2
+	sMemoChar = 3,         //保存数据库tCompanyLog  sMemoChar
+	File = 4               //保存文件
 }SAVETYPE, *PSAVETYPE;
 
 
@@ -38,6 +38,9 @@ typedef struct MARK_FIND_TAG
 {
 	int iEncodingType; 	                  //编码类型 URL GB1212 UTF_8 UNICODE 因为有的数据前后标记不一样 Coding type值
 	int iPacketNum;                       //该内容在当前包之后第几个包之内？ 需要组包的情况下
+	int iMarkType;                        //标记数据类型 1为字符口串 2为16进制字符串 需转为二进制数据
+	int ibyStartBufLen;                   //非字符串类型的数据必须有长度 开始标记长度
+	int ibyEndBufLen;                     //结束长度
 	char szMarkStart[64];                 //开始标记
 	char szMarkEnd[16];                   //结束标记
 	SAVE_TYPE_TAG enumSaveType;           //标记中的数据保存类型
@@ -109,7 +112,8 @@ typedef struct MARK_FIND_TAG
 typedef struct FIND_INFO_TAG
 {
 	bool bIsExtendFind;           //是否需要延伸查找(即在第二个包查找)  true是  false否	
-	int iFindType;                //查找类型   默认0 帐号 eg;首页，1回帖 2发贴 -1搜索引擎
+	int iHeadTagType;             //包头标记数据类型 1为字符串 2为16进制字符串 需转为二进制数据
+	int ibyBufLen;                //非字符串类型的数据必须有长度
 	char szHost[128];             //http类型用域名 当类型为非http协议时为空 最长度为128位
 	char szPacketHeadTag[64];     //包头标记  最长度为64位             头和域名用来确定包数据的类型 
 	PMARKFIND pstuMarkFind;       //查找标记链表
