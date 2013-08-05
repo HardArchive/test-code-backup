@@ -32,13 +32,21 @@ enum SAVE_TYPE_TAG
 #define ENCT_UTF_8           0x0008
 #define ENCT_UNICODE         0x0020
 
+/*
+* marktype type  XML中的marktype标记值类型  0为正常数据  不需要转换
+*/
+#define MT_START_TAG          0x0001                     //标记开始标记为16进制字符串， 需转换成二进制数据
+#define MT_END_TAG            0x0002                     //标记结束标记为16进制字符串， 需转换成二进制数据
+#define MT_ALL_TAG            0x0008                     //标记开始和结束标记都为16进制字符串， 需转换成二进制数据
+#define MT_START_OFFSET       0x0020                     //标记开始标记为偏移量  从数据包开始+偏移量+长度(取得数据内容)
+//#define CS_CLASSDC            0x0040
 
 //查找标记链结构表  这个结构体不关乎协议 保存着需要获取内容的关键字体 对一种关键字一个链表
 typedef struct MARK_FIND_TAG
 {
 	int iEncodingType; 	                  //编码类型 URL GB1212 UTF_8 UNICODE 因为有的数据前后标记不一样 Coding type值
 	int iPacketNum;                       //该内容在当前包之后第几个包之内？ 需要组包的情况下
-	int iMarkType;                        //标记数据类型 1为字符口串 2为16进制字符串 需转为二进制数据
+	int iMarkType;                        //标记数据类型 0为正常字符串 1表时开始标记为16进制字符串需转换，2表明结束标记  8表明两个标记都是  4特殊 可跟据 marktype type来按位或
 	int ibyStartBufLen;                   //非字符串类型的数据必须有长度 开始标记长度
 	int ibyEndBufLen;                     //结束长度
 	char szMarkStart[64];                 //开始标记

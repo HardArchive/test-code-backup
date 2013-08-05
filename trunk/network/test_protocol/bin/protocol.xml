@@ -87,13 +87,45 @@
       <IsExtendFind>0</IsExtendFind>
       <HeadTagType>1</HeadTagType>
       <Host>Host: twebmail.mail.163.com</Host>
-      <PacketHeadTag>POST /contacts/call.do?</PacketHeadTag>
+      <PacketHeadTag>/js5/main.jsp?</PacketHeadTag>
       <MarkFind>
-        <MARK encodingtype ="1" packetnum ="0" markstart ="uid=" markend = "&amp;" savetype="2"/>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="P_INFO=" markend = "|" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: webmail.mail.163.com</Host>
+      <PacketHeadTag>/js5/main.jsp?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="P_INFO=" markend = "|" savetype="2"/>
       </MarkFind>
     </FindInfo>
   </ServicesFind>
 
+  <ServicesFind>
+    <!--qqmail -->
+    <ServicesType>6018</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: l.qq.com</Host>
+      <PacketHeadTag>GET /lview?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" marktype="2" markstart ="qm_username=" markend = "0d0a0d0a" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: webmail.mail.163.com</Host>
+      <PacketHeadTag>/js5/main.jsp?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="P_INFO=" markend = "|" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+  
   <ServicesFind>
     <!--BBSMaopu-->
     <ServicesType>3045</ServicesType>
@@ -324,23 +356,25 @@
       <IsExtendFind>0</IsExtendFind>
       <HeadTagType>1</HeadTagType>
       <Host>Host: weibo.com</Host>
-      <PacketHeadTag>/ajaxlogin.php</PacketHeadTag>
+      <PacketHeadTag>/u/</PacketHeadTag>
       <MarkFind>
-        <MARK encodingtype ="1" packetnum ="0" markstart ="un=" markend = ";" savetype="2"/>
+        <MARK encodingtype ="1" packetnum ="1" markstart ="%26user%3D=" markend = "%26ag" savetype="2"/>
+        <MARK encodingtype ="1" packetnum ="1" markstart ="%26name%3D" markend = "%26" savetype="2"/>
+        <MARK encodingtype ="1" packetnum ="1" markstart ="nick%3D=" markend = "%26fmp" savetype="2"/>
       </MarkFind>
     </FindInfo>
   </ServicesFind>
 
   <ServicesFind>
     <!--多玩YY -->
-    <ServicesType>1022</ServicesType>
+    <ServicesType>1027</ServicesType>
     <FindInfo>
       <IsExtendFind>0</IsExtendFind>
       <HeadTagType>2</HeadTagType>
       <Host></Host>
-      <PacketHeadTag>00000001140000c800000020009050ffffffff</PacketHeadTag>
+      <PacketHeadTag>00000001140000c800000010005060ffffffff</PacketHeadTag>
       <MarkFind>
-        <MARK encodingtype="1" packetnum="0" marktype="1" markstart=""  markend="" savetype="2"/>
+        <MARK encodingtype="1" packetnum="0" marktype="32" markstart="19"  markend="-1" savetype="2"/>
       </MarkFind>
     </FindInfo>
   </ServicesFind>
