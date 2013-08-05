@@ -8,6 +8,8 @@
 * 6、 History    ： 
 * 7、 Remark     ： 
 ****************************************************************************************************/
+//#include "pugixml.hpp"
+//#include "pugiconfig.hpp"
 #include "../third_party/pugixml/pugixml.hpp"
 #include "../third_party/pugixml/pugiconfig.hpp"
 
@@ -151,20 +153,8 @@ private:
 				pstuMarkFind->iMarkType = child.attribute("marktype").as_int();		
 				strcpy_s(pstuMarkFind->szMarkStart, 64, child.attribute("markstart").value());
 				strcpy_s(pstuMarkFind->szMarkEnd, 16, child.attribute("markend").value());
-				//非http类型的数据 host为空则 包头标记为 非字符串类型
-				if (2 == pstuMarkFind->iMarkType)
-				{
-					BYTE szbyTem[64] = {0};
-					pstuMarkFind->ibyStartBufLen = str2hex(pstuMarkFind->szMarkStart, szbyTem, 64);
-					memset(pstuMarkFind->szMarkStart, 0, 64);
-					memcpy(pstuMarkFind->szMarkStart, szbyTem, 64);
-					memset(szbyTem, 0, 64);
-					pstuMarkFind->ibyStartBufLen = str2hex(pstuMarkFind->szMarkEnd, szbyTem, 64);
-					memset(pstuMarkFind->szMarkEnd, 0, 64);
-					memcpy(pstuMarkFind->szMarkEnd, szbyTem, 64);
-
-				}
 				pstuMarkFind->enumSaveType = (SAVE_TYPE_TAG)child.attribute("savetype").as_int();
+				CheckMarkType(pstuMarkFind);
 			}
 			child = child.next_sibling();
 		}
@@ -172,10 +162,27 @@ private:
 		return true;
 	}
 
+	//检查marktype标记 并跟据标记转换 字符串
+	void CheckMarkType(PMARKFIND pstuInOutMarkFind)
+	{
+		BYTE szbyTem[64] = {0};
+		//非http类型的数据 host为空则 包头标记为 非字符串类型
+		//开始标记为 16进制字符串需转成二进制数据
+		if ((MT_START_TAG&pstuInOutMarkFind->iMarkType)||(MT_ALL_TAG&pstuInOutMarkFind->iMarkType))
+		{
+			pstuInOutMarkFind->ibyStartBufLen = str2hex(pstuInOutMarkFind->szMarkStart, szbyTem, 64);
+			memset(pstuInOutMarkFind->szMarkStart, 0, 64);
+			memcpy(pstuInOutMarkFind->szMarkStart, szbyTem, 64);
+		}
 
-
-
-
+		if ((MT_END_TAG&pstuInOutMarkFind->iMarkType)||(MT_ALL_TAG&pstuInOutMarkFind->iMarkType))
+		{					
+			memset(szbyTem, 0, 64);
+			pstuInOutMarkFind->ibyEndBufLen = str2hex(pstuInOutMarkFind->szMarkEnd, szbyTem, 16);
+			memset(pstuInOutMarkFind->szMarkEnd, 0, 16);
+			memcpy(pstuInOutMarkFind->szMarkEnd, szbyTem, 16);
+		}
+	}
 
 	bool CheckOpenXML()
 	{
