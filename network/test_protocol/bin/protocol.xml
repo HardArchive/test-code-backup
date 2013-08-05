@@ -8,38 +8,345 @@
 -->
 <root>
   <ServicesFind>
-    <!--BBSMaopu-->
-    <ServicesType>3045</ServicesType>
+    <!--搜索-->
+    <ServicesType>13</ServicesType>
     <FindInfo>
-      <!-- 帐号密码-->
-      <IsExtendFind>1</IsExtendFind>
-      <FindType>0</FindType>
-      <Host>Host: login.hi.mop.com</Host>
-      <PacketHeadTag>/Login.do HTTP/1.1\r\n</PacketHeadTag>
+      <!-- baidu-->
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: c.baidu.com</Host>
+      <PacketHeadTag>/c.gif?</PacketHeadTag>
       <MarkFind>
-        <MARK encodingtype ="2" packetnum="0" markstart ="nickname=" markend = "amp" savetype="1"/>
-        <MARK encodingtype ="2" packetnum="0" markstart ="password=" markend = "amp" savetype="1"/>
+        <MARK encodingtype ="2" packetnum="0" markstart ="&amp;q=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <FindInfo>
+      <!-- google-->
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: www.google.com.hk</Host>
+      <PacketHeadTag>GET /search?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="q=" markend = "&amp;" savetype="2"/>
       </MarkFind>
     </FindInfo>
   </ServicesFind>
 
   <ServicesFind>
-    <!--baidu -->
-    <ServicesType>3014</ServicesType>   
+    <!--百度主界面登录 -->
+    <ServicesType>3014</ServicesType>
     <FindInfo>
-      <!--帐号密码-->
       <IsExtendFind>0</IsExtendFind>
-      <FindType>0</FindType>
+      <HeadTagType>1</HeadTagType>
       <Host>Host: www.baidu.com</Host>
       <PacketHeadTag>GET /cache/user/html/jump.html?</PacketHeadTag>
       <MarkFind>
-        <MARK encodingtype ="1" packetnum ="0" markstart ="username=" markend = "amp" savetype="1"/>
+        <MARK encodingtype ="2" packetnum ="0" markstart ="username=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--贴吧主界面登录 -->
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: tieba.baidu.com</Host>
+      <PacketHeadTag>GET /tb/static-common/html/pass/</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum ="0" markstart ="username=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--贴吧主界面登录 -->
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: tieba.baidu.com</Host>
+      <PacketHeadTag>GET /f/user/json_userinfo?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="TIEBA_LOGINED_USER=" markend = ";" savetype="2"/>
       </MarkFind>
     </FindInfo>
   </ServicesFind>
-  
+
+  <ServicesFind>
+    <!--126 -->
+    <ServicesType>6008</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: config.mail.126.com</Host>
+      <PacketHeadTag>GET /optimizer/optimize/get.do?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="uid=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--163 -->
+    <ServicesType>6009</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: twebmail.mail.163.com</Host>
+      <PacketHeadTag>POST /contacts/call.do?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="uid=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--BBSMaopu-->
+    <ServicesType>3045</ServicesType>
+    <!--猫扑首页 猫扑贴贴-->
+    <FindInfo>
+      <IsExtendFind>1</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: passport.mop.com</Host>
+      <PacketHeadTag>/Login?url=http</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="user_name=" markend = "&amp;" savetype="2"/>
+        <MARK encodingtype ="2" packetnum="0" markstart ="password=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--猫扑通行证-->
+    <FindInfo>
+      <IsExtendFind>1</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: passport.mop.com</Host>
+      <PacketHeadTag>/login HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="user_name=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--猫扑大杂烩-->
+    <FindInfo>
+      <IsExtendFind>1</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: dzh.mop.com</Host>
+      <PacketHeadTag>/login.do HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="name=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--猫扑HI-->
+    <FindInfo>
+      <IsExtendFind>1</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: login.hi.mop.com</Host>
+      <PacketHeadTag>/Login.do HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="2" packetnum="0" markstart ="nickname=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--天涯 -->
+    <ServicesType>3082</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: passport.tianya.cn</Host>
+      <PacketHeadTag>/login</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="vwriter=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--京东 -->
+    <ServicesType>3803</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: www.360buy.com</Host>
+      <PacketHeadTag>/ HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="pin=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: passport.360buy.com</Host>
+      <PacketHeadTag>/new/helloService.ashx?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="pin=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--1号店 -->
+    <ServicesType>3804</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: tracker.yihaodian.com</Host>
+      <PacketHeadTag>/tracker/info.do</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="ac=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--当当 -->
+    <ServicesType>3802</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: www.dangdang.com</Host>
+      <PacketHeadTag>/ HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="; nickname=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--19楼 -->
+    <ServicesType>3002</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: www.19lou.com</Host>
+      <PacketHeadTag>/login HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="userName=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--大河 -->
+    <ServicesType>3139</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: bbs.dahe.cn</Host>
+      <PacketHeadTag>/login</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="&amp;pwuser=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--人民网强国论坛 -->
+    <ServicesType>3052</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: passport.people.com.cn</Host>
+      <PacketHeadTag>/_login.do</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="userName=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: bbs.people.com.cn</Host>
+      <PacketHeadTag>GET /postAction.do</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="userName=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--人人网 -->
+    <ServicesType>3402</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: www.renren.com</Host>
+      <PacketHeadTag>/ajaxLogin/login</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="email=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--飞信 -->
+    <ServicesType>1020</ServicesType>
+
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: 221.176.31.145</Host>
+      <PacketHeadTag>POST /GetRobotInfo.ashx?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="register-email=\&quot;" markend = "\&quot;" savetype="2"/>
+        <!--登陆邮箱账号-->
+        <MARK encodingtype ="1" packetnum ="0" markstart ="sid=\&quot;" markend = "\&quot;" savetype="2"/>
+        <!--登陆账号-->
+        <MARK encodingtype ="1" packetnum ="0" markstart ="mobile-no=\&quot;" markend = "\&quot;" savetype="2"/>
+        <!--登陆手机账号-->
+        <MARK encodingtype ="1" packetnum ="0" markstart ="nickname=\&quot;" markend = "\&quot;" savetype="2"/>
+        <!--登陆用户昵称-->
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--腾讯微博 -->
+    <ServicesType>3404</ServicesType>
+    <!--从客户端登陆-->
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: ptlogin2.qq.com</Host>
+      <PacketHeadTag>/jump?</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="&amp;clientuin=" markend = "&amp;" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+    <!--从web页面登陆-->
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>t.qq.com</Host>
+      <PacketHeadTag>/ HTTP/1.1</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="ptui_loginuin=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--sina微博 -->
+    <ServicesType>3403</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>1</HeadTagType>
+      <Host>Host: weibo.com</Host>
+      <PacketHeadTag>/ajaxlogin.php</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype ="1" packetnum ="0" markstart ="un=" markend = ";" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
+
+  <ServicesFind>
+    <!--多玩YY -->
+    <ServicesType>1022</ServicesType>
+    <FindInfo>
+      <IsExtendFind>0</IsExtendFind>
+      <HeadTagType>2</HeadTagType>
+      <Host></Host>
+      <PacketHeadTag>00000001140000c800000020009050ffffffff</PacketHeadTag>
+      <MarkFind>
+        <MARK encodingtype="1" packetnum="0" marktype="1" markstart=""  markend="" savetype="2"/>
+      </MarkFind>
+    </FindInfo>
+  </ServicesFind>
   <!--配置-->
   <config>
-    <Settings isshanghai="true"/>>    
+    <Settings isshanghai="true"/>
+    >
   </config>
 </root>

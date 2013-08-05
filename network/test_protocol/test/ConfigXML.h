@@ -103,9 +103,18 @@ private:
 				}
 
 				pstuFindInfo->bIsExtendFind = child.child("IsExtendFind").first_child().text().as_bool();
-				pstuFindInfo->iFindType = child.child("FindType").first_child().text().as_int();
+				pstuFindInfo->iHeadTagType = child.child("HeadTagType").first_child().text().as_int();
 				strcpy_s(pstuFindInfo->szHost, 128, child.child("Host").first_child().value());
 				strcpy_s(pstuFindInfo->szPacketHeadTag, 64, child.child("PacketHeadTag").first_child().value());
+
+				//非http类型的数据 host为空则 包头标记为 非字符串类型
+				if (2 == pstuFindInfo->iHeadTagType)
+				{
+					BYTE szbyTem[64] = {0};
+					pstuFindInfo->ibyBufLen = str2hex(pstuOutFindInfo->szPacketHeadTag, szbyTem, 64);
+					memset(pstuFindInfo->szPacketHeadTag, 0, 64);
+					memcpy(pstuFindInfo->szPacketHeadTag, szbyTem, 64);
+				}
 
 				pstuFindInfo->pstuMarkFind = pstuFindInfo->pstuMarkFind->NewMarkFind();
 				GetXMLMarkFind(child.child("MarkFind"), pstuFindInfo->pstuMarkFind);					
@@ -139,8 +148,22 @@ private:
 				}
 				pstuMarkFind->iEncodingType = child.attribute("encodingtype").as_int();
 				pstuMarkFind->iPacketNum = child.attribute("packetnum").as_int();
+				pstuMarkFind->iMarkType = child.attribute("marktype").as_int();		
 				strcpy_s(pstuMarkFind->szMarkStart, 64, child.attribute("markstart").value());
 				strcpy_s(pstuMarkFind->szMarkEnd, 16, child.attribute("markend").value());
+				//非http类型的数据 host为空则 包头标记为 非字符串类型
+				if (2 == pstuMarkFind->iMarkType)
+				{
+					BYTE szbyTem[64] = {0};
+					pstuMarkFind->ibyStartBufLen = str2hex(pstuMarkFind->szMarkStart, szbyTem, 64);
+					memset(pstuMarkFind->szMarkStart, 0, 64);
+					memcpy(pstuMarkFind->szMarkStart, szbyTem, 64);
+					memset(szbyTem, 0, 64);
+					pstuMarkFind->ibyStartBufLen = str2hex(pstuMarkFind->szMarkEnd, szbyTem, 64);
+					memset(pstuMarkFind->szMarkEnd, 0, 64);
+					memcpy(pstuMarkFind->szMarkEnd, szbyTem, 64);
+
+				}
 				pstuMarkFind->enumSaveType = (SAVE_TYPE_TAG)child.attribute("savetype").as_int();
 			}
 			child = child.next_sibling();
@@ -201,6 +224,32 @@ private:
 		ptTem = _tcsrchr(tszTemp, _T('\\'));
 		memcpy(ptInPath, tszTemp, (_tcslen(tszTemp)-_tcslen(ptTem))*sizeof(TCHAR));
 		return true;
+	}
+
+	//将字符所代表的数字转化为数值
+	int char2int(char ch)
+	{
+		if(ch>='0' && ch<='9') return (char)(ch-'0');
+		if(ch>='a' && ch<='f') return (char)(ch-'a'+10);
+		if(ch>='A' && ch<='F') return (char)(ch-'A'+10);
+		return -1;
+	}
+
+	//将16进制字符串转换成二进制数据(hex)
+	//pbyInHex 二进制数据传入指针 iHexLen数据长度 pOutStr转换的16进制字符串传出指针 iMaxStrLen存放字符串数据的最大长度 超过最大长度将会被截断
+	//返回转换后数据的实际长度 如果超过最大长度将会被截断 注意如果转出的数据为字符串需注意补零
+	int str2hex(char* pInstr, BYTE* pbyOuthex, int iInMaxHexLen)
+	{
+		int i=0;
+		int iTem = strlen(pInstr);
+		for(int j = 0; j < iTem; )
+		{
+			if (i+1 >= iInMaxHexLen) break;
+			unsigned int a =  char2int(pInstr[j++]);
+			unsigned int b =  char2int(pInstr[j++]);
+			pbyOuthex[i++] = (a << 4) | b;
+		}
+		return i;
 	}
 
 private:
