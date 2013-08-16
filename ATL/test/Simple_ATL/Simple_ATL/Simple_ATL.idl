@@ -1,0 +1,36 @@
+// Simple_ATL.idl : Simple_ATL 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Simple_ATL.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(8048195A-F56F-4085-9EB5-3606567C126D),
+	dual,
+	nonextensible,
+	helpstring("IFirst_ATL 接口"),
+	pointer_default(unique)
+]
+interface IFirst_ATL : IDispatch{
+};
+[
+	uuid(EEC9BA95-0204-4353-B6C9-600916B1575E),
+	version(1.0),
+	helpstring("Simple_ATL 1.0 类型库")
+]
+library Simple_ATLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(48CB9DA1-D7E3-4527-B3CF-2706A0768A28),
+		helpstring("First_ATL Class")
+	]
+	coclass First_ATL
+	{
+		[default] interface IFirst_ATL;
+	};
+};

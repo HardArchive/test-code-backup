@@ -1,0 +1,18 @@
+// Pisvr.idl : Pisvr 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Pisvr.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(64612F5C-FFC6-41CE-A655-45A1E3E61F48),
+	version(1.0),
+	helpstring("Pisvr 1.0 类型库")
+]
+library PisvrLib
+{
+	importlib("stdole2.tlb");
+};
