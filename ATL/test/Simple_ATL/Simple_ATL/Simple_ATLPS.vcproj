@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="Simple_ATLPS"
-	ProjectGUID="{09D2C904-4D5F-4A48-9BFF-B64BDC982302}"
+	ProjectGUID="{E19DF7FC-C2FB-4BDC-96CF-820914618F7C}"
 	Keyword="AtlPSProj"
 	TargetFrameworkVersion="196613"
 	>
