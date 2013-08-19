@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 7.00.0555 */
-/* at Fri Aug 16 16:48:08 2013
+/* at Mon Aug 19 17:44:30 2013
  */
 /* Compiler settings for .\Simple_ATL.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
@@ -49,8 +49,8 @@
 
 #include "Simple_ATL_i.h"
 
-#define TYPE_FORMAT_STRING_SIZE   3                                 
-#define PROC_FORMAT_STRING_SIZE   1                                 
+#define TYPE_FORMAT_STRING_SIZE   7                                 
+#define PROC_FORMAT_STRING_SIZE   49                                
 #define EXPR_FORMAT_STRING_SIZE   1                                 
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   0            
@@ -108,6 +108,51 @@ static const Simple_ATL_MIDL_PROC_FORMAT_STRING Simple_ATL__MIDL_ProcFormatStrin
         0,
         {
 
+	/* Procedure AddNumbers */
+
+			0x33,		/* FC_AUTO_HANDLE */
+			0x6c,		/* Old Flags:  object, Oi2 */
+/*  2 */	NdrFcLong( 0x0 ),	/* 0 */
+/*  6 */	NdrFcShort( 0x7 ),	/* 7 */
+/*  8 */	NdrFcShort( 0x14 ),	/* x86 Stack size/offset = 20 */
+/* 10 */	NdrFcShort( 0x2c ),	/* 44 */
+/* 12 */	NdrFcShort( 0x8 ),	/* 8 */
+/* 14 */	0x44,		/* Oi2 Flags:  has return, has ext, */
+			0x4,		/* 4 */
+/* 16 */	0x8,		/* 8 */
+			0x1,		/* Ext Flags:  new corr desc, */
+/* 18 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 20 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 22 */	NdrFcShort( 0x0 ),	/* 0 */
+
+	/* Parameter Num1 */
+
+/* 24 */	NdrFcShort( 0x48 ),	/* Flags:  in, base type, */
+/* 26 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
+/* 28 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Parameter Num2 */
+
+/* 30 */	NdrFcShort( 0x48 ),	/* Flags:  in, base type, */
+/* 32 */	NdrFcShort( 0x8 ),	/* x86 Stack size/offset = 8 */
+/* 34 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Parameter ReturnVal */
+
+/* 36 */	NdrFcShort( 0x148 ),	/* Flags:  in, base type, simple ref, */
+/* 38 */	NdrFcShort( 0xc ),	/* x86 Stack size/offset = 12 */
+/* 40 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Return value */
+
+/* 42 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
+/* 44 */	NdrFcShort( 0x10 ),	/* x86 Stack size/offset = 16 */
+/* 46 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
 			0x0
         }
     };
@@ -117,6 +162,10 @@ static const Simple_ATL_MIDL_TYPE_FORMAT_STRING Simple_ATL__MIDL_TypeFormatStrin
         0,
         {
 			NdrFcShort( 0x0 ),	/* 0 */
+/*  2 */	
+			0x11, 0x8,	/* FC_RP [simple_pointer] */
+/*  4 */	0x8,		/* FC_LONG */
+			0x5c,		/* FC_PAD */
 
 			0x0
         }
@@ -132,7 +181,7 @@ static const Simple_ATL_MIDL_TYPE_FORMAT_STRING Simple_ATL__MIDL_TypeFormatStrin
 
 
 /* Object interface: IFirst_ATL, ver. 0.0,
-   GUID={0x8048195A,0xF56F,0x4085,{0x9E,0xB5,0x36,0x06,0x56,0x7C,0x12,0x6D}} */
+   GUID={0x34D3379E,0xDAFE,0x4CE1,{0xBA,0x93,0x85,0x77,0x71,0x39,0x51,0x68}} */
 
 #pragma code_seg(".orpc")
 static const unsigned short IFirst_ATL_FormatStringOffsetTable[] =
@@ -165,9 +214,9 @@ static const MIDL_SERVER_INFO IFirst_ATL_ServerInfo =
     0,
     0,
     0};
-CINTERFACE_PROXY_VTABLE(7) _IFirst_ATLProxyVtbl = 
+CINTERFACE_PROXY_VTABLE(8) _IFirst_ATLProxyVtbl = 
 {
-    0,
+    &IFirst_ATL_ProxyInfo,
     &IID_IFirst_ATL,
     IUnknown_QueryInterface_Proxy,
     IUnknown_AddRef_Proxy,
@@ -175,7 +224,8 @@ CINTERFACE_PROXY_VTABLE(7) _IFirst_ATLProxyVtbl =
     0 /* IDispatch::GetTypeInfoCount */ ,
     0 /* IDispatch::GetTypeInfo */ ,
     0 /* IDispatch::GetIDsOfNames */ ,
-    0 /* IDispatch_Invoke_Proxy */
+    0 /* IDispatch_Invoke_Proxy */ ,
+    (void *) (INT_PTR) -1 /* IFirst_ATL::AddNumbers */
 };
 
 
@@ -184,14 +234,15 @@ static const PRPC_STUB_FUNCTION IFirst_ATL_table[] =
     STUB_FORWARDING_FUNCTION,
     STUB_FORWARDING_FUNCTION,
     STUB_FORWARDING_FUNCTION,
-    STUB_FORWARDING_FUNCTION
+    STUB_FORWARDING_FUNCTION,
+    NdrStubCall2
 };
 
 CInterfaceStubVtbl _IFirst_ATLStubVtbl =
 {
     &IID_IFirst_ATL,
     &IFirst_ATL_ServerInfo,
-    7,
+    8,
     &IFirst_ATL_table[-3],
     CStdStubBuffer_DELEGATING_METHODS
 };

@@ -26,7 +26,6 @@ public:
 
 DECLARE_REGISTRY_RESOURCEID(IDR_FIRST_ATL)
 
-DECLARE_NOT_AGGREGATABLE(CFirst_ATL)
 
 BEGIN_COM_MAP(CFirst_ATL)
 	COM_INTERFACE_ENTRY(IFirst_ATL)
@@ -48,18 +47,7 @@ END_COM_MAP()
 
 public:
 
-
-	int AddNumbers(int Num1, int Num2, int* ReturnVal)
-	{
-		*ReturnVal = Num1 + Num2;
-		return 0;
-	}
-
-	// ºı∑®≤‚ ‘
-	int MinusNumbers(int iInNum1, int iInNum2)
-	{
-		return 0;
-	}
+	STDMETHOD(AddNumbers)(LONG Num1, LONG Num2, LONG* ReturnVal);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(First_ATL), CFirst_ATL)

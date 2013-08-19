@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 7.00.0555 */
-/* at Fri Aug 16 16:48:08 2013
+/* at Mon Aug 19 17:44:30 2013
  */
 /* Compiler settings for .\Simple_ATL.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
@@ -83,10 +83,15 @@ EXTERN_C const IID IID_IFirst_ATL;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("8048195A-F56F-4085-9EB5-3606567C126D")
+    MIDL_INTERFACE("34D3379E-DAFE-4CE1-BA93-857771395168")
     IFirst_ATL : public IDispatch
     {
     public:
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE AddNumbers( 
+            /* [in] */ LONG Num1,
+            /* [in] */ LONG Num2,
+            LONG *ReturnVal) = 0;
+        
     };
     
 #else 	/* C style interface */
@@ -136,6 +141,12 @@ EXTERN_C const IID IID_IFirst_ATL;
             /* [out] */ EXCEPINFO *pExcepInfo,
             /* [out] */ UINT *puArgErr);
         
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *AddNumbers )( 
+            IFirst_ATL * This,
+            /* [in] */ LONG Num1,
+            /* [in] */ LONG Num2,
+            LONG *ReturnVal);
+        
         END_INTERFACE
     } IFirst_ATLVtbl;
 
@@ -172,6 +183,9 @@ EXTERN_C const IID IID_IFirst_ATL;
     ( (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr) ) 
 
 
+#define IFirst_ATL_AddNumbers(This,Num1,Num2,ReturnVal)	\
+    ( (This)->lpVtbl -> AddNumbers(This,Num1,Num2,ReturnVal) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -197,7 +211,7 @@ EXTERN_C const CLSID CLSID_First_ATL;
 
 #ifdef __cplusplus
 
-class DECLSPEC_UUID("48CB9DA1-D7E3-4527-B3CF-2706A0768A28")
+class DECLSPEC_UUID("2E334F59-CBD8-4A4A-A038-D658DE240E9F")
 First_ATL;
 #endif
 #endif /* __Simple_ATLLib_LIBRARY_DEFINED__ */

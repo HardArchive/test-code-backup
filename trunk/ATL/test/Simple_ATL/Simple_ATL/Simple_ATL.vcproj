@@ -3,8 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="Simple_ATL"
-	ProjectGUID="{D55EB117-F579-4CD1-9131-5D2D1BB0820D}"
-	RootNamespace="Simple_ATL"
+	ProjectGUID="{94DE91CF-A623-4591-8861-63F64863C4BB}"
 	Keyword="AtlProj"
 	TargetFrameworkVersion="196613"
 	>

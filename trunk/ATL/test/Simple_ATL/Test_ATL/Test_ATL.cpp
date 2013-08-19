@@ -4,50 +4,52 @@
 #include "stdafx.h"
 #include <iostream>
 using namespace std;
+
+// 将头文件的目录指到Simple_ATL工程所在的目录
 #include "../Simple_ATL/Simple_ATL_i.h"
-//#include "../Simple_ATL/First_ATL.h"
+//#include "..\Simple_ATL\Simple_ATL.h"
+//#include 
+// 从Simple_ATL 工程所在目录的Simple_ATL_i.c 文件中拷贝以下内容
+// 注意: 你也可以不拷贝这些东西，而是把文件Simple_ATL_i.c包含进来。
+// 我之所以将它拷进来，是想更清楚地展示这些敞亮来自什么地方一击它们的代码
 
-// 把以下的内容从Simple_ATL工程目录的Simple_ATL_i.c文件中复制过来
-// 注意：你也可以直接包含Simple_ATL_i.c文件，我在此只想清楚地表明这些const常量来自何处以及它们的样子
+const IID IID_IFirst_ATL = {0x34D3379E,0xDAFE,0x4CE1,{0xBA,0x93,0x85,0x77,0x71,0x39,0x51,0x68}};
+const CLSID CLSID_First_ATL = {0x2E334F59,0xCBD8,0x4A4A,{0xA0,0x38,0xD6,0x58,0xDE,0x24,0x0E,0x9F}};
 
-const IID IID_IFirst_ATL = {0x8048195A,0xF56F,0x4085,{0x9E,0xB5,0x36,0x06,0x56,0x7C,0x12,0x6D}};
-const CLSID CLSID_First_ATL = {0x48CB9DA1,0xD7E3,0x4527,{0xB3,0xCF,0x27,0x06,0xA0,0x76,0x8A,0x28}};
-
-
-int _tmain(int argc, _TCHAR* argv[])
+void main(void)
 {
-	// 声明一个HRESULT变量以及一个Simple_ATL接口的指针
-	HRESULT          hr;
-	IFirst_ATL       *IFirstATL = NULL;
+	// 声明HRESULT和Simple_ATL接口指针
+	HRESULT hr;
+	IFirst_ATL *IFirstATL = NULL;
 
-	// 现在初始化COM
+	// 初始化COM
 	hr = CoInitialize(0);
 
-	// 使用SUCCEEDED宏来看看我们是否能够获得接口的指针
+	// 使用SUCCEEDED 宏并检查我们是否能得到一个接口指针 
 	if(SUCCEEDED(hr))
 	{
-		hr = CoCreateInstance( CLSID_First_ATL, NULL,
-			CLSCTX_INPROC_SERVER,
+		hr = CoCreateInstance( CLSID_First_ATL, NULL, CLSCTX_INPROC_SERVER,
 			IID_IFirst_ATL, (void**) &IFirstATL);
 
-		// 如果成功了，那么调用AddNumbers方法
-		// 否则给用户显示一条适当的信息
+		// 如果成功，则调用AddNumbers方法，否则显示相应的出错信息
 		if(SUCCEEDED(hr))
 		{
 			long ReturnValue;
 
-			IFirstATL->MinusNumbers(5, 7, &ReturnValue);
-			cout << "The answer for 5 + 7 is: "
-				<< ReturnValue << endl;
-			IFirstATL->Release();
+			IFirstATL->AddNumbers(5, 7, &ReturnValue);
+			cout << "The answer for 5 + 7 is: " << ReturnValue << endl;
+			IFirstATL->Release(); 
 		}
 		else
 		{
 			cout << "CoCreateInstance Failed." << endl;
 		}
 	}
-	// 卸载COM
+	// 释放COM
 	CoUninitialize();
-	return 0;
-}
 
+	system("VER");
+	cout << endl;
+	//system("TIME");
+	system("pause");
+}
