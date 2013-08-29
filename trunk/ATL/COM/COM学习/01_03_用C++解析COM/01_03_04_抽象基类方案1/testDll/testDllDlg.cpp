@@ -6,10 +6,12 @@
 #include "testDllDlg.h"
 #include ".\testdlldlg.h"
 
+#include "..\\dll\\My.h"
+#pragma comment(lib,"..\\bin\\dll.lib")
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -149,17 +151,12 @@ HCURSOR CtestDllDlg::OnQueryDragIcon()
 }
 
 //记得把dll.dll拷到testDll项目目录下
-#ifdef _DEBUG
-#pragma comment(lib,"..\\dll\\Debug\\dll.lib")
-#else
-#pragma comment(lib,"..\\dll\\Release\\dll.lib")
-#endif
 
-#include "..\\dll\\My.h"
+
 void CtestDllDlg::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	IMy* p=new CMy;
+	IMy* p = new CMy;
 	p->Add (1,2);
 	int i=p->Get ();
 	delete p;

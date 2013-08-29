@@ -6,7 +6,7 @@ import "oaidl.idl";
 import "ocidl.idl";
 [
 	object,
-	uuid(FAEAE6B7-67BE-42a4-A318-3256781E945A),
+	uuid(D77FDBC5-E7D5-48aa-986F-E5D58F57F59F),
 	helpstring("IMy Interface"),	
 	pointer_default(unique)
 ]
@@ -17,7 +17,7 @@ interface IMy : IUnknown
 };
 
 [
-	uuid(01147C39-9DA0-4f7f-B525-D129745AAD1E),
+	uuid(0F30D079-C236-4baf-8869-28AF39DAC365),
 	helpstring("IMy2 Interface"),
 	object,
 	pointer_default(unique)
@@ -28,7 +28,7 @@ interface IMy2 : IUnknown
 };
 		
 [
-	uuid(CA3B37EA-E44A-49b8-9729-6E9222CAE844),
+	uuid(5BC9017F-F3FB-4f7b-BE3B-EA44F1D10180),
 	version(1.0),
 	helpstring("My Type Library")
 ]
@@ -39,7 +39,7 @@ library SSZLib
 
 
 	[
-		uuid(3BCFE27E-C88D-453C-8C94-F5F7B97E7841),
+		uuid(A738E0FE-EF11-482a-AFE2-1164E4749F25),
 		helpstring("SSZ Class")
 	]
 	coclass SSZ

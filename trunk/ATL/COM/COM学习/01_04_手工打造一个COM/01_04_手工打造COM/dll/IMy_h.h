@@ -3,18 +3,18 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0361 */
-/* at Wed Aug 10 14:51:20 2005
+ /* File created by MIDL compiler version 7.00.0555 */
+/* at Wed Aug 21 14:05:04 2013
  */
 /* Compiler settings for .\IMy.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
-//@@MIDL_FILE_HEADING(  )
+/* @@MIDL_FILE_HEADING(  ) */
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
 
@@ -77,8 +77,6 @@ typedef struct SSZ SSZ;
 extern "C"{
 #endif 
 
-void * __RPC_USER MIDL_user_allocate(size_t);
-void __RPC_USER MIDL_user_free( void * ); 
 
 #ifndef __IMy_INTERFACE_DEFINED__
 #define __IMy_INTERFACE_DEFINED__
@@ -91,7 +89,7 @@ EXTERN_C const IID IID_IMy;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("FAEAE6B7-67BE-42a4-A318-3256781E945A")
+    MIDL_INTERFACE("D77FDBC5-E7D5-48aa-986F-E5D58F57F59F")
     IMy : public IUnknown
     {
     public:
@@ -113,7 +111,8 @@ EXTERN_C const IID IID_IMy;
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMy * This,
             /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
+            /* [annotation][iid_is][out] */ 
+            __RPC__deref_out  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IMy * This);
@@ -144,51 +143,26 @@ EXTERN_C const IID IID_IMy;
 
 
 #define IMy_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
 #define IMy_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
+    ( (This)->lpVtbl -> AddRef(This) ) 
 
 #define IMy_Release(This)	\
-    (This)->lpVtbl -> Release(This)
+    ( (This)->lpVtbl -> Release(This) ) 
 
 
 #define IMy_Add(This,x1,x2)	\
-    (This)->lpVtbl -> Add(This,x1,x2)
+    ( (This)->lpVtbl -> Add(This,x1,x2) ) 
 
 #define IMy_Get(This,pret)	\
-    (This)->lpVtbl -> Get(This,pret)
+    ( (This)->lpVtbl -> Get(This,pret) ) 
 
 #endif /* COBJMACROS */
 
 
 #endif 	/* C style interface */
 
-
-
-HRESULT STDMETHODCALLTYPE IMy_Add_Proxy( 
-    IMy * This,
-    /* [in] */ int x1,
-    /* [in] */ int x2);
-
-
-void __RPC_STUB IMy_Add_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IMy_Get_Proxy( 
-    IMy * This,
-    /* [retval][out] */ int *pret);
-
-
-void __RPC_STUB IMy_Get_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
 
 
 
@@ -206,7 +180,7 @@ EXTERN_C const IID IID_IMy2;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("01147C39-9DA0-4f7f-B525-D129745AAD1E")
+    MIDL_INTERFACE("0F30D079-C236-4baf-8869-28AF39DAC365")
     IMy2 : public IUnknown
     {
     public:
@@ -224,7 +198,8 @@ EXTERN_C const IID IID_IMy2;
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMy2 * This,
             /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
+            /* [annotation][iid_is][out] */ 
+            __RPC__deref_out  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IMy2 * This);
@@ -250,35 +225,23 @@ EXTERN_C const IID IID_IMy2;
 
 
 #define IMy2_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
 #define IMy2_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
+    ( (This)->lpVtbl -> AddRef(This) ) 
 
 #define IMy2_Release(This)	\
-    (This)->lpVtbl -> Release(This)
+    ( (This)->lpVtbl -> Release(This) ) 
 
 
 #define IMy2_SayHello(This,pret)	\
-    (This)->lpVtbl -> SayHello(This,pret)
+    ( (This)->lpVtbl -> SayHello(This,pret) ) 
 
 #endif /* COBJMACROS */
 
 
 #endif 	/* C style interface */
 
-
-
-HRESULT STDMETHODCALLTYPE IMy2_SayHello_Proxy( 
-    IMy2 * This,
-    /* [retval][out] */ CHAR *pret);
-
-
-void __RPC_STUB IMy2_SayHello_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
 
 
 
@@ -299,7 +262,7 @@ EXTERN_C const CLSID CLSID_SSZ;
 
 #ifdef __cplusplus
 
-class DECLSPEC_UUID("3BCFE27E-C88D-453C-8C94-F5F7B97E7841")
+class DECLSPEC_UUID("A738E0FE-EF11-482a-AFE2-1164E4749F25")
 SSZ;
 #endif
 #endif /* __SSZLib_LIBRARY_DEFINED__ */

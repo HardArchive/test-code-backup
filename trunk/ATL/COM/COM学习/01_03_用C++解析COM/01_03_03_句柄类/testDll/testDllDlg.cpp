@@ -149,11 +149,9 @@ HCURSOR CtestDllDlg::OnQueryDragIcon()
 }
 
 //记得把dll.dll拷到testDll项目目录下
-#ifdef _DEBUG
-#pragma comment(lib,"..\\dll\\Debug\\dll.lib")
-#else
-#pragma comment(lib,"..\\dll\\Release\\dll.lib")
-#endif
+
+#pragma comment(lib,"..\\bin\\dll.lib")
+
 #include "..\\dll\\HandleClass.h"
 void CtestDllDlg::OnBnClickedButton1()
 {

@@ -5,21 +5,18 @@
 /* link this file in with the server and any clients */
 
 
- /* File created by MIDL compiler version 6.00.0361 */
-/* at Wed Aug 10 14:51:20 2005
+ /* File created by MIDL compiler version 7.00.0555 */
+/* at Wed Aug 21 14:05:04 2013
  */
 /* Compiler settings for .\IMy.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
-//@@MIDL_FILE_HEADING(  )
-
-#if !defined(_M_IA64) && !defined(_M_AMD64)
-
+/* @@MIDL_FILE_HEADING(  ) */
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
 
@@ -70,16 +67,16 @@ typedef IID CLSID;
 
 #endif !_MIDL_USE_GUIDDEF_
 
-MIDL_DEFINE_GUID(IID, IID_IMy,0xFAEAE6B7,0x67BE,0x42a4,0xA3,0x18,0x32,0x56,0x78,0x1E,0x94,0x5A);
+MIDL_DEFINE_GUID(IID, IID_IMy,0xD77FDBC5,0xE7D5,0x48aa,0x98,0x6F,0xE5,0xD5,0x8F,0x57,0xF5,0x9F);
 
 
-MIDL_DEFINE_GUID(IID, IID_IMy2,0x01147C39,0x9DA0,0x4f7f,0xB5,0x25,0xD1,0x29,0x74,0x5A,0xAD,0x1E);
+MIDL_DEFINE_GUID(IID, IID_IMy2,0x0F30D079,0xC236,0x4baf,0x88,0x69,0x28,0xAF,0x39,0xDA,0xC3,0x65);
 
 
-MIDL_DEFINE_GUID(IID, LIBID_SSZLib,0xCA3B37EA,0xE44A,0x49b8,0x97,0x29,0x6E,0x92,0x22,0xCA,0xE8,0x44);
+MIDL_DEFINE_GUID(IID, LIBID_SSZLib,0x5BC9017F,0xF3FB,0x4f7b,0xBE,0x3B,0xEA,0x44,0xF1,0xD1,0x01,0x80);
 
 
-MIDL_DEFINE_GUID(CLSID, CLSID_SSZ,0x3BCFE27E,0xC88D,0x453C,0x8C,0x94,0xF5,0xF7,0xB9,0x7E,0x78,0x41);
+MIDL_DEFINE_GUID(CLSID, CLSID_SSZ,0xA738E0FE,0xEF11,0x482a,0xAF,0xE2,0x11,0x64,0xE4,0x74,0x9F,0x25);
 
 #undef MIDL_DEFINE_GUID
 
@@ -88,6 +85,4 @@ MIDL_DEFINE_GUID(CLSID, CLSID_SSZ,0x3BCFE27E,0xC88D,0x453C,0x8C,0x94,0xF5,0xF7,0
 #endif
 
 
-
-#endif /* !defined(_M_IA64) && !defined(_M_AMD64)*/
 
