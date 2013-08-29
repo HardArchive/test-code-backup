@@ -10,11 +10,11 @@
 
 //standard self-registration table
 const char * g_RegTable[][3]={
-	{"CLSID\\{3BCFE27E-C88D-453C-8C94-F5F7B97E7841}",0,"SSZ"},
-	{"CLSID\\{3BCFE27E-C88D-453C-8C94-F5F7B97E7841}\\InprocServer32",0,(const char * )-1 /*表示文件名的值*/},
-	{"CLSID\\{3BCFE27E-C88D-453C-8C94-F5F7B97E7841}\\ProgID",0,"SSZ.NETFISH.1"},
+	{"CLSID\\{A738E0FE-EF11-482a-AFE2-1164E4749F25}",0,"SSZ"},
+	{"CLSID\\{A738E0FE-EF11-482a-AFE2-1164E4749F25}\\InprocServer32",0,(const char * )-1 /*表示文件名的值*/},
+	{"CLSID\\{A738E0FE-EF11-482a-AFE2-1164E4749F25}\\ProgID",0,"SSZ.NETFISH.1"},
 	{"tulip.MathCOM.1",0,"MathCOM"},
-	{"tulip.MathCOM.1\\CLSID",0,"{3BCFE27E-C88D-453C-8C94-F5F7B97E7841}"},
+	{"tulip.MathCOM.1\\CLSID",0,"{A738E0FE-EF11-482a-AFE2-1164E4749F25}"},
 };
 HINSTANCE  g_hinstDll;
 STDAPI DllRegisterServer(void);

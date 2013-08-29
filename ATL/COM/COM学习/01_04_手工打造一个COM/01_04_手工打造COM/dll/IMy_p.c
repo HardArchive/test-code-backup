@@ -3,18 +3,18 @@
 /* this ALWAYS GENERATED file contains the proxy stub code */
 
 
- /* File created by MIDL compiler version 6.00.0361 */
-/* at Wed Aug 10 14:51:20 2005
+ /* File created by MIDL compiler version 7.00.0555 */
+/* at Wed Aug 21 14:05:04 2013
  */
 /* Compiler settings for .\IMy.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
-//@@MIDL_FILE_HEADING(  )
+/* @@MIDL_FILE_HEADING(  ) */
 
 #if !defined(_M_IA64) && !defined(_M_AMD64)
 
@@ -23,9 +23,15 @@
 #if _MSC_VER >= 1200
 #pragma warning(push)
 #endif
-#pragma warning( disable: 4100 ) /* unreferenced arguments in x86 call */
-#pragma warning( disable: 4211 )  /* redefine extent to static */
+
+#pragma warning( disable: 4211 )  /* redefine extern to static */
 #pragma warning( disable: 4232 )  /* dllimport identity*/
+#pragma warning( disable: 4024 )  /* array to pointer mapping*/
+#pragma warning( disable: 4152 )  /* function/data pointer conversion in expression */
+#pragma warning( disable: 4100 ) /* unreferenced arguments in x86 call */
+
+#pragma optimize("", off ) 
+
 #define USE_STUBLESS_PROXY
 
 
@@ -38,35 +44,43 @@
 #include "rpcproxy.h"
 #ifndef __RPCPROXY_H_VERSION__
 #error this stub requires an updated version of <rpcproxy.h>
-#endif // __RPCPROXY_H_VERSION__
+#endif /* __RPCPROXY_H_VERSION__ */
 
 
 #include "IMy_h.h"
 
 #define TYPE_FORMAT_STRING_SIZE   11                                
 #define PROC_FORMAT_STRING_SIZE   115                               
+#define EXPR_FORMAT_STRING_SIZE   1                                 
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   0            
 
-typedef struct _MIDL_TYPE_FORMAT_STRING
+typedef struct _IMy_MIDL_TYPE_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ TYPE_FORMAT_STRING_SIZE ];
-    } MIDL_TYPE_FORMAT_STRING;
+    } IMy_MIDL_TYPE_FORMAT_STRING;
 
-typedef struct _MIDL_PROC_FORMAT_STRING
+typedef struct _IMy_MIDL_PROC_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ PROC_FORMAT_STRING_SIZE ];
-    } MIDL_PROC_FORMAT_STRING;
+    } IMy_MIDL_PROC_FORMAT_STRING;
+
+typedef struct _IMy_MIDL_EXPR_FORMAT_STRING
+    {
+    long          Pad;
+    unsigned char  Format[ EXPR_FORMAT_STRING_SIZE ];
+    } IMy_MIDL_EXPR_FORMAT_STRING;
 
 
-static RPC_SYNTAX_IDENTIFIER  _RpcTransferSyntax = 
+static const RPC_SYNTAX_IDENTIFIER  _RpcTransferSyntax = 
 {{0x8A885D04,0x1CEB,0x11C9,{0x9F,0xE8,0x08,0x00,0x2B,0x10,0x48,0x60}},{2,0}};
 
 
-extern const MIDL_TYPE_FORMAT_STRING __MIDL_TypeFormatString;
-extern const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString;
+extern const IMy_MIDL_TYPE_FORMAT_STRING IMy__MIDL_TypeFormatString;
+extern const IMy_MIDL_PROC_FORMAT_STRING IMy__MIDL_ProcFormatString;
+extern const IMy_MIDL_EXPR_FORMAT_STRING IMy__MIDL_ExprFormatString;
 
 
 extern const MIDL_STUB_DESC Object_StubDesc;
@@ -89,14 +103,14 @@ extern const MIDL_STUBLESS_PROXY_INFO IMy2_ProxyInfo;
 #endif
 
 #if !(TARGET_IS_NT50_OR_LATER)
-#error You need a Windows 2000 or later to run this stub because it uses these features:
+#error You need Windows 2000 or later to run this stub because it uses these features:
 #error   /robust command line switch.
 #error However, your C/C++ compilation flags indicate you intend to run this app on earlier systems.
-#error This app will die there with the RPC_X_WRONG_STUB_VERSION error.
+#error This app will fail with the RPC_X_WRONG_STUB_VERSION error.
 #endif
 
 
-static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
+static const IMy_MIDL_PROC_FORMAT_STRING IMy__MIDL_ProcFormatString =
     {
         0,
         {
@@ -205,7 +219,7 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
         }
     };
 
-static const MIDL_TYPE_FORMAT_STRING __MIDL_TypeFormatString =
+static const IMy_MIDL_TYPE_FORMAT_STRING IMy__MIDL_TypeFormatString =
     {
         0,
         {
@@ -229,7 +243,7 @@ static const MIDL_TYPE_FORMAT_STRING __MIDL_TypeFormatString =
 
 
 /* Object interface: IMy, ver. 0.0,
-   GUID={0xFAEAE6B7,0x67BE,0x42a4,{0xA3,0x18,0x32,0x56,0x78,0x1E,0x94,0x5A}} */
+   GUID={0xD77FDBC5,0xE7D5,0x48aa,{0x98,0x6F,0xE5,0xD5,0x8F,0x57,0xF5,0x9F}} */
 
 #pragma code_seg(".orpc")
 static const unsigned short IMy_FormatStringOffsetTable[] =
@@ -241,7 +255,7 @@ static const unsigned short IMy_FormatStringOffsetTable[] =
 static const MIDL_STUBLESS_PROXY_INFO IMy_ProxyInfo =
     {
     &Object_StubDesc,
-    __MIDL_ProcFormatString.Format,
+    IMy__MIDL_ProcFormatString.Format,
     &IMy_FormatStringOffsetTable[-3],
     0,
     0,
@@ -253,7 +267,7 @@ static const MIDL_SERVER_INFO IMy_ServerInfo =
     {
     &Object_StubDesc,
     0,
-    __MIDL_ProcFormatString.Format,
+    IMy__MIDL_ProcFormatString.Format,
     &IMy_FormatStringOffsetTable[-3],
     0,
     0,
@@ -281,7 +295,7 @@ const CInterfaceStubVtbl _IMyStubVtbl =
 
 
 /* Object interface: IMy2, ver. 0.0,
-   GUID={0x01147C39,0x9DA0,0x4f7f,{0xB5,0x25,0xD1,0x29,0x74,0x5A,0xAD,0x1E}} */
+   GUID={0x0F30D079,0xC236,0x4baf,{0x88,0x69,0x28,0xAF,0x39,0xDA,0xC3,0x65}} */
 
 #pragma code_seg(".orpc")
 static const unsigned short IMy2_FormatStringOffsetTable[] =
@@ -292,7 +306,7 @@ static const unsigned short IMy2_FormatStringOffsetTable[] =
 static const MIDL_STUBLESS_PROXY_INFO IMy2_ProxyInfo =
     {
     &Object_StubDesc,
-    __MIDL_ProcFormatString.Format,
+    IMy__MIDL_ProcFormatString.Format,
     &IMy2_FormatStringOffsetTable[-3],
     0,
     0,
@@ -304,7 +318,7 @@ static const MIDL_SERVER_INFO IMy2_ServerInfo =
     {
     &Object_StubDesc,
     0,
-    __MIDL_ProcFormatString.Format,
+    IMy__MIDL_ProcFormatString.Format,
     &IMy2_FormatStringOffsetTable[-3],
     0,
     0,
@@ -339,28 +353,28 @@ static const MIDL_STUB_DESC Object_StubDesc =
     0,
     0,
     0,
-    __MIDL_TypeFormatString.Format,
+    IMy__MIDL_TypeFormatString.Format,
     1, /* -error bounds_check flag */
     0x50002, /* Ndr library version */
     0,
-    0x6000169, /* MIDL Version 6.0.361 */
+    0x700022b, /* MIDL Version 7.0.555 */
     0,
     0,
     0,  /* notify & notify_flag routine table */
     0x1, /* MIDL flag */
     0, /* cs routines */
     0,   /* proxy/server info */
-    0   /* Reserved5 */
+    0
     };
 
-const CInterfaceProxyVtbl * _IMy_ProxyVtblList[] = 
+const CInterfaceProxyVtbl * const _IMy_ProxyVtblList[] = 
 {
     ( CInterfaceProxyVtbl *) &_IMy2ProxyVtbl,
     ( CInterfaceProxyVtbl *) &_IMyProxyVtbl,
     0
 };
 
-const CInterfaceStubVtbl * _IMy_StubVtblList[] = 
+const CInterfaceStubVtbl * const _IMy_StubVtblList[] = 
 {
     ( CInterfaceStubVtbl *) &_IMy2StubVtbl,
     ( CInterfaceStubVtbl *) &_IMyStubVtbl,
@@ -391,7 +405,7 @@ const ExtendedProxyFileInfo IMy_ProxyFileInfo =
     (PCInterfaceProxyVtblList *) & _IMy_ProxyVtblList,
     (PCInterfaceStubVtblList *) & _IMy_StubVtblList,
     (const PCInterfaceName * ) & _IMy_InterfaceNamesList,
-    0, // no delegation
+    0, /* no delegation */
     & _IMy_IID_Lookup, 
     2,
     2,
@@ -400,6 +414,7 @@ const ExtendedProxyFileInfo IMy_ProxyFileInfo =
     0, /* Filler2 */
     0  /* Filler3 */
 };
+#pragma optimize("", on )
 #if _MSC_VER >= 1200
 #pragma warning(pop)
 #endif

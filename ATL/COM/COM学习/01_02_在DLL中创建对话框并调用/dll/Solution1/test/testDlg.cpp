@@ -7,7 +7,7 @@
 #include ".\testdlg.h"
 #include "..\dll1\dd.h"
 #include "..\dll1\a.h"
-#pragma comment(lib,"..\\dll1\\Debug\\dll1.lib")
+#pragma comment(lib,"..\\bin\\dll1.lib")
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
