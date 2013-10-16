@@ -5,7 +5,21 @@
 #include <Windows.h>
 #include <map>
 #include <string>
+#include <algorithm>
 using namespace std;
+
+class map_value_finder
+{
+public:
+	map_value_finder(const DWORD& dwCmp):m_dwCmp(dwCmp){}
+	bool operator ()(const std::map<string, DWORD>::value_type &pair)
+	{
+		return pair.second == m_dwCmp;
+	}
+private:
+	const DWORD &m_dwCmp;                    
+};
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	map<string, DWORD> m_mapBarcodeID;
@@ -43,7 +57,29 @@ int _tmain(int argc, _TCHAR* argv[])
 			it1++;
 	}
 
+
+	//第二种遍历方式
+	map<string, DWORD>::iterator it01 = m_mapBarcodeID.find(string("sabasdf0"));
+	map<string, DWORD>::iterator it02 = m_mapBarcodeID.find(string("sabasdf1"));
+	map<string, DWORD>::iterator it03;
+
+	map<string, DWORD>::iterator it11 = std::find_if(m_mapBarcodeID.begin(), m_mapBarcodeID.end(), map_value_finder(1));
+	map<string, DWORD>::iterator it22 = m_mapBarcodeID.find(string("sabasdf1"));
+	
+
+	m_mapBarcodeID.erase(std::find_if(m_mapBarcodeID.begin(), m_mapBarcodeID.end(), map_value_finder(1)));
+	//map<string, DWORD>::iterator it33 = std::find_if(m_mapBarcodeID.begin(), m_mapBarcodeID.end(), map_value_finder(1));
+	//it33::val
+	//if (1 == it33->second)
+	//{
+	//	m_mapBarcodeID.erase(it33);
+	//}	
+
 	printf("erase已经完成!!!!\r\n");
+
+	//map<int,int> A;
+	//A.insert(make_pair(1,2));
+	//A.erase(A.find(1)); 
 
 	return 0;
 }
