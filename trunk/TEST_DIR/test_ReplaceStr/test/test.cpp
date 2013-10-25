@@ -29,8 +29,13 @@ int ReplaceStr(char* sSrc, char* sMatchStr, char* sReplaceStr)
 }
 
 
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+	char szTem1[MAX_PATH] = {"abcd-efgh-ijklm-nopq ABCD-EFGH-IJKLM-NOPQ"};
+	char szTem2[MAX_PATH] = {0};
+	char* pTem = strlwr(szTem1);  //字符串中字符的大小写转换(strlwr和strupr) 
 	char szTemp1[MAX_PATH] = {"abcd-efgh-ijklm-nopq"};
 	char szTemp2[MAX_PATH] = {"D:\\360data\\重要数据\\桌面\\工作相关项目"};
 	ReplaceStr(szTemp1,"-","");//把字符串中的“-”删除掉！
