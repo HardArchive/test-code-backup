@@ -1,0 +1,577 @@
+.
+OnCreate
+MSG_WM_CREATE(func)
+(LRESULT)func(LPCREATESTRUCT lpCreateStruct);
+.
+OnInitDialog
+MSG_WM_INITDIALOG(func)
+(LRESULT)func(HWND hWnd, LPARAM lParam);
+.
+OnCopyData
+MSG_WM_COPYDATA(func)
+(LRESULT)func(HWND hWnd, PCOPYDATASTRUCT pCopyDataStruct);
+.
+OnDestroy
+MSG_WM_DESTROY(func)
+func();
+.
+OnMove
+MSG_WM_MOVE(func)
+func(CPoint point);
+.
+OnSize
+MSG_WM_SIZE(func)
+func(UINT uFlag, CSize size);
+.
+OnActivate
+MSG_WM_ACTIVATE(func)
+func(UINT nState, BOOL bMinimized, HWND hWnd);
+.
+OnSetFocus
+MSG_WM_SETFOCUS(func)
+func(HWND hOldWnd);
+.
+OnKillFocus
+MSG_WM_KILLFOCUS(func)
+func(HWND hNewWnd);
+.
+OnEnable
+MSG_WM_ENABLE(func)
+func(BOOL bEnable);
+.
+OnPaint
+MSG_WM_PAINT(func)
+func(HDC hDC);
+.
+OnClose
+MSG_WM_CLOSE(func)
+func();
+.
+OnQueryEndSession
+MSG_WM_QUERYENDSESSION(func)
+(LRESULT)func(UINT wParam, UINT lParam);
+.
+OnQueryOpen
+MSG_WM_QUERYOPEN(func)
+(LRESULT)func();
+.
+OnEraseBkgnd
+MSG_WM_ERASEBKGND(func)
+(LRESULT)func(HDC hDC);
+.
+OnSysColorChange
+MSG_WM_SYSCOLORCHANGE(func)
+func();
+.
+OnEndSession
+MSG_WM_ENDSESSION(func)
+func(BOOL Ending, (UINT)lParam);
+.
+OnShowWindow
+MSG_WM_SHOWWINDOW(func)
+func(BOOL bShow, int nStatus);
+.
+OnCtlColorEdit
+MSG_WM_CTLCOLOREDIT(func)
+(LRESULT)func(HDC hDC, HWND hWnd);
+.
+OnCtlColorListBox
+MSG_WM_CTLCOLORLISTBOX(func)
+(LRESULT)func(HDC hDC, HWND hListBox);
+.
+OnCtlColorBtn
+MSG_WM_CTLCOLORBTN(func)
+(LRESULT)func(HDC hDC, HWND hBtn);
+.
+OnCtlColorDlg
+MSG_WM_CTLCOLORDLG(func)
+(LRESULT)func(HDC hDC, HWND hDlg);
+.
+OnCtlColorScrollBar
+MSG_WM_CTLCOLORSCROLLBAR(func)
+(LRESULT)func(HDC hDC, HWND hScrollBar);
+.
+OnCtlColorStatic
+MSG_WM_CTLCOLORSTATIC(func)
+(LRESULT)func(HDC hDC, HWND hStatic);
+.
+OnSettingChange
+MSG_WM_SETTINGCHANGE(func)
+func(UINT uFlag, LPCTSTR lpszSection);
+.
+OnDevModeChange
+MSG_WM_DEVMODECHANGE(func)
+func(LPCTSTR lpDeviceName);
+.
+OnActiveApp
+MSG_WM_ACTIVATEAPP(func)
+func(BOOL bActive, DWORD dwTreadID);
+.
+OnFontChange
+MSG_WM_FONTCHANGE(func)
+func();
+.
+OnTimeChange
+MSG_WM_TIMECHANGE(func)
+func();
+.
+OnCancelMode
+MSG_WM_CANCELMODE(func)
+func();
+.
+OnSetSursor
+MSG_WM_SETCURSOR(func)
+(LRESULT)func(HWND hWnd, UINT nHitTest, UINT message);
+.
+OnMouseActive
+MSG_WM_MOUSEACTIVATE(func)
+(LRESULT)func(HWND hDesktopWnd, UINT nHitTest, UINT message);
+.
+OnChildActive
+MSG_WM_CHILDACTIVATE(func)
+func();
+.
+OnGetMinMaxInfo
+MSG_WM_GETMINMAXINFO(func)
+func(LPMINMAXINFO lpMMI);
+.
+OnIconEraseBkgnd
+MSG_WM_ICONERASEBKGND(func)
+func(HDC hDC);
+.
+OnSpoolerStatus
+MSG_WM_SPOOLERSTATUS(func)
+func(UINT nStatus, UINT nJobs);
+.
+OnDrawItem
+MSG_WM_DRAWITEM(func)
+func(UINT nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
+.
+OnMeasureItem
+MSG_WM_MEASUREITEM(func)
+func(UINT nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct);
+.
+OnDeleteItem
+MSG_WM_DELETEITEM(func)
+func(UINT nIDCtl, LPDELETEITEMSTRUCT lpDeleteItemStruct);
+.
+OnCharToItem
+MSG_WM_CHARTOITEM(func)
+(LRESULT)func(UINT nChar, UINT nIndex, HWND hListBox);
+.
+OnVKeyToItem
+MSG_WM_VKEYTOITEM(func)
+(LRESULT)func(UINT nKey, UINT nIndex, HWND hListBox);
+.
+OnQueryDragIcon
+MSG_WM_QUERYDRAGICON(func)
+(LRESULT)func();
+.
+OnCompareItem
+MSG_WM_COMPAREITEM(func)
+(LRESULT)func(UINT nIDCtl, LPCOMPAREITEMSTRUCT lpCompareItemStruct);
+.
+OnCompacting
+MSG_WM_COMPACTING(func)
+func(UINT nCpuTime);
+.
+OnNcCreate
+MSG_WM_NCCREATE(func)
+(LRESULT)func(LPCREATESTRUCT lpCreateStruct);
+.
+OnNcDestroy
+MSG_WM_NCDESTROY(func)
+func();
+.
+OnNcCalcSize
+MSG_WM_NCCALCSIZE(func)
+func(BOOL bCalcValidRects, LPARAM lParam);
+.
+OnNcHitTest
+MSG_WM_NCHITTEST(func)
+(LRESULT)func(CPoint point);
+.
+OnNcPaint
+MSG_WM_NCPAINT(func)
+func(HRGN hRgn);
+.
+OnNcActive
+MSG_WM_NCACTIVATE(func)
+(LRESULT)func(BOOL bActive);
+.
+OnGetDlgCode
+MSG_WM_GETDLGCODE(func)
+(LRESULT)func(LPMSG lpMsg);
+.
+OnNcMouseMove
+MSG_WM_NCMOUSEMOVE(func)
+func(UINT nHitTest, CPoint point);
+.
+OnNcLButtonDown
+MSG_WM_NCLBUTTONDOWN(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcLButtonUp
+MSG_WM_NCLBUTTONUP(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcLButtonDblClk
+MSG_WM_NCLBUTTONDBLCLK(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcRButtonDown
+MSG_WM_NCRBUTTONDOWN(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcRButtonUp
+MSG_WM_NCRBUTTONUP(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcRButtonDblClk
+MSG_WM_NCRBUTTONDBLCLK(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcMButtonDown
+MSG_WM_NCMBUTTONDOWN(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcMButtonUp
+MSG_WM_NCMBUTTONUP(func)
+func(UINT hHitTest, CPoint point);
+.
+OnNcMButtonDblClk
+MSG_WM_NCMBUTTONDBLCLK(func)
+func(UINT hHitTest, CPoint point);
+.
+OnKeyDown
+MSG_WM_KEYDOWN(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnKeyUp
+MSG_WM_KEYUP(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnChar
+MSG_WM_CHAR(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnDeadChar
+MSG_WM_DEADCHAR(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnSysKeyDown
+MSG_WM_SYSKEYDOWN(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnSysKeyUp
+MSG_WM_SYSKEYUP(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnSysChar
+MSG_WM_SYSCHAR(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnSysDeadChar
+MSG_WM_SYSDEADCHAR(func)
+func(TCHAR nChar, UINT nRepCnt, UINT nFlags);
+.
+OnSysCommand
+MSG_WM_SYSCOMMAND(func)
+func(UINT nID, CPoint point);
+.
+OnTCard
+MSG_WM_TCARD(func)
+func(UINT idAction, DWORD dwActionData);
+.
+OnTimer
+MSG_WM_TIMER(func)
+func(UINT idEvent, TIMERPROC /*TimerProc*/);
+.
+OnHScroll
+MSG_WM_HSCROLL(func)
+func(int nSBCode, short nPos, HWND hScrollBar);
+.
+OnVScroll
+MSG_WM_VSCROLL(func)
+func(int nSBCode, short nPos, HWND hScrollBar);
+.
+OnInitMenu
+MSG_WM_INITMENU(func)
+func(HMENU hMenu);
+.
+OnInitMenuPopup
+MSG_WM_INITMENUPOPUP(func)
+func(HMENU hMenu, UINT nIndex, BOOL bSysMenu);
+.
+OnMenuSelect
+MSG_WM_MENUSELECT(func)
+func(UINT nItemID, UINT nFlags, HMENU hSysMenu);
+.
+OnMenuChar
+MSG_WM_MENUCHAR(func)
+func(TCHAR nChar, UINT nFlags, HMENU hMenu);
+.
+OnNotify
+MSG_WM_NOTIFY(func)
+func(int idCtrl, LPNMHDR lpNMHDR);
+.
+OnEnterIdle
+MSG_WM_ENTERIDLE(func)
+func(UINT nWhy, HWND hWho);
+.
+OnMouseMove
+MSG_WM_MOUSEMOVE(func)
+func(UINT nFlags, CPoint point);
+.
+OnMouseWheel
+MSG_WM_MOUSEWHEEL(func)
+(LRESULT)func(UINT nFlags, short zDelta, CPoint pt);
+.
+OnLButtonDown
+MSG_WM_LBUTTONDOWN(func)
+func(UINT nFlags, CPoint point);
+.
+OnLButtonUp
+MSG_WM_LBUTTONUP(func)
+func(UINT nFlags, CPoint point);
+.
+OnLButtonDblClk
+MSG_WM_LBUTTONDBLCLK(func)
+func(UINT nFlags, CPoint point);
+.
+OnRButtonDown
+MSG_WM_RBUTTONDOWN(func)
+func(UINT nFlags, CPoint point);
+.
+OnRButtonUp
+MSG_WM_RBUTTONUP(func)
+func(UINT nFlags, CPoint point);
+.
+OnRButtonDblClk
+MSG_WM_RBUTTONDBLCLK(func)
+func(UINT nFlags, CPoint point);
+.
+OnMButtonDown
+MSG_WM_MBUTTONDOWN(func)
+func(UINT nFlags, CPoint point);
+.
+OnMButtonUp
+MSG_WM_MBUTTONUP(func)
+func(UINT nFlags, CPoint point);
+.
+OnMButtonDblClk
+MSG_WM_MBUTTONDBLCLK(func)
+func(UINT nFlags, CPoint point);
+.
+OnParentNotify
+MSG_WM_PARENTNOTIFY(func)
+func(UINT message, UINT /*msg2*/, LPARAM lParam);
+.
+OnMDIActivate
+MSG_WM_MDIACTIVATE(func)
+func(HWND hDeactivateWnd, HWND hActivateWnd);
+.
+OnRenderFormat
+MSG_WM_RENDERFORMAT(func)
+func(UINT nFormat);
+.
+OnRenderAllFormats
+MSG_WM_RENDERALLFORMATS(func)
+func();
+.
+OnDestroyClipboard
+MSG_WM_DESTROYCLIPBOARD(func)
+func();
+.
+OnDrawClipboard
+MSG_WM_DRAWCLIPBOARD(func)
+func();
+.
+OnPaintClipboard
+MSG_WM_PAINTCLIPBOARD(func)
+func(HWND hClipAppWnd, (const LPPAINTSTRUCT)lpPaintStruct);
+.
+OnVScrollClipboard
+MSG_WM_VSCROLLCLIPBOARD(func)
+func(HWND hClipAppWnd, UINT nSBCode, UINT nPos);
+.
+OnContextMenu
+MSG_WM_CONTEXTMENU(func)
+func(HWND hWnd, CPoint point);
+.
+OnSizeClipboard
+MSG_WM_SIZECLIPBOARD(func)
+func(HWND hClipAppWnd, (const LPRECT)lpRect);
+.
+OnAskCbFormatName
+MSG_WM_ASKCBFORMATNAME(func)
+func(DWORD nMaxCount, LPTSTR lpszString);
+.
+OnChangeCbChain
+MSG_WM_CHANGECBCHAIN(func)
+func(HWND hWndRemove, HWND hWndAfter);
+.
+OnHScrollClipboard
+MSG_WM_HSCROLLCLIPBOARD(func)
+func(HWND hClipAppWnd, UINT nSBCode, UINT nPos);
+.
+OnQueryNewPalette
+MSG_WM_QUERYNEWPALETTE(func)
+(LRESULT)func();
+.
+OnPaletteChanged
+MSG_WM_PALETTECHANGED(func)
+func(HWND hFocusWnd);
+.
+OnPaletteIsChanging
+MSG_WM_PALETTEISCHANGING(func)
+func(HWND hRealizedWnd);
+.
+OnDropFiles
+MSG_WM_DROPFILES(func)
+func(HDROP hDropInfo);
+.
+OnWindowPosChanging
+MSG_WM_WINDOWPOSCHANGING(func)
+func(LPWINDOWPOS lpwndpos);
+.
+OnWindowPosChanged
+MSG_WM_WINDOWPOSCHANGED(func)
+func(LPWINDOWPOS lpwndpos);
+.
+OnExitMenuLoop
+MSG_WM_EXITMENULOOP(func)
+func(BOOL bIsTrackPopupMenu);
+.
+OnEnterMenuLoop
+MSG_WM_ENTERMENULOOP(func)
+func(BOOL bIsTrackPopupMenu);
+.
+OnStyleChanged
+MSG_WM_STYLECHANGED(func)
+func(UINT nStyleType, LPSTYLESTRUCT lpStyleStruct);
+.
+OnStyleChanging
+MSG_WM_STYLECHANGING(func)
+func(UINT nStyleType, LPSTYLESTRUCT lpStyleStruct);
+.
+OnSizing
+MSG_WM_SIZING(func)
+func(UINT nSide, LPRECT lpRect);
+.
+OnMoving
+MSG_WM_MOVING(func)
+func(UINT nSide, LPRECT lpRect);
+.
+OnCaptureChanged
+MSG_WM_CAPTURECHANGED(func)
+func(HWND hWnd);
+.
+OnDeviceChange
+MSG_WM_DEVICECHANGE(func)
+(LRESULT)func(UINT nEventType, DWORD dwData);
+.
+OnCommand/**/
+MSG_WM_COMMAND(func)
+func(UINT nIDCtrl, int nID, HWND hWnd);
+.
+OnDisplayChange
+MSG_WM_DISPLAYCHANGE(func)
+func(UINT nImageDepth, CSize ScreenResolution);
+.
+OnEnterSizeMove
+MSG_WM_ENTERSIZEMOVE(func)
+func();
+.
+OnExitSizeMove
+MSG_WM_EXITSIZEMOVE(func)
+func();
+.
+OnGetFont
+MSG_WM_GETFONT(func)
+(LRESULT)func();
+.
+OnGetHotKey
+MSG_WM_GETHOTKEY(func)
+func();
+.
+OnGetIcon
+MSG_WM_GETICON(func)
+(LRESULT)func(UINT nIconType);
+.
+OnGetText
+MSG_WM_GETTEXT(func)
+(LRESULT)func(int nNum, LPTSTR lpszBuffer);
+.
+OnGetTextLength
+MSG_WM_GETTEXTLENGTH(func)
+(LRESULT)func();
+.
+OnHelp
+MSG_WM_HELP(func)
+func(LPHELPINFO lpHelpInfo);
+.
+OnHotKey
+MSG_WM_HOTKEY(func)
+func(int nID, UINT nOption, UINT nKey);
+.
+OnInputLangChange
+MSG_WM_INPUTLANGCHANGE(func)
+func(DWORD nCharSet, HKL nLocaleID);
+.
+OnInputLangChangeRequest/**/
+MSG_WM_INPUTLANGCHANGEREQUEST(func)
+func(BOOL nLocaleInfo, HKL nLocaleID);
+.
+OnNextDlgCtl
+MSG_WM_NEXTDLGCTL(func)
+func(BOOL bUsage, WPARAM wParam);
+.
+OnNextMenu
+MSG_WM_NEXTMENU(func)
+func(int nKey, LPMDINEXTMENU lpMDINextMenu);
+.
+OnNotifyFormat
+MSG_WM_NOTIFYFORMAT(func)
+(LRESULT)func(HWND hwndFrom, int nCommand);
+.
+OnPowerBroadcast
+MSG_WM_POWERBROADCAST(func)
+(LRESULT)func(DWORD nEvent, DWORD lParam);
+.
+OnPrint
+MSG_WM_PRINT(func)
+func(HDC hDC, UINT nOption);
+.
+OnPrintClient
+MSG_WM_PRINTCLIENT(func)
+func(HDC hDC, UINT nOption);
+.
+OnRasDialEvent
+MSG_WM_RASDIALEVENT(func)
+func(RASCONNSTATE rasconnstate, DWORD dwError);
+.
+OnSetFont
+MSG_WM_SETFONT(func)
+func(HFONT hFont, (BOOL bRedraw);
+.
+OnSetHotKey
+MSG_WM_SETHOTKEY(func)
+(LRESULT)func(int nVirtualKeyCode, UINT nModifiers);
+.
+OnSetIcon
+MSG_WM_SETICON(func)
+(LRESULT)func(UINT nType, HICON hIcon);
+.
+OnSetRedraw
+MSG_WM_SETREDRAW(func)
+func(BOOL bState);
+.
+OnSetText
+MSG_WM_SETTEXT(func)
+(LRESULT)func(LPCTSTR lpszText);
+.
+OnUserChanged
+MSG_WM_USERCHANGED(func)
+func();
+.
