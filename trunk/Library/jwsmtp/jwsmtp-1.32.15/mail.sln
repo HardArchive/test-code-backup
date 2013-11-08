@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib", "lib.vcproj", "{ED99EDB7-604C-4D53-B9B5-3BB0E88BE98E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mail", "mail.vcproj", "{8323B310-2918-4B7D-8E01-1BFD4C39FE68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED99EDB7-604C-4D53-B9B5-3BB0E88BE98E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED99EDB7-604C-4D53-B9B5-3BB0E88BE98E}.Debug|Win32.Build.0 = Debug|Win32
+		{ED99EDB7-604C-4D53-B9B5-3BB0E88BE98E}.Release|Win32.ActiveCfg = Release|Win32
+		{ED99EDB7-604C-4D53-B9B5-3BB0E88BE98E}.Release|Win32.Build.0 = Release|Win32
+		{8323B310-2918-4B7D-8E01-1BFD4C39FE68}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8323B310-2918-4B7D-8E01-1BFD4C39FE68}.Debug|Win32.Build.0 = Debug|Win32
+		{8323B310-2918-4B7D-8E01-1BFD4C39FE68}.Release|Win32.ActiveCfg = Release|Win32
+		{8323B310-2918-4B7D-8E01-1BFD4C39FE68}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
