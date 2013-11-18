@@ -1,0 +1,20 @@
+exe部分
+exe主要是检测聊天窗口，利用窗口Hook检测每一个新建的窗口是否为qq窗口。
+调用dll的InitHookProc函数对qq进行WM_CALLWNDPROCRET类型的hook，
+InitHookProc函数原型：
+HHOOK __declspec(dllexport) WINAPI InitHookProc(HWND dwHWND, DWORD dwTid)
+参数说明：
+dwHWND，目标窗口的hwnd。dwTid，目标线程的Tid。
+返回值：hook句柄，此句柄由exe保存，并在关闭时传递给dll的EndHook函数卸载钩子。
+
+hook成功之后，exe通过sendmessage一条自定义消息给目标窗口来得到聊天内容的内存地址并读取。
+
+dll部分
+dll负责hook并读取内存
+读取到的内容通过sendmessage与exe进行通信
+消息ID为#define WM_ME   WM_USER + 1116
+通过wParam来判断所需要返回的内容，wparam有以下3个值：
+#define ME_WNDPROC	1  //获取聊天内容的内存地址
+#define ME_GETUIN	2  //获取聊天对象的qq号码
+#define ME_GETSELFUIN	3  //获取当前的qq号码
+通过钩子回调函数WndProc判断这些消息并将返回值作为lParam发送给主程序窗口并进行处理，由于sendmessage是阻塞的，所以来回2次sendmessage可以当作函数来调用而不必担心消息丢失。
