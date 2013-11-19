@@ -60,7 +60,7 @@ public:
 
 		UIAddChildWindowContainer(m_hWnd);
 		m_pclsMsgInjectDLL = NULL;
-		SetDlgItemText(IDC_EDIT_PROCESS_NAME, /*_T("calc.exe")*/_T("sndrec32.exe"));
+		SetDlgItemText(IDC_EDIT_PROCESS_NAME, _T("xuefeng.exe") /*_T("sndrec32.exe")_T("calc.exe")_T("wmlyj.exe")*/);
 
 		return TRUE;
 	}
