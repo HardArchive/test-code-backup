@@ -293,7 +293,8 @@ MMRESULT WINAPI Hook_waveOutWrite(
 	{
 	static int iIndex = 0;
 	char szPath[MAX_PATH] = {0};
-	sprintf(szPath,"c:\\testOut%d",iIndex);
+	//sprintf(szPath,"c:\\testOut%d",iIndex);
+	sprintf(szPath,"c:\\testOut.wav",iIndex);
 	HANDLE	hLogFile= ::CreateFileA(szPath,
 								GENERIC_WRITE,
 								FILE_SHARE_READ,
@@ -305,8 +306,8 @@ MMRESULT WINAPI Hook_waveOutWrite(
 
 	    long  h = 0;
 	    ::SetFilePointer(hLogFile,0,&h,FILE_END);
-	    DWORD written = 0;
-	    BOOL bRet = ::WriteFile(hLogFile,pwh->lpData,pwh->dwBytesRecorded ,&written,NULL);
+	    DWORD written = 1;
+	    BOOL bRet = ::WriteFile(hLogFile, pwh->lpData, pwh->dwBufferLength , &written, NULL);
 	    ::CloseHandle(hLogFile);
 	    iIndex ++;
 	}
@@ -336,9 +337,10 @@ BOOL APIENTRY DllMain( HMODULE	hModule,
 		if (!m_inHook)
 		{
 		LONG lRet = 0;
-			True_PFN_waveInOpen = (PFN_waveInOpen)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveInOpen");
-			True_PFN_waveOutOpen = (PFN_waveOutOpen)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveOutOpen");
-			True_PFN_waveOutWrite = (PFN_waveOutWrite)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveOutWrite");		    CString szDebug;
+			True_PFN_waveInOpen = (PFN_waveInOpen)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveInOpen");   //为录音而打开一个波形输入设备
+			True_PFN_waveOutOpen = (PFN_waveOutOpen)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveOutOpen");//为播放打开一个波形输出设备
+			True_PFN_waveOutWrite = (PFN_waveOutWrite)GetProcAddress(GetModuleHandle("Winmm.dll"),"waveOutWrite");	//向指定的波形输出设备发送一个数据块
+			CString szDebug;
     		lRet = DetourTransactionBegin();
 			lRet = DetourUpdateThread(GetCurrentThread());
 		   if (True_PFN_waveInOpen)
