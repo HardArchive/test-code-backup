@@ -271,5 +271,9 @@
 		</Filter>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="Inject_Msg_DLL.rc"
+		/>
 	</Globals>
 </VisualStudioProject>
