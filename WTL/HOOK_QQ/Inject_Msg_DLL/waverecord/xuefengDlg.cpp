@@ -135,8 +135,8 @@ BOOL CXuefengDlg::OnInitDialog()
 
 	GetDlgItem(IDC_BUTTON_SAVE)->EnableWindow ( FALSE );
 	GetDlgItem(IDC_BUTTON_STOP)->EnableWindow ( FALSE );
-	m_Channels.SetCurSel(0);
-	m_SamplesPerSec.SetCurSel(0);
+	m_Channels.SetCurSel(1);
+	m_SamplesPerSec.SetCurSel(1);
 	m_BitsPerSample.SetCurSel(0);
 
 	
@@ -197,7 +197,7 @@ void CXuefengDlg::OnButtonPlay()
 	// TODO: Add your control notification handler code here
 		if ( !m_HwMCI.DeviceIDValid () )
 	{
-		if ( !m_HwMCI.Open ( "»úÓö.mp3" ) )
+		if ( !m_HwMCI.Open ( "test.wav" ) )
 			return;
 	}
 

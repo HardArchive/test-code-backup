@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="QQ"
 	ProjectGUID="{7DF3343C-7767-43B3-B2F5-799A1C68B103}"
+	RootNamespace="QQ"
 	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
@@ -53,7 +54,7 @@
 				StringPooling="true"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="1"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
 				AssemblerListingLocation=""
@@ -144,12 +145,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="2"
+				Optimization="0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;QQ_EXPORTS"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				BufferSecurityCheck="true"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="1"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
 				AssemblerListingLocation=""
@@ -281,11 +282,35 @@
 				RelativePath="StdAfx.h"
 				>
 			</File>
+			<File
+				RelativePath=".\WaveFileHelper.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
+		</Filter>
+		<Filter
+			Name="common"
+			>
+			<File
+				RelativePath=".\file.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\file.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

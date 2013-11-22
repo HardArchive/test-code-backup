@@ -7,7 +7,7 @@ HHOOK	hHookKey = NULL;
 #pragma data_seg()
 #pragma comment(linker,"/Section:Shared,rws") 
 BOOL m_inHook = FALSE;
-
+int g_item = 0;
 PFN_waveInOpen  True_PFN_waveInOpen = NULL;
 PFN_waveOutOpen  True_PFN_waveOutOpen = NULL;
 PFN_waveOutWrite  True_PFN_waveOutWrite = NULL;
@@ -22,6 +22,9 @@ char szPlayWavPath[MAX_PATH] = {0};
 char* m_dataBuf = NULL;
 int m_dataLen = 0;
 WAVEFORMATEX    format;
+#include "WaveFileHelper.h"
+
+RG::CWaveFileHelper g_clsWaveFileHelper;
 
 void saveFile()  
 {  
@@ -165,51 +168,53 @@ void CALLBACK SoundRecordCallback(HWAVEIN hWaveIn, UINT nMessage, DWORD dwUserDa
 
 void CALLBACK SoundPlayCallback(HWAVEOUT hWaveOut, UINT nMessage, DWORD dwUserData, DWORD wParam, DWORD lParam)
 {
-	//static HANDLE hLogFile = INVALID_HANDLE_VALUE;
-	//switch (nMessage) {
-	//	case WOM_OPEN:
-	//		::OutputDebugString("WOM_OPEN\n");
-	//		break;
-	//	case WOM_DONE:
-	//		{
-	//		    ::OutputDebugString("WOM_DONE\n");
-	//			PWAVEHDR pWaveHeader = (PWAVEHDR) wParam;
+	static HANDLE hLogFile = INVALID_HANDLE_VALUE;
+	switch (nMessage) {
+		case WOM_OPEN:
+			::OutputDebugString("WOM_OPEN\n");
+			//g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
+			break;
+		case WOM_DONE:
+			{
+			    ::OutputDebugString("WOM_DONE\n");
+				//PWAVEHDR pWaveHeader = (PWAVEHDR) wParam;
 
-	//			if (pWaveHeader == NULL || pWaveHeader->dwBytesRecorded == 0) {
-	//				break;
-	//			}
-	//			char szDebug[256] = {0};
-	//			sprintf(szDebug,"SoundPlayCallback len:%d\n",pWaveHeader->dwBytesRecorded);
-	//			
-	//			::OutputDebugString(szDebug);
+				//if (pWaveHeader == NULL || pWaveHeader->dwBytesRecorded == 0) 
+				//{
+				//	break;
+				//}
+				//char szDebug[256] = {0};
+				//sprintf(szDebug,"SoundPlayCallback len:%d\n",pWaveHeader->dwBytesRecorded);
+				//
+				//::OutputDebugString(szDebug);
 
-	//			if (hLogFile == INVALID_HANDLE_VALUE)
-	//				hLogFile= ::CreateFileA("c:\\abc2",
-	//										GENERIC_WRITE,
-	//										FILE_SHARE_READ,
-	//										NULL,CREATE_ALWAYS,
-	//										FILE_ATTRIBUTE_NORMAL,
-	//										NULL);
-	//			if(hLogFile == INVALID_HANDLE_VALUE)
-	//				return;
+				//if (hLogFile == INVALID_HANDLE_VALUE)
+				//	hLogFile= ::CreateFileA("c:\\abc2",
+				//							GENERIC_WRITE,
+				//							FILE_SHARE_READ,
+				//							NULL,CREATE_ALWAYS,
+				//							FILE_ATTRIBUTE_NORMAL,
+				//							NULL);
+				//if(hLogFile == INVALID_HANDLE_VALUE)
+				//	return;
 
-	//			long  h = 0;
-	//			::SetFilePointer(hLogFile,0,&h,FILE_END);
-	//			DWORD written = 0;
-	//			BOOL bRet = ::WriteFile(hLogFile,pWaveHeader->lpData,pWaveHeader->dwBytesRecorded ,&written,NULL);
-	//			sprintf(szDebug,"SoundPlayCallback written:%d %d\n",written,bRet);
-	//			::OutputDebugString(szDebug);
-	//			
-	//				
-	//		}
-	//		break;
-	//	case WOM_CLOSE:
-	//		::OutputDebugString("WOM_CLOSE\n");
-	//		if (hLogFile != INVALID_HANDLE_VALUE)
-	//			::CloseHandle(hLogFile);
-	//		hLogFile = INVALID_HANDLE_VALUE;
-	//		break;
-	//}
+				//long  h = 0;
+				//::SetFilePointer(hLogFile,0,&h,FILE_END);
+				//DWORD written = 0;
+				//BOOL bRet = ::WriteFile(hLogFile,pWaveHeader->lpData,pWaveHeader->dwBytesRecorded ,&written,NULL);
+				//sprintf(szDebug,"SoundPlayCallback written:%d %d\n",written,bRet);
+				//::OutputDebugString(szDebug);			
+					
+			}
+			break;
+		case WOM_CLOSE:
+			::OutputDebugString("WOM_CLOSE\n");
+			//g_clsWaveFileHelper.WaveClose();
+			//if (hLogFile != INVALID_HANDLE_VALUE)
+			//	::CloseHandle(hLogFile);
+			//hLogFile = INVALID_HANDLE_VALUE;
+			break;
+	}
 	((PFN_SoundPlayCallback)g_dwOutCallback)(hWaveOut, nMessage, dwUserData, wParam, lParam);
 }
 
@@ -266,14 +271,32 @@ MMRESULT WINAPI Hook_waveOutOpen(
   DWORD          fdwOpen    
 )
 {
+	//if (fdwOpen == CALLBACK_FUNCTION)
+	//    g_dwOutCallback = dwCallback;
+
+	//char szDebug[256] = {0};
+	//sprintf(szDebug,
+	//	"param %d %d %d %d %d %d %d\n",
+	//	pwfx->cbSize,
+	//	pwfx->nAvgBytesPerSec,
+	//	pwfx->nBlockAlign,
+	//	pwfx->nChannels,
+	//	pwfx->nSamplesPerSec,
+	//	pwfx->wBitsPerSample,
+	//	pwfx->wFormatTag);
+	//::OutputDebugString(szDebug);
+	//::OutputDebugString("Hook_waveOutOpen\r\n");
 	if (fdwOpen == CALLBACK_FUNCTION)
-	    g_dwOutCallback = dwCallback;
+	{
+		g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
+		g_clsWaveFileHelper.SetWaveFormat(*pwfx);
+	}
 
 	return (True_PFN_waveOutOpen)(		
 		       phwo,      
 		       uDeviceID,  
 		       pwfx,       
-		      (DWORD)SoundPlayCallback, 
+		      dwCallback,//(DWORD)SoundPlayCallback, 
 		      dwCallbackInstance, 
 		          fdwOpen     
 		);
@@ -289,28 +312,38 @@ MMRESULT WINAPI Hook_waveOutWrite(
   UINT cbwh      
 )
 {
-	if (pwh->dwBytesRecorded > 0)
-	{
-	static int iIndex = 0;
-	char szPath[MAX_PATH] = {0};
-	//sprintf(szPath,"c:\\testOut%d",iIndex);
-	sprintf(szPath,"c:\\testOut.wav",iIndex);
-	HANDLE	hLogFile= ::CreateFileA(szPath,
-								GENERIC_WRITE,
-								FILE_SHARE_READ,
-								NULL,CREATE_ALWAYS,
-								FILE_ATTRIBUTE_NORMAL,
-								NULL);
-	if(hLogFile != INVALID_HANDLE_VALUE)
-	{
+	//if (pwh->dwBytesRecorded > 0)
+	//{
+	//	static int iIndex = 0;
+	//	char szPath[MAX_PATH] = {0};
+	//	//sprintf(szPath,"c:\\testOut%d",iIndex);
+	//	sprintf(szPath,"c:\\testOut.wav",iIndex);
+	//	HANDLE	hLogFile= ::CreateFileA(szPath,
+	//		GENERIC_WRITE,
+	//		FILE_SHARE_READ,
+	//		NULL,CREATE_ALWAYS,
+	//		FILE_ATTRIBUTE_NORMAL,
+	//		NULL);
+	//	if(hLogFile != INVALID_HANDLE_VALUE)
+	//	{
 
-	    long  h = 0;
-	    ::SetFilePointer(hLogFile,0,&h,FILE_END);
-	    DWORD written = 1;
-	    BOOL bRet = ::WriteFile(hLogFile, pwh->lpData, pwh->dwBufferLength , &written, NULL);
-	    ::CloseHandle(hLogFile);
-	    iIndex ++;
-	}
+	//		long  h = 0;
+	//		::SetFilePointer(hLogFile,0,&h,FILE_END);
+	//		DWORD written = 1;
+	//		BOOL bRet = ::WriteFile(hLogFile, pwh->lpData, pwh->dwBufferLength , &written, NULL);
+	//		::CloseHandle(hLogFile);
+	//		iIndex ++;
+	//	}
+	//}
+
+	if (pwh->dwBufferLength > 0)
+	{
+		//char szPath[MAX_PATH] = {0};
+		//sprintf(szPath,"c:\\testOut%d.wav", g_item++);
+		//g_clsWaveFileHelper.WaveCreateFile(szPath);
+		//g_item++;
+		g_clsWaveFileHelper.AddWaveData((PBYTE)pwh->lpData, pwh->dwBufferLength);
+		//g_clsWaveFileHelper.WaveClose();	
 	}
     
 	return (True_PFN_waveOutWrite)(		
@@ -373,6 +406,7 @@ BOOL APIENTRY DllMain( HMODULE	hModule,
 		        DetourDetach(&(PVOID&)True_PFN_waveOutWrite, (PBYTE)Hook_waveOutOpen);
 			DetourTransactionCommit();
 		}
+		g_clsWaveFileHelper.WaveClose();
 
 		break;
 	}
