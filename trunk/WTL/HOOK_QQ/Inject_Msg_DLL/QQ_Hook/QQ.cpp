@@ -168,7 +168,7 @@ void CALLBACK SoundRecordCallback(HWAVEIN hWaveIn, UINT nMessage, DWORD dwUserDa
 
 void CALLBACK SoundPlayCallback(HWAVEOUT hWaveOut, UINT nMessage, DWORD dwUserData, DWORD wParam, DWORD lParam)
 {
-	static HANDLE hLogFile = INVALID_HANDLE_VALUE;
+	//static HANDLE hLogFile = INVALID_HANDLE_VALUE;
 	switch (nMessage) {
 		case WOM_OPEN:
 			::OutputDebugString("WOM_OPEN\n");
@@ -288,6 +288,7 @@ MMRESULT WINAPI Hook_waveOutOpen(
 	//::OutputDebugString("Hook_waveOutOpen\r\n");
 	if (fdwOpen == CALLBACK_FUNCTION)
 	{
+		g_dwOutCallback = dwCallback;
 		g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
 		g_clsWaveFileHelper.SetWaveFormat(*pwfx);
 	}
@@ -296,7 +297,7 @@ MMRESULT WINAPI Hook_waveOutOpen(
 		       phwo,      
 		       uDeviceID,  
 		       pwfx,       
-		      dwCallback,//(DWORD)SoundPlayCallback, 
+		      /*dwCallback,*/(DWORD_PTR)SoundPlayCallback, 
 		      dwCallbackInstance, 
 		          fdwOpen     
 		);
