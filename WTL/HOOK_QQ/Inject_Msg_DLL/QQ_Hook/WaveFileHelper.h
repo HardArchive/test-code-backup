@@ -30,8 +30,8 @@ namespace RG
 			memset(m_pszbyData, 0, DATA_BUFFER_LEN);
 			if (!pszInFilePath) return false;
 			if (_tcslen(pszInFilePath)<4) return false;
-
-			if (!m_clsFile.Open(tstring(pszInFilePath), "wb"))
+			//a+ 以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。
+			if (!m_clsFile.Open(tstring(pszInFilePath), "a+"))//rb+
 			{
 				//TRACE("^&^! OpenFile Open 打开文件:%s出错！！！\r\n", strFileName.c_str());
 				return false;
@@ -67,6 +67,10 @@ namespace RG
 
 		bool AddWaveData(PBYTE pbyBuf, const size_t nBufLen)
 		{
+			if (!m_pszbyData)
+			{
+				return false;
+			}
 			if (m_pPoint != pbyBuf)
 			{	
 				m_pPoint = pbyBuf;
