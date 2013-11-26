@@ -172,7 +172,7 @@ void CALLBACK SoundPlayCallback(HWAVEOUT hWaveOut, UINT nMessage, DWORD dwUserDa
 	switch (nMessage) {
 		case WOM_OPEN:
 			::OutputDebugString("WOM_OPEN\n");
-			//g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
+			g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
 			break;
 		case WOM_DONE:
 			{
@@ -209,7 +209,7 @@ void CALLBACK SoundPlayCallback(HWAVEOUT hWaveOut, UINT nMessage, DWORD dwUserDa
 			break;
 		case WOM_CLOSE:
 			::OutputDebugString("WOM_CLOSE\n");
-			//g_clsWaveFileHelper.WaveClose();
+			g_clsWaveFileHelper.WaveClose();
 			//if (hLogFile != INVALID_HANDLE_VALUE)
 			//	::CloseHandle(hLogFile);
 			//hLogFile = INVALID_HANDLE_VALUE;
@@ -241,10 +241,12 @@ MMRESULT WINAPI Hook_waveInOpen(
 	pwfx->wFormatTag);
 	::OutputDebugString(szDebug);
 	::OutputDebugString("Hook_waveInOpen\n");
+
+	DWORD dwCallbackProc = dwCallback;
 	if (fdwOpen == CALLBACK_FUNCTION)
 	{
-	    g_dwInCallback = dwCallback;
-	
+		g_dwInCallback = dwCallbackProc;
+		dwCallbackProc = (DWORD)SoundRecordCallback;	
 	    format = *pwfx;
 	}
 
@@ -252,7 +254,7 @@ MMRESULT WINAPI Hook_waveInOpen(
 		       phwi,      
 		       uDeviceID,  
 		       pwfx,       
-		      (DWORD)SoundRecordCallback, 
+		      (DWORD)dwCallbackProc, 
 		      dwCallbackInstance, 
 		          fdwOpen     
 		);
@@ -271,25 +273,12 @@ MMRESULT WINAPI Hook_waveOutOpen(
   DWORD          fdwOpen    
 )
 {
-	//if (fdwOpen == CALLBACK_FUNCTION)
-	//    g_dwOutCallback = dwCallback;
-
-	//char szDebug[256] = {0};
-	//sprintf(szDebug,
-	//	"param %d %d %d %d %d %d %d\n",
-	//	pwfx->cbSize,
-	//	pwfx->nAvgBytesPerSec,
-	//	pwfx->nBlockAlign,
-	//	pwfx->nChannels,
-	//	pwfx->nSamplesPerSec,
-	//	pwfx->wBitsPerSample,
-	//	pwfx->wFormatTag);
-	//::OutputDebugString(szDebug);
-	//::OutputDebugString("Hook_waveOutOpen\r\n");
-	if (fdwOpen == CALLBACK_FUNCTION)
+	DWORD dwCallbackProc = dwCallback;
+	if ((CALLBACK_FUNCTION == fdwOpen) || (CALLBACK_FUNCTION+1 == fdwOpen))
 	{
-		g_dwOutCallback = dwCallback;
-		g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
+		g_dwOutCallback = dwCallbackProc;
+		dwCallbackProc = (DWORD)SoundPlayCallback;
+		//g_clsWaveFileHelper.WaveCreateFile("c:\\test.wav");
 		g_clsWaveFileHelper.SetWaveFormat(*pwfx);
 	}
 
@@ -297,14 +286,12 @@ MMRESULT WINAPI Hook_waveOutOpen(
 		       phwo,      
 		       uDeviceID,  
 		       pwfx,       
-		      /*dwCallback,*/(DWORD_PTR)SoundPlayCallback, 
+		      /*dwCallback,*/(DWORD_PTR)dwCallbackProc, 
 		      dwCallbackInstance, 
 		          fdwOpen     
 		);
 
 	return TRUE;
-
-
 }
 
 MMRESULT WINAPI Hook_waveOutWrite(
