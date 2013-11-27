@@ -1,0 +1,308 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\AVDConf.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\AVDConf.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About AVDConf"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "RTC Sample Application Version 1.0",IDC_STATIC,40,10,
+                    119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002, Intel Corporation(TM)",IDC_STATIC,
+                    40,25,129,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_AVDCONF_DIALOG DIALOGEX 0, 0, 181, 67
+STYLE DS_MODALFRAME | DS_NOIDLEMSG | DS_3DLOOK | WS_MINIMIZEBOX | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "RTC Sample Application"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "AV Call",IDC_MAKECALL,7,7,50,14
+    PUSHBUTTON      "App Call",IDC_APPCALL,7,22,50,14
+    PUSHBUTTON      "AV Tuning",IDC_TUNING,7,39,50,14
+    PUSHBUTTON      "Whiteboard",IDC_WHITEBOARD,65,7,50,14
+    PUSHBUTTON      "Messaging",IDC_MESSAGING,65,22,50,14
+    DEFPUSHBUTTON   "Shutdown",IDOK,124,7,50,14
+    PUSHBUTTON      "About",IDM_ABOUTBOX,124,22,50,14
+END
+
+IDD_INCOMING_CALL DIALOG DISCARDABLE  0, 0, 200, 59
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Incoming Call"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Call From:",IDC_STATIC,7,14,32,8
+    LTEXT           "Caller Name",IDC_CALLERNAME,45,14,78,8
+    LTEXT           "Caller ID:",IDC_STATIC,7,28,30,8
+    LTEXT           "Caller ID",IDC_CALLERID,45,28,78,8
+    LTEXT           "has requested an audio/video call",IDC_STATIC,7,44,108,
+                    8
+    DEFPUSHBUTTON   "&Accept",IDOK,142,7,50,14
+    PUSHBUTTON      "&Reject",IDCANCEL,142,24,50,14
+END
+
+IDD_MAKE_A_CALL DIALOG DISCARDABLE  0, 0, 228, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Make A Call"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Destination IP",IDC_STATIC,7,16,45,8
+    EDITTEXT        IDC_DESTIP,55,14,105,13,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,171,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,24,50,14
+    LTEXT           "( I.e 123.123.123.123 )",IDC_STATIC,55,29,73,8
+END
+
+IDD_AVDLG DIALOG DISCARDABLE  0, 0, 194, 214
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Audio/Video Call"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Speaker",IDC_SPEAKER_TEXT,7,144,28,8
+    LTEXT           "Microphone",IDC_MIC_TEXT,100,144,38,8
+    CONTROL         "Progress1",IDC_SPEAKER_BAR,"msctls_progress32",
+                    WS_BORDER,7,153,80,6
+    CONTROL         "Progress2",IDC_MIC_BAR,"msctls_progress32",WS_BORDER,
+                    100,153,80,6
+    CONTROL         "Slider1",IDC_SPEAKER_SLIDER,"msctls_trackbar32",
+                    TBS_BOTH | TBS_NOTICKS | WS_GROUP | WS_TABSTOP,7,160,80,
+                    13
+    CONTROL         "Mute",IDC_SPEAKERMUTE,"Button",BS_AUTOCHECKBOX | 
+                    BS_PUSHLIKE | WS_TABSTOP,7,174,35,10
+    CONTROL         "Slider2",IDC_MIC_SLIDER,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_GROUP | WS_TABSTOP,100,160,80,13
+    CONTROL         "Mute",IDC_MICMUTE,"Button",BS_AUTOCHECKBOX | 
+                    BS_PUSHLIKE | WS_TABSTOP,100,174,35,10
+    DEFPUSHBUTTON   "Disconnect",IDOK,72,192,50,14
+END
+
+IDD_MESSAGEDLG DIALOG DISCARDABLE  0, 0, 286, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Text Chat Session"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TEXT,7,160,217,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Send",IDC_SENDTEXT,229,160,50,14
+    PUSHBUTTON      "&Terminate",IDOK,229,7,50,14
+    LISTBOX         IDC_MESSAGE,7,7,216,151,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Status Area",IDC_STATUSTEXT,7,178,217,8
+    PUSHBUTTON      "&Clear",IDC_CLEAR,229,24,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "AVDConf MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "AVDConf\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "AVDConf.EXE\0"
+            VALUE "ProductName", "AVDConf Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_AVDCONF_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 174
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 60
+    END
+
+    IDD_INCOMING_CALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 52
+    END
+
+    IDD_MAKE_A_CALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 221
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_AVDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 207
+    END
+
+    IDD_MESSAGEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 279
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 192
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About AVDConf..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\AVDConf.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
