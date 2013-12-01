@@ -339,6 +339,7 @@ HRESULT CAVDConfDlg::InitRTCClient()
 	m_pClient = NULL;
 	m_pEvents = NULL;
 
+	//初始化COM对象
 	// Initialize the COM library in the current thread.
 	hr = CoInitialize(NULL);
 
@@ -347,7 +348,7 @@ HRESULT CAVDConfDlg::InitRTCClient()
 		return hr;
 	}
 
-	// Initialize the RTC COM object
+	// Initialize the RTC COM object 获得RTC接口
 	hr = CoCreateInstance (CLSID_RTCClient, NULL,
 		CLSCTX_INPROC_SERVER, IID_IRTCClient,
 		(LPVOID *)&m_pClient);
@@ -368,6 +369,9 @@ HRESULT CAVDConfDlg::InitRTCClient()
 		return hr;
 	}
 
+	//选择首选的通信类型和相关设备（摄像机、麦克风等）。缺省配置是激活所有通信类型。
+	//如果会话的参与者能共享应用程序、传送即时消息和音视频会议，那么这些通信类型自动被激活。
+	//如果某一参与者不支持某种通信类型，那么所有的参与者都不能激活该类型。 
 	// Set the preferred media type we want to initiate for this application.
 	// RTCMT_ALL will initialize Audio, Video, and T.120 layer.
 	m_pClient->SetPreferredMediaTypes ( RTCMT_ALL, VARIANT_TRUE );
