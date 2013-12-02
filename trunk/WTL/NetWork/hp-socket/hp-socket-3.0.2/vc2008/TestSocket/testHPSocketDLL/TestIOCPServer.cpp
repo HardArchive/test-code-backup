@@ -71,15 +71,16 @@ ISocketListener::EnHandleResult CTestIOCPServer::OnReceive(CONNID dwConnID, int 
 	_tprintf(_T("%s\r\n\r\n"), tszContent);
 
 
-	CBufferPtr buffer(iLength);
+	//CBufferPtr buffer(iLength);
+	BYTE szbyBuf[256] = {0};
 
-	IPullSocket::EnFetchResult result = m_Server->Fetch(dwConnID, buffer, (int)buffer.Size());
+	IPullSocket::EnFetchResult result = m_Server->Fetch(dwConnID, szbyBuf, iLength);
 	if(result == IPullSocket::FR_OK)
 	{
-		_stprintf(tszContent, _T("OnReceive dwConnID:%d; iLength:%d; buffer:%s\r\n"), dwConnID, iLength, buffer);
+		_stprintf(tszContent, _T("OnReceive dwConnID:%d; iLength:%d; buffer:%s\r\n"), dwConnID, iLength, szbyBuf);
 		_tprintf(_T("%s\r\n\r\n"), tszContent);
 
-		if(!m_Server->Send(dwConnID, buffer, (int)buffer.Size()))
+		if(!m_Server->Send(dwConnID, szbyBuf, iLength))
 			return ISocketListener::HR_ERROR;
 	}
 	

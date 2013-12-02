@@ -95,7 +95,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)\HPSocketDLL"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\HPSocketDLL"
 			ConfigurationType="2"
-			CharacterSet="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -117,8 +117,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;&quot;$(ProjectPath);"
-				PreprocessorDefinitions="HPSOCKET_EXPORTS;WIN32;_DEBUG;_WINDOWS;_USRDLL"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)&quot;;"
+				PreprocessorDefinitions="HPSOCKET_EXPORTS;WIN32;NDEBUG;_WINDOWS;_USRDLL"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
