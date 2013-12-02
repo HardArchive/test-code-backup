@@ -6,7 +6,6 @@
 #include "Client.h"
 #include "ClientDlg.h"
 #include "afxdialogex.h"
-#include "../../../Common/Src/WaitFor.h"
 
 
 // CClientDlg dialog
@@ -146,12 +145,13 @@ void CClientDlg::OnBnClickedSend()
 	CString strContent;
 	m_Content.GetWindowText(strContent);
 
-	smart_simple_ptr<CBufferPtr> buffer = ::GeneratePkgBuffer(++SEQ, _T("伤神小怪兽"), 23, strContent);
+	//smart_simple_ptr<CBufferPtr> buffer = ::GeneratePkgBuffer(++SEQ, _T("伤神小怪兽"), 23, strContent);
 
-	if(m_Client.Send(m_Client.GetConnectionID(), buffer->Ptr(), (int)buffer->Size()))
-		::LogSend(m_Client.GetConnectionID(), strContent);
+	//if(m_Client->Send(m_Client->GetConnectionID(), buffer->Ptr(), (int)buffer->Size()))
+	if(m_Client->Send(m_Client->GetConnectionID(), (BYTE*)strContent.GetBuffer(), (int)strContent.GetLength()*sizeof(TCHAR)))
+		::LogSend(m_Client->GetConnectionID(), strContent);
 	else
-		::LogSendFail(m_Client.GetConnectionID(), m_Client.GetLastError(), m_Client.GetLastErrorDesc());
+		::LogSendFail(m_Client->GetConnectionID(), m_Client->GetLastError(), m_Client->GetLastErrorDesc());
 }
 
 
@@ -171,14 +171,14 @@ void CClientDlg::OnBnClickedStart()
 	m_pkgInfo.Reset();
 
 	::LogClientStarting(strAddress, usPort);
-	//m_Client.SetSocketBufferSize(5);
-	if(m_Client.Start(strAddress, usPort, m_bAsyncConn))
+	//m_Client->SetSocketBufferSize(5);
+	if(m_Client->Start(strAddress, usPort, m_bAsyncConn))
 	{
 
 	}
 	else
 	{
-		::LogClientStartFail(m_Client.GetLastError(), m_Client.GetLastErrorDesc());
+		::LogClientStartFail(m_Client->GetLastError(), m_Client->GetLastErrorDesc());
 		SetAppState(ST_STOPED);
 	}
 }
@@ -188,8 +188,8 @@ void CClientDlg::OnBnClickedStop()
 {
 	SetAppState(ST_STOPING);
 
-	if(m_Client.Stop())
-		::LogClientStopping(m_Client.GetConnectionID());
+	if(m_Client->Stop())
+		::LogClientStopping(m_Client->GetConnectionID());
 	else
 		ASSERT(FALSE);
 }
@@ -213,12 +213,13 @@ LRESULT CClientDlg::OnUserInfoMsg(WPARAM wp, LPARAM lp)
 
 ISocketListener::EnHandleResult CClientDlg::OnConnect(CONNID dwConnID)
 {
-	CString strAddress;
+	TCHAR szAddress[40];
+	int iAddressLen = sizeof(szAddress) / sizeof(TCHAR);
 	USHORT usPort;
 
-	m_Client.GetLocalAddress(strAddress, usPort);
+	m_Client->GetLocalAddress(szAddress, iAddressLen, usPort);
 
-	::PostOnConnect(dwConnID, strAddress, usPort);
+	::PostOnConnect(dwConnID, szAddress, usPort);
 	SetAppState(ST_STARTED);
 
 	return ISocketListener::HR_OK;
@@ -243,7 +244,7 @@ ISocketListener::EnHandleResult CClientDlg::OnReceive(CONNID dwConnID, int iLeng
 		remain -= required;
 		CBufferPtr buffer(required);
 
-		IPullSocket::EnFetchResult result = m_Client.Fetch(dwConnID, buffer, (int)buffer.Size());
+		IPullSocket::EnFetchResult result = m_Client->Fetch(dwConnID, buffer, (int)buffer.Size());
 		if(result == IPullSocket::FR_OK)
 		{
 			if(m_pkgInfo.is_header)

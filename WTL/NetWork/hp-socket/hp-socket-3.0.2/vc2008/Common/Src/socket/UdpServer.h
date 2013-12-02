@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -86,9 +86,12 @@ public:
 	virtual EnServiceState	GetState		()	{return m_enState;}
 	virtual EnServerError	GetLastError	()	{return m_enLastError;}
 	virtual BOOL			Disconnect		(CONNID dwConnID, BOOL bForce = TRUE);
-	virtual BOOL			GetListenAddress(CString& strAddress, USHORT& usPort);
-	virtual BOOL			GetClientAddress(CONNID dwConnID, CString& strAddress, USHORT& usPort);
-	virtual LPCTSTR			GetLastErrorDesc();
+	virtual BOOL			GetListenAddress(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort);
+	virtual BOOL			GetClientAddress(CONNID dwConnID, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort);
+
+	virtual LPCTSTR	GetLastErrorDesc	();
+	virtual DWORD	GetConnectionCount	();
+	virtual BOOL	GetConnectPeriod	(CONNID dwConnID, DWORD& dwPeriod);
 
 public:
 	virtual BOOL SetConnectionExtra(CONNID dwConnID, PVOID pExtra);
@@ -176,7 +179,7 @@ private:
 	CONNID			FindConnectionID(SOCKADDR_IN* pAddr);
 
 private:
-	void SetLastError(EnServerError code, LPCTSTR func, int ec);
+	void SetLastError(EnServerError code, LPCSTR func, int ec);
 
 private:
 	static UINT WINAPI WorkerThreadProc(LPVOID pv);

@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -26,7 +26,7 @@
 
 #include "TcpClient.h"
 
-class CTcpPullClient : public CTcpClient, public IPullClient
+class CTcpPullClient : public IPullClient, public CTcpClient
 {
 public:
 	virtual EnFetchResult Fetch(CONNID dwConnID, BYTE* pBuffer, int iLength);

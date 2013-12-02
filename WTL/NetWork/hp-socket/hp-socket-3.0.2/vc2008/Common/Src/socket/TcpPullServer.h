@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -26,7 +26,7 @@
 
 #include "TcpServer.h"
 
-class CTcpPullServer : public CTcpServer, public IPullServer
+class CTcpPullServer : public IPullServer, public CTcpServer
 {
 public:
 	static const DWORD DEFAULT_FREE_PULL_BUFFER_POOL;

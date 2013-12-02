@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -50,7 +50,7 @@ const DWORD CUdpServer::DEFAULT_DETECT_ATTEMPTS			= 3;
 const DWORD CUdpServer::DEFAULT_DETECT_INTERVAL			= 10;
 const DWORD	CUdpServer::DEFAULT_MAX_SHUTDOWN_WAIT_TIME	= 15 * 1000;
 
-void CUdpServer::SetLastError(EnServerError code, LPCTSTR func, int ec)
+void CUdpServer::SetLastError(EnServerError code, LPCSTR func, int ec)
 {
 	m_enLastError = code;
 
@@ -92,7 +92,7 @@ BOOL CUdpServer::CheckParams(BOOL bPreconditions)
 											if((int)m_dwMaxShutdownWaitTime >= 0)
 												return TRUE;
 
-	SetLastError(SE_INVALID_PARAM, _T(__FUNCTION__), ERROR_INVALID_PARAMETER);
+	SetLastError(SE_INVALID_PARAM, __FUNCTION__, ERROR_INVALID_PARAMETER);
 	return FALSE;
 }
 
@@ -102,7 +102,7 @@ BOOL CUdpServer::CheckStarting()
 		m_enState = SS_STARTING;
 	else
 	{
-		SetLastError(SE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(SE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -115,7 +115,7 @@ BOOL CUdpServer::CheckStoping()
 		m_enState = SS_STOPING;
 	else
 	{
-		SetLastError(SE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(SE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -139,13 +139,13 @@ BOOL CUdpServer::CreateListenSocket(LPCTSTR pszBindAddress, USHORT usPort)
 			if(FirePrepareListen(m_soListen) != ISocketListener::HR_ERROR)
 				isOK = TRUE;
 			else
-				SetLastError(SE_SOCKET_PREPARE, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+				SetLastError(SE_SOCKET_PREPARE, __FUNCTION__, ERROR_FUNCTION_FAILED);
 		}
 		else
-			SetLastError(SE_SOCKET_BIND, _T(__FUNCTION__), ::WSAGetLastError());
+			SetLastError(SE_SOCKET_BIND, __FUNCTION__, ::WSAGetLastError());
 	}
 	else
-		SetLastError(SE_SOCKET_CREATE, _T(__FUNCTION__), ::WSAGetLastError());
+		SetLastError(SE_SOCKET_CREATE, __FUNCTION__, ::WSAGetLastError());
 
 	return isOK;
 }
@@ -154,7 +154,7 @@ BOOL CUdpServer::CreateCompletePort()
 {
 	m_hCompletePort	= ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, 0);
 	if(m_hCompletePort == nullptr)
-		SetLastError(SE_CP_CREATE, _T(__FUNCTION__), ::GetLastError());
+		SetLastError(SE_CP_CREATE, __FUNCTION__, ::GetLastError());
 
 	return (m_hCompletePort != nullptr);
 }
@@ -170,7 +170,7 @@ BOOL CUdpServer::CreateWorkerThreads()
 			m_vtWorkerThreads.push_back(hThread);
 		else
 		{
-			SetLastError(SE_WORKER_THREAD_CREATE, _T(__FUNCTION__), ::GetLastError());
+			SetLastError(SE_WORKER_THREAD_CREATE, __FUNCTION__, ::GetLastError());
 			isOK = FALSE;
 			break;
 		}
@@ -204,7 +204,7 @@ BOOL CUdpServer::StartAccept()
 			::PostQueuedCompletionStatus(m_hCompletePort, IOCP_SI_ACCEPT, 0, nullptr);
 	}
 	else
-		SetLastError(SE_SOCKE_ATTACH_TO_CP, _T(__FUNCTION__), ::GetLastError());
+		SetLastError(SE_SOCKE_ATTACH_TO_CP, __FUNCTION__, ::GetLastError());
 
 	return isOK;
 }
@@ -338,6 +338,7 @@ void CUdpServer::AddClientSocketObj(CONNID dwConnID, TUdpSocketObj* pSocketObj)
 
 	ASSERT(FindSocketObj(dwConnID) == nullptr);
 
+	pSocketObj->connTime						= ::TimeGetTime();
 	m_mpClientSocket[dwConnID]					= pSocketObj;
 	m_mpClientAddr	[&pSocketObj->clientAddr]	= dwConnID;
 }
@@ -481,19 +482,23 @@ CONNID CUdpServer::FindConnectionID(SOCKADDR_IN* pAddr)
 	return dwConnID;
 }
 
-BOOL CUdpServer::GetListenAddress(CString& strAddress, USHORT& usPort)
+BOOL CUdpServer::GetListenAddress(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return ::GetSocketLocalAddress(m_soListen, strAddress, usPort);
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
+	return ::GetSocketLocalAddress(m_soListen, lpszAddress, iAddressLen, usPort);
 }
 
-BOOL CUdpServer::GetClientAddress(CONNID dwConnID, CString& strAddress, USHORT& usPort)
+BOOL CUdpServer::GetClientAddress(CONNID dwConnID, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
 	TUdpSocketObj* pSocketObj = FindSocketObj(dwConnID);
 
 	if(pSocketObj != nullptr)
 	{
 		ADDRESS_FAMILY usFamily;
-		return ::sockaddr_IN_2_A(pSocketObj->clientAddr, usFamily, strAddress, usPort);
+		return ::sockaddr_IN_2_A(pSocketObj->clientAddr, usFamily, lpszAddress, iAddressLen, usPort);
 	}
 
 	return FALSE;
@@ -540,6 +545,24 @@ BOOL CUdpServer::GetConnectionCriSec(CONNID dwConnID, CCriSec2** ppCriSec)
 	}
 
 	return FALSE;
+}
+
+DWORD CUdpServer::GetConnectionCount()
+{
+	return (DWORD)m_mpClientSocket.size();
+}
+
+BOOL CUdpServer::GetConnectPeriod(CONNID dwConnID, DWORD& dwPeriod)
+{
+	BOOL isOK					= TRUE;
+	TUdpSocketObj* pSocketObj	= FindSocketObj(dwConnID);
+
+	if(pSocketObj != nullptr)
+		dwPeriod = GetTimeGap32(pSocketObj->connTime);
+	else
+		isOK = FALSE;
+
+	return isOK;
 }
 
 BOOL CUdpServer::Disconnect(CONNID dwConnID, BOOL bForce)

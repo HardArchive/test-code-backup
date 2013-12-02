@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\$(ConfigurationName)\Client"
+			IntermediateDirectory="$(SolutionDir)..\$(ConfigurationName)\Client"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			CharacterSet="1"
@@ -62,6 +62,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="..\..\Bin\HPSocketDLL.lib"
+				OutputFile="$(SolutionDir)..\bin\$(ProjectName).exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -91,8 +93,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\$(ConfigurationName)\Client"
+			IntermediateDirectory="$(SolutionDir)..\$(ConfigurationName)\Client"
 			ConfigurationType="1"
 			UseOfMFC="2"
 			CharacterSet="1"
@@ -136,6 +138,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="..\..\Bin\HPSocketDLL.lib"
+				OutputFile="$(SolutionDir)..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -231,79 +235,7 @@
 			Name="Common"
 			>
 			<File
-				RelativePath="..\..\..\Common\Src\bufferptr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\CriticalSection.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\Event.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\FileHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\FileHelper.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\Common\Src\GeneralHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\PrivateHeap.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\Semaphore.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\Singleton.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\SocketHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\SocketHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\STLHelper.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\TcpClient.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\TcpClient.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\TcpPullClient.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\socket\TcpPullClient.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\WaitFor.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\WaitFor.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\Common\Src\Win32Helper.h"
 				>
 			</File>
 		</Filter>
@@ -316,6 +248,18 @@
 			</File>
 			<File
 				RelativePath="..\..\Global\helper.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="HPSocket"
+			>
+			<File
+				RelativePath="..\..\..\Common\Src\socket\HPSocket.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Common\Src\socket\SocketInterface.h"
 				>
 			</File>
 		</Filter>

@@ -23,7 +23,9 @@
  */
  
 #include "stdafx.h"
+#include "../GeneralHelper.h"
 #include "SocketHelper.h"
+
 #include <mstcpip.h>
 
 #ifndef _WIN32_WCE
@@ -41,7 +43,7 @@ BOOL IsIPAddress(LPCTSTR lpszAddress)
 
 	int len = (int)lstrlen(lpszAddress) + 1;
 	
-	if(len > 15)
+	if(len < 7 || len > 15)
 		return false;
 
 	int iDotIndex = 0;
@@ -70,40 +72,71 @@ BOOL IsIPAddress(LPCTSTR lpszAddress)
 			if(c == '.')
 			{
 				iDotIndex = i + 1;
-				++iDotCount;
+				if(++iDotCount > 3)
+					return FALSE;
 			}
 		}
 	}
 
-	return (iDotCount == 3 || iDotCount == 5);
+	return (iDotCount == 3);
 }
 
-BOOL GetIPAddress(LPCTSTR lpszHost, CString& strIP)
+BOOL GetIPAddress(LPCTSTR lpszHost, LPTSTR lpszIP, int& iIPLen)
 {
 	BOOL isOK = TRUE;
 
 	if(IsIPAddress(lpszHost))
-		strIP = lpszHost;
+	{
+		int iHostLen = lstrlen(lpszHost);
+		
+		if(iHostLen > 0)
+			++iHostLen;
+
+		if(iHostLen > 0 && iIPLen >= iHostLen)
+			lstrcpy(lpszIP, lpszHost);
+		else
+			isOK = FALSE;
+
+		iIPLen = iHostLen;
+	}
 	else
 	{
 		hostent* host = ::gethostbyname(CT2A(lpszHost));
 
-		if(!host)
-			return FALSE;
-
-		strIP = inet_ntoa(*(struct in_addr*)(*host->h_addr_list)); 
+		if(host)
+			isOK = sockaddr_IN_2_IP(*(SOCKADDR_IN*)(*host->h_addr_list), lpszIP, iIPLen);
+		else
+			isOK = FALSE;
 	}
 
-	return TRUE;
+	return isOK;
 }
 
-BOOL sockaddr_IN_2_A(const SOCKADDR_IN& addr, ADDRESS_FAMILY& usFamily, CString& strAddress, USHORT& usPort)
+BOOL sockaddr_IN_2_IP(const SOCKADDR_IN& addr, LPTSTR lpszAddress, int& iAddressLen)
 {
-	usFamily	= addr.sin_family;
-	usPort		= ntohs(addr.sin_port);
-	strAddress	= CA2T(inet_ntoa(addr.sin_addr));
+	BOOL isOK		= TRUE;
+	char* lpszIP	= inet_ntoa(addr.sin_addr);
+	int iIPLen		= (int)strlen(lpszIP);
 
-	return !strAddress.IsEmpty();
+	if(iIPLen > 0)
+		++iIPLen;
+
+	if(iIPLen > 0 && iAddressLen >= iIPLen)
+		lstrcpy(lpszAddress, CA2T(lpszIP));
+	else
+		isOK = FALSE;
+
+	iAddressLen = iIPLen;
+
+	return isOK;
+}
+
+BOOL sockaddr_IN_2_A(const SOCKADDR_IN& addr, ADDRESS_FAMILY& usFamily, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
+{
+	usFamily = addr.sin_family;
+	usPort	 = ntohs(addr.sin_port);
+
+	return sockaddr_IN_2_IP(addr, lpszAddress, iAddressLen);
 }
 
 BOOL sockaddr_A_2_IN(ADDRESS_FAMILY usFamily, LPCTSTR pszAddress, USHORT usPort, SOCKADDR_IN& addr)
@@ -115,7 +148,7 @@ BOOL sockaddr_A_2_IN(ADDRESS_FAMILY usFamily, LPCTSTR pszAddress, USHORT usPort,
 	return addr.sin_addr.s_addr != INADDR_NONE;
 }
 
-BOOL GetSocketAddress(SOCKET socket, CString& strAddress, USHORT& usPort, BOOL bLocal)
+BOOL GetSocketAddress(SOCKET socket, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort, BOOL bLocal)
 {
 	sockaddr addr;
 
@@ -125,20 +158,20 @@ BOOL GetSocketAddress(SOCKET socket, CString& strAddress, USHORT& usPort, BOOL b
 	if(result == NO_ERROR)
 	{
 		ADDRESS_FAMILY usFamily;
-		return sockaddr_IN_2_A((sockaddr_in&)addr, usFamily, strAddress, usPort);
+		return sockaddr_IN_2_A((sockaddr_in&)addr, usFamily, lpszAddress, iAddressLen, usPort);
 	}
 
 	return FALSE;
 }
 
-BOOL GetSocketLocalAddress(SOCKET socket, CString& strAddress, USHORT& usPort)
+BOOL GetSocketLocalAddress(SOCKET socket, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return GetSocketAddress(socket, strAddress, usPort, TRUE);
+	return GetSocketAddress(socket, lpszAddress, iAddressLen, usPort, TRUE);
 }
 
-BOOL GetSocketRemoteAddress(SOCKET socket, CString& strAddress, USHORT& usPort)
+BOOL GetSocketRemoteAddress(SOCKET socket, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return GetSocketAddress(socket, strAddress, usPort, FALSE);
+	return GetSocketAddress(socket, lpszAddress, iAddressLen, usPort, FALSE);
 }
 
 PVOID GetExtensionFuncPtr(SOCKET sock, GUID guid)
@@ -294,10 +327,10 @@ int SSO_UDP_ConnReset(SOCKET sock, BOOL bNewBehavior)
 
 CONNID GenerateConnectionID(volatile CONNID& dwSeed)
 {
-	CONNID dwConnID	= ::InterlockedIncrement((volatile LONG *)(&dwSeed));
+	CONNID dwConnID	= ::InterlockedIncrement((volatile LONG *)&dwSeed);
 	
 	if(dwConnID == 0)
-		dwConnID = ::InterlockedIncrement((volatile LONG *)(&dwSeed));
+		dwConnID = ::InterlockedIncrement((volatile LONG *)&dwSeed);
 
 	return dwConnID;
 }

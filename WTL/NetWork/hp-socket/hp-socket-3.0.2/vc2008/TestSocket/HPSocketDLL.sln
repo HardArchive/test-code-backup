@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HPSocketDLL", "HPSocketDLL\HPSocketDLL.vcproj", "{4E53E688-5FD3-4227-A83D-75638F0D58D6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testHPSocketDLL", "testHPSocketDLL\testHPSocketDLL.vcproj", "{ADC067C9-C5D8-4EED-832A-1882D7E40085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E53E688-5FD3-4227-A83D-75638F0D58D6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E53E688-5FD3-4227-A83D-75638F0D58D6}.Debug|Win32.Build.0 = Debug|Win32
+		{4E53E688-5FD3-4227-A83D-75638F0D58D6}.Release|Win32.ActiveCfg = Release|Win32
+		{4E53E688-5FD3-4227-A83D-75638F0D58D6}.Release|Win32.Build.0 = Release|Win32
+		{ADC067C9-C5D8-4EED-832A-1882D7E40085}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ADC067C9-C5D8-4EED-832A-1882D7E40085}.Debug|Win32.Build.0 = Debug|Win32
+		{ADC067C9-C5D8-4EED-832A-1882D7E40085}.Release|Win32.ActiveCfg = Release|Win32
+		{ADC067C9-C5D8-4EED-832A-1882D7E40085}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
