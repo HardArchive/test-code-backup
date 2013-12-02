@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -51,16 +51,16 @@ BOOL CTcpClient::Start(LPCTSTR pszRemoteAddress, USHORT usPort, BOOL bAsyncConne
 				if(CreateWorkerThread())
 					isOK = TRUE;
 				else
-					SetLastError(CE_WORKER_CREATE_FAIL, _T(__FUNCTION__), ERROR_CREATE_FAILED);
+					SetLastError(CE_WORKER_CREATE_FAIL, __FUNCTION__, ERROR_CREATE_FAILED);
 			}
 			else
-				SetLastError(CE_CONNECT_SERVER_FAIL, _T(__FUNCTION__), ::WSAGetLastError());
+				SetLastError(CE_CONNECT_SERVER_FAIL, __FUNCTION__, ::WSAGetLastError());
 		}
 		else
-			SetLastError(CE_SOCKET_PREPARE_FAIL, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+			SetLastError(CE_SOCKET_PREPARE_FAIL, __FUNCTION__, ERROR_FUNCTION_FAILED);
 	}
 	else
-		SetLastError(CE_SOCKET_CREATE_FAIL, _T(__FUNCTION__), ::WSAGetLastError());
+		SetLastError(CE_SOCKET_CREATE_FAIL, __FUNCTION__, ::WSAGetLastError());
 
 	if(!isOK) Stop();
 
@@ -75,7 +75,7 @@ BOOL CTcpClient::CheckParams()
 			if((int)m_dwKeepAliveInterval >= 0)
 				return TRUE;
 
-	SetLastError(CE_INVALID_PARAM, _T(__FUNCTION__), ERROR_INVALID_PARAMETER);
+	SetLastError(CE_INVALID_PARAM, __FUNCTION__, ERROR_INVALID_PARAMETER);
 	return FALSE;
 }
 
@@ -85,7 +85,7 @@ BOOL CTcpClient::CheckStarting()
 		m_enState = SS_STARTING;
 	else
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -98,7 +98,7 @@ BOOL CTcpClient::CheckStoping()
 		m_enState = SS_STOPING;
 	else
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -128,12 +128,14 @@ BOOL CTcpClient::CreateClientSocket()
 
 BOOL CTcpClient::ConnectToServer(LPCTSTR pszRemoteAddress, USHORT usPort)
 {
-	CString strAddress;
-	if(!::GetIPAddress(pszRemoteAddress, strAddress))
+	TCHAR szAddress[40];
+	int iAddressLen = sizeof(szAddress) / sizeof(TCHAR);
+
+	if(!::GetIPAddress(pszRemoteAddress, szAddress, iAddressLen))
 		return FALSE;
 
 	SOCKADDR_IN addr;
-	if(!::sockaddr_A_2_IN(AF_INET, strAddress, usPort, addr))
+	if(!::sockaddr_A_2_IN(AF_INET, szAddress, usPort, addr))
 		return FALSE;
 
 	BOOL isOK = FALSE;
@@ -230,7 +232,7 @@ BOOL CTcpClient::ProcessNetworkEvent()
 	if(rc == SOCKET_ERROR)
 	{
 		int code = ::WSAGetLastError();
-		SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), code);
+		SetLastError(CE_NETWORK_ERROR, __FUNCTION__, code);
 
 		VERIFY(::WSAResetEvent(m_evSocket));
 		FireError(m_dwConnID, SO_UNKNOWN, code);
@@ -246,7 +248,7 @@ BOOL CTcpClient::ProcessNetworkEvent()
 			bContinue = ReadData();
 		else
 		{
-			SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+			SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 			FireError(m_dwConnID, SO_RECEIVE, iCode);
 			bContinue = FALSE;
 		}
@@ -260,7 +262,7 @@ BOOL CTcpClient::ProcessNetworkEvent()
 			bContinue = SendData();
 		else
 		{
-			SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+			SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 			FireError(m_dwConnID, SO_SEND, iCode);
 			bContinue = FALSE;
 		}
@@ -285,7 +287,7 @@ BOOL CTcpClient::ProcessNetworkEvent()
 
 		if(iCode != 0)
 		{
-			SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+			SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 			FireError(m_dwConnID, SO_CONNECT, iCode);
 			bContinue = FALSE;
 		}
@@ -299,7 +301,7 @@ BOOL CTcpClient::ProcessNetworkEvent()
 			FireClose(m_dwConnID);
 		else
 		{
-			SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+			SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 			FireError(m_dwConnID, SO_UNKNOWN, iCode);
 		}
 
@@ -321,7 +323,7 @@ BOOL CTcpClient::ReadData()
 			{
 				TRACE1("<C-CNNID: %Iu> OnReceive() event return 'HR_ERROR', connection will be closed !\n", m_dwConnID);
 
-				SetLastError(CE_DATA_PROC_ERROR, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+				SetLastError(CE_DATA_PROC_ERROR, __FUNCTION__, ERROR_FUNCTION_FAILED);
 				FireError(m_dwConnID, SO_RECEIVE, ERROR_FUNCTION_FAILED);
 
 				return FALSE;
@@ -335,7 +337,7 @@ BOOL CTcpClient::ReadData()
 				break;
 			else
 			{
-				SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), code);
+				SetLastError(CE_NETWORK_ERROR, __FUNCTION__, code);
 				FireError(m_dwConnID, SO_RECEIVE, code);
 
 				return FALSE;
@@ -429,7 +431,7 @@ BOOL CTcpClient::DoSendData(CBufferPtr& sndData)
 				break;
 			else
 			{
-				SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), code);
+				SetLastError(CE_NETWORK_ERROR, __FUNCTION__, code);
 				FireError(m_dwConnID, SO_SEND, code);
 
 				return FALSE;
@@ -505,13 +507,13 @@ BOOL CTcpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 
 	if(!HasStarted())
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_STATE);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_STATE);
 		return FALSE;
 	}
 
 	if(!pBuffer || iLength <= 0)
 	{
-		SetLastError(CE_INVALID_PARAM, _T(__FUNCTION__), ERROR_NO_DATA);
+		SetLastError(CE_INVALID_PARAM, __FUNCTION__, ERROR_NO_DATA);
 		return FALSE;
 	}
 
@@ -520,7 +522,7 @@ BOOL CTcpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 
 		if(!HasStarted())
 		{
-			SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_STATE);
+			SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_STATE);
 			return FALSE;
 		}
 
@@ -531,16 +533,18 @@ BOOL CTcpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 	return TRUE;
 }
 
-void CTcpClient::SetLastError(EnClientError code, LPCTSTR func, int ec)
+void CTcpClient::SetLastError(EnClientError code, LPCSTR func, int ec)
 {
 	m_enLastError = code;
 
 	TRACE3("%s --> Error: %d, EC: %d\n", func, code, ec);
 }
 
-BOOL CTcpClient::GetLocalAddress(CString& strAddress, USHORT& usPort)
+BOOL CTcpClient::GetLocalAddress(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return ::GetSocketLocalAddress(m_soClient, strAddress, usPort);
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
+	return ::GetSocketLocalAddress(m_soClient, lpszAddress, iAddressLen, usPort);
 }
 
 LPCTSTR CTcpClient::GetLastErrorDesc()

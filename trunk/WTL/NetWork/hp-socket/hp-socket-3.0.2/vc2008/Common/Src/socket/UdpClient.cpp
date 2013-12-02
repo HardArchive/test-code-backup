@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -53,19 +53,19 @@ BOOL CUdpClient::Start(LPCTSTR pszRemoteAddress, USHORT usPort, BOOL bAsyncConne
 					if(CreateDetectorThread())
 						isOK = TRUE;
 					else
-						SetLastError(CE_DETECTOR_CREATE_FAIL, _T(__FUNCTION__), ERROR_CREATE_FAILED);
+						SetLastError(CE_DETECTOR_CREATE_FAIL, __FUNCTION__, ERROR_CREATE_FAILED);
 				}
 				else
-					SetLastError(CE_WORKER_CREATE_FAIL, _T(__FUNCTION__), ERROR_CREATE_FAILED);
+					SetLastError(CE_WORKER_CREATE_FAIL, __FUNCTION__, ERROR_CREATE_FAILED);
 			}
 			else
-				SetLastError(CE_CONNECT_SERVER_FAIL, _T(__FUNCTION__), ::WSAGetLastError());
+				SetLastError(CE_CONNECT_SERVER_FAIL, __FUNCTION__, ::WSAGetLastError());
 		}
 		else
-			SetLastError(CE_SOCKET_PREPARE_FAIL, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+			SetLastError(CE_SOCKET_PREPARE_FAIL, __FUNCTION__, ERROR_FUNCTION_FAILED);
 	}
 	else
-		SetLastError(CE_SOCKET_CREATE_FAIL, _T(__FUNCTION__), ::WSAGetLastError());
+		SetLastError(CE_SOCKET_CREATE_FAIL, __FUNCTION__, ::WSAGetLastError());
 
 	if(!isOK) Stop();
 
@@ -80,7 +80,7 @@ BOOL CUdpClient::CheckParams()
 			if((int)m_dwDetectInterval >= 0&& m_dwDetectInterval <= MAXLONG)
 				return TRUE;
 
-	SetLastError(CE_INVALID_PARAM, _T(__FUNCTION__), ERROR_INVALID_PARAMETER);
+	SetLastError(CE_INVALID_PARAM, __FUNCTION__, ERROR_INVALID_PARAMETER);
 	return FALSE;
 }
 
@@ -90,7 +90,7 @@ BOOL CUdpClient::CheckStarting()
 		m_enState = SS_STARTING;
 	else
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -103,7 +103,7 @@ BOOL CUdpClient::CheckStoping()
 		m_enState = SS_STOPING;
 	else
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -133,12 +133,14 @@ BOOL CUdpClient::CreateClientSocket()
 
 BOOL CUdpClient::ConnectToServer(LPCTSTR pszRemoteAddress, USHORT usPort)
 {
-	CString strAddress;
-	if(!::GetIPAddress(pszRemoteAddress, strAddress))
+	TCHAR szAddress[40];
+	int iAddressLen = sizeof(szAddress) / sizeof(TCHAR);
+
+	if(!::GetIPAddress(pszRemoteAddress, szAddress, iAddressLen))
 		return FALSE;
 
 	SOCKADDR_IN addr;
-	if(!::sockaddr_A_2_IN(AF_INET, strAddress, usPort, addr))
+	if(!::sockaddr_A_2_IN(AF_INET, szAddress, usPort, addr))
 		return FALSE;
 
 	BOOL isOK = FALSE;
@@ -255,7 +257,7 @@ BOOL CUdpClient::ProcessNetworkEvent()
 BOOL CUdpClient::HandleError()
 {
 	int iCode = ::WSAGetLastError();
-	SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+	SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 
 	VERIFY(::WSAResetEvent(m_evSocket));
 	FireError(m_dwConnID, SO_UNKNOWN, iCode);
@@ -272,7 +274,7 @@ BOOL CUdpClient::HandleRead(WSANETWORKEVENTS& events)
 		bContinue = ReadData();
 	else
 	{
-		SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+		SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 		FireError(m_dwConnID, SO_RECEIVE, iCode);
 		bContinue = FALSE;
 	}
@@ -289,7 +291,7 @@ BOOL CUdpClient::HandleWrite(WSANETWORKEVENTS& events)
 		bContinue = SendData();
 	else
 	{
-		SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+		SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 		FireError(m_dwConnID, SO_SEND, iCode);
 		bContinue = FALSE;
 	}
@@ -321,7 +323,7 @@ BOOL CUdpClient::HandleConnect(WSANETWORKEVENTS& events)
 
 	if(iCode != 0)
 	{
-		SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+		SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 		FireError(m_dwConnID, SO_CONNECT, iCode);
 		bContinue = FALSE;
 	}
@@ -337,7 +339,7 @@ BOOL CUdpClient::HandleClosse(WSANETWORKEVENTS& events)
 		FireClose(m_dwConnID);
 	else
 	{
-		SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+		SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 		FireError(m_dwConnID, SO_UNKNOWN, iCode);
 	}
 
@@ -356,7 +358,7 @@ BOOL CUdpClient::ReadData()
 			{
 				TRACE1("<C-CNNID: %Iu> OnReceive() event return 'HR_ERROR', connection will be closed !\n", m_dwConnID);
 
-				SetLastError(CE_DATA_PROC_ERROR, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+				SetLastError(CE_DATA_PROC_ERROR, __FUNCTION__, ERROR_FUNCTION_FAILED);
 				FireError(m_dwConnID, SO_RECEIVE, ERROR_FUNCTION_FAILED);
 
 				return FALSE;
@@ -370,7 +372,7 @@ BOOL CUdpClient::ReadData()
 				break;
 			else
 			{
-				SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), code);
+				SetLastError(CE_NETWORK_ERROR, __FUNCTION__, code);
 				FireError(m_dwConnID, SO_RECEIVE, code);
 
 				return FALSE;
@@ -420,7 +422,7 @@ BOOL CUdpClient::SendData()
 				}
 				else
 				{
-					SetLastError(CE_NETWORK_ERROR, _T(__FUNCTION__), iCode);
+					SetLastError(CE_NETWORK_ERROR, __FUNCTION__, iCode);
 					FireError(m_dwConnID, SO_SEND, iCode);
 
 					return FALSE;
@@ -608,13 +610,13 @@ BOOL CUdpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 
 	if(!HasStarted())
 	{
-		SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_STATE);
+		SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_STATE);
 		return FALSE;
 	}
 
 	if(!pBuffer || iLength <= 0 || iLength > (int)m_dwMaxDatagramSize)
 	{
-		SetLastError(CE_INVALID_PARAM, _T(__FUNCTION__), ERROR_NO_DATA);
+		SetLastError(CE_INVALID_PARAM, __FUNCTION__, ERROR_NO_DATA);
 		return FALSE;
 	}
 
@@ -623,7 +625,7 @@ BOOL CUdpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 
 		if(!HasStarted())
 		{
-			SetLastError(CE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_STATE);
+			SetLastError(CE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_STATE);
 			return FALSE;
 		}
 
@@ -634,16 +636,18 @@ BOOL CUdpClient::Send(CONNID dwConnID, const BYTE* pBuffer, int iLength)
 	return TRUE;
 }
 
-void CUdpClient::SetLastError(EnClientError code, LPCTSTR func, int ec)
+void CUdpClient::SetLastError(EnClientError code, LPCSTR func, int ec)
 {
 	m_enLastError = code;
 
 	TRACE3("%s --> Error: %d, EC: %d\n", func, code, ec);
 }
 
-BOOL CUdpClient::GetLocalAddress(CString& strAddress, USHORT& usPort)
+BOOL CUdpClient::GetLocalAddress(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return ::GetSocketLocalAddress(m_soClient, strAddress, usPort);
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
+	return ::GetSocketLocalAddress(m_soClient, lpszAddress, iAddressLen, usPort);
 }
 
 LPCTSTR CUdpClient::GetLastErrorDesc()

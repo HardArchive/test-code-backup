@@ -4,7 +4,7 @@
 
 #pragma once
 #include "afxwin.h"
-#include "../../../Common/Src/socket/TcpPullClient.h"
+#include "../../../Common/Src/socket/HPSocket.h"
 #include "../../Global/helper.h"
 
 
@@ -59,5 +59,5 @@ private:
 
 	TPkgInfo m_pkgInfo;
 
-	CTcpPullClient m_Client;
+	CTcpPullClientWrapper m_Client;
 };

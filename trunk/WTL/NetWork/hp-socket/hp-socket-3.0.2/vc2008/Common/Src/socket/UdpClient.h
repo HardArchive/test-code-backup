@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -39,7 +39,7 @@ public:
 	virtual EnServiceState	GetState		()	{return m_enState;}
 	virtual CONNID			GetConnectionID	()	{return m_dwConnID;};
 	virtual EnClientError	GetLastError	()	{return m_enLastError;}
-	virtual BOOL			GetLocalAddress	(CString& strAddress, USHORT& usPort);
+	virtual BOOL			GetLocalAddress	(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort);
 	virtual LPCTSTR			GetLastErrorDesc();
 
 public:
@@ -91,7 +91,7 @@ private:
 	int DetectConnection	();
 	BOOL NeedDetectorThread	() {return m_dwDetectAttempts > 0 && m_dwDetectInterval > 0;}
 
-	void SetLastError		(EnClientError code, LPCTSTR func, int ec);
+	void SetLastError		(EnClientError code, LPCSTR func, int ec);
 
 	static 
 #ifndef _WIN32_WCE

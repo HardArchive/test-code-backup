@@ -139,15 +139,15 @@ void CServerDlg::OnBnClickedStart()
 	m_strAddress.Trim();
 
 	SetAppState(ST_STARTING);
-	//m_Server.SetSocketBufferSize(64);
-	if(m_Server.Start(ADDRESS, PORT))
+	//m_Server->SetSocketBufferSize(64);
+	if(m_Server->Start(ADDRESS, PORT))
 	{
 		::LogServerStart(ADDRESS, PORT);
 		SetAppState(ST_STARTED);
 	}
 	else
 	{
-		::LogServerStartFail(m_Server.GetLastError(), m_Server.GetLastErrorDesc());
+		::LogServerStartFail(m_Server->GetLastError(), m_Server->GetLastErrorDesc());
 		SetAppState(ST_STOPED);
 	}
 }
@@ -156,7 +156,7 @@ void CServerDlg::OnBnClickedStop()
 {
 	SetAppState(ST_STOPING);
 
-	if(m_Server.Stop())
+	if(m_Server->Stop())
 	{
 		::LogServerStop();
 		SetAppState(ST_STOPED);
@@ -173,7 +173,7 @@ void CServerDlg::OnBnClickedDisconnect()
 	m_ConnID.GetWindowText(strConnID);
 	CONNID dwConnID = (CONNID)_ttoi(strConnID);
 
-	if(m_Server.Disconnect(dwConnID))
+	if(m_Server->Disconnect(dwConnID))
 		::LogDisconnect(dwConnID);
 	else
 		::LogDisconnectFail(dwConnID);
@@ -203,32 +203,34 @@ LRESULT CServerDlg::OnUserInfoMsg(WPARAM wp, LPARAM lp)
 
 ISocketListener::EnHandleResult CServerDlg::OnPrepareListen(SOCKET soListen)
 {
-	CString strAddress;
+	TCHAR szAddress[40];
+	int iAddressLen = sizeof(szAddress) / sizeof(TCHAR);
 	USHORT usPort;
 	
-	m_Server.GetListenAddress(strAddress, usPort);
-	::PostOnPrepareListen(strAddress, usPort);
+	m_Server->GetListenAddress(szAddress, iAddressLen, usPort);
+	::PostOnPrepareListen(szAddress, usPort);
 	return ISocketListener::HR_OK;
 }
 
 ISocketListener::EnHandleResult CServerDlg::OnAccept(CONNID dwConnID, SOCKET soClient)
 {
 	BOOL bPass = TRUE;
-	CString strAddress;
+	TCHAR szAddress[40];
+	int iAddressLen = sizeof(szAddress) / sizeof(TCHAR);
 	USHORT usPort;
 
-	m_Server.GetClientAddress(dwConnID, strAddress, usPort);
+	m_Server->GetClientAddress(dwConnID, szAddress, iAddressLen, usPort);
 
 	if(!m_strAddress.IsEmpty())
 	{
-		if(strAddress.CompareNoCase(m_strAddress) == 0)
+		if(m_strAddress.CompareNoCase(szAddress) == 0)
 			bPass = FALSE;
 	}
 
-	::PostOnAccept(dwConnID, strAddress, usPort, bPass);
+	::PostOnAccept(dwConnID, szAddress, usPort, bPass);
 
 	//if(bPass) m_mpPkgInfo[dwConnID] = new TPkgInfo(true, sizeof(TPkgHeader));
-	if(bPass) m_Server.SetConnectionExtra(dwConnID, new TPkgInfo(true, sizeof(TPkgHeader)));
+	if(bPass) m_Server->SetConnectionExtra(dwConnID, new TPkgInfo(true, sizeof(TPkgHeader)));
 
 	return bPass ? ISocketListener::HR_OK : ISocketListener::HR_ERROR;
 }
@@ -256,7 +258,7 @@ ISocketListener::EnHandleResult CServerDlg::OnReceive(CONNID dwConnID, int iLeng
 			remain -= required;
 			CBufferPtr buffer(required);
 
-			IPullSocket::EnFetchResult result = m_Server.Fetch(dwConnID, buffer, (int)buffer.Size());
+			IPullSocket::EnFetchResult result = m_Server->Fetch(dwConnID, buffer, (int)buffer.Size());
 			if(result == IPullSocket::FR_OK)
 			{
 				if(pInfo->is_header)
@@ -279,7 +281,7 @@ ISocketListener::EnHandleResult CServerDlg::OnReceive(CONNID dwConnID, int iLeng
 
 				::PostOnReceive(dwConnID, buffer, (int)buffer.Size());
 
-				if(!m_Server.Send(dwConnID, buffer, (int)buffer.Size()))
+				if(!m_Server->Send(dwConnID, buffer, (int)buffer.Size()))
 					return ISocketListener::HR_ERROR;
 			}
 		}
@@ -316,7 +318,7 @@ TPkgInfo* CServerDlg::FindPkgInfo(CONNID dwConnID)
 {
 	PVOID pInfo = nullptr;
 
-	m_Server.GetConnectionExtra(dwConnID, &pInfo);
+	m_Server->GetConnectionExtra(dwConnID, &pInfo);
 
 	/*
 	auto it = m_mpPkgInfo.find(dwConnID);
@@ -334,15 +336,15 @@ void CServerDlg::RemovePkgInfo(CONNID dwConnID)
 
 	CCriSec2* pcs = nullptr;
 
-	if(m_Server.GetConnectionCriSec(dwConnID, &pcs) && pcs != nullptr)
+	if(m_Server->GetConnectionCriSec(dwConnID, &pcs) && pcs != nullptr)
 	{
 		PVOID pInfo = nullptr;
 
 		CCriSecLock2 locallock(*pcs);
 
-		if(m_Server.GetConnectionExtra(dwConnID, &pInfo) && pInfo != nullptr)
+		if(m_Server->GetConnectionExtra(dwConnID, &pInfo) && pInfo != nullptr)
 		{
-			m_Server.SetConnectionExtra(dwConnID, nullptr);
+			m_Server->SetConnectionExtra(dwConnID, nullptr);
 			delete (TPkgInfo*)pInfo;
 		}
 	}

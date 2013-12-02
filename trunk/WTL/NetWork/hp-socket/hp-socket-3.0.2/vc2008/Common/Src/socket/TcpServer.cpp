@@ -1,7 +1,7 @@
 /*
  * Copyright Bruce Liang (ldcsaa@gmail.com)
  *
- * Version	: 3.0.1
+ * Version	: 3.0.2
  * Author	: Bruce Liang
  * Website	: http://www.jessma.org
  * Porject	: https://code.google.com/p/ldcsaa
@@ -53,7 +53,7 @@ const DWORD	CTcpServer::DEFALUT_KEEPALIVE_TIME			= 5 * 1000;
 const DWORD	CTcpServer::DEFALUT_KEEPALIVE_INTERVAL		= 3 * 1000;
 const DWORD	CTcpServer::DEFAULT_MAX_SHUTDOWN_WAIT_TIME	= 15 * 1000;
 
-void CTcpServer::SetLastError(EnServerError code, LPCTSTR func, int ec)
+void CTcpServer::SetLastError(EnServerError code, LPCSTR func, int ec)
 {
 	m_enLastError = code;
 
@@ -96,7 +96,7 @@ BOOL CTcpServer::CheckParams(BOOL bPreconditions)
 													if((int)m_dwMaxShutdownWaitTime >= 0)
 														return TRUE;
 
-	SetLastError(SE_INVALID_PARAM, _T(__FUNCTION__), ERROR_INVALID_PARAMETER);
+	SetLastError(SE_INVALID_PARAM, __FUNCTION__, ERROR_INVALID_PARAMETER);
 	return FALSE;
 }
 
@@ -106,7 +106,7 @@ BOOL CTcpServer::CheckStarting()
 		m_enState = SS_STARTING;
 	else
 	{
-		SetLastError(SE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(SE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -119,7 +119,7 @@ BOOL CTcpServer::CheckStoping()
 		m_enState = SS_STOPING;
 	else
 	{
-		SetLastError(SE_ILLEGAL_STATE, _T(__FUNCTION__), ERROR_INVALID_OPERATION);
+		SetLastError(SE_ILLEGAL_STATE, __FUNCTION__, ERROR_INVALID_OPERATION);
 		return FALSE;
 	}
 
@@ -153,16 +153,16 @@ BOOL CTcpServer::CreateListenSocket(LPCTSTR pszBindAddress, USHORT usPort)
 					isOK = TRUE;
 				}
 				else
-					SetLastError(SE_SOCKET_LISTEN, _T(__FUNCTION__), ::WSAGetLastError());
+					SetLastError(SE_SOCKET_LISTEN, __FUNCTION__, ::WSAGetLastError());
 			}
 			else
-				SetLastError(SE_SOCKET_PREPARE, _T(__FUNCTION__), ERROR_FUNCTION_FAILED);
+				SetLastError(SE_SOCKET_PREPARE, __FUNCTION__, ERROR_FUNCTION_FAILED);
 		}
 		else
-			SetLastError(SE_SOCKET_BIND, _T(__FUNCTION__), ::WSAGetLastError());
+			SetLastError(SE_SOCKET_BIND, __FUNCTION__, ::WSAGetLastError());
 	}
 	else
-		SetLastError(SE_SOCKET_CREATE, _T(__FUNCTION__), ::WSAGetLastError());
+		SetLastError(SE_SOCKET_CREATE, __FUNCTION__, ::WSAGetLastError());
 
 	return isOK;
 }
@@ -171,7 +171,7 @@ BOOL CTcpServer::CreateCompletePort()
 {
 	m_hCompletePort	= ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, 0);
 	if(m_hCompletePort == nullptr)
-		SetLastError(SE_CP_CREATE, _T(__FUNCTION__), ::GetLastError());
+		SetLastError(SE_CP_CREATE, __FUNCTION__, ::GetLastError());
 
 	return (m_hCompletePort != nullptr);
 }
@@ -187,7 +187,7 @@ BOOL CTcpServer::CreateWorkerThreads()
 			m_vtWorkerThreads.push_back(hThread);
 		else
 		{
-			SetLastError(SE_WORKER_THREAD_CREATE, _T(__FUNCTION__), ::GetLastError());
+			SetLastError(SE_WORKER_THREAD_CREATE, __FUNCTION__, ::GetLastError());
 			isOK = FALSE;
 			break;
 		}
@@ -208,7 +208,7 @@ BOOL CTcpServer::StartAccept()
 			::PostQueuedCompletionStatus(m_hCompletePort, IOCP_SI_ACCEPT, 0, nullptr);
 	}
 	else
-		SetLastError(SE_SOCKE_ATTACH_TO_CP, _T(__FUNCTION__), ::GetLastError());
+		SetLastError(SE_SOCKE_ATTACH_TO_CP, __FUNCTION__, ::GetLastError());
 
 	return isOK;
 }
@@ -345,7 +345,8 @@ void CTcpServer::AddClientSocketObj(CONNID dwConnID, TSocketObj* pSocketObj)
 
 	ASSERT(FindSocketObj(dwConnID) == nullptr);
 
-	m_mpClientSocket[dwConnID] = pSocketObj;
+	pSocketObj->connTime		= ::TimeGetTime();
+	m_mpClientSocket[dwConnID]  = pSocketObj;
 }
 
 void CTcpServer::ReleaseFreeSocket()
@@ -488,19 +489,23 @@ void CTcpServer::CloseSocketObj(TSocketObj* pSocketObj, int iShutdownFlag)
 	}
 }
 
-BOOL CTcpServer::GetListenAddress(CString& strAddress, USHORT& usPort)
+BOOL CTcpServer::GetListenAddress(LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
-	return ::GetSocketLocalAddress(m_soListen, strAddress, usPort);
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
+	return ::GetSocketLocalAddress(m_soListen, lpszAddress, iAddressLen, usPort);
 }
 
-BOOL CTcpServer::GetClientAddress(CONNID dwConnID, CString& strAddress, USHORT& usPort)
+BOOL CTcpServer::GetClientAddress(CONNID dwConnID, LPTSTR lpszAddress, int& iAddressLen, USHORT& usPort)
 {
+	ASSERT(lpszAddress != nullptr && iAddressLen > 0);
+
 	TSocketObj* pSocketObj = FindSocketObj(dwConnID);
 
 	if(pSocketObj != nullptr)
 	{
 		ADDRESS_FAMILY usFamily;
-		return ::sockaddr_IN_2_A(pSocketObj->clientAddr, usFamily, strAddress, usPort);
+		return ::sockaddr_IN_2_A(pSocketObj->clientAddr, usFamily, lpszAddress, iAddressLen, usPort);
 	}
 
 	return FALSE;
@@ -547,6 +552,24 @@ BOOL CTcpServer::GetConnectionCriSec(CONNID dwConnID, CCriSec2** ppCriSec)
 	}
 
 	return FALSE;
+}
+
+DWORD CTcpServer::GetConnectionCount()
+{
+	return (DWORD)m_mpClientSocket.size();
+}
+
+BOOL CTcpServer::GetConnectPeriod(CONNID dwConnID, DWORD& dwPeriod)
+{
+	BOOL isOK				= TRUE;
+	TSocketObj* pSocketObj	= FindSocketObj(dwConnID);
+
+	if(pSocketObj != nullptr)
+		dwPeriod = GetTimeGap32(pSocketObj->connTime);
+	else
+		isOK = FALSE;
+
+	return isOK;
 }
 
 BOOL CTcpServer::Disconnect(CONNID dwConnID, BOOL bForce)

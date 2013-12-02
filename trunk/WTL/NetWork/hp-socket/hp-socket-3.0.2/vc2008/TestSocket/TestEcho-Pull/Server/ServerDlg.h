@@ -5,7 +5,7 @@
 #pragma once
 #include "afxwin.h"
 
-#include "../../../Common/Src/socket/TcpPullServer.h"
+#include "../../../Common/Src/socket/HPSocket.h"
 #include "../../Global/helper.h"
 
 // CServerDlg dialog
@@ -72,5 +72,5 @@ private:
 	
 	//CCriSec m_csPkgInfo;
 
-	CTcpPullServer m_Server;
+	CTcpPullServerWrapper m_Server;
 };
