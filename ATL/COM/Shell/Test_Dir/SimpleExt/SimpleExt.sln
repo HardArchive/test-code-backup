@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleExt", "SimpleExt\SimpleExt.vcproj", "{2D42C079-7210-4F84-8634-CCED6431D074}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleExtPS", "SimpleExt\SimpleExtPS.vcproj", "{143FD748-5379-43E6-B325-66E66642E8B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D42C079-7210-4F84-8634-CCED6431D074} = {2D42C079-7210-4F84-8634-CCED6431D074}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D42C079-7210-4F84-8634-CCED6431D074}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2D42C079-7210-4F84-8634-CCED6431D074}.Debug|Win32.Build.0 = Debug|Win32
+		{2D42C079-7210-4F84-8634-CCED6431D074}.Release|Win32.ActiveCfg = Release|Win32
+		{2D42C079-7210-4F84-8634-CCED6431D074}.Release|Win32.Build.0 = Release|Win32
+		{143FD748-5379-43E6-B325-66E66642E8B9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{143FD748-5379-43E6-B325-66E66642E8B9}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
