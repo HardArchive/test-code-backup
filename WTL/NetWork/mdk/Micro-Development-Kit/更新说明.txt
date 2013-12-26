@@ -1,0 +1,20 @@
+V1.65
+
+解决windows下服务器退出时，IOCP阻塞问题，实现IOCPMonitor虚函数，解决
+
+bool IOCPMonitor::Stop()
+{
+#ifdef WIN32
+ memset( &m_stopOverlapped.m_overlapped, 0, sizeof(OVERLAPPED) );
+ m_stopOverlapped.m_wsaBuffer.buf = NULL;
+ m_stopOverlapped.m_wsaBuffer.len = 0;
+ m_stopOverlapped.m_overlapped.Internal = 0;
+ m_stopOverlapped.sock = 0;
+ m_stopOverlapped.completiontype = IOCPMonitor::close;
+ 
+ ::PostQueuedCompletionStatus(m_hCompletPort, 0, 0, (OVERLAPPED*)&m_stopOverlapped );
+#endif
+ return true;
+
+}
+
