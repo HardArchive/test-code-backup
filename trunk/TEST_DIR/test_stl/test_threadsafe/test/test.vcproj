@@ -227,7 +227,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\common\safemap.h"
+				RelativePath="..\common\Queue2.h"
 				>
 			</File>
 		</Filter>
