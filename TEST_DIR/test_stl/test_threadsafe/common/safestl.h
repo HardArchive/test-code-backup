@@ -1,24 +1,25 @@
-//file safemap.h
+//file safestl.h
 /***************************************************************************************************
-* 1、 File       ： safemap.h
+* 1、 File       ： safestl.h
 * 2、 Version    ： *.*
-* 3、 Description： 基于C++标准模板块STL的map容器开发的线程安全map，实现队列的基本功能，如入队，出队，可以设置队列最大值，可以用于线程同步
+* 3、 Description： 基于C++标准模板块STL的map queue list容器开发的线程安全map queue list，可以用于线程同步
 * 4、 Author     ： RG (http://www.9cpp.com/)
 * 5、 Created    ： 2013-4-28 15:42:35
-* 6、 History    ： 
+* 6、 History    ： 在使用前 lock 用完之unlock
 * 7、 Remark     ： 互斥量用于线程的互斥
 *					互斥：是指某一资源同时只允许一个访问者对其进行访问，具有唯一性和排它性。但互斥无法限制访问者对资源的访问顺序，即访问是无序的。
 *					一个互斥量只能用于一个资源的互斥访问
 ****************************************************************************************************/
-#ifndef __SAFE_MAP_UTIL_H__
-#define __SAFE_MAP_UTIL_H__
+#ifndef __SAFE_STL_UTIL_H__
+#define __SAFE_STL_UTIL_H__
 
-#ifndef __GENERAL_HELPER_H__
-#include "GeneralHelper.h"
-#endif
+//#ifndef __GENERAL_HELPER_H__
+//#include "GeneralHelper.h"
+//#endif
 
 #include <map>
 #include <queue>
+#include <list>
 namespace RG
 {
 	namespace SAFESTL
@@ -56,7 +57,23 @@ namespace RG
 		private:
 			CRITICAL_SECTION    m_stuCriSec;
 		};
+
+		template<class _Ty,
+		class _Ax = allocator<_Ty> >
+		class CList : public std::list<_Ty, _Ax>
+		{
+		public:
+			CList()		{::InitializeCriticalSection(&m_stuCriSec);}
+			~CList()		{::DeleteCriticalSection(&m_stuCriSec);}
+
+		public:
+			void Lock()		{::EnterCriticalSection(&m_stuCriSec);}
+			void Unlock()	{::LeaveCriticalSection(&m_stuCriSec);}
+
+		private:
+			CRITICAL_SECTION    m_stuCriSec;
+		};
 	}
 }
-#endif /*__SAFE_MAP_UTIL_H__*/
+#endif /*__SAFE_STL_UTIL_H__*/
 
