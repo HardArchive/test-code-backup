@@ -16,7 +16,7 @@ TestServer::TestServer()
 {
 	SetIOThreadCount(4);//设置网络IO线程数量
 	SetWorkThreadCount(4);//设置工作线程数
-	Listen(8888);
+	Listen(5555);
 	Listen(6666);
 	Listen(9999);
 //	Connect("127.0.0.1",8888);//连接自身，未测试，不建议这么做
@@ -70,21 +70,21 @@ void TestServer::OnCloseConnect(mdk::NetHost &host)
 void TestServer::OnMsg(mdk::NetHost &host)
 {
 	//假设报文结构为：2byte表示数据长度+报文数据
-	unsigned char c[256];
+	unsigned char szBuf[256] = {0};
 	/*
 		读取数据长度，长度不足2byte直接返回，等待下次数据到达时再读取
 		只读取2byte，false表示，不将读取到的数据从缓冲中删除，下次还是可以读到
 	*/
-	if ( !host.Recv( c, 2, false ) ) return;
-	unsigned short len = 0;
-	memcpy( &len, c, 2 );//得到数据长度
-	len += 2;//报文长度 = 报文头长度+数据长度
-	if ( len > 256 ) 
+	if ( !host.Recv( szBuf, 1, false ) ) return;
+	unsigned short len = szBuf[0]-'0';
+	//memcpy( &len, szBuf, 1 );//得到数据长度
+	len += 1;//报文长度 = 报文头长度+数据长度
+	if ( len > 256 )  
 	{
 		printf( "close client:invaild fromat msg\n" );
 		host.Close();
 		return;
 	}
-	if ( !host.Recv(c, len) ) return;//将报文读出，并从接收缓冲中删除，绝对不可能长度不够，即使连接已经断开，也可以读到数据
-	host.Send( c, len );//收到消息原样回复
+	if ( !host.Recv(szBuf, len) ) return;//将报文读出，并从接收缓冲中删除，绝对不可能长度不够，即使连接已经断开，也可以读到数据
+	host.Send( szBuf, len );//收到消息原样回复
 }
