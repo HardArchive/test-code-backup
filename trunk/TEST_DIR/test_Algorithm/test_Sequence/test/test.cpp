@@ -18,8 +18,10 @@ void Swap(int &a, int &b)
 void BubbleSort(int *arr, int size) 
 { 
 	int i = 0, j = 0; 
+	//依次将最大的数字逐轮放于(数组0-i)的最后面 
 	for(i=0; i<size-1; i++) 
 	{
+		//将最大的数字放于数组i-(size-1)的最后面  
 		for(j=size-1; j>i; j--) 
 		{
 			if(arr[j] < arr[j-1]) 
@@ -230,6 +232,57 @@ void ShellSort(int *arr, int size)
 		} 
 	} 
 } 
+
+//希尔排序以n=10 的一个数组49, 38, 65, 97, 26, 13, 27, 49, 55, 4为例 
+void shellsort1(int a[], int n) 
+{ 
+	int i, j, gap; 
+
+	for (gap = n / 2; gap > 0; gap /= 2)    //步长 
+	{
+		for (i = 0; i < gap; i++)                  //按组排序       
+		{ 
+			for (j = i + gap; j < n; j += gap)     
+			{ 
+				if (a[j] < a[j - gap]) 
+				{ 
+					int temp = a[j]; 
+					int k = j - gap; 
+					while (k >= 0 && a[k] > temp) 
+					{ 
+						a[k + gap] = a[k]; 
+						k -= gap; 
+					} 
+					a[k + gap] = temp; 
+				} 
+			} 
+		}
+	} 
+} 
+//shellsort1的简化版
+void shellsort2(int a[], int n) 
+{ 
+	int j, gap; 
+
+	for (gap = n / 2; gap > 0; gap /= 2) 
+	{
+		for (j = gap; j < n; j++)      //从数组第gap个元素开始 
+		{
+			if (a[j] < a[j - gap])   //每个元素与自己组内的数据进行直接插入排序     
+			{ 
+				int temp = a[j]; 
+				int k = j - gap; 
+				while (k >= 0 && a[k] > temp) 
+				{ 
+					a[k + gap] = a[k]; 
+					k -= gap; 
+				} 
+				a[k + gap] = temp; 
+			} 
+		}
+	}
+}
+
 
 //输出数组里的数据 
 void Print(int *arr, int size) 
