@@ -3,7 +3,7 @@
 // Distributed under the Boost Software License, Version 1.0. (See
 // accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
-
+#include "stdafx.h"
 #include <boost/pool/pool_alloc.hpp>
 #include <boost/pool/object_pool.hpp>
 
@@ -426,7 +426,7 @@ static void timing_test_containers()
   std::cout << "  Pool:           not possible" << std::endl;
 }
 
-int main(int argc, char * argv[])
+int main2(int argc, char * argv[])
 {
   if (argc != 1 && argc != 2)
   {
