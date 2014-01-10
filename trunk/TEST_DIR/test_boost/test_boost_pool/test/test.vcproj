@@ -191,15 +191,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\sys_allocator.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\test.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\time_pool_alloc.cpp"
 				>
 			</File>
 		</Filter>
