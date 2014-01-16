@@ -1,0 +1,64 @@
+ 如何在你的工程里面添加Bkwin
+ 
+ 
+ 1 复制bkwin tinyxml 到你工程下面。 并且在工程include 指定位置
+ 2 在你的工程里面添加bkwin和tinyxml文件，并且修改工程设置 tinyxml的cpp的 预编译头去掉。
+ 3 添加bkres\bkres.rc到工程 在工程目录添加  bkwinres.h bkwinres.rc2 可以是空文件。并且添加到工程
+ 4 在stdafx.h里面添加下面头文件
+#include <atlbase.h>
+#include <atlwin.h>
+#include <atlstr.h>
+#include <atltrace.h>
+
+#define _WTL_NO_CSTRING
+
+#include <wtl/atlapp.h>
+#include <wtl/atlframe.h>
+#include <wtl/atlctrls.h>
+#include <wtl/atlctrlx.h>
+#include <wtl/atldlgs.h>
+#include <wtl/atlcrack.h>
+#include <wtl/atlmisc.h>
+
+#include <tinyxml/tinyxml.h>
+#include <bkwin/bkdlgview.h>
+#include <bkres/bkres.h>
+
+ 5 bkwin 界面使用前资源的初始化
+	BkString::Load(IDR_BK_STRING_DEF);
+	BkFontPool::SetDefaultFont(BkString::Get(IDS_APP_FONT), -12);
+
+	BkSkin::LoadSkins(IDR_BK_SKIN_DEF);
+	BkStyle::LoadStyles(IDR_BK_STYLE_DEF);
+	
+ 6 在res 添加 def_skin.xml def_style.xml def_string.xml 3个资源定义文件。
+ 7 主界面对话框xml的编写，c++ 代码的添加。
+ class CMainDlg
+	: public CBkDialogImpl<CMainDlg>
+{
+public:
+	CMainDlg()
+		: CBkDialogImpl<CMainDlg>(IDR_BK_MAIN_DIALOG)
+	{
+	}
+
+public:
+	BK_NOTIFY_MAP(IDC_RICHVIEW_WIN)
+		BK_NOTIFY_ID_COMMAND(IDC_BTN_SYS_CLOSE, OnBkBtnClose)
+	BK_NOTIFY_MAP_END()
+
+	BEGIN_MSG_MAP_EX(CMainDlg)
+		MSG_BK_NOTIFY(IDC_RICHVIEW_WIN)
+		CHAIN_MSG_MAP(CBkDialogImpl<CMainDlg>)
+	END_MSG_MAP()
+
+public:
+
+	void OnBkBtnClose()
+	{
+		EndDialog(IDCANCEL);
+	}
+};
+ 
+ 
+ 
