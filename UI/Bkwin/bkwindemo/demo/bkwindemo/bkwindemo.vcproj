@@ -225,10 +225,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\res\beikesafe.manifest"
-					>
-				</File>
-				<File
 					RelativePath=".\res\btn_sys_close.bmp"
 					>
 				</File>
