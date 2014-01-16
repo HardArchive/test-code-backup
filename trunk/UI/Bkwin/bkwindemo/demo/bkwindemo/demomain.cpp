@@ -78,7 +78,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 //     bkconsole console;
 #endif
 
-    BkWinManager bkwinmgr;
+    //BkWinManager bkwinmgr;
 
     BkFontPool::SetDefaultFont(_T("ËÎÌו"), -12);
 
