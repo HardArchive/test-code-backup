@@ -22,10 +22,10 @@ int TraceUtil()
 	TCHAR tszTem[32] = {_T("Test^^^^^^TCHAR")};
 
 
-	QNA::TRACE(_T("TCHAR……\r\n"));
+	RG::TRACE(_T("TCHAR……\r\n"));
 	for (int i=1; i<=15;i++)
 	{
-		QNA::TRACE(_T("%02d、%s\n"), i, tszTem);
+		RG::TRACE(_T("%02d、%s\n"), i, tszTem);
 	}
 
 	return 1;
@@ -119,27 +119,27 @@ int CheckHTTPHEAD(char* pstrDomain, DWORD dwIPValue, UINT uiPort)
 	iRet = clsSocket.Connect(dwIPValue, 80);
 	if (1 != iRet)
 	{
-		QNA::TRACE(_T("连接出错值:%d(1 成功 -1 调用出错 -2 Socket 创建失败 -3 设置发送超时失败 -4 设置接收超时失败 -5 连接超时 -6 连接出错)\r\n"), iRet);
+		RG::TRACE(_T("连接出错值:%d(1 成功 -1 调用出错 -2 Socket 创建失败 -3 设置发送超时失败 -4 设置接收超时失败 -5 连接超时 -6 连接出错)\r\n"), iRet);
 		return -1;
 	}
 	iLen = _stprintf(tszSend, g_szHttpHead, pstrDomain);
 	iRet = clsSocket.Send(clsSocket.GetSocket(), (PBYTE)tszSend, iLen);
-	QNA::TRACE(tszSend);
+	RG::TRACE(tszSend);
 	if (1 != iRet)
 	{
-		QNA::TRACE(_T("发送出错值:%d(1成功， -1发送指针为空， -2 长度错误 -3 SOCKET_ERROR -4 WSA_IO_PENDING -5 iSent)\r\n"), iRet);
+		RG::TRACE(_T("发送出错值:%d(1成功， -1发送指针为空， -2 长度错误 -3 SOCKET_ERROR -4 WSA_IO_PENDING -5 iSent)\r\n"), iRet);
 		return -2;
 	}
 	ZeroMemory(tszSend, sizeof(tszSend));
 	iLen = clsSocket.Recv(clsSocket.GetSocket(), (PBYTE)tszSend, sizeof(tszSend));
 	if (0 > iLen)	return -3;		//接收出错  
-	QNA::TRACE(tszSend);
+	RG::TRACE(tszSend);
 
 	ZeroMemory(tszTem, sizeof(tszTem));
 	iLen = _tcslen(HTTP_OK);
 	_tcsncpy(tszTem, (TCHAR*)tszSend, iLen);
 	if (!_tcsicmp(tszTem, HTTP_OK))  return 1;	
-	QNA::TRACE(_T("HTTP HEAD 可行\r\n"));
+	RG::TRACE(_T("HTTP HEAD 可行\r\n"));
 	return 0;
 }
 
@@ -161,7 +161,7 @@ int CheckIsEffective(char* pstrDomain, char* pstrIP)
 	while(host_entry->h_addr_list[iNum])
 	{		
 		//addr.S_un.S_addr = *(u_long *)host_entry->h_addr_list[iNum];
-		//QNA::TRACE(_T("IP地址:%s\r"), inet_ntoa(addr));
+		//RG::TRACE(_T("IP地址:%s\r"), inet_ntoa(addr));
 		iRet = /*clsIpLookupSocket.*/CheckHTTPHEAD(pstrDomain, *(u_long *)host_entry->h_addr_list[iNum], 80);
 		if (1 == iRet)
 		{
@@ -194,19 +194,19 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 	while(host_entry->h_addr_list[iNum])
 	{		
 		addr.S_un.S_addr = *(u_long *)host_entry->h_addr_list[iNum];
-		QNA::TRACE(_T("IP地址:%s\r"), inet_ntoa(addr));
+		RG::TRACE(_T("IP地址:%s\r"), inet_ntoa(addr));
 		iRet = clsSocket.Connect(*(u_long *)host_entry->h_addr_list[iNum], 80);
 		if (1 != iRet)
 		{
-			QNA::TRACE(_T("连接出错值:%d(1 成功 -1 调用出错 -2 Socket 创建失败 -3 设置发送超时失败 -4 设置接收超时失败 -5 连接超时 -6 连接出错)\r\n"), iRet);
+			RG::TRACE(_T("连接出错值:%d(1 成功 -1 调用出错 -2 Socket 创建失败 -3 设置发送超时失败 -4 设置接收超时失败 -5 连接超时 -6 连接出错)\r\n"), iRet);
 			return -2;
 		}
 		iLen = _stprintf(tszSend, g_szHttpHead, pstrDomain);
 		iRet = clsSocket.Send(clsSocket.GetSocket(), (PBYTE)tszSend, iLen);
-		QNA::TRACE(tszSend);
+		RG::TRACE(tszSend);
 		if (1 != iRet)
 		{
-			QNA::TRACE(_T("发送出错值:%d(1成功， -1发送指针为空， -2 长度错误 -3 SOCKET_ERROR -4 WSA_IO_PENDING -5 iSent)\r\n"), iRet);
+			RG::TRACE(_T("发送出错值:%d(1成功， -1发送指针为空， -2 长度错误 -3 SOCKET_ERROR -4 WSA_IO_PENDING -5 iSent)\r\n"), iRet);
 			return -3;
 		}
 		ZeroMemory(tszSend, sizeof(tszSend));
@@ -217,24 +217,24 @@ int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP)
 			return -4;
 		}
 
-		QNA::TRACE(tszSend);
+		RG::TRACE(tszSend);
 
 		ZeroMemory(tszTem, sizeof(tszTem));
 		iLen = _tcslen(HTTP_OK);
 		_tcsncpy(tszTem, (TCHAR*)tszSend, iLen);
 		if (!_tcsicmp(tszTem, HTTP_OK))
 		{
-			QNA::TRACE(_T("HTTP HEAD 可行\r\n"));
+			RG::TRACE(_T("HTTP HEAD 可行\r\n"));
 			//if (!_tcsncmp(pstrIP, inet_ntoa(addr), _tcslen(pstrIP)))
 			//{
-			//	QNA::TRACE("####################HTTP HEAD 检查成功#######################\r\n");
+			//	RG::TRACE("####################HTTP HEAD 检查成功#######################\r\n");
 			//	break;
 			//}
 			return 1;
 		}
 		else
 		{
-			QNA::TRACE(_T("HTTP HEAD 不可行\r\n"));
+			RG::TRACE(_T("HTTP HEAD 不可行\r\n"));
 		}
 		
 		iNum++;
@@ -260,4 +260,9 @@ int TestRegUtil()
 	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ,  (PVOID)tszTem1);
 
 	return 1;
+}
+
+int TestPathUtil()
+{
+
 }

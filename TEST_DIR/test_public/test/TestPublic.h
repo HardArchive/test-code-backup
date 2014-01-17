@@ -9,7 +9,7 @@ int FileUtil();
 
 //int TestFileVersionInfo();
 
-//int TestPathUtil();
+int TestPathUtil();
 
 int TestRegUtil();
 

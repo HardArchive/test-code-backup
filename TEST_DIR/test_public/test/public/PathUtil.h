@@ -12,7 +12,7 @@
 #define __PATH_UTIL_H_
 #include <Windows.h>
 #include <ShlObj.h>
-
+#include <tchar.h>
 #define CPathUtil_Administrative_Tools 0x01                                //「开始」菜单\程序\管理工具
 #define CPathUtil_AppData              0x02                                //应用数据
 #define CPathUtil_Cache                0x03                                //缓存
@@ -40,6 +40,8 @@
 //系统壁纸目录  
 //打印缓存目录
 //
+#define PTCHAR TCHAR*
+
 namespace RG
 {
 	class CPathUtil

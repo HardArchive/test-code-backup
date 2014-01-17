@@ -15,7 +15,7 @@
 #pragma comment(lib, "WS2_32")	// Á´½Óµ½WS2_32.lib
 //#include "Common/DebugTrace.h"
 #include <TraceUtil.h>
-using namespace QNA;
+using namespace RG;
 
 namespace QNA
 {
