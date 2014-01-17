@@ -17,7 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	////iRet = TestSocket("av360.cn", "202.91.240.190");
 	////iRet = CheckIsEffective("av360.cn", "202.91.240.190");
-	//QNA::TRACE("TestSocket返回结果:%d\r\n", iRet);
+	//RG::TRACE("TestSocket返回结果:%d\r\n", iRet);
 
 
 	TestRegUtil();
