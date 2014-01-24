@@ -72,9 +72,10 @@ namespace RG
 
 
 			iCount = stuCalcStorageTime.iTime;
-			for (int i=0; i<stuCalcStorageTime.iTime; i++)
+			for (int i=0; i<iCount; i++)
 			{
 				dAllPrincipal += GetPrincipalInterest(dInPrincipal, pstuInRegularRates, stuCalcStorageTime);
+				stuCalcStorageTime.iTime--;
 			}
 			return dAllPrincipal;
 		}
@@ -88,7 +89,8 @@ namespace RG
 			iCount = CalcSuntoryCount(pstuInRegularRates->stuStorageTime, stuInStorageTime);
 			for (int i=0; i<iCount; i++)
 			{
-				dPrincipal = GetRegularPrincipalInterest(dPrincipal, pstuInRegularRates);
+				dPrincipal = GetRegularPrincipalInterest((int)dPrincipal, pstuInRegularRates);
+				dPrincipal = HandleNum(dPrincipal);
 			}
 			return dPrincipal;
 		}
@@ -96,7 +98,7 @@ namespace RG
 
 
 		//定期取得本息 dInPrincipal本金 pstuInRegularRates定期利率 按照定期的时间后计算应得和本金+利息
-		double GetRegularPrincipalInterest(const double dInPrincipal, const PREGULARRATES pstuInRegularRates)
+		double GetRegularPrincipalInterest(const int dInPrincipal, const PREGULARRATES pstuInRegularRates)
 		{
 			double dTime = 0;
 			double dInterest = 0;
@@ -116,6 +118,7 @@ namespace RG
 			}
 
 			dInterest = dInterest/100;
+			dInterest = HandleNum(dInterest);
 			//计算本息和
 			dInterest += dInPrincipal;
 			return dInterest;
@@ -125,6 +128,15 @@ namespace RG
 		int Year2Month(int iInYear){return 12*iInYear;}
 		//月份转化成年份
 		double Month2Year(double dInMonth){return dInMonth/12;}
+
+		//一个double数值，保留两位小数对第三位四舍五入
+		double HandleNum(double dInNum)
+		{
+			double dRet = dInNum*100;
+			dRet = (int)(dRet+0.5);
+			dRet = dRet/100.0;
+			return dRet;
+		}
 		
 		//计算 定期月份和实存月份之间的倍数 如有余数则忽略
 		//stuInRatesStorageTime 利率计算时间 stuInStorageTime实际存储时间 bIsRemainder 是否有余数
