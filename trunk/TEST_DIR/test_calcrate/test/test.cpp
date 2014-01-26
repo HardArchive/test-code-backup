@@ -21,6 +21,9 @@ BANKREGULARRATES g_szBankRegularRates[6] = {
 //10K ´æ 3ÄêÆÚ ´æ18Äê 20544.676316626468
 int _tmain(int argc, _TCHAR* argv[])
 {
+	double dTem = 0.300000;
+	float fTem = 0.3000000;
+	double* pdTme = &dTem;
 	PREGULARRATES pstuRegularates = &g_szBankRegularRates[1].stuRegularRates[1];
 	PREGULARRATES pstuRegularates2 = &g_szBankRegularRates[1].stuRegularRates[2];
 	PREGULARRATES pstuRegularates3 = &g_szBankRegularRates[1].stuRegularRates[3];
