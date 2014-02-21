@@ -5,10 +5,9 @@
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDD_MAINDLG                     129
-#define IDC_BUTTON_REGEST_WINDOW_HOTKEY 1001
-#define IDC_BUTTON_REGEST_SYSTEM_HOTKEY 1003
-#define IDC_BUTTON3                     1004
-#define IDC_BUTTON_UNREGEST_HOTKEY      1004
+#define IDC_BUTTON_REGISTRY_WINDOW_HOTKEY 1001
+#define IDC_BUTTON_REGISTRY_SYSTEM_HOTKEY 1003
+#define IDC_BUTTON_UNREGISTRY_HOTKEY    1004
 #define IDC_HOTKEY_WINDOW               1005
 #define IDC_HOTKEY_SYSTEM               1006
 

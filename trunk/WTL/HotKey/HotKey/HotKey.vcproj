@@ -258,5 +258,9 @@
 		</Filter>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="HotKey.rc"
+		/>
 	</Globals>
 </VisualStudioProject>
