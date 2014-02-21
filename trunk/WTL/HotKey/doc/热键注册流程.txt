@@ -1,0 +1,13 @@
+系统热键注册流程
+1、首先是注册系统热键 RegisterHotKey 
+2、接着响应并实现系统热键消息 WM_HOTKEY
+3、最后，可别忘了在程序结束时撤销注册的热键 UnRegisterHotKey
+4、
+5、
+窗口热键
+
+需要完成的是多个热键管理的工具类
+
+
+SReader
+QReader

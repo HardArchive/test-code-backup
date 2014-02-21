@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Accelerator2", "Accelerator2.vcproj", "{3CB8A594-271E-40E6-9482-790BE0455C52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CB8A594-271E-40E6-9482-790BE0455C52}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3CB8A594-271E-40E6-9482-790BE0455C52}.Debug|Win32.Build.0 = Debug|Win32
+		{3CB8A594-271E-40E6-9482-790BE0455C52}.Release|Win32.ActiveCfg = Release|Win32
+		{3CB8A594-271E-40E6-9482-790BE0455C52}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
