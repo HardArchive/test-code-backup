@@ -1,0 +1,270 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\testhookDll.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\testhookDll.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TESTHOOKDLL_DIALOG DIALOGEX 0, 0, 296, 140
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+FONT 12, "宋体"
+BEGIN
+    CONTROL         "禁用任务管理器",IDC_CHECKTaskmgr,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,3,67,8
+    CONTROL         "禁止 Delete",IDC_CHECK_DELTE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,81,3,55,8
+    CONTROL         "禁止 Shift+Del",IDC_CHECK_SHIFT_DELTE,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,146,3,67,8
+    CONTROL         "禁用 PrtSc截图",IDC_CHECK_PrtSc,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,222,3,67,8
+    CONTROL         "禁用 Alt",IDC_CHECK_ALT,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,16,57,8
+    CONTROL         "禁用 Esc",IDC_CHECK_ESC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,81,15,55,8
+    CONTROL         "禁用 Tab",IDC_CHECK_TAB,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,146,16,67,8
+    CONTROL         "禁用 菜单键",IDC_CHECK_MENU,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,222,15,67,8
+    CONTROL         "禁用 Win",IDC_CHECK_WIN_LR,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,28,67,8
+    CONTROL         "禁用 Pause",IDC_CHECK_PAUSE,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,81,28,55,8
+    CONTROL         "禁用 Ctrl+A",IDC_CHECK_CTRL_A,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,44,67,8
+    CONTROL         "禁用 Ctrl+C",IDC_CHECK_CTRL_C,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,81,44,55,8
+    CONTROL         "禁用 Ctrl+D",IDC_CHECK_CTRL_D,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,146,44,67,8
+    CONTROL         "禁用 Ctrl+E",IDC_CHECK_CTRL_E,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,222,44,67,8
+    CONTROL         "禁用 Ctrl+F",IDC_CHECK_CTRL_F,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,59,67,8
+    CONTROL         "禁用 Ctrl+V",IDC_CHECK_CTRL_V,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,81,58,55,8
+    CONTROL         "禁用 Ctrl+X",IDC_CHECK_CTRL_X,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,146,57,67,8
+    CONTROL         "禁用 Ctrl+Z",IDC_CHECK_CTRL_Z,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,222,58,67,8
+    CONTROL         "禁用 F1",IDC_CHECK_F1,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,81,67,8
+    CONTROL         "禁用 F2",IDC_CHECK_F2,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,81,81,55,8
+    CONTROL         "禁用 F3",IDC_CHECK_F3,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,146,81,67,8
+    CONTROL         "禁用 F4",IDC_CHECK_F4,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,222,81,67,8
+    CONTROL         "禁用 F5",IDC_CHECK_F5,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,93,67,8
+    CONTROL         "禁用 F6",IDC_CHECK_F6,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,81,93,55,8
+    CONTROL         "禁用 F7",IDC_CHECK_F7,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,146,93,67,8
+    CONTROL         "禁用 F8",IDC_CHECK_F8,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,222,93,67,8
+    CONTROL         "禁用 F9",IDC_CHECK_F9,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,104,67,8
+    CONTROL         "禁用 F10",IDC_CHECK_F10,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,81,104,55,8
+    CONTROL         "禁用 F11",IDC_CHECK_F11,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,146,104,67,8
+    CONTROL         "禁用 F12",IDC_CHECK_F12,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,222,104,67,8
+    PUSHBUTTON      "执行",IDC_BUTTON_ACTION,183,121,38,15
+    PUSHBUTTON      "屏蔽所有",IDC_BUTTON_DISABLE_ALL,7,121,18,15,NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "取消",IDCANCEL,245,121,38,15
+    CONTROL         "禁用F1-F12",IDC_CHECK_F13,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,146,28,67,8
+    PUSHBUTTON      "开启所有",IDC_BUTTON_OPEN_ALL,26,121,15,15,NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "保存配置",IDC_BUTTONSAVASETING,59,122,38,14
+    PUSHBUTTON      "默认配置",IDC_BUTTONDefault,121,122,38,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "liu\0"
+            VALUE "FileDescription", "HookServer\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "HookServer\0"
+            VALUE "LegalCopyright", "版权所有(C) 2012\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "HookServer.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "liu HookServer\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "HookServer \0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2012\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "HookServer.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "HookServer 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200, 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_TESTHOOKDLL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 136
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 testhookDll(&A)..."
+END
+
+#endif    // Chinese (中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\testhookDll.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

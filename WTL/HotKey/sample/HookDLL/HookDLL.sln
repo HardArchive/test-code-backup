@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testhookDll", "testhookDll\testhookDll.vcproj", "{9BFD1440-FAE8-4037-9259-089CFC9DBB8A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookDLL", "HookDLL\HookDLL.vcproj", "{2E998E7A-E221-4F8D-8182-3D2FFBDE5A34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BFD1440-FAE8-4037-9259-089CFC9DBB8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9BFD1440-FAE8-4037-9259-089CFC9DBB8A}.Debug|Win32.Build.0 = Debug|Win32
+		{9BFD1440-FAE8-4037-9259-089CFC9DBB8A}.Release|Win32.ActiveCfg = Release|Win32
+		{9BFD1440-FAE8-4037-9259-089CFC9DBB8A}.Release|Win32.Build.0 = Release|Win32
+		{2E998E7A-E221-4F8D-8182-3D2FFBDE5A34}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2E998E7A-E221-4F8D-8182-3D2FFBDE5A34}.Debug|Win32.Build.0 = Debug|Win32
+		{2E998E7A-E221-4F8D-8182-3D2FFBDE5A34}.Release|Win32.ActiveCfg = Release|Win32
+		{2E998E7A-E221-4F8D-8182-3D2FFBDE5A34}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

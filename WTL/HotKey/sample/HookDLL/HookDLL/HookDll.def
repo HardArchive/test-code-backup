@@ -1,0 +1,25 @@
+
+
+LIBRARY HookDll
+EXPORTS
+setHook
+unHook
+set_Taskmgr
+;set_CTRL_SHIFT_ESC
+set_Delete
+set_Tab
+set_Esc
+;set_WIN_LR
+set_Snashot
+
+set_Ctrl_A
+set_Ctrl_B
+set_Ctrl_C
+set_Ctrl_D
+set_Ctrl_E
+set_Ctrl_F
+set_Ctrl_V
+set_Ctrl_X
+set_Ctrl_Z
+
+ 

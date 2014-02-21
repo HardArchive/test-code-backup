@@ -1,0 +1,10 @@
+; hook.def : Declares the module parameters for the DLL.
+
+LIBRARY      "hook"
+DESCRIPTION  'hook Windows Dynamic Link Library'
+SECTIONS
+shareddata READ WRITE SHARED
+EXPORTS
+    ; Explicit exports can go here
+	 AddHotkey
+	 DeleteHotkey
