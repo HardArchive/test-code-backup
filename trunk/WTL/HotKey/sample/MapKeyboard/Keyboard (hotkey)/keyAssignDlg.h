@@ -79,6 +79,7 @@ public:
 
 	//	registry persistence: binary mode dump
 #define ACCREGVALUENAME _T("binAccelTable")
+	//从注册表读取虚拟键表
 	void ReadProfile(LPCTSTR szSec) {
 		ATLASSERT(szSec && *szSec);
 		ATLASSERT(!GetCount()); // are you mental?
