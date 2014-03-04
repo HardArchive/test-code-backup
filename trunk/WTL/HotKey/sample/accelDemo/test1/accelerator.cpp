@@ -7,9 +7,9 @@
 //加速键表由一个ACCEL结构数组构成。每个结构定义一个独立的加速键，由以下信息组
 //typedef struct tagACCEL {
 //#ifndef _MAC
-//	BYTE   fVirt;               /* Also called the flags field */击键组合
-//	WORD   key;
-//	WORD   cmd;
+//	BYTE   fVirt;               // Also called the flags field 加速键的标记
+//	WORD   key;                 //键的代码。如fVirt成员包含FVIRTKEY标志，则key指一个虚键码，否则是一个ASCII码
+//	WORD   cmd;                 //命令ID号，该参数将被放入WM＿COMMAND或WM＿SYSCOMMAND消息的wParam参数的低位字发至窗口。
 //#else
 //	WORD   fVirt;               /* Also called the flags field */
 //	WORD   key;

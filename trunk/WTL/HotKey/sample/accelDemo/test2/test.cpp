@@ -16,7 +16,7 @@
 #define ID_CMD_H      0x00000237
 
 //定义了七个加速键,请在消息回调函数中处理这七个命令ID。
-static ACCEL accel[]={
+static ACCEL g_accel[]={
 	{FVIRTKEY|FCONTROL,  VK_F5,    ID_CMD_A},
 	{FVIRTKEY|FCONTROL,  VK_F6,    ID_CMD_B},
 	{FVIRTKEY|FCONTROL,  VK_HOME,  ID_CMD_C},
@@ -55,8 +55,11 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	{
 		return FALSE;           // 初始化失败
 	}
+
+	//还可以从资源中加载加速键表 
+	//LoadAccelerators
 	//使用函数CreateAcceleratorTable从数组accel中加载加速键表
-	hAccelTable = CreateAcceleratorTable(accel, sizeof(accel)/sizeof(ACCEL));
+	hAccelTable = CreateAcceleratorTable(g_accel, sizeof(g_accel)/sizeof(ACCEL));//创建加速键表
 	// 取得并分发消息直到接收到 WM_QUIT 消息.
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -64,8 +67,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		//TranslateAccelerator函数进行翻译，不再继续处理该消息。
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			TranslateMessage(&msg);//该函数将虚拟键消息转换为字符消息。字符消息被寄送到调用线程的消息队列里，当下一次线程调用函数GetMessage或PeekMessage时被读出。
+			DispatchMessage(&msg);//该函数分发一个消息给窗口程序。通常消息从GetMessage函数获得。消息被分发到回调函数（过程函数)，作用是消息传递给操作系统，然后操作系统去调用我们的回调函数，也就是说我们在窗体的过程函数中处理消息
 		}
 	}
 	//删除加速键表
