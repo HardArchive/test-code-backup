@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="test"
-	ProjectGUID="{C89598DC-0A21-4393-A271-9E7F3D41DB96}"
+	Name="test2"
+	ProjectGUID="{75A095D7-1805-46A3-A083-3B8A463B84BE}"
 	RootNamespace="test"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
@@ -174,10 +174,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\accelerator.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -197,16 +193,16 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\test.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\accelerator.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Resource.h"
 				>
