@@ -15,7 +15,7 @@ namespace RG
 {
 	class CRegUtil
 	{
-	public:
+	private:
 		//打开一个指定的注册表键, 默认主键为HKEY_LOCAL_MACHINE, 默认键不存在不创建
 		DWORD
 			OpenRegKey(
@@ -97,6 +97,7 @@ cleanup_open:
 			return dwResult;
 		}
 
+	public:
 		//获取一个注册表项或值的数据，默认主键HKEY_LOCAL_MACHINE
 		DWORD
 			GetRegistryValue(
