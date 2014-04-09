@@ -259,10 +259,20 @@ int TestRegUtil()
 
 	clsRegUtil.GetRegistryValue(_T("SOFTWARE\\RainSoft\\RSDataToDb"), _T("test"), REG_SZ,  (PVOID)tszTem1);
 
+	TCHAR tszUserPath[MAX_PATH] = {0};
+
+	clsRegUtil.GetRegistryValue(HKEY_CURRENT_USER, _T("SOFTWARE\\China Mobile\\Fetion"), _T("UserPath"), REG_SZ, (PVOID)tszUserPath);
+	if (0 == _tcslen(tszUserPath))
+	{
+		clsRegUtil.GetRegistryValue(_T("SOFTWARE\\China Mobile\\Fetion"), _T("UserPath"), REG_SZ, (PVOID)tszUserPath);
+	}
+
+
 	return 1;
 }
 
 int TestPathUtil()
 {
 
+	return 1;
 }
