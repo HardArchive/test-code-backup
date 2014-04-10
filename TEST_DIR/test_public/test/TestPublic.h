@@ -11,6 +11,8 @@ int FileUtil();
 
 int TestPathUtil();
 
+int TestDirectoryTraversalUtil();
+
 int TestRegUtil();
 
 int TestSocket(TCHAR* pstrDomain, TCHAR* pstrIP);

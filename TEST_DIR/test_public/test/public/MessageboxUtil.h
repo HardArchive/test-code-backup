@@ -3,14 +3,14 @@
 * 1、 Class      ： CMessageboxUtil
 * 2、 Version    ： 1.0
 * 3、 Description： 很简单的功能 只是让Messagebox支持无限参数
-* 4、 Author     ： QNA (http://www.9cpp.com/)
+* 4、 Author     ： Ray (http://www.9cpp.com/)
 * 5、 Created    ： 2012-9-9 13:34:13
 * 6、 History    ： 
 * 7、 Remark     ： 
 ****************************************************************************************************/
 #ifndef __MESSAGEBOX_UTIL_H__
 #define __MESSAGEBOX_UTIL_H__
-namespace QNA
+namespace RG
 {
 #include <stdio.h>
 #include <stdarg.h>

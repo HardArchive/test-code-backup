@@ -227,6 +227,10 @@
 			Name="public"
 			>
 			<File
+				RelativePath=".\public\DirectoryTraversalUtil.h"
+				>
+			</File>
+			<File
 				RelativePath=".\public\FileUtil.h"
 				>
 			</File>

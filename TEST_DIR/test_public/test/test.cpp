@@ -9,8 +9,9 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	int iRet = 0;
-	//FileUtil();
 
+	//TestPathUtil();
+	TestDirectoryTraversalUtil();
 	//TraceUtil();
 
 	//IniUtil();
@@ -18,6 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	////iRet = TestSocket("av360.cn", "202.91.240.190");
 	////iRet = CheckIsEffective("av360.cn", "202.91.240.190");
 	//RG::TRACE("TestSocket·µ»Ø½á¹û:%d\r\n", iRet);
+
 
 
 	TestRegUtil();
