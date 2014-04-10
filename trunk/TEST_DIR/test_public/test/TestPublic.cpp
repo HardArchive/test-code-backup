@@ -273,6 +273,55 @@ int TestRegUtil()
 
 int TestPathUtil()
 {
+	if (!RG::CheckDirExist(_T("D:\\WinPath\\desktop\\2")))
+	{
+		::MessageBoxA(NULL, "目录不存在", "D:\\WinPath\\desktop\\2", MB_OK);
+	}
+
+	if (!RG::CheckDirExist(_T("D:")))
+	{
+		::MessageBoxA(NULL, "目录不存在", "D:", MB_OK);
+	}
+
+	if (!RG::CreateMultipleDirectory(_T("D:\\WinPath\\desktop\\2\\1\\1\\2\\3\\4")))
+	{
+		::MessageBoxA(NULL, "创建多级目录失败", "D:\\WinPath\\desktop\\2", MB_OK);
+	}
+
+	TCHAR tszExePath[MAX_PATH] = {0};
+	if (!RG::GetExePath(tszExePath))
+	{
+		::MessageBox(NULL, tszExePath, _T("获取Exe路径失败"), MB_OK);
+	}
+
+
+	TCHAR tszTemp[MAX_PATH] = {0};
+	//获取当前目录  //这里是获取当前进程文件的完整路径 
+	GetModuleFileName(NULL, tszTemp, MAX_PATH);
+	
+	DWORD GetFileLen = RG::GetFileLen(tszTemp);
+
+	//RG::CPathUtil clsPathUtil;
+	//clsPathUtil.GetSelectDirDlg(this->m_hWnd, IDC_EDIT_ECODE_PATH, _T("选择路径2"));
+
+	//RG::CPathUtil clsPathUtil;
+	//clsPathUtil.GetSelectDirDlg(this->m_hWnd, IDC_EDIT_DCODE_PATH);
+
+	
+
+	return 1;
+}
+
+#include "DirectoryTraversalFile.h"
+
+int TestDirectoryTraversalUtil()
+{
+	//由于时间关系未测试完成 只测试了部分  余下等以后再测
+	CDirTraversal clsDirTraversal;
+	clsDirTraversal.SetTraversalPath(_T("G:\\BackUp\\Fetion\\Fetion"));
+	clsDirTraversal.StartTraversal();
+
+	clsDirTraversal.StopTraversal();
 
 	return 1;
 }
