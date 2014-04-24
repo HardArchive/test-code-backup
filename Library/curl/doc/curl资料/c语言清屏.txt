@@ -1,0 +1,89 @@
+C语言中的清屏函数（自己编写） 
+分类： ·C/C++ 2009-06-13 21:04 1379人阅读 评论(4) 收藏 举报 
+       在csdn论坛里看到这样一个问题：如何在c语言命令提示下清除屏幕？
+
+感兴趣，随查之。
+
+       有解：
+
+       #include<stdio.h>
+
+#include<dos.h>
+
+void main()
+
+{
+
+           int i;
+
+           scanf("%d",&i);
+
+           system("cls");            //清屏函数。
+
+}
+
+       还有很多相似的问题，比如说：
+
+还有人问：如何才能只清除一行，或是指定行？
+
+答曰：？？&*（（不知道）
+
+有人说用gotoxy可以吧。
+
+ 
+
+后来又有人问：tc下的gotoxy命令为什么在vc下用不了？
+
+答曰: gotoxy在tc的<conio.h>库中,vc++6根本不支持这个库。
+
+还有其他的一些问到c语言的清屏方法。答案也有很多，感兴趣的可以自己搜。关键字：c语言 清屏。
+
+       看到上边那个gotoxy我觉得有点意思，因为在c语言里有那个goto语句。不过是不一样的。
+
+于是搜呀搜呀~找到了这样的一个代码（关键部分）：
+
+#include <stdio.h>
+
+#include <windows.h>
+
+void GoToXY(int x, int y);
+
+void main()
+
+{
+
+       int x,y;
+
+       printf("请输入光标位置（x,y）用逗号隔开/n");
+
+       scanf("%d,%d",&x,&y);
+
+       GoToXY(x,y);
+
+       printf("x=%d,y=%d",x,y);
+
+       scanf("%d",&x);
+
+}
+
+void GoToXY(int x, int y)
+
+{
+
+       COORD pos = {x,y};                 //设置光标位置
+
+       HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);    // 获取标准输出设备句柄
+
+       SetConsoleCursorPosition(hOut, pos);      //两个参数分别是指定哪个窗体，什么位置？
+
+}
+
+ 
+
+这是经过我改编的代码，这样就可以在窗体内让光标随心而动了。
+
+那个如何清除指定的行的字符呢？
+
+那就得用“覆盖法”了，就是让光标到那一行的行头，让后用一个循环输入指定次数的空格就行了。
+
+       总的体会  很灵活！

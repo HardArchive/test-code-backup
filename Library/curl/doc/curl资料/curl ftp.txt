@@ -1,0 +1,491 @@
+昨天考虑好了IM传送图片的方式，用的是FTP做缓存来传递图片，以减少聊天服务器的压力，用的是libcurl库，自己下载了一个Server-U 服务器，下面是测试程序，上传和下载都跑通了，剩下的就是在程序中写逻辑来实现具体的功能了。
+
+上传代码：
+
+//ftp上传实例
+
+// 服务器地址：192.168.0.185 账号：spider 密码：spider
+
+// 在服务器路径 a上建立一个a.txt ，本地文件是test.txt
+
+// 命令行参数192.168.0.185 spider spider a a.txt D:/test.txt
+
+//#include <stdlib.h>   
+
+//#include <stdio.h>   
+
+//#include <curl/curl.h>   
+
+//#include <string.h>   
+
+//
+
+//int debugFun(CURL* curl, curl_infotype type, char* str, size_t len, void* stream)   
+
+//{   
+
+//    //只打印CURLINFO_TEXT类型的信息  
+
+//    if(type == CURLINFO_TEXT)   
+
+//    {   
+
+//        fwrite(str, 1, len, (FILE*)stream);   
+
+//    }   
+
+//    return 0;
+
+//}   
+
+//
+
+//int main(int argc, char** argv)   
+
+//{   
+
+//    CURL* curl;   
+
+//    CURLcode res;   
+
+//    char errorBuf[CURL_ERROR_SIZE];   
+
+//    FILE *sendFile, *debugFile;   
+
+//    char ftpurl[256 + 1];   
+
+//    char usrpasswd[64 + 1];   
+
+//
+
+//    curl_slist *slist=NULL;   
+
+//
+
+//    if(argc != 7)   
+
+//    {   
+
+//        printf("Usage:\n\t./ftp ip username password ftpPath destFileName srcFile");   
+
+//        return -1;   
+
+//    }   
+
+//
+
+//    //将相关的调试信息打印到dubugFile.txt中  
+
+//    if(NULL == (debugFile = fopen("debugFile.txt", "a+")))   
+
+//        return -1;   
+
+//
+
+//    //打开ftp上传的源文件  
+
+//    if(NULL == (sendFile = fopen(argv[6], "r")))   
+
+//    {   
+
+//        fclose(debugFile);   
+
+//        return -1;   
+
+//    }   
+
+//
+
+//    //获取需要发送文件的大小  
+
+//    fseek(sendFile, 0, SEEK_END);   
+
+//    int sendSize = ftell(sendFile);   
+
+//    if(sendSize < 0)   
+
+//    {   
+
+//        fclose(debugFile);   
+
+//        fclose(sendFile);   
+
+//        return -1;   
+
+//    }   
+
+//    fseek(sendFile, 0L, SEEK_SET);   
+
+//
+
+//    if((res = curl_global_init(CURL_GLOBAL_ALL)) != 0)   
+
+//    {   
+
+//        fclose(debugFile);   
+
+//        fclose(sendFile);   
+
+//        return -1;   
+
+//    }   
+
+//    if((curl = curl_easy_init()) == NULL)   
+
+//    {   
+
+//        fclose(debugFile);   
+
+//        fclose(sendFile);   
+
+//        curl_global_cleanup();   
+
+//        return -1;   
+
+//    }   
+
+//
+
+//    if(argv[4][strlen(argv[4]) - 1] != '/')   
+
+//        sprintf(ftpurl, "ftp://%s/%s/%s", argv[1], argv[4], argv[5]);   
+
+//    else  
+
+//        sprintf(ftpurl, "ftp://%s/%s%s", argv[1], argv[4], argv[5]);   
+
+//    curl_easy_setopt(curl, CURLOPT_URL, ftpurl);   
+
+//    //设置ftp上传url,组成如下的URL   
+
+//    //ftp://192.168.31.145//root/subdir/curl/testftp.txt   
+
+//
+
+//    sprintf(usrpasswd, "%s:%s", argv[2], argv[3]);   
+
+//    curl_easy_setopt(curl, CURLOPT_USERPWD, usrpasswd);   
+
+//
+
+//    curl_easy_setopt(curl, CURLOPT_VERBOSE, 1);   
+
+//    curl_easy_setopt(curl, CURLOPT_DEBUGDATA, debugFile);   
+
+//
+
+//    curl_easy_setopt(curl, CURLOPT_READDATA, sendFile);   
+
+//    curl_easy_setopt(curl, CURLOPT_UPLOAD, 1);   
+
+//    curl_easy_setopt(curl, CURLOPT_INFILESIZE, sendSize);   
+
+//    curl_easy_setopt(curl, CURLOPT_FTP_CREATE_MISSING_DIRS, 1);   
+
+//
+
+//    curl_easy_setopt(curl, CURLOPT_DEBUGFUNCTION, debugFun);   
+
+//
+
+//    res = curl_easy_perform(curl);   
+
+//    if(0 != res)   
+
+//    {   
+
+//        fclose(sendFile);   
+
+//        fclose(debugFile);   
+
+//        curl_easy_cleanup(curl);   
+
+//        curl_global_cleanup();   
+
+//        return -1;   
+
+//    }   
+
+//
+
+//    curl_easy_cleanup(curl);   
+
+//    fclose(sendFile);   
+
+//    fclose(debugFile);     
+
+//    curl_global_cleanup();   
+
+//    getchar();
+
+//    return 0;      
+
+//}  
+
+ 
+
+下载代码如下：
+
+//ftp下载实例
+
+#include <stdio.h>;  
+
+#include <curl/curl.h>;  
+
+#include <curl/types.h>;  
+
+#include <curl/easy.h>;  
+
+ 
+
+struct FtpFile   //定义一个结构为了传递给my_fwrite函数.可用curl_easy_setopt的CURLOPT_WRITEDATA选项传递 
+
+{  
+
+        char *filename;  
+
+        FILE *stream;  
+
+};  
+
+ 
+
+int my_fwrite(void *buffer, size_t size, size_t nmemb, void *stream)  
+
+{  
+
+        struct FtpFile *out=(struct FtpFile *)stream; // stream指针其实就是指向struct FtpFile ftpfile的 
+
+        if(out && !out->stream)  
+
+        {  
+
+                out->stream=fopen(out->filename, "wb"); //没有这个流的话就创建一个名字是out->filename.  
+
+                if(!out->stream)  
+
+                return -1;  
+
+        }  
+
+        return fwrite(buffer, size, nmemb, out->stream);  
+
+}  
+
+ 
+
+int main(int argc, char *argv[])  
+
+{  
+
+        CURL *curl;  
+
+        CURLcode res;  
+
+        struct FtpFile ftpfile={"D:/Success.txt",NULL}; //初始化一个FtpFile结构  
+
+        curl_global_init(CURL_GLOBAL_DEFAULT);  
+
+ 
+
+        curl = curl_easy_init();  
+
+        if(curl)  
+
+        {  
+
+                curl_easy_setopt(curl, CURLOPT_URL,"ftp://192.168.0.185/a/a.txt");   
+
+ 
+
+                curl_easy_setopt(curl, CURLOPT_USERPWD,"spider:spider");
+
+                curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, my_fwrite);  
+
+                curl_easy_setopt(curl, CURLOPT_WRITEDATA, &ftpfile); //给相关函数的第四个参数传递一个结构体的指针 
+
+                curl_easy_setopt(curl, CURLOPT_VERBOSE, TRUE); //CURLOPT_VERBOSE 这个选项很常用用来在屏幕上显示对服务器相关操作返回的信息 
+
+ 
+
+                res = curl_easy_perform(curl);  
+
+                curl_easy_cleanup(curl);  
+
+ 
+
+                if(CURLE_OK != res)  
+
+                        fprintf(stderr, "curl told us %d\n", res);  
+
+        }  
+
+        if(ftpfile.stream)  
+
+        fclose(ftpfile.stream);  
+
+        curl_global_cleanup();  
+
+ 
+
+        return 0;  
+
+}
+
+
+
+
+最后记录一个比较好用的
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <curl/curl.h>
+#include <sys/stat.h>
+/* parse headers for Content-Length */
+size_t getcontentlengthfunc(void *ptr, size_t size, size_t nmemb, void *stream) 
+{
+    int r;
+    long len = 0;
+    /* _snscanf() is Win32 specific */
+    //r = _snscanf(ptr, size * nmemb, "Content-Length: %ld\n", &len);
+    r = sscanf((const char*)ptr, "Content-Length: %ld\n", &len);
+    if (r) /* Microsoft: we don't read the specs */
+        *((long *) stream) = len;
+    return size * nmemb;
+}
+/* discard downloaded data */
+size_t discardfunc(void *ptr, size_t size, size_t nmemb, void *stream) 
+{
+    return size * nmemb;
+}
+//write data to upload
+size_t writefunc(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+    return fwrite(ptr, size, nmemb, (FILE*)stream);
+}
+/* read data to upload */
+size_t readfunc(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+    FILE *f = (FILE*)stream;
+    size_t n;
+    if (ferror(f))
+        return CURL_READFUNC_ABORT;
+    n = fread(ptr, size, nmemb, f) * size;
+    return n;
+}
+int upload(CURL *curlhandle, const char * remotepath, const char * localpath, long timeout, long tries)
+{
+    FILE *f;
+    long uploaded_len = 0;
+    CURLcode r = CURLE_GOT_NOTHING;
+    int c;
+    f = fopen(localpath, "rb");
+    if (f == NULL) {
+        perror(NULL);
+        return 0;
+    }
+    curl_easy_setopt(curlhandle, CURLOPT_UPLOAD, 1L);
+    curl_easy_setopt(curlhandle, CURLOPT_URL, remotepath);
+    curl_easy_setopt(curlhandle, CURLOPT_USERPWD, "spider:spider");   
+    if (timeout)
+        curl_easy_setopt(curlhandle, CURLOPT_FTP_RESPONSE_TIMEOUT, timeout);
+    curl_easy_setopt(curlhandle, CURLOPT_HEADERFUNCTION, getcontentlengthfunc);
+    curl_easy_setopt(curlhandle, CURLOPT_HEADERDATA, &uploaded_len);
+    curl_easy_setopt(curlhandle, CURLOPT_WRITEFUNCTION, discardfunc);
+    curl_easy_setopt(curlhandle, CURLOPT_READFUNCTION, readfunc);
+    curl_easy_setopt(curlhandle, CURLOPT_READDATA, f);
+    curl_easy_setopt(curlhandle, CURLOPT_FTPPORT, "-"); /* disable passive mode */
+    curl_easy_setopt(curlhandle, CURLOPT_FTP_CREATE_MISSING_DIRS, 1L);
+    curl_easy_setopt(curlhandle, CURLOPT_VERBOSE, 1L);
+    for (c = 0; (r != CURLE_OK) && (c < tries); c++) {
+        /* are we resuming? */
+        if (c) { /* yes */
+            /* determine the length of the file already written */
+            /*
+            * With NOBODY and NOHEADER, libcurl will issue a SIZE
+            * command, but the only way to retrieve the result is
+            * to parse the returned Content-Length header. Thus,
+            * getcontentlengthfunc(). We need discardfunc() above
+            * because HEADER will dump the headers to stdout
+            * without it.
+            */
+            curl_easy_setopt(curlhandle, CURLOPT_NOBODY, 1L);
+            curl_easy_setopt(curlhandle, CURLOPT_HEADER, 1L);
+            r = curl_easy_perform(curlhandle);
+            if (r != CURLE_OK)
+                continue;
+            curl_easy_setopt(curlhandle, CURLOPT_NOBODY, 0L);
+            curl_easy_setopt(curlhandle, CURLOPT_HEADER, 0L);
+            fseek(f, uploaded_len, SEEK_SET);
+            curl_easy_setopt(curlhandle, CURLOPT_APPEND, 1L);
+        }
+        else { /* no */
+            curl_easy_setopt(curlhandle, CURLOPT_APPEND, 0L);
+        }
+        r = curl_easy_perform(curlhandle);
+    }
+    fclose(f);
+    if (r == CURLE_OK)
+        return 1;
+    else {
+        fprintf(stderr, "%s\n", curl_easy_strerror(r));
+        return 0;
+    }
+}
+// 下载
+int download(CURL *curlhandle, const char * remotepath, const char * localpath, long timeout, long tries)
+{
+    FILE *f;
+    curl_off_t local_file_len = -1 ;
+    long filesize =0 ;
+    CURLcode r = CURLE_GOT_NOTHING;
+    struct stat file_info;
+    int use_resume = 0;
+    //获取本地文件大小信息
+    if(stat(localpath, &file_info) == 0)
+    {
+        local_file_len = file_info.st_size; 
+        use_resume = 1;
+    }
+    //追加方式打开文件，实现断点续传
+    f = fopen(localpath, "ab+");
+    if (f == NULL) {
+        perror(NULL);
+        return 0;
+    }
+    curl_easy_setopt(curlhandle, CURLOPT_URL, remotepath);
+    curl_easy_setopt(curlhandle, CURLOPT_USERPWD, "spider:spider");   
+    //连接超时设置
+    curl_easy_setopt(curlhandle, CURLOPT_CONNECTTIMEOUT, timeout);
+    //设置头处理函数
+    curl_easy_setopt(curlhandle, CURLOPT_HEADERFUNCTION, getcontentlengthfunc);
+    curl_easy_setopt(curlhandle, CURLOPT_HEADERDATA, &filesize);
+    // 设置断点续传
+    curl_easy_setopt(curlhandle, CURLOPT_RESUME_FROM_LARGE, use_resume?local_file_len:0);
+    curl_easy_setopt(curlhandle, CURLOPT_WRITEFUNCTION, writefunc);
+    curl_easy_setopt(curlhandle, CURLOPT_WRITEDATA, f);
+    curl_easy_setopt(curlhandle, CURLOPT_NOPROGRESS, 1L);
+    curl_easy_setopt(curlhandle, CURLOPT_VERBOSE, 1L);
+    r = curl_easy_perform(curlhandle);
+    fclose(f);
+    if (r == CURLE_OK)
+        return 1;
+    else {
+        fprintf(stderr, "%s\n", curl_easy_strerror(r));
+        return 0;
+    }
+}
+int main(int c, char **argv) 
+{
+    CURL *curlhandle = NULL;
+    CURL *curldwn = NULL;
+    curl_global_init(CURL_GLOBAL_ALL);
+    curlhandle = curl_easy_init();
+    curldwn = curl_easy_init();
+    upload(curlhandle, "ftp://192.168.0.185/a/success", "D:/abc.jpg", 1, 3);
+    download(curldwn, "ftp://192.168.0.185/a/success", "D:/abc1.jpg", 1, 3);
+    curl_easy_cleanup(curlhandle);
+    curl_easy_cleanup(curldwn);
+    curl_global_cleanup();
+    return 0;
+}

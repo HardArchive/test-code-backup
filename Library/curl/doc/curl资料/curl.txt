@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include "../curl-7.14.0/include/curl/curl.h"
+#pragma comment(lib, "../curl-7.14.0/lib/libcurl_imp.lib")
+
+int main(void)
+{
+   curl = curl_easy_init();
+  if(curl) {
+
+     CURLcode res;    
+     res = curl_easy_setopt(curl, CURLOPT_PROXY, "Test-pxy08:8080");
+     res = curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+     res = curl_easy_setopt(curl, CURLOPT_URL, "http://www.vckbase.com");
+     res = curl_easy_perform(curl);
+
+    if(CURLE_OK == res) {
+      char *ct;
+      /**//* ask for the content-type */
+      /**//* http://curl.haxx.se/libcurl/c/curl_easy_getinfo.html */
+       res = curl_easy_getinfo(curl, CURLINFO_CONTENT_TYPE, &ct);
+
+      if((CURLE_OK == res) && ct)
+         printf("We received Content-Type: %s ", ct);
+     }
+
+    /**//* always cleanup */
+     curl_easy_cleanup(curl);
+   }
+  return 0;
+}

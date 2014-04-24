@@ -1,0 +1,53 @@
+利用Curl库实现文件上传及速度很慢问题(2011-04-29 23:44:25)转载标签： it 分类： C/C /VC/Delphi  
+利用Curl库实现文件上传，利用Multi-part formposts应该是最好的方法。何为Multi-part？其实，就我理解，就是在Post提交的时候，有不同的数据单元，每个单元有自己的名称与内容，内容可以是文本的，也可以是二进制的。同时，每个数据单元都可以有自己的消息头，MIME类型，这些数据单元组成一个链表，提交到HTTP服务器。libcurl提供了方便的api用于支持multi-part formposts。使用curl_formadd函数，可以添加不同的数据数据单元，然后提交到服务器。
+
+使用libcurl的大概流程:
+curl_easy_init()
+curl_easy_setopt()
+curl_easy_perform()
+curl_easy_cleanup()
+
+下面是一个multi-part formposts的例子（更详细的使用，请参考：http://curl.haxx.se/libcurl/c/curl_formadd.html ）：
+
+int main()
+{ 
+
+   curl_global_init(CURL_GLOBAL_WIN32); 
+   CURL *easy_handle = curl_easy_init();
+
+ // 使用multi-parts form post
+ curl_easy_setopt(easy_handle, CURLOPT_URL, http://localhost:2210/Default.aspx); curl_httppost *post = NULL; curl_httppost *last = NULL; 
+ // 文本数据
+ curl_formadd(&post, &last, CURLFORM_COPYNAME, "name", CURLFORM_COPYCONTENTS, "JGood", CURLFORM_END); curl_formadd(&post, &last, CURLFORM_COPYNAME, "address", CURLFORM_COPYCONTENTS, "HangZhou", CURLFORM_END);
+ // 文本文件中的数据
+ curl_formadd(&post, &last, CURLFORM_COPYNAME, "file", CURLFORM_FILECONTENT, "ReadMe.txt", CURLFORM_END);
+ curl_easy_setopt(easy_handle, CURLOPT_HTTPPOST, post);
+ curl_easy_perform(easy_handle);
+ curl_formfree(post);
+ curl_easy_cleanup(easy_handle);
+ curl_global_cleanup();
+
+ return 0;
+}     最后要说明的是，所有在easy handle上设置的属性都是”sticky”的，什么意思？就是说在easy handle上设置的属性都将被保存，即使执行完curl_easy_perform之后，这些属性值仍然存在。通过将CURLOPT_HTTPGET设为1可以使easy handle回到最原始的状态：
+
+curl_easy_setopt(easy_handle, CURLOPT_HTTPGET, 1L); 
+显示进度
+    libcurl支持通信过程中的进度控制。通过将CURLOPT_NOPROCESS设置为0开启进度支持。该选项默认值为1。对大多数应用程序，我们需要提供一个进度显示回调。libcurl会不定期的将当前传输的进度通过回调函数告诉你的程序。回调函数的原型如下：
+
+int progress_callback(void *clientp, double dltotal, double dlnow, double ultotal, double ulnow);    通过CURLOPT_PROGRESSFUNCTION注册该回调函数。参数clientp是一个用户自定义指针，应用程序通过CURLOPT_PROCESSDATA属性将该自定义指定传递给libcurl。libcurl对该参数不作任何处理，只是简单将其传递给回调函数。
+
+在C++中使用libcurl
+    在C++中使用libcurl跟在C语言中没有任何区别，只有一个地方要注意：回调函数不能是类的非静态成员函数。例如：
+
+class AClass {
+     static size_t write_data(void *ptr, size_t size, size_t nmemb, void *ourpointer)
+     {
+      
+     }
+} 
+
+用上面提供方法可以很方便的实现文件的上传。
+
+特别要说的是，curl类库的版本最好要用7.21.*版本，这几天跟一个同事其他人写的代码调试Curl文件上传，文件是可以上传成功，但是只能传输小文件比较快，上传10M以上文件时，要花费非常的时间，后来发现用的Curl类库是2006年的V7.15版的，直接替换V7.21.6版本，速度超快。
+
+curl类库下载地址http://curl.haxx.se/download.html

@@ -1,0 +1,244 @@
+对CURL的一些研究
+发布于:软件开发网 来源:未知 作者:佚名 时间:2009-01-23 点击:231
+
+
+
+前两天看到有人求客户端socket 发HTTP包的代码，受flw版主启发找了一些perl的资料，不过对perl 还是不太熟悉。也没有深入的研究。无意中发现了libcurl.so 这个库。去google上搜索发现它是处理客户端发送HTTP请求的库 以及可以处理web服务器回送回来的包。研究了两天将研究的成果，共享出来给大家一起研究。 
+
+参考：http://curl.haxx.se/ 这是curl开发者的首页。 
+
+利用libcurl.so库 我们能轻松的连接某个web站点。获得某个首页的html代码 或者是http 请求的头部。 还可以提交表单， 
+此外它还支持ftp,https, 
+
+/usr/include/curl/curl.h 中。 
+
+1 CURLcode curl_global_init(long flags); 
+
+描述： 
+这个函数只能用一次。(其实在调用curl_global_cleanup 函数后仍然可再用) 
+如果这个函数在curl_easy_init函数调用时还没调用，它讲由libcurl库自动完成。 
+
+参数：flags 
+
+CURL_GLOBAL_ALL //初始化所有的可能的调用。 
+CURL_GLOBAL_SSL //初始化支持 安全套接字层。 
+CURL_GLOBAL_WIN32 //初始化win32套接字库。 http://www.mscto.com 
+CURL_GLOBAL_NOTHING //没有额外的初始化。 
+
+
+2 void curl_global_cleanup(void); 
+
+描述：在结束libcurl使用的时候，用来对curl_global_init做的工作清理。类似于close的函数。 
+
+3 char *curl_version( ); 
+
+描述: 打印当前libcurl库的版本。 
+
+
+4 CURL *curl_easy_init( ); 
+
+描述: 
+curl_easy_init用来初始化一个CURL的指针(有些像返回FILE类型的指针一样). 相应的在调用结束时要用curl_easy_cleanup函数清理. 
+一般curl_easy_init意味着一个会话的开始. 它的返回值一般都用在easy系列的函数中. 
+
+5 void curl_easy_cleanup(CURL *handle); 
+
+描述: 
+这个调用用来结束一个会话.与curl_easy_init配合着用. 
+
+参数: 
+CURL类型的指针. 
+
+6 CURLcode curl_easy_setopt(CURL *handle, CURLoption option, parameter); 
+
+描述: 这个函数最重要了.几乎所有的curl 程序都要频繁的使用它. 
+它告诉curl库.程序将有如何的行为. 比如要查看一个网页的html代码等. 
+(这个函数有些像ioctl函数) 
+
+参数: 
+1 CURL类型的指针 
+2 各种CURLoption类型的选项.(都在curl.h库里有定义,man 也可以查看到) 
+
+3 parameter 这个参数 既可以是个函数的指针,也可以是某个对象的指针,也可以是个long型的变量.它用什么这取决于第二个参数. 
+
+CURLoption 这个参数的取值很多.具体的可以查看man手册. 
+
+7 CURLcode curl_easy_perform(CURL *handle); 
+
+描述:这个函数在初始化CURL类型的指针 以及curl_easy_setopt完成后调用. 就像字面的意思所说perform就像是个舞台.让我们设置的 
+option 运作起来. 
+
+参数: 
+CURL类型的指针.
+
+mq110 回复于：2005-07-31 09:43:58 下面来看一个简单的例子: 
+用来获得某个主页的html代码 
+
+[code:1:0822bdf9db]#include <stdio.h> 
+#include <curl/curl.h> 
+#include <stdlib.h> 
+
+int main(int argc, char *argv[]) 
+{ 
+CURL *curl; //定义CURL类型的指针 
+CURLcode res; //定义CURLcode类型的变量 
+
+if(argc!=2) 
+{ 
+printf("Usage : file <url>\n"); 
+exit(1); 
+} 
+
+curl = curl_easy_init(); //初始化一个CURL类型的指针 
+if(curl!=NULL) 
+{ 
+//设置curl选项. 其中CURLOPT_URL是让用户指定url. argv[1]中存放的命令行传进来的网址 
+curl_easy_setopt(curl, CURLOPT_URL, argv[1]); 
+//调用curl_easy_perform 执行我们的设置.并进行相关的操作. 在这里只在屏幕上显示出来. 
+res = curl_easy_perform(curl); 
+//清除curl操作. 
+curl_easy_cleanup(curl); 
+} 
+return 0; 
+}[/code:1:0822bdf9db] 
+
+编译: gcc -o 001 -Wall 001.c -lcurl 
+
+我们来获得www.chinaunix.net 主页的html代码 
+
+./001 www.chinaunix.net
+
+mq110 回复于：2005-07-31 09:44:51 再来看一个例子: 
+实际编程时 我们未必只显示出来.我们的目的是要对获得html代码做相应的处理.比如检验关键字,发现重要信息等等. 
+
+那么我们就需要把获得的html代码存入相应的文件中.看下面一个例子 
+
+[code:1:0f6b795165] 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <unistd.h> 
+
+#include <curl/curl.h> 
+#include <curl/types.h> 
+#include <curl/easy.h> 
+
+FILE *fp; //定义FILE类型指针 
+
+size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) //这个函数是为了符合CURLOPT_WRITEFUNCTION, 而构造的 
+{ 
+int written = fwrite(ptr, size, nmemb, (FILE *)fp); 
+return written; 
+} 
+
+int main(int argc, char *argv[]) 
+{ 
+CURL *curl; 
+
+curl_global_init(CURL_GLOBAL_ALL); 
+curl=curl_easy_init(); 
+curl_easy_setopt(curl, CURLOPT_URL, argv[1]); 
+
+if((fp=fopen(argv[1],"w"))==NULL) 
+{ 
+curl_easy_cleanup(curl); 
+exit(1); 
+} 
+curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); //CURLOPT_WRITEFUNCTION 将后继的动作交给write_data函数处理 
+curl_easy_perform(curl); 
+curl_easy_cleanup(curl); 
+exit(0); 
+}[/code:1:0f6b795165] 
+
+gcc -o 002 -Wall 002.c -lcurl 
+./002 www.chinaunix.net 
+这个例子就将html代码保存在了www.chinaunix.net文件中了.
+
+mq110 回复于：2005-07-31 09:45:42 此外还可以获得http报文的头部 post表单 等等. 这里就不详细的介绍了. 具体的可以man curl_easy_setopt 
+(要用到一个重要的结构体,HttpPost) 
+
+
+
+下面看一个从ftp站点下载文件的例子. 
+
+
+[code:1:9d1844307e]#include <stdio.h> 
+#include <curl/curl.h> 
+#include <curl/types.h> 
+#include <curl/easy.h> 
+
+struct FtpFile //定义一个结构为了传递给my_fwrite函数.可用curl_easy_setopt的CURLOPT_WRITEDATA选项传递 
+{ 
+char *filename; 
+FILE *stream; 
+}; 
+
+int my_fwrite(void *buffer, size_t size, size_t nmemb, void *stream) 
+{ 
+struct FtpFile *out=(struct FtpFile *)stream; // stream指针其实就是 指向struct FtpFile ftpfile的 
+if(out && !out->stream) 
+{ 
+out->stream=fopen(out->filename, "wb"); //没有这个流的话就创建一个 名字是out->filename. 
+if(!out->stream) 
+return -1; 
+} 
+return fwrite(buffer, size, nmemb, out->stream); 
+} 
+
+int main(int argc, char *argv[]) 
+{ 
+CURL *curl; 
+CURLcode res; 
+struct FtpFile ftpfile={argv[2],NULL}; //初始化一个FtpFile结构 
+curl_global_init(CURL_GLOBAL_DEFAULT); 
+
+curl = curl_easy_init(); 
+if(curl) 
+{ 
+curl_easy_setopt(curl, CURLOPT_URL,argv[1]); 
+curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, my_fwrite); http://www.mscto.com 
+curl_easy_setopt(curl, CURLOPT_WRITEDATA, &ftpfile); //给相关函数的第四个参数 传递一个结构体的指针 
+curl_easy_setopt(curl, CURLOPT_VERBOSE, TRUE); //CURLOPT_VERBOSE 这个选项很常用 用来在屏幕上显示对服务器相关操作返回的信息 
+
+res = curl_easy_perform(curl); 
+curl_easy_cleanup(curl); 
+
+if(CURLE_OK != res) 
+fprintf(stderr, "curl told us %d\n", res); 
+} 
+if(ftpfile.stream) 
+fclose(ftpfile.stream); 
+curl_global_cleanup(); 
+
+return 0; 
+}[/code:1:9d1844307e] 
+
+gcc -o 003 -Wall 003.c -lcurl 
+./003 ftp://202.96.64.144/fei.gif fei.gif 
+
+
+我有个匿名的ftp的网址 将目录下的fei.gif 保存到本地 也叫fei.gif 
+
+
+此外还有curl_escape curl_unescape函数用来转换 汉字成 %XX 这种类型.以及转换回来.如果要下载带有汉字的文件.先要调用将字符串转换一下. http://www.mscto.com 
+
+curl 库 还有好多功能. 有待大家来挖掘.
+
+luojiannx 回复于：2005-07-31 10:01:28 :mrgreen: 建议版主加精华
+
+双眼皮的猪 回复于：2005-07-31 10:05:29 :mrgreen: :mrgreen: :mrgreen: 
+好东东~建议加精^_^
+
+kernelxu 回复于：2005-07-31 10:10:43 嗯，写的很不错，先收藏再研究。建议版主给个精华吧！
+
+mq110 回复于：2005-07-31 10:26:00 谢谢 楼上的各位支持.谢谢斑竹.
+
+wwy 回复于：2005-07-31 10:29:00 精华！ 支持
+
+surfzsl 回复于：2005-07-31 10:37:34 [quote:9b2bcecdb7="mq110"]谢谢 楼上的各位支持.谢谢斑竹.[/quote:9b2bcecdb7] 
+感谢CU感谢我忠实的READER感谢大家的支持 
+...... 
+:mrgreen: :mrgreen: :mrgreen: :mrgreen: :mrgreen: 
+恩,不错.楼主继续,发掘出更好的东东给大家 
+:em17: :em17: :em17: :em17: :em17:
+
+homesp 回复于：2005-07-31 11:30:45 谢谢楼主，建议加精，收下了
