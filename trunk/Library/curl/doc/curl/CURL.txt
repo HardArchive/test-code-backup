@@ -1,0 +1,183 @@
+curl 使用(原创)
+Posted by Neo in Linux, 系统管理 on 2010/05/25
+
+1.访问http页面内容，输出到标准输出
+
+curl http://www.neocanable.com
+
+2.生成文件
+
+curl -o index.html http://www.neocanable.com
+以远程文件名保存
+curl -O http://www.neocanable.com
+
+参数-o为输出到某个文件，上面的命令等同于wget http://www.neocanable.com或者curl http://www.neocanable.com > index.html
+
+3.添加proxy
+
+curl -x xxx.xxx.xxx.xxx http://www.neocanable.com
+通过代理ip访问网页
+
+4.添加浏览器信息
+
+通常服务器的日志会记录客户端浏览器的信息
+curl -A “浏览器信息” http://www.neocanable.com
+
+5.批量下载文件
+
+curl http://www.xxx.com/action/[1-100].html > /dev/null
+这个最适合爬自己网站的缓存了
+
+文件下载后重新命名和类正则使用,下载后的文件是demo1-001.html
+curl -o #1_#2 http://www.xxx.com/~{demo1,demo2}/[1-100].html
+创建需要的目录
+curl -o –create-dirs http://www.xxx.com/~{demo1,demo2}/[1-100].html
+
+6.分块下载
+
+curl -r 0-1024 http://www.xxx.com/aa.zip
+curl -r 1025- http://www.xxx.com/aa.zip
+先下1M,然后再下剩下的
+
+7.curl ftp
+
+访问ftp地址
+curl -u username:password ftp://www.xxx.com
+curl -u ftp://www.xxx.com
+添加端口
+curl -u username:password -P8899 ftp://www.xxx.com
+
+上传文件到ftp
+curl -T /home/neo/demo.jpg -u username:password ftp://www.xxx.com
+
+8.测试参数
+
+测试站点相应时间
+curl -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total} www.google.com
+查看http_code
+curl -o /dev/null -s -w %{http_code} http://www.neocanable.com
+网页或文件大小
+curl -o /dev/null -s -w %{size_header} http://www.neocanable.com
+
+http_code:http返回类似404,200,500等
+time_total:总相应时间
+time_namelookup:域名解析时间
+time_connect:连接到目标地址耗费的时间
+time_pretransfer:从执行到开始传输文件的时间间隔
+time_starttransfer:从执行到开始传输文件的时间间隔
+size_download:下载网页或文件大小
+size_upload:上传文件大小
+size_header:响应头
+size_request:发送请求参数大小
+speed_download：传输速度
+speed_upload:平均上传速度
+content_type:下载文件类型. (Added in 7.9.5)
+
+9.post和get请求
+
+get请求
+curl “param1=name&params2=pass” http://www.xxx.com
+post请求
+curl -d “param1=name&params2=pass” http://www.xxx.com
+
+10.响应超时
+
+curl -m 40 http://www.xxx.com
+curl –timeout 40 http://www.xxx.com
+
+11.破解网站的防盗链
+
+curl -e “http://www.a.net” http://www.b.net/acion
+
+12.网站头部信息
+
+curl -I http://www.neocanable.com
+
+13.更总url跳转
+
+curl -L http://url.cn/2yQFfd
+
+14.正确的给url编码
+
+curl –data-urlencode http://www.xxx.com/action?name=张三&sex=男
+
+15.限制url的传输速度
+
+curl –limit-rate http://www.xxx.com/action
+
+16.限制下载文件大小
+
+curl –max-filesize 1024 http://www.xxx.com/action
+超过1M将不执行操作，并且返回出错
+
+17.curl错误代码
+
+1:未支持的协议。此版cURL不支持这一协议。
+2:初始化失败。
+3:URL格式错误。语法不正确。
+5:无法解析代理。无法解析给定代理主机。
+6:无法解析主机。无法解析给定的远程主机。
+7:无法连接到主机。
+8:FTP非正常的服务器应答。cURL无法解析服务器发送的数据。
+9:FTP访问被拒绝。服务器拒绝登入或无法获取您想要的特定资源或目录。最有可能的是您试图进入一个在此服务器上不存在的目录。
+11:FTP 非正常的PASS回复。cURL无法解析发送到PASS请求的应答。
+13:FTP 非正常的的PASV应答，cURL无法解析发送到PASV请求的应答。
+14:FTP非正常的227格式。cURL无法解析服务器发送的227行。
+15:FTP无法连接到主机。无法解析在227行中获取的主机IP。
+17:FTP无法设定为二进制传输。无法改变传输方式到二进制。
+18:部分文件。只有部分文件被传输。
+19:FTP不能下载/访问给定的文件， RETR (或类似)命令失败。
+21:FTP quote错误。quote命令从服务器返回错误。
+22:HTTP 找不到网页。找不到所请求的URL或返回另一个HTTP 400或以上错误。此返回代码只出现在使用了-f/–fail选项以后。
+23:写入错误。cURL无法向本地文件系统或类似目的写入数据。
+25:FTP 无法STOR文件。服务器拒绝了用于FTP上传的STOR操作。
+26:读错误。各类读取问题。
+27:内存不足。内存分配请求失败。
+28:操作超时。到达指定的超时期限条件。
+30:FTP PORT失败。PORT命令失败。并非所有的FTP服务器支持PORT命令，请尝试使用被动(PASV)传输代替！
+31:FTP无法使用REST命令。REST命令失败。此命令用来恢复的FTP传输。
+33:HTTP range错误。range “命令”不起作用。
+34:HTTP POST错误。内部POST请求产生错误。
+35:SSL连接错误。SSL握手失败。
+36:FTP 续传损坏。不能继续早些时候被中止的下载。
+37:文件无法读取。无法打开文件。权限问题？
+38:LDAP 无法绑定。LDAP绑定(bind)操作失败。
+39:LDAP 搜索失败。
+41:功能无法找到。无法找到必要的LDAP功能。
+42:由回调终止。应用程序告知cURL终止运作。
+43:内部错误。由一个不正确参数调用了功能。
+45:接口错误。指定的外发接口无法使用。
+47:过多的重定向。cURL达到了跟随重定向设定的最大限额跟
+48:指定了未知TELNET选项。
+49:不合式的telnet选项。
+51:peer的SSL证书或SSH的MD5指纹没有确定。
+52:服务器无任何应答，该情况在此处被认为是一个错误。
+53:找不到SSL加密引擎。
+54:无法将SSL加密引擎设置为默认。
+55:发送网络数据失败。
+56:在接收网络数据时失败。
+58:本地证书有问题。
+59:无法使用指定的SSL密码。
+60:peer证书无法被已知的CA证书验证。
+61:无法辨识的传输编码。
+62:无效的LDAP URL。
+63:超过最大文件尺寸。
+64:要求的FTP的SSL水平失败。
+65:发送此数据需要的回卷(rewind)失败。
+66:初始化SSL引擎失败。
+67:用户名、密码或类似的信息未被接受，cURL登录失败。
+68:在TFTP服务器上找不到文件。
+69:TFTP服务器权限有问题。
+70:TFTP服务器磁盘空间不足。
+71:非法的TFTP操作。
+72:未知TFTP传输编号(ID)。
+73:文件已存在(TFTP) 。
+74:无此用户(TFTP) 。
+75:字符转换失败。
+76:需要字符转换功能。
+77:读SSL证书出现问题(路径？访问权限？ ) 。
+78:URL中引用的资源不存在。
+79:SSH会话期间发生一个未知错误。
+80:未能关闭SSL连接。
+82:无法加载CRL文件，丢失或格式不正确(在7.19.0版中增加 ) 。
+83:签发检查失败(在7.19.0版中增加 ) 。
