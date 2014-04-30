@@ -30,7 +30,7 @@
 
 
 #include "curl.h"
-#pragma comment(lib, "libcurld_imp.lib")
+#pragma comment(lib, "libcurl.lib")
 #include <string>
 using namespace std;
 
@@ -48,12 +48,12 @@ using namespace std;
 ////呵呵~超简单的吧，具体的意思这里就不详细说
 
 #define POSTURL "http://bbs.pediy.com/login.php?do=login"
-#define POSTFIELDS "vb_login_username=%69%72%63&cookieuser=1&vb_login_password=&securitytoken=guest&do=login&vb_login_md5password=cec9b1c9fe98858a7fd9830fee256e3e&vb_login_md5password_utf=cec9b1c9fe98858a7fd9830fee256e3e"
-#define FILENAME "curlposttest.log"
+#define POSTFIELDS "vb_login_username=irc&cookieuser=1&vb_login_password=&s=&securitytoken=guest&do=login&vb_login_md5password=cec9b1c9fe98858a7fd9830fee256e3e&vb_login_md5password_utf=cec9b1c9fe98858a7fd9830fee256e3e"
+#define FILENAME "pediy_login.html"
 
 size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp);
 
-int main(int argc, char *argv[]) {
+int main12(int argc, char *argv[]) {
 	CURL *curl;
 	CURLcode res;
 	FILE *fptr;
@@ -81,11 +81,16 @@ int main(int argc, char *argv[]) {
 	curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);                     // CURLOPT_FOLLOWLOCATION: 设置为非0，响应头信息Location
 	// CURLOPT_COOKIEFILE: 哈哈，这个实在是太重要了，我之前尝试了好多次没法验证该次POST是否成功的原因就是没有设置这个罗。
 	//		               设置对应的COOKIEFILE路径，该路径文件并不一定需要在物理磁盘上实际存在
+	//		               会使curl下一次发请求时从指定的文件中读取cookie
 	curl_easy_setopt(curl, CURLOPT_COOKIEFILE, "/Users/zhu/CProjects/curlposttest.cookie");
 
 
 	res = curl_easy_perform(curl);
 	curl_easy_cleanup(curl);
+
+	//显示已登录页面
+	ShellExecute(NULL, NULL, FILENAME, NULL, NULL, SW_SHOWNORMAL);
+	return 1;
 }
 
 size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp) 
