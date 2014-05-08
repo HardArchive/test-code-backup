@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook", "mhook\mhook.vcproj", "{CF885E9F-405F-491C-A1A0-2A26FA818F89}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mhook_test", "test\test.vcproj", "{C89598DC-0A21-4393-A271-9E7F3D41DB96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF885E9F-405F-491C-A1A0-2A26FA818F89}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CF885E9F-405F-491C-A1A0-2A26FA818F89}.Debug|Win32.Build.0 = Debug|Win32
+		{CF885E9F-405F-491C-A1A0-2A26FA818F89}.Release|Win32.ActiveCfg = Release|Win32
+		{CF885E9F-405F-491C-A1A0-2A26FA818F89}.Release|Win32.Build.0 = Release|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Debug|Win32.Build.0 = Debug|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.ActiveCfg = Release|Win32
+		{C89598DC-0A21-4393-A271-9E7F3D41DB96}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
