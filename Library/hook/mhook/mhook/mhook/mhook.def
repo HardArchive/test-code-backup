@@ -1,0 +1,8 @@
+LIBRARY	"mhook"
+; mhook.def : 声明 mhook 2.3 DLL 的模块参数。
+
+EXPORTS
+	Mhook_SetHook @ 1
+	Mhook_Unhook @ 2
+
+; 此处可以是显式导出
