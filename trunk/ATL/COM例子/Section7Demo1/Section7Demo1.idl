@@ -1,0 +1,48 @@
+// Section7Demo1.idl : Section7Demo1 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Section7Demo1.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(0155C7BF-721F-4107-A526-406A7F1D32BC),
+	dual,
+	nonextensible,
+	helpstring("IHelloSOE 接口"),
+	pointer_default(unique)
+]
+interface IHelloSOE : IDispatch{
+	[id(1), helpstring("方法Add")] HRESULT Add([in] LONG lA, [in] LONG lB);
+};
+[
+	uuid(A41764AE-5B0B-4098-B5F1-CC1C7A8BEA49),
+	version(1.0),
+	helpstring("Section7Demo1 1.0 类型库")
+]
+library Section7Demo1Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(A3F2D07E-4F99-4B17-B68F-761F2C203AF0),
+		helpstring("_IHelloSOEEvents 接口")
+	]
+	dispinterface _IHelloSOEEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("方法OnAddResult")] HRESULT OnAddResult([in] LONG lResult);
+	};
+	[
+		uuid(EC5897D9-4F28-414F-9A5A-CFFD49F680E4),
+		helpstring("HelloSOE Class")
+	]
+	coclass HelloSOE
+	{
+		[default] interface IHelloSOE;
+		[default, source] dispinterface _IHelloSOEEvents;
+	};
+};

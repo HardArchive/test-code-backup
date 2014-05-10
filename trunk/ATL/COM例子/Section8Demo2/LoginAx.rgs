@@ -1,0 +1,34 @@
+HKCR
+{
+	Section8Demo2.LoginAx.1 = s 'LoginAx Class'
+	{
+		CLSID = s '{9B90E487-AD06-48EF-9064-73DE5752B398}'
+	}
+	Section8Demo2.LoginAx = s 'LoginAx Class'
+	{
+		CLSID = s '{9B90E487-AD06-48EF-9064-73DE5752B398}'
+		CurVer = s 'Section8Demo2.LoginAx.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9B90E487-AD06-48EF-9064-73DE5752B398} = s 'LoginAx Class'
+		{
+			ProgID = s 'Section8Demo2.LoginAx.1'
+			VersionIndependentProgID = s 'Section8Demo2.LoginAx'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{46FF9709-26F1-4582-9F0C-A003B5CD2774}'
+			'Version' = s '1.0'
+		}
+	}
+}

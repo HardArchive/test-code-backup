@@ -1,0 +1,9 @@
+; Section7Demo1.def : 定义模块参数。
+
+LIBRARY      "Section7Demo1.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

@@ -1,0 +1,53 @@
+// Section6Demo1.idl : Section6Demo1 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Section6Demo1.tlb)和封送处理代码。
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(185B107D-E152-4ABC-A45F-BDF0DA9E2C2F),
+	dual,
+	nonextensible,
+	helpstring("IHelloCompositeControl 接口"),
+	pointer_default(unique)
+]
+interface IHelloCompositeControl : IDispatch{
+	[propget, id(1), helpstring("属性 Description")] HRESULT Description([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("属性 Description")] HRESULT Description([in] BSTR newVal);
+	[id(2), helpstring("方法EnableButton")] HRESULT EnableButton([in] LONG lBtnIndex, [in] VARIANT_BOOL varbEnable);
+};
+
+[
+	uuid(A19D5833-DD0A-4C82-B33E-18DB8B82189E),
+	version(1.0),
+	helpstring("Section6Demo1 1.0 类型库")
+]
+library Section6Demo1Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(2CD72493-CC54-451E-BBE0-5E5D25746644),
+		helpstring("_IHelloCompositeControlEvents 接口")
+	]
+	dispinterface _IHelloCompositeControlEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("方法OnClickBtn")] HRESULT OnClickBtn([in] LONG lBtnIndex, [in] LONG lClickCountSum);
+	};
+	[
+		uuid(56B23F6D-F0D3-401D-A1F8-BF880BE8C222),
+		control,
+		helpstring("HelloCompositeControl Class")
+	]
+	coclass HelloCompositeControl
+	{
+		[default] interface IHelloCompositeControl;
+		[default, source] dispinterface _IHelloCompositeControlEvents;
+	};
+};
