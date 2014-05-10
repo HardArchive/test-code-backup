@@ -1,0 +1,53 @@
+// Section8Demo2.idl : Section8Demo2 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Section8Demo2.tlb)和封送处理代码。
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(79A3FF78-2A01-401F-93E6-658B74C988E4),
+	dual,
+	nonextensible,
+	helpstring("ILoginAx 接口"),
+	pointer_default(unique)
+]
+interface ILoginAx : IDispatch{
+	[propget, id(1), helpstring("属性 JudgeNull")] HRESULT JudgeNull([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(1), helpstring("属性 JudgeNull")] HRESULT JudgeNull([in] VARIANT_BOOL newVal);
+	[id(2), helpstring("方法SetText")] HRESULT SetText([in] BSTR bstrUserName, [in] BSTR bstrPassword, [in] BSTR bstrLogin);
+};
+
+[
+	uuid(46FF9709-26F1-4582-9F0C-A003B5CD2774),
+	version(1.0),
+	helpstring("Section8Demo2 1.0 类型库")
+]
+library Section8Demo2Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(CB61249D-BF62-4101-B5BF-D9FB594F2AC8),
+		helpstring("_ILoginAxEvents 接口")
+	]
+	dispinterface _ILoginAxEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("方法OnLogin")] HRESULT OnLogin([in] BSTR bstrUserName, [in] BSTR bstrPassword);
+	};
+	[
+		uuid(9B90E487-AD06-48EF-9064-73DE5752B398),
+		control,
+		helpstring("LoginAx Class")
+	]
+	coclass LoginAx
+	{
+		[default] interface ILoginAx;
+		[default, source] dispinterface _ILoginAxEvents;
+	};
+};

@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'Section7Demo1'
+		'Section7Demo1.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

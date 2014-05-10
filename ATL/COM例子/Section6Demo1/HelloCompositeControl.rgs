@@ -1,0 +1,34 @@
+HKCR
+{
+	Section6Demo1.HelloCompositeControl.1 = s 'HelloCompositeControl Class'
+	{
+		CLSID = s '{56B23F6D-F0D3-401D-A1F8-BF880BE8C222}'
+	}
+	Section6Demo1.HelloCompositeControl = s 'HelloCompositeControl Class'
+	{
+		CLSID = s '{56B23F6D-F0D3-401D-A1F8-BF880BE8C222}'
+		CurVer = s 'Section6Demo1.HelloCompositeControl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {56B23F6D-F0D3-401D-A1F8-BF880BE8C222} = s 'HelloCompositeControl Class'
+		{
+			ProgID = s 'Section6Demo1.HelloCompositeControl.1'
+			VersionIndependentProgID = s 'Section6Demo1.HelloCompositeControl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{A19D5833-DD0A-4C82-B33E-18DB8B82189E}'
+			'Version' = s '1.0'
+		}
+	}
+}

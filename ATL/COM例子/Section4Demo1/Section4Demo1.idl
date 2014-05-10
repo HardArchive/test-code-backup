@@ -1,0 +1,39 @@
+// Section4Demo1.idl : Section4Demo1 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Section4Demo1.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(AD3ADBBB-002E-4AB0-A23B-986A637585CB),
+	dual,
+	nonextensible,
+	helpstring("IHelloSimpleObject 接口"),
+	pointer_default(unique)
+]
+interface IHelloSimpleObject : IDispatch{
+	[id(1), helpstring("方法SumLong")] HRESULT SumLong([in] LONG lA, [in] LONG lB, [out,retval] LONG* plSum);
+	[propget, id(2), helpstring("属性 Description")] HRESULT Description([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("属性 Description")] HRESULT Description([in] BSTR newVal);
+};
+[
+	uuid(856FA103-D41C-48FD-A6D6-988F353C382D),
+	version(1.0),
+	helpstring("Section4Demo1 1.0 类型库")
+]
+library Section4Demo1Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(F65204D1-4E2E-494C-AB52-02D4D1D5438F),
+		helpstring("HelloSimpleObject Class")
+	]
+	coclass HelloSimpleObject
+	{
+		[default] interface IHelloSimpleObject;
+	};
+};

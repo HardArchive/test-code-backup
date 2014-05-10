@@ -1,0 +1,50 @@
+// Section8Demo1.idl : Section8Demo1 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(Section8Demo1.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(A8E69F07-3692-4DC9-875D-9DE46EC90DB9),
+	dual,
+	nonextensible,
+	helpstring("IPasswordSpObj 接口"),
+	pointer_default(unique)
+]
+interface IPasswordSpObj : IDispatch{
+	[propget, id(1), helpstring("属性 ErrorCountAllowed")] HRESULT ErrorCountAllowed([out, retval] LONG* pVal);
+	[propput, id(1), helpstring("属性 ErrorCountAllowed")] HRESULT ErrorCountAllowed([in] LONG newVal);
+	[id(2), helpstring("方法CheckPassword")] HRESULT CheckPassword([in] BSTR bstrUser, [in] BSTR bstrPwd, [out,retval] VARIANT_BOOL* pvarbResult);
+};
+[
+	uuid(3BB25B73-B767-4C88-8296-5CF26648F7BF),
+	version(1.0),
+	helpstring("Section8Demo1 1.0 类型库")
+]
+library Section8Demo1Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(9ECC6F13-726F-4BE8-A961-D6146536733D),
+		helpstring("_IPasswordSpObjEvents 接口")
+	]
+	dispinterface _IPasswordSpObjEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("方法OnMsg")] HRESULT OnMsg([in] BSTR bstrMsg);
+	};
+	[
+		uuid(08D3A036-B259-4201-9B02-0A653DB1F4C0),
+		helpstring("PasswordSpObj Class")
+	]
+	coclass PasswordSpObj
+	{
+		[default] interface IPasswordSpObj;
+		[default, source] dispinterface _IPasswordSpObjEvents;
+	};
+};
