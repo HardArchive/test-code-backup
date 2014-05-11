@@ -1,0 +1,38 @@
+// SampleObject.idl : IDL source for SampleObject
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SampleObject.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(58F909AE-2942-428C-954E-BF6B7B6BE936),
+	dual,
+	nonextensible,
+	helpstring("IHelloSampleObject Interface"),
+	pointer_default(unique)
+]
+interface IHelloSampleObject : IDispatch{
+	[id(1), helpstring("method Sumlong")] HRESULT Sumlong([in] LONG lA, [in] LONG lB, [out,retval] LONG* plSum);
+
+};
+[
+	uuid(905C882B-E112-450F-A008-14535B111EE2),
+	version(1.0),
+	helpstring("SampleObject 1.0 Type Library")
+]
+library SampleObjectLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(77025312-9202-4EF6-9FA4-2233E3A57D25),
+		helpstring("HelloSampleObject Class")
+	]
+	coclass HelloSampleObject
+	{
+		[default] interface IHelloSampleObject;
+	};
+};

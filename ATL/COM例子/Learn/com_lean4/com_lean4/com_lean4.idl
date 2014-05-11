@@ -1,0 +1,18 @@
+// com_lean4.idl : IDL source for com_lean4
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (com_lean4.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(D427EF20-5112-4841-B616-5DF4F5F62DE7),
+	version(1.0),
+	helpstring("com_lean4 1.0 Type Library")
+]
+library com_lean4Lib
+{
+	importlib("stdole2.tlb");
+};
