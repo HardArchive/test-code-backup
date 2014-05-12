@@ -8,6 +8,19 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 [
+	object,
+	uuid(57FC9DA5-E2D1-4E4B-8CA5-8CEEDA4E2279),
+	dual,
+	nonextensible,
+	helpstring("IHelloSimpleObject 接口"),
+	pointer_default(unique)
+]
+interface IHelloSimpleObject : IDispatch{
+	[id(1), helpstring("方法Sumlong")] HRESULT Sumlong([in] LONG lA, [in] LONG lB, [out,retval] LONG* plSum);
+	[propget, id(2), helpstring("属性 Description")] HRESULT Description([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("属性 Description")] HRESULT Description([in] BSTR newVal);
+};
+[
 	uuid(D427EF20-5112-4841-B616-5DF4F5F62DE7),
 	version(1.0),
 	helpstring("com_lean4 1.0 Type Library")
@@ -15,4 +28,12 @@ import "ocidl.idl";
 library com_lean4Lib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(1CDBBCE9-A916-4F8E-8F7E-82495251E98F),
+		helpstring("HelloSimpleObject Class")
+	]
+	coclass HelloSimpleObject
+	{
+		[default] interface IHelloSimpleObject;
+	};
 };
