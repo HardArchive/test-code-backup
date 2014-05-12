@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 8.0">
+<TITLE>在网页中测试简单对象</TITLE>
+
+<script>
+
+function OnTestAddMethord()
+{
+    var spo = document.getElementById("HelloSimpleObjectTest");
+    var slr = spo.SumLong(9,99);
+    alert(slr);
+}
+
+function OnReadDescriptionProp()
+{
+    var spo = document.getElementById("HelloSimpleObjectTest");
+	var desp = spo.Description;
+	alert(desp);
+}
+
+function OnWriteDescriptionProp()
+{
+    var spo = document.getElementById("HelloSimpleObjectTest");
+    spo.Description = "我已通过网页修改了简单对象的描述属性！这是新描述！";
+    alert("修改属性完成！点击中间的按钮测试！");
+}
+
+</script>
+
+</HEAD>
+<BODY>
+
+<OBJECT ID="HelloSimpleObjectTest" CLASSID="CLSID:F65204D1-4E2E-494C-AB52-02D4D1D5438F"></OBJECT>
+
+<button type="button" onclick="OnTestAddMethord()">测试简单对象的加法方法</button>
+<button type="button" onclick="OnReadDescriptionProp()">读取简单对象的描述属性</button>
+<button tyte="button" onclick="OnWriteDescriptionProp()">写入简单对象的描述属性</button>
+
+</BODY>
+</HTML>
