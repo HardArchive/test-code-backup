@@ -5,8 +5,8 @@
 /* link this file in with the server and any clients */
 
 
- /* File created by MIDL compiler version 6.00.0361 */
-/* at Fri Jun 24 12:20:35 2011
+ /* File created by MIDL compiler version 7.00.0500 */
+/* at Mon May 12 16:53:24 2014
  */
 /* Compiler settings for .\ContextShellExt.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
@@ -17,9 +17,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#if !defined(_M_IA64) && !defined(_M_AMD64)
-
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
 
@@ -85,6 +82,4 @@ MIDL_DEFINE_GUID(CLSID, CLSID_MenuShellExt,0xA7275E1B,0xE709,0x4484,0xAF,0xA7,0x
 #endif
 
 
-
-#endif /* !defined(_M_IA64) && !defined(_M_AMD64)*/
 

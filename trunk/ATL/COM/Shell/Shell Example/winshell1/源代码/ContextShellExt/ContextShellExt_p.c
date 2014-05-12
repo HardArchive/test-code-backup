@@ -3,8 +3,8 @@
 /* this ALWAYS GENERATED file contains the proxy stub code */
 
 
- /* File created by MIDL compiler version 6.00.0361 */
-/* at Fri Jun 24 12:20:35 2011
+ /* File created by MIDL compiler version 7.00.0500 */
+/* at Mon May 12 16:53:24 2014
  */
 /* Compiler settings for .\ContextShellExt.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
@@ -23,9 +23,15 @@
 #if _MSC_VER >= 1200
 #pragma warning(push)
 #endif
-#pragma warning( disable: 4100 ) /* unreferenced arguments in x86 call */
-#pragma warning( disable: 4211 )  /* redefine extent to static */
+
+#pragma warning( disable: 4211 )  /* redefine extern to static */
 #pragma warning( disable: 4232 )  /* dllimport identity*/
+#pragma warning( disable: 4024 )  /* array to pointer mapping*/
+#pragma warning( disable: 4152 )  /* function/data pointer conversion in expression */
+#pragma warning( disable: 4100 ) /* unreferenced arguments in x86 call */
+
+#pragma optimize("", off ) 
+
 #define USE_STUBLESS_PROXY
 
 
@@ -45,28 +51,36 @@
 
 #define TYPE_FORMAT_STRING_SIZE   3                                 
 #define PROC_FORMAT_STRING_SIZE   1                                 
+#define EXPR_FORMAT_STRING_SIZE   1                                 
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   0            
 
-typedef struct _MIDL_TYPE_FORMAT_STRING
+typedef struct _ContextShellExt_MIDL_TYPE_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ TYPE_FORMAT_STRING_SIZE ];
-    } MIDL_TYPE_FORMAT_STRING;
+    } ContextShellExt_MIDL_TYPE_FORMAT_STRING;
 
-typedef struct _MIDL_PROC_FORMAT_STRING
+typedef struct _ContextShellExt_MIDL_PROC_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ PROC_FORMAT_STRING_SIZE ];
-    } MIDL_PROC_FORMAT_STRING;
+    } ContextShellExt_MIDL_PROC_FORMAT_STRING;
+
+typedef struct _ContextShellExt_MIDL_EXPR_FORMAT_STRING
+    {
+    long          Pad;
+    unsigned char  Format[ EXPR_FORMAT_STRING_SIZE ];
+    } ContextShellExt_MIDL_EXPR_FORMAT_STRING;
 
 
 static RPC_SYNTAX_IDENTIFIER  _RpcTransferSyntax = 
 {{0x8A885D04,0x1CEB,0x11C9,{0x9F,0xE8,0x08,0x00,0x2B,0x10,0x48,0x60}},{2,0}};
 
 
-extern const MIDL_TYPE_FORMAT_STRING __MIDL_TypeFormatString;
-extern const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString;
+extern const ContextShellExt_MIDL_TYPE_FORMAT_STRING ContextShellExt__MIDL_TypeFormatString;
+extern const ContextShellExt_MIDL_PROC_FORMAT_STRING ContextShellExt__MIDL_ProcFormatString;
+extern const ContextShellExt_MIDL_EXPR_FORMAT_STRING ContextShellExt__MIDL_ExprFormatString;
 
 
 extern const MIDL_STUB_DESC Object_StubDesc;
@@ -85,11 +99,11 @@ extern const MIDL_STUBLESS_PROXY_INFO IMenuShellExt_ProxyInfo;
 #error You need a Windows 2000 or later to run this stub because it uses these features:
 #error   /robust command line switch.
 #error However, your C/C++ compilation flags indicate you intend to run this app on earlier systems.
-#error This app will die there with the RPC_X_WRONG_STUB_VERSION error.
+#error This app will fail with the RPC_X_WRONG_STUB_VERSION error.
 #endif
 
 
-static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
+static const ContextShellExt_MIDL_PROC_FORMAT_STRING ContextShellExt__MIDL_ProcFormatString =
     {
         0,
         {
@@ -98,7 +112,7 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
         }
     };
 
-static const MIDL_TYPE_FORMAT_STRING __MIDL_TypeFormatString =
+static const ContextShellExt_MIDL_TYPE_FORMAT_STRING ContextShellExt__MIDL_TypeFormatString =
     {
         0,
         {
@@ -133,7 +147,7 @@ static const unsigned short IMenuShellExt_FormatStringOffsetTable[] =
 static const MIDL_STUBLESS_PROXY_INFO IMenuShellExt_ProxyInfo =
     {
     &Object_StubDesc,
-    __MIDL_ProcFormatString.Format,
+    ContextShellExt__MIDL_ProcFormatString.Format,
     &IMenuShellExt_FormatStringOffsetTable[-3],
     0,
     0,
@@ -145,7 +159,7 @@ static const MIDL_SERVER_INFO IMenuShellExt_ServerInfo =
     {
     &Object_StubDesc,
     0,
-    __MIDL_ProcFormatString.Format,
+    ContextShellExt__MIDL_ProcFormatString.Format,
     &IMenuShellExt_FormatStringOffsetTable[-3],
     0,
     0,
@@ -192,18 +206,18 @@ static const MIDL_STUB_DESC Object_StubDesc =
     0,
     0,
     0,
-    __MIDL_TypeFormatString.Format,
+    ContextShellExt__MIDL_TypeFormatString.Format,
     1, /* -error bounds_check flag */
     0x50002, /* Ndr library version */
     0,
-    0x6000169, /* MIDL Version 6.0.361 */
+    0x70001f4, /* MIDL Version 7.0.500 */
     0,
     0,
     0,  /* notify & notify_flag routine table */
     0x1, /* MIDL flag */
     0, /* cs routines */
     0,   /* proxy/server info */
-    0   /* Reserved5 */
+    0
     };
 
 const CInterfaceProxyVtbl * _ContextShellExt_ProxyVtblList[] = 
@@ -259,6 +273,7 @@ const ExtendedProxyFileInfo ContextShellExt_ProxyFileInfo =
     0, /* Filler2 */
     0  /* Filler3 */
 };
+#pragma optimize("", on )
 #if _MSC_VER >= 1200
 #pragma warning(pop)
 #endif
