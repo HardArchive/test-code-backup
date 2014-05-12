@@ -1,0 +1,26 @@
+HKCR
+{
+	com_lean4.HelloSimpleObject.1 = s 'HelloSimpleObject Class'
+	{
+		CLSID = s '{1CDBBCE9-A916-4F8E-8F7E-82495251E98F}'
+	}
+	com_lean4.HelloSimpleObject = s 'HelloSimpleObject Class'
+	{
+		CLSID = s '{1CDBBCE9-A916-4F8E-8F7E-82495251E98F}'
+		CurVer = s 'com_lean4.HelloSimpleObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1CDBBCE9-A916-4F8E-8F7E-82495251E98F} = s 'HelloSimpleObject Class'
+		{
+			ProgID = s 'com_lean4.HelloSimpleObject.1'
+			VersionIndependentProgID = s 'com_lean4.HelloSimpleObject'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D427EF20-5112-4841-B616-5DF4F5F62DE7}'
+		}
+	}
+}
