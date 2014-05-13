@@ -1,0 +1,36 @@
+// SimpleExt.idl : SimpleExt 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(SimpleExt.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(84AAC6C6-CCBD-490D-84C3-0FF97E08624A),
+	dual,
+	nonextensible,
+	helpstring("ISimpleShlExt 接口"),
+	pointer_default(unique)
+]
+interface ISimpleShlExt : IDispatch{
+};
+[
+	uuid(745955C6-AA51-4DC2-B273-77DF0DC1BB0B),
+	version(1.0),
+	helpstring("SimpleExt 1.0 类型库")
+]
+library SimpleExtLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(002409F0-6432-4124-94D9-4AA12F508A6F),
+		helpstring("SimpleShlExt Class")
+	]
+	coclass SimpleShlExt
+	{
+		[default] interface ISimpleShlExt;
+	};
+};
