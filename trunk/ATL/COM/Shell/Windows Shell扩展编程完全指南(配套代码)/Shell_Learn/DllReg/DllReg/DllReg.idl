@@ -1,0 +1,36 @@
+// DllReg.idl : DllReg 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(DllReg.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(3F693544-B09B-4AEA-B927-97CA837CA77A),
+	dual,
+	nonextensible,
+	helpstring("IDllRegShlExt 接口"),
+	pointer_default(unique)
+]
+interface IDllRegShlExt : IDispatch{
+};
+[
+	uuid(0EC9EF6B-54E2-4FA6-AF08-193E6CDDD3DD),
+	version(1.0),
+	helpstring("DllReg 1.0 类型库")
+]
+library DllRegLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(AD5B56AC-5B3F-4E00-A136-9F2B31FD48EA),
+		helpstring("DllRegShlExt Class")
+	]
+	coclass DllRegShlExt
+	{
+		[default] interface IDllRegShlExt;
+	};
+};

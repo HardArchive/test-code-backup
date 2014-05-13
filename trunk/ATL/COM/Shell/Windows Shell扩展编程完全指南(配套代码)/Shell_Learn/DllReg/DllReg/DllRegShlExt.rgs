@@ -1,0 +1,26 @@
+HKCR
+{
+	DllReg.DllRegShlExt.1 = s 'DllRegShlExt Class'
+	{
+		CLSID = s '{AD5B56AC-5B3F-4E00-A136-9F2B31FD48EA}'
+	}
+	DllReg.DllRegShlExt = s 'DllRegShlExt Class'
+	{
+		CLSID = s '{AD5B56AC-5B3F-4E00-A136-9F2B31FD48EA}'
+		CurVer = s 'DllReg.DllRegShlExt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AD5B56AC-5B3F-4E00-A136-9F2B31FD48EA} = s 'DllRegShlExt Class'
+		{
+			ProgID = s 'DllReg.DllRegShlExt.1'
+			VersionIndependentProgID = s 'DllReg.DllRegShlExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{0EC9EF6B-54E2-4FA6-AF08-193E6CDDD3DD}'
+		}
+	}
+}
