@@ -1,0 +1,36 @@
+HKCR
+{
+	SimpleExt.SimpleShlExt.1 = s 'SimpleShlExt Class'
+	{
+		CLSID = s '{002409F0-6432-4124-94D9-4AA12F508A6F}'
+	}
+	SimpleExt.SimpleShlExt = s 'SimpleShlExt Class'
+	{
+		CLSID = s '{002409F0-6432-4124-94D9-4AA12F508A6F}'
+		CurVer = s 'SimpleExt.SimpleShlExt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {002409F0-6432-4124-94D9-4AA12F508A6F} = s 'SimpleShlExt Class'
+		{
+			ProgID = s 'SimpleExt.SimpleShlExt.1'
+			VersionIndependentProgID = s 'SimpleExt.SimpleShlExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{745955C6-AA51-4DC2-B273-77DF0DC1BB0B}'
+		}
+	}
+	NoRemove txtfile
+    {
+        NoRemove ShellEx
+        {
+            NoRemove ContextMenuHandlers
+            {
+                ForceRemove SimpleShlExt = s '{002409F0-6432-4124-94D9-4AA12F508A6F}'
+            }
+        }
+    }
+}
