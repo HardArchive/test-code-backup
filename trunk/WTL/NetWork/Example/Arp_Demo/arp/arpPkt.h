@@ -16,7 +16,7 @@
 //以太网首部  14=6+6+2
 struct ethernet_head
 {
-	unsigned char dest_mac[6];   //dest MAC  以太网目的地址
+	unsigned char dest_mac[6];   //dest MAC  以太网目的地址  对方的MAC  如果不存在则群发
 	unsigned char source_mac[6]; //source MAC 以太网源地址
 	unsigned short eh_type;      //ethernet type 帧类型  ARP(0x0806)
 };

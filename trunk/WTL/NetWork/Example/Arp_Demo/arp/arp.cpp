@@ -1,7 +1,9 @@
 #include "arpPkt.h"
 #include <iostream>
 using namespace std;
-#include <./pcap.h>
+//#include <./pcap.h>
+
+#include "pcap.h"
 
 pcap_if_t *g_palldevs;
 pcap_if_t *g_pd;
@@ -12,7 +14,7 @@ arp_packet g_arpPacket;                 //定义ARPPACKET结构体变量
 
 unsigned char tmp_dest_ip[4] = {0, 0, 0, 0}; //目的ip
 unsigned char tmp_sour_ip[4] = {0, 0, 0, 0}; //自身ip
-unsigned char tmp_sour_addr[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; //目的mac
+unsigned char tmp_sour_addr[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; //发送方(源)mac 可随意修改
 void setpkt();         //初始化packet
 void sendPkt();        //发送并接收arp packet
 void GetMACaddress();
@@ -120,23 +122,25 @@ void setpkt()
 
 	 //自动填充的字段
 	g_arpPacket.eth.eh_type = htons((unsigned short)0x0806); // DLC Header的以太网类型
-   
+	for(int i = 0; i < sizeof(g_arpPacket.eth.dest_mac); i++)
+		g_arpPacket.eth.dest_mac[i] = 0xff;                         //广播地址   目的地址 如果未找到则局域网群发
+    memcpy(g_arpPacket.eth.source_mac, tmp_sour_addr, sizeof(tmp_sour_addr)); //发送方（源）MAC
+
 	g_arpPacket.arp.hardware_type = htons((unsigned short)1);;      // 硬件类型
-	g_arpPacket.arp.protocol_type = htons((unsigned short)0x0800); // 上层协议类型
-    g_arpPacket.arp.add_len = (unsigned char)6;                    //mac长度
-    g_arpPacket.arp.pro_len = (unsigned char)4;                    //ip长度
+	g_arpPacket.arp.protocol_type = htons((unsigned short)0x0800);  // 上层协议类型
+    g_arpPacket.arp.add_len = (unsigned char)6;                     //mac长度
+    g_arpPacket.arp.pro_len = (unsigned char)4;                     //ip长度
+    g_arpPacket.arp.option = htons((unsigned short)0x1);            //1为arp请求 2为应答
 
-
-    g_arpPacket.arp.option = htons((unsigned short)0x1);//1为arp请求
-    for(int i = 0; i < sizeof(g_arpPacket.eth.dest_mac); i++)
-        g_arpPacket.eth.dest_mac[i] = 0xff; //广播地址
 
     //sour ip and mac
 
-    memcpy(g_arpPacket.arp.sour_addr, tmp_sour_addr, sizeof(tmp_sour_addr));
-    memcpy(g_arpPacket.arp.sour_ip, tmp_sour_ip, sizeof(tmp_sour_ip));
-    memcpy(g_arpPacket.eth.source_mac, tmp_sour_addr, sizeof(tmp_sour_addr));
-    memcpy(g_arpPacket.arp.dest_ip, tmp_dest_ip, sizeof(tmp_dest_ip));
+    memcpy(g_arpPacket.arp.sour_addr, tmp_sour_addr, sizeof(tmp_sour_addr));  //发送方MAC
+    memcpy(g_arpPacket.arp.sour_ip, tmp_sour_ip, sizeof(tmp_sour_ip));        //发送方ip
+
+    memcpy(g_arpPacket.arp.dest_ip, tmp_dest_ip, sizeof(tmp_dest_ip));        //目的IP
+
+	//询问包  目标MAC未指定
 }
 
 /* Callback function invoked by libpcap for every incoming packet */
