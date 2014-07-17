@@ -85,7 +85,7 @@ int main()
 
 	/////////////////////////////////////////////////////////////////////	
 	// 要欺骗的目标地址
-	char szDestIP[] = "10.16.115.89";
+	char szDestIP[] = "192.168.30.129";
 	
 	// 创建转发封包的线程
 	// ...			// ::CloseHandle(::CreateThread(NULL, 0, ForwardThread, &adapter, 0, NULL));
